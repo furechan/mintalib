@@ -3,7 +3,7 @@
 import numpy as np
 import pandas as pd
 
-from .numeric import calc_ema, calc_rma, calc_atr, calc_trange
+from .core import calc_ema, calc_rma, calc_atr, calc_trange
 
 
 # TODO do we need to rename pandas specific functions to distinguish them the numeric calc functions ?
@@ -174,62 +174,6 @@ def calc_volatility(price):
 
 
 @export
-def calc_macd(series, n1=12, n2=26, n3=9, *, name='macd', relative=False):
-    """ Calculates MACD """
-
-    ema1 = calc_ema(series, n1)
-    ema2 = calc_ema(series, n2)
-
-    if relative:
-        macd = 100 * (ema1 - ema2) / ema2
-    else:
-        macd = ema1 - ema2
-
-    signal = calc_ema(macd, n3)
-    hist = macd - signal
-
-    result = dict()
-    result[name] = macd
-    result[name + "signal"] = signal
-    result[name + "hist"] = hist
-
-    result = pd.DataFrame(result, index=series.index)
-
-    return result
-
-
-@export
-def calc_dema(series, n=50, wrap=True):
-    """ Calculates double ema """
-
-    ema1 = calc_ema(series, n)
-    ema2 = calc_ema(ema1, n)
-
-    result = 2 * ema1 - ema2
-
-    if wrap and hasattr(series, '__array_wrap__'):
-        result = series.__array_wrap__(result)
-
-    return result
-
-
-@export
-def calc_tema(series, n=50, wrap=True):
-    """ Calculates triple ema """
-
-    ema1 = calc_ema(series, n)
-    ema2 = calc_ema(ema1, n)
-    ema3 = calc_ema(ema2, n)
-
-    result = 3 * ema1 - 3 * ema2 + ema3
-
-    if wrap and hasattr(series, '__array_wrap__'):
-        result = series.__array_wrap__(result)
-
-    return result
-
-
-@export
 def price_density(prices, window=20):
     """ Calculates price density (cf Kaufman) """
 
@@ -239,28 +183,6 @@ def price_density(prices, window=20):
     result = trading_range / (high - low)
 
     return result
-
-
-@export
-def calc_adx(prices, period=14):
-    """ Calculates ADX """
-
-    hm = prices.high.diff()
-    lm = -prices.low.diff()
-
-    atr = calc_atr(prices, period)
-
-    dm1 = np.where((hm > lm) & (hm > 0), hm, 0)
-    dm2 = np.where((lm > hm) & (lm > 0), lm, 0)
-
-    with np.errstate(divide='ignore'):
-        di1 = 100 * calc_rma(dm1, period) / atr
-        di2 = 100 * calc_rma(dm2, period) / atr
-        dx = 100 * np.abs(di1 - di2) / (di1 + di2)
-
-    adx = calc_rma(dx, period)
-
-    return adx
 
 
 @export

@@ -49,7 +49,6 @@ class ReprMixin:
         return "%s(%s)" % (cname, params)
 
 
-
 @export
 class Indicator(ABC, ReprMixin):
     """ Abstact Base class for Indicators """
@@ -142,6 +141,11 @@ class IndicatorChain(Indicator):
         indicators = *self.indicators, other
         return self.__class__(*indicators)
 
+    @property
+    def main_indicator(self):
+        if self.indicators:
+            return self.indicators[-1]
+
     def calc(self, data):
         for indicator in self.indicators:
             data = indicator(data)
@@ -167,6 +171,11 @@ class IndicatorComposition(Indicator):
 
         indicators = *self.indicators, other
         return self.__class__(*indicators)
+
+    @property
+    def main_indicator(self):
+        if self.indicators:
+            return self.indicators[0]
 
     def calc(self, data):
         for indicator in reversed(self.indicators):

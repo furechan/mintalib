@@ -6,6 +6,8 @@ cdef double NAN = float('nan')
 
 import numpy as np
 
+from enum import Enum, IntEnum
+
 from .model import Indicator
 
 

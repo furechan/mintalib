@@ -29,19 +29,18 @@ def calc_rsi(series, int period=14):
             pv = v
 
         else:
+            count += 1
             dv, pv = v - pv, v
-            up, down= (dv, 0.0) if dv>=0.0 else (0.0, -dv)
+            up, down= (dv, 0.0) if dv >= 0.0 else (0.0, -dv)
 
-            if count < period:
-                count += 1
+            if count <= period:
                 ups += up * alpha
                 downs += down * alpha
-                continue
+            else:
+                ups += (up - ups) * alpha
+                downs += (down - downs) * alpha
 
-            ups += (up - ups) * alpha
-            downs += (down - downs) * alpha
-
-            if downs > 0:
+            if downs > 0 and count >= period:
                 rsi = 100.0 - (100.0 / (1.0 + ups / downs))
 
         if not isnan(rsi):

@@ -6,6 +6,7 @@ __pycache__/
 temp/*
 build/
 dist/
+.tox/
 *.log
 *.pyc
 *.pyd

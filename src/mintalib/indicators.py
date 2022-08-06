@@ -1,10 +1,30 @@
-from . import core
+# Do not edit! file generated automatically. see make-indicators.py
 
-__all__ = []
+''' Mintalib indicators library '''
 
-for name in [n for n in dir(core) if n.isupper() and n.isalpha()]:
-    globals()[name] = getattr(core, name)
-    __all__.append(name)
+from .core import ADX
+from .core import ATR
+from .core import DEMA
+from .core import EMA
+from .core import EVAL
+from .core import MACD
+from .core import MAX
+from .core import MIN
+from .core import NATR
+from .core import PPO
+from .core import PRICE
+from .core import PSAR
+from .core import RMA
+from .core import ROC
+from .core import RSI
+from .core import SLOPE
+from .core import SMA
+from .core import STDEV
+from .core import TEMA
+from .core import TRADE
+from .core import VOLUME
+from .core import WMA
 
-del core
-del name
+__all__ = ['ADX', 'ATR', 'DEMA', 'EMA', 'EVAL', 'MACD', 'MAX', 'MIN', 'NATR', 'PPO',
+'PRICE', 'PSAR', 'RMA', 'ROC', 'RSI', 'SLOPE', 'SMA', 'STDEV', 'TEMA', 'TRADE',
+'VOLUME', 'WMA']

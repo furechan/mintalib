@@ -1,16 +1,17 @@
 """ sorted includes """
 
 
+include "roc.pxi"
+include "min.pxi"
+include "max.pxi"
 
-include "ema.pxi"
 include "sma.pxi"
+include "ema.pxi"
 include "rma.pxi"
 include "wma.pxi"
 include "dema.pxi"
 include "tema.pxi"
-include "kama.pxi"
-
-include "roc.pxi"
+include "matype.pxi"
 
 include "adx.pxi"
 include "rsi.pxi"
@@ -21,7 +22,6 @@ include "macd.pxi"
 include "ppo.pxi"
 
 include "slope.pxi"
-include "curve.pxi"
 include "stdev.pxi"
 
 include "streak.pxi"

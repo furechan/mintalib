@@ -1,1 +1,2 @@
 recursive-exclude * *.pyx
+include src/data/*

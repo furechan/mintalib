@@ -15,7 +15,7 @@ def calc_adx(prices, int period=14):
     atr = calc_atr(prices, period)
 
     hm = high.diff()
-    lm = low.diff()
+    lm = -low.diff()
 
     dm1 = np.where((hm > lm) & (hm > 0), hm, 0)
     dm2 = np.where((lm > hm) & (lm > 0), lm, 0)

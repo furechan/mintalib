@@ -50,6 +50,7 @@ These operators are offered for convenience in composing more complex technical 
 
 ## Developer Notes
 
+
 To compile the extension:
 ```console
 python setup.py build_ext --inplace
@@ -63,7 +64,7 @@ pip install <folder>
 To develop the extension (either):
 ```console
 python setup.py develop
+```
+```console
 pip install -e <folder>
 ```
-"# mintalib-dev" 
-"# mintalib-dev" 

@@ -6,23 +6,24 @@ version = 0.0.1
 build: FORCE
 	-jupyter notebook stop 2> nul
 	cythonize -3 ./**/*.pyx
-	python setup.py build_ext --inplace
+	python3 setup.py build_ext --inplace
+	python3 scripts/make-functions.py
+	python3 scripts/make-indicators.py
 
 clean: FORCE
     del /s /q src\*.c src\*.pyd
 
 dist: FORCE
-    python -mbuild --sdist .
+    python3 -mbuild --sdist .
 
 dump: FORCE
     tar -tvf dist/$(name)-$(version).tar.gz
 
 install: FORCE
-	python setup.py develop
-
+	python3 setup.py develop
 
 remove: FORCE
-	python setup.py develop -u
+	python3 setup.py develop -u
 
 
 FORCE:

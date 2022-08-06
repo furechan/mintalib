@@ -2,13 +2,16 @@
 
 
 
-def calc_ema(series, long period=20):
+
+@export
+def calc_ema(series, long period=20, bint mixed=True):
     """
     Exponential Moving Average
 
     Args:
         series (series) : The input series. Required
         period (int) : The indicator period. Default 20
+        mixed (bool) : Whether to start as a simple average until period is reached. Default True
 
     Returns:
         A series
@@ -33,9 +36,11 @@ def calc_ema(series, long period=20):
         if not isnan(value):
             count += 1
 
-            if count <= period:
+            if mixed and count <= period:
                 sum += value
                 ema = sum / count
+            elif isnan(ema):
+                ema = value
             else:
                 ema += alpha * (value - ema)
 

@@ -2,25 +2,33 @@
 
 
 
-export('SlopeOption')
-cpdef enum SlopeOption:
-    SLOPE_DEFAULT = 0
-    SLOPE_VALUE = 1
-    SLOPE_INTERCEPT = 2
-    SLOPE_CORRELATION = 3
-    SLOPE_RMSERROR = 4
-    SLOPE_FORECAST = 5
-    SLOPE_BADOPTION = 6
+cdef enum:
+    SLOPE_OPTION_SLOPE = 0
+    SLOPE_OPTION_INTERCEPT = 1
+    SLOPE_OPTION_CORRELATION = 2
+    SLOPE_OPTION_RMSERROR = 3
+    SLOPE_OPTION_FORECAST = 4
+    SLOPE_OPTION_BADOPTION = 5
+
+
+@export
+class SlopeOption(IntEnum):
+    """ Slope Option Enumeration """
+    def __repr__(self):
+        return str(self)
+
+    SLOPE = 0
+    INTERCEPT = 1
+    CORRELATION = 2
+    RMSERROR = 3
+    FORECAST = 4
 
 
 @export
 def calc_slope(series, int period=20, int option=0, int offset=0):
     """ Slope (linear regression with time) """
 
-    if option == 0:
-        option = SLOPE_VALUE
-
-    if option < 0 or option >= SLOPE_BADOPTION:
+    if option < 0 or option >= SLOPE_OPTION_BADOPTION:
         raise ValueError("Invalid option %d" % option)
 
     cdef double[:] ys = np.asarray(series, float)
@@ -75,15 +83,15 @@ def calc_slope(series, int period=20, int option=0, int offset=0):
             mse = vyy * (1 - corr * corr)
             rmse = sqrt(mse) if mse >= 0 else NAN
 
-            if option == SLOPE_VALUE:
+            if option == SLOPE_OPTION_SLOPE:
                 output[j] = slope
-            elif option == SLOPE_INTERCEPT:
+            elif option == SLOPE_OPTION_INTERCEPT:
                 output[j] = intercept
-            elif option == SLOPE_CORRELATION:
+            elif option == SLOPE_OPTION_CORRELATION:
                 output[j] = corr
-            elif option == SLOPE_RMSERROR:
+            elif option == SLOPE_OPTION_RMSERROR:
                 output[j] = rmse
-            elif option == SLOPE_FORECAST:
+            elif option == SLOPE_OPTION_FORECAST:
                 forecast = intercept + slope * (period + offset)
                 output[j] = forecast
 
@@ -104,7 +112,7 @@ class SLOPE(Indicator):
 
     def calc(self, data):
         series = self.get_series(data)
-        result = calc_slope(series, self.period, option=SLOPE_VALUE)
+        result = calc_slope(series, self.period, option=SlopeOption.SLOPE)
         return result
 
 
@@ -117,7 +125,7 @@ class SLOPE(Indicator):
 
         def calc(self, data):
             series = self.get_series(data)
-            result = calc_slope(series, self.period, option=SLOPE_CORRELATION)
+            result = calc_slope(series, self.period, option=SlopeOption.CORRELATION)
             return result
 
 
@@ -130,7 +138,7 @@ class SLOPE(Indicator):
 
         def calc(self, data):
             series = self.get_series(data)
-            result = calc_slope(series, self.period, option=SLOPE_RMSERROR)
+            result = calc_slope(series, self.period, option=SlopeOption.RMSERROR)
             return result
 
 
@@ -146,5 +154,5 @@ class SLOPE(Indicator):
 
         def calc(self, data):
             series = self.get_series(data)
-            result = calc_slope(series, self.period, opiton=SLOPE_FORECAST, offset=self.offset)
+            result = calc_slope(series, self.period, opiton=SlopeOption.FORECAST, offset=self.offset)
             return result

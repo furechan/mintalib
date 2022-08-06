@@ -1,6 +1,5 @@
 """ True Range """
-
-
+import numpy as np
 
 @export
 def calc_trange(prices, *, bint log_prices=False, bint percent=False):
@@ -27,28 +26,27 @@ def calc_trange(prices, *, bint log_prices=False, bint percent=False):
     cdef long i = 0
 
     for i in range(size):
-        h = _high[i]
-        l = _low[i]
-        c = _close[i]
+        pc, h, l, c = c, _high[i], _low[i], _close[i]
 
-        if isnan(c):
+        if isnan(c) or isnan(pc):
             continue
-
-        if log_prices:
-            c = log(c)
-            h = log(h)
-            l = log(l)
 
         if pc > h:
             h = pc
-        elif pc < l:
+
+        if pc < l:
             l = pc
 
-        pc = c
-        tr = h - l
+        if log_prices:
+            if h > 0 and l > 0:
+                tr = log(h) - log(l)
+            else:
+                tr = np.nan
+        else:
+            tr = h - l
 
         if percent:
-            tr *= 100 / c
+            tr = 100 * tr / c if c > 0 else np.nan
 
         output[i] = tr
 
@@ -66,6 +64,15 @@ def calc_atr(prices, int period=14, *, bint log_prices=False, bint percent=False
     atr = calc_rma(trange, period)
     return atr
 
+
+
+@export
+def calc_natr(prices, int period=14):
+    """ Normalized Average True Range """
+
+    return calc_atr(prices, period=period, percent=True)
+
+
 @export
 class ATR(Indicator):
     """ Average Trading Range """
@@ -78,23 +85,12 @@ class ATR(Indicator):
 
 
 @export
-class ATRL(Indicator):
-    """ Average Trading Range (logarithmic) """
-
-    def __init__(self, period :int = 14):
-        self.period = period
-
-    def calc(self, data):
-        return calc_atr(data, self.period, log_prices=True)
-
-
-@export
-class ATRP(Indicator):
+class NATR(Indicator):
     """ Average Trading Range (percent) """
 
     def __init__(self, period : int = 14):
         self.period = period
 
     def calc(self, data):
-        return calc_atr(data, self.period, percent=True)
+        return calc_natr(data, self.period)
 
