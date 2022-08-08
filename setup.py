@@ -5,6 +5,7 @@ from pathlib import Path
 srcdir = 'src'
 name = "mintalib"
 version = '0.0.1'
+url = "https://github.com/furechan/mintalib-proto"
 
 
 def make_extension(path):
@@ -25,6 +26,7 @@ classifiers = [
 ]
 
 setup(
+    url=url,
     name=name,
     version=version,
     packages=packages,
