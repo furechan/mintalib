@@ -11,7 +11,7 @@ build: FORCE
 	python3 scripts/make-indicators.py
 
 clean: FORCE
-    del /s /q src\*.c src\*.pyd
+    python3 setup.py clean
 
 dist: FORCE
     python3 -mbuild --sdist .

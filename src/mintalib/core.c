@@ -6,7 +6,7 @@
         "depends": [],
         "name": "mintalib.core",
         "sources": [
-            "C:\\Users\\frederic\\OneDrive\\Python\\mintalib-dev\\src\\mintalib\\core.pyx"
+            "C:\\Users\\frederic\\OneDrive\\Python\\mintalib-proto\\src\\mintalib\\core.pyx"
         ]
     },
     "module_name": "mintalib.core"
