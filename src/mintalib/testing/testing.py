@@ -7,12 +7,17 @@ import numpy as np
 import pandas as pd
 
 from functools import lru_cache
-from prototype import reftalib
 
-from . import core
-from . import utils
+from . import reflib
+from .. import core
+from .. import utils
 
 SAMPLE_SIZE = 260
+
+
+def export(func):
+    globals().setdefault('__all__', []).append(func.__name__)
+    return func
 
 
 @lru_cache
@@ -53,9 +58,10 @@ def merge_results(result, target):
     return result, target
 
 
+@export
 def test_function(name, *args, item=None, verbose=False, **kwargs):
     calc = getattr(core, f"calc_{name}")
-    ref = reftalib.get_ref(name) if reftalib else None
+    ref = reflib.get_ref(name) if reflib else None
 
     if ref is None:
         warnings.warn(f"Ref for {name} not found!")

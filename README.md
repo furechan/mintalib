@@ -3,21 +3,21 @@
 
 ## Warning
 
-This project is for experimentation only. Anything can change and some things have not been thoroughly tested. For any serious usage I recommend you look at 
-the [talib](https://pypi.org/project/TA-Lib/) library.
+This project is experimental. For any serious usage you may want to look into 
+the [ta-lib](https://pypi.org/project/TA-Lib/) library.
 
 ## Purpose
 
-This library offers a curated list of technical analsysis indicators,
-some of which are implemented in cython for improved performance.
-The runtime dependencies are limited to numpy and pandas.
-
+This library offers a curated list of technical analsysis indicators.
+Most of the library is implemented in cython to offer improved performance.
+The project does not link numpy or pandas binaries, or any external library,
+so the installation should be straightforward.  
 
 ## Conventions
 
 Price data is expected in the form of a pandas DataFrames with
 columns ````open, high, low, close, volume````
-and a timestamp index called ```date```.  
+and a timestamp index called ```date```, all in **lower case**.  
 
 ## Functions
 

@@ -61,7 +61,7 @@ def random_walk(count=260, freq='B', start_value=100.0,
 def sample_prices(count=260, freq='B', start_value=100.0,
                   volatility=0.20, fwd_rate=0.10,
                   start_date=None, end_date=None,
-                  seed=None):
+                  seed=None, index=True, as_dict=False):
     """ generates a dataframe of random walk prices """
 
     if not start_date and not end_date:
@@ -87,13 +87,22 @@ def sample_prices(count=260, freq='B', start_value=100.0,
     vol = np.exp(generator.standard_normal(count) * 0.2 + 1.0) * 50000.0
 
     data = dict()
-    data['date'] = dates.values
+
+    if index:
+        data['date'] = dates.values
+
     data['open'] = np.around(op, 2)
     data['high'] = np.around(hi, 2)
     data['low'] = np.around(lo, 2)
     data['close'] = np.around(cl, 2)
     data['volume'] = vol.astype(int)
 
-    prices = pd.DataFrame(data).set_index('date')
+    if as_dict:
+        return data
+
+    prices = pd.DataFrame(data)
+
+    if index:
+        prices = prices.set_index('date')
 
     return prices

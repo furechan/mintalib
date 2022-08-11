@@ -1,8 +1,6 @@
 """ slope """
 
 
-
-
 @export
 def calc_stdev(series, int period=20):
 

@@ -2,20 +2,57 @@
 
 
 @export
-def calc_adx(prices, int period=14):
-    """ ADX """
+def calc_plus_di(prices, int period=14):
+    """ PLUS DI """
 
-    if isinstance(prices, tuple):
-        high, low, close = prices
-    else:
-        high = prices['high']
-        low = prices['low']
-        close = prices['close']
+    high, low = extract_items(prices, ('high', 'low'))
 
     atr = calc_atr(prices, period)
 
-    hm = high.diff()
-    lm = -low.diff()
+    hm = calc_diff(high, 1)
+    lm = -calc_diff(low, 1)
+    dm = np.where((hm > lm) & (hm > 0), hm, 0)
+
+    with np.errstate(divide='ignore'):
+        result = 100 * calc_rma(dm, period) / atr
+
+    if isinstance(prices, DataFrame):
+        result = make_series(result, prices)
+
+    return result
+
+
+@export
+def calc_minus_di(prices, int period=14):
+    """ MINUS DI """
+
+    high, low = extract_items(prices, ('high', 'low'))
+
+    atr = calc_atr(prices, period)
+
+    hm = calc_diff(high, 1)
+    lm = -calc_diff(low, 1)
+    dm = np.where((lm > hm) & (lm > 0), lm, 0)
+
+    with np.errstate(divide='ignore'):
+        result = 100 * calc_rma(dm, period) / atr
+
+    if isinstance(prices, DataFrame):
+        result = make_series(result, prices)
+
+    return result
+
+
+@export
+def calc_adx(prices, int period=14):
+    """ ADX """
+
+    high, low = extract_items(prices, ('high', 'low'))
+
+    atr = calc_atr(prices, period)
+
+    hm = calc_diff(high, 1)
+    lm = -calc_diff(low, 1)
 
     dm1 = np.where((hm > lm) & (hm > 0), hm, 0)
     dm2 = np.where((lm > hm) & (lm > 0), lm, 0)
@@ -25,9 +62,12 @@ def calc_adx(prices, int period=14):
         di2 = 100 * calc_rma(dm2, period) / atr
         dx = 100 * np.abs(di1 - di2) / (di1 + di2)
 
-    adx = calc_rma(dx, period)
+    result = calc_rma(dx, period)
 
-    return adx
+    if isinstance(prices, DataFrame):
+        result = make_series(result, prices)
+
+    return result
 
 
 @export
@@ -39,4 +79,3 @@ class ADX(Indicator):
 
     def calc(self, data):
         return calc_adx(data, self.period)
-

@@ -1,16 +1,10 @@
 """ True Range """
-import numpy as np
 
 @export
 def calc_trange(prices, *, bint log_prices=False, bint percent=False):
     """ True Range """
 
-    if isinstance(prices, tuple):
-        high, low, close = prices
-    else:
-        high = prices['high']
-        low = prices['low']
-        close = prices['close']
+    high, low, close = extract_items(prices, ('high', 'low', 'close'))
 
     cdef double[:] _high = np.asarray(high, float)
     cdef double[:] _low = np.asarray(low, float)
@@ -50,8 +44,8 @@ def calc_trange(prices, *, bint log_prices=False, bint percent=False):
 
         output[i] = tr
 
-    if isinstance(close, Series):
-        result = make_series(result, close)
+    if isinstance(prices, DataFrame):
+        result = make_series(result, prices)
 
     return result
 
@@ -61,8 +55,8 @@ def calc_atr(prices, int period=14, *, bint log_prices=False, bint percent=False
     """ Average True Range """
 
     trange = calc_trange(prices, log_prices=log_prices, percent=percent)
-    atr = calc_rma(trange, period)
-    return atr
+    result = calc_rma(trange, period)
+    return result
 
 
 

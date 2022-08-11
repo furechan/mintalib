@@ -1,9 +1,12 @@
 """ sorted includes """
 
+include "_common.pxi"
 
 include "roc.pxi"
+include "diff.pxi"
 include "min.pxi"
 include "max.pxi"
+include "sum.pxi"
 
 include "sma.pxi"
 include "ema.pxi"
@@ -13,8 +16,8 @@ include "dema.pxi"
 include "tema.pxi"
 include "matype.pxi"
 
-include "adx.pxi"
 include "rsi.pxi"
+include "adx.pxi"
 include "atr.pxi"
 include "psar.pxi"
 

@@ -5,60 +5,79 @@
 def calc_psar(prices, double afs=0.02, double maxaf=0.2):
     """ Parabolic SAR """
 
-    if isinstance(prices, tuple):
-        high, low, close = prices
-    else:
-        high = prices['high']
-        low = prices['low']
-        close = prices['close']
+    high, low = extract_items(prices, ('high', 'low'))
 
     cdef double[:] _high = np.asarray(high, float)
     cdef double[:] _low = np.asarray(low, float)
-    cdef double[:] _close = np.asarray(close, float)
 
-    cdef long size = _close.size
+    cdef long size = _high.size
 
-    cdef object result = np.full(size, np.nan, dtype=float)
+    cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double sar = NAN, ep = NAN, af = NAN
-    cdef double hi = NAN, lo = NAN
+    cdef double ep = NAN, sar = NAN, af = NAN
+    cdef double hi = NAN, lo = NAN, ph = NAN, pl = NAN, hi2 = NAN, lo2 = NAN
 
-    cdef long direction = 0
-    cdef long i = 0
+    cdef long i = 0, trend = 0
+    cdef bint valid = False
 
     for i in range(size):
+        if valid:
+            ph, pl = hi, lo
+
         hi, lo = _high[i], _low[i]
 
-        if not direction:
-            sar, ep, af = lo, hi, afs
-            direction = +1
+        valid = (hi >= lo)
 
-        elif direction > 0 and lo < sar:
-            sar, ep, af = ep, hi, afs
-            direction = -1
+        if not valid:
+            continue
 
-        elif direction < 0 and hi > sar:
-            sar, ep, af = ep, lo, afs
-            direction = +1
+        if isnan(ph) or isnan(pl):
+            continue
+
+        hi2 = ph if ph > hi else hi
+        lo2 = pl if pl < lo else lo
+
+        # check for reversal
+        if trend > 0 and lo < sar:
+            ep, sar, af, trend = lo, ep, afs, -1
+
+        elif trend < 0 and hi > sar:
+            ep, sar, af, trend = hi, ep, afs, +1
 
         output[i] = sar
 
-        sar += af * (ep-sar)
+        # calculate next sar
 
-        if direction > 0 and hi > ep:
-            af += afs
-            ep = hi
+        if trend == 0:
+            # initialize sar
+            if hi > ph:
+                ep, sar, af, trend = hi2, lo2, afs, +1
+            else:
+                ep, sar, af, trend = lo2, hi2, afs, -1
+        else:
+            # update sar
+            sar += af * (ep - sar)
 
-        if direction < 0 and lo < ep:
-            af += afs
-            ep = lo
+            # adjust sar, ep, af if needed
+            if trend > 0:
+                if lo2 < sar:
+                    sar = lo2
+                if hi > ep:
+                    ep = hi
+                    af += afs
+            if trend < 0:
+                if hi2 > sar:
+                    sar = hi2
+                if lo < ep:
+                    ep = lo
+                    af += afs
 
         if maxaf and af > maxaf:
             af = maxaf
 
-    if isinstance(close, Series):
-        result = make_series(result, close)
+    if isinstance(prices, DataFrame):
+        result = make_series(result, prices)
 
     return result
 
