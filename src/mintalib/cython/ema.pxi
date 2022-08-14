@@ -9,15 +9,12 @@ def calc_ema(series, long period=20, bint mixed=True):
     Exponential Moving Average
 
     Args:
-        series (series) : The input series. Required
-        period (int) : The indicator period. Default 20
-        mixed (bool) : Whether to start as a simple average until period is reached. Default True
-
-    Returns:
-        A series
+        series (series) : data series. required
+        period (int) : time period. default 20
+        mixed (bool) : whether to start as a simple average until period is reached. default True
     """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, NAN)
@@ -47,8 +44,7 @@ def calc_ema(series, long period=20, bint mixed=True):
         if count >= period:
             output[i] = ema
 
-    if isinstance(series, Series):
-        result = make_series(result, series)
+    result = wrap_result(result, series)
 
     return result
 
@@ -57,18 +53,15 @@ def calc_ema(series, long period=20, bint mixed=True):
 @export
 class EMA(Indicator):
     """
-    Exponential Moving Average Indicator
+    Exponential Moving Average
 
     Args:
-        period (int) : The indicator period. Default 20
-
-    Returns:
-        A callable
+        period (int) : time period. default 20
     """
 
     same_scale = True
 
-    def __init__(self, period: int =20, *, item=None):
+    def __init__(self, period: int = 20, *, item=None):
         self.period = period
         self.item = item
 

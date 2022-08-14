@@ -21,8 +21,6 @@ class TRADE(Indicator):
         return self.__class__(item=self.item, parent=parent)
 
     def calc(self, prices):
-        """ adds indicator result and position to prices """
-
         if self.parent:
             data = self.parent(prices)
         else:

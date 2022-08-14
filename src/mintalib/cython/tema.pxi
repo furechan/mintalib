@@ -2,7 +2,7 @@
 
 
 @export
-def calc_tema(series, int period=20):
+def calc_tema(series, long period=20):
     """ Triple Exponential Moving Average """
 
     ema1 = calc_ema(series, period)
@@ -20,10 +20,7 @@ class TEMA(Indicator):
     Triple Exponential Moving Average
 
     Args:
-        period (int) : The indicator period. Default 20
-
-    Returns:
-        A Callable
+        period (int) : time period. default 20
     """
 
     same_scale = True

@@ -8,7 +8,9 @@ from talib import abstract
 
 map_names = {
     'roc': 'ROCP',
-    'psar': 'SAR'
+    'psar': 'SAR',
+    'midprice': 'MEDPRICE',
+    'slope':  'LINEARREG_SLOPE'
 }
 
 

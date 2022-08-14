@@ -2,6 +2,9 @@
 
 include "_common.pxi"
 
+include "price.pxi"
+include "volume.pxi"
+
 include "roc.pxi"
 include "diff.pxi"
 include "min.pxi"
@@ -21,6 +24,9 @@ include "adx.pxi"
 include "atr.pxi"
 include "psar.pxi"
 
+include "bbands.pxi"
+include "keltner.pxi"
+
 include "macd.pxi"
 include "ppo.pxi"
 
@@ -32,5 +38,3 @@ include "streak.pxi"
 include "eval.pxi"
 include "trade.pxi"
 
-include "price.pxi"
-include "volume.pxi"

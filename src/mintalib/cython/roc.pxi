@@ -3,10 +3,10 @@
 
 
 @export
-def calc_roc(series, int period=1):
+def calc_roc(series, long period=1):
     """ Rate of Change """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -23,8 +23,7 @@ def calc_roc(series, int period=1):
         roc = v / pv - 1 if pv > 0 else NAN
         output[i] = roc
 
-    if isinstance(series, Series):
-        result = make_series(result, series)
+    result = wrap_result(result, series)
 
     return result
 
@@ -32,7 +31,7 @@ def calc_roc(series, int period=1):
 class ROC(Indicator):
     """ Rate of Change """
 
-    def __init__(self, period=1, *, item=None):
+    def __init__(self, period : int = 1, *, item=None):
         self.period = period
         self.item = item
 

@@ -2,7 +2,7 @@
 
 
 @export
-def calc_macd(series, n1=12, n2=26, n3=9):
+def calc_macd(series, long n1=12, long n2=26, long n3=9):
     """ Moving Average Convergenge Divergence """
 
     ema1 = calc_ema(series, n1)
@@ -11,11 +11,14 @@ def calc_macd(series, n1=12, n2=26, n3=9):
     macd = ema1 - ema2
     signal = calc_ema(macd, n3)
     hist = macd - signal
-    result = macd, signal, hist
 
-    if isinstance(series, Series):
-        columns = ('macd', 'macdsignal', 'macdhist')
-        result = make_dataframe(result, series, columns=columns)
+    result = dict(
+        macd=macd,
+        macdsignal=signal,
+        macdhist=hist
+    )
+
+    result = wrap_result(result, series)
 
     return result
 
@@ -24,7 +27,7 @@ def calc_macd(series, n1=12, n2=26, n3=9):
 class MACD(Indicator):
     """ Moving Average Convergence Divergence """
 
-    def __init__(self, n1=12, n2=26, n3=9, *, item=None):
+    def __init__(self, n1: int = 12, n2: int = 26, n3: int = 9, *, item=None):
         self.n1 = n1
         self.n2 = n2
         self.n3 = n3

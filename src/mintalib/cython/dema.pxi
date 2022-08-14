@@ -2,7 +2,7 @@
 
 
 @export
-def calc_dema(series, int period=50):
+def calc_dema(series, long period=50):
     """ Double Exponential Moving Average """
 
     ema1 = calc_ema(series, period)
@@ -20,15 +20,12 @@ class DEMA(Indicator):
     Double Exponential Moving Average
 
     Args:
-        period (int) : The indicator period. Default 20
-
-    Returns:
-        A Callable
+        period (int) : time period. default 20
     """
 
     same_scale = True
 
-    def __init__(self, period: int =20, *, item=None):
+    def __init__(self, period: int = 20, *, item=None):
         self.period = period
         self.item = item
 

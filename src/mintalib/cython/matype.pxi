@@ -1,4 +1,4 @@
-""" Simple Moving Average """
+""" Ganeric Moving Average """
 
 cdef enum:
     MA_TYPE_SMA = 0
@@ -11,6 +11,7 @@ cdef enum:
 @export
 class MA_Type(IntEnum):
     """ Moving Average Type Enumeration """
+
     def __repr__(self):
         return self.name
     SMA = 0
@@ -20,9 +21,16 @@ class MA_Type(IntEnum):
     DEMA = 4
     TEMA = 5
 
+
 @export
-def calc_ma(series, int period=20, int ma_type=0):
-    """ Generic Moving Average """
+def calc_ma(series, long period=20, int ma_type=0):
+    """
+    Generic Moving Average
+
+    Args:
+        period (int) : time period. default 20
+        ma_type (int) : type of moving average. default 0 (SMA)
+    """
 
     if ma_type == MA_TYPE_SMA:
         return calc_sma(series, period)

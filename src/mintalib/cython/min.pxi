@@ -2,10 +2,10 @@
 
 
 @export
-def calc_min(series, int period=1):
+def calc_min(series, long period=1):
     """ Minimum over a period """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -28,15 +28,14 @@ def calc_min(series, int period=1):
         else:
             output[i] = res
 
-    if isinstance(series, Series):
-        result = make_series(result, series)
+    result = wrap_result(result, series)
 
     return result
 
 class MIN(Indicator):
     """ Minimum over a Period """
 
-    def __init__(self, period=1, *, item=None):
+    def __init__(self, period: int = 1, *, item=None):
         self.period = period
         self.item = item
 

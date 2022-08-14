@@ -58,9 +58,13 @@ def merge_results(result, target):
     return result, target
 
 
+def get_function(name):
+    return getattr(core, f"calc_{name}", None)
+
+
 @export
 def test_function(name, *args, item=None, verbose=False, **kwargs):
-    calc = getattr(core, f"calc_{name}")
+    calc = get_function(name)
     ref = reflib.get_ref(name) if reflib else None
 
     if ref is None:

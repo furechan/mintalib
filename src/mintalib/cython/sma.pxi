@@ -1,10 +1,17 @@
 """ Simple Moving Average """
 
+
 @export
 def calc_sma(series, int period=20):
-    """ Simple Moving Average """
+    """
+    Simple Moving Average
 
-    cdef double[:] xs = np.asarray(series, float)
+    Args:
+        series : data series. required
+        period (int) : time period. default 20
+    """
+
+    cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -29,15 +36,19 @@ def calc_sma(series, int period=20):
         if count >= period:
             output[i] = rsum / count
 
-    if isinstance(series, Series):
-        result = make_series(result, series)
+    result = wrap_result(result, series)
 
     return result
 
 
 @export
 class SMA(Indicator):
-    """ Simple Moving Average """
+    """
+    Simple Moving Average
+
+    Args:
+        period (int) : time period. default 20
+    """
 
     same_scale = True
 

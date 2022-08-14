@@ -27,8 +27,8 @@ def test_wclprice():
     assert testing.test_function('wclprice')
 
 
-def test_medprice():
-    assert testing.test_function('medprice')
+def test_midprice():
+    assert testing.test_function('midprice')
 
 
 def test_trange():
@@ -107,3 +107,9 @@ def test_macd(item):
 @mark.parametrize("item", ['close'])
 def test_ppo(item):
     assert testing.test_function('ppo', item=item)
+
+
+@mark.parametrize("period", [20])
+@mark.parametrize("item", ['close'])
+def test_slope(item, period):
+    assert testing.test_function('slope', period, item=item)

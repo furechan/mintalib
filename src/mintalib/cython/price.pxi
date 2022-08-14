@@ -1,18 +1,16 @@
-""" Exponential Moving Average """
+""" Price """
 
 
 @export
 def calc_avgprice(prices):
     """ Average Price """
 
-    op, hi, lo, cl = extract_items(prices, ('open', 'high', 'low', 'close'))
+    cdef double[:] open = asarray(prices['open'], float)
+    cdef double[:] high = asarray(prices['high'], float)
+    cdef double[:] low = asarray(prices['low'], float)
+    cdef double[:] close = asarray(prices['close'], float)
 
-    cdef double[:] _op = np.asarray(op, float)
-    cdef double[:] _hi = np.asarray(hi, float)
-    cdef double[:] _lo = np.asarray(lo, float)
-    cdef double[:] _cl = np.asarray(cl, float)
-
-    cdef long size = _cl.size
+    cdef long size = check_size(open, high, low, close)
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
@@ -21,11 +19,10 @@ def calc_avgprice(prices):
     cdef long i
 
     for i in range(size):
-        v = (_op[i] + _hi[i] + _lo[i] + _cl[i]) / 4.0
+        v = (open[i] + high[i] + low[i] + close[i]) / 4.0
         output[i] = v
 
-    if isinstance(prices, DataFrame):
-        result = make_series(result, prices)
+    result = wrap_result(result, prices)
 
     return result
 
@@ -34,13 +31,11 @@ def calc_avgprice(prices):
 def calc_typprice(prices):
     """ Typical Price """
 
-    hi, lo, cl = extract_items(prices, ('high', 'low', 'close'))
+    cdef double[:] high = asarray(prices['high'], float)
+    cdef double[:] low = asarray(prices['low'], float)
+    cdef double[:] close = asarray(prices['close'], float)
 
-    cdef double[:] _hi = np.asarray(hi, float)
-    cdef double[:] _lo = np.asarray(lo, float)
-    cdef double[:] _cl = np.asarray(cl, float)
-
-    cdef long size = _cl.size
+    cdef long size = check_size(high, low, close)
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
@@ -49,11 +44,10 @@ def calc_typprice(prices):
     cdef long i
 
     for i in range(size):
-        v = (_hi[i] + _lo[i] + _cl[i]) / 3.0
+        v = (high[i] + low[i] + close[i]) / 3.0
         output[i] = v
 
-    if isinstance(prices, DataFrame):
-        result = make_series(result, prices)
+    result = wrap_result(result, prices)
 
     return result
 
@@ -61,13 +55,11 @@ def calc_typprice(prices):
 def calc_wclprice(prices):
     """ Weighted Close Price """
 
-    hi, lo, cl = extract_items(prices, ('high', 'low', 'close'))
+    cdef double[:] high = asarray(prices['high'], float)
+    cdef double[:] low = asarray(prices['low'], float)
+    cdef double[:] close = asarray(prices['close'], float)
 
-    cdef double[:] _hi = np.asarray(hi, float)
-    cdef double[:] _lo = np.asarray(lo, float)
-    cdef double[:] _cl = np.asarray(cl, float)
-
-    cdef long size = _cl.size
+    cdef long size = check_size(high, low, close)
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
@@ -76,25 +68,21 @@ def calc_wclprice(prices):
     cdef long i
 
     for i in range(size):
-        v = (_hi[i] + _lo[i] + 2 * _cl[i]) / 4.0
+        v = (high[i] + low[i] + 2 * close[i]) / 4.0
         output[i] = v
 
-    if isinstance(prices, DataFrame):
-        result = make_series(result, prices)
+    result = wrap_result(result, prices)
 
     return result
 
 
 @export
-def calc_medprice(prices):
-    """ Median Price """
+def calc_midprice(prices):
+    """ Mid Price """
 
-    hi, lo = extract_items(prices, ('high', 'low'))
-
-    cdef double[:] _hi = np.asarray(hi, float)
-    cdef double[:] _lo = np.asarray(lo, float)
-
-    cdef long size = _hi.size
+    cdef double[:] high = asarray(prices['high'], float)
+    cdef double[:] low = asarray(prices['low'], float)
+    cdef long size = check_size(high, low)
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
@@ -103,11 +91,10 @@ def calc_medprice(prices):
     cdef long i
 
     for i in range(size):
-        v = (_hi[i] + _lo[i]) / 2.0
+        v = (high[i] + low[i]) / 2.0
         output[i] = v
 
-    if isinstance(prices, DataFrame):
-        result = make_series(result, prices)
+    result = wrap_result(result, prices)
 
     return result
 
@@ -162,14 +149,14 @@ class WCLPRICE(Indicator):
 
 
 @export
-class MEDPRICE(Indicator):
-    """ Median Price Indicator """
+class MIDPRICE(Indicator):
+    """ Mid Price Indicator """
 
     def __init__(self, item='close'):
         self.item = item
 
     def calc(self, prices):
-        result = calc_medprice(prices)
+        result = calc_midprice(prices)
         return result
 
 

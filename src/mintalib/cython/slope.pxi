@@ -25,13 +25,13 @@ class SlopeOption(IntEnum):
 
 
 @export
-def calc_slope(series, int period=20, int option=0, int offset=0):
-    """ Slope (linear regression with time) """
+def calc_slope(series, long period=20, int option=0, int offset=0):
+    """ Slope (Time linear regression) """
 
     if option < 0 or option >= SLOPE_OPTION_BADOPTION:
         raise ValueError("Invalid option %d" % option)
 
-    cdef double[:] ys = np.asarray(series, float)
+    cdef double[:] ys = asarray(series, float)
     cdef long size = ys.size
 
     cdef object result = np.full(size, np.nan)
@@ -42,7 +42,7 @@ def calc_slope(series, int period=20, int option=0, int offset=0):
 
     cdef long i = 0, j = 0
 
-    if size < period:
+    if period >= size:
         return result
 
     x = s = sx = sxx = 0.0
@@ -57,12 +57,10 @@ def calc_slope(series, int period=20, int option=0, int offset=0):
     if vxx <= 0:
         return result
 
-    if size <= period:
-        return result
+    for j in range(period - 1, size):
 
-    for j in range(period-1, size):
-
-        x = sy = sxy = syy = 0.0
+        x = 0.0
+        sy = sxy = syy = 0.0
         i = j - period + 1
 
         while i <= j:
@@ -95,8 +93,8 @@ def calc_slope(series, int period=20, int option=0, int offset=0):
                 forecast = intercept + slope * (period + offset)
                 output[j] = forecast
 
-    if isinstance(series, Series):
-        result = make_series(result, series)
+
+    result = wrap_result(result, series)
 
     return result
 
@@ -104,9 +102,9 @@ def calc_slope(series, int period=20, int option=0, int offset=0):
 
 @export
 class SLOPE(Indicator):
-    """ Time Regression Slope """
+    """ Slope (Time linear Regression) """
 
-    def __init__(self, period=20, *, item=None):
+    def __init__(self, period : int = 20, *, item=None):
         self.period = period
         self.item = item
 
@@ -116,10 +114,10 @@ class SLOPE(Indicator):
         return result
 
 
-    class RVALUE(Indicator):
-        """ Time Regression R-value """
+    class CORRELATION(Indicator):
+        """ Slope Correlation """
 
-        def __init__(self, period=20, *, item=None):
+        def __init__(self, period: int = 20, *, item=None):
             self.period = period
             self.item = item
 
@@ -129,10 +127,10 @@ class SLOPE(Indicator):
             return result
 
 
-    class RMSE(Indicator):
-        """ Time Regression Root Mean Square Error """
+    class RMSERROR(Indicator):
+        """ Slope Root Mean Square Error """
 
-        def __init__(self, period=20, *, item=None):
+        def __init__(self, period: int = 20, *, item=None):
             self.period = period
             self.item = item
 
@@ -142,12 +140,12 @@ class SLOPE(Indicator):
             return result
 
 
-    class TSF(Indicator):
-        """ Time Series Forecast """
+    class FORECAST(Indicator):
+        """ Slope Forecast """
 
         same_scale = True
 
-        def __init__(self, period=20, offset=0, *, item=None):
+        def __init__(self, period: int = 20, offset: int = 0, *, item=None):
             self.period = period
             self.offset = offset
             self.item = item

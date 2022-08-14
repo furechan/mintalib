@@ -6,22 +6,20 @@ import inspect
 
 from abc import ABC, abstractmethod
 
-from .utils import export
-
 import warnings
 
 
-# TODO move indicator to a module named like model ??
+# FIXME fix pandas import. DataFrame should fallback to ()
 
-# TODO remove clone from Indicator ?
-# TODO create a make_indicator that wraps a function into an indicator ?
-# TODO distinguish indicators that need a series from those that need a prices dataframe ?
 
-# TODO Make a DataFrame abc instead of import pandas here ?
+def export(func):
+    globals().setdefault('__all__', []).append(func.__name__)
+    return func
+
 
 
 class ReprMixin:
-    """ Mixin to implement a minimalist __repr__ based on __init__ signature """
+    """ Mixin to implement a basic __repr__ based on __init__ signature """
 
     def __repr__(self):
         data = self.__dict__

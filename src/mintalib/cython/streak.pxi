@@ -3,14 +3,16 @@
 
 @export
 def calc_streak(series):
-    cdef double[:] xs = np.asarray(series, float)
+    """ streak """
+
+    cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
     cdef double value = NAN, prev = NAN, diff=NAN
-    cdef double streak = NAN, mult = NAN
+    cdef double streak = NAN
 
     cdef long i = 0
 
@@ -37,8 +39,7 @@ def calc_streak(series):
 
         output[i] = streak
 
-    if isinstance(series, Series):
-        result = make_series(result, series)
+    result = wrap_result(result, series)
 
     return result
 

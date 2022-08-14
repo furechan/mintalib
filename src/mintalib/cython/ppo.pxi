@@ -1,8 +1,8 @@
-""" Moving Average Convergenge Divergence """
+""" Price Percentage Oscillator """
 
 
 @export
-def calc_ppo(series, n1=12, n2=26, n3=9):
+def calc_ppo(series, long n1=12, long n2=26, long n3=9):
     """ Price Percentage Oscillator """
 
     ema1 = calc_ema(series, n1)
@@ -13,11 +13,14 @@ def calc_ppo(series, n1=12, n2=26, n3=9):
 
     signal = calc_ema(ppo, n3)
     hist = ppo - signal
-    result = ppo, signal, hist
 
-    if isinstance(series, Series):
-        columns = ('ppo', 'pposignal', 'ppohist')
-        result = make_dataframe(result, series, columns=columns)
+    result = dict(
+        ppo=ppo,
+        pposignal=signal,
+        ppohist=hist
+    )
+
+    result = wrap_result(result, series)
 
     return result
 
@@ -26,7 +29,7 @@ def calc_ppo(series, n1=12, n2=26, n3=9):
 class PPO(Indicator):
     """ Price Percentage Oscillator """
 
-    def __init__(self, n1=12, n2=26, n3=9, *, item=None):
+    def __init__(self, n1: int = 12, n2: int =26, n3: int =9, *, item=None):
         self.n1 = n1
         self.n2 = n2
         self.n3 = n3

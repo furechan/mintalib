@@ -1,21 +1,18 @@
-""" exponential moving average """
+""" Rolling Moving Average (RSI Style) """
 
 
 
 
 def calc_rma(series, long period=14):
     """
-    RSI style Moving Average
+    Rolling Moving Average (RSI Style)
 
     Args:
-        series (series) : The input series. Required
-        period (int) : The indicator period. Default 14
-
-    Returns:
-        A series
+        series (series) : data series. required
+        period (int) : time period. default 14
     """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, NAN)
@@ -43,8 +40,7 @@ def calc_rma(series, long period=14):
         if count >= period:
             output[i] = rma
 
-    if isinstance(series, Series):
-        result = make_series(result, series)
+    result = wrap_result(result, series)
 
     return result
 
@@ -52,11 +48,16 @@ def calc_rma(series, long period=14):
 
 @export
 class RMA(Indicator):
-    """ RSI Style Moving Average"""
+    """
+    Rolling Moving Average (RSI Style)
+
+    Args:
+        period (int) : time period. default 14
+    """
 
     same_scale = True
 
-    def __init__(self, period=14, *, item=None):
+    def __init__(self, period : int = 14, *, item=None):
         self.period = period
         self.item = item
 

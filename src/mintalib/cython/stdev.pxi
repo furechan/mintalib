@@ -1,10 +1,11 @@
-""" slope """
+""" Standard Deviation """
 
 
 @export
-def calc_stdev(series, int period=20):
+def calc_stdev(series, long period=20):
+    """ Standard Deviation """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -14,7 +15,7 @@ def calc_stdev(series, int period=20):
 
     cdef long i, j
 
-    if size < period:
+    if period > size:
         return result
 
     for j in range(period-1, size):
@@ -36,8 +37,7 @@ def calc_stdev(series, int period=20):
             std = sqrt(vxx) if vxx >= 0 else NAN
             output[j] = std
 
-    if isinstance(series, Series):
-        result = make_series(result, series)
+    result = wrap_result(result, series)
 
     return result
 
@@ -46,7 +46,7 @@ def calc_stdev(series, int period=20):
 class STDEV(Indicator):
     """ Standard Deviation """
 
-    def __init__(self, period=20, *, item=None):
+    def __init__(self, period : int = 20, *, item=None):
         self.period = period
         self.item = item
 

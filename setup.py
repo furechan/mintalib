@@ -20,7 +20,7 @@ def make_extension(path):
 
 srcdir = 'src'
 name = "mintalib"
-url = "https://github.com/furechan/mintalib-proto"
+url = "https://github.com/furechan/mintalib"
 
 version = get_version("src/mintalib/__init__.py")
 

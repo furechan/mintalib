@@ -1,17 +1,12 @@
 """ utilities """
 
-import sys
 import numpy as np
 import pandas as pd
 import datetime as dt
 
 
 def export(func):
-    frame = sys._getframe(1)
-    exports = frame.f_globals.setdefault('__all__', [])
-    name = getattr(func, '__name__', None) or str(func)
-    if name not in exports:
-        exports.append(name)
+    globals().setdefault('__all__', []).append(func.__name__)
     return func
 
 

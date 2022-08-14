@@ -1,16 +1,13 @@
-""" exponential moving average """
+""" Parabolic Stop and Reverse """
 
 
 @export
 def calc_psar(prices, double afs=0.02, double maxaf=0.2):
-    """ Parabolic SAR """
+    """ Parabolic Stop and Reverse """
 
-    high, low = extract_items(prices, ('high', 'low'))
-
-    cdef double[:] _high = np.asarray(high, float)
-    cdef double[:] _low = np.asarray(low, float)
-
-    cdef long size = _high.size
+    cdef double[:] high = asarray(prices['high'], float)
+    cdef double[:] low = asarray(prices['low'], float)
+    cdef long size = check_size(high, low)
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
@@ -19,20 +16,14 @@ def calc_psar(prices, double afs=0.02, double maxaf=0.2):
     cdef double hi = NAN, lo = NAN, ph = NAN, pl = NAN, hi2 = NAN, lo2 = NAN
 
     cdef long i = 0, trend = 0
-    cdef bint valid = False
 
     for i in range(size):
-        if valid:
+        if hi >= lo:
             ph, pl = hi, lo
 
-        hi, lo = _high[i], _low[i]
+        hi, lo = high[i], low[i]
 
-        valid = (hi >= lo)
-
-        if not valid:
-            continue
-
-        if isnan(ph) or isnan(pl):
+        if not (hi >= lo and ph >= pl):
             continue
 
         hi2 = ph if ph > hi else hi
@@ -76,17 +67,16 @@ def calc_psar(prices, double afs=0.02, double maxaf=0.2):
         if maxaf and af > maxaf:
             af = maxaf
 
-    if isinstance(prices, DataFrame):
-        result = make_series(result, prices)
+    result = wrap_result(result, prices)
 
     return result
 
 
 @export
 class PSAR(Indicator):
-    """ Parabolic Stop and Reverse (cf Wilder) """
+    """ Parabolic Stop and Reverse """
 
-    def __init__(self, afs=0.02, maxaf=0.2):
+    def __init__(self, afs: float = 0.02, maxaf : float = 0.2):
         self.afs = afs
         self.maxaf = maxaf
 

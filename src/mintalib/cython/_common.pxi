@@ -4,14 +4,32 @@ cdef double NAN = float('nan')
 
 import numpy as np
 
-from enum import Enum, IntEnum
+from enum import IntEnum
 
 from .model import Indicator
 
 try:
-    from pandas import Index, Series, DataFrame
+    from pandas import Series as pdSeries
+    from pandas import DataFrame as pdDataFrame
+
+    Pandas = (pdSeries, pdDataFrame)
+
 except ModuleNotFoundError:
-    Index = Series = DataFrame = ()
+    pdSeries = ()
+    pdDataFrame = ()
+    Pandas = ()
+
+
+try:
+    from polars import Series as plSeries
+    from polars import DataFrame as plDataFrame
+
+    Polars = (plSeries, plDataFrame)
+
+except ModuleNotFoundError:
+    plSeries = ()
+    plDataFrame = ()
+    Polars = ()
 
 
 def export(target):
@@ -20,57 +38,37 @@ def export(target):
     return target
 
 
-def make_series(result, source, name=None):
-    if isinstance(source, Index):
-        index = source
-    elif isinstance(source, Series):
-        index = source.index
-    elif isinstance(source, DataFrame):
-        index = source.index
+def asarray(data, dtype=float):
+    if hasattr(data, "to_numpy"):
+        result = data.to_numpy().astype(dtype)
     else:
-        return result
-
-    return Series(result, index=index, name=name)
-
-
-def make_dataframe(result, source, columns=None):
-    if isinstance(source, Index):
-        index = source
-    elif isinstance(source, Series):
-        index = source.index
-    elif isinstance(source, DataFrame):
-        index = source.index
-    else:
-        return result
-
-    if columns is not None and isinstance(result, tuple):
-        result = dict(zip(columns, result))
-
-    return DataFrame(result, index=index, columns=columns)
-
-
-def compare_sizes(*series):
-    sizes = [xs.size for xs in series]
-    return len(set(sizes)) == 1
-
-
-def extract_items(prices, items, *, bint check_size=True):
-    count = len(items)
-
-    if isinstance(prices, tuple):
-        if len(tuple) != count:
-            raise ValueError(f"Expected {count} items")
-        result = prices
-
-    elif hasattr(prices, 'columns') and hasattr(prices, '__getitem__'):
-        result = tuple(prices[i] for i in items)
-
-    else:
-        raise ValueError(f"Cannot extract {items}")
-
-    if check_size:
-        sizes = [xs.size for xs in result]
-        if len(set(sizes)) != 1:
-            raise ValueError("Inputs have different sizes!")
+        result = np.asarray(data, dtype)
 
     return result
+
+
+def check_size(series, *others):
+    cdef long size = series.size
+    for s in others:
+        if s.size != size:
+               raise ValueError("Different sizes!")
+    return size
+
+
+def wrap_result(result, source):
+    if isinstance(source, Pandas):
+        if isinstance(result, dict):
+            return pdDataFrame(result, index=source.index)
+
+        if isinstance(result, np.ndarray):
+            return pdSeries(result, index=source.index)
+
+    if isinstance(source, Polars):
+        if isinstance(result, dict):
+            return plDataFrame(result)
+
+        if isinstance(result, np.ndarray):
+            return plSeries(result)
+
+    return result
+

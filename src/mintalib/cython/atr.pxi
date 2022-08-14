@@ -1,75 +1,94 @@
-""" True Range """
+""" Average True Range """
 
 @export
 def calc_trange(prices, *, bint log_prices=False, bint percent=False):
     """ True Range """
 
-    high, low, close = extract_items(prices, ('high', 'low', 'close'))
+    cdef double[:] high = asarray(prices['high'], float)
+    cdef double[:] low = asarray(prices['low'], float)
+    cdef double[:] close = asarray(prices['close'], float)
 
-    cdef double[:] _high = np.asarray(high, float)
-    cdef double[:] _low = np.asarray(low, float)
-    cdef double[:] _close = np.asarray(close, float)
-
-    cdef long size = _close.size
+    cdef long size = check_size(high, low, close)
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double h = NAN, l = NAN, c = NAN, pc = NAN, tr = NAN
+    cdef double hi = NAN, lo = NAN, cl = NAN, pc = NAN, tr = NAN
 
     cdef long i = 0
 
     for i in range(size):
-        pc, h, l, c = c, _high[i], _low[i], _close[i]
+        pc, hi, lo, cl = cl, high[i], low[i], close[i]
 
-        if isnan(c) or isnan(pc):
+        if not (pc > 0.0 and cl > 0.0 and hi > lo > 0.0):
             continue
 
-        if pc > h:
-            h = pc
+        if pc > hi:
+            hi = pc
 
-        if pc < l:
-            l = pc
+        if pc < lo:
+            lo = pc
 
         if log_prices:
-            if h > 0 and l > 0:
-                tr = log(h) - log(l)
-            else:
-                tr = np.nan
+            tr = log(hi) - log(lo)
+        elif percent :
+            tr = 100 * (hi - lo) / cl
         else:
-            tr = h - l
-
-        if percent:
-            tr = 100 * tr / c if c > 0 else np.nan
+            tr = (hi - lo)
 
         output[i] = tr
 
-    if isinstance(prices, DataFrame):
-        result = make_series(result, prices)
+    result = wrap_result(result, prices)
 
     return result
 
 
 @export
-def calc_atr(prices, int period=14, *, bint log_prices=False, bint percent=False):
+def calc_atr(prices, long period=14):
     """ Average True Range """
 
-    trange = calc_trange(prices, log_prices=log_prices, percent=percent)
+    trange = calc_trange(prices)
+    result = calc_rma(trange, period)
+    return result
+
+
+@export
+def calc_natr(prices, long period=14):
+    """ Normalized Average True Range """
+
+    cdef bint yes = True
+
+    trange = calc_trange(prices, percent=yes)
+    result = calc_rma(trange, period)
+    return result
+
+
+@export
+def calc_latr(prices, long period=14):
+    """ Normalized Average True Range """
+
+    cdef bint yes = True
+
+    trange = calc_trange(prices, log_prices=yes)
     result = calc_rma(trange, period)
     return result
 
 
 
 @export
-def calc_natr(prices, int period=14):
-    """ Normalized Average True Range """
+class TRANGE(Indicator):
+    """ True Range """
 
-    return calc_atr(prices, period=period, percent=True)
+    def __init__(self):
+        pass
+
+    def calc(self, data):
+        return calc_trange(data)
 
 
 @export
 class ATR(Indicator):
-    """ Average Trading Range """
+    """ Average True Range """
 
     def __init__(self, period: int = 14):
         self.period = period
@@ -80,11 +99,22 @@ class ATR(Indicator):
 
 @export
 class NATR(Indicator):
-    """ Average Trading Range (percent) """
+    """ Average True Range (normalized) """
 
     def __init__(self, period : int = 14):
         self.period = period
 
     def calc(self, data):
         return calc_natr(data, self.period)
+
+@export
+class LATR(Indicator):
+    """ Average True Range (log prices) """
+
+    def __init__(self, period : int = 14):
+        self.period = period
+
+    def calc(self, data):
+        return calc_latr(data, self.period)
+
 

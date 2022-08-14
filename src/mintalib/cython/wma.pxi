@@ -1,12 +1,11 @@
 """ Weighted Moving Average """
 
 
-
 @export
-def calc_wma(series, int period=20):
+def calc_wma(series, long period=20):
     """ Weighted Moving Average """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -34,8 +33,7 @@ def calc_wma(series, int period=20):
         else:
             output[i + j] = sum / divisor
 
-    if isinstance(series, Series):
-        result = make_series(result, series)
+    result = wrap_result(result, series)
 
     return result
 
@@ -46,7 +44,7 @@ class WMA(Indicator):
 
     same_scale = True
 
-    def __init__(self, period=20, *, item=None):
+    def __init__(self, period: int = 20, *, item=None):
         self.period = period
         self.item = item
 

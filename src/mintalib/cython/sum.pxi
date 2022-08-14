@@ -1,10 +1,10 @@
 """ Sum """
 
 @export
-def calc_sum(series, int period=20):
+def calc_sum(series, long period=20):
     """ Sum """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -29,8 +29,7 @@ def calc_sum(series, int period=20):
         if count >= period:
             output[i] = rsum
 
-    if isinstance(series, Series):
-        result = make_series(result, series)
+    result = wrap_result(result, series)
 
     return result
 
@@ -41,7 +40,7 @@ class SUM(Indicator):
 
     same_scale = True
 
-    def __init__(self, period=50, *, item=None):
+    def __init__(self, period: int = 50, *, item=None):
         self.period = period
         self.item = item
 

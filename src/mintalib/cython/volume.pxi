@@ -1,9 +1,9 @@
-""" Exponential Moving Average """
+""" Volume """
 
 
 @export
 class VOLUME(Indicator):
-    """ Volume """
+    """ Volume Indicator """
 
     item = 'volume'
 

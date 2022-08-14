@@ -1,12 +1,12 @@
-""" ADX """
+""" Average Directional Index """
 
 
 @export
-def calc_plus_di(prices, int period=14):
-    """ PLUS DI """
+def calc_plusdi(prices, long period=14):
+    """ Plus Directional Index """
 
-    high, low = extract_items(prices, ('high', 'low'))
-
+    high = asarray(prices['high'], float)
+    low = asarray(prices['low'], float)
     atr = calc_atr(prices, period)
 
     hm = calc_diff(high, 1)
@@ -16,18 +16,17 @@ def calc_plus_di(prices, int period=14):
     with np.errstate(divide='ignore'):
         result = 100 * calc_rma(dm, period) / atr
 
-    if isinstance(prices, DataFrame):
-        result = make_series(result, prices)
+    result = wrap_result(result, prices)
 
     return result
 
 
 @export
-def calc_minus_di(prices, int period=14):
-    """ MINUS DI """
+def calc_minusdi(prices, long period=14):
+    """ Minus Directional Index """
 
-    high, low = extract_items(prices, ('high', 'low'))
-
+    high = asarray(prices['high'], float)
+    low = asarray(prices['low'], float)
     atr = calc_atr(prices, period)
 
     hm = calc_diff(high, 1)
@@ -37,17 +36,17 @@ def calc_minus_di(prices, int period=14):
     with np.errstate(divide='ignore'):
         result = 100 * calc_rma(dm, period) / atr
 
-    if isinstance(prices, DataFrame):
-        result = make_series(result, prices)
+    result = wrap_result(result, prices)
 
     return result
 
 
 @export
-def calc_adx(prices, int period=14):
-    """ ADX """
+def calc_adx(prices, long period=14):
+    """ Average Directional Index """
 
-    high, low = extract_items(prices, ('high', 'low'))
+    high = asarray(prices['high'], float)
+    low = asarray(prices['low'], float)
 
     atr = calc_atr(prices, period)
 
@@ -64,18 +63,37 @@ def calc_adx(prices, int period=14):
 
     result = calc_rma(dx, period)
 
-    if isinstance(prices, DataFrame):
-        result = make_series(result, prices)
+    result = wrap_result(result, prices)
 
     return result
 
 
 @export
 class ADX(Indicator):
-    """ ADX """
+    """ Average Directional Index """
 
     def __init__(self, period: int = 14):
         self.period = period
 
     def calc(self, data):
         return calc_adx(data, self.period)
+
+@export
+class PLUSDI(Indicator):
+    """ Plus Directional Index """
+
+    def __init__(self, period: int = 14):
+        self.period = period
+
+    def calc(self, data):
+        return calc_plusdi(data, self.period)
+
+@export
+class MINUSDI(Indicator):
+    """ Minus Directional Index """
+
+    def __init__(self, period: int = 14):
+        self.period = period
+
+    def calc(self, data):
+        return calc_minusdi(data, self.period)

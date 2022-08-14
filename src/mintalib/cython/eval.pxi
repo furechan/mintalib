@@ -3,7 +3,12 @@
 
 @export
 class EVAL(Indicator):
-    """ Expression Eval (pandas based) """
+    """
+    Expression Eval (pandas only)
+
+    Args:
+        expr (str) : expression to evaluate on the dataframe
+    """
 
     def __init__(self, expr):
         self.expr = expr
