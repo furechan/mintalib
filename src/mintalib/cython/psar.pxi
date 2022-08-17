@@ -72,7 +72,7 @@ def calc_psar(prices, double afs=0.02, double maxaf=0.2):
     return result
 
 
-@export
+
 class PSAR(Indicator):
     """ Parabolic Stop and Reverse """
 

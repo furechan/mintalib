@@ -24,9 +24,10 @@ class SlopeOption(IntEnum):
     FORECAST = 4
 
 
+
 @export
 def calc_slope(series, long period=20, int option=0, int offset=0):
-    """ Slope (Time linear regression) """
+    """ Slope (time linear regression) """
 
     if option < 0 or option >= SLOPE_OPTION_BADOPTION:
         raise ValueError("Invalid option %d" % option)
@@ -45,6 +46,8 @@ def calc_slope(series, long period=20, int option=0, int offset=0):
     if period >= size:
         return result
 
+    # i : 0 to period -1
+    # x : 1 to period
     x = s = sx = sxx = 0.0
     for i in range(period):
         x += 1.0
@@ -100,9 +103,9 @@ def calc_slope(series, long period=20, int option=0, int offset=0):
 
 
 
-@export
+
 class SLOPE(Indicator):
-    """ Slope (Time linear Regression) """
+    """ Slope (time linear Regression) """
 
     def __init__(self, period : int = 20, *, item=None):
         self.period = period
@@ -110,7 +113,7 @@ class SLOPE(Indicator):
 
     def calc(self, data):
         series = self.get_series(data)
-        result = calc_slope(series, self.period, option=SlopeOption.SLOPE)
+        result = calc_slope(series, self.period, option=SLOPE_OPTION_SLOPE)
         return result
 
 
@@ -123,7 +126,7 @@ class SLOPE(Indicator):
 
         def calc(self, data):
             series = self.get_series(data)
-            result = calc_slope(series, self.period, option=SlopeOption.CORRELATION)
+            result = calc_slope(series, self.period, option=SLOPE_OPTION_CORRELATION)
             return result
 
 
@@ -136,7 +139,7 @@ class SLOPE(Indicator):
 
         def calc(self, data):
             series = self.get_series(data)
-            result = calc_slope(series, self.period, option=SlopeOption.RMSERROR)
+            result = calc_slope(series, self.period, option=SLOPE_OPTION_RMSERROR)
             return result
 
 
@@ -152,5 +155,5 @@ class SLOPE(Indicator):
 
         def calc(self, data):
             series = self.get_series(data)
-            result = calc_slope(series, self.period, opiton=SlopeOption.FORECAST, offset=self.offset)
+            result = calc_slope(series, self.period, offset=self.offset, option=SLOPE_OPTION_FORECAST)
             return result

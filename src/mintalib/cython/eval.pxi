@@ -1,13 +1,12 @@
 """ Expression Eval """
 
 
-@export
 class EVAL(Indicator):
     """
     Expression Eval (pandas only)
 
     Args:
-        expr (str) : expression to evaluate on the dataframe
+        expr (str) : expression to evaluate on the dataframe, required
     """
 
     def __init__(self, expr):

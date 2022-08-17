@@ -1,5 +1,6 @@
 """ utilities """
 
+import re
 import numpy as np
 import pandas as pd
 import datetime as dt
@@ -8,6 +9,37 @@ import datetime as dt
 def export(func):
     globals().setdefault('__all__', []).append(func.__name__)
     return func
+
+
+def wrap_function(source):
+    doc = source.__doc__
+
+    if doc is not None:
+        ignore = "(?xm) \n \s+ (wrap) \s+ [^\n:]* : [^\n]+ \n"
+        doc = re.sub(ignore, '', doc)
+
+    def decorator(func):
+        func.__doc__ = doc
+        return func
+
+    return decorator
+
+
+
+def wrap_accessor(source):
+    doc = source.__doc__
+
+    if doc is not None:
+        ignore = "(?xm) \n \s+ (series|prices|wrap) \s+ [^\n:]* : [^\n]+ \n"
+        doc = re.sub(ignore, '', doc)
+
+    def decorator(func):
+        func.__doc__ = doc
+        return func
+
+    return decorator
+
+
 
 
 @export

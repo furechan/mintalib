@@ -3,13 +3,16 @@
 
 
 
-def calc_rma(series, long period=14):
+def calc_rma(series, long period, wrap: bool = True):
     """
     Rolling Moving Average (RSI Style)
 
+    Exponential moving average with alpha = 2 / period,
+    but strats as a simple moving average till period bars.
+
     Args:
         series (series) : data series. required
-        period (int) : time period. default 14
+        period (int) : time period. rerquired
     """
 
     cdef double[:] xs = asarray(series, float)
@@ -40,28 +43,28 @@ def calc_rma(series, long period=14):
         if count >= period:
             output[i] = rma
 
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
 
 
-@export
 class RMA(Indicator):
     """
     Rolling Moving Average (RSI Style)
 
     Args:
-        period (int) : time period. default 14
+        period (int) : time period, required
     """
 
     same_scale = True
 
-    def __init__(self, period : int = 14, *, item=None):
+    def __init__(self, period: int, *, item=None):
         self.period = period
         self.item = item
 
     def calc(self, data):
         series = self.get_series(data)
-        result = calc_rma(series, self.period)
+        result = calc_rma(series, self.period, wrap=True)
         return result

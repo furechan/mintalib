@@ -14,7 +14,7 @@ def calc_plusdi(prices, long period=14):
     dm = np.where((hm > lm) & (hm > 0), hm, 0)
 
     with np.errstate(divide='ignore'):
-        result = 100 * calc_rma(dm, period) / atr
+        result = 100 * calc_rma(dm, period, wrap=False) / atr
 
     result = wrap_result(result, prices)
 
@@ -34,7 +34,7 @@ def calc_minusdi(prices, long period=14):
     dm = np.where((lm > hm) & (lm > 0), lm, 0)
 
     with np.errstate(divide='ignore'):
-        result = 100 * calc_rma(dm, period) / atr
+        result = 100 * calc_rma(dm, period, wrap=False) / atr
 
     result = wrap_result(result, prices)
 
@@ -57,18 +57,17 @@ def calc_adx(prices, long period=14):
     dm2 = np.where((lm > hm) & (lm > 0), lm, 0)
 
     with np.errstate(divide='ignore'):
-        di1 = 100 * calc_rma(dm1, period) / atr
-        di2 = 100 * calc_rma(dm2, period) / atr
+        di1 = 100 * calc_rma(dm1, period, wrap=False) / atr
+        di2 = 100 * calc_rma(dm2, period, wrap=False) / atr
         dx = 100 * np.abs(di1 - di2) / (di1 + di2)
 
-    result = calc_rma(dx, period)
+    result = calc_rma(dx, period, wrap=False)
 
     result = wrap_result(result, prices)
 
     return result
 
 
-@export
 class ADX(Indicator):
     """ Average Directional Index """
 
@@ -78,7 +77,6 @@ class ADX(Indicator):
     def calc(self, data):
         return calc_adx(data, self.period)
 
-@export
 class PLUSDI(Indicator):
     """ Plus Directional Index """
 
@@ -88,7 +86,6 @@ class PLUSDI(Indicator):
     def calc(self, data):
         return calc_plusdi(data, self.period)
 
-@export
 class MINUSDI(Indicator):
     """ Minus Directional Index """
 

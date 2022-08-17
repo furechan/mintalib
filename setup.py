@@ -1,4 +1,5 @@
 import re
+
 from pathlib import Path
 from setuptools import setup, find_packages, Extension
 
@@ -16,6 +17,10 @@ def get_version(path):
 def make_extension(path):
     name = path.relative_to(srcdir).with_suffix("").as_posix().replace('/', '.')
     return Extension(name=name, sources=[str(path)])
+
+
+root = Path(__file__).parent
+long_description = root.joinpath("output/README.md").read_text()
 
 
 srcdir = 'src'
@@ -45,6 +50,8 @@ setup(
     classifiers=classifiers,
     package_dir={'': srcdir},
     include_package_data=True,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
 
     author="furechan",
     author_email="furechan@xsmail.com",

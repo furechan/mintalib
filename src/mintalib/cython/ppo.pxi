@@ -5,13 +5,13 @@
 def calc_ppo(series, long n1=12, long n2=26, long n3=9):
     """ Price Percentage Oscillator """
 
-    ema1 = calc_ema(series, n1)
-    ema2 = calc_ema(series, n2)
+    ema1 = calc_ema(series, n1, wrap=False)
+    ema2 = calc_ema(series, n2, wrap=False)
 
     with np.errstate(divide='ignore'):
         ppo = 100 * (ema1 - ema2) / ema2
 
-    signal = calc_ema(ppo, n3)
+    signal = calc_ema(ppo, n3, wrap=False)
     hist = ppo - signal
 
     result = dict(
@@ -25,7 +25,6 @@ def calc_ppo(series, long n1=12, long n2=26, long n3=9):
     return result
 
 
-@export
 class PPO(Indicator):
     """ Price Percentage Oscillator """
 

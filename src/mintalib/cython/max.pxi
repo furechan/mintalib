@@ -2,8 +2,8 @@
 
 
 @export
-def calc_max(series, long period=1):
-    """ Maximum over a period """
+def calc_max(series, long period):
+    """ Rolling Maximum """
 
     cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
@@ -32,10 +32,11 @@ def calc_max(series, long period=1):
 
     return result
 
-class MAX(Indicator):
-    """ Maximum over a Period """
 
-    def __init__(self, period : int = 1, *, item=None):
+class MAX(Indicator):
+    """ Rolling Maximum """
+
+    def __init__(self, period : int, *, item=None):
         self.period = period
         self.item = item
 

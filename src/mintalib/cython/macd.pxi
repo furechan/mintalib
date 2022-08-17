@@ -5,11 +5,11 @@
 def calc_macd(series, long n1=12, long n2=26, long n3=9):
     """ Moving Average Convergenge Divergence """
 
-    ema1 = calc_ema(series, n1)
-    ema2 = calc_ema(series, n2)
+    ema1 = calc_ema(series, n1, wrap=False)
+    ema2 = calc_ema(series, n2, wrap=False)
 
     macd = ema1 - ema2
-    signal = calc_ema(macd, n3)
+    signal = calc_ema(macd, n3, wrap=False)
     hist = macd - signal
 
     result = dict(
@@ -23,7 +23,6 @@ def calc_macd(series, long n1=12, long n2=26, long n3=9):
     return result
 
 
-@export
 class MACD(Indicator):
     """ Moving Average Convergence Divergence """
 

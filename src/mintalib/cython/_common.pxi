@@ -6,6 +6,8 @@ import numpy as np
 
 from enum import IntEnum
 
+from collections import namedtuple
+
 from .model import Indicator
 
 try:
@@ -47,8 +49,8 @@ def asarray(data, dtype=float):
     return result
 
 
-def check_size(series, *others):
-    cdef long size = series.size
+def check_size(xs, *others):
+    cdef long size = xs.size
     for s in others:
         if s.size != size:
                raise ValueError("Different sizes!")
@@ -56,6 +58,9 @@ def check_size(series, *others):
 
 
 def wrap_result(result, source):
+    if isinstance(result, tuple):
+        result = result._asdict()
+
     if isinstance(source, Pandas):
         if isinstance(result, dict):
             return pdDataFrame(result, index=source.index)

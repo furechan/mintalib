@@ -2,7 +2,7 @@
 
 
 @export
-def calc_sma(series, int period=20):
+def calc_sma(series, long period, *, wrap: bool = True):
     """
     Simple Moving Average
 
@@ -36,27 +36,28 @@ def calc_sma(series, int period=20):
         if count >= period:
             output[i] = rsum / count
 
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
 
-@export
+
 class SMA(Indicator):
     """
     Simple Moving Average
 
     Args:
-        period (int) : time period. default 20
+        period (int) : time period, required
     """
 
     same_scale = True
 
-    def __init__(self, period=50, *, item=None):
+    def __init__(self, period: int, *, item: str = None):
         self.period = period
         self.item = item
 
     def calc(self, data):
         series = self.get_series(data)
-        result = calc_sma(series, self.period)
+        result = calc_sma(series, self.period, wrap=True)
         return result

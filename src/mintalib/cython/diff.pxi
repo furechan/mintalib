@@ -3,7 +3,7 @@
 
 
 @export
-def calc_diff(series, long period=1):
+def calc_diff(series, long period=1, wrap: bool = True):
     """ Difference """
 
     cdef double[:] xs = asarray(series, float)
@@ -23,7 +23,8 @@ def calc_diff(series, long period=1):
         diff = v  - pv
         output[i] = diff
 
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
@@ -37,5 +38,5 @@ class DIFF(Indicator):
 
     def calc(self, data):
         series = self.get_series(data)
-        result = calc_diff(series, self.period)
+        result = calc_diff(series, self.period, wrap=True)
         return result

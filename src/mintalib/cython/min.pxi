@@ -2,8 +2,8 @@
 
 
 @export
-def calc_min(series, long period=1):
-    """ Minimum over a period """
+def calc_min(series, long period):
+    """ Rolling Minimum """
 
     cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
@@ -32,10 +32,11 @@ def calc_min(series, long period=1):
 
     return result
 
-class MIN(Indicator):
-    """ Minimum over a Period """
 
-    def __init__(self, period: int = 1, *, item=None):
+class MIN(Indicator):
+    """ Rolling Minimum """
+
+    def __init__(self, period: int, *, item=None):
         self.period = period
         self.item = item
 

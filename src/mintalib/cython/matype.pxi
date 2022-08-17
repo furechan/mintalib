@@ -23,31 +23,32 @@ class MA_Type(IntEnum):
 
 
 @export
-def calc_ma(series, long period=20, int ma_type=0):
+def calc_ma(series, long period, *, int ma_type=0, wrap: bool = True):
     """
     Generic Moving Average
 
     Args:
-        period (int) : time period. default 20
-        ma_type (int) : type of moving average. default 0 (SMA)
+        series : data series, required
+        period (int) : time period, default 20
+        ma_type (int) : type of moving average, default 0 (SMA)
     """
 
     if ma_type == MA_TYPE_SMA:
-        return calc_sma(series, period)
+        return calc_sma(series, period, wrap=wrap)
 
     if ma_type == MA_TYPE_EMA:
-        return calc_ema(series, period)
+        return calc_ema(series, period, wrap=wrap)
 
     if ma_type == MA_TYPE_WMA:
-        return calc_wma(series, period)
+        return calc_wma(series, period, wrap=wrap)
 
     if ma_type == MA_TYPE_RMA:
-        return calc_rma(series, period)
+        return calc_rma(series, period, wrap=wrap)
 
     if ma_type == MA_TYPE_DEMA:
-        return calc_dema(series, period)
+        return calc_dema(series, period, wrap=wrap)
 
     if ma_type == MA_TYPE_TEMA:
-        return calc_tema(series, period)
+        return calc_tema(series, period, wrap=wrap)
 
     raise ValueError(f"Invalid ma_type {ma_type}")

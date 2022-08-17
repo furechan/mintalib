@@ -1,8 +1,8 @@
 """ Sum """
 
 @export
-def calc_sum(series, long period=20):
-    """ Sum """
+def calc_sum(series, long period):
+    """ Rolling Sum """
 
     cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
@@ -34,13 +34,13 @@ def calc_sum(series, long period=20):
     return result
 
 
-@export
+
 class SUM(Indicator):
-    """ Sum """
+    """ Rolling Sum """
 
     same_scale = True
 
-    def __init__(self, period: int = 50, *, item=None):
+    def __init__(self, period: int, *, item=None):
         self.period = period
         self.item = item
 

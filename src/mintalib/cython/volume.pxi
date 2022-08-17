@@ -1,7 +1,7 @@
 """ Volume """
 
 
-@export
+
 class VOLUME(Indicator):
     """ Volume Indicator """
 

@@ -31,10 +31,12 @@ include "macd.pxi"
 include "ppo.pxi"
 
 include "slope.pxi"
+include "curve.pxi"
 include "stdev.pxi"
+
+include "stoch.pxi"
 
 include "streak.pxi"
 
 include "eval.pxi"
-include "trade.pxi"
 

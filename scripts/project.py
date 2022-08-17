@@ -1,9 +1,11 @@
-""" local folder utility """
+""" local project utility """
 
 from pathlib import Path
 
-root = Path(__file__).parent.parent
+root = Path(__file__).parent.parent.resolve()
 
+srcdir = root.joinpath("src").resolve(strict=True)
+pkgdir = root.joinpath("src/mintalib").resolve(strict=True)
 
 def save_output(fname, data, *, encoding='utf-8', verbose=True):
     """ save text to a file in the output folder """

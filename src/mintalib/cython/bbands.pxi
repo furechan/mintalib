@@ -9,7 +9,8 @@ def calc_bbands(prices, long period = 20, double nbdev = 2.0):
     prc = calc_typprice(prices)
     std = calc_stdev(prc, period)
 
-    middle = calc_sma(prc, period)
+    middle = calc_sma(prc, period, wrap=False)
+
     upper = middle + nbdev * std
     lower = middle - nbdev * std
 
@@ -20,7 +21,6 @@ def calc_bbands(prices, long period = 20, double nbdev = 2.0):
     return result
 
 
-@export
 class BBANDS(Indicator):
     """ Bollinger Bands """
 

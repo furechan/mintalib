@@ -42,7 +42,7 @@ def calc_stdev(series, long period=20):
     return result
 
 
-@export
+
 class STDEV(Indicator):
     """ Standard Deviation """
 

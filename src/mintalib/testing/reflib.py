@@ -1,5 +1,6 @@
 """ reference implementation of technical analysis indicators based on talib/pandas/etc ... """
 
+import numpy as np
 import pandas as pd
 
 import talib
@@ -63,3 +64,27 @@ def calc_ppo(series, n1=12, n2=26, n3=9):
     result = dict(ppo=ppo, pposignal=signal, ppohist=hist)
 
     return pd.DataFrame(result)
+
+
+def calc_slope(series, period=20):
+    xx = np.arange(period) - (period - 1) / 2.0
+
+    def func(xs):
+        if np.any(np.isnan(xs)):
+            return np.nan
+
+        return np.polyfit(xx, xs, 1)[0]
+
+    return series.rolling(period).apply(func, raw=True)
+
+def calc_curve(series, period=20):
+    xx = np.arange(period) - (period -1) / 2.0
+
+    def func(xs):
+        if np.any(np.isnan(xs)):
+            return np.nan
+
+        return np.polyfit(xx, xs, 2)[0]
+
+    return series.rolling(period).apply(func, raw=True)
+

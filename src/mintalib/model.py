@@ -81,10 +81,6 @@ class Indicator(ABC, ReprMixin):
         return IndicatorComposition(self, other)
 
     def get_series(self, data):
-        if callable(self.item):
-            warnings.warn("callable item is legacy! use pipe operator instead.")
-            return self.item(data)
-
         if isinstance(data, pd.DataFrame):
             if self.item is not None:
                 return data[self.item]

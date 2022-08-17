@@ -8,7 +8,8 @@ def calc_keltner(prices, long period = 20, double nbatr = 2.0):
 
     prc = calc_typprice(prices)
     atr = calc_atr(prices, period / 2)
-    middle = calc_ema(prc, period)
+
+    middle = calc_ema(prc, period, wrap=False)
     upper = middle + nbatr * atr
     lower = middle - nbatr * atr
 
@@ -24,7 +25,6 @@ def calc_keltner(prices, long period = 20, double nbatr = 2.0):
 
 
 
-@export
 class KELTNER(Indicator):
     """ Keltner Bands """
 

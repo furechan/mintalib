@@ -100,12 +100,9 @@ def calc_midprice(prices):
 
 
 
-@export
+
 class PRICE(Indicator):
     """ Price Indicator """
-
-    def __init__(self, item='close'):
-        self.item = item
 
     def calc(self, data):
         result = self.get_series(data)
@@ -113,47 +110,34 @@ class PRICE(Indicator):
 
 
 
-@export
 class AVGPRICE(Indicator):
     """ Average Price Indicator """
-
-    def __init__(self, item='close'):
-        self.item = item
 
     def calc(self, prices):
         result = calc_avgprice(prices)
         return result
 
-@export
+
 class TYPPRICE(Indicator):
     """ Typical Price Indicator """
-
-    def __init__(self, item='close'):
-        self.item = item
 
     def calc(self, prices):
         result = calc_typprice(prices)
         return result
 
 
-@export
+
 class WCLPRICE(Indicator):
     """ Weighted Close Price Indicator """
-
-    def __init__(self, item='close'):
-        self.item = item
 
     def calc(self, prices):
         result = calc_wclprice(prices)
         return result
 
 
-@export
+
 class MIDPRICE(Indicator):
     """ Mid Price Indicator """
-
-    def __init__(self, item='close'):
-        self.item = item
 
     def calc(self, prices):
         result = calc_midprice(prices)

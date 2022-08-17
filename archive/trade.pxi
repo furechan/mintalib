@@ -1,7 +1,7 @@
 """ Trade Indicator """
 
 
-@export
+
 class TRADE(Indicator):
     """
     Trade Indicator

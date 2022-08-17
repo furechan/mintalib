@@ -11,6 +11,7 @@ from functools import lru_cache
 from . import reflib
 from .. import core
 from .. import utils
+from .. import functions
 
 SAMPLE_SIZE = 260
 
@@ -58,14 +59,52 @@ def merge_results(result, target):
     return result, target
 
 
-def get_function(name):
+def get_core(name):
     return getattr(core, f"calc_{name}", None)
+
+
+def get_function(name):
+    return getattr(functions, name, None)
+
+
+@export
+def test_core(name, *args, item=None, verbose=False, wrap=True, **kwargs):
+    calc = get_core(name)
+    ref = reflib.get_ref(name)
+
+    if ref is None:
+        warnings.warn(f"Ref for {name} not found!")
+        return
+
+    if item is None:
+        param = next(k for k in inspect.signature(calc).parameters.keys())
+        if param == 'series':
+            item = 'close'
+
+    data = get_sample(item)
+
+    kwds = dict()
+
+    parameters = inspect.signature(calc).parameters
+
+    if wrap and 'wrap' in parameters:
+        kwds.update(wrap=True)
+
+    result = calc(data, *args, **kwargs, **kwds)
+    target = ref(data, *args, **kwargs)
+
+    compare = compare_results(result, target)
+
+    if verbose:
+        print(merge_results(result, target))
+
+    return compare
 
 
 @export
 def test_function(name, *args, item=None, verbose=False, **kwargs):
     calc = get_function(name)
-    ref = reflib.get_ref(name) if reflib else None
+    ref = reflib.get_ref(name)
 
     if ref is None:
         warnings.warn(f"Ref for {name} not found!")
