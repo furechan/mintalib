@@ -25,6 +25,6 @@ remove: FORCE
 	python3 setup.py develop -u
 
 upload: FORCE
-	twine upload --repository testpypi dist/*
+	twine upload dist/*
 
 FORCE:
