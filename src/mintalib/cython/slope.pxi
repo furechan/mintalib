@@ -5,10 +5,11 @@
 cdef enum:
     SLOPE_OPTION_SLOPE = 0
     SLOPE_OPTION_INTERCEPT = 1
-    SLOPE_OPTION_CORRELATION = 2
-    SLOPE_OPTION_RMSERROR = 3
-    SLOPE_OPTION_FORECAST = 4
-    SLOPE_OPTION_BADOPTION = 5
+    SLOPE_OPTION_RVALUE = 2
+    SLOPE_OPTION_RSQUARE = 3
+    SLOPE_OPTION_RMSERROR = 4
+    SLOPE_OPTION_FORECAST = 5
+    SLOPE_OPTION_BADOPTION = 6
 
 
 @export
@@ -19,9 +20,10 @@ class SlopeOption(IntEnum):
 
     SLOPE = 0
     INTERCEPT = 1
-    CORRELATION = 2
-    RMSERROR = 3
-    FORECAST = 4
+    RVALUE = 2
+    RSQUARE = 3
+    RMSERROR = 4
+    FORECAST = 5
 
 
 
@@ -46,8 +48,7 @@ def calc_slope(series, long period=20, int option=0, int offset=0):
     if period >= size:
         return result
 
-    # i : 0 to period -1
-    # x : 1 to period
+    # 1 <= x <= period
     x = s = sx = sxx = 0.0
     for i in range(period):
         x += 1.0
@@ -88,8 +89,10 @@ def calc_slope(series, long period=20, int option=0, int offset=0):
                 output[j] = slope
             elif option == SLOPE_OPTION_INTERCEPT:
                 output[j] = intercept
-            elif option == SLOPE_OPTION_CORRELATION:
+            elif option == SLOPE_OPTION_RVALUE:
                 output[j] = corr
+            elif option == SLOPE_OPTION_RSQUARE:
+                output[j] = corr * corr
             elif option == SLOPE_OPTION_RMSERROR:
                 output[j] = rmse
             elif option == SLOPE_OPTION_FORECAST:
@@ -105,7 +108,7 @@ def calc_slope(series, long period=20, int option=0, int offset=0):
 
 
 class SLOPE(Indicator):
-    """ Slope (time linear Regression) """
+    """ Slope (time linear regression) """
 
     def __init__(self, period : int = 20, *, item=None):
         self.period = period
@@ -117,8 +120,8 @@ class SLOPE(Indicator):
         return result
 
 
-    class CORRELATION(Indicator):
-        """ Slope Correlation """
+    class RVALUE(Indicator):
+        """ Slope R-Value (Correlation) """
 
         def __init__(self, period: int = 20, *, item=None):
             self.period = period
@@ -126,11 +129,12 @@ class SLOPE(Indicator):
 
         def calc(self, data):
             series = self.get_series(data)
-            result = calc_slope(series, self.period, option=SLOPE_OPTION_CORRELATION)
+            result = calc_slope(series, self.period, option=SLOPE_OPTION_RVALUE)
             return result
 
 
-    class RMSERROR(Indicator):
+
+    class ERROR(Indicator):
         """ Slope Root Mean Square Error """
 
         def __init__(self, period: int = 20, *, item=None):

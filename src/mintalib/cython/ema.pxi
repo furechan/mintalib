@@ -52,15 +52,8 @@ def calc_ema(series, long period, *, mixed : bool = True, wrap: bool = True):
     return result
 
 
-
+@wrap_indicator(calc_ema)
 class EMA(Indicator):
-    """
-    Exponential Moving Average
-
-    Args:
-        period (int) : time period, required
-        item (str) : source item, optional
-    """
 
     same_scale = True
 

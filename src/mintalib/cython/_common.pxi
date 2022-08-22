@@ -1,7 +1,11 @@
+# common imports to all pxi files
+
 from libc.math cimport fabs, isnan, log, exp, ceil, floor, sqrt
 
 cdef double NAN = float('nan')
 
+
+import re
 import numpy as np
 
 from enum import IntEnum
@@ -55,6 +59,20 @@ def check_size(xs, *others):
         if s.size != size:
                raise ValueError("Different sizes!")
     return size
+
+
+def wrap_indicator(source):
+    doc = source.__doc__
+
+    if doc is not None:
+        ignore = "(?xm) \n \s+ (series|prices|wrap) \s+ [^\n:]* : [^\n]+ \n"
+        doc = re.sub(ignore, '', doc)
+
+    def decorator(func):
+        func.__doc__ = doc
+        return func
+
+    return decorator
 
 
 def wrap_result(result, source):

@@ -5,12 +5,10 @@
 cdef enum:
     CURVE_OPTION_CURVE = 0
     CURVE_OPTION_SLOPE = 1
-    CURVE_OPTION_INTERCEPT = 2
-    CURVE_OPTION_RMSE = 4
-    CURVE_OPTION_RSQUARE = 5
-    CURVE_OPTION_RVALUE = 6
-    CURVE_OPTION_BADOPTION = 7
-
+    CURVE_OPTION_RVALUE = 2
+    CURVE_OPTION_RSQUARE = 3
+    CURVE_OPTION_RMSERROR = 4
+    CURVE_OPTION_BADOPTION = 5
 
 
 @export
@@ -21,11 +19,9 @@ class CurveOption(IntEnum):
 
     CURVE = 0
     SLOPE = 1
-    INTERCEPT = 2
-    RMSE = 4
-    RSQUARE = 5
-    RVALUE = 6
-    BADOPTION = 7
+    RVALUE = 2
+    RSQUARE = 3
+    RMSERROR = 4
 
 
 
@@ -46,9 +42,8 @@ def calc_curve(series, long period=20, int option=0, int offset=0):
     cdef double y, sy, syy, vyy
     cdef double z, sz, szz, vzz
     cdef double s, sxz, vxz, syz, vyz
-    cdef double e, sse
 
-    cdef double slope, curve, intercept, tail, mse, rmse, rvalue, rsquare
+    cdef double slope, curve, intercept, mse, rmse, rvalue, rsquare
 
     cdef bint skip = 0
 
@@ -104,7 +99,7 @@ def calc_curve(series, long period=20, int option=0, int offset=0):
             output[j] = slope
             continue
 
-        sz = syz = 0.0
+        sz = syz = szz = 0.0
         x = (1 - period) / 2.0
         i = j - period + 1
         while i <= j:
@@ -115,6 +110,7 @@ def calc_curve(series, long period=20, int option=0, int offset=0):
                 break
             sz += z
             syz += y * z
+            szz += z * z
             i += 1
             x += 1.0
 
@@ -122,51 +118,29 @@ def calc_curve(series, long period=20, int option=0, int offset=0):
             continue
 
         vyz = (syz / s - sy * sz / s / s)
+        vzz = (szz / s - sz * sz / s / s)
 
         curve = vyz / vyy
         intercept = (sz - curve * sy) / s
+        rvalue = vyz / sqrt(vyy * vzz) if vyy * vzz > 0 else NAN
+        mse = (1.0 - rvalue * rvalue) * vzz
+        rmse = sqrt(mse) if mse >= 0 else NAN
+
 
         if option == CURVE_OPTION_CURVE:
             output[j] = curve
             continue
 
-        if option == CURVE_OPTION_INTERCEPT:
-            x = (period - 1) / 2.0 + offset
-            z = intercept + slope * x + curve * x * x
-            output[j] = z
-            continue
-
-        sse = 0.0
-        x = (1 - period) / 2.0
-        i = j - period + 1
-        while i <= j:
-            z = zs[i]
-            e = z - slope * x - curve * x * x  - intercept
-            if isnan(e):
-                skip = True
-                break
-            sse += e * e
-            i += 1
-            x += 1.0
-
-        if skip:
-            continue
-
-        mse = sse / s
-        rmse = sqrt(mse) if mse >= 0 else NAN
-        rsquare = 1 - mse / vzz
-        rvalue = sqrt(rsquare) if rsquare >= 0 else NAN
-
-        if option == CURVE_OPTION_RMSE:
-            output[j] = rmse
+        if option == CURVE_OPTION_RVALUE:
+            output[j] = rvalue
             continue
 
         if option == CURVE_OPTION_RSQUARE:
-            output[j] = rsquare
+            output[j] = rvalue * rvalue
             continue
 
-        if option == CURVE_OPTION_RVALUE:
-            output[j] = rvalue
+        if option == CURVE_OPTION_RMSERROR:
+            output[j] = rmse
             continue
 
     result = wrap_result(result, series)
@@ -188,8 +162,8 @@ class CURVE(Indicator):
         return result
 
 
-    class RSQUARE(Indicator):
-        """ Curve R-Square """
+    class RVALUE(Indicator):
+        """ Curve R-Value """
 
         def __init__(self, period: int = 20, *, item=None):
             self.period = period
@@ -197,6 +171,20 @@ class CURVE(Indicator):
 
         def calc(self, data):
             series = self.get_series(data)
-            result = calc_slope(series, self.period, option=CURVE_OPTION_RSQUARE)
+            result = calc_slope(series, self.period, option=CURVE_OPTION_RVALUE)
             return result
+
+
+    class ERROR(Indicator):
+        """ Curve Root Mean Square Error """
+
+        def __init__(self, period: int = 20, *, item=None):
+            self.period = period
+            self.item = item
+
+        def calc(self, data):
+            series = self.get_series(data)
+            result = calc_slope(series, self.period, option=CURVE_OPTION_RMSERROR)
+            return result
+
 

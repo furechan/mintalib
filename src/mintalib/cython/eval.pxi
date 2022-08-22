@@ -13,5 +13,5 @@ class EVAL(Indicator):
         self.expr = expr
 
     def calc(self, prices):
-        return prices.eval(self.expr)
+        return prices.eval(self.expr).astype(float)
 

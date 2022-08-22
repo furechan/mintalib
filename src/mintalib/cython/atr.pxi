@@ -62,7 +62,7 @@ def calc_atr(prices, long period=14):
 
 @export
 def calc_natr(prices, long period=14):
-    """ Normalized Average True Range """
+    """ Average True Range (normalized) """
 
     trange = calc_trange(prices, percent=True)
     result = calc_rma(trange, period, wrap=False)
@@ -74,7 +74,7 @@ def calc_natr(prices, long period=14):
 
 @export
 def calc_latr(prices, long period=14):
-    """ Normalized Average True Range """
+    """ Average True Range (logarithmic) """
 
     cdef bint yes = True
 

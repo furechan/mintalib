@@ -1,15 +1,8 @@
 """ Indicator Base classes """
 
-import pandas as pd
-
-import inspect
+from inspect import Signature, Parameter
 
 from abc import ABC, abstractmethod
-
-import warnings
-
-
-# FIXME fix pandas import. DataFrame should fallback to ()
 
 
 def export(func):
@@ -17,18 +10,17 @@ def export(func):
     return func
 
 
-
 class ReprMixin:
     """ Mixin to implement a basic __repr__ based on __init__ signature """
 
     def __repr__(self):
         data = self.__dict__
-        cname = self.__class__.__name__
+        cname = self.__class__.__qualname__
 
-        signature = inspect.signature(self.__init__)
+        signature = Signature.from_callable(self.__init__)
         parameters = signature.parameters.values()
-        positional = (inspect.Parameter.POSITIONAL_ONLY,
-                      inspect.Parameter.POSITIONAL_OR_KEYWORD)
+        positional = (Parameter.POSITIONAL_ONLY,
+                      Parameter.POSITIONAL_OR_KEYWORD)
 
         args, kwargs = [], {}
 
@@ -62,88 +54,27 @@ class Indicator(ABC, ReprMixin):
     def __call__(self, data):
         return self.calc(data)
 
-    def __or__(self, other):
-        if not callable(other):
-            return NotImplemented
-
-        if hasattr(other, '__ror__'):
-            return NotImplemented
-
-        return IndicatorChain(self, other)
-
     def __matmul__(self, other):
         if not callable(other):
-            return NotImplemented
-
-        if hasattr(other, '__rmatmul__'):
-            return NotImplemented
+            return self.calc(other)
 
         return IndicatorComposition(self, other)
 
     def get_series(self, data):
-        if isinstance(data, pd.DataFrame):
-            if self.item is not None:
-                return data[self.item]
-
-            if self.default_item in data:
-                return data[self.default_item]
-
-            return data.iloc[:, 0]
+        if hasattr(data, 'columns'):
+            item = self.item or self.default_item
+            return data[item]
 
         elif self.item:
             raise ValueError("Cannot specify item=f{self.item!r} with a series input!")
 
         return data
 
-    def calc_cached(self, data):
-        """ calc with builtin caching """
-
-        key = self.__class__, *((k, self.__dict__[k]) for k in sorted(self.__dict__))
-        cache = data.__dict__.setdefault('__cache__', {})
-
-        try:
-            return cache[key]
-        except KeyError:
-            result = self.calc(data)
-            cache[key] = result
-            return result
-
     def clone(self, **kwargs):
         cls = self.__class__
         result = cls.__new__(cls)
         result.__dict__.update(self.__dict__, **kwargs)
         return result
-
-
-@export
-class IndicatorChain(Indicator):
-    """ Chain of Indicators """
-
-    def __init__(self, *indicators):
-        self.indicators = indicators
-
-    def __repr__(self):
-        return " | ".join(repr(i) for i in self.indicators)
-
-    def __or__(self, other):
-        if not callable(other):
-            return NotImplemented
-
-        if hasattr(other, '__ror__'):
-            return NotImplemented
-
-        indicators = *self.indicators, other
-        return self.__class__(*indicators)
-
-    @property
-    def main_indicator(self):
-        if self.indicators:
-            return self.indicators[-1]
-
-    def calc(self, data):
-        for indicator in self.indicators:
-            data = indicator(data)
-        return data
 
 
 @export
@@ -158,10 +89,7 @@ class IndicatorComposition(Indicator):
 
     def __matmul__(self, other):
         if not callable(other):
-            return NotImplemented
-
-        if hasattr(other, '__rmatmul__'):
-            return NotImplemented
+            return self.calc(other)
 
         indicators = *self.indicators, other
         return self.__class__(*indicators)

@@ -37,6 +37,18 @@ def midprice(prices):
     return core.calc_midprice(prices)
 
 
+@utils.wrap_function(core.calc_log)
+def log(series, *, item: str = None):
+    series = get_series(series, item=item)
+    return core.calc_log(series)
+
+
+@utils.wrap_function(core.calc_exp)
+def exp(series, *, item: str = None):
+    series = get_series(series, item=item)
+    return core.calc_exp(series)
+
+
 @utils.wrap_function(core.calc_roc)
 def roc(series, period: int = 1, *, item: str = None):
     series = get_series(series, item=item)
@@ -65,6 +77,18 @@ def max(series, period: int, *, item: str = None):
 def sum(series, period: int, *, item: str = None):
     series = get_series(series, item=item)
     return core.calc_sum(series, period)
+
+
+@utils.wrap_function(core.calc_mad)
+def mad(series, period: int, *, item: str = None):
+    series = get_series(series, item=item)
+    return core.calc_mad(series, period)
+
+
+@utils.wrap_function(core.calc_stdev)
+def stdev(series, period: int = 20, *, item: str = None):
+    series = get_series(series, item=item)
+    return core.calc_stdev(series, period)
 
 
 @utils.wrap_function(core.calc_sma)
@@ -155,6 +179,26 @@ def psar(prices, afs: float = 0.02, maxaf: float = 0.2):
     return core.calc_psar(prices, afs=afs, maxaf=maxaf)
 
 
+@utils.wrap_function(core.calc_cci)
+def cci(prices, period: int = 20):
+    return core.calc_cci(prices, period)
+
+
+@utils.wrap_function(core.calc_cmf)
+def cmf(prices, period: int = 20):
+    return core.calc_cmf(prices, period)
+
+
+@utils.wrap_function(core.calc_mfi)
+def mfi(prices, period: int = 14):
+    return core.calc_mfi(prices, period)
+
+
+@utils.wrap_function(core.calc_bop)
+def bop(prices, period: int = 20):
+    return core.calc_bop(prices, period)
+
+
 @utils.wrap_function(core.calc_bbands)
 def bbands(prices, period: int = 20, nbdev: float = 2.0):
     return core.calc_bbands(prices, period, nbdev=nbdev)
@@ -168,13 +212,13 @@ def keltner(prices, period: int = 20, nbatr: float = 2.0):
 @utils.wrap_function(core.calc_macd)
 def macd(series, n1: int = 12, n2: int = 26, n3: int = 9, *, item: str = None):
     series = get_series(series, item=item)
-    return core.calc_macd(series, n1=n1, n2=n2, n3=n3)
+    return core.calc_macd(series, n1=n1, n2=n2, n3=n3, wrap=True)
 
 
 @utils.wrap_function(core.calc_ppo)
 def ppo(series, n1: int = 12, n2: int = 26, n3: int = 9, *, item: str = None):
     series = get_series(series, item=item)
-    return core.calc_ppo(series, n1=n1, n2=n2, n3=n3)
+    return core.calc_ppo(series, n1=n1, n2=n2, n3=n3, wrap=True)
 
 
 @utils.wrap_function(core.calc_slope)
@@ -187,12 +231,6 @@ def slope(series, period: int = 20, option: int = 0, offset: int = 0, *, item: s
 def curve(series, period: int = 20, option: int = 0, offset: int = 0, *, item: str = None):
     series = get_series(series, item=item)
     return core.calc_curve(series, period, option=option, offset=offset)
-
-
-@utils.wrap_function(core.calc_stdev)
-def stdev(series, period: int = 20, *, item: str = None):
-    series = get_series(series, item=item)
-    return core.calc_stdev(series, period)
 
 
 @utils.wrap_function(core.calc_stoch)

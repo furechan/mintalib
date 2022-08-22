@@ -4,7 +4,7 @@
 
 @export
 def calc_keltner(prices, long period = 20, double nbatr = 2.0):
-    """ Keltner Bands """
+    """ Keltner Channel """
 
     prc = calc_typprice(prices)
     atr = calc_atr(prices, period / 2)
@@ -26,7 +26,7 @@ def calc_keltner(prices, long period = 20, double nbatr = 2.0):
 
 
 class KELTNER(Indicator):
-    """ Keltner Bands """
+    """ Keltner Channel """
 
     def __init__(self, period: int = 20, nbatr: float = 2.0):
         self.period = period

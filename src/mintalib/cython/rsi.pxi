@@ -51,7 +51,6 @@ def calc_rsi(series, long period=14):
     return result
 
 
-
 class RSI(Indicator):
     """ Relative Streng Index """
 

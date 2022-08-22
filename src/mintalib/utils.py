@@ -64,7 +64,7 @@ def date_range(count=260, freq='B', start_date=None, end_date=None):
 def random_walk(count=260, freq='B', start_value=100.0,
                 volatility=0.20, fwd_rate=0.10,
                 start_date=None, end_date=None,
-                name='price', seed=None):
+                name=None, seed=None):
     """ generates a single series of random walk prices """
 
     generator = np.random.default_rng(seed)

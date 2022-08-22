@@ -99,15 +99,15 @@ def calc_midprice(prices):
     return result
 
 
-
-
 class PRICE(Indicator):
-    """ Price Indicator """
+    """ Generic Price """
+
+    def __init__(self, item=None):
+        self.item = item
 
     def calc(self, data):
         result = self.get_series(data)
         return result
-
 
 
 class AVGPRICE(Indicator):

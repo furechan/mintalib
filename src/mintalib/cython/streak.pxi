@@ -3,7 +3,7 @@
 
 @export
 def calc_streak(series):
-    """ streak """
+    """ Consecutive streak of ups/downs """
 
     cdef double[:] xs = asarray(series, float)
     cdef long size = xs.size
