@@ -185,6 +185,11 @@ prices = prices.assign(
 
 </details>
 
+## Examples
+
+You can find example notebooks in the [examples](/examples/) folder. 
+
+
 ## Developer Notes
 
 
