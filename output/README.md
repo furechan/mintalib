@@ -47,7 +47,6 @@ vol20 = ta.sma(prices, 20, item='volume') # SMA of 'volume' with period = 20
 high200 = ta.max(prices.high, 200) # MAX of 'high' with period = 200. Could also have called with item='high'
 
 macd = ta.macd(prices) # MACD of 'close'. returns a dataframe with 'macd', 'macdsignal', 'macdhist' columns  
-
 ```
 
 
@@ -90,7 +89,7 @@ macd = ta.macd(prices) # MACD of 'close'. returns a dataframe with 'macd', 'macd
 | mfi      | prices  | Money Flow Index                      |
 | bop      | prices  | Balance of Power                      |
 | bbands   | prices  | Bollinger Bands                       |
-| keltner  | prices  | Keltner Bands                         |
+| keltner  | prices  | Keltner Channel                       |
 | macd     | series  | Moving Average Convergenge Divergence |
 | ppo      | series  | Price Percentage Oscillator           |
 | slope    | series  | Slope (time linear regression)        |
@@ -106,7 +105,13 @@ The library also offers a set of indicators. An indicator is a class that be be 
 and whose instance can be called as a function. An indicator can then be reused on multiple different inputs.
 So for example `SMA(50)` is a callable object that will return the 50 period simple moving average of its argument.
 
-One neat way to use indicators is with the pandas assign method, so as to apply multiple indicators in one go. For example:
+For convenience an indicator can be applied with the `@` operator so as to avoid the collision of parentheses.
+For example `SMA(50) @ prices` can be used instead of the less readable `SMA(50)(prices)`. 
+The same `@` operator can also be used between indicators to mean composition.
+Where for example `EMA(20) @ ROC(5)` means `EMA(20)` applied to `ROC(5)`.
+
+
+One way to use indicators is with the pandas assign method, so as to apply multiple series indicators in one go. For example:
 
 ```python
 from mintalib.indicators import SMA, RSI, SLOPE, EVAL
@@ -118,17 +123,12 @@ prices = prices.assign(
     sma200 = SMA(200),
     rsi = RSI(14),
     slope = SLOPE(20),
+    trend = EMA(20) @ ROC(5),
     pos = EVAL("sma50 > sma200')
 )
     
-# you will notice that the last EVAL can use series defined right above in the same function call
+# you will notice that the last EVAL can use any series defined beforehand in the same function call
 ```
-
-For syntactic convenience an indicator can be applied with the `@` operator so as to avoid the collision of parentheses.
-For example `SMA(50) @ prices` can be used instead of the less readable `SMA(50)(prices)`. 
-The same `@` operator can also be used between indicators to mean composition.
-Where for example `EMA(20) @ ROC(5)` means `EMA(20)` applied to `ROC(5)`.
-
 
 <details>
 <summary>List of Indicators</summary>
@@ -170,7 +170,7 @@ Where for example `EMA(20) @ ROC(5)` means `EMA(20)` applied to `ROC(5)`.
 | MFI            | Money Flow Index                      |
 | BOP            | Balance of Power                      |
 | BBANDS         | Bollinger Bands                       |
-| KELTNER        | Keltner Bands                         |
+| KELTNER        | Keltner Channel                       |
 | MACD           | Moving Average Convergence Divergence |
 | PPO            | Price Percentage Oscillator           |
 | SLOPE          | Slope (time linear regression)        |
@@ -188,20 +188,13 @@ Where for example `EMA(20) @ ROC(5)` means `EMA(20)` applied to `ROC(5)`.
 ## Developer Notes
 
 
-To compile the extension:
+You can install the current version of this package with pip
+
 ```console
-python setup.py build_ext --inplace
+python3 -mpip install git+ssh://git@github.com/furechan/mintalib.git
 ```
 
-To install the extension:
+To install from a local copy:
 ```console
 pip install <folder>
-```
-
-To develop the extension (either):
-```console
-python setup.py develop
-```
-```console
-pip install -e <folder>
 ```
