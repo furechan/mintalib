@@ -38,6 +38,8 @@ include "bop.pxi"
 include "bbands.pxi"
 include "keltner.pxi"
 
+include "kama.pxi"
+
 include "macd.pxi"
 include "ppo.pxi"
 

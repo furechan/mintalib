@@ -1,6 +1,7 @@
 """
 script to translate README.md local urls
 creates output/README.md for usage with pypi
+Developer use only!
 """
 
 import re
@@ -11,17 +12,28 @@ import configparser
 
 from pathlib import Path
 
-from functools import lru_cache
-
 root = Path(__file__).parent.parent
 
 
-@lru_cache()
-def get_config():
-    setupcfg = root.joinpath("setup.cfg").resolve(strict=True)
-    config = configparser.ConfigParser()
-    config.read(setupcfg)
-    return config
+def get_project_url():
+    setupcfg = root.joinpath("setup.cfg")
+
+    if setupcfg.exists():
+        config = configparser.ConfigParser()
+        config.read(setupcfg)
+        return config.get('metadata', 'url')
+
+    setup = root.joinpath("setup.py")
+    contents = setup.read_text()
+
+    match = re.search(r"(?xm) ^ \s* url \s* = \s* ([\"']) ([^\"']+) \1 \s* $", contents)
+
+    if not match:
+        raise ValueError("Cound not extract url!")
+
+    url = match.group(2)
+
+    return url
 
 
 def main():
@@ -35,8 +47,9 @@ def main():
     readme = root.joinpath("README.md").resolve(strict=True)
     output = root.joinpath("output").resolve(strict=True)
 
-    config = get_config()
-    project_url = config.get('metadata', 'url')
+    project_url = get_project_url()
+
+    print("project_url", project_url)
 
     branch = "main"
 

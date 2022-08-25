@@ -44,7 +44,7 @@ def wrap_accessor(source):
 
 @export
 def date_range(count=260, freq='B', start_date=None, end_date=None):
-    """ quick date_range utility (wrapper aoutn pandas functoin of same name) """
+    """ quick date_range utility (wrapper around pandas function of the same name) """
 
     if not start_date and not end_date:
         end_date = dt.date.today()
@@ -89,7 +89,7 @@ def sample_prices(count=260, freq='B', start_value=100.0,
                   volatility=0.20, fwd_rate=0.10,
                   start_date=None, end_date=None,
                   seed=None, index=True, as_dict=False):
-    """ generates a dataframe of random walk prices """
+    """ generates a dataframe of random prices """
 
     if not start_date and not end_date:
         end_date = dt.date.today()

@@ -26,6 +26,7 @@ long_description = root.joinpath("output/README.md").read_text()
 srcdir = 'src'
 name = "mintalib"
 url = "https://github.com/furechan/mintalib"
+description = "Minimalist Technical Analysis Library for Python"
 
 version = get_version("src/mintalib/__init__.py")
 
@@ -41,6 +42,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
 ]
 
+
 setup(
     url=url,
     name=name,
@@ -50,6 +52,7 @@ setup(
     classifiers=classifiers,
     package_dir={'': srcdir},
     include_package_data=True,
+    description=description,
     long_description=long_description,
     long_description_content_type="text/markdown",
 

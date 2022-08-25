@@ -1,7 +1,7 @@
 # Minimalist Technical Analysis Library for Python
 
 
-This project aims at offering a curated list of classical technical analsysis indicators
+This project aims at offering a curated list of classical technical analysis indicators
 implemented in cython for improved performance.
 The library does not link numpy, pandas, or any third party binaries,
 so the installation should be straightforward.
@@ -184,6 +184,11 @@ prices = prices.assign(
 | EVAL           | Expression Eval (pandas only)         |
 
 </details>
+
+## Examples
+
+You can find example notebooks in the [examples](https://github.com/furechan/mintalib/blob/main/examples/) folder. 
+
 
 ## Developer Notes
 

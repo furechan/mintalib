@@ -65,19 +65,7 @@ def calc_price(prices, item='close'):
     raise ValueError(f"Invalid item {item}") from None
 
 
-# TODO remove calc_ret and calc_logret or rename ?
-# TODO rename calc_ret into calc_roc ?
 # TODO rename calc_logret into calc_logdiff ?
-
-
-@export
-def calc_ret(series, n=1):
-    """ Calculates return over number of periods """
-
-    xs = np.asarray(series)
-    ys = shift_array(xs, n)
-    result = xs / ys - 1.0
-    return result
 
 
 @export
@@ -198,14 +186,3 @@ def tracking_error(prices, series, window=14, relative=True):
 
     return result
 
-
-@export
-def calc_maverr(prices, window=20):
-    """ Calculates average tracing error of an EMA as multiple of true range """
-
-    tr = calc_trange(prices)
-    ema = calc_ema(prices.close, window, wrap=True)
-    err = calc_ema(np.abs(prices.close - ema), window, wrap=True)
-    atr = calc_ema(tr, window, wrap=True)
-
-    return err / atr
