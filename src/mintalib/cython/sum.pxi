@@ -1,37 +1,47 @@
 """ Sum """
 
+
+
 @export
-def calc_sum(series, long period):
+def calc_sum(series, long period, wrap: bool = True):
     """ Rolling Sum """
 
-    cdef double[:] xs = asarray(series, float)
+    if period <= 0:
+        raise ValueError(f"Invalid period value {period}")
+
+    cdef double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double v = NAN, rsum = 0
+    cdef double divisor = period * (period + 1) / 2
+    cdef double v = NAN, vsum = NAN
     cdef long i = 0, j = 0, count = 0
 
-    for i in range(size):
-        v = xs[i]
+    cdef long maxlen = size - period + 1
 
-        if not isnan(v):
-            rsum += v
+    for i in range(maxlen):
+        vsum = 0.0
+        count = 0
+
+        for j in range(period):
+            v = xs[i + j]
+
+            if isnan(v):
+                break
+
+            vsum += v
             count += 1
 
-        while count > period and j < i:
-            v, j = xs[j], j+1
-            if not isnan(v):
-                rsum -= v
-                count -= 1
-
         if count >= period:
-            output[i] = rsum
+            output[i + j] = vsum
 
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
+
 
 
 

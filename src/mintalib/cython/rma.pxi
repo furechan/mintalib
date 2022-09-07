@@ -15,7 +15,10 @@ def calc_rma(series, long period, wrap: bool = True):
         period (int) : time period. rerquired
     """
 
-    cdef double[:] xs = asarray(series, float)
+    if period <= 0:
+        raise ValueError(f"Invalid period value {period}")
+
+    cdef double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, NAN)
@@ -24,7 +27,7 @@ def calc_rma(series, long period, wrap: bool = True):
     cdef double alpha = 1.0 / period
     cdef double value = NAN
     cdef double rma = NAN
-    cdef double sum = 0.0
+    cdef double total = 0.0
 
     cdef long i = 0, count = 0
 
@@ -33,10 +36,9 @@ def calc_rma(series, long period, wrap: bool = True):
 
         if not isnan(value):
             count += 1
-
             if count <= period:
-                sum += value
-                rma = sum / count
+                total += value
+                rma = total / count
             else:
                 rma += alpha * (value - rma)
 

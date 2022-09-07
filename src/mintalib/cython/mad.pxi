@@ -5,50 +5,41 @@
 def calc_mad(series, long period):
     """ Mean Absolute Deviation """
 
-    cdef double[:] xs = asarray(series, float)
+    if period <= 0:
+        raise ValueError(f"Invalid period value {period}")
+
+    cdef double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double x, s, sx, mx
+    cdef double x, sx, mx
 
-    cdef long i, j
+    cdef long i = 0, j = 0, count = 0
+    cdef long maxlen = size - period + 1
 
-    cdef bint skip
-
-    if period > size:
-        return result
-
-    for j in range(period-1, size):
-        skip = False
-
-        s = sx = 0.0
-        i = j - period + 1
-        while i <= j:
-            x = xs[i]
+    for i in range(maxlen):
+        sx, count = 0, 0
+        for j in range(period):
+            x = xs[i + j]
             if isnan(x):
-                skip = True
                 break
             sx += x
-            s += 1.0
-            i += 1
+            count += 1
 
-        if skip:
+        if count < period:
             continue
 
-        mx = sx / s
-
-        s = sx = 0.0
-        i = j - period + 1
-        while i <= j:
-            x = xs[i]
+        mx = sx / count
+        sx, count = 0, 0
+        for j in range(period):
+            x = xs[i + j]
             sx += fabs(x - mx)
-            s += 1.0
-            i += 1
+            count += 1
 
-        res = sx / s
-        output[j] = res
+        res = sx / count
+        output[i + j] = res
 
     result = wrap_result(result, series)
 

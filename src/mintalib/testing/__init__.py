@@ -1,1 +1,1 @@
-from .testing import get_sample, test_core, test_function
+from .testing import sample_prices, sample_series, test_core, test_function

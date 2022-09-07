@@ -1,32 +1,35 @@
-""" Maximum """
+""" Rolling Maximum """
 
 
 @export
 def calc_max(series, long period):
     """ Rolling Maximum """
 
-    cdef double[:] xs = asarray(series, float)
+    if period <= 0:
+        raise ValueError(f"Invalid period value {period}")
+
+    cdef double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
     cdef double v = NAN, res = NAN
-    cdef long i = 0, j = 0, offset = period -1
 
-    if period <= 0:
-        return result
+    cdef long maxlen = size - period + 1
+    cdef long i = 0, j = 0
 
-    for i in range(offset, size):
-        res = xs[i - offset]
-        for j in range(i - offset, i + 1):
-            v = xs[j]
+    for i in range(maxlen):
+        res = NAN
+
+        for j in range(period):
+            v = xs[i + j]
             if isnan(v):
-                break
-            if v > res:
+                continue
+            if not v <= res:
                 res = v
-        else:
-            output[i] = res
+
+        output[i + j] = res
 
     result = wrap_result(result, series)
 

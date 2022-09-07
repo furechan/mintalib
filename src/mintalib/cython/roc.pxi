@@ -1,12 +1,14 @@
 """ Rate of Change """
 
 
-
 @export
 def calc_roc(series, long period=1):
     """ Rate of Change """
 
-    cdef double[:] xs = asarray(series, float)
+    if period <= 0:
+        raise ValueError(f"Invalid period value {period}")
+
+    cdef double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -15,12 +17,12 @@ def calc_roc(series, long period=1):
     cdef double v = NAN, pv = NAN, roc = NAN
     cdef long i = 0
 
-    if period <= 0:
+    if period >= size:
         return result
 
     for i in range(period, size):
         v, pv = xs[i], xs[i - period]
-        roc = v / pv - 1 if pv > 0 else NAN
+        roc = v / pv - 1 if pv != 0 else NAN
         output[i] = roc
 
     result = wrap_result(result, series)

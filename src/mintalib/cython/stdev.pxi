@@ -5,7 +5,10 @@
 def calc_stdev(series, long period=20):
     """ Standard Deviation """
 
-    cdef double[:] xs = asarray(series, float)
+    if period <= 0:
+        raise ValueError(f"Invalid period value {period}")
+
+    cdef double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -13,29 +16,28 @@ def calc_stdev(series, long period=20):
 
     cdef double x, s, sx, sxx, vxx, std
 
-    cdef long i, j
+    cdef long i = 0, j = 0
 
-    if period > size:
-        return result
+    cdef long maxlen = size - period + 1
 
-    for j in range(period-1, size):
+    for i in range(maxlen):
 
         s = sx = sxx = 0.0
-        i = j - period + 1
 
-        while i <= j:
-            x = xs[i]
+        for j in range(period):
+            x = xs[i + j]
+
             if isnan(x):
                 break
+
             s += 1.0
             sx += x
             sxx += x * x
-            i += 1
 
         else:
             vxx = (sxx / s - sx * sx / s / s)
             std = sqrt(vxx) if vxx >= 0 else NAN
-            output[j] = std
+            output[i + j] = std
 
     result = wrap_result(result, series)
 

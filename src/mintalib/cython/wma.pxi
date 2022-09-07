@@ -5,23 +5,23 @@
 def calc_wma(series, long period, wrap: bool = True):
     """ Weighted Moving Average """
 
-    cdef double[:] xs = asarray(series, float)
+    if period <= 0:
+        raise ValueError(f"Invalid period value {period}")
+
+    cdef double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
     cdef double divisor = period * (period + 1) / 2
-    cdef double v=NAN, sum=NAN
-    cdef long i=0, j=0
+    cdef double v = NAN, wsum = NAN
+    cdef long i = 0, j = 0
 
     cdef long maxlen = size - period + 1
 
-    if maxlen <= 0:
-        return result
-
     for i in range(maxlen):
-        sum = 0.0
+        wsum = 0.0
 
         for j in range(period):
             v = xs[i + j]
@@ -29,15 +29,14 @@ def calc_wma(series, long period, wrap: bool = True):
             if isnan(v):
                 break
 
-            sum += v * (j+1)
+            wsum += v * (j+1)
         else:
-            output[i + j] = sum / divisor
+            output[i + j] = wsum / divisor
 
     if wrap:
         result = wrap_result(result, series)
 
     return result
-
 
 
 class WMA(Indicator):

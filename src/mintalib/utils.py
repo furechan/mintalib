@@ -15,7 +15,7 @@ def wrap_function(source):
     doc = source.__doc__
 
     if doc is not None:
-        ignore = "(?xm) \n \s+ (wrap) \s+ [^\n:]* : [^\n]+ \n"
+        ignore = r"(?xm) \n \s+ (wrap) \s+ [^\n:]* : [^\n]+ \n"
         doc = re.sub(ignore, '', doc)
 
     def decorator(func):
@@ -30,7 +30,7 @@ def wrap_accessor(source):
     doc = source.__doc__
 
     if doc is not None:
-        ignore = "(?xm) \n \s+ (series|prices|wrap) \s+ [^\n:]* : [^\n]+ \n"
+        ignore = r"(?xm) \n \s+ (series|prices|wrap) \s+ [^\n:]* : [^\n]+ \n"
         doc = re.sub(ignore, '', doc)
 
     def decorator(func):
