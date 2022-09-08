@@ -7,7 +7,7 @@ def calc_mfi(prices, long period = 14):
     """ Money Flow Index """
 
     prc = calc_typprice(prices)
-    volume = asarray(prices['volume'], float)
+    volume = np.asarray(prices['volume'], float)
 
     flow = prc * volume
     pflow = np.clip(flow, 0.0, None)

@@ -6,10 +6,10 @@
 def calc_bop(prices, long period = 20):
     """ Balance of Power """
 
-    open = asarray(prices['open'], float)
-    high = asarray(prices['high'], float)
-    low = asarray(prices['low'], float)
-    close = asarray(prices['close'], float)
+    open = np.asarray(prices['open'], float)
+    high = np.asarray(prices['high'], float)
+    low = np.asarray(prices['low'], float)
+    close = np.asarray(prices['close'], float)
 
     size = check_size(open, high, low, close)
 

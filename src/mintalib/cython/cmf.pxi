@@ -6,10 +6,10 @@
 def calc_cmf(prices, long period = 20):
     """ Chaikin Money Flow """
 
-    high = asarray(prices['high'], float)
-    low = asarray(prices['low'], float)
-    close = asarray(prices['close'], float)
-    volume = asarray(prices['volume'], float)
+    high = np.asarray(prices['high'], float)
+    low = np.asarray(prices['low'], float)
+    close = np.asarray(prices['close'], float)
+    volume = np.asarray(prices['volume'], float)
 
     size = check_size(high, low, close, volume)
 

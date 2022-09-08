@@ -5,7 +5,7 @@
 def calc_exp(series):
     """ Exponential """
 
-    cdef double[:] xs = asarray(series, float)
+    cdef double[:] xs = np.asarray(series, float)
 
     with np.errstate(invalid='ignore'):
         result = np.log(xs)

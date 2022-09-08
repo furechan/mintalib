@@ -5,9 +5,9 @@
 def calc_trange(prices, *, log_prices: bool = False, percent: bool = False, wrap: bool = True):
     """ True Range """
 
-    cdef double[:] high = asarray(prices['high'], float)
-    cdef double[:] low = asarray(prices['low'], float)
-    cdef double[:] close = asarray(prices['close'], float)
+    cdef double[:] high = np.asarray(prices['high'], float)
+    cdef double[:] low = np.asarray(prices['low'], float)
+    cdef double[:] close = np.asarray(prices['close'], float)
 
     cdef long size = check_size(high, low, close)
 

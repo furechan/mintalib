@@ -5,7 +5,7 @@
 def calc_streak(series):
     """ Consecutive streak of ups/downs """
 
-    cdef double[:] xs = asarray(series, float)
+    cdef double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)

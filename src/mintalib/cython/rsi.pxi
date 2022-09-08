@@ -6,7 +6,7 @@
 def calc_rsi(series, long period=14):
     """ Relative Strength Index """
 
-    cdef double[:] xs = asarray(series, float)
+    cdef double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)

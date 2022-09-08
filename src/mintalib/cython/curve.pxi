@@ -26,13 +26,13 @@ class CurveOption(IntEnum):
 
 
 @export
-def calc_curve(series, long period=20, int option=0, int offset=0):
+def calc_curve(series, long period=20, *, int option=0, int offset=0):
     """ Curve (time curvilinear regression) """
 
     if option < 0 or option >= CURVE_OPTION_BADOPTION:
         raise ValueError("Invalid option %d" % option)
 
-    cdef double[:] zs = asarray(series, float)
+    cdef double[:] zs = np.asarray(series, float)
     cdef long size = zs.size
 
     cdef object result = np.full(size, np.nan)

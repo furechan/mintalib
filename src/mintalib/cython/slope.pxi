@@ -28,13 +28,13 @@ class SlopeOption(IntEnum):
 
 
 @export
-def calc_slope(series, long period=20, int option=0, int offset=0):
+def calc_slope(series, long period=20, *, int option=0, int offset=0):
     """ Slope (time linear regression) """
 
     if option < 0 or option >= SLOPE_OPTION_BADOPTION:
         raise ValueError("Invalid option %d" % option)
 
-    cdef double[:] ys = asarray(series, float)
+    cdef double[:] ys = np.asarray(series, float)
     cdef long size = ys.size
 
     cdef object result = np.full(size, np.nan)
@@ -121,7 +121,7 @@ class SLOPE(Indicator):
 
 
     class RVALUE(Indicator):
-        """ Slope R-Value (Correlation) """
+        """ Slope R-Value """
 
         def __init__(self, period: int = 20, *, item=None):
             self.period = period

@@ -5,8 +5,8 @@
 def calc_plusdi(prices, long period=14):
     """ Plus Directional Index """
 
-    high = asarray(prices['high'], float)
-    low = asarray(prices['low'], float)
+    high = np.asarray(prices['high'], float)
+    low = np.asarray(prices['low'], float)
     atr = calc_atr(prices, period)
 
     hm = calc_diff(high, 1)
@@ -25,8 +25,8 @@ def calc_plusdi(prices, long period=14):
 def calc_minusdi(prices, long period=14):
     """ Minus Directional Index """
 
-    high = asarray(prices['high'], float)
-    low = asarray(prices['low'], float)
+    high = np.asarray(prices['high'], float)
+    low = np.asarray(prices['low'], float)
     atr = calc_atr(prices, period)
 
     hm = calc_diff(high, 1)
@@ -45,8 +45,8 @@ def calc_minusdi(prices, long period=14):
 def calc_adx(prices, long period=14):
     """ Average Directional Index """
 
-    high = asarray(prices['high'], float)
-    low = asarray(prices['low'], float)
+    high = np.asarray(prices['high'], float)
+    low = np.asarray(prices['low'], float)
 
     atr = calc_atr(prices, period)
 

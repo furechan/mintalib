@@ -6,7 +6,7 @@
 def calc_diff(series, long period=1, wrap: bool = True):
     """ Difference """
 
-    cdef double[:] xs = asarray(series, float)
+    cdef double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)

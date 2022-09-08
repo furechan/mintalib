@@ -5,8 +5,8 @@
 def calc_psar(prices, double afs=0.02, double maxaf=0.2):
     """ Parabolic Stop and Reverse """
 
-    cdef double[:] high = asarray(prices['high'], float)
-    cdef double[:] low = asarray(prices['low'], float)
+    cdef double[:] high = np.asarray(prices['high'], float)
+    cdef double[:] low = np.asarray(prices['low'], float)
     cdef long size = check_size(high, low)
 
     cdef object result = np.full(size, np.nan)

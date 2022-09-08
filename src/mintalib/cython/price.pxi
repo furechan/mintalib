@@ -5,10 +5,10 @@
 def calc_avgprice(prices):
     """ Average Price """
 
-    cdef double[:] open = asarray(prices['open'], float)
-    cdef double[:] high = asarray(prices['high'], float)
-    cdef double[:] low = asarray(prices['low'], float)
-    cdef double[:] close = asarray(prices['close'], float)
+    cdef double[:] open = np.asarray(prices['open'], float)
+    cdef double[:] high = np.asarray(prices['high'], float)
+    cdef double[:] low = np.asarray(prices['low'], float)
+    cdef double[:] close = np.asarray(prices['close'], float)
 
     cdef long size = check_size(open, high, low, close)
 
@@ -31,9 +31,9 @@ def calc_avgprice(prices):
 def calc_typprice(prices):
     """ Typical Price """
 
-    cdef double[:] high = asarray(prices['high'], float)
-    cdef double[:] low = asarray(prices['low'], float)
-    cdef double[:] close = asarray(prices['close'], float)
+    cdef double[:] high = np.asarray(prices['high'], float)
+    cdef double[:] low = np.asarray(prices['low'], float)
+    cdef double[:] close = np.asarray(prices['close'], float)
 
     cdef long size = check_size(high, low, close)
 
@@ -55,9 +55,9 @@ def calc_typprice(prices):
 def calc_wclprice(prices):
     """ Weighted Close Price """
 
-    cdef double[:] high = asarray(prices['high'], float)
-    cdef double[:] low = asarray(prices['low'], float)
-    cdef double[:] close = asarray(prices['close'], float)
+    cdef double[:] high = np.asarray(prices['high'], float)
+    cdef double[:] low = np.asarray(prices['low'], float)
+    cdef double[:] close = np.asarray(prices['close'], float)
 
     cdef long size = check_size(high, low, close)
 
@@ -80,8 +80,8 @@ def calc_wclprice(prices):
 def calc_midprice(prices):
     """ Mid Price """
 
-    cdef double[:] high = asarray(prices['high'], float)
-    cdef double[:] low = asarray(prices['low'], float)
+    cdef double[:] high = np.asarray(prices['high'], float)
+    cdef double[:] low = np.asarray(prices['low'], float)
     cdef long size = check_size(high, low)
 
     cdef object result = np.full(size, np.nan)

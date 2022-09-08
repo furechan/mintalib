@@ -8,9 +8,9 @@ stoch_result = namedtuple("stoch_result", "slowk, slowd")
 def calc_stoch(prices, long period=14, long fastn=3, long slown=3, *, wrap: bool = True):
     """ Stochastik Oscillator """
 
-    cdef double[:] high = asarray(prices['high'], float)
-    cdef double[:] low = asarray(prices['low'], float)
-    cdef double[:] close = asarray(prices['close'], float)
+    cdef double[:] high = np.asarray(prices['high'], float)
+    cdef double[:] low = np.asarray(prices['low'], float)
+    cdef double[:] close = np.asarray(prices['close'], float)
 
     cdef long size = check_size(high, low, close)
 
