@@ -5,6 +5,9 @@ include "_common.pxi"
 include "price.pxi"
 include "volume.pxi"
 
+include "cross.pxi"
+include "flags.pxi"
+
 include "log.pxi"
 include "exp.pxi"
 

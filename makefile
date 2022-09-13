@@ -7,6 +7,7 @@ build: FORCE
 	-jupyter notebook stop 2> nul
 	cythonize -3 ./**/*.pyx
 	python3 setup.py build_ext --inplace
+	python3 -m runpynb scripts\make-wrappers.ipynb
 
 clean: FORCE
 	python3 setup.py clean

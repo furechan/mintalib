@@ -46,8 +46,4 @@ from .core import CURVE
 from .core import STOCH
 from .core import EVAL
 
-__all__ = ['ADX', 'ATR', 'AVGPRICE', 'BBANDS', 'BOP', 'CCI', 'CMF', 'CURVE', 'DEMA',
-'DIFF', 'EMA', 'EVAL', 'EXP', 'KAMA', 'KELTNER', 'LATR', 'LOG', 'MACD', 'MAD',
-'MAX', 'MFI', 'MIDPRICE', 'MIN', 'MINUSDI', 'NATR', 'PLUSDI', 'PPO', 'PRICE',
-'PSAR', 'RMA', 'ROC', 'RSI', 'SLOPE', 'SMA', 'STDEV', 'STOCH', 'SUM', 'TEMA',
-'TRANGE', 'TYPPRICE', 'VOLUME', 'WCLPRICE', 'WMA']
+__all__ = [n for n in dir() if n.isupper()]

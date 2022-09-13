@@ -99,14 +99,40 @@ def calc_midprice(prices):
     return result
 
 
+
+PRICE_FUNCTIONS = dict(
+    avg=calc_avgprice,
+    mid=calc_midprice,
+    typ=calc_typprice,
+    wcl=calc_wclprice,
+)
+
+
+@export
+def calc_price(prices, item: str):
+    """ Generic Price """
+
+    if item is None:
+        item = 'close'
+
+    if item in prices:
+        return prices[item]
+
+    func = PRICE_FUNCTIONS.get(item)
+    if func is None:
+        raise ValueError(f"Unknown price type {item}")
+
+    return func(prices)
+
+
 class PRICE(Indicator):
     """ Generic Price """
 
-    def __init__(self, item=None):
+    def __init__(self, item):
         self.item = item
 
-    def calc(self, data):
-        result = self.get_series(data)
+    def calc(self, prices):
+        result = calc_price(prices, self.item)
         return result
 
 
@@ -142,7 +168,3 @@ class MIDPRICE(Indicator):
     def calc(self, prices):
         result = calc_midprice(prices)
         return result
-
-
-
-

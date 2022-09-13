@@ -1,6 +1,7 @@
 """ utilities """
 
 import re
+
 import numpy as np
 import pandas as pd
 import datetime as dt
@@ -12,6 +13,7 @@ def export(func):
 
 
 def wrap_function(source):
+    """ update function with documentation from source """
     doc = source.__doc__
 
     if doc is not None:
@@ -25,8 +27,8 @@ def wrap_function(source):
     return decorator
 
 
-
 def wrap_accessor(source):
+    """ update accessor with documentation from source """
     doc = source.__doc__
 
     if doc is not None:
@@ -38,8 +40,6 @@ def wrap_accessor(source):
         return func
 
     return decorator
-
-
 
 
 @export

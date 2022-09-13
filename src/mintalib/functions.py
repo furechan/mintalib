@@ -1,5 +1,6 @@
 # Do not edit! File generated automatically...
 
+from numpy import nan
 from . import core
 from . import utils
 
@@ -39,6 +40,54 @@ def WCLPRICE(prices):
 @utils.wrap_function(core.calc_midprice)
 def MIDPRICE(prices):
     return core.calc_midprice(prices)
+
+
+# noinspection PyPep8Naming
+@utils.wrap_function(core.calc_price)
+def PRICE(prices, item: 'unicode'):
+    return core.calc_price(prices)
+
+
+# noinspection PyPep8Naming
+@utils.wrap_function(core.crossover)
+def CROSSOVER(series, level: float = 0.0, *, item: str = None):
+    series = get_series(series, item=item)
+    return core.crossover(series, level=level, wrap=True)
+
+
+# noinspection PyPep8Naming
+@utils.wrap_function(core.crossunder)
+def CROSSUNDER(series, level: float = 0.0, *, item: str = None):
+    series = get_series(series, item=item)
+    return core.crossunder(series, level=level, wrap=True)
+
+
+# noinspection PyPep8Naming
+@utils.wrap_function(core.flag_above)
+def FLAG_ABOVE(series, level: float = 0.0, *, na_value: float = nan, item: str = None):
+    series = get_series(series, item=item)
+    return core.flag_above(series, level=level, na_value=na_value, wrap=True)
+
+
+# noinspection PyPep8Naming
+@utils.wrap_function(core.flag_below)
+def FLAG_BELOW(series, level: float = 0.0, *, na_value: float = nan, item: str = None):
+    series = get_series(series, item=item)
+    return core.flag_below(series, level=level, na_value=na_value, wrap=True)
+
+
+# noinspection PyPep8Naming
+@utils.wrap_function(core.invert_flag)
+def INVERT_FLAG(series, *, na_value: float = nan, item: str = None):
+    series = get_series(series, item=item)
+    return core.invert_flag(series, na_value=na_value, wrap=True)
+
+
+# noinspection PyPep8Naming
+@utils.wrap_function(core.updown_flag)
+def UPDOWN_FLAG(series, up_level: float = 0.0, down_level: float = 0.0, *, up_flag: float = 1.0, down_flag: float = 0.0, start_flag: float = nan, item: str = None):
+    series = get_series(series, item=item)
+    return core.updown_flag(series, up_level=up_level, down_level=down_level, up_flag=up_flag, down_flag=down_flag, start_flag=start_flag, wrap=True)
 
 
 # noinspection PyPep8Naming
@@ -141,7 +190,7 @@ def TEMA(series, period: int = 20, *, item: str = None):
 
 # noinspection PyPep8Naming
 @utils.wrap_function(core.calc_ma)
-def MA(series, period: int, *, ma_type: int = 0, item: str = None):
+def MA(series, period: int, *, ma_type: 'unicode' = None, item: str = None):
     series = get_series(series, item=item)
     return core.calc_ma(series, period, ma_type=ma_type, wrap=True)
 
@@ -279,10 +328,17 @@ def STOCH(prices, period: int = 14, fastn: int = 3, slown: int = 3):
 
 
 # noinspection PyPep8Naming
-@utils.wrap_function(core.calc_streak)
-def STREAK(series, *, item: str = None):
+@utils.wrap_function(core.streak_up)
+def STREAK_UP(series, *, item: str = None):
     series = get_series(series, item=item)
-    return core.calc_streak(series)
+    return core.streak_up(series)
+
+
+# noinspection PyPep8Naming
+@utils.wrap_function(core.streak_down)
+def STREAK_DOWN(series, *, item: str = None):
+    series = get_series(series, item=item)
+    return core.streak_down(series)
 
 
 __all__ = [n for n in dir() if n.isupper()]
