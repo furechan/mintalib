@@ -2,7 +2,7 @@ import re
 import posixpath
 
 from pathlib import Path
-from setuptools import setup, find_packages, Extension
+from setuptools import setup, Extension, find_namespace_packages
 
 
 def get_version(path):
@@ -49,7 +49,7 @@ long_description = process_readme(readme, project_url=url)
 
 version = get_version("src/mintalib/__init__.py")
 
-packages = find_packages(srcdir)
+packages = find_namespace_packages(srcdir)
 
 extensions = [make_extension(f) for f in Path(srcdir).rglob('*.c')]
 
