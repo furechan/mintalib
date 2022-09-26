@@ -5,7 +5,6 @@ import pandas as pd
 
 from mintalib import core
 from mintalib import testing
-from mintalib.testing import reflib
 
 
 def ref_stdev(series, period: int):

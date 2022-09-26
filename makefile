@@ -1,4 +1,4 @@
-# makefile should be tab indented!
+--inplace# makefile should be tab indented!
 
 name = mintalib
 version = 0.0.1
