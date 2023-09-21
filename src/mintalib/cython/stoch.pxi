@@ -4,13 +4,12 @@
 stoch_result = namedtuple("stoch_result", "slowk, slowd")
 
 
-@export
-def calc_stoch(prices, long period=14, long fastn=3, long slown=3, *, wrap: bool = True):
+def calc_stoch(prices, long period=14, long fastn=3, long slown=3, *, wrap: bool = False):
     """ Stochastik Oscillator """
 
-    cdef double[:] high = np.asarray(prices['high'], float)
-    cdef double[:] low = np.asarray(prices['low'], float)
-    cdef double[:] close = np.asarray(prices['close'], float)
+    cdef const double[:] high = np.asarray(prices['high'], float)
+    cdef const double[:] low = np.asarray(prices['low'], float)
+    cdef const double[:] close = np.asarray(prices['close'], float)
 
     cdef long size = check_size(high, low, close)
 
@@ -31,17 +30,8 @@ def calc_stoch(prices, long period=14, long fastn=3, long slown=3, *, wrap: bool
     return result
 
 
-
-class STOCH(Indicator):
-    """ Stockchastic Oscillator """
-
-    def __init__(self, period: int = 14, fastn: int = 3, slown: int = 3, *, item=None):
-        self.period = period
-        self.fastn = fastn
-        self.slown = slown
-
-    def calc(self, prices):
-        result = calc_stoch(prices, self.period, self.fastn, self.slown, wrap=True)
-        return result
-
+@wrap_function(calc_stoch)
+def STOCH(prices, period: int = 14, fastn: int = 3, slown: int = 3):
+    result = calc_stoch(prices, period=period, fastn=fastn, slown=slown)
+    return wrap_result(result, prices)
 

@@ -1,10 +1,10 @@
 """ Kaufman Adaptive Moving Average """
 
 
-def efficiency_ratio(series, int period=10):
+def efficiency_ratio(series, int period=10, *, wrap: bool = False):
     """ Efficiency Ratio """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -29,7 +29,7 @@ def efficiency_ratio(series, int period=10):
         if isnan(dx):
             continue
 
-        erdiv += fabs(dx)
+        erdiv += math.fabs(dx)
         ercnt += 1
 
         while ercnt >= period:
@@ -40,26 +40,27 @@ def efficiency_ratio(series, int period=10):
 
             dy, py = y - py, y
 
-            ernum = fabs(x-y)
+            ernum = math.fabs(x-y)
             erval = ernum / erdiv if erdiv else 1.0
 
             if not isnan(dy):
-                erdiv -= fabs(dy)
+                erdiv -= math.fabs(dy)
                 ercnt -= 1
 
         output[i] = erval
 
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
 
 
-@export
-def calc_kama(series, int period=10, int fastn=2, int slown=30, wrap: bool = True):
+def calc_kama(series, int period=10, int fastn=2, int slown=30, *, wrap: bool = False):
     """ Kaufman Adaptive Moving Average """
 
-    cdef double[:] xs = np.asarray(series, float)
-    cdef double[:] ers = efficiency_ratio(xs, period)
+    cdef const double[:] xs = np.asarray(series, float)
+    cdef const double[:] ers = efficiency_ratio(xs, period)
 
     cdef long size = xs.size
 
@@ -97,20 +98,17 @@ def calc_kama(series, int period=10, int fastn=2, int slown=30, wrap: bool = Tru
     return result
 
 
+@wrap_function(efficiency_ratio)
+def EFFICIENCY_RATIO(series, period: int = 10, *, item: str = None):
+    series = get_series(series, item=item)
+    result = efficiency_ratio(series, period=period)
+    return wrap_result(result, series)
 
-@export
-class KAMA(Indicator):
-    """ Kaufman Adaptative Moving Average """
 
-    same_scale = True
+@wrap_function(calc_kama)
+def KAMA(series, period: int = 10, fastn: int = 2, slown: int = 30, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_kama(series, period=period, fastn=fastn, slown=slown)
+    return wrap_result(result, series)
 
-    def __init__(self, period: int=10, fastn: int = 2, slown: int = 30, *, item=None):
-        self.period = period
-        self.fastn = fastn
-        self.slown = slown
-        self.item = item
 
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_kama(series, self.period, self.fastn, self.slown, wrap=True)
-        return result

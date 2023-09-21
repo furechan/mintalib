@@ -1,12 +1,12 @@
 """ Parabolic Stop and Reverse """
 
 
-@export
-def calc_psar(prices, double afs=0.02, double maxaf=0.2):
+
+def calc_psar(prices, double afs=0.02, double maxaf=0.2, *, wrap: bool = False):
     """ Parabolic Stop and Reverse """
 
-    cdef double[:] high = np.asarray(prices['high'], float)
-    cdef double[:] low = np.asarray(prices['low'], float)
+    cdef const double[:] high = np.asarray(prices['high'], float)
+    cdef const double[:] low = np.asarray(prices['low'], float)
     cdef long size = check_size(high, low)
 
     cdef object result = np.full(size, np.nan)
@@ -67,20 +67,15 @@ def calc_psar(prices, double afs=0.02, double maxaf=0.2):
         if maxaf and af > maxaf:
             af = maxaf
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
 
+@wrap_function(calc_psar)
+def PSAR(prices, afs: float = 0.02, maxaf: float = 0.2):
+    result = calc_psar(prices, afs=afs, maxaf=maxaf)
+    return wrap_result(result, prices)
 
-class PSAR(Indicator):
-    """ Parabolic Stop and Reverse """
-
-    def __init__(self, afs: float = 0.02, maxaf : float = 0.2):
-        self.afs = afs
-        self.maxaf = maxaf
-
-    def calc(self, data):
-        result = calc_psar(data, afs=self.afs, maxaf=self.maxaf)
-        return result
 

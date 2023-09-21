@@ -1,14 +1,14 @@
 """ Price """
 
 
-@export
-def calc_avgprice(prices):
+
+def calc_avgprice(prices, *, wrap: bool = False):
     """ Average Price """
 
-    cdef double[:] open = np.asarray(prices['open'], float)
-    cdef double[:] high = np.asarray(prices['high'], float)
-    cdef double[:] low = np.asarray(prices['low'], float)
-    cdef double[:] close = np.asarray(prices['close'], float)
+    cdef const double[:] open = np.asarray(prices['open'], float)
+    cdef const double[:] high = np.asarray(prices['high'], float)
+    cdef const double[:] low = np.asarray(prices['low'], float)
+    cdef const double[:] close = np.asarray(prices['close'], float)
 
     cdef long size = check_size(open, high, low, close)
 
@@ -22,13 +22,13 @@ def calc_avgprice(prices):
         v = (open[i] + high[i] + low[i] + close[i]) / 4.0
         output[i] = v
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
 
-@export
-def calc_typprice(prices):
+def calc_typprice(prices, *, wrap: bool = False):
     """ Typical Price """
 
     cdef double[:] high = np.asarray(prices['high'], float)
@@ -47,12 +47,13 @@ def calc_typprice(prices):
         v = (high[i] + low[i] + close[i]) / 3.0
         output[i] = v
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
-@export
-def calc_wclprice(prices):
+
+def calc_wclprice(prices, *, wrap: bool = False):
     """ Weighted Close Price """
 
     cdef double[:] high = np.asarray(prices['high'], float)
@@ -71,13 +72,14 @@ def calc_wclprice(prices):
         v = (high[i] + low[i] + 2 * close[i]) / 4.0
         output[i] = v
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
 
-@export
-def calc_midprice(prices):
+
+def calc_midprice(prices, *, wrap: bool = False):
     """ Mid Price """
 
     cdef double[:] high = np.asarray(prices['high'], float)
@@ -94,7 +96,8 @@ def calc_midprice(prices):
         v = (high[i] + low[i]) / 2.0
         output[i] = v
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
@@ -108,8 +111,9 @@ PRICE_FUNCTIONS = dict(
 )
 
 
-@export
-def calc_price(prices, item: str):
+
+
+def calc_price(prices, item: str = None, *, wrap: bool = False):
     """ Generic Price """
 
     if item is None:
@@ -122,49 +126,35 @@ def calc_price(prices, item: str):
     if func is None:
         raise ValueError(f"Unknown price type {item}")
 
-    return func(prices)
+    return func(prices, wrap=wrap)
 
 
-class PRICE(Indicator):
-    """ Generic Price """
-
-    def __init__(self, item):
-        self.item = item
-
-    def calc(self, prices):
-        result = calc_price(prices, self.item)
-        return result
+@wrap_function(calc_avgprice)
+def AVGPRICE(prices):
+    result = calc_avgprice(prices)
+    return wrap_result(result, prices)
 
 
-class AVGPRICE(Indicator):
-    """ Average Price Indicator """
-
-    def calc(self, prices):
-        result = calc_avgprice(prices)
-        return result
+@wrap_function(calc_typprice)
+def TYPPRICE(prices):
+    result = calc_typprice(prices)
+    return wrap_result(result, prices)
 
 
-class TYPPRICE(Indicator):
-    """ Typical Price Indicator """
-
-    def calc(self, prices):
-        result = calc_typprice(prices)
-        return result
+@wrap_function(calc_wclprice)
+def WCLPRICE(prices):
+    result = calc_wclprice(prices)
+    return wrap_result(result, prices)
 
 
-
-class WCLPRICE(Indicator):
-    """ Weighted Close Price Indicator """
-
-    def calc(self, prices):
-        result = calc_wclprice(prices)
-        return result
+@wrap_function(calc_midprice)
+def MIDPRICE(prices):
+    result = calc_midprice(prices)
+    return wrap_result(result, prices)
 
 
+@wrap_function(calc_price)
+def PRICE(prices, item: str = None):
+    result = calc_price(prices)
+    return wrap_result(result, prices)
 
-class MIDPRICE(Indicator):
-    """ Mid Price Indicator """
-
-    def calc(self, prices):
-        result = calc_midprice(prices)
-        return result

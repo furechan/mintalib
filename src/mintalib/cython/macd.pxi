@@ -3,15 +3,15 @@
 
 macd_result = namedtuple('macd_result', 'macd, macdsignal, macdhist')
 
-@export
-def calc_macd(series, long n1=12, long n2=26, long n3=9, wrap: bool = True):
+
+def calc_macd(series, long n1=12, long n2=26, long n3=9, wrap: bool = False):
     """ Moving Average Convergenge Divergence """
 
-    ema1 = calc_ema(series, n1, wrap=False)
-    ema2 = calc_ema(series, n2, wrap=False)
+    ema1 = calc_ema(series, n1)
+    ema2 = calc_ema(series, n2)
     macd = ema1 - ema2
 
-    signal = calc_ema(macd, n3, wrap=False)
+    signal = calc_ema(macd, n3)
     hist = macd - signal
 
     result = macd_result(macd, signal, hist)
@@ -22,18 +22,9 @@ def calc_macd(series, long n1=12, long n2=26, long n3=9, wrap: bool = True):
     return result
 
 
-class MACD(Indicator):
-    """ Moving Average Convergence Divergence """
-
-    def __init__(self, n1: int = 12, n2: int = 26, n3: int = 9, *, item=None):
-        self.n1 = n1
-        self.n2 = n2
-        self.n3 = n3
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_macd(series, self.n1, self.n2, self.n3, wrap=True)
-        return result
-
+@wrap_function(calc_macd)
+def MACD(series, n1: int = 12, n2: int = 26, n3: int = 9, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_macd(series, n1=n1, n2=n2, n3=n3)
+    return wrap_result(result, series)
 

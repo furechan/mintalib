@@ -1,8 +1,8 @@
 """ Average Directional Index """
 
 
-@export
-def calc_plusdi(prices, long period=14):
+
+def calc_plusdi(prices, long period=14, *, wrap: bool = False):
     """ Plus Directional Index """
 
     high = np.asarray(prices['high'], float)
@@ -14,15 +14,16 @@ def calc_plusdi(prices, long period=14):
     dm = np.where((hm > lm) & (hm > 0), hm, 0)
 
     with np.errstate(divide='ignore'):
-        result = 100 * calc_rma(dm, period, wrap=False) / atr
+        result = 100 * calc_rma(dm, period) / atr
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
 
-@export
-def calc_minusdi(prices, long period=14):
+
+def calc_minusdi(prices, long period=14, *, wrap: bool = False):
     """ Minus Directional Index """
 
     high = np.asarray(prices['high'], float)
@@ -34,15 +35,16 @@ def calc_minusdi(prices, long period=14):
     dm = np.where((lm > hm) & (lm > 0), lm, 0)
 
     with np.errstate(divide='ignore'):
-        result = 100 * calc_rma(dm, period, wrap=False) / atr
+        result = 100 * calc_rma(dm, period) / atr
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
 
-@export
-def calc_adx(prices, long period=14):
+
+def calc_adx(prices, long period=14, *, wrap: bool = False):
     """ Average Directional Index """
 
     high = np.asarray(prices['high'], float)
@@ -57,40 +59,32 @@ def calc_adx(prices, long period=14):
     dm2 = np.where((lm > hm) & (lm > 0), lm, 0)
 
     with np.errstate(divide='ignore'):
-        di1 = 100 * calc_rma(dm1, period, wrap=False) / atr
-        di2 = 100 * calc_rma(dm2, period, wrap=False) / atr
+        di1 = 100 * calc_rma(dm1, period) / atr
+        di2 = 100 * calc_rma(dm2, period) / atr
         dx = 100 * np.abs(di1 - di2) / (di1 + di2)
 
-    result = calc_rma(dx, period, wrap=False)
+    result = calc_rma(dx, period)
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
 
-class ADX(Indicator):
-    """ Average Directional Index """
+@wrap_function(calc_plusdi)
+def PLUSDI(prices, period: int = 14):
+    result = calc_plusdi(prices, period=period)
+    return wrap_result(result, prices)
 
-    def __init__(self, period: int = 14):
-        self.period = period
 
-    def calc(self, data):
-        return calc_adx(data, self.period)
+@wrap_function(calc_minusdi)
+def MINUSDI(prices, period: int = 14):
+    result = calc_minusdi(prices, period=period)
+    return wrap_result(result, prices)
 
-class PLUSDI(Indicator):
-    """ Plus Directional Index """
 
-    def __init__(self, period: int = 14):
-        self.period = period
+@wrap_function(calc_adx)
+def ADX(prices, period: int = 14):
+    result = calc_adx(prices, period=period)
+    return wrap_result(result, prices)
 
-    def calc(self, data):
-        return calc_plusdi(data, self.period)
-
-class MINUSDI(Indicator):
-    """ Minus Directional Index """
-
-    def __init__(self, period: int = 14):
-        self.period = period
-
-    def calc(self, data):
-        return calc_minusdi(data, self.period)

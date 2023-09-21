@@ -2,8 +2,8 @@
 
 
 
-@export
-def calc_cmf(prices, long period = 20):
+
+def calc_cmf(prices, long period = 20, *, wrap: bool = False):
     """ Chaikin Money Flow """
 
     high = np.asarray(prices['high'], float)
@@ -20,19 +20,13 @@ def calc_cmf(prices, long period = 20):
 
         result = num / div
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
 
-class CMF(Indicator):
-    """ Chaikin Money Flow """
-
-    def __init__(self, period: int = 20):
-        self.period = period
-
-    def calc(self, prices):
-        result = calc_cci(prices, period = self.period)
-        return result
-
-
+@wrap_function(calc_cmf)
+def CMF(prices, period: int = 20):
+    result = calc_cmf(prices, period=period)
+    return wrap_result(result, prices)

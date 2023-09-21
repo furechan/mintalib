@@ -1,15 +1,15 @@
 """ Cross Over/Under """
 
 
-@export
-def crossover(series, double level=0.0, bint wrap=True):
+
+def crossover(series, double level=0.0, *, wrap: bool = False):
     """ 1 when data cross over level, 0.0 elsewhere """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, 0, dtype=int)
-    cdef int[:] output = result
+    cdef object result = np.full(size, 0, dtype=float)
+    cdef double[:] output = result
 
     cdef double prev = NAN, value = NAN
 
@@ -30,15 +30,14 @@ def crossover(series, double level=0.0, bint wrap=True):
     return result
 
 
-@export
-def crossunder(series, double level=0.0, bint wrap=True):
+def crossunder(series, double level=0.0, *, wrap: bool = False):
     """ 1 when data cross under level, 0.0 elsewhere """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, 0, dtype=int)
-    cdef int[:] output = result
+    cdef object result = np.full(size, 0, dtype=float)
+    cdef double[:] output = result
 
     cdef double prev = NAN, value = NAN
     cdef long i = 0
@@ -57,3 +56,16 @@ def crossunder(series, double level=0.0, bint wrap=True):
 
     return result
 
+
+@wrap_function(crossover)
+def CROSSOVER(series, level: float = 0.0, *, item: str = None):
+    series = get_series(series, item=item)
+    result = crossover(series, level=level)
+    return wrap_result(result, series)
+
+
+@wrap_function(crossunder)
+def CROSSUNDER(series, level: float = 0.0, *, item: str = None):
+    series = get_series(series, item=item)
+    result = crossunder(series, level=level)
+    return wrap_result(result, series)

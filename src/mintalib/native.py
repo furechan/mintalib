@@ -9,13 +9,9 @@ from .core import calc_ema, calc_rma, calc_atr, calc_trange
 # TODO do we need to rename pandas specific functions to distinguish them the numeric calc functions ?
 # TODO do we need to rename summary calc functions to distinguish from the rolling calc functions ?
 
-
-def export(func):
-    globals().setdefault('__all__', []).append(func.__name__)
-    return func
+# TODO rename calc_logret into calc_logdiff ?
 
 
-@export
 def shift_array(data, n=1, fill_value=np.nan):
     """ Shifts numpy array by given offset """
 
@@ -34,10 +30,7 @@ def shift_array(data, n=1, fill_value=np.nan):
     return result
 
 
-# TODO rename calc_logret into calc_logdiff ?
 
-
-@export
 def calc_logret(series, n=1):
     """ Calculates log return over number of periods """
 
@@ -47,7 +40,6 @@ def calc_logret(series, n=1):
     return result
 
 
-@export
 def date_span(series, basis="365d", *, dropna=True):
     """ series date span relative to basis (requires datetimeindex) """
 
@@ -66,7 +58,6 @@ def date_span(series, basis="365d", *, dropna=True):
     return span
 
 
-@export
 def date_sampling(series, basis="365d", *, dropna=True):
     """ series date sampling relative to basis (requires datetime index) """
 
@@ -90,7 +81,6 @@ def date_sampling(series, basis="365d", *, dropna=True):
     return np.nan
 
 
-@export
 def calc_cagr(price):
     """ Compound Annual Growth Rate (requires datetimeindex) """
 
@@ -115,7 +105,6 @@ def calc_cagr(price):
     return result
 
 
-@export
 def calc_volatility(price):
     """ series volatility (requires a datetimeindex) ! """
 
@@ -130,7 +119,6 @@ def calc_volatility(price):
     return result
 
 
-@export
 def price_density(prices, window=20):
     """ Calculates price density (cf Kaufman) """
 
@@ -142,7 +130,6 @@ def price_density(prices, window=20):
     return result
 
 
-@export
 def tracking_error(prices, series, window=14, relative=True):
     """ Calculates average tracing error of an EMA as multiple of true range """
 
@@ -154,4 +141,3 @@ def tracking_error(prices, series, window=14, relative=True):
         return result / atr
 
     return result
-

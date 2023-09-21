@@ -1,17 +1,14 @@
-""" Indicator Base classes """
+""" Model classes """
 
-from inspect import Signature, Parameter
+from typing import ClassVar
 
 from abc import ABC, abstractmethod
 
-
-def export(func):
-    globals().setdefault('__all__', []).append(func.__name__)
-    return func
+from inspect import Signature, Parameter
 
 
-class ReprMixin:
-    """ Mixin to implement a basic __repr__ based on __init__ signature """
+class LazyRepr:
+    """ Implements a basic __repr__ based on __init__ signature """
 
     def __repr__(self):
         data = self.__dict__
@@ -39,67 +36,37 @@ class ReprMixin:
         return "%s(%s)" % (cname, params)
 
 
-@export
-class Indicator(ABC, ReprMixin):
-    """ Abstact Base class for Indicators """
+class Operand(ABC, LazyRepr):
+    """ Abstact Base class for Operands """
 
-    default_item = 'close'
-    same_scale = False
-    item = None
+    same_scale: ClassVar[bool] = False
 
     @abstractmethod
-    def calc(self, data):
+    def __call__(self, data):
         ...
 
-    def __call__(self, data):
-        return self.calc(data)
-
     def __matmul__(self, other):
         if not callable(other):
-            return self.calc(other)
-
-        return IndicatorComposition(self, other)
-
-    def get_series(self, data):
-        if hasattr(data, 'columns'):
-            item = self.item or self.default_item
-            return data[item]
-
-        elif self.item:
-            raise ValueError("Cannot specify item=f{self.item!r} with a series input!")
-
-        return data
-
-    def clone(self, **kwargs):
-        cls = self.__class__
-        result = cls.__new__(cls)
-        result.__dict__.update(self.__dict__, **kwargs)
-        return result
+            return self(other)
+        return CallableChain(self, other)
 
 
-@export
-class IndicatorComposition(Indicator):
-    """ Composition of Indicators """
+class CallableChain:
+    """ Chain of Callables """
 
-    def __init__(self, *indicators):
-        self.indicators = indicators
+    def __init__(self, *chain):
+        self.chain = chain
 
     def __repr__(self):
-        return " @ ".join(repr(i) for i in self.indicators)
+        return " @ ".join(repr(fn) for fn in self.chain)
+
+    def __call__(self, data):
+        for fn in reversed(self.chain):
+            data = fn(data)
+        return data
 
     def __matmul__(self, other):
         if not callable(other):
-            return self.calc(other)
+            return self(other)
 
-        indicators = *self.indicators, other
-        return self.__class__(*indicators)
-
-    @property
-    def main_indicator(self):
-        if self.indicators:
-            return self.indicators[0]
-
-    def calc(self, data):
-        for indicator in reversed(self.indicators):
-            data = indicator(data)
-        return data
+        return self.__class__(*self.chain, other)

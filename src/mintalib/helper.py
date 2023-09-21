@@ -1,61 +1,46 @@
-""" helper routines """
+""" testing utilities """
 
-import inspect
-import collections
+import numpy as np
 
-import pandas as pd
+from typing import Callable
+
+from inspect import Signature, Parameter
 
 
-def get_info(func):
-    """ information acount function/indicator """
-    info = dict(name=func.__qualname__)
-    params = list(inspect.signature(func).parameters.values())
+def func_type(func: Callable) -> str:
+    signature = Signature.from_callable(func)
+    params = list(signature.parameters.values())
+
     if params and params[0].name in ('series', 'prices'):
-        info.update(input=params[0].name)
-    doc = func.__doc__ or ""
-    description = doc.strip().partition("\n")[0]
-    if description is not None:
-        info.update(description=description)
-    return info
+        return params[0].name
+
+    return 'other'
 
 
-def list_functions():
-    """ list functions """
-
-    from . import functions
-
-    result = []
-    for k, v in vars(functions).items():
-        if callable(v) and v.__name__.isupper():
-            result.append(v)
-
-    result = [get_info(f) for f in result]
-
-    result = pd.DataFrame(result).set_index('name')
-
-    return result
+def sample_param(param: Parameter):
+    if param.name == 'expr':
+        return 'close'
+    if param.name == 'period':
+        return 20
+    raise NameError(param.name)
 
 
-def list_indicators():
-    """ list indicators from core """
+def sample_params(func: Callable) -> dict:
+    kwds = dict()
 
-    from . import indicators
+    signature = Signature.from_callable(func)
+    parameters = list(signature.parameters.values())
 
-    def check_indicator(obj):
-        return isinstance(obj, type) and obj.__name__.isupper()
+    for param in parameters:
+        if param.default != param.empty:
+            continue
+        if param.name in ('series', 'prices'):
+            continue
+        value = sample_param(param)
+        kwds[param.name] = value
 
-    result = []
-    queue = collections.deque([indicators])
+    return kwds
 
-    while queue:
-        item = queue.popleft()
-        for k, v in vars(item).items():
-            if check_indicator(v):
-                queue.append(v)
-                result.append(v)
 
-    result = [get_info(f) for f in result]
-
-    result = pd.DataFrame(result).set_index('name')
-
-    return result
+def compare_results(result, target):
+    return np.allclose(result, target, equal_nan=True)

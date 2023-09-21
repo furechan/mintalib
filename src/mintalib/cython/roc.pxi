@@ -1,14 +1,14 @@
 """ Rate of Change """
 
 
-@export
-def calc_roc(series, long period=1):
+
+def calc_roc(series, long period=1, *, wrap: bool = False):
     """ Rate of Change """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -25,19 +25,15 @@ def calc_roc(series, long period=1):
         roc = v / pv - 1 if pv != 0 else NAN
         output[i] = roc
 
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
 
-class ROC(Indicator):
-    """ Rate of Change """
+@wrap_function(calc_roc)
+def ROC(series, period: int = 1, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_roc(series, period=period)
+    return wrap_result(result, series)
 
-    def __init__(self, period : int = 1, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_roc(series, self.period)
-        return result

@@ -1,8 +1,7 @@
 """ Ganeric Moving Average """
 
 
-@export
-def calc_ma(series, long period, *, ma_type: str = None, wrap: bool = True):
+def calc_ma(series, long period=20, *, ma_type: str = None, wrap: bool = False):
     """
     Generic Moving Average
 
@@ -35,3 +34,11 @@ def calc_ma(series, long period, *, ma_type: str = None, wrap: bool = True):
         return calc_tema(series, period, wrap=wrap)
 
     raise ValueError(f"Invalid ma_type {ma_type}")
+
+
+@wrap_function(calc_ma)
+def MA(series, period: int = 20, *, ma_type: str = None, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_ma(series, period=period, ma_type=ma_type)
+    return wrap_result(result, series)
+

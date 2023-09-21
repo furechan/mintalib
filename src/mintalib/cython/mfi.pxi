@@ -2,8 +2,7 @@
 
 
 
-@export
-def calc_mfi(prices, long period = 14):
+def calc_mfi(prices, long period = 14, *, wrap: bool = False):
     """ Money Flow Index """
 
     prc = calc_typprice(prices)
@@ -17,19 +16,14 @@ def calc_mfi(prices, long period = 14):
         ratio = calc_sum(pflow, period) / calc_sum(nflow, period)
         result = 100 - 100 / (1 + ratio)
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
 
-class MFI(Indicator):
-    """ Money Flow Index """
-
-    def __init__(self, period: int = 14):
-        self.period = period
-
-    def calc(self, prices):
-        result = calc_mfi(prices, period = self.period)
-        return result
-
+@wrap_function(calc_mfi)
+def MFI(prices, period: int = 14):
+    result = calc_mfi(prices, period=period)
+    return wrap_result(result, prices)
 

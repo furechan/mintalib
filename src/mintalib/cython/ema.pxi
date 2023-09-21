@@ -2,8 +2,7 @@
 
 
 
-@export
-def calc_ema(series, long period, *, bint adjust = False, wrap: bool = True):
+def calc_ema(series, long period, *, bint adjust = False, wrap: bool = False):
     """
     Exponential Moving Average
 
@@ -25,7 +24,7 @@ def calc_ema(series, long period, *, bint adjust = False, wrap: bool = True):
     if period <= 1:
         raise ValueError(f"Invalid period value {period}")
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, NAN)
@@ -65,16 +64,9 @@ def calc_ema(series, long period, *, bint adjust = False, wrap: bool = True):
     return result
 
 
-@wrap_indicator(calc_ema)
-class EMA(Indicator):
+@wrap_function(calc_ema)
+def EMA(series, period: int, *, adjust: bool = False, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_ema(series, period=period, adjust=adjust)
+    return wrap_result(result, series)
 
-    same_scale = True
-
-    def __init__(self, period: int, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_ema(series, self.period, wrap=True)
-        return result

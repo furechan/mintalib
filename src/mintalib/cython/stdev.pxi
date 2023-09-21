@@ -1,14 +1,13 @@
 """ Standard Deviation """
 
 
-@export
-def calc_stdev(series, long period=20):
+def calc_stdev(series, long period=20, *, wrap: bool = False):
     """ Standard Deviation """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -36,23 +35,18 @@ def calc_stdev(series, long period=20):
 
         else:
             vxx = (sxx / s - sx * sx / s / s)
-            std = sqrt(vxx) if vxx >= 0 else NAN
+            std = math.sqrt(vxx) if vxx >= 0 else NAN
             output[i + j] = std
 
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
 
 
-class STDEV(Indicator):
-    """ Standard Deviation """
-
-    def __init__(self, period : int = 20, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_stdev(series, self.period)
-        return result
+@wrap_function(calc_stdev)
+def STDEV(series, period: int = 20, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_stdev(series, period=period)
+    return wrap_result(result, series)

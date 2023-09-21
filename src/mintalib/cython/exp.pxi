@@ -1,31 +1,25 @@
 """ Logarithm """
 
 
-@export
-def calc_exp(series):
+
+def calc_exp(series, *, wrap: bool = False):
     """ Exponential """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
 
     with np.errstate(invalid='ignore'):
-        result = np.log(xs)
+        result = np.exp(xs)
 
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
 
+@wrap_function(calc_exp)
+def EXP(series, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_exp(series)
+    return wrap_result(result, series)
 
-class EXP(Indicator):
-    """ Exponential """
 
-    same_scale = True
-
-    def __init__(self, period: int, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_exp(series, self.period)
-        return result

@@ -1,11 +1,13 @@
-""" local project utility """
+""" local project utility functions """
 
 from pathlib import Path
 
 root = Path(__file__).parent.parent.resolve()
 
 srcdir = root.joinpath("src").resolve(strict=True)
+testdir = root.joinpath("tests").resolve(strict=True)
 pkgdir = root.joinpath("src/mintalib").resolve(strict=True)
+
 
 def save_output(fname, data, *, encoding='utf-8', verbose=True):
     """ save text to a file in the output folder """
@@ -15,4 +17,3 @@ def save_output(fname, data, *, encoding='utf-8', verbose=True):
     if verbose:
         print(f"Updating {fname} ...")
     file.write_text(data, encoding=encoding)
-

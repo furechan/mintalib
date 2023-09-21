@@ -1,13 +1,12 @@
 """ Average True Range """
 
 
-@export
-def calc_trange(prices, *, log_prices: bool = False, percent: bool = False, wrap: bool = True):
+def calc_trange(prices, *, log_prices: bool = False, percent: bool = False, wrap: bool = False):
     """ True Range """
 
-    cdef double[:] high = np.asarray(prices['high'], float)
-    cdef double[:] low = np.asarray(prices['low'], float)
-    cdef double[:] close = np.asarray(prices['close'], float)
+    cdef const double[:] high = np.asarray(prices['high'], float)
+    cdef const double[:] low = np.asarray(prices['low'], float)
+    cdef const double[:] close = np.asarray(prices['close'], float)
 
     cdef long size = check_size(high, low, close)
 
@@ -34,7 +33,7 @@ def calc_trange(prices, *, log_prices: bool = False, percent: bool = False, wrap
             lo = pc
 
         if use_log:
-            tr = log(hi) - log(lo)
+            tr = math.log(hi) - math.log(lo)
         elif use_percent:
             tr = 100 * (hi - lo) / cl
         else:
@@ -48,81 +47,67 @@ def calc_trange(prices, *, log_prices: bool = False, percent: bool = False, wrap
     return result
 
 
-@export
-def calc_atr(prices, long period=14):
+
+def calc_atr(prices, long period=14, *, wrap: bool = False):
     """ Average True Range """
 
     trange = calc_trange(prices)
-    result = calc_rma(trange, period, wrap=False)
+    result = calc_rma(trange, period)
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
 
-@export
-def calc_natr(prices, long period=14):
+
+def calc_natr(prices, long period=14, *, wrap: bool = False):
     """ Average True Range (normalized) """
 
     trange = calc_trange(prices, percent=True)
-    result = calc_rma(trange, period, wrap=False)
+    result = calc_rma(trange, period)
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
 
-@export
-def calc_latr(prices, long period=14):
+
+def calc_latr(prices, long period=14, *, wrap: bool = False):
     """ Average True Range (logarithmic) """
 
     cdef bint yes = True
 
     trange = calc_trange(prices, log_prices=True)
-    result = calc_rma(trange, period, wrap=False)
+    result = calc_rma(trange, period)
 
-    result = wrap_result(result, prices)
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 
 
-
-class TRANGE(Indicator):
-    """ True Range """
-
-    def __init__(self):
-        pass
-
-    def calc(self, data):
-        return calc_trange(data, wrap=True)
+@wrap_function(calc_trange)
+def TRANGE(prices, *, log_prices: bool = False, percent: bool = False):
+    result = calc_trange(prices, log_prices=log_prices, percent=percent)
+    return wrap_result(result, prices)
 
 
-class ATR(Indicator):
-    """ Average True Range """
-
-    def __init__(self, period: int = 14):
-        self.period = period
-
-    def calc(self, data):
-        return calc_atr(data, self.period)
+@wrap_function(calc_atr)
+def ATR(prices, period: int = 14):
+    result = calc_atr(prices, period=period)
+    return wrap_result(result, prices)
 
 
-class NATR(Indicator):
-    """ Average True Range (normalized) """
+@wrap_function(calc_natr)
+def NATR(prices, period: int = 14):
+    result = calc_natr(prices, period=period)
+    return wrap_result(result, prices)
 
-    def __init__(self, period : int = 14):
-        self.period = period
 
-    def calc(self, data):
-        return calc_natr(data, self.period)
-
-class LATR(Indicator):
-    """ Average True Range (log prices) """
-
-    def __init__(self, period : int = 14):
-        self.period = period
-
-    def calc(self, data):
-        return calc_latr(data, self.period)
-
+@wrap_function(calc_latr)
+def LATR(prices, period: int = 14):
+    result = calc_latr(prices, period=period)
+    return wrap_result(result, prices)
 

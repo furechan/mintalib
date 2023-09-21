@@ -1,6 +1,30 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools", "cython"]
 build-backend = "setuptools.build_meta"
 
-[tool.invoke.build]
-distrib = "sdist"
+[project]
+name = "mintalib"
+dynamic = [ "version", "readme" ]
+requires-python = ">=3.7"
+description = "Minimal Technical Analysis Library for Python"
+urls = { homepage = "https://github.com/furechan/mintalib" }
+authors = [ { name = "Furechan", email = "furechan@xsmail.com"} ]
+license = { file = "LICENSE.txt" }
+dependencies = [ "numpy", "pandas" ]
+keywords = [ "python", "cython", "finance", "technical-analysis" ]
+classifiers = [
+    "Topic :: Office/Business :: Financial",
+    "Development Status :: 2 - Pre-Alpha",
+    "Programming Language :: Python :: 3"
+]
+
+
+[tool.setuptools.dynamic]
+version = { attr = "mintalib.__version__" }
+readme = { file = ["README.md"], content-type = "text/markdown" }
+
+
+[tool.pytest.ini_options]
+addopts = [ "-p no:cacheprovider" ]
+testpaths = [ "tests" ]
+

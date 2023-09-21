@@ -1,14 +1,13 @@
 """ Rolling Maximum """
 
 
-@export
-def calc_max(series, long period):
+def calc_max(series, long period, *, wrap: bool = False):
     """ Rolling Maximum """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -31,19 +30,15 @@ def calc_max(series, long period):
 
         output[i + j] = res
 
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
 
-class MAX(Indicator):
-    """ Rolling Maximum """
+@wrap_function(calc_max)
+def MAX(series, period: int, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_max(series, period=period)
+    return wrap_result(result, series)
 
-    def __init__(self, period : int, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_max(series, self.period)
-        return result

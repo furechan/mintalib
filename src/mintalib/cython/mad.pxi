@@ -1,14 +1,14 @@
 """ Standard Deviation """
 
 
-@export
-def calc_mad(series, long period):
+
+def calc_mad(series, long period=20, *, wrap: bool = False):
     """ Mean Absolute Deviation """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -35,26 +35,22 @@ def calc_mad(series, long period):
         sx, count = 0, 0
         for j in range(period):
             x = xs[i + j]
-            sx += fabs(x - mx)
+            sx += math.fabs(x - mx)
             count += 1
 
         res = sx / count
         output[i + j] = res
 
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
 
+@wrap_function(calc_mad)
+def MAD(series, period: int = 20, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_mad(series, period=period)
+    return wrap_result(result, series)
 
-class MAD(Indicator):
-    """ Mean Absolue Deviation """
 
-    def __init__(self, period : int, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_mad(series, self.period)
-        return result

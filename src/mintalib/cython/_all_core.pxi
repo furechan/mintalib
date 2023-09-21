@@ -1,9 +1,8 @@
-""" sorted includes """
+""" sorted includes for core.pyx """
 
 include "_common.pxi"
 
 include "price.pxi"
-include "volume.pxi"
 
 include "cross.pxi"
 include "flags.pxi"
@@ -54,4 +53,5 @@ include "stoch.pxi"
 include "streak.pxi"
 
 include "eval.pxi"
+
 

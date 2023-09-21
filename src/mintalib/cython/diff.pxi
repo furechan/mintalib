@@ -2,11 +2,11 @@
 
 
 
-@export
-def calc_diff(series, long period=1, wrap: bool = True):
+
+def calc_diff(series, long period=1, *, wrap: bool = False):
     """ Difference """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -29,14 +29,9 @@ def calc_diff(series, long period=1, wrap: bool = True):
     return result
 
 
-class DIFF(Indicator):
-    """ Difference """
+@wrap_function(calc_diff)
+def DIFF(series, period: int = 1, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_diff(series, period=period)
+    return wrap_result(result, series)
 
-    def __init__(self, period: int = 1, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_diff(series, self.period, wrap=True)
-        return result

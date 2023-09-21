@@ -1,17 +1,19 @@
-""" Expression Eval """
+""" Expression eval """
 
 
-class EVAL(Indicator):
+def calc_eval(prices, expr: str):
     """
     Expression Eval (pandas only)
 
     Args:
-        expr (str) : expression to evaluate on the dataframe, required
+        expr (str) : expression to evaluate on the prices dataframe
     """
 
-    def __init__(self, expr):
-        self.expr = expr
+    return prices.eval(expr).astype(float)
 
-    def calc(self, prices):
-        return prices.eval(self.expr).astype(float)
+
+@wrap_function(calc_eval)
+def EVAL(prices, expr: str):
+    result = calc_eval(prices, expr=expr)
+    return wrap_result(result, prices)
 

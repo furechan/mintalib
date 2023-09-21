@@ -12,7 +12,7 @@ cdef enum:
     SLOPE_OPTION_BADOPTION = 6
 
 
-@export
+
 class SlopeOption(IntEnum):
     """ Slope Option Enumeration """
     def __repr__(self):
@@ -26,15 +26,15 @@ class SlopeOption(IntEnum):
     FORECAST = 5
 
 
+# TODO add RVALUE, ERROR, FORECAST, ...
 
-@export
-def calc_slope(series, long period=20, *, int option=0, int offset=0):
+def calc_slope(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
     """ Slope (time linear regression) """
 
     if option < 0 or option >= SLOPE_OPTION_BADOPTION:
         raise ValueError("Invalid option %d" % option)
 
-    cdef double[:] ys = np.asarray(series, float)
+    cdef const double[:] ys = np.asarray(series, float)
     cdef long size = ys.size
 
     cdef object result = np.full(size, np.nan)
@@ -81,9 +81,9 @@ def calc_slope(series, long period=20, *, int option=0, int offset=0):
             vyy = (syy / s - sy * sy / s / s)
             slope = vxy / vxx
             intercept = (sy - slope * sx) / s
-            corr = vxy / sqrt(vxx * vyy) if vyy > 0 else NAN
+            corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN
             mse = vyy * (1 - corr * corr)
-            rmse = sqrt(mse) if mse >= 0 else NAN
+            rmse = math.sqrt(mse) if mse >= 0 else NAN
 
             if option == SLOPE_OPTION_SLOPE:
                 output[j] = slope
@@ -99,65 +99,16 @@ def calc_slope(series, long period=20, *, int option=0, int offset=0):
                 forecast = intercept + slope * (period + offset)
                 output[j] = forecast
 
-
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
 
 
+@wrap_function(calc_slope)
+def SLOPE(series, period: int = 20, *, option: int = 0, offset: int = 0, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_slope(series, period=period, option=option, offset=offset)
+    return wrap_result(result, series)
 
-class SLOPE(Indicator):
-    """ Slope (time linear regression) """
-
-    def __init__(self, period : int = 20, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_slope(series, self.period, option=SLOPE_OPTION_SLOPE)
-        return result
-
-
-    class RVALUE(Indicator):
-        """ Slope R-Value """
-
-        def __init__(self, period: int = 20, *, item=None):
-            self.period = period
-            self.item = item
-
-        def calc(self, data):
-            series = self.get_series(data)
-            result = calc_slope(series, self.period, option=SLOPE_OPTION_RVALUE)
-            return result
-
-
-
-    class ERROR(Indicator):
-        """ Slope Root Mean Square Error """
-
-        def __init__(self, period: int = 20, *, item=None):
-            self.period = period
-            self.item = item
-
-        def calc(self, data):
-            series = self.get_series(data)
-            result = calc_slope(series, self.period, option=SLOPE_OPTION_RMSERROR)
-            return result
-
-
-    class FORECAST(Indicator):
-        """ Slope Forecast """
-
-        same_scale = True
-
-        def __init__(self, period: int = 20, offset: int = 0, *, item=None):
-            self.period = period
-            self.offset = offset
-            self.item = item
-
-        def calc(self, data):
-            series = self.get_series(data)
-            result = calc_slope(series, self.period, offset=self.offset, option=SLOPE_OPTION_FORECAST)
-            return result

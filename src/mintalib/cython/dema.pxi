@@ -1,12 +1,12 @@
 """ Double Exponential Moving Average """
 
 
-@export
-def calc_dema(series, long period, wrap: bool = True):
+
+def calc_dema(series, long period, wrap: bool = False):
     """ Double Exponential Moving Average """
 
-    ema1 = calc_ema(series, period, wrap=False)
-    ema2 = calc_ema(ema1, period, wrap=False)
+    ema1 = calc_ema(series, period)
+    ema2 = calc_ema(ema1, period)
 
     result = 2 * ema1 - ema2
 
@@ -16,21 +16,9 @@ def calc_dema(series, long period, wrap: bool = True):
     return result
 
 
-class DEMA(Indicator):
-    """
-    Double Exponential Moving Average
+@wrap_function(calc_dema)
+def DEMA(series, period: int, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_dema(series, period=period)
+    return wrap_result(result, series)
 
-    Args:
-        period (int) : time period, default 20
-    """
-
-    same_scale = True
-
-    def __init__(self, period: int, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_dema(series, self.period, wrap=True)
-        return result

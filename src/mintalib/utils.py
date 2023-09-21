@@ -1,48 +1,38 @@
 """ utilities """
 
-import re
 
 import numpy as np
 import pandas as pd
 import datetime as dt
 
-
-def export(func):
-    globals().setdefault('__all__', []).append(func.__name__)
-    return func
+from pathlib import Path
 
 
-def wrap_function(source):
-    """ update function with documentation from source """
-    doc = source.__doc__
-
-    if doc is not None:
-        ignore = r"(?xm) \n \s+ (wrap) \s+ [^\n:]* : [^\n]+ \n"
-        doc = re.sub(ignore, '', doc)
-
-    def decorator(func):
-        func.__doc__ = doc
-        return func
-
-    return decorator
+def data_file(name):
+    """ local data file path """
+    data_folder = Path(__file__).joinpath("../data").resolve(True)
+    path = data_folder.joinpath(name)
+    return path
 
 
-def wrap_accessor(source):
-    """ update accessor with documentation from source """
-    doc = source.__doc__
+def sample_prices(item: str = None, *, skip=0):
+    """ sample prices dataframe or series """
 
-    if doc is not None:
-        ignore = r"(?xm) \n \s+ (series|prices|wrap) \s+ [^\n:]* : [^\n]+ \n"
-        doc = re.sub(ignore, '', doc)
+    file = data_file("sample-prices.csv")
+    prices = pd.read_csv(file, index_col=0, parse_dates=True)
 
-    def decorator(func):
-        func.__doc__ = doc
-        return func
+    if skip > 0:
+        prices.iloc[:skip] = np.nan
 
-    return decorator
+    if skip < 0:
+        prices.iloc[skip:] = np.nan
+
+    if item is not None:
+        return prices[item]
+
+    return prices
 
 
-@export
 def date_range(count=260, freq='B', start_date=None, end_date=None):
     """ quick date_range utility (wrapper around pandas function of the same name) """
 
@@ -60,11 +50,16 @@ def date_range(count=260, freq='B', start_date=None, end_date=None):
     return dates
 
 
-@export
-def random_walk(count=260, freq='B', start_value=100.0,
-                volatility=0.20, fwd_rate=0.10,
-                start_date=None, end_date=None,
-                name=None, seed=None):
+def random_walk(count: int = 260,
+                freq: str = 'B',
+                start_value: float = 100.0,
+                volatility: float = 0.20,
+                fwd_rate : float = 0.10,
+                skip: int = 0,
+                start_date=None,
+                end_date=None,
+                name=None,
+                seed=None):
     """ generates a single series of random walk prices """
 
     generator = np.random.default_rng(seed)
@@ -77,15 +72,17 @@ def random_walk(count=260, freq='B', start_value=100.0,
     std = volatility / np.sqrt(sampling)
 
     change = generator.standard_normal(count - 1) * std + np.log(1 + fwd)
-    price = start_value * np.exp(np.r_[0.0, change.cumsum(0)])
+    prices = start_value * np.exp(np.r_[0.0, change.cumsum(0)])
 
-    series = pd.Series(price, index=dates.values, name=name).rename_axis(index='date')
+    if skip:
+        prices[:skip] = np.nan
 
-    return series
+    result = pd.Series(prices, index=dates.values, name=name).rename_axis(index='date')
+
+    return result
 
 
-@export
-def sample_prices(count=260, freq='B', start_value=100.0,
+def random_prices(count=260, freq='B', start_value=100.0,
                   volatility=0.20, fwd_rate=0.10,
                   start_date=None, end_date=None,
                   seed=None, index=True, as_dict=False):

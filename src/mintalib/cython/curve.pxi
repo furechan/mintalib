@@ -11,7 +11,7 @@ cdef enum:
     CURVE_OPTION_BADOPTION = 5
 
 
-@export
+
 class CurveOption(IntEnum):
     """ Slope Option Enumeration """
     def __repr__(self):
@@ -25,14 +25,14 @@ class CurveOption(IntEnum):
 
 
 
-@export
-def calc_curve(series, long period=20, *, int option=0, int offset=0):
+
+def calc_curve(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
     """ Curve (time curvilinear regression) """
 
     if option < 0 or option >= CURVE_OPTION_BADOPTION:
         raise ValueError("Invalid option %d" % option)
 
-    cdef double[:] zs = np.asarray(series, float)
+    cdef const double[:] zs = np.asarray(series, float)
     cdef long size = zs.size
 
     cdef object result = np.full(size, np.nan)
@@ -95,7 +95,7 @@ def calc_curve(series, long period=20, *, int option=0, int offset=0):
 
         slope = vxz / vxx
 
-        if option == SLOPE:
+        if option == CURVE_OPTION_SLOPE:
             output[j] = slope
             continue
 
@@ -122,9 +122,9 @@ def calc_curve(series, long period=20, *, int option=0, int offset=0):
 
         curve = vyz / vyy
         intercept = (sz - curve * sy) / s
-        rvalue = vyz / sqrt(vyy * vzz) if vyy * vzz > 0 else NAN
+        rvalue = vyz / math.sqrt(vyy * vzz) if vyy * vzz > 0 else NAN
         mse = (1.0 - rvalue * rvalue) * vzz
-        rmse = sqrt(mse) if mse >= 0 else NAN
+        rmse = math.sqrt(mse) if mse >= 0 else NAN
 
 
         if option == CURVE_OPTION_CURVE:
@@ -143,48 +143,15 @@ def calc_curve(series, long period=20, *, int option=0, int offset=0):
             output[j] = rmse
             continue
 
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
 
 
-class CURVE(Indicator):
-    """ Curve (time curvilinear regression) """
-
-    def __init__(self, period : int = 20, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_curve(series, self.period, option=CURVE_OPTION_CURVE)
-        return result
-
-
-    class RVALUE(Indicator):
-        """ Curve R-Value """
-
-        def __init__(self, period: int = 20, *, item=None):
-            self.period = period
-            self.item = item
-
-        def calc(self, data):
-            series = self.get_series(data)
-            result = calc_slope(series, self.period, option=CURVE_OPTION_RVALUE)
-            return result
-
-
-    class ERROR(Indicator):
-        """ Curve Root Mean Square Error """
-
-        def __init__(self, period: int = 20, *, item=None):
-            self.period = period
-            self.item = item
-
-        def calc(self, data):
-            series = self.get_series(data)
-            result = calc_slope(series, self.period, option=CURVE_OPTION_RMSERROR)
-            return result
-
-
+@wrap_function(calc_curve)
+def CURVE(series, period: int = 20, *, option: int = 0, offset: int = 0, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_curve(series, period=period, option=option, offset=offset)
+    return wrap_result(result, series)

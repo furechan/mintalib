@@ -2,14 +2,13 @@
 
 
 
-@export
-def calc_sum(series, long period, wrap: bool = True):
+def calc_sum(series, long period, *, wrap: bool = False):
     """ Rolling Sum """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -44,17 +43,9 @@ def calc_sum(series, long period, wrap: bool = True):
 
 
 
+@wrap_function(calc_sum)
+def SUM(series, period: int, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_sum(series, period=period)
+    return wrap_result(result, series)
 
-class SUM(Indicator):
-    """ Rolling Sum """
-
-    same_scale = True
-
-    def __init__(self, period: int, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_sum(series, self.period)
-        return result

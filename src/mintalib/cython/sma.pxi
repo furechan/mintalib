@@ -2,14 +2,19 @@
 
 
 
-@export
-def calc_sma(series, long period, wrap: bool = True):
-    """ Simple Moving Average """
+def calc_sma(series, long period, *, wrap: bool = False):
+    """
+    Simple Moving Average
+
+    Args:
+        period (int) : time period, required
+    """
+
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -43,21 +48,9 @@ def calc_sma(series, long period, wrap: bool = True):
     return result
 
 
-class SMA(Indicator):
-    """
-    Simple Moving Average
+@wrap_function(calc_sma)
+def SMA(series, period: int, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_sma(series, period=period)
+    return wrap_result(result, series)
 
-    Args:
-        period (int) : time period, required
-    """
-
-    same_scale = True
-
-    def __init__(self, period: int, *, item: str = None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_sma(series, self.period, wrap=True)
-        return result

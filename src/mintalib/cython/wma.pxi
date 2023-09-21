@@ -1,14 +1,14 @@
 """ Weighted Moving Average """
 
 
-@export
-def calc_wma(series, long period, wrap: bool = True):
+
+def calc_wma(series, long period, *, wrap: bool = False):
     """ Weighted Moving Average """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -39,16 +39,9 @@ def calc_wma(series, long period, wrap: bool = True):
     return result
 
 
-class WMA(Indicator):
-    """ Weighted Moving Average """
+@wrap_function(calc_wma)
+def WMA(series, period: int, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_wma(series, period=period)
+    return wrap_result(result, series)
 
-    same_scale = True
-
-    def __init__(self, period: int, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_wma(series, self.period, wrap=True)
-        return result

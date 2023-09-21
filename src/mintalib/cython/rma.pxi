@@ -3,7 +3,7 @@
 
 
 
-def calc_rma(series, long period, wrap: bool = True):
+def calc_rma(series, long period, *, wrap: bool = False):
     """
     Rolling Moving Average (RSI Style)
 
@@ -18,7 +18,7 @@ def calc_rma(series, long period, wrap: bool = True):
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, NAN)
@@ -51,22 +51,10 @@ def calc_rma(series, long period, wrap: bool = True):
     return result
 
 
+@wrap_function(calc_rma)
+def RMA(series, period: int, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_rma(series, period=period)
+    return wrap_result(result, series)
 
-class RMA(Indicator):
-    """
-    Rolling Moving Average (RSI Style)
 
-    Args:
-        period (int) : time period, required
-    """
-
-    same_scale = True
-
-    def __init__(self, period: int, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_rma(series, self.period, wrap=True)
-        return result

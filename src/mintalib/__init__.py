@@ -1,4 +1,4 @@
-from .utils import *
+# mintalib package
 
 __version__ = '0.0.4'
 

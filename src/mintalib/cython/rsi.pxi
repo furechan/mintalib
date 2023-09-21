@@ -2,11 +2,11 @@
 
 
 
-@export
-def calc_rsi(series, long period=14):
+
+def calc_rsi(series, long period=14, *, wrap: bool = False):
     """ Relative Strength Index """
 
-    cdef double[:] xs = np.asarray(series, float)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
@@ -46,20 +46,15 @@ def calc_rsi(series, long period=14):
         if not isnan(rsi):
             output[i] = rsi
 
-    result = wrap_result(result, series)
+    if wrap:
+        result = wrap_result(result, series)
 
     return result
 
 
-class RSI(Indicator):
-    """ Relative Streng Index """
-
-    def __init__(self, period : int = 14, *, item=None):
-        self.period = period
-        self.item = item
-
-    def calc(self, data):
-        series = self.get_series(data)
-        result = calc_rsi(series, self.period)
-        return result
+@wrap_function(calc_rsi)
+def RSI(series, period: int = 14, *, item: str = None):
+    series = get_series(series, item=item)
+    result = calc_rsi(series, period=period)
+    return wrap_result(result, series)
 

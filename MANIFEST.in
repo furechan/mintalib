@@ -1,5 +1,9 @@
-# Exclude all pyx files
-# recursive-exclude * *.pyx
+# Include cython related files
+recursive-include src *.c *.pxi *.pyx
 
-# Include testing data files
-# include src/mintalib/testing/data/*.csv
+# Include data files
+recursive-include src *.csv
+
+# Include test files
+recursive-include tests *.json
+
