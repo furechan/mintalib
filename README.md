@@ -25,7 +25,7 @@ all in **lower case**.
 
 ## Functions
 
-Indicators are available as functions that can be accessed via the `funcs` module.
+Indicators are available as functions that can be accessed via the `core` module.
 All function names like `EMA`, `SMA`, `ROC`, `MACD`, ... are **upper case**.
 
 Some functions like `ATR` require prices data, while other functions like `SMA` work on a series.
@@ -37,7 +37,7 @@ pandas based inputs will yield pandas based results with a matching datetime ind
 
 ```python
 from mintalib.utils import sample_prices
-from mintalib.funcs import SMA, MAX
+from mintalib.core import SMA, MAX
 
 prices = sample_prices()
 

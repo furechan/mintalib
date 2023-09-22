@@ -1,13 +1,13 @@
 import pytest
 
-from mintalib import funcs, opers, utils
+from mintalib import core, opers, utils
 
 from mintalib.helper import func_type, sample_params
 
 
 def list_funcs():
     return [
-        k for k, v in vars(funcs).items()
+        k for k, v in vars(core).items()
         if k.isupper() and callable(v)
     ]
 
@@ -23,7 +23,7 @@ def list_opers():
 def test_func(name):
     print("test_func", name)
 
-    func = getattr(funcs, name)
+    func = getattr(core, name)
 
     ftype = func_type(func)
     assert ftype in ('series', 'prices')

@@ -2,6 +2,7 @@
 requires = ["setuptools", "cython"]
 build-backend = "setuptools.build_meta"
 
+
 [project]
 name = "mintalib"
 dynamic = [ "version", "readme" ]
