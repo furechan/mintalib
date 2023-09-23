@@ -1,4 +1,7 @@
-""" reference implementation of indicators for testing purposes """
+"""
+    Alternate implementation of indicators for reference/testing purposes
+    Calculations are mostly pandas based
+"""
 
 import numpy as np
 import pandas as pd
@@ -29,16 +32,12 @@ def calc_sum(series, period: int):
 
 def calc_min(series, period: int):
     """ Rolling Minimum """
-    result = series.rolling(window=period, min_periods=0).min()
-    result[:period - 1] = np.nan
-    return result
+    return series.rolling(window=period).min()
 
 
 def calc_max(series, period: int):
     """ Rolling Maximum """
-    result = series.rolling(window=period, min_periods=0).max()
-    result[:period - 1] = np.nan
-    return result
+    return series.rolling(window=period).max()
 
 
 def calc_stdev(series, period: int):
@@ -46,7 +45,7 @@ def calc_stdev(series, period: int):
     return series.rolling(window=period).std(ddof=0)
 
 
-def calc_mad(series, period):
+def calc_mad(series, period: int):
     """ Mean Aasolute deviation"""
     mad = lambda s: np.mean(np.fabs(s - np.mean(s)))
     return series.rolling(window=period).apply(mad, raw=True)
@@ -63,30 +62,7 @@ def calc_wma(series, period: int = 10):
     return series.rolling(period).apply(average)
 
 
-def slow_rma(series, period):
-    """ RSI style moving average """
-    if period <= 0:
-        raise ValueError(f"Invalid period {period}")
-
-    result = []
-    rma = np.nan
-    total = count = 0
-    for v in series:
-        if np.isnan(v):
-            pass
-        elif count < period:
-            total += v
-            count += 1
-            if count >= period:
-                rma = total / count
-        else:
-            rma += (v - rma) / period
-        result.append(rma)
-    result = pd.Series(result, index=series.index)
-    return result
-
-
-def calc_macd(series, n1=12, n2=26, n3=9):
+def calc_macd(series, n1: int = 12, n2: int = 26, n3: int = 9):
     """ Moving Averrage Convergence Divergence """
 
     ema1 = calc_ema(series, n1)
@@ -101,7 +77,7 @@ def calc_macd(series, n1=12, n2=26, n3=9):
     return pd.DataFrame(result)
 
 
-def calc_ppo(series, n1=12, n2=26, n3=9):
+def calc_ppo(series, n1: int = 12, n2: int = 26, n3: int = 9):
     """ Price percentage oscillator """
 
     ema1 = calc_ema(series, n1)
@@ -116,7 +92,7 @@ def calc_ppo(series, n1=12, n2=26, n3=9):
     return pd.DataFrame(result)
 
 
-def calc_slope(series, period=20):
+def calc_slope(series, period: int = 20):
     """ Slope (time linear regression) """
 
     xx = np.arange(period) - (period - 1) / 2.0
@@ -130,8 +106,8 @@ def calc_slope(series, period=20):
     return series.rolling(period).apply(func, raw=True)
 
 
-def calc_curve(series, period=20):
-    """ Slope (time curvilinear regression) """
+def calc_curve(series, period: int = 20):
+    """ Curve (time curvilinear regression) """
     xx = np.arange(period) - (period - 1.0) / 2.0
 
     def func(xs):

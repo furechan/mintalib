@@ -1,5 +1,6 @@
 """ Price """
 
+# TODO rename item to price_type
 
 
 def calc_avgprice(prices, *, wrap: bool = False):
@@ -119,14 +120,19 @@ def calc_price(prices, item: str = None, *, wrap: bool = False):
     if item is None:
         item = 'close'
 
-    if item in prices:
-        return prices[item]
+    if item in ('open', 'high', 'low', 'close'):
+        result =  np.asarray(prices[item], float)
+        if wrap:
+            result = wrap_result(result, prices)
+        return result
 
-    func = PRICE_FUNCTIONS.get(item)
-    if func is None:
-        raise ValueError(f"Unknown price type {item}")
+    price_func = PRICE_FUNCTIONS.get(item)
+    if price_func is not None:
+        return price_func(prices, wrap=wrap)
 
-    return func(prices, wrap=wrap)
+    raise ValueError(f"Unknown price type {item}")
+
+
 
 
 @wrap_function(calc_avgprice)
@@ -155,6 +161,6 @@ def MIDPRICE(prices):
 
 @wrap_function(calc_price)
 def PRICE(prices, item: str = None):
-    result = calc_price(prices)
+    result = calc_price(prices, item=item)
     return wrap_result(result, prices)
 

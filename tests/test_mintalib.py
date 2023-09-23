@@ -1,7 +1,8 @@
 import pytest
 
-from mintalib import core, opers, utils
+from mintalib import core, opers
 
+from mintalib.samples import sample_prices
 from mintalib.helper import func_type, sample_params
 
 
@@ -31,7 +32,7 @@ def test_func(name):
     kwds = sample_params(func)
 
     item = 'close' if ftype == 'series' else None
-    data = utils.sample_prices(item)
+    data = sample_prices(item)
 
     result = func(data, **kwds)
     assert result is not None
@@ -47,7 +48,7 @@ def test_oper(name):
 
     assert callable(func)
 
-    data = utils.sample_prices()
+    data = sample_prices()
 
     result = func(data)
     assert result is not None

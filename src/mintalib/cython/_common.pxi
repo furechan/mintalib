@@ -41,7 +41,7 @@ def dataframe_like(data):
     return  False
 
 
-def get_series(data, item=None, *, default_item='close'):
+def get_series(data, item: str = None, *, default_item: str = 'close'):
     """ get series from either series/prices data """
 
     if dataframe_like(data):
@@ -75,7 +75,7 @@ def wrap_result(result, source):
 
     pname = getattr(source, '__module__', '').partition('.')[0]
 
-    if isinstance(result, tuple):
+    if isinstance(result, tuple) and hasattr(result, '_asdict'):
         result = result._asdict()
 
     if pname == 'pandas':

@@ -8,7 +8,7 @@ from inspect import Signature, Parameter
 
 
 class LazyRepr:
-    """ Implements a basic __repr__ based on __init__ signature """
+    """Implements a basic __repr__ based on __init__ signature"""
 
     def __repr__(self):
         data = self.__dict__
@@ -37,7 +37,7 @@ class LazyRepr:
 
 
 class Operand(ABC, LazyRepr):
-    """ Abstact Base class for Operands """
+    """Abstact Base class for Operands"""
 
     same_scale: ClassVar[bool] = False
 
@@ -52,7 +52,7 @@ class Operand(ABC, LazyRepr):
 
 
 class CallableChain:
-    """ Chain of Callables """
+    """Chain of Callables"""
 
     def __init__(self, *chain):
         self.chain = chain

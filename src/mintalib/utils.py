@@ -1,36 +1,8 @@
 """ utilities """
 
-
 import numpy as np
 import pandas as pd
 import datetime as dt
-
-from pathlib import Path
-
-
-def data_file(name):
-    """ local data file path """
-    data_folder = Path(__file__).joinpath("../data").resolve(True)
-    path = data_folder.joinpath(name)
-    return path
-
-
-def sample_prices(item: str = None, *, skip=0):
-    """ sample prices dataframe or series """
-
-    file = data_file("sample-prices.csv")
-    prices = pd.read_csv(file, index_col=0, parse_dates=True)
-
-    if skip > 0:
-        prices.iloc[:skip] = np.nan
-
-    if skip < 0:
-        prices.iloc[skip:] = np.nan
-
-    if item is not None:
-        return prices[item]
-
-    return prices
 
 
 def date_range(count=260, freq='B', start_date=None, end_date=None):
@@ -54,7 +26,7 @@ def random_walk(count: int = 260,
                 freq: str = 'B',
                 start_value: float = 100.0,
                 volatility: float = 0.20,
-                fwd_rate : float = 0.10,
+                fwd_rate: float = 0.10,
                 skip: int = 0,
                 start_date=None,
                 end_date=None,

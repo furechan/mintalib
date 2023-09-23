@@ -13,7 +13,7 @@ from .core import calc_ema, calc_rma, calc_atr, calc_trange
 
 
 def shift_array(data, n=1, fill_value=np.nan):
-    """ Shifts numpy array by given offset """
+    """Shift numpy array by given offset"""
 
     xs = np.asarray(data)
     result = np.empty_like(xs)
@@ -32,7 +32,7 @@ def shift_array(data, n=1, fill_value=np.nan):
 
 
 def calc_logret(series, n=1):
-    """ Calculates log return over number of periods """
+    """Calculate log return over number of periods"""
 
     xs = np.asarray(series)
     ys = shift_array(xs, n)
@@ -59,7 +59,7 @@ def date_span(series, basis="365d", *, dropna=True):
 
 
 def date_sampling(series, basis="365d", *, dropna=True):
-    """ series date sampling relative to basis (requires datetime index) """
+    """series date sampling relative to basis (requires datetime index)"""
 
     if dropna:
         series = series.dropna()
@@ -82,7 +82,7 @@ def date_sampling(series, basis="365d", *, dropna=True):
 
 
 def calc_cagr(price):
-    """ Compound Annual Growth Rate (requires datetimeindex) """
+    """Compound Annual Growth Rate (requires datetimeindex)"""
 
     price = price.dropna()
 
@@ -106,7 +106,7 @@ def calc_cagr(price):
 
 
 def calc_volatility(price):
-    """ series volatility (requires a datetimeindex) ! """
+    """series volatility (requires a datetimeindex)"""
 
     sampling = date_sampling(price, "365d")
 
@@ -120,7 +120,7 @@ def calc_volatility(price):
 
 
 def price_density(prices, window=20):
-    """ Calculates price density (cf Kaufman) """
+    """Price density (cf Kaufman)"""
 
     trading_range = (prices.high - prices.low).abs().rolling(window).sum()
     high = prices.high.rolling(window).max()
@@ -131,7 +131,7 @@ def price_density(prices, window=20):
 
 
 def tracking_error(prices, series, window=14, relative=True):
-    """ Calculates average tracing error of an EMA as multiple of true range """
+    """ Vverage tracing error of an EMA as multiple of true range"""
 
     delta = np.abs(series - prices.close)
     result = calc_rma(delta, window, wrap=True)

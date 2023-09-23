@@ -1,6 +1,5 @@
 """ testing utilities """
 
-import numpy as np
 
 from typing import Callable
 
@@ -8,6 +7,8 @@ from inspect import Signature, Parameter
 
 
 def func_type(func: Callable) -> str:
+    """Function type according to its first parameter (series or prices)"""
+
     signature = Signature.from_callable(func)
     params = list(signature.parameters.values())
 
@@ -18,6 +19,8 @@ def func_type(func: Callable) -> str:
 
 
 def sample_param(param: Parameter):
+    """Sample value for parameters without ac default value"""
+
     if param.name == 'expr':
         return 'close'
     if param.name == 'period':
@@ -26,6 +29,8 @@ def sample_param(param: Parameter):
 
 
 def sample_params(func: Callable) -> dict:
+    """Dictionary of sample parameter values"""
+
     kwds = dict()
 
     signature = Signature.from_callable(func)
@@ -41,6 +46,3 @@ def sample_params(func: Callable) -> dict:
 
     return kwds
 
-
-def compare_results(result, target):
-    return np.allclose(result, target, equal_nan=True)

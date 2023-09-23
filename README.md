@@ -4,22 +4,28 @@
 This library offers a short list of technical analysis indicators
 implemented in cython for improved performance.
 
-The library is built mainly around `numpy` arrays and it is compatible with `pandas` dataframes and series.
+It is built around `numpy` arrays and aims to be compatible
+with `pandas` and `polars` where possible.
+
+The core extension is not dependent on `pandas`
+but some helper modules like `reflib` and `utils` are.
 
 
 > **Note**
-> This is work in progress. For a similar project with a mature api
+> This is work in progress.
+> For a similar project with a mature api
 > you may want to look at [ta-lib](https://pypi.org/project/TA-Lib/).
 
 
 ## Conventions
 
-Indicators accept either `prices` or `series` data.
-Series data can be a numpy array or a pandas series.
-Prices data is expected in the form of a dataframe with
-columns `open`, `high`, `low`, `close`, `volume`
-and a timestamp index called `date`,
-all in **lower case**.
+Indicators accept either `series` or `prices` data.
+`series` data must be compatible with one dimensional numpy arrays.
+`prices` data is expected in the form of a dataframe
+with columns `open`, `high`, `low`, `close`, `volume` all in **lower case**.
+For `prices`, instead of a standard dataframe
+you can also use a numpy structured array or equivelent structure
+that offers dictionary based access to it columns.   
 
 
 
@@ -28,16 +34,16 @@ all in **lower case**.
 Indicators are available as functions that can be accessed via the `core` module.
 All function names like `EMA`, `SMA`, `ROC`, `MACD`, ... are **upper case**.
 
-Some functions like `ATR` require prices data, while other functions like `SMA` work on a series.
-Functions that work on a single series can also be used on prices data and will be applied by default
-to the `close` column or the one specified with the `item` parameter.
+Some functions like `ATR` require `prices` data, while other functions like `SMA` work on a `series`.
+Functions that work on a single series can also be used on prices data and will be applied 
+to the `close` column by default or otherwize the one specified with the `item` parameter.
 
-Indicators automatically wrap their result to match their input, so that 
+Most functions automatically wrap their result to match their input, so that for example 
 pandas based inputs will yield pandas based results with a matching datetime index.
 
 ```python
-from mintalib.utils import sample_prices
 from mintalib.core import SMA, MAX
+from mintalib.samples import sample_prices
 
 prices = sample_prices()
 
@@ -67,10 +73,10 @@ Where for example `EMA(20) @ ROC(5)` means `EMA(20)` applied to `ROC(5)`.
 When using pandas you can apply multiple operands in one single calculation with the `assign` method.
 
 ```python
-from mintalib.utils import sample_prices
 from mintalib.opers import EMA, SMA, ROC, RSI, SLOPE, EVAL
+from mintalib.samples import sample_prices
 
-prices = sample_prices()
+prices = sample_prices(target='pandas')
 
 result = prices.assign(
     sma50 = SMA(50),
@@ -83,7 +89,7 @@ result = prices.assign(
 
 # you will notice that the EVAL expression at the end
 # can use the names sma50 and sma200 that where defined
-# just before in the same function call!
+# just above in the same function call!
 ```
 
 
@@ -101,7 +107,7 @@ python -mpip install git+ssh://git@github.com/furechan/mintalib.git
 
 ## List of Functions
 
-| name             | input   | description                                               |
+| Name             | Input   | Description                                               |
 |:-----------------|:--------|:----------------------------------------------------------|
 | AVGPRICE         | prices  | Average Price                                             |
 | TYPPRICE         | prices  | Typical Price                                             |
