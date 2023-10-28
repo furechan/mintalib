@@ -1,8 +1,6 @@
 """ Commodity Channel Index """
 
 
-
-
 def calc_cci(prices, long period = 20, *, wrap: bool = False):
     """ Commodity Channel Index """
 

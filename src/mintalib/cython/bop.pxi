@@ -1,8 +1,6 @@
 """ Balance of Power """
 
 
-
-
 def calc_bop(prices, long period = 20, *, wrap: bool = False):
     """ Balance of Power """
 

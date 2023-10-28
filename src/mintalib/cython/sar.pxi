@@ -1,8 +1,7 @@
 """ Parabolic Stop and Reverse """
 
 
-
-def calc_psar(prices, double afs=0.02, double maxaf=0.2, *, wrap: bool = False):
+def calc_sar(prices, double afs=0.02, double maxaf=0.2, *, wrap: bool = False):
     """ Parabolic Stop and Reverse """
 
     cdef const double[:] high = np.asarray(prices['high'], float)
@@ -73,9 +72,10 @@ def calc_psar(prices, double afs=0.02, double maxaf=0.2, *, wrap: bool = False):
     return result
 
 
-@wrap_function(calc_psar)
-def PSAR(prices, afs: float = 0.02, maxaf: float = 0.2):
-    result = calc_psar(prices, afs=afs, maxaf=maxaf)
+
+@wrap_function(calc_sar)
+def SAR(prices, afs: float = 0.02, maxaf: float = 0.2):
+    result = calc_sar(prices, afs=afs, maxaf=maxaf)
     return wrap_result(result, prices)
 
 

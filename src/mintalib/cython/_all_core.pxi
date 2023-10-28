@@ -1,4 +1,4 @@
-""" sorted includes for core.pyx """
+# sorted includes for core.pyx
 
 include "_common.pxi"
 
@@ -30,7 +30,7 @@ include "matype.pxi"
 include "rsi.pxi"
 include "adx.pxi"
 include "atr.pxi"
-include "psar.pxi"
+include "sar.pxi"
 
 include "cci.pxi"
 include "cmf.pxi"

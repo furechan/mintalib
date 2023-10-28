@@ -1,5 +1,4 @@
-""" slope """
-
+""" Slope (time linear regression) """
 
 
 cdef enum:
@@ -10,8 +9,6 @@ cdef enum:
     SLOPE_OPTION_RMSERROR = 4
     SLOPE_OPTION_FORECAST = 5
     SLOPE_OPTION_BADOPTION = 6
-
-
 
 class SlopeOption(IntEnum):
     """ Slope Option Enumeration """
@@ -25,8 +22,6 @@ class SlopeOption(IntEnum):
     RMSERROR = 4
     FORECAST = 5
 
-
-# TODO add RVALUE, ERROR, FORECAST, ...
 
 def calc_slope(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
     """ Slope (time linear regression) """
@@ -107,8 +102,28 @@ def calc_slope(series, long period=20, *, int option=0, int offset=0, wrap: bool
 
 
 @wrap_function(calc_slope)
-def SLOPE(series, period: int = 20, *, option: int = 0, offset: int = 0, item: str = None):
+def SLOPE(series, period: int = 20, *, item: str = None):
+    """ Slope (time linear regression) """
+
     series = get_series(series, item=item)
-    result = calc_slope(series, period=period, option=option, offset=offset)
+    result = calc_slope(series, period=period, option=SLOPE_OPTION_SLOPE)
+    return wrap_result(result, series)
+
+
+@wrap_function(calc_slope)
+def RVALUE(series, period: int = 20, *, item: str = None):
+    """ RValue (time linear regression) """
+
+    series = get_series(series, item=item)
+    result = calc_slope(series, period=period, option=SLOPE_OPTION_RVALUE)
+    return wrap_result(result, series)
+
+
+@wrap_function(calc_slope)
+def FORECAST(series, period: int = 20, offset: int = 0, *, item: str = None):
+    """ Forecast (time linear regression) """
+
+    series = get_series(series, item=item)
+    result = calc_slope(series, period=period, offset=offset, option=SLOPE_OPTION_FORECAST)
     return wrap_result(result, series)
 

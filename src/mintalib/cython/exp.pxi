@@ -1,6 +1,4 @@
-""" Logarithm """
-
-
+""" Exponential """
 
 def calc_exp(series, *, wrap: bool = False):
     """ Exponential """

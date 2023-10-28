@@ -1,7 +1,5 @@
 """ Weighted Moving Average """
 
-
-
 def calc_wma(series, long period, *, wrap: bool = False):
     """ Weighted Moving Average """
 

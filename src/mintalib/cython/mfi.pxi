@@ -1,7 +1,6 @@
 """ Money Flow Index """
 
 
-
 def calc_mfi(prices, long period = 14, *, wrap: bool = False):
     """ Money Flow Index """
 

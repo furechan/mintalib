@@ -1,6 +1,5 @@
 """ Expression eval """
 
-
 def calc_eval(prices, expr: str):
     """
     Expression Eval (pandas only)

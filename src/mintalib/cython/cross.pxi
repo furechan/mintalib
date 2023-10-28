@@ -3,7 +3,7 @@
 
 
 def crossover(series, double level=0.0, *, wrap: bool = False):
-    """ 1 when data cross over level, 0.0 elsewhere """
+    """ Cross Over """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -31,7 +31,7 @@ def crossover(series, double level=0.0, *, wrap: bool = False):
 
 
 def crossunder(series, double level=0.0, *, wrap: bool = False):
-    """ 1 when data cross under level, 0.0 elsewhere """
+    """ Cross Under """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size

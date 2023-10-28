@@ -1,7 +1,6 @@
 """ Average Directional Index """
 
 
-
 def calc_plusdi(prices, long period=14, *, wrap: bool = False):
     """ Plus Directional Index """
 
@@ -22,7 +21,6 @@ def calc_plusdi(prices, long period=14, *, wrap: bool = False):
     return result
 
 
-
 def calc_minusdi(prices, long period=14, *, wrap: bool = False):
     """ Minus Directional Index """
 
@@ -41,7 +39,6 @@ def calc_minusdi(prices, long period=14, *, wrap: bool = False):
         result = wrap_result(result, prices)
 
     return result
-
 
 
 def calc_adx(prices, long period=14, *, wrap: bool = False):
@@ -69,6 +66,8 @@ def calc_adx(prices, long period=14, *, wrap: bool = False):
         result = wrap_result(result, prices)
 
     return result
+
+
 
 
 @wrap_function(calc_plusdi)

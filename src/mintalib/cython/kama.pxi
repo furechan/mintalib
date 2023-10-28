@@ -1,8 +1,7 @@
 """ Kaufman Adaptive Moving Average """
 
-
 def efficiency_ratio(series, int period=10, *, wrap: bool = False):
-    """ Efficiency Ratio """
+    """ Efficiency Ratio (Kaufman) """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -57,7 +56,7 @@ def efficiency_ratio(series, int period=10, *, wrap: bool = False):
 
 
 def calc_kama(series, int period=10, int fastn=2, int slown=30, *, wrap: bool = False):
-    """ Kaufman Adaptive Moving Average """
+    """ Kaufman Adaptive Moving Average (Kaufman) """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef const double[:] ers = efficiency_ratio(xs, period)
@@ -96,6 +95,7 @@ def calc_kama(series, int period=10, int fastn=2, int slown=30, *, wrap: bool = 
         result = wrap_result(result, series)
 
     return result
+
 
 
 @wrap_function(efficiency_ratio)

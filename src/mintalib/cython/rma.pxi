@@ -1,8 +1,6 @@
 """ Rolling Moving Average (RSI Style) """
 
 
-
-
 def calc_rma(series, long period, *, wrap: bool = False):
     """
     Rolling Moving Average (RSI Style)

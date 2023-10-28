@@ -1,7 +1,6 @@
 """ Triple Exponential Moving Average """
 
 
-
 def calc_tema(series, long period=20, *, wrap: bool = False):
     """
     Triple Exponential Moving Average

@@ -13,8 +13,6 @@ from enum import IntEnum
 
 from collections import namedtuple
 
-
-
 def check_size(xs, *others):
     """ check all series have the same size and return the size """
 
@@ -56,13 +54,30 @@ def get_series(data, item: str = None, *, default_item: str = 'close'):
     return data
 
 
-def wrap_function(source=None):
+def wrap_function(source, same_scale: bool = None):
     """ update function with documentation from source """
 
     doc = source.__doc__ if source else None
 
     def decorator(func):
-        if doc:
+        if doc and func.__doc__ is None:
+            func.__doc__ = doc
+        for name in ('same_scale',):
+            value = locals().get(name)
+            if value is not None:
+                setattr(func, name, value)
+        return func
+
+    return decorator
+
+
+def wrap_indicator(source):
+    """ update indicagtor with documentation from source """
+
+    doc = source.__doc__ if source else None
+
+    def decorator(func):
+        if doc and func.__doc__ is None:
             func.__doc__ = doc
         return func
 

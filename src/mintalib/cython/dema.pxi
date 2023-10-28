@@ -1,7 +1,6 @@
 """ Double Exponential Moving Average """
 
 
-
 def calc_dema(series, long period, wrap: bool = False):
     """ Double Exponential Moving Average """
 

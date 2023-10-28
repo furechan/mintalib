@@ -1,7 +1,5 @@
 """ Rate of Change """
 
-
-
 def calc_roc(series, long period=1, *, wrap: bool = False):
     """ Rate of Change """
 

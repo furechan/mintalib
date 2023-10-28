@@ -1,9 +1,7 @@
 """ Flag functions """
 
-
-
 def flag_above(series, double level=0.0, *, double na_value=NAN, wrap: bool = False):
-    """ returns flag for strictly positive values """
+    """ Flag for value above level """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -35,7 +33,7 @@ def flag_above(series, double level=0.0, *, double na_value=NAN, wrap: bool = Fa
 
 
 def flag_below(series, double level=0.0, *, double na_value=NAN, wrap: bool = False):
-    """ returns flag for strictly negative values  """
+    """ Flag for value below level """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -67,7 +65,7 @@ def flag_below(series, double level=0.0, *, double na_value=NAN, wrap: bool = Fa
 
 
 def invert_flag(series, *, double na_value=NAN, wrap: bool = False):
-    """ returns flag for strictly negative values  """
+    """ Invert flag  """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -101,7 +99,7 @@ def invert_flag(series, *, double na_value=NAN, wrap: bool = False):
 def updown_flag(series, double up_level=0.0, double down_level=0.0, *,
                 double up_flag=1.0, double down_flag=0.0, double start_flag=NAN,
                 wrap: bool = False):
-    """ returns flag according to value crossing up & down levels """
+    """ Flag for value crossing levels up & down """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -134,7 +132,7 @@ def updown_flag(series, double up_level=0.0, double down_level=0.0, *,
 
 
 def where_flag(flag, x, y, z=NAN, *, wrap: bool = False):
-    """ returns value according to flag """
+    """ Value according to flag """
 
     cdef const double[:] fs = np.asarray(flag, float)
 
@@ -167,6 +165,7 @@ def where_flag(flag, x, y, z=NAN, *, wrap: bool = False):
         result = wrap_result(result, flag)
 
     return result
+
 
 
 

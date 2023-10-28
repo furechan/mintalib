@@ -1,7 +1,5 @@
 """ Price """
 
-# TODO rename item to price_type
-
 
 def calc_avgprice(prices, *, wrap: bool = False):
     """ Average Price """
@@ -131,8 +129,6 @@ def calc_price(prices, item: str = None, *, wrap: bool = False):
         return price_func(prices, wrap=wrap)
 
     raise ValueError(f"Unknown price type {item}")
-
-
 
 
 @wrap_function(calc_avgprice)

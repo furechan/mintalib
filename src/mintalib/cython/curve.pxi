@@ -1,5 +1,4 @@
-""" slope """
-
+""" Curve (time curvilinear regression) """
 
 
 cdef enum:
@@ -11,9 +10,8 @@ cdef enum:
     CURVE_OPTION_BADOPTION = 5
 
 
-
 class CurveOption(IntEnum):
-    """ Slope Option Enumeration """
+    """ Curve Option Enumeration """
     def __repr__(self):
         return str(self)
 
@@ -22,8 +20,6 @@ class CurveOption(IntEnum):
     RVALUE = 2
     RSQUARE = 3
     RMSERROR = 4
-
-
 
 
 def calc_curve(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
@@ -151,7 +147,9 @@ def calc_curve(series, long period=20, *, int option=0, int offset=0, wrap: bool
 
 
 @wrap_function(calc_curve)
-def CURVE(series, period: int = 20, *, option: int = 0, offset: int = 0, item: str = None):
+def CURVE(series, period: int = 20, *, item: str = None):
+    """ Curve (time curvilinear regression) """
+
     series = get_series(series, item=item)
-    result = calc_curve(series, period=period, option=option, offset=offset)
+    result = calc_curve(series, period=period, option=CURVE_OPTION_CURVE)
     return wrap_result(result, series)

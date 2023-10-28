@@ -1,4 +1,4 @@
-""" testing utilities """
+""" helper utilities """
 
 
 from typing import Callable

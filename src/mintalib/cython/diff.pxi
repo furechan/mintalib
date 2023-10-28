@@ -1,8 +1,6 @@
 """ Difference """
 
 
-
-
 def calc_diff(series, long period=1, *, wrap: bool = False):
     """ Difference """
 
@@ -27,6 +25,7 @@ def calc_diff(series, long period=1, *, wrap: bool = False):
         result = wrap_result(result, series)
 
     return result
+
 
 
 @wrap_function(calc_diff)

@@ -1,8 +1,6 @@
 """ Chaiking Money Flow """
 
 
-
-
 def calc_cmf(prices, long period = 20, *, wrap: bool = False):
     """ Chaikin Money Flow """
 
@@ -24,6 +22,7 @@ def calc_cmf(prices, long period = 20, *, wrap: bool = False):
         result = wrap_result(result, prices)
 
     return result
+
 
 
 @wrap_function(calc_cmf)

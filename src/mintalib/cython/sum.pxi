@@ -1,7 +1,5 @@
 """ Sum """
 
-
-
 def calc_sum(series, long period, *, wrap: bool = False):
     """ Rolling Sum """
 
@@ -40,7 +38,6 @@ def calc_sum(series, long period, *, wrap: bool = False):
         result = wrap_result(result, series)
 
     return result
-
 
 
 @wrap_function(calc_sum)

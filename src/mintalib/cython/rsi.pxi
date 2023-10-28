@@ -1,8 +1,6 @@
 """ Relative Strencgth Index """
 
 
-
-
 def calc_rsi(series, long period=14, *, wrap: bool = False):
     """ Relative Strength Index """
 

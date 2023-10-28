@@ -24,6 +24,7 @@ def calc_ppo(series, long n1=12, long n2=26, long n3=9, *, wrap: bool = False):
     return result
 
 
+
 @wrap_function(calc_ppo)
 def PPO(series, n1: int = 12, n2: int = 26, n3: int = 9, *, item: str = None):
     series = get_series(series, item=item)

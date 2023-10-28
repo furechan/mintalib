@@ -1,7 +1,5 @@
 """ Exponential Moving Average """
 
-
-
 def calc_ema(series, long period, *, bint adjust = False, wrap: bool = False):
     """
     Exponential Moving Average
@@ -62,6 +60,8 @@ def calc_ema(series, long period, *, bint adjust = False, wrap: bool = False):
         result = wrap_result(result, series)
 
     return result
+
+
 
 
 @wrap_function(calc_ema)

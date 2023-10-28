@@ -1,83 +1,88 @@
 # Minimal Technical Analysis Library for Python
 
 
-This library offers a short list of technical analysis indicators
-implemented in cython for improved performance.
-
+This library offers a curated list of technical analysis indicators
+implemented in cython.
 It is built around `numpy` arrays and aims to be compatible
-with `pandas` and `polars` where possible.
-
-The core extension is not dependent on `pandas`
-but some helper modules like `reflib` and `utils` are.
+with both `pandas` and `polars` dataframes where possible.
 
 
-> **Note**
+> **Warning**
 > This is work in progress.
 > For a similar project with a mature api
 > you may want to look at [ta-lib](https://pypi.org/project/TA-Lib/).
 
 
-## Conventions
-
-Indicators accept either `series` or `prices` data.
-`series` data must be compatible with one dimensional numpy arrays.
-`prices` data is expected in the form of a dataframe
-with columns `open`, `high`, `low`, `close`, `volume` all in **lower case**.
-For `prices`, instead of a standard dataframe
-you can also use a numpy structured array or equivelent structure
-that offers dictionary based access to it columns.   
-
-
+## Structure
+The `mintalib` package contains three main modules:
+- `mintalib.core` low level calculation rountines implemented in cython
+- `mintalib.functions` single use functions to compute indicators
+- `mintalib.indicators` composable interface to indicators
 
 ## Functions
 
-Indicators are available as functions that can be accessed via the `core` module.
-All function names like `EMA`, `SMA`, `ROC`, `MACD`, ... are **upper case**.
+Indicators are available as simple functions via the `functions` module,
+with names like `SMA`, `EMA`, `RSI`, `MACD`, all in **upper case**.
+The first parameter of a function is either `prices` or `series` depending on whether
+the functions expects a dataframe of prices or a single series.
+Functions that expect series data can still be applied to prices data, in which case they use 
+the `close` column by default or otherwize the column specified with the `item` parameter.
 
-Some functions like `ATR` require `prices` data, while other functions like `SMA` work on a `series`.
-Functions that work on a single series can also be used on prices data and will be applied 
-to the `close` column by default or otherwize the one specified with the `item` parameter.
+A `prices` dataframe can be a pandas dataframe, a polars dataframe or a dictionary of numpy arrays.
+The column names for prices are expected to include `open`, `high`, `low`, `close` all in **lower case**.
+A `series` can be a pandas series, a polars series or any iterable compatible with numpy arrays.
 
-Most functions automatically wrap their result to match their input, so that for example 
-pandas based inputs will yield pandas based results with a matching datetime index.
+Functions attempt to wrap their result to match their input, so that for example 
+pandas based inputs will yield pandas based results with matching index.
+
 
 ```python
-from mintalib.core import SMA, MAX
-from mintalib.samples import sample_prices
+import yfinance as yf
 
-prices = sample_prices()
+from mintalib.functions import SMA, MAX
 
+# fetch prices (eg with yfinance)
+prices = yf.Ticker('AAPL').history('5y')
+
+# convert column names to lower case
+prices = prices.rename(columns=str.lower).rename_axis(index=str.lower)
+
+# compute indicators
 sma50 = SMA(prices, 50)  # SMA of 'close' with period = 50
-sma200 = SMA(prices, 200)  # SMA of 'close' with period = 50
+sma200 = SMA(prices, 200)  # SMA of 'close' with period = 200
 high200 = MAX(prices, 200, item='high')  # MAX of 'high' with period = 200
 
 ```
 
-## Operands
 
-Indicators are also available as operands that can be accessed via the `opers` module.
+## Composable Interface
 
-An operand is an indicator with all parameters specifed at creation.
-Operands are callable object and can be invoked as a regular function.
-
+Indicators are also available through a composable interface via the `indicators` module,
+with similar the same names all in **uper case**.
+Each indicator is implemented as a class to be instanciated with calculation parameters.
+The instance objects are callables that can be applied to series or prices data like regular functions. 
 So for example `SMA(50)` is a callable object that will return the 50 period simple moving average of its argument.
 
-Operands can also be applied to prices with the `@` operator.
+Indicators can be composed with the `@` operator,
+where for example `EMA(20) @ ROC(5)` means `EMA(20)` applied to `ROC(5)`.
+The same `@` operator can also be used to apply an indicator to some data,
+where for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`. 
 
-For example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on prices. 
-
-Operands can also be composed with the `@` operator.
-
-Where for example `EMA(20) @ ROC(5)` means `EMA(20)` applied to `ROC(5)`.
-
-When using pandas you can apply multiple operands in one single calculation with the `assign` method.
+Please note that with pandas dataframes you can compose and assign multiple indicators in one go
+using the builtin `assign` method.
 
 ```python
-from mintalib.opers import EMA, SMA, ROC, RSI, SLOPE, EVAL
-from mintalib.samples import sample_prices
+import yfinance as yf
 
-prices = sample_prices(target='pandas')
+from mintalib.indicators import EMA, SMA, ROC, RSI, SLOPE, EVAL
 
+# fetch prices (eg with yfinance)
+prices = yf.Ticker('AAPL').history('5y')
+
+# convert column names to lower case
+prices = prices.rename(columns=str.lower).rename_axis(index=str.lower)
+
+# compute and append indicators to prices
 result = prices.assign(
     sma50 = SMA(50),
     sma200 = SMA(200),
@@ -105,59 +110,71 @@ You can install the current version of this package with pip
 python -mpip install git+ssh://git@github.com/furechan/mintalib.git
 ```
 
-## List of Functions
+## Related Projects
+- [ta-lib](https://github.com/mrjbq7/ta-lib) Python wrapper for TA-Lib
+- [qtalib](https://github.com/josephchenhk/qtalib) Quantitative Technical Analysis Library
+- [numpy](https://github.com/numpy/numpy) The fundamental package for scientific computing with Python
+- [pandas](https://github.com/pandas-dev/pandas) Flexible and powerful data analysis / manipulation library for Python
+- [polars](https://github.com/pola-rs/polars) Fast multi-threaded, hybrid-out-of-core query engine focussing on DataFrame front-ends
+- [yfinance](https://github.com/ranaroussi/yfinance) Download market data from Yahoo! Finance's API
 
-| Name             | Input   | Description                                               |
-|:-----------------|:--------|:----------------------------------------------------------|
-| AVGPRICE         | prices  | Average Price                                             |
-| TYPPRICE         | prices  | Typical Price                                             |
-| WCLPRICE         | prices  | Weighted Close Price                                      |
-| MIDPRICE         | prices  | Mid Price                                                 |
-| PRICE            | prices  | Generic Price                                             |
-| CROSSOVER        | series  | 1 when data cross over level, 0.0 elsewhere               |
-| CROSSUNDER       | series  | 1 when data cross under level, 0.0 elsewhere              |
-| FLAG_ABOVE       | series  | returns flag for strictly positive values                 |
-| FLAG_BELOW       | series  | returns flag for strictly negative values                 |
-| INVERT_FLAG      | series  | returns flag for strictly negative values                 |
-| UPDOWN_FLAG      | series  | returns flag according to value crossing up & down levels |
-| LOG              | series  | Logarithm                                                 |
-| EXP              | series  | Exponential                                               |
-| ROC              | series  | Rate of Change                                            |
-| DIFF             | series  | Difference                                                |
-| MIN              | series  | Rolling Minimum                                           |
-| MAX              | series  | Rolling Maximum                                           |
-| SUM              | series  | Rolling Sum                                               |
-| MAD              | series  | Mean Absolute Deviation                                   |
-| STDEV            | series  | Standard Deviation                                        |
-| SMA              | series  | Simple Moving Average                                     |
-| EMA              | series  | Exponential Moving Average                                |
-| RMA              | series  | Rolling Moving Average (RSI Style)                        |
-| WMA              | series  | Weighted Moving Average                                   |
-| DEMA             | series  | Double Exponential Moving Average                         |
-| TEMA             | series  | Triple Exponential Moving Average                         |
-| MA               | series  | Generic Moving Average                                    |
-| RSI              | series  | Relative Strength Index                                   |
-| PLUSDI           | prices  | Plus Directional Index                                    |
-| MINUSDI          | prices  | Minus Directional Index                                   |
-| ADX              | prices  | Average Directional Index                                 |
-| TRANGE           | prices  | True Range                                                |
-| ATR              | prices  | Average True Range                                        |
-| NATR             | prices  | Average True Range (normalized)                           |
-| LATR             | prices  | Average True Range (logarithmic)                          |
-| PSAR             | prices  | Parabolic Stop and Reverse                                |
-| CCI              | prices  | Commodity Channel Index                                   |
-| CMF              | prices  | Chaikin Money Flow                                        |
-| MFI              | prices  | Money Flow Index                                          |
-| BOP              | prices  | Balance of Power                                          |
-| BBANDS           | prices  | Bollinger Bands                                           |
-| KELTNER          | prices  | Keltner Channel                                           |
-| EFFICIENCY_RATIO | series  | Efficiency Ratio                                          |
-| KAMA             | series  | Kaufman Adaptive Moving Average                           |
-| MACD             | series  | Moving Average Convergenge Divergence                     |
-| PPO              | series  | Price Percentage Oscillator                               |
-| SLOPE            | series  | Slope (time linear regression)                            |
-| CURVE            | series  | Curve (time curvilinear regression)                       |
-| STOCH            | prices  | Stochastik Oscillator                                     |
-| STREAK_UP        | series  | Consecutive streak of ups                                 |
-| STREAK_DOWN      | series  | Consecutive streak of ups                                 |
-| EVAL             | prices  | Expression Eval (pandas only)                             |
+## List of Indicators
+
+| Name             | Description                               |
+|:-----------------|:------------------------------------------|
+| ADX              | Average Directional Index                 |
+| ATR              | Average True Range                        |
+| AVGPRICE         | Average Price                             |
+| BBANDS           | Bollinger Bands                           |
+| BOP              | Balance of Power                          |
+| CCI              | Commodity Channel Index                   |
+| CMF              | Chaikin Money Flow                        |
+| CROSSOVER        | Cross Over                                |
+| CROSSUNDER       | Cross Under                               |
+| CURVE            | Curve (time curvilinear regression)       |
+| DEMA             | Double Exponential Moving Average         |
+| DIFF             | Difference                                |
+| EFFICIENCY_RATIO | Efficiency Ratio (Kaufman)                |
+| EMA              | Exponential Moving Average                |
+| EVAL             | Expression Eval (pandas only)             |
+| EXP              | Exponential                               |
+| FLAG_ABOVE       | Flag for value above level                |
+| FLAG_BELOW       | Flag for value below level                |
+| FORECAST         | Forecast (time linear regression)         |
+| INVERT_FLAG      | Invert flag                               |
+| KAMA             | Kaufman Adaptive Moving Average (Kaufman) |
+| KELTNER          | Keltner Channel                           |
+| LATR             | Average True Range (logarithmic)          |
+| LOG              | Logarithm                                 |
+| MA               | Generic Moving Average                    |
+| MACD             | Moving Average Convergenge Divergence     |
+| MAD              | Mean Absolute Deviation                   |
+| MAX              | Rolling Maximum                           |
+| MFI              | Money Flow Index                          |
+| MIDPRICE         | Mid Price                                 |
+| MIN              | Rolling Minimum                           |
+| MINUSDI          | Minus Directional Index                   |
+| NATR             | Average True Range (normalized)           |
+| PLUSDI           | Plus Directional Index                    |
+| PPO              | Price Percentage Oscillator               |
+| PRICE            | Generic Price                             |
+| RMA              | Rolling Moving Average (RSI Style)        |
+| ROC              | Rate of Change                            |
+| RSI              | Relative Strength Index                   |
+| RVALUE           | RValue (time linear regression)           |
+| SAR              | Parabolic Stop and Reverse                |
+| SLOPE            | Slope (time linear regression)            |
+| SMA              | Simple Moving Average                     |
+| STDEV            | Standard Deviation                        |
+| STOCH            | Stochastik Oscillator                     |
+| STREAK_DOWN      | Consecutive streak of downs               |
+| STREAK_UP        | Consecutive streak of ups                 |
+| SUM              | Rolling Sum                               |
+| TEMA             | Triple Exponential Moving Average         |
+| TRANGE           | True Range                                |
+| TYPPRICE         | Typical Price                             |
+| UPDOWN_FLAG      | Flag for value crossing levels up & down  |
+| WCLPRICE         | Weighted Close Price                      |
+| WMA              | Weighted Moving Average                   |
+
+

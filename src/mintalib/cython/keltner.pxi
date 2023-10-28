@@ -1,4 +1,4 @@
-""" Keltner Bands """
+""" Keltner Channel """
 
 
 keltner_result = namedtuple('keltner_result', 'upperband, middleband, lowerband')

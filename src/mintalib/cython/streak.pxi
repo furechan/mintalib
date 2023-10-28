@@ -1,6 +1,5 @@
 """ Streak """
 
-
 def streak_up(series, *, wrap: bool = False):
     """ Consecutive streak of ups """
 
@@ -37,7 +36,7 @@ def streak_up(series, *, wrap: bool = False):
 
 
 def streak_down(series, *, wrap: bool = False):
-    """ Consecutive streak of ups """
+    """ Consecutive streak of downs """
 
     cdef double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -67,6 +66,7 @@ def streak_down(series, *, wrap: bool = False):
         result = wrap_result(result, series)
 
     return result
+
 
 
 @wrap_function(streak_up)

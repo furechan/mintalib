@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 
-def calc_roc(series, period: int):
+def calc_roc(series, period: int = 1):
     """ Rate of Change """
     roc = series.pct_change(period, fill_method=None)
     roc = roc.replace([np.inf, -np.inf], np.nan)
@@ -61,6 +61,18 @@ def calc_wma(series, period: int = 10):
 
     return series.rolling(period).apply(average)
 
+
+
+def calc_rsi(series, period: int = 14):
+    """ Relative Strength Index """
+    kw = dict(alpha=1.0 / period, min_periods=period, adjust=True, ignore_na=True)
+
+    diff = series.diff()
+    ups = diff.clip(lower=0).ewm(**kw).mean()
+    downs = diff.clip(upper=0).abs().ewm(**kw).mean()
+    result = 100.0 - (100.0 / (1.0 + ups / downs))
+
+    return result
 
 def calc_macd(series, n1: int = 12, n2: int = 26, n3: int = 9):
     """ Moving Averrage Convergence Divergence """

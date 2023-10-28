@@ -1,4 +1,4 @@
-""" local project utility functions """
+""" local project settings """
 
 from pathlib import Path
 

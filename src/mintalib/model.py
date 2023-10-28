@@ -36,8 +36,8 @@ class LazyRepr:
         return "%s(%s)" % (cname, params)
 
 
-class Operand(ABC, LazyRepr):
-    """Abstact Base class for Operands"""
+class Indicator(ABC, LazyRepr):
+    """Abstact Base class for Indicators"""
 
     same_scale: ClassVar[bool] = False
 
@@ -49,6 +49,7 @@ class Operand(ABC, LazyRepr):
         if not callable(other):
             return self(other)
         return CallableChain(self, other)
+
 
 
 class CallableChain:

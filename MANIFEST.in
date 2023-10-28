@@ -3,7 +3,3 @@ recursive-include src *.c *.pxi *.pyx
 
 # Include data files
 recursive-include src *.csv
-
-# Include test files
-recursive-include tests *.json
-

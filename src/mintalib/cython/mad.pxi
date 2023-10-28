@@ -1,7 +1,5 @@
 """ Standard Deviation """
 
-
-
 def calc_mad(series, long period=20, *, wrap: bool = False):
     """ Mean Absolute Deviation """
 
@@ -45,6 +43,8 @@ def calc_mad(series, long period=20, *, wrap: bool = False):
         result = wrap_result(result, series)
 
     return result
+
+
 
 
 @wrap_function(calc_mad)
