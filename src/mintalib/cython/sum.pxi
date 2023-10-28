@@ -1,4 +1,4 @@
-""" Sum """
+""" Rolling Sum """
 
 def calc_sum(series, long period, *, wrap: bool = False):
     """ Rolling Sum """

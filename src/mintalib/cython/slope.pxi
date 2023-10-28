@@ -1,6 +1,5 @@
 """ Slope (time linear regression) """
 
-
 cdef enum:
     SLOPE_OPTION_SLOPE = 0
     SLOPE_OPTION_INTERCEPT = 1

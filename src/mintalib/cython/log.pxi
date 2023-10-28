@@ -1,6 +1,5 @@
 """ Logarithm """
 
-
 def calc_log(series, *, wrap: bool = False):
     """ Logarithm """
 

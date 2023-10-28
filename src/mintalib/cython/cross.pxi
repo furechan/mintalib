@@ -1,7 +1,5 @@
 """ Cross Over/Under """
 
-
-
 def crossover(series, double level=0.0, *, wrap: bool = False):
     """ Cross Over """
 

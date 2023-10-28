@@ -1,8 +1,6 @@
 """ Keltner Channel """
 
-
 keltner_result = namedtuple('keltner_result', 'upperband, middleband, lowerband')
-
 
 def calc_keltner(prices, long period = 20, double nbatr = 2.0, *, wrap: bool = False):
     """ Keltner Channel """

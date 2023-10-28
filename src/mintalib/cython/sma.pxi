@@ -1,6 +1,5 @@
 """ Simple Moving Average """
 
-
 def calc_sma(series, long period, *, wrap: bool = False):
     """
     Simple Moving Average

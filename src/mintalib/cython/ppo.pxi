@@ -1,8 +1,6 @@
 """ Price Percentage Oscillator """
 
-
 ppo_result = namedtuple('ppo_result', 'ppo, pposignal, ppohist')
-
 
 def calc_ppo(series, long n1=12, long n2=26, long n3=9, *, wrap: bool = False):
     """ Price Percentage Oscillator """

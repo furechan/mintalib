@@ -1,9 +1,9 @@
-""" Price Percentage Oscillator """
+""" Stochastic Oscillator """
 
 stoch_result = namedtuple("stoch_result", "slowk, slowd")
 
 def calc_stoch(prices, long period=14, long fastn=3, long slown=3, *, wrap: bool = False):
-    """ Stochastik Oscillator """
+    """ Stochastic Oscillator """
 
     cdef const double[:] high = np.asarray(prices['high'], float)
     cdef const double[:] low = np.asarray(prices['low'], float)
