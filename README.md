@@ -166,7 +166,7 @@ python -mpip install git+ssh://git@github.com/furechan/mintalib.git
 | SLOPE            | Slope (time linear regression)            |
 | SMA              | Simple Moving Average                     |
 | STDEV            | Standard Deviation                        |
-| STOCH            | Stochastik Oscillator                     |
+| STOCH            | Stochastic Oscillator                     |
 | STREAK_DOWN      | Consecutive streak of downs               |
 | STREAK_UP        | Consecutive streak of ups                 |
 | SUM              | Rolling Sum                               |
