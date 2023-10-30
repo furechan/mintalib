@@ -19,6 +19,10 @@ classifiers = [
     "Programming Language :: Python :: 3"
 ]
 
+[project.optional-dependencies]
+extras = ["polars", "yfinance", "mplfinance"]
+test = ["pytest"]
+
 
 [tool.setuptools.dynamic]
 version = { attr = "mintalib.__version__" }
