@@ -1,5 +1,5 @@
-# Include cython related files
-recursive-include src *.c *.pxi *.pyx
+# Include cython files
+# recursive-include src *.c *.pxi *.pyx
 
 # Include data files
-recursive-include src *.csv
+# recursive-include src *.csv

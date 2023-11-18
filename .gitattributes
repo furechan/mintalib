@@ -1,0 +1,3 @@
+# Ignore following file types in github stats
+*.ipynb linguist-vendored=true
+*.c linguist-vendored=true
