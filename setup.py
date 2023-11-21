@@ -15,9 +15,11 @@ if sys.platform == "darwin":
 else:
     extra_compile_args = []
 
+
 def make_extension(path):
     name = path.relative_to(srcdir).with_suffix("").as_posix().replace('/', '.')
     return Extension(name=name, sources=[str(path)], extra_compile_args=extra_compile_args)
+
 
 ext_modules = [make_extension(f) for f in Path(srcdir).rglob('*.pyx')]
 
@@ -25,4 +27,4 @@ setup(
     packages=packages,
     package_dir=package_dir,
     ext_modules=ext_modules,
-) 
+)

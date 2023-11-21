@@ -29,6 +29,9 @@ def list_indicators():
     ]
 
 
+def test_samples():
+    prices = sample_prices()
+    assert prices is not None
 
 
 @pytest.mark.parametrize("name", list_calcs())
