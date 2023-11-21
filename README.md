@@ -107,7 +107,7 @@ You can find example notebooks in the examples folder.
 
 You can install the current version of this package with pip
 ```console
-python -mpip install git+ssh://git@github.com/furechan/mintalib.git
+python -mpip install git+https://github.com/furechan/mintalib.git
 ```
 
 ## Related Projects
