@@ -1,3 +1,3 @@
 # Exclude some file types from github stats
-*.ipynb linguist-vendored=true
-*.c linguist-vendored=true
+*.ipynb linguist-documentation
+*.c linguist-generated
