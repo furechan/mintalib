@@ -1,5 +1,10 @@
 # Change Log
 
+
+## 0.0.5
+- Added `noxfile.py` for linting and testing
+- Removed `tasks.py` and `tox.ini`
+
 ## 0.0.4
 - Indicators moved to `indicators` module
 - Functions moved to `functions` module

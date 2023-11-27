@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mintalib"
-version = "0.0.5"
+version = "0.0.6"
 dynamic = [ "readme" ]
 requires-python = ">=3.7"
 description = "Minimal Technical Analysis Library for Python"
