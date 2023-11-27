@@ -1,11 +1,12 @@
- [build-system]
+[build-system]
 requires = ["setuptools", "cython"]
 build-backend = "setuptools.build_meta"
 
 
 [project]
 name = "mintalib"
-dynamic = [ "version", "readme" ]
+version = "0.0.5"
+dynamic = [ "readme" ]
 requires-python = ">=3.7"
 description = "Minimal Technical Analysis Library for Python"
 urls = { homepage = "https://github.com/furechan/mintalib" }
@@ -23,11 +24,11 @@ classifiers = [
 extras = ["polars", "yfinance", "mplfinance"]
 test = ["pytest"]
 
-
 [tool.setuptools.dynamic]
-version = { attr = "mintalib.__version__" }
 readme = { file = ["README.md"], content-type = "text/markdown" }
 
+[tool.custom]
+install_url = "git+https://github.com/furechan/mintalib.git"
 
 [tool.pytest.ini_options]
 addopts = [ "-p no:cacheprovider" ]
