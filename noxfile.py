@@ -2,7 +2,7 @@ import os
 import nox
 import tempfile
 
-ENVDIR = os.path.join(tempfile.gettempdir(), "envs")
+ENVDIR = os.path.join(tempfile.gettempdir(), "nox")
 
 nox.options.envdir = ENVDIR
 
