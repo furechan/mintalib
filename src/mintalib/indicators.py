@@ -3,7 +3,8 @@
 from . import core
 from . import model
 
-nan = float('nan')
+nan = float("nan")
+
 
 @core.wrap_function(core.AVGPRICE)
 class AVGPRICE(model.Indicator):
@@ -66,7 +67,9 @@ class FLAG_ABOVE(model.Indicator):
         self.item = item
 
     def __call__(self, series):
-        return core.FLAG_ABOVE(series, level=self.level, na_value=self.na_value, item=self.item)
+        return core.FLAG_ABOVE(
+            series, level=self.level, na_value=self.na_value, item=self.item
+        )
 
 
 @core.wrap_function(core.FLAG_BELOW)
@@ -77,7 +80,9 @@ class FLAG_BELOW(model.Indicator):
         self.item = item
 
     def __call__(self, series):
-        return core.FLAG_BELOW(series, level=self.level, na_value=self.na_value, item=self.item)
+        return core.FLAG_BELOW(
+            series, level=self.level, na_value=self.na_value, item=self.item
+        )
 
 
 @core.wrap_function(core.INVERT_FLAG)
@@ -92,7 +97,16 @@ class INVERT_FLAG(model.Indicator):
 
 @core.wrap_function(core.UPDOWN_FLAG)
 class UPDOWN_FLAG(model.Indicator):
-    def __init__(self, up_level: float = 0.0, down_level: float = 0.0, *, up_flag: float = 1.0, down_flag: float = 0.0, start_flag: float = nan, item: str = None):
+    def __init__(
+        self,
+        up_level: float = 0.0,
+        down_level: float = 0.0,
+        *,
+        up_flag: float = 1.0,
+        down_flag: float = 0.0,
+        start_flag: float = nan,
+        item: str = None,
+    ):
         self.up_level = up_level
         self.down_level = down_level
         self.up_flag = up_flag
@@ -101,7 +115,15 @@ class UPDOWN_FLAG(model.Indicator):
         self.item = item
 
     def __call__(self, series):
-        return core.UPDOWN_FLAG(series, up_level=self.up_level, down_level=self.down_level, up_flag=self.up_flag, down_flag=self.down_flag, start_flag=self.start_flag, item=self.item)
+        return core.UPDOWN_FLAG(
+            series,
+            up_level=self.up_level,
+            down_level=self.down_level,
+            up_flag=self.up_flag,
+            down_flag=self.down_flag,
+            start_flag=self.start_flag,
+            item=self.item,
+        )
 
 
 @core.wrap_function(core.LOG)
@@ -416,14 +438,22 @@ class EFFICIENCY_RATIO(model.Indicator):
 
 @core.wrap_function(core.KAMA)
 class KAMA(model.Indicator):
-    def __init__(self, period: int = 10, fastn: int = 2, slown: int = 30, *, item: str = None):
+    def __init__(
+        self, period: int = 10, fastn: int = 2, slown: int = 30, *, item: str = None
+    ):
         self.period = period
         self.fastn = fastn
         self.slown = slown
         self.item = item
 
     def __call__(self, series):
-        return core.KAMA(series, period=self.period, fastn=self.fastn, slown=self.slown, item=self.item)
+        return core.KAMA(
+            series,
+            period=self.period,
+            fastn=self.fastn,
+            slown=self.slown,
+            item=self.item,
+        )
 
 
 @core.wrap_function(core.MACD)
@@ -478,7 +508,9 @@ class FORECAST(model.Indicator):
         self.item = item
 
     def __call__(self, series):
-        return core.FORECAST(series, period=self.period, offset=self.offset, item=self.item)
+        return core.FORECAST(
+            series, period=self.period, offset=self.offset, item=self.item
+        )
 
 
 @core.wrap_function(core.CURVE)
@@ -499,7 +531,9 @@ class STOCH(model.Indicator):
         self.slown = slown
 
     def __call__(self, prices):
-        return core.STOCH(prices, period=self.period, fastn=self.fastn, slown=self.slown)
+        return core.STOCH(
+            prices, period=self.period, fastn=self.fastn, slown=self.slown
+        )
 
 
 @core.wrap_function(core.STREAK_UP)

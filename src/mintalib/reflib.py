@@ -8,51 +8,54 @@ import pandas as pd
 
 
 def calc_roc(series, period: int = 1):
-    """ Rate of Change """
+    """Rate of Change"""
     roc = series.pct_change(period, fill_method=None)
     roc = roc.replace([np.inf, -np.inf], np.nan)
     return roc
 
 
 def calc_ema(series, period: int, adjust: bool = False):
-    """ Exponential Moving Average """
+    """Exponential Moving Average"""
     kwds = dict(span=period, adjust=adjust, ignore_na=True, min_periods=period)
     return series.ewm(**kwds).mean()
 
 
 def calc_sma(series, period: int):
-    """ Simple Moving Average """
+    """Simple Moving Average"""
     return series.rolling(window=period).mean()
 
 
 def calc_sum(series, period: int):
-    """ Rolling Sum """
+    """Rolling Sum"""
     return series.rolling(window=period).sum()
 
 
 def calc_min(series, period: int):
-    """ Rolling Minimum """
+    """Rolling Minimum"""
     return series.rolling(window=period).min()
 
 
 def calc_max(series, period: int):
-    """ Rolling Maximum """
+    """Rolling Maximum"""
     return series.rolling(window=period).max()
 
 
 def calc_stdev(series, period: int):
-    """ Standard Deviation """
+    """Standard Deviation"""
     return series.rolling(window=period).std(ddof=0)
 
 
 def calc_mad(series, period: int):
-    """ Mean Aasolute deviation"""
-    mad = lambda s: np.mean(np.fabs(s - np.mean(s)))
-    return series.rolling(window=period).apply(mad, raw=True)
+    """Mean Aasolute deviation"""
+
+    def _mad(s):
+        return np.mean(np.fabs(s - np.mean(s)))
+
+    return series.rolling(window=period).apply(_mad, raw=True)
 
 
 def calc_wma(series, period: int = 10):
-    """ Weighted Moving Average """
+    """Weighted Moving Average"""
     weights = np.arange(1, period + 1, dtype=float)
     weights /= np.sum(weights)
 
@@ -62,9 +65,8 @@ def calc_wma(series, period: int = 10):
     return series.rolling(period).apply(average)
 
 
-
 def calc_rsi(series, period: int = 14):
-    """ Relative Strength Index """
+    """Relative Strength Index"""
     kw = dict(alpha=1.0 / period, min_periods=period, adjust=True, ignore_na=True)
 
     diff = series.diff()
@@ -74,8 +76,9 @@ def calc_rsi(series, period: int = 14):
 
     return result
 
+
 def calc_macd(series, n1: int = 12, n2: int = 26, n3: int = 9):
-    """ Moving Averrage Convergence Divergence """
+    """Moving Averrage Convergence Divergence"""
 
     ema1 = calc_ema(series, n1)
     ema2 = calc_ema(series, n2)
@@ -90,7 +93,7 @@ def calc_macd(series, n1: int = 12, n2: int = 26, n3: int = 9):
 
 
 def calc_ppo(series, n1: int = 12, n2: int = 26, n3: int = 9):
-    """ Price percentage oscillator """
+    """Price percentage oscillator"""
 
     ema1 = calc_ema(series, n1)
     ema2 = calc_ema(series, n2)
@@ -105,7 +108,7 @@ def calc_ppo(series, n1: int = 12, n2: int = 26, n3: int = 9):
 
 
 def calc_slope(series, period: int = 20):
-    """ Slope (time linear regression) """
+    """Slope (time linear regression)"""
 
     xx = np.arange(period) - (period - 1) / 2.0
 
@@ -119,7 +122,7 @@ def calc_slope(series, period: int = 20):
 
 
 def calc_curve(series, period: int = 20):
-    """ Curve (time curvilinear regression) """
+    """Curve (time curvilinear regression)"""
     xx = np.arange(period) - (period - 1.0) / 2.0
 
     def func(xs):

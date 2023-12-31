@@ -16,8 +16,7 @@ class LazyRepr:
 
         signature = Signature.from_callable(self.__init__)
         parameters = signature.parameters.values()
-        positional = (Parameter.POSITIONAL_ONLY,
-                      Parameter.POSITIONAL_OR_KEYWORD)
+        positional = (Parameter.POSITIONAL_ONLY, Parameter.POSITIONAL_OR_KEYWORD)
 
         args, kwargs = [], {}
 
@@ -30,7 +29,9 @@ class LazyRepr:
             elif v != p.default:
                 kwargs[p.name] = v
 
-        params = tuple(repr(p) for p in args) + tuple("%s=%r" % kv for kv in kwargs.items())
+        params = tuple(repr(p) for p in args) + tuple(
+            "%s=%r" % kv for kv in kwargs.items()
+        )
         params = ", ".join(params)
 
         return "%s(%s)" % (cname, params)
@@ -49,7 +50,6 @@ class Indicator(ABC, LazyRepr):
         if not callable(other):
             return self(other)
         return CallableChain(self, other)
-
 
 
 class CallableChain:

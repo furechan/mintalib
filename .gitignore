@@ -1,11 +1,15 @@
 .idea/
+.vscode/
 *.egg-info/
 .ipynb_checkpoints/
 .pytest_cache/
 __pycache__/
 build/
 dist/
+venv/
+.venv/
 .tox/
+.nox/
 *.bak
 *.log
 *.pyc

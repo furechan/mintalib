@@ -1,5 +1,1 @@
 # mintalib package
-
-
-
-

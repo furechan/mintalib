@@ -54,7 +54,7 @@ from .core import (
     STOCH,
     STREAK_UP,
     STREAK_DOWN,
-    EVAL
+    EVAL,
 )
 
 __all__ = tuple(name for name in dir() if name.isupper())

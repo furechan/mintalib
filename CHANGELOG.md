@@ -1,5 +1,7 @@
 # Change Log
 
+## 0.0.6
+- Fixed `MANIFEST.ini`
 
 ## 0.0.5
 - Added `noxfile.py` for linting and testing

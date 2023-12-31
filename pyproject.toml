@@ -5,15 +5,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mintalib"
-version = "0.0.6"
-dynamic = [ "readme" ]
-requires-python = ">=3.7"
+version = "0.0.7"
+dynamic = ["readme"]
+requires-python = ">=3.8"
 description = "Minimal Technical Analysis Library for Python"
 urls = { homepage = "https://github.com/furechan/mintalib" }
-authors = [ { name = "Furechan", email = "furechan@xsmail.com"} ]
+authors = [{ name = "Furechan", email = "furechan@xsmail.com" }]
 license = { file = "LICENSE.txt" }
-dependencies = [ "numpy", "pandas" ]
-keywords = [ "python", "cython", "finance", "technical-analysis" ]
+dependencies = ["numpy", "pandas"]
+keywords = ["python", "cython", "finance", "technical-analysis"]
 classifiers = [
     "Topic :: Office/Business :: Financial",
     "Development Status :: 2 - Pre-Alpha",
@@ -22,15 +22,17 @@ classifiers = [
 
 [project.optional-dependencies]
 extras = ["polars", "yfinance", "mplfinance"]
-test = ["pytest"]
+dev = ["invoke", "tomli", "build", "twine", "pytest"]
 
 [tool.setuptools.dynamic]
 readme = { file = ["README.md"], content-type = "text/markdown" }
+
+[tool.pydev]
+allow-publish = true
 
 [tool.custom]
 install_url = "git+https://github.com/furechan/mintalib.git"
 
 [tool.pytest.ini_options]
-addopts = [ "-p no:cacheprovider" ]
-testpaths = [ "tests" ]
-
+addopts = ["-p no:cacheprovider"]
+testpaths = ["tests"]

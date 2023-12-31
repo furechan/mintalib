@@ -39,24 +39,28 @@ def load_prices(target: str = None):
         A numpy structured array or a dataframe of specified target
     """
 
-    if target not in (None, 'pandas', 'polars'):
+    if target not in (None, "pandas", "polars"):
         raise ValueError(f"Invalid target {target!r}")
 
     file = FOLDER.joinpath("sample-prices.csv")
 
     prices = np.genfromtxt(
-        file, delimiter=',',
+        file,
+        delimiter=",",
         converters={0: dt.datetime.fromisoformat},
-        dtype=None, names=True,
-        encoding='utf-8'
+        dtype=None,
+        names=True,
+        encoding="utf-8",
     )
 
-    if target == 'pandas':
+    if target == "pandas":
         import pandas
-        prices = pandas.DataFrame(prices).set_index('date')
 
-    elif target == 'polars':
+        prices = pandas.DataFrame(prices).set_index("date")
+
+    elif target == "polars":
         import polars
+
         prices = polars.DataFrame(prices)
 
     return prices

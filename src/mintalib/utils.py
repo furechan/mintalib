@@ -5,8 +5,8 @@ import pandas as pd
 import datetime as dt
 
 
-def date_range(count=260, freq='B', start_date=None, end_date=None):
-    """ quick date_range utility (wrapper around pandas function of the same name) """
+def date_range(count=260, freq="B", start_date=None, end_date=None):
+    """quick date_range utility (wrapper around pandas function of the same name)"""
 
     if not start_date and not end_date:
         end_date = dt.date.today()
@@ -22,24 +22,26 @@ def date_range(count=260, freq='B', start_date=None, end_date=None):
     return dates
 
 
-def random_walk(count: int = 260,
-                freq: str = 'B',
-                start_value: float = 100.0,
-                volatility: float = 0.20,
-                fwd_rate: float = 0.10,
-                skip: int = 0,
-                start_date=None,
-                end_date=None,
-                name=None,
-                seed=None):
-    """ generates a single series of random walk prices """
+def random_walk(
+    count: int = 260,
+    freq: str = "B",
+    start_value: float = 100.0,
+    volatility: float = 0.20,
+    fwd_rate: float = 0.10,
+    skip: int = 0,
+    start_date=None,
+    end_date=None,
+    name=None,
+    seed=None,
+):
+    """generates a single series of random walk prices"""
 
     generator = np.random.default_rng(seed)
 
     dates = date_range(count, freq=freq, start_date=start_date, end_date=end_date)
 
     days = (dates.max() - dates.min()).days
-    sampling = (365.0 * count / days)
+    sampling = 365.0 * count / days
     fwd = np.log(1 + fwd_rate) / sampling
     std = volatility / np.sqrt(sampling)
 
@@ -49,16 +51,24 @@ def random_walk(count: int = 260,
     if skip:
         prices[:skip] = np.nan
 
-    result = pd.Series(prices, index=dates.values, name=name).rename_axis(index='date')
+    result = pd.Series(prices, index=dates.values, name=name).rename_axis(index="date")
 
     return result
 
 
-def random_prices(count=260, freq='B', start_value=100.0,
-                  volatility=0.20, fwd_rate=0.10,
-                  start_date=None, end_date=None,
-                  seed=None, index=True, as_dict=False):
-    """ generates a dataframe of random prices """
+def random_prices(
+    count=260,
+    freq="B",
+    start_value=100.0,
+    volatility=0.20,
+    fwd_rate=0.10,
+    start_date=None,
+    end_date=None,
+    seed=None,
+    index=True,
+    as_dict=False,
+):
+    """generates a dataframe of random prices"""
 
     if not start_date and not end_date:
         end_date = dt.date.today()
@@ -68,7 +78,7 @@ def random_prices(count=260, freq='B', start_value=100.0,
     dates = date_range(count, freq=freq, start_date=start_date, end_date=end_date)
 
     days = (dates.max() - dates.min()).days
-    sampling = (4.0 * 365.0 * count / days)
+    sampling = 4.0 * 365.0 * count / days
     fwd = np.log(1 + fwd_rate) / sampling
     std = volatility / np.sqrt(sampling)
 
@@ -85,13 +95,13 @@ def random_prices(count=260, freq='B', start_value=100.0,
     data = dict()
 
     if index:
-        data['date'] = dates.values
+        data["date"] = dates.values
 
-    data['open'] = np.around(op, 2)
-    data['high'] = np.around(hi, 2)
-    data['low'] = np.around(lo, 2)
-    data['close'] = np.around(cl, 2)
-    data['volume'] = vol.astype(int)
+    data["open"] = np.around(op, 2)
+    data["high"] = np.around(hi, 2)
+    data["low"] = np.around(lo, 2)
+    data["close"] = np.around(cl, 2)
+    data["volume"] = vol.astype(int)
 
     if as_dict:
         return data
@@ -99,6 +109,6 @@ def random_prices(count=260, freq='B', start_value=100.0,
     prices = pd.DataFrame(data)
 
     if index:
-        prices = prices.set_index('date')
+        prices = prices.set_index("date")
 
     return prices
