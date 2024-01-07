@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 name = "mintalib"
 version = "0.0.7"
 dynamic = ["readme"]
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 description = "Minimal Technical Analysis Library for Python"
 urls = { homepage = "https://github.com/furechan/mintalib" }
 authors = [{ name = "Furechan", email = "furechan@xsmail.com" }]

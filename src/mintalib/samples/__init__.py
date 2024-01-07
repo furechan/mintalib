@@ -4,9 +4,7 @@ import numpy as np
 import pandas as pd
 import datetime as dt
 
-from pathlib import Path
-
-FOLDER = Path(__file__).parent
+from importlib.resources import open_text
 
 
 def sample_prices(item: str = None):
@@ -19,7 +17,7 @@ def sample_prices(item: str = None):
         A prices dataframe or a series if item is specified
     """
 
-    file = FOLDER.joinpath("sample-prices.csv")
+    file = open_text(__name__, "sample-prices.csv")
 
     prices = pd.read_csv(file, index_col=0, parse_dates=True)
 
@@ -42,7 +40,7 @@ def load_prices(target: str = None):
     if target not in (None, "pandas", "polars"):
         raise ValueError(f"Invalid target {target!r}")
 
-    file = FOLDER.joinpath("sample-prices.csv")
+    file = open_text(__name__, "sample-prices.csv")
 
     prices = np.genfromtxt(
         file,

@@ -1,3 +1,7 @@
+# pylint: disable=import-error
+# pyright: reportMissingImports=false
+
+
 import os
 import nox
 import tempfile
@@ -13,7 +17,7 @@ def lint(session):
     session.run("flake8", "src")
 
 
-@nox.session(python=["3.8", "3.9", "3.10", "3.11"])
+@nox.session(python=["3.9", "3.10", "3.11"])
 def tests(session: nox.Session):
     session.install(".", "pytest", "pytest-sugar")
     session.run("pytest")
