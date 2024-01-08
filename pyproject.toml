@@ -8,30 +8,26 @@ name = "mintalib"
 version = "0.0.7"
 dynamic = ["readme"]
 requires-python = ">=3.9"
+license = { text = "MIT" }
 description = "Minimal Technical Analysis Library for Python"
 urls = { homepage = "https://github.com/furechan/mintalib" }
 authors = [{ name = "Furechan", email = "furechan@xsmail.com" }]
-license = { file = "LICENSE.txt" }
 dependencies = ["numpy", "pandas"]
 keywords = ["python", "cython", "finance", "technical-analysis"]
 classifiers = [
-    "Topic :: Office/Business :: Financial",
-    "Development Status :: 2 - Pre-Alpha",
-    "Programming Language :: Python :: 3"
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
 ]
 
 [project.optional-dependencies]
 extras = ["polars", "yfinance", "mplfinance"]
-dev = ["invoke", "tomli", "build", "twine", "pytest"]
 
 [tool.setuptools.dynamic]
 readme = { file = ["README.md"], content-type = "text/markdown" }
 
 [tool.pydev]
 allow-publish = true
-
-[tool.custom]
-install_url = "git+https://github.com/furechan/mintalib.git"
 
 [tool.pytest.ini_options]
 addopts = ["-p no:cacheprovider"]

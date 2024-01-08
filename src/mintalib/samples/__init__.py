@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import datetime as dt
 
-from importlib.resources import open_text
+from importlib import resources
 
 
 def sample_prices(item: str = None):
@@ -17,9 +17,9 @@ def sample_prices(item: str = None):
         A prices dataframe or a series if item is specified
     """
 
-    file = open_text(__name__, "sample-prices.csv")
-
-    prices = pd.read_csv(file, index_col=0, parse_dates=True)
+    res = resources.files(__name__).joinpath("sample-prices.csv")
+    with resources.as_file(res) as file:
+        prices = pd.read_csv(file, index_col=0, parse_dates=True)
 
     if item is not None:
         return prices[item]
@@ -40,16 +40,16 @@ def load_prices(target: str = None):
     if target not in (None, "pandas", "polars"):
         raise ValueError(f"Invalid target {target!r}")
 
-    file = open_text(__name__, "sample-prices.csv")
-
-    prices = np.genfromtxt(
-        file,
-        delimiter=",",
-        converters={0: dt.datetime.fromisoformat},
-        dtype=None,
-        names=True,
-        encoding="utf-8",
-    )
+    res = resources.files(__name__).joinpath("sample-prices.csv")
+    with resources.as_file(res) as file:
+        prices = np.genfromtxt(
+            file,
+            delimiter=",",
+            converters={0: dt.datetime.fromisoformat},
+            dtype=None,
+            names=True,
+            encoding="utf-8",
+        )
 
     if target == "pandas":
         import pandas
