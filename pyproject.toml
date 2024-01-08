@@ -8,7 +8,7 @@ name = "mintalib"
 version = "0.0.7"
 readme = "README.md"
 requires-python = ">=3.9"
-license = { text = "MIT" }
+license = { text = "MIT License" }
 description = "Minimal Technical Analysis Library for Python"
 urls = { homepage = "https://github.com/furechan/mintalib" }
 authors = [{ name = "Furechan", email = "furechan@xsmail.com" }]
