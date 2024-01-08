@@ -6,6 +6,8 @@ import datetime as dt
 
 from importlib import resources
 
+# QUESTION do we need load_prices ?
+
 
 def sample_prices(item: str = None):
     """Sample prices dataframe or series
@@ -17,8 +19,9 @@ def sample_prices(item: str = None):
         A prices dataframe or a series if item is specified
     """
 
-    res = resources.files(__name__).joinpath("sample-prices.csv")
-    with resources.as_file(res) as file:
+    # path is a traversable not a Path object !
+    path = resources.files(__name__).joinpath("sample-prices.csv")
+    with path.open("r") as file:
         prices = pd.read_csv(file, index_col=0, parse_dates=True)
 
     if item is not None:
@@ -40,8 +43,9 @@ def load_prices(target: str = None):
     if target not in (None, "pandas", "polars"):
         raise ValueError(f"Invalid target {target!r}")
 
-    res = resources.files(__name__).joinpath("sample-prices.csv")
-    with resources.as_file(res) as file:
+    # path is a traversable not a Path object. use as_file to get a file object !
+    path = resources.files(__name__).joinpath("sample-prices.csv")
+    with resources.as_file(path) as file:
         prices = np.genfromtxt(
             file,
             delimiter=",",
