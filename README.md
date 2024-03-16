@@ -8,9 +8,9 @@ with both `pandas` and `polars` dataframes where possible.
 
 
 > **Warning**
-> This is work in progress.
-> For a similar project with a mature api
-> you may want to look at [ta-lib](https://pypi.org/project/TA-Lib/).
+> This project is experimental and the interface can change.
+> For a similar project with a mature api you may want to look at
+> [ta-lib](https://pypi.org/project/TA-Lib/).
 
 
 ## Structure
