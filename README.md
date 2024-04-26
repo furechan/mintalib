@@ -131,7 +131,6 @@ python -mpip install git+https://github.com/furechan/mintalib.git
 | CMF              | Chaikin Money Flow                        |
 | CROSSOVER        | Cross Over                                |
 | CROSSUNDER       | Cross Under                               |
-| CURVE            | Curve (time curvilinear regression)       |
 | DEMA             | Double Exponential Moving Average         |
 | DIFF             | Difference                                |
 | EFFICIENCY_RATIO | Efficiency Ratio (Kaufman)                |

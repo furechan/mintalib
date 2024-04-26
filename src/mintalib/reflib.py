@@ -121,14 +121,3 @@ def calc_slope(series, period: int = 20):
     return series.rolling(period).apply(func, raw=True)
 
 
-def calc_curve(series, period: int = 20):
-    """Curve (time curvilinear regression)"""
-    xx = np.arange(period) - (period - 1.0) / 2.0
-
-    def func(xs):
-        if np.any(np.isnan(xs)):
-            return np.nan
-
-        return np.polyfit(xx, xs, 2)[0]
-
-    return series.rolling(period).apply(func, raw=True)

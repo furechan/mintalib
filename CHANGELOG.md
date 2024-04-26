@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.8
+- Removed some legacy code
+
+## 0.0.7
+- Minor fixes
+
 ## 0.0.6
 - Fixed `MANIFEST.ini`
 
