@@ -5,6 +5,7 @@ from . import model
 
 nan = float('nan')
 
+
 @core.wrap_function(core.AVGPRICE)
 class AVGPRICE(model.Indicator):
     def __call__(self, prices):

@@ -2,8 +2,7 @@
 
 
 This library offers a curated list of technical analysis indicators
-implemented in cython.
-It is built around `numpy` arrays and aims to be compatible
+implemented in cython. It is built around `numpy` arrays and aims to be compatible
 with both `pandas` and `polars` dataframes where possible.
 
 

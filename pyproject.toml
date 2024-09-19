@@ -23,6 +23,11 @@ classifiers = [
 [project.optional-dependencies]
 extras = ["ipykernel", "polars", "yfinance", "mplfinance"]
 
+[tool.ruff.lint.per-file-ignores]
+"*.ipynb" = ["F401", "F811"]
+"__init__.py" = ["F401"]
+"functions.py" = ["F401"]
+
 [tool.pydev]
 allow-publish = true
 

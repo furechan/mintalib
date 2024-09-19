@@ -54,6 +54,6 @@ from .core import (
     STREAK_UP,
     STREAK_DOWN,
     EVAL
-)
+) # noqa F401
 
 __all__ = tuple(name for name in dir() if name.isupper())

@@ -119,5 +119,3 @@ def calc_slope(series, period: int = 20):
         return np.polyfit(xx, xs, 1)[0]
 
     return series.rolling(period).apply(func, raw=True)
-
-
