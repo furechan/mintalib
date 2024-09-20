@@ -11,7 +11,7 @@ def calc_cmf(prices, long period = 20, *, wrap: bool = False):
 
     size = check_size(high, low, close, volume)
 
-    with np.errstate(divide='ignore'):
+    with np.errstate(divide='ignore', invalid='ignore'):
         mult = (2 * close - high - low) / (high - low) * volume
         num = calc_sum(mult, period)
         div = calc_sum(volume, period)

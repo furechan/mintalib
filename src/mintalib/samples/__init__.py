@@ -1,68 +1,33 @@
-""" data samples """
+""" Sample prices data """
 
-import numpy as np
 import pandas as pd
-import datetime as dt
 
 from importlib import resources
 
-# QUESTION do we need load_prices ?
+TIMEZONE = "America/New_York"
+FREQUENCIES = "daily", "hourly", "minute"
 
 
-def sample_prices(item: str = None):
-    """Sample prices dataframe or series
+def sample_prices(freq: str = "daily", *, max_bars: int = 0, item: str = None):
+    """Sample prices"""
 
-    Args:
-        item (optional) : use as column name to return a series
+    if freq not in FREQUENCIES:
+        raise ValueError(f"Invalid freq {freq!r}")
 
-    Returns:
-        A prices dataframe or a series if item is specified
-    """
+    fname = f"{freq}-prices.csv"
+    path = resources.files(__name__).joinpath(fname)
+    # Note that path here is a traversable not a Path object
 
-    # path is a traversable not a Path object !
-    path = resources.files(__name__).joinpath("sample-prices.csv")
     with path.open("r") as file:
         prices = pd.read_csv(file, index_col=0, parse_dates=True)
 
-    if item is not None:
+    if freq != "daily":
+        prices.index = pd.to_datetime(prices.index, utc=True).tz_convert(TIMEZONE)
+
+    if max_bars > 0:
+        prices = prices.tail(max_bars)
+
+    if item:
         return prices[item]
-
-    return prices
-
-
-def load_prices(target: str = None):
-    """Load sample prices in target format
-
-    Args:
-        target (None | 'pandas` | 'polars') : target dataframe format
-
-    Returns:
-        A numpy structured array or a dataframe of specified target
-    """
-
-    if target not in (None, "pandas", "polars"):
-        raise ValueError(f"Invalid target {target!r}")
-
-    # path is a traversable not a Path object. use as_file to get a file object !
-    path = resources.files(__name__).joinpath("sample-prices.csv")
-    with resources.as_file(path) as file:
-        prices = np.genfromtxt(
-            file,
-            delimiter=",",
-            converters={0: dt.datetime.fromisoformat},
-            dtype=None,
-            names=True,
-            encoding="utf-8",
-        )
-
-    if target == "pandas":
-        import pandas
-
-        prices = pandas.DataFrame(prices).set_index("date")
-
-    elif target == "polars":
-        import polars
-
-        prices = polars.DataFrame(prices)
 
     return prices

@@ -2,7 +2,6 @@
 requires = ["setuptools", "cython"]
 build-backend = "setuptools.build_meta"
 
-
 [project]
 name = "mintalib"
 version = "0.0.9"
@@ -17,7 +16,7 @@ keywords = ["python", "cython", "finance", "technical-analysis"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent"
+    "Operating System :: OS Independent",
 ]
 
 [project.optional-dependencies]
@@ -27,9 +26,6 @@ extras = ["ipykernel", "polars", "yfinance", "mplfinance"]
 "*.ipynb" = ["F401", "F811"]
 "__init__.py" = ["F401"]
 "functions.py" = ["F401"]
-
-[tool.pydev]
-allow-publish = true
 
 [tool.pytest.ini_options]
 addopts = ["-p no:cacheprovider"]

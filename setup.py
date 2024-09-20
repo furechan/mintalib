@@ -3,17 +3,16 @@ from pathlib import Path
 
 from setuptools import setup, find_packages, Extension
 
-# MAYBE can we remove MANIFEST.in ?
+# MAYBE we can remove MANIFEST.in ?
 
 srcdir = "src"
 package_dir = {"": srcdir}
 packages = find_packages(where=srcdir)
+extra_compile_args = []
 
 # Extra compilation flags to suppress cython related warnings on MacOS ...
 if sys.platform == "darwin":
     extra_compile_args = ["-Wno-unreachable-code", "-Wno-deprecated-declarations"]
-else:
-    extra_compile_args = []
 
 
 def make_extension(path):

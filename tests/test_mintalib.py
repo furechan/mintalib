@@ -42,7 +42,7 @@ def test_calc(name):
     kwds = sample_params(func)
 
     item = "close" if ftype == "series" else None
-    data = sample_prices(item)
+    data = sample_prices(item=item)
 
     result = func(data, **kwds)
     assert result is not None
@@ -60,7 +60,7 @@ def test_funct(name):
     kwds = sample_params(func)
 
     item = "close" if ftype == "series" else None
-    data = sample_prices(item)
+    data = sample_prices(item=item)
 
     result = func(data, **kwds)
     assert result is not None

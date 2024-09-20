@@ -56240,7 +56240,7 @@ static PyObject *__pyx_pf_8mintalib_4core_162calc_cmf(CYTHON_UNUSED PyObject *__
  * 
  *     size = check_size(high, low, close, volume)             # <<<<<<<<<<<<<<
  * 
- *     with np.errstate(divide='ignore'):
+ *     with np.errstate(divide='ignore', invalid='ignore'):
  */
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_check_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(27, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -56272,7 +56272,7 @@ static PyObject *__pyx_pf_8mintalib_4core_162calc_cmf(CYTHON_UNUSED PyObject *__
   /* "src/mintalib/cython/cmf.pxi":14
  *     size = check_size(high, low, close, volume)
  * 
- *     with np.errstate(divide='ignore'):             # <<<<<<<<<<<<<<
+ *     with np.errstate(divide='ignore', invalid='ignore'):             # <<<<<<<<<<<<<<
  *         mult = (2 * close - high - low) / (high - low) * volume
  *         num = calc_sum(mult, period)
  */
@@ -56282,9 +56282,10 @@ static PyObject *__pyx_pf_8mintalib_4core_162calc_cmf(CYTHON_UNUSED PyObject *__
     __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_errstate); if (unlikely(!__pyx_t_2)) __PYX_ERR(27, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(27, 14, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(27, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_divide, __pyx_n_u_ignore) < 0) __PYX_ERR(27, 14, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_invalid, __pyx_n_u_ignore) < 0) __PYX_ERR(27, 14, __pyx_L1_error)
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(27, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -56329,7 +56330,7 @@ static PyObject *__pyx_pf_8mintalib_4core_162calc_cmf(CYTHON_UNUSED PyObject *__
 
           /* "src/mintalib/cython/cmf.pxi":15
  * 
- *     with np.errstate(divide='ignore'):
+ *     with np.errstate(divide='ignore', invalid='ignore'):
  *         mult = (2 * close - high - low) / (high - low) * volume             # <<<<<<<<<<<<<<
  *         num = calc_sum(mult, period)
  *         div = calc_sum(volume, period)
@@ -56355,7 +56356,7 @@ static PyObject *__pyx_pf_8mintalib_4core_162calc_cmf(CYTHON_UNUSED PyObject *__
           __pyx_t_1 = 0;
 
           /* "src/mintalib/cython/cmf.pxi":16
- *     with np.errstate(divide='ignore'):
+ *     with np.errstate(divide='ignore', invalid='ignore'):
  *         mult = (2 * close - high - low) / (high - low) * volume
  *         num = calc_sum(mult, period)             # <<<<<<<<<<<<<<
  *         div = calc_sum(volume, period)
@@ -56443,7 +56444,7 @@ static PyObject *__pyx_pf_8mintalib_4core_162calc_cmf(CYTHON_UNUSED PyObject *__
           /* "src/mintalib/cython/cmf.pxi":14
  *     size = check_size(high, low, close, volume)
  * 
- *     with np.errstate(divide='ignore'):             # <<<<<<<<<<<<<<
+ *     with np.errstate(divide='ignore', invalid='ignore'):             # <<<<<<<<<<<<<<
  *         mult = (2 * close - high - low) / (high - low) * volume
  *         num = calc_sum(mult, period)
  */

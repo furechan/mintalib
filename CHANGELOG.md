@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.9
+- Lint with ruff
+- Added noxfile.py
+
 ## 0.0.8
 - Minor update
 
