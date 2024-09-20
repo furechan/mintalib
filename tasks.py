@@ -1,3 +1,5 @@
+# noinspection PyUnresolvedReferences
+
 from pathlib import Path
 from invoke import task  # type: ignore
 
@@ -20,15 +22,15 @@ def clean(c):
 @task
 def check(c):
     """Check package"""
-    c.run("pip install ruff nbcheck -q")
-    c.run("nbcheck examples scripts")
+    c.run("pip install -q ruff nbcheck")
+    c.run("nbcheck examples misc")
     c.run("ruff check")
 
 
 @task(clean)
 def build(c):
     """Build project wheel"""
-    c.run("pip install build -q")
+    c.run("pip install -q build")
     c.run("python -mbuild --sdist")
 
 
@@ -42,5 +44,5 @@ def dump(c):
 @task
 def publish(c):
     """Publish to PyPI with twine"""
-    c.run("pip install twine -q")
+    c.run("pip install -q twine")
     c.run("twine upload dist/*.whl")

@@ -20,4 +20,4 @@ def tests(session: nox.Session):
 def lint(session: nox.Session):
     session.install("ruff", "nbcheck")
     session.run("ruff", "check")
-    session.run("nbcheck", "examples")
+    session.run("nbcheck", "examples", "misc")
