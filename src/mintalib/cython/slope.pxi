@@ -9,11 +9,8 @@ cdef enum:
     SLOPE_OPTION_FORECAST = 5
     SLOPE_OPTION_BADOPTION = 6
 
-class SlopeOption(IntEnum):
-    """ Slope Option Enumeration """
-    def __repr__(self):
-        return str(self)
 
+class SlopeOption(IntEnum):
     SLOPE = 0
     INTERCEPT = 1
     RVALUE = 2

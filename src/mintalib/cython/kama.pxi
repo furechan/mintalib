@@ -56,7 +56,7 @@ def calc_ker(series, int period=10, *, wrap: bool = False):
 
 
 def calc_kama(series, int period=10, int fastn=2, int slown=30, *, wrap: bool = False):
-    """ Kaufman Adaptive Moving Average (Kaufman) """
+    """ Kaufman Adaptive Moving Average """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef const double[:] ers = calc_ker(xs, period)

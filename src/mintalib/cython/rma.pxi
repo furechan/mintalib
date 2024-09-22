@@ -3,14 +3,11 @@
 
 def calc_rma(series, long period, *, wrap: bool = False):
     """
-    Rolling Moving Average (RSI Style)
+    Rolling Moving Average (RSI style)
 
-    Exponential moving average with alpha = 2 / period,
-    but strats as a simple moving average till period bars.
-
-    Args:
-        series (series) : data series. required
-        period (int) : time period. rerquired
+    Exponential moving average with `alpha = 2 / period`,
+    that starts as a simple moving average until
+    number of bars is equal to `period`.
     """
 
     if period <= 0:

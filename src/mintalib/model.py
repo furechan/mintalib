@@ -1,31 +1,8 @@
 """Model classes"""
 
-
 from abc import ABC, abstractmethod
 
-from inspect import Signature, Parameter
-
-
-def lazy_repr(obj):
-    data = obj.__dict__
-    cname = obj.__class__.__qualname__
-
-    signature = Signature.from_callable(obj.__init__)
-    parameters = signature.parameters.values()
-    positional = (Parameter.POSITIONAL_ONLY, Parameter.POSITIONAL_OR_KEYWORD)
-
-    arguments = []
-
-    for p in parameters:
-        v = data.get(p.name, p.default)
-        if p.kind in positional:
-            arguments.append(f"{v!r}")
-        elif v != p.default:
-            arguments.append(f"{p.name}={v!r}")
-
-    arguments = ", ".join(arguments)
-
-    return "%s(%s)" % (cname, arguments)
+from .utils import format_partial, lazy_repr
 
 
 class Indicator(ABC):
@@ -42,6 +19,24 @@ class Indicator(ABC):
         if not callable(other):
             return self(other)
         return CallableChain(self, other)
+
+
+class FuncIndicator(Indicator):
+    def __init__(self, func, params: dict, name: str):
+        self.func = func
+        self.params = params
+        self.name = name
+
+    def __repr__(self):
+        return self.name
+
+    def __call__(self, prices):
+        return self.func(prices, **self.params)
+
+    @classmethod
+    def wrap(cls, func, params: dict):
+        name = format_partial(func, params)
+        return cls(func, params=params, name=name)
 
 
 class CallableChain(Indicator):

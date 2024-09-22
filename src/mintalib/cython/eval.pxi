@@ -1,12 +1,7 @@
 """ Expression eval """
 
 def calc_eval(prices, expr: str):
-    """
-    Expression Eval (pandas only)
-
-    Args:
-        expr (str) : expression to evaluate on the prices dataframe
-    """
+    """Expression Eval (pandas only)"""
 
     return prices.eval(expr).astype(float)
 

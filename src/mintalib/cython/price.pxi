@@ -101,16 +101,13 @@ def calc_midprice(prices, *, wrap: bool = False):
     return result
 
 
-
-PRICE_FUNCTIONS = dict(
-    avg=calc_avgprice,
-    mid=calc_midprice,
-    typ=calc_typprice,
-    wcl=calc_wclprice,
-)
-
 def calc_price(prices, item: str = None, *, wrap: bool = False):
-    """ Generic Price """
+    """ Generic Price 
+    
+    Args:
+        item (str) : one of 'open', 'high', 'low', 'close',
+            'avg', 'mid', 'typ', 'wcl' defaults to 'close'
+    """
 
     if item is None:
         item = 'close'
@@ -121,11 +118,19 @@ def calc_price(prices, item: str = None, *, wrap: bool = False):
             result = wrap_result(result, prices)
         return result
 
-    price_func = PRICE_FUNCTIONS.get(item)
-    if price_func is not None:
-        return price_func(prices, wrap=wrap)
+    if item == 'avg':
+        price_func = calc_avgprice
+    elif item == 'mid':
+        price_func = calc_midprice
+    elif item == 'typ':
+        price_func = calc_typprice
+    elif item == 'wcl':
+        price_func = calc_wclprice
+    else:
+        raise ValueError(f"Unknown price type {item!r}")
 
-    raise ValueError(f"Unknown price type {item}")
+    return price_func(prices, wrap=wrap)
+
 
 
 @wrap_function(calc_avgprice)

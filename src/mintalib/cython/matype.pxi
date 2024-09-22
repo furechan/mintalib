@@ -2,14 +2,11 @@
 
 
 def calc_ma(series, long period=20, *, ma_type: str = None, wrap: bool = False):
-    """
-    Generic Moving Average
+    """Generic Moving Average
 
     Args:
-        series : data series, required
-        period (int) : time period, required
-        ma_type (str) : type of moving average, default 'SMA'
-            one of 'SMA', 'EMA', 'WMA', 'RMA', 'DEMA', 'TEMA'
+        matype (str) : one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
+                defaults to 'SMA'
     """
 
     if ma_type is None:
@@ -24,8 +21,8 @@ def calc_ma(series, long period=20, *, ma_type: str = None, wrap: bool = False):
     if ma_type == 'WMA':
         return calc_wma(series, period, wrap=wrap)
 
-    if ma_type == 'RMA':
-        return calc_rma(series, period, wrap=wrap)
+    if ma_type == 'HMA':
+        return calc_hma(series, period, wrap=wrap)
 
     if ma_type == 'DEMA':
         return calc_dema(series, period, wrap=wrap)
