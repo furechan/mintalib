@@ -64,4 +64,4 @@ def dump(ctx):
 def publish(ctx):
     """Publish to PyPI with twine"""
     ctx.run("python -mpip install -q twine")
-    ctx.run("twine upload dist/*.whl")
+    ctx.run("twine upload dist/*.tar.gz")
