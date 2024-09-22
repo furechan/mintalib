@@ -1,9 +1,6 @@
 import sys
 from pathlib import Path
-
 from setuptools import setup, find_packages, Extension
-
-# MAYBE we can remove MANIFEST.in ?
 
 srcdir = "src"
 package_dir = {"": srcdir}
@@ -22,7 +19,8 @@ def make_extension(path):
     )
 
 
-ext_modules = [make_extension(f) for f in Path(srcdir).rglob("*.pyx")]
+# ext_modules = [make_extension(f) for f in Path(srcdir).rglob("*.pyx")]
+ext_modules = [make_extension(f) for f in Path(srcdir).rglob("*.c")]
 
 setup(
     packages=packages,

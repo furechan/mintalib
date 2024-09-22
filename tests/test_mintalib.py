@@ -1,10 +1,9 @@
 import pytest
 
-from inspect import Signature
-
 from mintalib import core, functions, indicators
 from mintalib.samples import sample_prices
-from mintalib.helper import func_type, sample_params
+from mintalib.testing import first_param, sample_params
+
 
 
 def list_calcs():
@@ -13,7 +12,7 @@ def list_calcs():
         for k, v in vars(core).items()
         if k.startswith("calc_")
         and callable(v)
-        and list(Signature.from_callable(v).parameters)[0] in ("prices", "series")
+        and first_param(v) in ("prices", "series")
     ]
 
 
@@ -36,7 +35,7 @@ def test_calc(name):
 
     func = getattr(core, name)
 
-    ftype = func_type(func)
+    ftype = first_param(func)
     assert ftype in ("series", "prices")
 
     kwds = sample_params(func)
@@ -54,7 +53,7 @@ def test_funct(name):
 
     func = getattr(functions, name)
 
-    ftype = func_type(func)
+    ftype = first_param(func)
     assert ftype in ("series", "prices")
 
     kwds = sample_params(func)

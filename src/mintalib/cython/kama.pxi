@@ -1,7 +1,7 @@
 """ Kaufman Adaptive Moving Average """
 
-def efficiency_ratio(series, int period=10, *, wrap: bool = False):
-    """ Efficiency Ratio (Kaufman) """
+def calc_ker(series, int period=10, *, wrap: bool = False):
+    """ Kaufman Efficiency Ratio  """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -59,7 +59,7 @@ def calc_kama(series, int period=10, int fastn=2, int slown=30, *, wrap: bool = 
     """ Kaufman Adaptive Moving Average (Kaufman) """
 
     cdef const double[:] xs = np.asarray(series, float)
-    cdef const double[:] ers = efficiency_ratio(xs, period)
+    cdef const double[:] ers = calc_ker(xs, period)
 
     cdef long size = xs.size
 
@@ -98,10 +98,10 @@ def calc_kama(series, int period=10, int fastn=2, int slown=30, *, wrap: bool = 
 
 
 
-@wrap_function(efficiency_ratio)
-def EFFICIENCY_RATIO(series, period: int = 10, *, item: str = None):
+@wrap_function(calc_ker)
+def KER(series, period: int = 10, *, item: str = None):
     series = get_series(series, item=item)
-    result = efficiency_ratio(series, period=period)
+    result = calc_ker(series, period=period)
     return wrap_result(result, series)
 
 

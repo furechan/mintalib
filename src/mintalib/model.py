@@ -1,50 +1,42 @@
-""" Model classes """
+"""Model classes"""
 
-from typing import ClassVar
 
 from abc import ABC, abstractmethod
 
 from inspect import Signature, Parameter
 
 
-class LazyRepr:
-    """Implements a basic __repr__ based on __init__ signature"""
+def lazy_repr(obj):
+    data = obj.__dict__
+    cname = obj.__class__.__qualname__
 
-    def __repr__(self):
-        data = self.__dict__
-        cname = self.__class__.__qualname__
+    signature = Signature.from_callable(obj.__init__)
+    parameters = signature.parameters.values()
+    positional = (Parameter.POSITIONAL_ONLY, Parameter.POSITIONAL_OR_KEYWORD)
 
-        signature = Signature.from_callable(self.__init__)
-        parameters = signature.parameters.values()
-        positional = (Parameter.POSITIONAL_ONLY, Parameter.POSITIONAL_OR_KEYWORD)
+    arguments = []
 
-        args, kwargs = [], {}
+    for p in parameters:
+        v = data.get(p.name, p.default)
+        if p.kind in positional:
+            arguments.append(f"{v!r}")
+        elif v != p.default:
+            arguments.append(f"{p.name}={v!r}")
 
-        for p in parameters:
-            v = data.get(p.name, p.default)
+    arguments = ", ".join(arguments)
 
-            if p.kind in positional:
-                args.append(v)
-
-            elif v != p.default:
-                kwargs[p.name] = v
-
-        params = tuple(repr(p) for p in args) + tuple(
-            "%s=%r" % kv for kv in kwargs.items()
-        )
-        params = ", ".join(params)
-
-        return "%s(%s)" % (cname, params)
+    return "%s(%s)" % (cname, arguments)
 
 
-class Indicator(ABC, LazyRepr):
+class Indicator(ABC):
     """Abstact Base class for Indicators"""
 
-    same_scale: ClassVar[bool] = False
+    same_scale: bool = False
+
+    __repr__ = lazy_repr
 
     @abstractmethod
-    def __call__(self, data):
-        ...
+    def __call__(self, data): ...
 
     def __matmul__(self, other):
         if not callable(other):
@@ -52,7 +44,7 @@ class Indicator(ABC, LazyRepr):
         return CallableChain(self, other)
 
 
-class CallableChain:
+class CallableChain(Indicator):
     """Chain of Callables"""
 
     def __init__(self, *chain):
@@ -69,5 +61,4 @@ class CallableChain:
     def __matmul__(self, other):
         if not callable(other):
             return self(other)
-
         return self.__class__(*self.chain, other)

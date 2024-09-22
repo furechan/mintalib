@@ -72,7 +72,7 @@ def wrap_function(source, same_scale: bool = None):
 
 
 def wrap_indicator(source):
-    """ update indicagtor with documentation from source """
+    """ update indicator with documentation from source """
 
     doc = source.__doc__ if source else None
 

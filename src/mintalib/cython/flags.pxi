@@ -1,5 +1,6 @@
 """ Flag functions """
 
+
 def flag_above(series, double level=0.0, *, double na_value=NAN, wrap: bool = False):
     """ Flag for value above level """
 
@@ -64,8 +65,44 @@ def flag_below(series, double level=0.0, *, double na_value=NAN, wrap: bool = Fa
 
 
 
-def invert_flag(series, *, double na_value=NAN, wrap: bool = False):
-    """ Invert flag  """
+def flag_updown(series, double up_level=0.0, double down_level=0.0, *,
+                wrap: bool = False):
+    """ Flag for value crossing up & down levels """
+
+    cdef const double[:] xs = np.asarray(series, float)
+    cdef long size = xs.size
+
+    cdef object result = np.full(size, NAN)
+    cdef double[:] output = result
+
+    cdef double start_flag=NAN, up_flag = 1.0, down_flag=0.0 
+    cdef double value = NAN, prev = NAN
+    cdef double flag = start_flag
+    cdef long i = 0
+
+    for i in range(size):
+        value = xs[i]
+
+        if value > up_level >= prev:
+            flag = up_flag
+        elif value <= down_level < prev:
+            flag = down_flag
+
+        output[i] = flag
+
+        if not isnan(value):
+            prev = value
+
+    if wrap:
+        result = wrap_result(result, series)
+
+    return result
+
+
+
+
+def flag_invert(series, *, double na_value=NAN, wrap: bool = False):
+    """ Inverse flag """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -93,42 +130,6 @@ def invert_flag(series, *, double na_value=NAN, wrap: bool = False):
         result = wrap_result(result, series)
 
     return result
-
-
-
-def updown_flag(series, double up_level=0.0, double down_level=0.0, *,
-                double up_flag=1.0, double down_flag=0.0, double start_flag=NAN,
-                wrap: bool = False):
-    """ Flag for value crossing levels up & down """
-
-    cdef const double[:] xs = np.asarray(series, float)
-    cdef long size = xs.size
-
-    cdef object result = np.full(size, NAN)
-    cdef double[:] output = result
-
-    cdef double value = NAN, prev = NAN
-    cdef double flag = start_flag
-    cdef long i = 0
-
-    for i in range(size):
-        value = xs[i]
-
-        if value > up_level >= prev:
-            flag = up_flag
-        elif value <= down_level < prev:
-            flag = down_flag
-
-        output[i] = flag
-
-        if not isnan(value):
-            prev = value
-
-    if wrap:
-        result = wrap_result(result, series)
-
-    return result
-
 
 
 def where_flag(flag, x, y, z=NAN, *, wrap: bool = False):
@@ -170,30 +171,29 @@ def where_flag(flag, x, y, z=NAN, *, wrap: bool = False):
 
 
 @wrap_function(flag_above)
-def FLAG_ABOVE(series, level: float = 0.0, *, na_value: float = NAN, item: str = None):
+def FLAG_ABOVE(series, level: float = 0.0, *, item: str = None):
     series = get_series(series, item=item)
-    result = flag_above(series, level=level, na_value=na_value)
+    result = flag_above(series, level=level)
     return wrap_result(result, series)
 
 
 @wrap_function(flag_below)
-def FLAG_BELOW(series, level: float = 0.0, *, na_value: float = NAN, item: str = None):
+def FLAG_BELOW(series, level: float = 0.0, *, item: str = None):
     series = get_series(series, item=item)
-    result = flag_below(series, level=level, na_value=na_value)
+    result = flag_below(series, level=level)
     return wrap_result(result, series)
 
 
-@wrap_function(invert_flag)
-def INVERT_FLAG(series, *, na_value: float = NAN, item: str = None):
+@wrap_function(flag_invert)
+def FLAG_INVERT(series, *, item: str = None):
     series = get_series(series, item=item)
-    result = invert_flag(series, na_value=na_value)
+    result = flag_invert(series)
     return wrap_result(result, series)
 
 
-@wrap_function(updown_flag)
-def UPDOWN_FLAG(series, up_level: float = 0.0, down_level: float = 0.0, *,
-                up_flag: float = 1.0, down_flag: float = 0.0, start_flag: float = NAN, item: str = None):
+@wrap_function(flag_updown)
+def FLAG_UPDOWN(series, up_level: float = 0.0, down_level: float = 0.0, *, item: str = None):
     series = get_series(series, item=item)
-    result = updown_flag(series, up_level=up_level, down_level=down_level, up_flag=up_flag, down_flag=down_flag, start_flag=start_flag)
+    result = flag_updown(series, up_level=up_level, down_level=down_level)
     return wrap_result(result, series)
 

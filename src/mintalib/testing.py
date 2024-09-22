@@ -6,16 +6,10 @@ from typing import Callable
 from inspect import Signature, Parameter
 
 
-def func_type(func: Callable) -> str:
-    """Function type according to its first parameter (series or prices)"""
-
-    signature = Signature.from_callable(func)
-    params = list(signature.parameters.values())
-
-    if params and params[0].name in ("series", "prices"):
-        return params[0].name
-
-    return "other"
+def first_param(func: Callable):
+    """Name of function's first parameter if any"""
+    params = Signature.from_callable(func).parameters
+    return next(params.__iter__(), None)
 
 
 def sample_param(param: Parameter):
