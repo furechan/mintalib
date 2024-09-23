@@ -8,6 +8,12 @@ ROOT = Path(__file__).parent
 
 
 @task
+def install(ctx):
+    """Install Package with extras"""
+    ctx.run("python -mpip install -e \".[extras]\"")
+
+
+@task
 def info(ctx):
     """Check package versions"""
     ctx.run(f"python -mpip index versions {PACKAGE}")
