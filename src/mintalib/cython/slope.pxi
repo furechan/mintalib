@@ -4,25 +4,21 @@ cdef enum:
     SLOPE_OPTION_SLOPE = 0
     SLOPE_OPTION_INTERCEPT = 1
     SLOPE_OPTION_RVALUE = 2
-    SLOPE_OPTION_RSQUARE = 3
-    SLOPE_OPTION_RMSERROR = 4
-    SLOPE_OPTION_FORECAST = 5
-    SLOPE_OPTION_BADOPTION = 6
-
+    SLOPE_OPTION_RMSERROR = 3
+    SLOPE_OPTION_FORECAST = 4
 
 class SlopeOption(IntEnum):
     SLOPE = 0
     INTERCEPT = 1
     RVALUE = 2
-    RSQUARE = 3
-    RMSERROR = 4
-    FORECAST = 5
+    RMSERROR = 3
+    FORECAST = 4
 
 
 def calc_slope(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
     """ Slope (time linear regression) """
 
-    if option < 0 or option >= SLOPE_OPTION_BADOPTION:
+    if option < 0 or option > SLOPE_OPTION_FORECAST:
         raise ValueError("Invalid option %d" % option)
 
     cdef const double[:] ys = np.asarray(series, float)
@@ -82,8 +78,6 @@ def calc_slope(series, long period=20, *, int option=0, int offset=0, wrap: bool
                 output[j] = intercept
             elif option == SLOPE_OPTION_RVALUE:
                 output[j] = corr
-            elif option == SLOPE_OPTION_RSQUARE:
-                output[j] = corr * corr
             elif option == SLOPE_OPTION_RMSERROR:
                 output[j] = rmse
             elif option == SLOPE_OPTION_FORECAST:
