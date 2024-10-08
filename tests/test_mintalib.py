@@ -5,7 +5,6 @@ from mintalib.samples import sample_prices
 from mintalib.testing import first_param, sample_params
 
 
-
 def list_calcs():
     return [
         k

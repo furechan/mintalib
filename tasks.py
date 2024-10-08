@@ -46,8 +46,8 @@ def make(ctx):
     """Compile extension with build_ext --inplace"""
     ctx.run("python -mpip install -q ipython")
     ctx.run("python setup.py build_ext --inplace")
+    ctx.run("ipython misc/make-indicators-class.ipynb")
     ctx.run("ipython misc/make-functions.ipynb")
-    ctx.run("ipython misc/make-indicators.ipynb")
     ctx.run("ipython misc/update-readme.ipynb")
 
 
