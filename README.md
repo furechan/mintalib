@@ -43,7 +43,7 @@ from mintalib.functions import SMA, MAX
 # fetch prices (eg with yfinance)
 prices = yf.Ticker('AAPL').history('5y')
 
-# convert column names to lower case
+# convert column and index names to lower case
 prices = prices.rename(columns=str.lower).rename_axis(index=str.lower)
 
 # compute indicators
@@ -83,7 +83,7 @@ from mintalib.indicators import EMA, SMA, ROC, RSI, EVAL
 # fetch prices (eg with yfinance)
 prices = yf.Ticker('AAPL').history('5y')
 
-# convert column names to lower case
+# convert column and index names to lower case
 prices = prices.rename(columns=str.lower).rename_axis(index=str.lower)
 
 # compute and append indicators to prices
