@@ -2,7 +2,7 @@
 
 
 This package offers a curated list of technical analysis indicators implemented in cython. It is built around `numpy` arrays and aims to be compatible with `pandas` or also `polars` where applicable.
-The library is pre-transpiled with `cython` so that you do not need `cython` at installation. Also it does not link with `numpy` in order to avoid version dependencies.
+The library is pre-transpiled with `cython` so as not to require `cython` at installation. Also it does not link with `numpy` in order to avoid version dependencies.
 
 
 > **Warning**
@@ -99,32 +99,6 @@ result = prices.assign(
 ```
 
 
-## Examples
-
-You can find example notebooks in the examples folder. 
-
-
-## Installation
-
-You can install the current version of this package with pip
-```console
-python -mpip install git+https://github.com/furechan/mintalib.git
-```
-
-## Dependencies
-
-- python >= 3.9
-- pandas
-- numpy
-
-
-## Related Projects
-- [ta-lib](https://github.com/mrjbq7/ta-lib) Python wrapper for TA-Lib
-- [qtalib](https://github.com/josephchenhk/qtalib) Quantitative Technical Analysis Library
-- [numpy](https://github.com/numpy/numpy) The fundamental package for scientific computing with Python
-- [pandas](https://github.com/pandas-dev/pandas) Flexible and powerful data analysis / manipulation library for Python
-- [polars](https://github.com/pola-rs/polars) Fast multi-threaded, hybrid-out-of-core query engine focussing on DataFrame front-ends
-- [yfinance](https://github.com/ranaroussi/yfinance) Download market data from Yahoo! Finance's API
 
 ## List of Indicators
 
@@ -184,5 +158,33 @@ python -mpip install git+https://github.com/furechan/mintalib.git
 | TYPPRICE    | Typical Price                            |
 | WCLPRICE    | Weighted Close Price                     |
 | WMA         | Weighted Moving Average                  |
+
+
+## Examples
+
+You can find example notebooks in the examples folder. 
+
+
+## Installation
+
+You can install the current version of this package with pip
+```console
+python -mpip install git+https://github.com/furechan/mintalib.git
+```
+
+## Dependencies
+
+- python >= 3.9
+- pandas
+- numpy
+
+
+## Related Projects
+- [ta-lib](https://github.com/mrjbq7/ta-lib) Python wrapper for TA-Lib
+- [qtalib](https://github.com/josephchenhk/qtalib) Quantitative Technical Analysis Library
+- [numpy](https://github.com/numpy/numpy) The fundamental package for scientific computing with Python
+- [pandas](https://github.com/pandas-dev/pandas) Flexible and powerful data analysis / manipulation library for Python
+- [polars](https://github.com/pola-rs/polars) Fast multi-threaded, hybrid-out-of-core query engine focussing on DataFrame front-ends
+- [yfinance](https://github.com/ranaroussi/yfinance) Download market data from Yahoo! Finance's API
 
 
