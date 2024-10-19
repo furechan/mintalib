@@ -1,7 +1,12 @@
 """ Weighted Moving Average """
 
 def calc_wma(series, long period, *, wrap: bool = False):
-    """ Weighted Moving Average """
+    """
+    Weighted Moving Average
+        
+    Args:
+        period (int) : time period, required
+    """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")
@@ -37,7 +42,7 @@ def calc_wma(series, long period, *, wrap: bool = False):
     return result
 
 
-@wrap_function(calc_wma)
+@wrap_function(calc_wma, same_scale=True)
 def WMA(series, period: int, *, item: str = None):
     series = get_series(series, item=item)
     result = calc_wma(series, period=period)

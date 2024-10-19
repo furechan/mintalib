@@ -1,5 +1,7 @@
 # noinspection PyUnresolvedReferences
 
+import re
+
 from pathlib import Path
 from invoke import task  # type: ignore
 
@@ -10,7 +12,7 @@ ROOT = Path(__file__).parent
 @task
 def install(ctx):
     """Install Package with extras"""
-    ctx.run("python -mpip install -e \".[extras]\"")
+    ctx.run('python -mpip install -e ".[extras]"')
 
 
 @task
@@ -46,7 +48,7 @@ def make(ctx):
     """Compile extension with build_ext --inplace"""
     ctx.run("python -mpip install -q ipython")
     ctx.run("python setup.py build_ext --inplace")
-    ctx.run("ipython misc/make-indicators-class.ipynb")
+    ctx.run("ipython misc/make-indicators-func.ipynb")
     ctx.run("ipython misc/make-functions.ipynb")
     ctx.run("ipython misc/update-readme.ipynb")
 
@@ -71,3 +73,22 @@ def publish(ctx):
     """Publish to PyPI with twine"""
     ctx.run("python -mpip install -q twine")
     ctx.run("twine upload dist/*.tar.gz")
+
+
+@task
+def bump(ctx):
+    """Bump patch version in pyproject"""
+    pyproject = Path(__file__).joinpath("../pyproject.toml").resolve(strict=True)
+    buffer = pyproject.read_text()
+    pattern = r"^version \s* = \s* \"(.+)\" \s*"
+    match = re.search(pattern, buffer, flags=re.VERBOSE | re.MULTILINE)
+    if not match:
+        raise ValueError("Could not find version setting")
+    version = tuple(int(i) for i in match.group(1).split("."))
+    version = version[:-1] + (version[-1] + 1,)
+    version = ".".join(str(v) for v in version)
+    print(f"Updating version to {version} ...")
+    output = re.sub(
+        pattern, f'version = "{version}"\n', buffer, flags=re.VERBOSE | re.MULTILINE
+    )
+    pyproject.write_text(output)

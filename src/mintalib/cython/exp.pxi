@@ -1,7 +1,7 @@
 """ Exponential """
 
 def calc_exp(series, *, wrap: bool = False):
-    """ Exponential """
+    """Exponential"""
 
     cdef const double[:] xs = np.asarray(series, float)
 

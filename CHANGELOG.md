@@ -1,8 +1,7 @@
 # Change Log
 
 ## 0.0.9
-- Lint with ruff
-- Indicators no longer implmented as classes
+- Minor update
 
 ## 0.0.8
 - Minor update

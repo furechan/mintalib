@@ -37,7 +37,7 @@ def calc_min(series, long period, *, wrap: bool = False):
 
 
 
-@wrap_function(calc_min)
+@wrap_function(calc_min, same_scale=True)
 def MIN(series, period: int, *, item: str = None):
     series = get_series(series, item=item)
     result = calc_min(series, period=period)

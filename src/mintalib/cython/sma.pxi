@@ -1,7 +1,12 @@
 """ Simple Moving Average """
 
 def calc_sma(series, long period, *, wrap: bool = False):
-    """Simple Moving Average"""
+    """
+    Simple Moving Average
+    
+    Args:
+        period (int) : time period, required
+    """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")
@@ -40,7 +45,7 @@ def calc_sma(series, long period, *, wrap: bool = False):
     return result
 
 
-@wrap_function(calc_sma)
+@wrap_function(calc_sma, same_scale=True)
 def SMA(series, period: int, *, item: str = None):
     series = get_series(series, item=item)
     result = calc_sma(series, period=period)

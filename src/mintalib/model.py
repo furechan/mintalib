@@ -1,11 +1,12 @@
 """Model classes"""
 
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
+from types import MappingProxyType
 
 from .utils import format_partial, lazy_repr
 
 
-class Indicator(ABC):
+class Indicator(metaclass=ABCMeta):
     """Abstact Base class for Indicators"""
 
     same_scale: bool = False
@@ -22,22 +23,20 @@ class Indicator(ABC):
 
 
 class FuncIndicator(Indicator):
-    def __init__(self, func, params: dict, name: str):
+    """Function based Indicator"""
+    def __init__(self, func, params: dict):
         self.func = func
-        self.params = params
-        self.name = name
+        self.params = MappingProxyType(params)
+
+    def __getattr__(self, name):
+        return getattr(self.func, name)
 
     def __repr__(self):
-        return self.name
+        return format_partial(self.func, self.params)
 
     def __call__(self, prices):
         return self.func(prices, **self.params)
-
-    @classmethod
-    def wrap(cls, func, params: dict):
-        name = format_partial(func, params)
-        return cls(func, params=params, name=name)
-
+    
 
 class CallableChain(Indicator):
     """Chain of Callables"""

@@ -63,7 +63,7 @@ def calc_ema(series, long period, *, bint adjust = False, wrap: bool = False):
 
 
 
-@wrap_function(calc_ema)
+@wrap_function(calc_ema, same_scale=True)
 def EMA(series, period: int, *, adjust: bool = False, item: str = None):
     series = get_series(series, item=item)
     result = calc_ema(series, period=period, adjust=adjust)

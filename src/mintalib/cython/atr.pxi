@@ -2,7 +2,13 @@
 
 
 def calc_trange(prices, *, log_prices: bool = False, percent: bool = False, wrap: bool = False):
-    """ True Range """
+    """
+    True Range
+    
+    Args:
+        log_percent (bool) : whether to apply log to prices before calculatio
+        percent (bool) : result as percentage of price
+    """
 
     cdef const double[:] high = np.asarray(prices['high'], float)
     cdef const double[:] low = np.asarray(prices['low'], float)
@@ -49,7 +55,12 @@ def calc_trange(prices, *, log_prices: bool = False, percent: bool = False, wrap
 
 
 def calc_atr(prices, long period=14, *, wrap: bool = False):
-    """ Average True Range """
+    """
+    Average True Range
+    
+    Args:
+        period (int) : time period, default 14    
+    """
 
     trange = calc_trange(prices)
     result = calc_rma(trange, period)
@@ -62,7 +73,12 @@ def calc_atr(prices, long period=14, *, wrap: bool = False):
 
 
 def calc_natr(prices, long period=14, *, wrap: bool = False):
-    """ Average True Range (normalized) """
+    """
+    Average True Range (normalized)
+    
+    Args:
+        period (int) : time period, default 14    
+    """
 
     trange = calc_trange(prices, percent=True)
     result = calc_rma(trange, period)
@@ -75,7 +91,12 @@ def calc_natr(prices, long period=14, *, wrap: bool = False):
 
 
 def calc_latr(prices, long period=14, *, wrap: bool = False):
-    """ Average True Range (logarithmic) """
+    """
+    Average True Range (logarithmic)
+ 
+    Args:
+        period (int) : time period, default 14    
+    """
 
     cdef bint yes = True
 

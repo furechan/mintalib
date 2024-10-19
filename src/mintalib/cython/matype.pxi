@@ -33,7 +33,7 @@ def calc_ma(series, long period=20, *, ma_type: str = None, wrap: bool = False):
     raise ValueError(f"Invalid ma_type {ma_type}")
 
 
-@wrap_function(calc_ma)
+@wrap_function(calc_ma, same_scale=True)
 def MA(series, period: int = 20, *, ma_type: str = None, item: str = None):
     series = get_series(series, item=item)
     result = calc_ma(series, period=period, ma_type=ma_type)

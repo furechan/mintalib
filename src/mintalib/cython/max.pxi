@@ -36,7 +36,7 @@ def calc_max(series, long period, *, wrap: bool = False):
     return result
 
 
-@wrap_function(calc_max)
+@wrap_function(calc_max, same_scale=True)
 def MAX(series, period: int, *, item: str = None):
     series = get_series(series, item=item)
     result = calc_max(series, period=period)

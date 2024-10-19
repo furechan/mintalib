@@ -2,8 +2,13 @@
 
 
 
-def calc_hma(series, long period = 20, *, wrap: bool = False):
-    """Hull Moving Average"""
+def calc_hma(series, long period, *, wrap: bool = False):
+    """
+    Hull Moving Average
+
+    Args:
+        period (int) : time period, required    
+    """
 
     if period <= 0:
         raise ValueError("period must be greater than zero")
@@ -21,7 +26,7 @@ def calc_hma(series, long period = 20, *, wrap: bool = False):
 
 
 
-@wrap_function(calc_hma)
+@wrap_function(calc_hma, same_scale=True)
 def HMA(series, period: int, *, item: str = None):
     series = get_series(series, item=item)
     result = calc_hma(series, period=period)

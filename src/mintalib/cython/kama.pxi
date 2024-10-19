@@ -105,7 +105,7 @@ def KER(series, period: int = 10, *, item: str = None):
     return wrap_result(result, series)
 
 
-@wrap_function(calc_kama)
+@wrap_function(calc_kama, same_scale=True)
 def KAMA(series, period: int = 10, fastn: int = 2, slown: int = 30, *, item: str = None):
     series = get_series(series, item=item)
     result = calc_kama(series, period=period, fastn=fastn, slown=slown)
