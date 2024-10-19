@@ -90,25 +90,6 @@ def calc_natr(prices, long period=14, *, wrap: bool = False):
 
 
 
-def calc_latr(prices, long period=14, *, wrap: bool = False):
-    """
-    Average True Range (logarithmic)
- 
-    Args:
-        period (int) : time period, default 14    
-    """
-
-    cdef bint yes = True
-
-    trange = calc_trange(prices, log_prices=True)
-    result = calc_rma(trange, period)
-
-    if wrap:
-        result = wrap_result(result, prices)
-
-    return result
-
-
 @wrap_function(calc_trange)
 def TRANGE(prices, *, log_prices: bool = False, percent: bool = False):
     result = calc_trange(prices, log_prices=log_prices, percent=percent)
@@ -124,11 +105,5 @@ def ATR(prices, period: int = 14):
 @wrap_function(calc_natr)
 def NATR(prices, period: int = 14):
     result = calc_natr(prices, period=period)
-    return wrap_result(result, prices)
-
-
-@wrap_function(calc_latr)
-def LATR(prices, period: int = 14):
-    result = calc_latr(prices, period=period)
     return wrap_result(result, prices)
 

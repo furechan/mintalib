@@ -1,7 +1,12 @@
 """ Standard Deviation """
 
 def calc_mad(series, long period=20, *, wrap: bool = False):
-    """ Mean Absolute Deviation """
+    """
+    Mean Absolute Deviation
+    
+    Args:
+        period (int) : time period, default 20
+    """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")
@@ -43,7 +48,6 @@ def calc_mad(series, long period=20, *, wrap: bool = False):
         result = wrap_result(result, series)
 
     return result
-
 
 
 

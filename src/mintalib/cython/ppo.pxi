@@ -3,7 +3,17 @@
 ppo_result = namedtuple('ppo_result', 'ppo, pposignal, ppohist')
 
 def calc_ppo(series, long n1=12, long n2=26, long n3=9, *, wrap: bool = False):
-    """ Price Percentage Oscillator """
+    """
+    Price Percentage Oscillator
+    
+    Args:
+        n1 (int) : short time period, default 12
+        n2 (int) : long time period, default 26
+        n3 (int) : signal time period, default 9
+
+    Outputs:
+        ppo, pposignal, ppohist
+    """
 
     ema1 = calc_ema(series, n1)
     ema2 = calc_ema(series, n2)

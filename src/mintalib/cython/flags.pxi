@@ -2,7 +2,12 @@
 
 
 def flag_above(series, double level=0.0, *, double na_value=NAN, wrap: bool = False):
-    """Flag for value above level"""
+    """
+    Flag for value above level
+    
+    Args:
+        level (float) : level to compare to, default 0.0
+    """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -34,7 +39,12 @@ def flag_above(series, double level=0.0, *, double na_value=NAN, wrap: bool = Fa
 
 
 def flag_below(series, double level=0.0, *, double na_value=NAN, wrap: bool = False):
-    """Flag for value below level"""
+    """
+    Flag for value below level
+        
+    Args:
+        level (float) : level to compare to, default 0.0
+    """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -67,7 +77,13 @@ def flag_below(series, double level=0.0, *, double na_value=NAN, wrap: bool = Fa
 
 def flag_updown(series, double up_level=0.0, double down_level=0.0, *,
                 wrap: bool = False):
-    """Flag for value crossing up & down levels"""
+    """
+    Flag for value crossing up & down levels
+    
+    Args:
+        up_level (float) : flag set at 1 above that level
+        down_level (float) : flag set at 0 below that level
+    """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size

@@ -63,7 +63,7 @@ def wrap_function(source, same_scale: bool = None):
     metadata = { k: v for k, v in metadata.items() if v is not None}
 
     if doc and metadata:
-        doc = doc.rstrip("\n")
+        doc = doc.rstrip()
         doc += "\n\n    Attributes:\n"
         for k, v in metadata.items():
             doc += f"        {k} = {v!r}\n"

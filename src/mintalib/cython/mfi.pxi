@@ -2,7 +2,12 @@
 
 
 def calc_mfi(prices, long period = 14, *, wrap: bool = False):
-    """ Money Flow Index """
+    """
+    Money Flow Index 
+    
+    Args:
+        period (int) : time period, default 14
+    """
 
     prc = calc_typprice(prices)
     volume = np.asarray(prices['volume'], float)

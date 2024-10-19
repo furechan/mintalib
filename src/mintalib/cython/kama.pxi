@@ -1,7 +1,12 @@
 """ Kaufman Adaptive Moving Average """
 
 def calc_ker(series, int period=10, *, wrap: bool = False):
-    """ Kaufman Efficiency Ratio  """
+    """
+    Kaufman Efficiency Ratio
+    
+    Args:
+        period (int) : time period, default 10
+    """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -56,7 +61,14 @@ def calc_ker(series, int period=10, *, wrap: bool = False):
 
 
 def calc_kama(series, int period=10, int fastn=2, int slown=30, *, wrap: bool = False):
-    """ Kaufman Adaptive Moving Average """
+    """
+    Kaufman Adaptive Moving Average
+    
+    Args:
+        period (int) : time period for efficiency ratio, default 10
+        fastn (int) : time period for fast moving average, default, 2
+        slown (int) : time period for slow moving average, default 30
+    """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef const double[:] ers = calc_ker(xs, period)

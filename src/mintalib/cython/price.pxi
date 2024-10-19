@@ -2,7 +2,11 @@
 
 
 def calc_avgprice(prices, *, wrap: bool = False):
-    """ Average Price """
+    """
+    Average Price
+    
+    Value of (open + high + low + close) / 4
+    """
 
     cdef const double[:] open = np.asarray(prices['open'], float)
     cdef const double[:] high = np.asarray(prices['high'], float)
@@ -28,7 +32,11 @@ def calc_avgprice(prices, *, wrap: bool = False):
 
 
 def calc_typprice(prices, *, wrap: bool = False):
-    """ Typical Price """
+    """
+    Typical Price
+
+    Value of (high + low + close ) / 3
+    """
 
     cdef double[:] high = np.asarray(prices['high'], float)
     cdef double[:] low = np.asarray(prices['low'], float)
@@ -53,7 +61,11 @@ def calc_typprice(prices, *, wrap: bool = False):
 
 
 def calc_wclprice(prices, *, wrap: bool = False):
-    """ Weighted Close Price """
+    """
+    Weighted Close Price
+    
+    Value of (high + low + 2 * close) / 3
+    """
 
     cdef double[:] high = np.asarray(prices['high'], float)
     cdef double[:] low = np.asarray(prices['low'], float)
@@ -79,7 +91,11 @@ def calc_wclprice(prices, *, wrap: bool = False):
 
 
 def calc_midprice(prices, *, wrap: bool = False):
-    """ Mid Price """
+    """
+    Mid Price
+    
+    Value of (high + low) / 2
+    """
 
     cdef double[:] high = np.asarray(prices['high'], float)
     cdef double[:] low = np.asarray(prices['low'], float)

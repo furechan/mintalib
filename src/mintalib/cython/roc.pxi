@@ -1,7 +1,12 @@
 """ Rate of Change """
 
 def calc_roc(series, long period=1, *, wrap: bool = False):
-    """ Rate of Change """
+    """
+    Rate of Change
+    
+    Args:
+        period (int) : time period, default 1
+    """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")

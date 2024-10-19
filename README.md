@@ -1,9 +1,8 @@
 # Minimal Technical Analysis Library for Python
 
 
-This library offers a curated list of technical analysis indicators
-implemented in cython. It is built around `numpy` arrays and aims to be compatible
-with `pandas` or `polars` dataframes where possible.
+This package offers a curated list of technical analysis indicators implemented in cython. It is built around `numpy` arrays and aims to be compatible with `pandas` or also `polars` where applicable.
+The library is pre-transpiled with `cython` so that you do not need `cython` at installation. Also it does not link with `numpy` in order to avoid version dependencies.
 
 
 > **Warning**
@@ -15,8 +14,11 @@ with `pandas` or `polars` dataframes where possible.
 ## Structure
 The `mintalib` package contains three main modules:
 - `mintalib.core` low level calculation rountines implemented in cython
-- `mintalib.functions` single use functions to compute indicators
+- `mintalib.functions` wrapper functions to compute indicators
 - `mintalib.indicators` composable interface to indicators
+
+Most calculations are available in three flavors. The raw calculation routine is called something like
+`calc_sma` and is available from the `mintalib.core` module. This is the routine implemented in cython. A function called something like `SMA` is also available from the `mintalib.functions` module, and includes facilities like selection of column (`item`) and wrapping of results. Finally an indicator with the same name `SMA` is available from the `mintalib.indicators` which offers a composable interface.
 
 ## Functions
 
@@ -61,8 +63,8 @@ Indicators offer a composable interface where a function is bound with its calcu
 
 
 ```python
-sma1 = SMA(50) @ prices
-sma2 = SMA(200) @ prices
+sma50 = SMA(50) @ prices
+sma200 = SMA(200) @ prices
 ```
 
 The `@` operator can also be used to compose indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
@@ -109,6 +111,13 @@ You can install the current version of this package with pip
 python -mpip install git+https://github.com/furechan/mintalib.git
 ```
 
+## Dependencies
+
+- python >= 3.9
+- pandas
+- numpy
+
+
 ## Related Projects
 - [ta-lib](https://github.com/mrjbq7/ta-lib) Python wrapper for TA-Lib
 - [qtalib](https://github.com/josephchenhk/qtalib) Quantitative Technical Analysis Library
@@ -144,7 +153,7 @@ python -mpip install git+https://github.com/furechan/mintalib.git
 | KAMA        | Kaufman Adaptive Moving Average          |
 | KELTNER     | Keltner Channel                          |
 | KER         | Kaufman Efficiency Ratio                 |
-| LATR        | Average True Range (logarithmic)         |
+| LAG         | Lag Function                             |
 | LOG         | Logarithm                                |
 | MA          | Generic Moving Average                   |
 | MACD        | Moving Average Convergenge Divergence    |
@@ -163,6 +172,7 @@ python -mpip install git+https://github.com/furechan/mintalib.git
 | RSI         | Relative Strength Index                  |
 | RVALUE      | RValue (time linear regression)          |
 | SAR         | Parabolic Stop and Reverse               |
+| SIGN        | Sign                                     |
 | SLOPE       | Slope (time linear regression)           |
 | SMA         | Simple Moving Average                    |
 | STDEV       | Standard Deviation                       |

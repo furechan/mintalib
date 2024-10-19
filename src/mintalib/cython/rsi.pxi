@@ -2,7 +2,12 @@
 
 
 def calc_rsi(series, long period=14, *, wrap: bool = False):
-    """ Relative Strength Index """
+    """
+    Relative Strength Index
+    
+    Args:
+        period (int) : time period, default 14
+    """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size

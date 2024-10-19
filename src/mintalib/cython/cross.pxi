@@ -1,7 +1,14 @@
 """ Cross Over/Under """
 
 def crossover(series, double level=0.0, *, wrap: bool = False):
-    """ Cross Over """
+    """
+    Cross Over
+    
+    Yields a value of 1 at the point where series crosses over level
+
+    Args:
+        level (float) : level to cross, default 0.0
+    """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -29,7 +36,14 @@ def crossover(series, double level=0.0, *, wrap: bool = False):
 
 
 def crossunder(series, double level=0.0, *, wrap: bool = False):
-    """ Cross Under """
+    """
+    Cross Under
+
+    Yields a value of 1 at the point where series crosses under level
+
+    Args:
+        level (float) : level to cross, default 0.0
+    """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size

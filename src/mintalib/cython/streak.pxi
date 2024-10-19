@@ -2,7 +2,11 @@
 
 
 def calc_streak(series, *, wrap: bool = False):
-    """Consecutive streak of ups or downs"""
+    """
+    Consecutive streak of ups or downs
+    
+    Length of streak of values all up or down, times +1 or -1 whether ups or downs.
+    """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size

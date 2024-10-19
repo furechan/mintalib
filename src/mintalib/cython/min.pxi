@@ -2,7 +2,12 @@
 
 
 def calc_min(series, long period, *, wrap: bool = False):
-    """ Rolling Minimum """
+    """
+    Rolling Minimum
+    
+    Args:
+        period (int) : time period, required
+    """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")

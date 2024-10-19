@@ -6,15 +6,17 @@ include "price.pxi"
 
 include "cross.pxi"
 include "flags.pxi"
+include "sign.pxi"
 
 include "log.pxi"
 include "exp.pxi"
 
-include "roc.pxi"
 include "diff.pxi"
+include "lag.pxi"
 include "min.pxi"
 include "max.pxi"
 include "sum.pxi"
+include "roc.pxi"
 
 include "mad.pxi"
 include "stdev.pxi"

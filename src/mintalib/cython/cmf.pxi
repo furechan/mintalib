@@ -2,7 +2,12 @@
 
 
 def calc_cmf(prices, long period = 20, *, wrap: bool = False):
-    """ Chaikin Money Flow """
+    """
+    Chaikin Money Flow
+    
+    Args:
+        period (int) : time period, default 20
+    """
 
     high = np.asarray(prices['high'], float)
     low = np.asarray(prices['low'], float)

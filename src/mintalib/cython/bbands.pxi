@@ -5,7 +5,13 @@ bbands_result = namedtuple('bbands_result', 'upperband, middleband, lowerband')
 
 
 def calc_bbands(prices, long period = 20, double nbdev = 2.0, *, wrap: bool = False):
-    """ Bollinger Bands """
+    """
+    Bollinger Bands
+    
+    Args:
+        period (int) : time period, default 20
+        nbdev (float) : bands width in number of standard deviations
+    """
 
     prc = calc_typprice(prices)
     std = calc_stdev(prc, period)

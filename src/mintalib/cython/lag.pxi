@@ -1,15 +1,13 @@
-""" Difference """
+""" Lag function """
 
 
-def calc_diff(series, long period=1, *, wrap: bool = False):
-    """Difference
-
-    Difference between current value and the one offset by period
+def calc_lag(series, long period, *, wrap: bool = False):
+    """
+    Lag Function
 
     Args:
-        period (int) : time period, default 1
+        period (int) : time period, required
     """
-
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -17,16 +15,15 @@ def calc_diff(series, long period=1, *, wrap: bool = False):
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double v = NAN, pv = NAN, diff = NAN
+    cdef double v = NAN
     cdef long i = 0
 
     if period < 0 or period >= size:
         return result
 
     for i in range(period, size):
-        v, pv = xs[i], xs[i - period]
-        diff = v  - pv
-        output[i] = diff
+        v = xs[i - period]
+        output[i] = v
 
     if wrap:
         result = wrap_result(result, series)
@@ -35,8 +32,8 @@ def calc_diff(series, long period=1, *, wrap: bool = False):
 
 
 
-@wrap_function(calc_diff)
-def DIFF(series, period: int = 1, *, item: str = None):
+@wrap_function(calc_lag)
+def LAG(series, period: int , *, item: str = None):
     series = get_series(series, item=item)
     result = calc_diff(series, period=period)
     return wrap_result(result, series)

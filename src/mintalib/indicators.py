@@ -13,9 +13,9 @@ nan = float('nan')
 __all__ = [
     'AVGPRICE', 'TYPPRICE', 'WCLPRICE', 'MIDPRICE', 'PRICE', 'CROSSOVER',
     'CROSSUNDER', 'FLAG_ABOVE', 'FLAG_BELOW', 'FLAG_INVERT', 'FLAG_UPDOWN',
-    'LOG', 'EXP', 'ROC', 'DIFF', 'MIN', 'MAX', 'SUM', 'MAD', 'STDEV',
-    'SMA', 'EMA', 'RMA', 'WMA', 'HMA', 'DEMA', 'TEMA', 'MA', 'RSI',
-    'PLUSDI', 'MINUSDI', 'ADX', 'TRANGE', 'ATR', 'NATR', 'LATR', 'SAR',
+    'SIGN', 'LOG', 'EXP', 'DIFF', 'LAG', 'MIN', 'MAX', 'SUM', 'ROC', 'MAD',
+    'STDEV', 'SMA', 'EMA', 'RMA', 'WMA', 'HMA', 'DEMA', 'TEMA', 'MA',
+    'RSI', 'ADX', 'PLUSDI', 'MINUSDI', 'TRANGE', 'ATR', 'NATR', 'SAR',
     'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS', 'KELTNER', 'KER', 'KAMA', 'MACD',
     'PPO', 'SLOPE', 'RVALUE', 'FORECAST', 'STOCH', 'STREAK', 'EVAL'
 ]
@@ -76,6 +76,11 @@ def FLAG_UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, item: str = N
     return FuncIndicator(core.FLAG_UPDOWN, params=locals())
 
 
+@wrap_indicator(core.SIGN)
+def SIGN(item: str = None):
+    return FuncIndicator(core.SIGN, params=locals())
+
+
 @wrap_indicator(core.LOG)
 def LOG(*, item: str = None):
     return FuncIndicator(core.LOG, params=locals())
@@ -86,14 +91,14 @@ def EXP(*, item: str = None):
     return FuncIndicator(core.EXP, params=locals())
 
 
-@wrap_indicator(core.ROC)
-def ROC(period: int = 1, *, item: str = None):
-    return FuncIndicator(core.ROC, params=locals())
-
-
 @wrap_indicator(core.DIFF)
 def DIFF(period: int = 1, *, item: str = None):
     return FuncIndicator(core.DIFF, params=locals())
+
+
+@wrap_indicator(core.LAG)
+def LAG(period: int, *, item: str = None):
+    return FuncIndicator(core.LAG, params=locals())
 
 
 @wrap_indicator(core.MIN)
@@ -109,6 +114,11 @@ def MAX(period: int, *, item: str = None):
 @wrap_indicator(core.SUM)
 def SUM(period: int, *, item: str = None):
     return FuncIndicator(core.SUM, params=locals())
+
+
+@wrap_indicator(core.ROC)
+def ROC(period: int = 1, *, item: str = None):
+    return FuncIndicator(core.ROC, params=locals())
 
 
 @wrap_indicator(core.MAD)
@@ -166,6 +176,11 @@ def RSI(period: int = 14, *, item: str = None):
     return FuncIndicator(core.RSI, params=locals())
 
 
+@wrap_indicator(core.ADX)
+def ADX(period: int = 14):
+    return FuncIndicator(core.ADX, params=locals())
+
+
 @wrap_indicator(core.PLUSDI)
 def PLUSDI(period: int = 14):
     return FuncIndicator(core.PLUSDI, params=locals())
@@ -174,11 +189,6 @@ def PLUSDI(period: int = 14):
 @wrap_indicator(core.MINUSDI)
 def MINUSDI(period: int = 14):
     return FuncIndicator(core.MINUSDI, params=locals())
-
-
-@wrap_indicator(core.ADX)
-def ADX(period: int = 14):
-    return FuncIndicator(core.ADX, params=locals())
 
 
 @wrap_indicator(core.TRANGE)
@@ -194,11 +204,6 @@ def ATR(period: int = 14):
 @wrap_indicator(core.NATR)
 def NATR(period: int = 14):
     return FuncIndicator(core.NATR, params=locals())
-
-
-@wrap_indicator(core.LATR)
-def LATR(period: int = 14):
-    return FuncIndicator(core.LATR, params=locals())
 
 
 @wrap_indicator(core.SAR)

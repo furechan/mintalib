@@ -2,7 +2,12 @@
 
 
 def calc_stdev(series, long period=20, *, wrap: bool = False):
-    """ Standard Deviation """
+    """
+    Standard Deviation
+    
+    Args:
+        period (int) : time period, default 20
+    """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")

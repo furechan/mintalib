@@ -16,7 +16,12 @@ class SlopeOption(IntEnum):
 
 
 def calc_slope(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
-    """ Slope (time linear regression) """
+    """
+    Slope (time linear regression)
+    
+    Args:
+        period (int) : time period, default 20
+    """
 
     if option < 0 or option > SLOPE_OPTION_FORECAST:
         raise ValueError("Invalid option %d" % option)

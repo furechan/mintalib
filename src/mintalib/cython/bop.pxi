@@ -2,7 +2,12 @@
 
 
 def calc_bop(prices, long period = 20, *, wrap: bool = False):
-    """ Balance of Power """
+    """
+    Balance of Power
+    
+    Args:
+        period (int) : time period, default 20
+    """
 
     open = np.asarray(prices['open'], float)
     high = np.asarray(prices['high'], float)

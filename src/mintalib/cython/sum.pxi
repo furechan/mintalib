@@ -1,7 +1,12 @@
 """ Rolling Sum """
 
 def calc_sum(series, long period, *, wrap: bool = False):
-    """ Rolling Sum """
+    """
+    Rolling Sum
+    
+    Args:
+        period (int) : time period, required
+    """
 
     if period <= 0:
         raise ValueError(f"Invalid period value {period}")

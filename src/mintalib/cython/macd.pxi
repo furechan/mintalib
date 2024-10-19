@@ -3,7 +3,17 @@
 macd_result = namedtuple('macd_result', 'macd, macdsignal, macdhist')
 
 def calc_macd(series, long n1=12, long n2=26, long n3=9, wrap: bool = False):
-    """ Moving Average Convergenge Divergence """
+    """
+    Moving Average Convergenge Divergence
+    
+    Args:
+        n1 (int) : show time period, default 12
+        n2 (int) : long time periodm, default 26
+        n3 (int) : signal time period, default 9  
+    
+    Outputs:
+        macd, macdsignal, macdhist
+    """
 
     ema1 = calc_ema(series, n1)
     ema2 = calc_ema(series, n2)

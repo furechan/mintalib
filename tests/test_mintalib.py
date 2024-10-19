@@ -9,7 +9,7 @@ def list_calcs():
     return [
         k
         for k, v in vars(core).items()
-        if k.startswith("calc_")
+        if k.startswith(("calc_", "flag_"))
         and callable(v)
         and first_param(v) in ("prices", "series")
     ]
