@@ -1,11 +1,11 @@
 # Minimal Technical Analysis Library for Python
 
 The `mintalib` package contains three main modules:
-- [mintalib.core](docs/mintalib.core.md)
+- [mintalib.core](/docs/mintalib.core.md)
     low level calculation rountines implemented in cython
-- [mintalib.functions](docs/mintalib.functions.md)
+- [mintalib.functions](/docs/mintalib.functions.md)
     wrapper functions to compute indicators
-- [mintalib.indicators](docs/mintalib.indicators.md)
+- [mintalib.indicators](/docs/mintalib.indicators.md)
     composable interface to indicators
 
 Most calculations are available in three flavors. The raw calculation routine is called something like
