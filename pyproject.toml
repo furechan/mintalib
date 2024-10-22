@@ -20,7 +20,7 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-extras = ["invoke", "ipykernel", "pytest", "nbmake", "polars", "yfinance", "mplfinance"]
+extras = ["invoke", "ipykernel", "pytest", "nbmake", "polars", "yfinance", "mplfinance", "toml"]
 
 [tool.pytest.ini_options]
 addopts = ["-p no:cacheprovider"]
