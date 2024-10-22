@@ -1,6 +1,7 @@
-# Minimal Technical Analysis Library for Python
+# Mintalib Package
 
 The `mintalib` package contains three main modules:
+
 - [mintalib.core](/docs/mintalib.core.md)
     low level calculation rountines implemented in cython
 - [mintalib.functions](/docs/mintalib.functions.md)
