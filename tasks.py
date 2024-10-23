@@ -48,10 +48,12 @@ def make(ctx):
     """Compile extension with build_ext --inplace"""
     ctx.run("python -mpip install -q ipython")
     ctx.run("python setup.py build_ext --inplace")
-    ctx.run("ipython scripts/make-functions.ipynb")
-    ctx.run("ipython scripts/make-indicators.ipynb")
-    ctx.run("ipython scripts/update-readme.ipynb")
-    ctx.run("ipython scripts/update-docs.ipynb")
+
+    with ctx.cd("scripts"):
+        ctx.run("ipython make-functions.ipynb")
+        ctx.run("ipython make-indicators.ipynb")
+        ctx.run("ipython update-readme.ipynb")
+        ctx.run("ipython update-docs.ipynb")
 
 
 @task(clean)
@@ -70,10 +72,11 @@ def dump(ctx):
 
 
 @task
-def publish(ctx):
+def publish(ctx, testpypi=False):
     """Publish to PyPI with twine"""
+    repoarg = "--repository testpypi" if testpypi else ""
     ctx.run("python -mpip install -q twine")
-    ctx.run("twine upload dist/*.tar.gz")
+    ctx.run(f"twine upload {repoarg} dist/*.tar.gz")
 
 
 @task
