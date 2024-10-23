@@ -189,46 +189,13 @@ EXP(*, item: str = None)
 ```
 
 Exponential
-## FLAG_ABOVE indicator
+## FLAG indicator
 
 ```python
-FLAG_ABOVE(level: float = 0.0, *, item: str = None)
+FLAG(*, item: str = None)
 ```
 
-Flag for value above level
-
-Args:
-- level (float) : level to compare to, default 0.0
-
-## FLAG_BELOW indicator
-
-```python
-FLAG_BELOW(level: float = 0.0, *, item: str = None)
-```
-
-Flag for value below level
-    
-Args:
-- level (float) : level to compare to, default 0.0
-
-## FLAG_INVERT indicator
-
-```python
-FLAG_INVERT(*, item: str = None)
-```
-
-Inverse flag
-## FLAG_UPDOWN indicator
-
-```python
-FLAG_UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, item: str = None)
-```
-
-Flag for value crossing up & down levels
-
-Args:
-- up_level (float) : flag set at 1 above that level
-- down_level (float) : flag set at 0 below that level
+Flag for value above zero
 
 ## FORECAST indicator
 
@@ -638,6 +605,18 @@ Value of (high + low + close ) / 3
 
 Attributes:
 - same_scale = True
+
+## UPDOWN indicator
+
+```python
+UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, item: str = None)
+```
+
+Flag for value crossing up & down levels
+
+Args:
+- up_level (float) : flag set at 1 above that level
+- down_level (float) : flag set at 0 below that level
 
 ## WCLPRICE indicator
 

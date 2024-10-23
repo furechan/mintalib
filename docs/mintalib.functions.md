@@ -191,46 +191,13 @@ EXP(series, *, item: str = None)
 ```
 
 Exponential
-## FLAG_ABOVE function
+## FLAG function
 
 ```python
-FLAG_ABOVE(series, level: float = 0.0, *, item: str = None)
+FLAG(series, *, item: str = None)
 ```
 
-Flag for value above level
-
-Args:
-- level (float) : level to compare to, default 0.0
-
-## FLAG_BELOW function
-
-```python
-FLAG_BELOW(series, level: float = 0.0, *, item: str = None)
-```
-
-Flag for value below level
-    
-Args:
-- level (float) : level to compare to, default 0.0
-
-## FLAG_INVERT function
-
-```python
-FLAG_INVERT(series, *, item: str = None)
-```
-
-Inverse flag
-## FLAG_UPDOWN function
-
-```python
-FLAG_UPDOWN(series, up_level: float = 0.0, down_level: float = 0.0, *, item: str = None)
-```
-
-Flag for value crossing up & down levels
-
-Args:
-- up_level (float) : flag set at 1 above that level
-- down_level (float) : flag set at 0 below that level
+Flag for value above zero
 
 ## FORECAST function
 
@@ -640,6 +607,18 @@ Value of (high + low + close ) / 3
 
 Attributes:
 - same_scale = True
+
+## UPDOWN function
+
+```python
+UPDOWN(series, up_level=0.0, down_level=0.0, *, item: str = None)
+```
+
+Flag for value crossing up & down levels
+
+Args:
+- up_level (float) : flag set at 1 above that level
+- down_level (float) : flag set at 0 below that level
 
 ## WCLPRICE function
 

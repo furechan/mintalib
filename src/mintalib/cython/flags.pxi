@@ -1,12 +1,10 @@
 """ Flag functions """
 
 
-def flag_above(series, double level=0.0, *, double na_value=NAN, wrap: bool = False):
+
+def calc_flag(series, *, wrap: bool = False):
     """
-    Flag for value above level
-    
-    Args:
-        level (float) : level to compare to, default 0.0
+    Flag for value above zero
     """
 
     cdef const double[:] xs = np.asarray(series, float)
@@ -23,8 +21,8 @@ def flag_above(series, double level=0.0, *, double na_value=NAN, wrap: bool = Fa
         value = xs[i]
 
         if isnan(value):
-            flag = na_value
-        elif value > level:
+            flag = NAN
+        elif value > 0.0:
             flag = 1.0
         else:
             flag = 0.0
@@ -37,45 +35,7 @@ def flag_above(series, double level=0.0, *, double na_value=NAN, wrap: bool = Fa
     return result
 
 
-
-def flag_below(series, double level=0.0, *, double na_value=NAN, wrap: bool = False):
-    """
-    Flag for value below level
-        
-    Args:
-        level (float) : level to compare to, default 0.0
-    """
-
-    cdef const double[:] xs = np.asarray(series, float)
-    cdef long size = xs.size
-
-    cdef object result = np.full(size, NAN)
-    cdef double[:] output = result
-
-    cdef double value = NAN
-    cdef double flag = NAN
-    cdef long i = 0
-
-    for i in range(size):
-        value = xs[i]
-
-        if isnan(value):
-            flag = na_value
-        elif value < level:
-            flag = 1.0
-        else:
-            flag = 0.0
-
-        output[i] = flag
-
-    if wrap:
-        result = wrap_result(result, series)
-
-    return result
-
-
-
-def flag_updown(series, double up_level=0.0, double down_level=0.0, *,
+def calc_updown(series, double up_level=0.0, double down_level=0.0, *,
                 wrap: bool = False):
     """
     Flag for value crossing up & down levels
@@ -116,38 +76,6 @@ def flag_updown(series, double up_level=0.0, double down_level=0.0, *,
 
 
 
-
-def flag_invert(series, *, double na_value=NAN, wrap: bool = False):
-    """Inverse flag"""
-
-    cdef const double[:] xs = np.asarray(series, float)
-    cdef long size = xs.size
-
-    cdef object result = np.full(size, NAN)
-    cdef double[:] output = result
-
-    cdef double value=NAN
-    cdef double flag=NAN
-    cdef long i=0
-
-    for i in range(size):
-        value = xs[i]
-
-        if isnan(value):
-            flag = na_value
-        elif value > 0:
-            flag = 0.0
-        else:
-            flag = 1.0
-
-        output[i] = flag
-
-    if wrap:
-        result = wrap_result(result, series)
-
-    return result
-
-
 def where_flag(flag, x, y, z=NAN, *, wrap: bool = False):
     """Value according to flag"""
 
@@ -184,32 +112,16 @@ def where_flag(flag, x, y, z=NAN, *, wrap: bool = False):
     return result
 
 
-
-
-@wrap_function(flag_above)
-def FLAG_ABOVE(series, level: float = 0.0, *, item: str = None):
+@wrap_function(calc_flag)
+def FLAG(series, *, item: str = None):
     series = get_series(series, item=item)
-    result = flag_above(series, level=level)
+    result = calc_flag(series)
     return wrap_result(result, series)
 
 
-@wrap_function(flag_below)
-def FLAG_BELOW(series, level: float = 0.0, *, item: str = None):
+@wrap_function(calc_updown)
+def UPDOWN(series, double up_level=0.0, double down_level=0.0, *, item: str = None):
     series = get_series(series, item=item)
-    result = flag_below(series, level=level)
-    return wrap_result(result, series)
-
-
-@wrap_function(flag_invert)
-def FLAG_INVERT(series, *, item: str = None):
-    series = get_series(series, item=item)
-    result = flag_invert(series)
-    return wrap_result(result, series)
-
-
-@wrap_function(flag_updown)
-def FLAG_UPDOWN(series, up_level: float = 0.0, down_level: float = 0.0, *, item: str = None):
-    series = get_series(series, item=item)
-    result = flag_updown(series, up_level=up_level, down_level=down_level)
+    result = calc_updown(series, up_level=up_level, down_level=down_level)
     return wrap_result(result, series)
 

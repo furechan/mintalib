@@ -1,19 +1,22 @@
 # Change Log
 
+## 0.0.12
+- Minor changes 
+
 ## 0.0.11
 - Added docs
 
 ## 0.0.10
-- Minor Update
+- Minor changes
 
 ## 0.0.9
-- Minor update
+- Minor changes
 
 ## 0.0.8
-- Minor update
+- Minor changes
 
 ## 0.0.7
-- Minor update
+- Minor changes
 
 ## 0.0.6
 - Fixed `MANIFEST.ini`
@@ -34,7 +37,7 @@
 - Added tox config
 
 ## 0.0.2
-- Minor update
+- Minor changes
 
 ## 0.0.1
 - Initial release

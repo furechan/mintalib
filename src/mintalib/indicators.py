@@ -23,12 +23,12 @@ nan = float('nan')
 
 __all__ = [
     'AVGPRICE', 'TYPPRICE', 'WCLPRICE', 'MIDPRICE', 'PRICE', 'CROSSOVER',
-    'CROSSUNDER', 'FLAG_ABOVE', 'FLAG_BELOW', 'FLAG_INVERT', 'FLAG_UPDOWN',
-    'SIGN', 'LOG', 'EXP', 'DIFF', 'LAG', 'MIN', 'MAX', 'SUM', 'ROC', 'MAD',
-    'STDEV', 'SMA', 'EMA', 'RMA', 'WMA', 'HMA', 'DEMA', 'TEMA', 'MA',
-    'RSI', 'ADX', 'PLUSDI', 'MINUSDI', 'TRANGE', 'ATR', 'NATR', 'SAR',
-    'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS', 'KELTNER', 'KER', 'KAMA', 'MACD',
-    'PPO', 'SLOPE', 'RVALUE', 'FORECAST', 'STOCH', 'STREAK', 'EVAL'
+    'CROSSUNDER', 'FLAG', 'UPDOWN', 'SIGN', 'LOG', 'EXP', 'DIFF', 'LAG',
+    'MIN', 'MAX', 'SUM', 'ROC', 'MAD', 'STDEV', 'SMA', 'EMA', 'RMA', 'WMA',
+    'HMA', 'DEMA', 'TEMA', 'MA', 'RSI', 'ADX', 'PLUSDI', 'MINUSDI',
+    'TRANGE', 'ATR', 'NATR', 'SAR', 'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS',
+    'KELTNER', 'KER', 'KAMA', 'MACD', 'PPO', 'SLOPE', 'RVALUE', 'FORECAST',
+    'STOCH', 'STREAK', 'EVAL'
 ]
 
 
@@ -67,24 +67,14 @@ def CROSSUNDER(level: float = 0.0, *, item: str = None):
     return FuncIndicator(core.CROSSUNDER, params=locals())
 
 
-@wrap_indicator(core.FLAG_ABOVE)
-def FLAG_ABOVE(level: float = 0.0, *, item: str = None):
-    return FuncIndicator(core.FLAG_ABOVE, params=locals())
+@wrap_indicator(core.FLAG)
+def FLAG(*, item: str = None):
+    return FuncIndicator(core.FLAG, params=locals())
 
 
-@wrap_indicator(core.FLAG_BELOW)
-def FLAG_BELOW(level: float = 0.0, *, item: str = None):
-    return FuncIndicator(core.FLAG_BELOW, params=locals())
-
-
-@wrap_indicator(core.FLAG_INVERT)
-def FLAG_INVERT(*, item: str = None):
-    return FuncIndicator(core.FLAG_INVERT, params=locals())
-
-
-@wrap_indicator(core.FLAG_UPDOWN)
-def FLAG_UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, item: str = None):
-    return FuncIndicator(core.FLAG_UPDOWN, params=locals())
+@wrap_indicator(core.UPDOWN)
+def UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, item: str = None):
+    return FuncIndicator(core.UPDOWN, params=locals())
 
 
 @wrap_indicator(core.SIGN)

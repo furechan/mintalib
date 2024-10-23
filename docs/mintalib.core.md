@@ -1,5 +1,19 @@
 # mintalib.core module
 
+Mintalib Core
+
+Calculation routines implemented in cython.
+
+Routines are typically named `calc_` followed by an indicator name all in lower caps as in `calc_sma`.
+
+The first parameter `series` or `prices` indicates whether the calculation accepts a single series or a prices dataframe.
+
+A `prices` dataframe should contain the columns `open`, `high`, `low`, `close` and optionally `volume` all in **lower case**.
+
+The `wrap` parameter dictates whether to wrap the calculation result to match the type of the inputs.
+When set to True, pandas inputs will yield a pandas output with an identical index.
+
+
 ## calc_adx function
 
 ```python
@@ -140,6 +154,14 @@ calc_exp(series, *, wrap: bool = False)
 ```
 
 Exponential
+## calc_flag function
+
+```python
+calc_flag(series, *, wrap: bool = False)
+```
+
+Flag for value above zero
+
 ## calc_hma function
 
 ```python
@@ -499,6 +521,18 @@ Typical Price
 
 Value of (high + low + close ) / 3
 
+## calc_updown function
+
+```python
+calc_updown(series, up_level=0.0, down_level=0.0, *, wrap: bool = False)
+```
+
+Flag for value crossing up & down levels
+
+Args:
+- up_level (float) : flag set at 1 above that level
+- down_level (float) : flag set at 0 below that level
+
 ## calc_wclprice function
 
 ```python
@@ -560,47 +594,6 @@ dataframe_like(data)
 ```
 
 check if data is dataframe like
-## flag_above function
-
-```python
-flag_above(series, level=0.0, *, na_value=nan, wrap: bool = False)
-```
-
-Flag for value above level
-
-Args:
-- level (float) : level to compare to, default 0.0
-
-## flag_below function
-
-```python
-flag_below(series, level=0.0, *, na_value=nan, wrap: bool = False)
-```
-
-Flag for value below level
-    
-Args:
-- level (float) : level to compare to, default 0.0
-
-## flag_invert function
-
-```python
-flag_invert(series, *, na_value=nan, wrap: bool = False)
-```
-
-Inverse flag
-## flag_updown function
-
-```python
-flag_updown(series, up_level=0.0, down_level=0.0, *, wrap: bool = False)
-```
-
-Flag for value crossing up & down levels
-
-Args:
-- up_level (float) : flag set at 1 above that level
-- down_level (float) : flag set at 0 below that level
-
 ## get_series function
 
 ```python
