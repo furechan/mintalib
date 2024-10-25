@@ -11,8 +11,8 @@ ROOT = Path(__file__).parent
 
 @task
 def install(ctx):
-    """Install Package with extras"""
-    ctx.run('python -mpip install -e ".[extras]"')
+    """Install package with dev dependencies"""
+    ctx.run('python -mpip install -e ".[dev]"')
 
 
 @task
