@@ -28,7 +28,7 @@ __all__ = [
     'HMA', 'DEMA', 'TEMA', 'MA', 'RSI', 'ADX', 'PLUSDI', 'MINUSDI',
     'TRANGE', 'ATR', 'NATR', 'SAR', 'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS',
     'KELTNER', 'KER', 'KAMA', 'MACD', 'PPO', 'SLOPE', 'RVALUE', 'FORECAST',
-    'STOCH', 'STREAK', 'EVAL'
+    'CURVE', 'STOCH', 'STREAK', 'EVAL'
 ]
 
 
@@ -275,6 +275,11 @@ def RVALUE(period: int = 20, *, item: str = None):
 @wrap_indicator(core.FORECAST)
 def FORECAST(period: int = 20, offset: int = 0, *, item: str = None):
     return FuncIndicator(core.FORECAST, params=locals())
+
+
+@wrap_indicator(core.CURVE)
+def CURVE(period: int = 20, *, item: str = None):
+    return FuncIndicator(core.CURVE, params=locals())
 
 
 @wrap_indicator(core.STOCH)

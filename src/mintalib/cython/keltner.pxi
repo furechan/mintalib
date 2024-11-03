@@ -12,7 +12,7 @@ def calc_keltner(prices, long period = 20, double nbatr = 2.0, *, wrap: bool = F
     """
 
     prc = calc_typprice(prices)
-    atr = calc_atr(prices, period / 2)
+    atr = calc_atr(prices, period)
 
     middle = calc_ema(prc, period)
     upper = middle + nbatr * atr

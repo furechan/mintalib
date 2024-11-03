@@ -122,6 +122,13 @@ Yields a value of 1 at the point where series crosses under level
 Args:
 - level (float) : level to cross, default 0.0
 
+## CURVE function
+
+```python
+CURVE(series, period: int = 20, *, item: str = None)
+```
+
+Curve (time curvilinear regression)
 ## DEMA function
 
 ```python

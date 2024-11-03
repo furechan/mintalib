@@ -49,6 +49,8 @@ include "macd.pxi"
 include "ppo.pxi"
 
 include "slope.pxi"
+include "curve.pxi"
+
 
 include "stoch.pxi"
 

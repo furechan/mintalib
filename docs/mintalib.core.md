@@ -91,6 +91,13 @@ Chaikin Money Flow
 Args:
 - period (int) : time period, default 20
 
+## calc_curve function
+
+```python
+calc_curve(series, period=20, *, option=0, offset=0, wrap: bool = False)
+```
+
+Curve (time curvilinear regression)
 ## calc_dema function
 
 ```python

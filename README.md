@@ -42,6 +42,7 @@ Most calculations are available in three flavors.
 | CMF        | Chaikin Money Flow                       |
 | CROSSOVER  | Cross Over                               |
 | CROSSUNDER | Cross Under                              |
+| CURVE      | Curve (time curvilinear regression)      |
 | DEMA       | Double Exponential Moving Average        |
 | DIFF       | Difference                               |
 | EMA        | Exponential Moving Average               |
