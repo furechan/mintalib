@@ -47,8 +47,8 @@ def test_calc(name):
 
 
 @pytest.mark.parametrize("name", list_functions())
-def test_funct(name):
-    print("test_func", name)
+def test_function(name):
+    print("test_function", name)
 
     func = getattr(functions, name)
 
