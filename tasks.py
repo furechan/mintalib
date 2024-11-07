@@ -9,16 +9,12 @@ PACKAGE = "mintalib"
 ROOT = Path(__file__).parent
 
 
-@task
-def install(ctx):
-    """Install package with dev dependencies"""
-    ctx.run('python -mpip install -e ".[dev]"')
 
 
 @task
 def info(ctx):
     """Check package versions"""
-    ctx.run(f"python -mpip index versions {PACKAGE}")
+    ctx.run(f"uv pip show {PACKAGE}")
 
 
 @task
@@ -31,7 +27,6 @@ def clean(ctx):
 @task
 def check(ctx):
     """Check package"""
-    ctx.run("python -mpip install -q ruff nbcheck")
     ctx.run("nbcheck examples misc")
     ctx.run("ruff check")
 
@@ -39,14 +34,12 @@ def check(ctx):
 @task
 def cython(ctx):
     """Cythonize *.pyx files"""
-    ctx.run("python -mpip install -q cython")
     ctx.run("cythonize -f src/**/*.pyx")
 
 
 @task(cython)
 def make(ctx):
     """Compile extension with build_ext --inplace"""
-    ctx.run("python -mpip install -q ipython")
     ctx.run("python setup.py build_ext --inplace")
 
     with ctx.cd("scripts"):
@@ -59,9 +52,8 @@ def make(ctx):
 @task(clean)
 def build(ctx):
     """Build project sdist"""
-    print("Bulding sdist ... (use compile to compile extension inplace)")
-    ctx.run("python -mpip install -q build")
-    ctx.run("python -mbuild --sdist")
+    print("Bulding sdist ... (use make to cythonize)")
+    ctx.run("uv build --sdist")
 
 
 @task
@@ -75,7 +67,6 @@ def dump(ctx):
 def publish(ctx, testpypi=False):
     """Publish to PyPI with twine"""
     repoarg = "--repository testpypi" if testpypi else ""
-    ctx.run("python -mpip install -q twine")
     ctx.run(f"twine upload {repoarg} dist/*.tar.gz")
 
 

@@ -19,8 +19,25 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-[project.optional-dependencies]
-dev = ["invoke", "ipykernel", "pytest", "nbmake", "polars", "yfinance", "mplfinance", "toml"]
+[dependency-groups]
+dev = [
+    "setuptools",
+    "invoke",
+    "ipykernel",
+    "pytest",
+    "nbmake",
+    "polars",
+    "yfinance",
+    "mplfinance",
+    "toml",
+    "nbcheck",
+    "nbfixme",
+    "tabulate",
+    "twine",
+]
+
+[tool.uv]
+python-preference = "managed"
 
 [tool.pytest.ini_options]
 addopts = ["-p no:cacheprovider"]
