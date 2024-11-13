@@ -3,7 +3,10 @@
 from inspect import Signature, Parameter
 
 
-def format_partial(func, params):
+def format_partial(func, params, *, name: str = None):
+    if name is None:
+        name = func.__name__
+
     signature = Signature.from_callable(func)
     positional = True
     arguments = []
@@ -23,7 +26,7 @@ def format_partial(func, params):
             arguments.append(f"{k!s}={v!r}")
 
     arguments = ", ".join(arguments)
-    return "%s(%s)" % (func.__name__, arguments)
+    return "%s(%s)" % (name, arguments)
 
 
 def lazy_repr(obj):
