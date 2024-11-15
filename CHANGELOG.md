@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.13
+- Added CURVE
+
 ## 0.0.12
 - Minor changes 
 
