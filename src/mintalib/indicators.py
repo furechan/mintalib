@@ -34,266 +34,266 @@ __all__ = [
 
 @wrap_indicator(core.AVGPRICE)
 def AVGPRICE():
-    return FuncIndicator(core.AVGPRICE, params=locals())
+    return FuncIndicator(core.AVGPRICE, params=dict(locals()))
 
 
 @wrap_indicator(core.TYPPRICE)
 def TYPPRICE():
-    return FuncIndicator(core.TYPPRICE, params=locals())
+    return FuncIndicator(core.TYPPRICE, params=dict(locals()))
 
 
 @wrap_indicator(core.WCLPRICE)
 def WCLPRICE():
-    return FuncIndicator(core.WCLPRICE, params=locals())
+    return FuncIndicator(core.WCLPRICE, params=dict(locals()))
 
 
 @wrap_indicator(core.MIDPRICE)
 def MIDPRICE():
-    return FuncIndicator(core.MIDPRICE, params=locals())
+    return FuncIndicator(core.MIDPRICE, params=dict(locals()))
 
 
 @wrap_indicator(core.PRICE)
 def PRICE(item: str = None):
-    return FuncIndicator(core.PRICE, params=locals())
+    return FuncIndicator(core.PRICE, params=dict(locals()))
 
 
 @wrap_indicator(core.CROSSOVER)
 def CROSSOVER(level: float = 0.0, *, item: str = None):
-    return FuncIndicator(core.CROSSOVER, params=locals())
+    return FuncIndicator(core.CROSSOVER, params=dict(locals()))
 
 
 @wrap_indicator(core.CROSSUNDER)
 def CROSSUNDER(level: float = 0.0, *, item: str = None):
-    return FuncIndicator(core.CROSSUNDER, params=locals())
+    return FuncIndicator(core.CROSSUNDER, params=dict(locals()))
 
 
 @wrap_indicator(core.FLAG)
 def FLAG(*, item: str = None):
-    return FuncIndicator(core.FLAG, params=locals())
+    return FuncIndicator(core.FLAG, params=dict(locals()))
 
 
 @wrap_indicator(core.UPDOWN)
 def UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, item: str = None):
-    return FuncIndicator(core.UPDOWN, params=locals())
+    return FuncIndicator(core.UPDOWN, params=dict(locals()))
 
 
 @wrap_indicator(core.SIGN)
 def SIGN(item: str = None):
-    return FuncIndicator(core.SIGN, params=locals())
+    return FuncIndicator(core.SIGN, params=dict(locals()))
 
 
 @wrap_indicator(core.LOG)
 def LOG(*, item: str = None):
-    return FuncIndicator(core.LOG, params=locals())
+    return FuncIndicator(core.LOG, params=dict(locals()))
 
 
 @wrap_indicator(core.EXP)
 def EXP(*, item: str = None):
-    return FuncIndicator(core.EXP, params=locals())
+    return FuncIndicator(core.EXP, params=dict(locals()))
 
 
 @wrap_indicator(core.DIFF)
 def DIFF(period: int = 1, *, item: str = None):
-    return FuncIndicator(core.DIFF, params=locals())
+    return FuncIndicator(core.DIFF, params=dict(locals()))
 
 
 @wrap_indicator(core.LAG)
 def LAG(period: int, *, item: str = None):
-    return FuncIndicator(core.LAG, params=locals())
+    return FuncIndicator(core.LAG, params=dict(locals()))
 
 
 @wrap_indicator(core.MIN)
 def MIN(period: int, *, item: str = None):
-    return FuncIndicator(core.MIN, params=locals())
+    return FuncIndicator(core.MIN, params=dict(locals()))
 
 
 @wrap_indicator(core.MAX)
 def MAX(period: int, *, item: str = None):
-    return FuncIndicator(core.MAX, params=locals())
+    return FuncIndicator(core.MAX, params=dict(locals()))
 
 
 @wrap_indicator(core.SUM)
 def SUM(period: int, *, item: str = None):
-    return FuncIndicator(core.SUM, params=locals())
+    return FuncIndicator(core.SUM, params=dict(locals()))
 
 
 @wrap_indicator(core.ROC)
 def ROC(period: int = 1, *, item: str = None):
-    return FuncIndicator(core.ROC, params=locals())
+    return FuncIndicator(core.ROC, params=dict(locals()))
 
 
 @wrap_indicator(core.MAD)
 def MAD(period: int = 20, *, item: str = None):
-    return FuncIndicator(core.MAD, params=locals())
+    return FuncIndicator(core.MAD, params=dict(locals()))
 
 
 @wrap_indicator(core.STDEV)
 def STDEV(period: int = 20, *, item: str = None):
-    return FuncIndicator(core.STDEV, params=locals())
+    return FuncIndicator(core.STDEV, params=dict(locals()))
 
 
 @wrap_indicator(core.SMA)
 def SMA(period: int, *, item: str = None):
-    return FuncIndicator(core.SMA, params=locals())
+    return FuncIndicator(core.SMA, params=dict(locals()))
 
 
 @wrap_indicator(core.EMA)
 def EMA(period: int, *, adjust: bool = False, item: str = None):
-    return FuncIndicator(core.EMA, params=locals())
+    return FuncIndicator(core.EMA, params=dict(locals()))
 
 
 @wrap_indicator(core.RMA)
 def RMA(period: int, *, item: str = None):
-    return FuncIndicator(core.RMA, params=locals())
+    return FuncIndicator(core.RMA, params=dict(locals()))
 
 
 @wrap_indicator(core.WMA)
 def WMA(period: int, *, item: str = None):
-    return FuncIndicator(core.WMA, params=locals())
+    return FuncIndicator(core.WMA, params=dict(locals()))
 
 
 @wrap_indicator(core.HMA)
 def HMA(period: int, *, item: str = None):
-    return FuncIndicator(core.HMA, params=locals())
+    return FuncIndicator(core.HMA, params=dict(locals()))
 
 
 @wrap_indicator(core.DEMA)
 def DEMA(period: int, *, item: str = None):
-    return FuncIndicator(core.DEMA, params=locals())
+    return FuncIndicator(core.DEMA, params=dict(locals()))
 
 
 @wrap_indicator(core.TEMA)
 def TEMA(period: int = 20, *, item: str = None):
-    return FuncIndicator(core.TEMA, params=locals())
+    return FuncIndicator(core.TEMA, params=dict(locals()))
 
 
 @wrap_indicator(core.MA)
 def MA(period: int = 20, *, ma_type: str = None, item: str = None):
-    return FuncIndicator(core.MA, params=locals())
+    return FuncIndicator(core.MA, params=dict(locals()))
 
 
 @wrap_indicator(core.RSI)
 def RSI(period: int = 14, *, item: str = None):
-    return FuncIndicator(core.RSI, params=locals())
+    return FuncIndicator(core.RSI, params=dict(locals()))
 
 
 @wrap_indicator(core.ADX)
 def ADX(period: int = 14):
-    return FuncIndicator(core.ADX, params=locals())
+    return FuncIndicator(core.ADX, params=dict(locals()))
 
 
 @wrap_indicator(core.PLUSDI)
 def PLUSDI(period: int = 14):
-    return FuncIndicator(core.PLUSDI, params=locals())
+    return FuncIndicator(core.PLUSDI, params=dict(locals()))
 
 
 @wrap_indicator(core.MINUSDI)
 def MINUSDI(period: int = 14):
-    return FuncIndicator(core.MINUSDI, params=locals())
+    return FuncIndicator(core.MINUSDI, params=dict(locals()))
 
 
 @wrap_indicator(core.TRANGE)
 def TRANGE(*, log_prices: bool = False, percent: bool = False):
-    return FuncIndicator(core.TRANGE, params=locals())
+    return FuncIndicator(core.TRANGE, params=dict(locals()))
 
 
 @wrap_indicator(core.ATR)
 def ATR(period: int = 14):
-    return FuncIndicator(core.ATR, params=locals())
+    return FuncIndicator(core.ATR, params=dict(locals()))
 
 
 @wrap_indicator(core.NATR)
 def NATR(period: int = 14):
-    return FuncIndicator(core.NATR, params=locals())
+    return FuncIndicator(core.NATR, params=dict(locals()))
 
 
 @wrap_indicator(core.SAR)
 def SAR(afs: float = 0.02, maxaf: float = 0.2):
-    return FuncIndicator(core.SAR, params=locals())
+    return FuncIndicator(core.SAR, params=dict(locals()))
 
 
 @wrap_indicator(core.CCI)
 def CCI(period: int = 20):
-    return FuncIndicator(core.CCI, params=locals())
+    return FuncIndicator(core.CCI, params=dict(locals()))
 
 
 @wrap_indicator(core.CMF)
 def CMF(period: int = 20):
-    return FuncIndicator(core.CMF, params=locals())
+    return FuncIndicator(core.CMF, params=dict(locals()))
 
 
 @wrap_indicator(core.MFI)
 def MFI(period: int = 14):
-    return FuncIndicator(core.MFI, params=locals())
+    return FuncIndicator(core.MFI, params=dict(locals()))
 
 
 @wrap_indicator(core.BOP)
 def BOP(period: int = 20):
-    return FuncIndicator(core.BOP, params=locals())
+    return FuncIndicator(core.BOP, params=dict(locals()))
 
 
 @wrap_indicator(core.BBANDS)
 def BBANDS(period: int = 20, nbdev: float = 2.0):
-    return FuncIndicator(core.BBANDS, params=locals())
+    return FuncIndicator(core.BBANDS, params=dict(locals()))
 
 
 @wrap_indicator(core.KELTNER)
 def KELTNER(period: int = 20, nbatr: float = 2.0):
-    return FuncIndicator(core.KELTNER, params=locals())
+    return FuncIndicator(core.KELTNER, params=dict(locals()))
 
 
 @wrap_indicator(core.KER)
 def KER(period: int = 10, *, item: str = None):
-    return FuncIndicator(core.KER, params=locals())
+    return FuncIndicator(core.KER, params=dict(locals()))
 
 
 @wrap_indicator(core.KAMA)
 def KAMA(period: int = 10, fastn: int = 2, slown: int = 30, *, item: str = None):
-    return FuncIndicator(core.KAMA, params=locals())
+    return FuncIndicator(core.KAMA, params=dict(locals()))
 
 
 @wrap_indicator(core.MACD)
 def MACD(n1: int = 12, n2: int = 26, n3: int = 9, *, item: str = None):
-    return FuncIndicator(core.MACD, params=locals())
+    return FuncIndicator(core.MACD, params=dict(locals()))
 
 
 @wrap_indicator(core.PPO)
 def PPO(n1: int = 12, n2: int = 26, n3: int = 9, *, item: str = None):
-    return FuncIndicator(core.PPO, params=locals())
+    return FuncIndicator(core.PPO, params=dict(locals()))
 
 
 @wrap_indicator(core.SLOPE)
 def SLOPE(period: int = 20, *, item: str = None):
-    return FuncIndicator(core.SLOPE, params=locals())
+    return FuncIndicator(core.SLOPE, params=dict(locals()))
 
 
 @wrap_indicator(core.RVALUE)
 def RVALUE(period: int = 20, *, item: str = None):
-    return FuncIndicator(core.RVALUE, params=locals())
+    return FuncIndicator(core.RVALUE, params=dict(locals()))
 
 
 @wrap_indicator(core.FORECAST)
 def FORECAST(period: int = 20, offset: int = 0, *, item: str = None):
-    return FuncIndicator(core.FORECAST, params=locals())
+    return FuncIndicator(core.FORECAST, params=dict(locals()))
 
 
 @wrap_indicator(core.CURVE)
 def CURVE(period: int = 20, *, item: str = None):
-    return FuncIndicator(core.CURVE, params=locals())
+    return FuncIndicator(core.CURVE, params=dict(locals()))
 
 
 @wrap_indicator(core.STOCH)
 def STOCH(period: int = 14, fastn: int = 3, slown: int = 3):
-    return FuncIndicator(core.STOCH, params=locals())
+    return FuncIndicator(core.STOCH, params=dict(locals()))
 
 
 @wrap_indicator(core.STREAK)
 def STREAK(*, item: str = None):
-    return FuncIndicator(core.STREAK, params=locals())
+    return FuncIndicator(core.STREAK, params=dict(locals()))
 
 
 @wrap_indicator(core.EVAL)
 def EVAL(expr: str):
-    return FuncIndicator(core.EVAL, params=locals())
+    return FuncIndicator(core.EVAL, params=dict(locals()))
 
 
