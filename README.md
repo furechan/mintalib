@@ -2,7 +2,7 @@
 
 
 This package offers a curated list of technical analysis indicators implemented in cython. It is built around `numpy` arrays and aims to be compatible with `pandas` and also `polars` where applicable.
-The library is pre-transpiled with `cython` so as not to require `cython` at installation. Also it does not link with `numpy` in order to avoid version dependencies.
+The library is pre-compiled with `cython` so as not to require the `cython` runtime at installation. Also it does not link with `numpy` and so avoids binary dependency issues.
 
 
 > **Warning**
@@ -24,9 +24,9 @@ The `mintalib` package contains three main modules:
 
 Most calculations are available in three flavors.
 - The raw calculation routine is called something like
-`calc_sma` and is available from the `mintalib.core` module. This is the routine implemented in cython.
-- A function called something like `SMA` is also available from the `mintalib.functions` module, and includes facilities like selection of column (`item`) and wrapping of results.
-- Finally an indicator with the same name `SMA` is available from the `mintalib.indicators` which offers a composable interface.
+`calc_sma` and is available from the `mintalib.core` module. This routine implemented in cython.
+- A function called something like `SMA` is also available from the `mintalib.functions` module, and includes extra facilities like selection of column (`item`) and wrapping of results.
+- Finally an indicator with the same name `SMA` is available from the `mintalib.indicators` and offers a composable interface.
 
 
 ## List of Indicators
@@ -130,7 +130,6 @@ Indicators are available via the `indicators` module, with similar names as func
 
 Indicators offer a composable interface where a function is bound with its calculation parameters. When instantiated with parameters an indicator yields a callable that can be applied to prices or series data. Indicators support the `@` operator as syntactic sugar to apply the indicator to data. So for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`, insted of `SMA(50)(prices)`.
 
-
 ```python
 sma50 = SMA(50) @ prices
 sma200 = SMA(200) @ prices
@@ -138,13 +137,34 @@ sma200 = SMA(200) @ prices
 
 The `@` operator can also be used to compose indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
 
-
 ```python
 slope = ROC(1) @ EMA(20) @ prices
 ```
 
-Please note that with pandas dataframes you can compose and assign multiple indicators in one call
-using the builtin `assign` method.
+
+## Using Indicators with Pandas
+
+Prices indicators like `ATR` can only be applied to prices dataframes.
+
+```python
+atr = ATR(14) @ prices
+```
+
+Series indicators can be applied to a prices dataframe or a series. When applied to prices you must specify a column with the `item` or otherwize the indicator will use the `"close"` column by default.
+
+```python
+# SMA on the close column
+sma50 = SMA(50) @ prices
+
+# SMA on the volume column
+vol50 = SMA(50, item="volume") @ prices
+
+# Which is the same as
+vol50 = SMA(50) @ prices.volume 
+``` 
+
+With pandas dataframes you can compose and assign multiple indicators in one call using the builtin `assign` method.
+
 
 ```python
 import yfinance as yf
@@ -158,6 +178,7 @@ prices = yf.Ticker('AAPL').history('5y')
 prices = prices.rename(columns=str.lower).rename_axis(index=str.lower)
 
 # compute and append indicators to prices
+# please note that each calculation can use results or prior indicators
 result = prices.assign(
     sma50 = SMA(50),
     sma200 = SMA(200),
@@ -168,10 +189,42 @@ result = prices.assign(
 ```
 
 
+## Using Indicators with Polars
 
-## Examples
+Indicators can be applied to polars prices dataframes and series in the same way as with pandas. 
 
-You can find example notebooks in the examples folder. 
+The `@` operator has been extended to also work with polars expressions. This is just syntactic sugar around polars `map_batches`.
+
+In the following exmaple, you can assign multiple columns using polars `with_columns`.
+
+```python
+import polars as pl
+from polars import col
+
+import yfinance as yf
+
+from mintalib.indicators import EMA, SMA, ROC, RSI, EVAL
+
+# fetch prices (eg with yfinance)
+prices = yf.Ticker('AAPL').history('5y')
+
+# convert column and index names to lower case
+prices = prices.rename(columns=str.lower).rename_axis(index=str.lower)
+
+# convert to polars dataframe 
+prices = pl.from_pandas(prices, include_index=True)
+
+# compute and append indicators to prices
+result = prices.with_columns(
+    sma20 = SMA(20) @ col('close'),
+    sma50 = SMA(50) @ col('close'),
+)
+```
+
+
+## Example Notebooks
+
+You can find example notebooks in the `examples` folder. 
 
 
 ## Installation
