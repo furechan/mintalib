@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mintalib"
-version = "0.0.14"
+version = "0.0.15"
 readme = "build/pypi-readme.md"
 requires-python = ">=3.9"
 license = { text = "MIT License" }
@@ -50,3 +50,5 @@ testpaths = ["tests"]
 "__init__.py" = ["F401"]
 "functions.py" = ["F401"]
 
+[tool.pydev]
+allow-publish = true 
