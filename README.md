@@ -178,7 +178,7 @@ prices = yf.Ticker('AAPL').history('5y')
 prices = prices.rename(columns=str.lower).rename_axis(index=str.lower)
 
 # compute and append indicators to prices
-# please note that each calculation can use results or prior indicators
+# note that calculations can use results from prior indicators
 result = prices.assign(
     sma50 = SMA(50),
     sma200 = SMA(200),
@@ -195,7 +195,7 @@ Indicators can be applied to polars prices dataframes and series in the same way
 
 The `@` operator has been extended to also work with polars expressions. This is just syntactic sugar around polars `map_batches`.
 
-In the following exmaple, you can assign multiple columns using polars `with_columns`.
+In the following example, you can assign multiple columns using polars `with_columns`.
 
 ```python
 import polars as pl
@@ -230,6 +230,7 @@ You can find example notebooks in the `examples` folder.
 ## Installation
 
 You can install the current version of this package with pip
+
 ```console
 python -mpip install git+https://github.com/furechan/mintalib.git
 ```
