@@ -25,7 +25,7 @@ __all__ = [
     'AVGPRICE', 'TYPPRICE', 'WCLPRICE', 'MIDPRICE', 'PRICE', 'CROSSOVER',
     'CROSSUNDER', 'FLAG', 'UPDOWN', 'SIGN', 'LOG', 'EXP', 'DIFF', 'LAG',
     'MIN', 'MAX', 'SUM', 'ROC', 'MAD', 'STDEV', 'SMA', 'EMA', 'RMA', 'WMA',
-    'HMA', 'DEMA', 'TEMA', 'MA', 'RSI', 'ADX', 'PLUSDI', 'MINUSDI',
+    'HMA', 'DEMA', 'TEMA', 'MA', 'RSI', 'DMI', 'ADX', 'PDI', 'MDI',
     'TRANGE', 'ATR', 'NATR', 'SAR', 'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS',
     'KELTNER', 'KER', 'KAMA', 'MACD', 'PPO', 'SLOPE', 'RVALUE', 'FORECAST',
     'CURVE', 'STOCH', 'STREAK', 'EVAL'
@@ -177,19 +177,24 @@ def RSI(period: int = 14, *, item: str = None):
     return FuncIndicator(core.RSI, params=dict(locals()))
 
 
+@wrap_indicator(core.DMI)
+def DMI(period: int = 14):
+    return FuncIndicator(core.DMI, params=dict(locals()))
+
+
 @wrap_indicator(core.ADX)
 def ADX(period: int = 14):
     return FuncIndicator(core.ADX, params=dict(locals()))
 
 
-@wrap_indicator(core.PLUSDI)
-def PLUSDI(period: int = 14):
-    return FuncIndicator(core.PLUSDI, params=dict(locals()))
+@wrap_indicator(core.PDI)
+def PDI(period: int = 14):
+    return FuncIndicator(core.PDI, params=dict(locals()))
 
 
-@wrap_indicator(core.MINUSDI)
-def MINUSDI(period: int = 14):
-    return FuncIndicator(core.MINUSDI, params=dict(locals()))
+@wrap_indicator(core.MDI)
+def MDI(period: int = 14):
+    return FuncIndicator(core.MDI, params=dict(locals()))
 
 
 @wrap_indicator(core.TRANGE)

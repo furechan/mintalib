@@ -11,13 +11,11 @@ extra_compile_args = []
 if sys.platform == "darwin":
     extra_compile_args = ["-Wno-unreachable-code", "-Wno-deprecated-declarations"]
 
-
 def make_extension(path):
     name = path.relative_to(srcdir).with_suffix("").as_posix().replace("/", ".")
     return Extension(
         name=name, sources=[str(path)], extra_compile_args=extra_compile_args
     )
-
 
 # ext_modules = [make_extension(f) for f in Path(srcdir).rglob("*.pyx")]
 ext_modules = [make_extension(f) for f in Path(srcdir).rglob("*.c")]

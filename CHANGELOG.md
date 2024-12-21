@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.16
+- Added `DMI` indicator with grouped calculation for `ADX`, `PDI` and `MDI`
+- Renamed `PLUSDI`, `MINUSDI` to `PDI`, `MDI` 
+
 ## 0.0.15
 - Fixed pypi-readme.md
 

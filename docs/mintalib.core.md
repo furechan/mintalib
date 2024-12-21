@@ -122,6 +122,17 @@ Difference between current value and the one offset by period
 Args:
 - period (int) : time period, default 1
 
+## calc_dmi function
+
+```python
+calc_dmi(prices, period=14, *, wrap: bool = False)
+```
+
+Directional Movement Indicator
+
+Args:
+- period (int) : time period, default 14
+
 ## calc_ema function
 
 ```python
@@ -282,6 +293,17 @@ calc_max(series, period, *, wrap: bool = False)
 ```
 
 Rolling Maximum
+## calc_mdi function
+
+```python
+calc_mdi(prices, period=14, *, wrap: bool = False)
+```
+
+Minus Directional Index
+
+Args:
+- period (int) : time period, default 14
+
 ## calc_mfi function
 
 ```python
@@ -314,17 +336,6 @@ Rolling Minimum
 Args:
 - period (int) : time period, required
 
-## calc_minusdi function
-
-```python
-calc_minusdi(prices, period=14, *, wrap: bool = False)
-```
-
-Minus Directional Index
-
-Args:
-- period (int) : time period, default 14
-
 ## calc_natr function
 
 ```python
@@ -336,10 +347,10 @@ Average True Range (normalized)
 Args:
 - period (int) : time period, default 14    
 
-## calc_plusdi function
+## calc_pdi function
 
 ```python
-calc_plusdi(prices, period=14, *, wrap: bool = False)
+calc_pdi(prices, period=14, *, wrap: bool = False)
 ```
 
 Plus Directional Index

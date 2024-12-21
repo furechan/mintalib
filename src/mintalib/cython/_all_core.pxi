@@ -31,7 +31,7 @@ include "tema.pxi"
 include "matype.pxi"
 
 include "rsi.pxi"
-include "adx.pxi"
+include "dmi.pxi"
 include "atr.pxi"
 include "sar.pxi"
 

@@ -154,6 +154,17 @@ Difference between current value and the one offset by period
 Args:
 - period (int) : time period, default 1
 
+## DMI indicator
+
+```python
+DMI(period: int = 14)
+```
+
+Directional Movement Indicator
+
+Args:
+- period (int) : time period, default 14
+
 ## EMA indicator
 
 ```python
@@ -340,6 +351,17 @@ Rolling Maximum
 + Attributes:
 - same_scale = True
 
+## MDI indicator
+
+```python
+MDI(period: int = 14)
+```
+
+Minus Directional Index
+
+Args:
+- period (int) : time period, default 14
+
 ## MFI indicator
 
 ```python
@@ -378,17 +400,6 @@ Args:
 Attributes:
 - same_scale = True
 
-## MINUSDI indicator
-
-```python
-MINUSDI(period: int = 14)
-```
-
-Minus Directional Index
-
-Args:
-- period (int) : time period, default 14
-
 ## NATR indicator
 
 ```python
@@ -400,10 +411,10 @@ Average True Range (normalized)
 Args:
 - period (int) : time period, default 14    
 
-## PLUSDI indicator
+## PDI indicator
 
 ```python
-PLUSDI(period: int = 14)
+PDI(period: int = 14)
 ```
 
 Plus Directional Index

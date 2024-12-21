@@ -13,6 +13,7 @@ from enum import IntEnum
 
 from collections import namedtuple
 
+
 def check_size(xs, *others):
     """ check all series have the same size and return the size """
 
@@ -21,7 +22,6 @@ def check_size(xs, *others):
         if s.size != size:
                raise ValueError("Different sizes!")
     return size
-
 
 
 def dataframe_like(data):
@@ -49,7 +49,7 @@ def get_series(data, item: str = None, *, default_item: str = 'close'):
 
     if item is not None:
         tname = type(data).__name__
-        raise ValueError(f"Cannot get series from {tname} data")
+        raise ValueError(f"Cannot get series from {tname}")
 
     return data
 
@@ -89,7 +89,6 @@ def wrap_indicator(source):
         return func
 
     return decorator
-
 
 
 def wrap_result(result, source):

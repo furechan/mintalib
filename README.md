@@ -24,7 +24,7 @@ The `mintalib` package contains three main modules:
 
 Most calculations are available in three flavors.
 - The raw calculation routine is called something like
-`calc_sma` and is available from the `mintalib.core` module. This routine implemented in cython.
+`calc_sma` and is available from the `mintalib.core` module. This routine is implemented in cython.
 - A function called something like `SMA` is also available from the `mintalib.functions` module, and includes extra facilities like selection of column (`item`) and wrapping of results.
 - Finally an indicator with the same name `SMA` is available from the `mintalib.indicators` and offers a composable interface.
 
@@ -45,6 +45,7 @@ Most calculations are available in three flavors.
 | CURVE      | Curve (time curvilinear regression)      |
 | DEMA       | Double Exponential Moving Average        |
 | DIFF       | Difference                               |
+| DMI        | Directional Movement Indicator           |
 | EMA        | Exponential Moving Average               |
 | EVAL       | Expression Eval (pandas only)            |
 | EXP        | Exponential                              |
@@ -60,12 +61,12 @@ Most calculations are available in three flavors.
 | MACD       | Moving Average Convergenge Divergence    |
 | MAD        | Mean Absolute Deviation                  |
 | MAX        | Rolling Maximum                          |
+| MDI        | Minus Directional Index                  |
 | MFI        | Money Flow Index                         |
 | MIDPRICE   | Mid Price                                |
 | MIN        | Rolling Minimum                          |
-| MINUSDI    | Minus Directional Index                  |
 | NATR       | Average True Range (normalized)          |
-| PLUSDI     | Plus Directional Index                   |
+| PDI        | Plus Directional Index                   |
 | PPO        | Price Percentage Oscillator              |
 | PRICE      | Generic Price                            |
 | RMA        | Rolling Moving Average (RSI style)       |
