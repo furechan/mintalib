@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.15
+- Fixed pypi-readme.md
+
 ## 0.0.14
 - `@` operator extended for polars expressions
 
