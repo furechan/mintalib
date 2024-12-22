@@ -184,8 +184,8 @@ result = prices.assign(
     sma50 = SMA(50),
     sma200 = SMA(200),
     rsi = RSI(14),
-    slope = ROC(1) @ EMA(20),
-    uptrend = EVAL("sma50 > sma200")
+    emaroc = ROC(1) @ EMA(20),
+    flag = EVAL("sma50 > sma200")
 )
 ```
 
@@ -194,7 +194,8 @@ result = prices.assign(
 
 Indicators can be applied to polars prices dataframes and series in the same way as with pandas. 
 
-The `@` operator has been extended to also work with polars expressions. This is just syntactic sugar around polars `map_batches`.
+The `@` operator has been extended to work with polars expressions. Series indicators should be applied to a `polars.col` object, while 
+prices indicators should be applied to the `polars.all()` expression. In the expression context, multi column outputs are returned as struct series.
 
 In the following example, you can assign multiple columns using polars `with_columns`.
 
@@ -204,7 +205,7 @@ from polars import col
 
 import yfinance as yf
 
-from mintalib.indicators import EMA, SMA, ROC, RSI, EVAL
+from mintalib.indicators import SMA, ATR
 
 # fetch prices (eg with yfinance)
 prices = yf.Ticker('AAPL').history('5y')
@@ -219,6 +220,7 @@ prices = pl.from_pandas(prices, include_index=True)
 result = prices.with_columns(
     sma20 = SMA(20) @ col('close'),
     sma50 = SMA(50) @ col('close'),
+    atr14 = ATR(14) @ pl.all()
 )
 ```
 

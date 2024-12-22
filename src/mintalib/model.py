@@ -1,6 +1,8 @@
 """Model classes"""
 
+import sys
 import inspect
+
 
 from abc import ABCMeta, abstractmethod
 from types import MappingProxyType
@@ -10,7 +12,7 @@ from .utils import format_partial, lazy_repr
 
 
 class StructWrapper:
-    """Wrap indicator results to struct"""
+    """Indicator wrapper to unnest/nest struct data"""
     def __init__(self, indicator):
         self.indicator = indicator
     
@@ -21,7 +23,12 @@ class StructWrapper:
         return repr(self.indicator)
     
     def __call__(self, data):
+        # Unnest data if applicable
+        if hasattr(data, 'dtype') and data.dtype.__class__.__name__ == 'Struct':
+            data = data.struct
+        # Call indicator
         result = self.indicator(data)
+        # Convert result to struct if applicable
         if hasattr(result, 'to_struct'):
             cname = self.indicator.__class__.__name__
             result = result.to_struct(cname.lower())
@@ -45,11 +52,14 @@ class Indicator(metaclass=ABCMeta):
         ...
 
     def __matmul__(self, other):
-        if hasattr(other, 'map_batches'):
-            if self.input_type == "series":
-                wrapper = StructWrapper(self)
-                return other.map_batches(wrapper)
-            raise NotImplementedError
+        if hasattr(other, 'map_batches'): # polars expression
+            polars = sys.modules.get("polars")
+            if str(other) == "*" and polars:
+                other = polars.struct(other)
+            elif self.input_type != "series":
+                raise NotImplementedError
+            wrapper = StructWrapper(self)
+            return other.map_batches(wrapper)
 
         if callable(other):
             return CallableChain(self, other)

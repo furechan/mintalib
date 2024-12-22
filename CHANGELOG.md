@@ -1,7 +1,7 @@
 # Change Log
 
 ## 0.0.17
-- Added `StructWrapper` for automatic wrapping to struct with polars expressions
+- Added `StructWrapper` to support polars expressions
 
 ## 0.0.16
 - Added `DMI` indicator with grouped calculation for `ADX`, `PDI` and `MDI`

@@ -24,6 +24,8 @@ def check_size(xs, *others):
     return size
 
 
+# TODO remove dateframe_like
+
 def dataframe_like(data):
     """ check if data is dataframe like """
 
@@ -46,24 +48,25 @@ def column_accessor(data):
     if isinstance(data, dict):
         return data
 
-    # Numpy record arrays 
+    # Numpy record array 
     if isinstance(data, np.ndarray):
-        if data.dtype.names is None:
-            return None
-        return data 
+        if data.dtype.names is not None:
+            return data
+        return None
 
-    # Regular dataframes (pandas & polars)
+    # Regular dataframe (pandas & polars)
     if hasattr(data, 'columns'):
         return data
 
     # Struct Series (polars)
-    if hasattr(data, 'struct'):
+    if hasattr(data, 'dtype') and data.dtype.__class__.__name__ == 'Struct':
         return data.struct
 
     return  None
 
+# TODO remove get_series_old
 
-def get_series(data, item: str = None, *, default_item: str = 'close'):
+def get_series_old(data, item: str = None, *, default_item: str = 'close'):
     """ get series from either series/prices data """
 
     if dataframe_like(data):
@@ -76,6 +79,41 @@ def get_series(data, item: str = None, *, default_item: str = 'close'):
         raise ValueError(f"Cannot get series from {tname}")
 
     return data
+
+
+def get_series(data, item: str = None, *, default_item: str = 'close'):
+    """ get series from prices or series data """
+
+    columns = column_accessor(data)
+
+    if columns is not None:
+        if item is None:
+            item = default_item
+        return columns[item]
+
+    if item is not None:
+        tname = type(data).__name__
+        raise ValueError(f"Cannot get series from {tname}")
+
+    return data
+
+
+def get_array(data, item: str = None, *, default_item: str = 'close', dtype=None):
+    """ get array from prices or series data """
+
+    series = get_series(data, item, default_item=default_item)
+
+    return np.asarray(series, dtype=dtype)
+
+
+def get_arrays(data, items: str = None, *, dtype=None):
+    """ get arrays from prices data """
+
+    series = [get_series(data, item) for item in items]
+    arrays = tuple(np.asarray(s, dtype=dtype) for s in series)
+
+    return arrays
+
 
 
 def wrap_function(source, same_scale: bool = None):
@@ -120,6 +158,7 @@ def wrap_result(result, source):
 
     pname = getattr(source, '__module__', '').partition('.')[0]
 
+    # convert namedtuple to dict
     if isinstance(result, tuple) and hasattr(result, '_asdict'):
         result = result._asdict()
 

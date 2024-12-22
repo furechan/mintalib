@@ -619,10 +619,31 @@ dataframe_like(data)
 ```
 
 check if data is dataframe like
+## get_array function
+
+```python
+get_array(data, item: str = None, *, default_item: str = 'close', dtype=None)
+```
+
+get array from prices or series data
+## get_arrays function
+
+```python
+get_arrays(data, items: str = None, *, dtype=None)
+```
+
+get arrays from prices data
 ## get_series function
 
 ```python
 get_series(data, item: str = None, *, default_item: str = 'close')
+```
+
+get series from prices or series data
+## get_series_old function
+
+```python
+get_series_old(data, item: str = None, *, default_item: str = 'close')
 ```
 
 get series from either series/prices data
