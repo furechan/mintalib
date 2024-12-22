@@ -9,6 +9,25 @@ from functools import cached_property
 from .utils import format_partial, lazy_repr
 
 
+class StructWrapper:
+    """Wrap indicator results to struct"""
+    def __init__(self, indicator):
+        self.indicator = indicator
+    
+    def __getattr__(self, name):
+        return getattr(self.indicator, name)
+    
+    def __repr__(self):
+        return repr(self.indicator)
+    
+    def __call__(self, data):
+        result = self.indicator(data)
+        if hasattr(result, 'to_struct'):
+            cname = self.indicator.__class__.__name__
+            result = result.to_struct(cname.lower())
+        return result
+
+
 class Indicator(metaclass=ABCMeta):
     """Abstact Base class for Indicators"""
 
@@ -28,7 +47,8 @@ class Indicator(metaclass=ABCMeta):
     def __matmul__(self, other):
         if hasattr(other, 'map_batches'):
             if self.input_type == "series":
-                return other.map_batches(self)
+                wrapper = StructWrapper(self)
+                return other.map_batches(wrapper)
             raise NotImplementedError
 
         if callable(other):
