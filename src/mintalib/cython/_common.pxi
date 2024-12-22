@@ -39,6 +39,30 @@ def dataframe_like(data):
     return  False
 
 
+def column_accessor(data):
+    """ column accessor if applicable """
+
+    # Standard Dictionary
+    if isinstance(data, dict):
+        return data
+
+    # Numpy record arrays 
+    if isinstance(data, np.ndarray):
+        if data.dtype.names is None:
+            return None
+        return data 
+
+    # Regular dataframes (pandas & polars)
+    if hasattr(data, 'columns'):
+        return data
+
+    # Struct Series (polars)
+    if hasattr(data, 'struct'):
+        return data.struct
+
+    return  None
+
+
 def get_series(data, item: str = None, *, default_item: str = 'close'):
     """ get series from either series/prices data """
 

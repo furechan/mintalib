@@ -579,6 +579,13 @@ check_size(xs, *others)
 ```
 
 check all series have the same size and return the size
+## column_accessor function
+
+```python
+column_accessor(data)
+```
+
+column accessor if applicable
 ## crossover function
 
 ```python
