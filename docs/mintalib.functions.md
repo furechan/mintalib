@@ -294,7 +294,7 @@ Logarithm
 ## MA function
 
 ```python
-MA(series, period: int = 20, *, ma_type: str = None, item: str = None)
+MA(series, period: int = 20, *, ma_type: str = 'SMA', item: str = None)
 ```
 
 Generic Moving Average

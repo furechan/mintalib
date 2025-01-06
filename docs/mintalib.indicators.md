@@ -292,7 +292,7 @@ Logarithm
 ## MA indicator
 
 ```python
-MA(period: int = 20, *, ma_type: str = None, item: str = None)
+MA(period: int = 20, *, ma_type: str = 'SMA', item: str = None)
 ```
 
 Generic Moving Average

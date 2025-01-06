@@ -1,7 +1,7 @@
 """ Ganeric Moving Average """
 
 
-def calc_ma(series, long period=20, *, ma_type: str = None, wrap: bool = False):
+def calc_ma(series, long period=20, *, ma_type: str = "SMA", wrap: bool = False):
     """
     Generic Moving Average
 
@@ -12,32 +12,34 @@ def calc_ma(series, long period=20, *, ma_type: str = None, wrap: bool = False):
                 defaults to 'SMA'
     """
 
-    if ma_type is None:
-        ma_type= 'SMA'
-
     if ma_type == 'SMA':
-        return calc_sma(series, period, wrap=wrap)
+        result= calc_sma(series, period)
 
-    if ma_type == 'EMA':
-        return calc_ema(series, period, wrap=wrap)
+    elif ma_type == 'EMA':
+        result = calc_ema(series, period)
 
-    if ma_type == 'WMA':
-        return calc_wma(series, period, wrap=wrap)
+    elif ma_type == 'WMA':
+        result = calc_wma(series, period)
 
-    if ma_type == 'HMA':
-        return calc_hma(series, period, wrap=wrap)
+    elif ma_type == 'HMA':
+        result = calc_hma(series, period)
 
-    if ma_type == 'DEMA':
-        return calc_dema(series, period, wrap=wrap)
+    elif ma_type == 'DEMA':
+        result = calc_dema(series, period)
 
-    if ma_type == 'TEMA':
-        return calc_tema(series, period, wrap=wrap)
+    elif ma_type == 'TEMA':
+        result = calc_tema(series, period)
+    else:
+        raise ValueError(f"Invalid ma_type {ma_type}")
 
-    raise ValueError(f"Invalid ma_type {ma_type}")
+    if wrap:
+        result = wrap_result(result, series)
+
+    return result
 
 
 @wrap_function(calc_ma, same_scale=True)
-def MA(series, period: int = 20, *, ma_type: str = None, item: str = None):
+def MA(series, period: int = 20, *, ma_type: str = "SMA", item: str = None):
     series = get_series(series, item=item)
     result = calc_ma(series, period=period, ma_type=ma_type)
     return wrap_result(result, series)

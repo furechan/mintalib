@@ -168,7 +168,7 @@ def TEMA(period: int = 20, *, item: str = None):
 
 
 @wrap_indicator(core.MA)
-def MA(period: int = 20, *, ma_type: str = None, item: str = None):
+def MA(period: int = 20, *, ma_type: str = 'SMA', item: str = None):
     return FuncIndicator(core.MA, params=dict(locals()))
 
 

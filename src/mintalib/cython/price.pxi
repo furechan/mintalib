@@ -8,22 +8,14 @@ def calc_avgprice(prices, *, wrap: bool = False):
     Value of (open + high + low + close) / 4
     """
 
-    cdef const double[:] open = np.asarray(prices['open'], float)
-    cdef const double[:] high = np.asarray(prices['high'], float)
-    cdef const double[:] low = np.asarray(prices['low'], float)
-    cdef const double[:] close = np.asarray(prices['close'], float)
+    open = np.asarray(prices['open'], float)
+    high = np.asarray(prices['high'], float)
+    low = np.asarray(prices['low'], float)
+    close = np.asarray(prices['close'], float)
 
-    cdef long size = check_size(open, high, low, close)
+    check_size(open, high, low, close)
 
-    cdef object result = np.full(size, np.nan)
-    cdef double[:] output = result
-
-    cdef double v
-    cdef long i
-
-    for i in range(size):
-        v = (open[i] + high[i] + low[i] + close[i]) / 4.0
-        output[i] = v
+    result = (open + high + low + close) / 4.0
 
     if wrap:
         result = wrap_result(result, prices)
@@ -38,22 +30,14 @@ def calc_typprice(prices, *, wrap: bool = False):
     Value of (high + low + close ) / 3
     """
 
-    cdef double[:] high = np.asarray(prices['high'], float)
-    cdef double[:] low = np.asarray(prices['low'], float)
-    cdef double[:] close = np.asarray(prices['close'], float)
+    high = np.asarray(prices['high'], float)
+    low = np.asarray(prices['low'], float)
+    close = np.asarray(prices['close'], float)
 
-    cdef long size = check_size(high, low, close)
+    check_size(high, low, close)
 
-    cdef object result = np.full(size, np.nan)
-    cdef double[:] output = result
-
-    cdef double v
-    cdef long i
-
-    for i in range(size):
-        v = (high[i] + low[i] + close[i]) / 3.0
-        output[i] = v
-
+    result = (high + low + close) / 3.0
+   
     if wrap:
         result = wrap_result(result, prices)
 
@@ -67,21 +51,13 @@ def calc_wclprice(prices, *, wrap: bool = False):
     Value of (high + low + 2 * close) / 3
     """
 
-    cdef double[:] high = np.asarray(prices['high'], float)
-    cdef double[:] low = np.asarray(prices['low'], float)
-    cdef double[:] close = np.asarray(prices['close'], float)
+    high = np.asarray(prices['high'], float)
+    low = np.asarray(prices['low'], float)
+    close = np.asarray(prices['close'], float)
 
-    cdef long size = check_size(high, low, close)
+    check_size(high, low, close)
 
-    cdef object result = np.full(size, np.nan)
-    cdef double[:] output = result
-
-    cdef double v
-    cdef long i
-
-    for i in range(size):
-        v = (high[i] + low[i] + 2 * close[i]) / 4.0
-        output[i] = v
+    result = (high + low + 2 * close) / 4.0
 
     if wrap:
         result = wrap_result(result, prices)
@@ -97,19 +73,12 @@ def calc_midprice(prices, *, wrap: bool = False):
     Value of (high + low) / 2
     """
 
-    cdef double[:] high = np.asarray(prices['high'], float)
-    cdef double[:] low = np.asarray(prices['low'], float)
-    cdef long size = check_size(high, low)
+    high = np.asarray(prices['high'], float)
+    low = np.asarray(prices['low'], float)
 
-    cdef object result = np.full(size, np.nan)
-    cdef double[:] output = result
+    check_size(high, low)
 
-    cdef double v
-    cdef long i
-
-    for i in range(size):
-        v = (high[i] + low[i]) / 2.0
-        output[i] = v
+    result = (high + low) / 2.0
 
     if wrap:
         result = wrap_result(result, prices)
@@ -129,23 +98,22 @@ def calc_price(prices, item: str = None, *, wrap: bool = False):
         item = 'close'
 
     if item in ('open', 'high', 'low', 'close'):
-        result =  np.asarray(prices[item], float)
-        if wrap:
-            result = wrap_result(result, prices)
-        return result
-
-    if item == 'avg':
-        price_func = calc_avgprice
+        result =  np.asarray(prices[item], np.float64)
+    elif item == 'avg':
+        result = calc_avgprice(prices)
     elif item == 'mid':
-        price_func = calc_midprice
+        result = calc_midprice(prices)
     elif item == 'typ':
-        price_func = calc_typprice
+        result = calc_typprice(prices)
     elif item == 'wcl':
-        price_func = calc_wclprice
+        result = calc_wclprice(prices)
     else:
         raise ValueError(f"Unknown price type {item!r}")
 
-    return price_func(prices, wrap=wrap)
+    if wrap:
+        result = wrap_result(result, prices)
+
+    return result
 
 
 
