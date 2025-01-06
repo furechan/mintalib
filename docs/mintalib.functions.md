@@ -128,7 +128,7 @@ Args:
 CURVE(series, period: int = 20, *, item: str = None)
 ```
 
-Curve (time curvilinear regression)
+Curve (quadratic regression)
 ## DEMA function
 
 ```python
@@ -217,13 +217,6 @@ FLAG(series, *, item: str = None)
 
 Flag for value above zero
 
-## FORECAST function
-
-```python
-FORECAST(series, period: int = 20, offset: int = 0, *, item: str = None)
-```
-
-Forecast (time linear regression)
 ## HMA function
 
 ```python
@@ -498,7 +491,11 @@ Args:
 RVALUE(series, period: int = 20, *, item: str = None)
 ```
 
-RValue (time linear regression)
+R-Value (linear regression)
+
+Args:
+- period (int) : time period, default 20
+
 ## SAR function
 
 ```python
@@ -527,7 +524,11 @@ Sign
 SLOPE(series, period: int = 20, *, item: str = None)
 ```
 
-Slope (time linear regression)
+Slope (linear regression)
+
+Args:
+- period (int) : time period, default 20
+
 ## SMA function
 
 ```python
@@ -612,6 +613,17 @@ True Range
 Args:
 - log_percent (bool) : whether to apply log to prices before calculatio
 - percent (bool) : result as percentage of price
+
+## TSF function
+
+```python
+TSF(series, period: int = 20, offset: int = 0, *, item: str = None)
+```
+
+Time Series Forecast (linear regression)
+
+Args:
+- period (int) : time period, default 20
 
 ## TYPPRICE function
 

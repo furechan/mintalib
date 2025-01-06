@@ -41,7 +41,7 @@ Most calculations are available in three flavors.
 | CMF        | Chaikin Money Flow                       |
 | CROSSOVER  | Cross Over                               |
 | CROSSUNDER | Cross Under                              |
-| CURVE      | Curve (time curvilinear regression)      |
+| CURVE      | Curve (quadratic regression)             |
 | DEMA       | Double Exponential Moving Average        |
 | DIFF       | Difference                               |
 | DMI        | Directional Movement Indicator           |
@@ -49,7 +49,6 @@ Most calculations are available in three flavors.
 | EVAL       | Expression Eval (pandas only)            |
 | EXP        | Exponential                              |
 | FLAG       | Flag for value above zero                |
-| FORECAST   | Forecast (time linear regression)        |
 | HMA        | Hull Moving Average                      |
 | KAMA       | Kaufman Adaptive Moving Average          |
 | KELTNER    | Keltner Channel                          |
@@ -71,10 +70,10 @@ Most calculations are available in three flavors.
 | RMA        | Rolling Moving Average (RSI style)       |
 | ROC        | Rate of Change                           |
 | RSI        | Relative Strength Index                  |
-| RVALUE     | RValue (time linear regression)          |
+| RVALUE     | R-Value (linear regression)              |
 | SAR        | Parabolic Stop and Reverse               |
 | SIGN       | Sign                                     |
-| SLOPE      | Slope (time linear regression)           |
+| SLOPE      | Slope (linear regression)                |
 | SMA        | Simple Moving Average                    |
 | STDEV      | Standard Deviation                       |
 | STOCH      | Stochastic Oscillator                    |
@@ -82,6 +81,7 @@ Most calculations are available in three flavors.
 | SUM        | Rolling Sum                              |
 | TEMA       | Triple Exponential Moving Average        |
 | TRANGE     | True Range                               |
+| TSF        | Time Series Forecast (linear regression) |
 | TYPPRICE   | Typical Price                            |
 | UPDOWN     | Flag for value crossing up & down levels |
 | WCLPRICE   | Weighted Close Price                     |

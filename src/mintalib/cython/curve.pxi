@@ -1,31 +1,20 @@
-""" Curve (time curvilinear regression) """
+""" Curve (quadratic regression) """
 
 
 cdef enum:
-    CURVE_OPTION_CURVE = 0
-    CURVE_OPTION_SLOPE = 1
-    CURVE_OPTION_RVALUE = 2
-    CURVE_OPTION_RSQUARE = 3
-    CURVE_OPTION_RMSERROR = 4
-    CURVE_OPTION_BADOPTION = 5
+    QUADREG_SLOPE = 0
+    QUADREG_CURVE = 1
+    QUADREG_RVALUE = 2
+    QUADREG_RSQUARE = 3
+    QUADREG_RMSERROR = 4
+    QUADREG_BADOPTION = 5
 
 
-class CurveOption(IntEnum):
-    """ Curve Option Enumeration """
-    def __repr__(self):
-        return str(self)
 
-    CURVE = 0
-    SLOPE = 1
-    RVALUE = 2
-    RSQUARE = 3
-    RMSERROR = 4
+def quadratic_regression(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
+    """ Curve (quadratic regression) """
 
-
-def calc_curve(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
-    """ Curve (time curvilinear regression) """
-
-    if option < 0 or option >= CURVE_OPTION_BADOPTION:
+    if option < 0 or option >= QUADREG_BADOPTION:
         raise ValueError("Invalid option %d" % option)
 
     cdef const double[:] zs = np.asarray(series, float)
@@ -91,7 +80,7 @@ def calc_curve(series, long period=20, *, int option=0, int offset=0, wrap: bool
 
         slope = vxz / vxx
 
-        if option == CURVE_OPTION_SLOPE:
+        if option == QUADREG_SLOPE:
             output[j] = slope
             continue
 
@@ -117,25 +106,24 @@ def calc_curve(series, long period=20, *, int option=0, int offset=0, wrap: bool
         vzz = (szz / s - sz * sz / s / s)
 
         curve = vyz / vyy
-        intercept = (sz - curve * sy) / s
         rvalue = vyz / math.sqrt(vyy * vzz) if vyy * vzz > 0 else NAN
         mse = (1.0 - rvalue * rvalue) * vzz
         rmse = math.sqrt(mse) if mse >= 0 else NAN
 
 
-        if option == CURVE_OPTION_CURVE:
+        if option == QUADREG_CURVE:
             output[j] = curve
             continue
 
-        if option == CURVE_OPTION_RVALUE:
+        if option == QUADREG_RVALUE:
             output[j] = rvalue
             continue
 
-        if option == CURVE_OPTION_RSQUARE:
+        if option == QUADREG_RSQUARE:
             output[j] = rvalue * rvalue
             continue
 
-        if option == CURVE_OPTION_RMSERROR:
+        if option == QUADREG_RMSERROR:
             output[j] = rmse
             continue
 
@@ -146,10 +134,14 @@ def calc_curve(series, long period=20, *, int option=0, int offset=0, wrap: bool
 
 
 
+def calc_curve(series, long period=20, *, wrap: bool = False):
+    """ Curve (quadratic regression) """
+
+    return quadratic_regression(series, period=period, option=QUADREG_CURVE, wrap=wrap)
+
+
 @wrap_function(calc_curve)
 def CURVE(series, period: int = 20, *, item: str = None):
-    """ Curve (time curvilinear regression) """
-
     series = get_series(series, item=item)
-    result = calc_curve(series, period=period, option=CURVE_OPTION_CURVE)
+    result = calc_curve(series, period=period)
     return wrap_result(result, series)

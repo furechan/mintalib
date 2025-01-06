@@ -27,7 +27,7 @@ __all__ = [
     'MIN', 'MAX', 'SUM', 'ROC', 'MAD', 'STDEV', 'SMA', 'EMA', 'RMA', 'WMA',
     'HMA', 'DEMA', 'TEMA', 'MA', 'RSI', 'DMI', 'ADX', 'PDI', 'MDI',
     'TRANGE', 'ATR', 'NATR', 'SAR', 'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS',
-    'KELTNER', 'KER', 'KAMA', 'MACD', 'PPO', 'SLOPE', 'RVALUE', 'FORECAST',
+    'KELTNER', 'KER', 'KAMA', 'MACD', 'PPO', 'SLOPE', 'RVALUE', 'TSF',
     'CURVE', 'STOCH', 'STREAK', 'EVAL'
 ]
 
@@ -277,9 +277,9 @@ def RVALUE(period: int = 20, *, item: str = None):
     return FuncIndicator(core.RVALUE, params=dict(locals()))
 
 
-@wrap_indicator(core.FORECAST)
-def FORECAST(period: int = 20, offset: int = 0, *, item: str = None):
-    return FuncIndicator(core.FORECAST, params=dict(locals()))
+@wrap_indicator(core.TSF)
+def TSF(period: int = 20, offset: int = 0, *, item: str = None):
+    return FuncIndicator(core.TSF, params=dict(locals()))
 
 
 @wrap_indicator(core.CURVE)

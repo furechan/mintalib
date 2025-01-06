@@ -8,11 +8,10 @@ def calc_eval(prices, expr: str):
         expr (str) : expression to eval
     """
 
-    return prices.eval(expr).astype(float)
+    return prices.eval(expr)
 
 
 @wrap_function(calc_eval)
 def EVAL(prices, expr: str):
-    result = calc_eval(prices, expr=expr)
-    return wrap_result(result, prices)
+    return calc_eval(prices, expr=expr)
 

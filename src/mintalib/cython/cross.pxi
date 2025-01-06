@@ -1,6 +1,6 @@
 """ Cross Over/Under """
 
-def crossover(series, double level=0.0, *, wrap: bool = False):
+def calc_crossover(series, double level=0.0, *, wrap: bool = False):
     """
     Cross Over
     
@@ -35,7 +35,7 @@ def crossover(series, double level=0.0, *, wrap: bool = False):
     return result
 
 
-def crossunder(series, double level=0.0, *, wrap: bool = False):
+def calc_crossunder(series, double level=0.0, *, wrap: bool = False):
     """
     Cross Under
 
@@ -69,15 +69,15 @@ def crossunder(series, double level=0.0, *, wrap: bool = False):
     return result
 
 
-@wrap_function(crossover)
+@wrap_function(calc_crossover)
 def CROSSOVER(series, level: float = 0.0, *, item: str = None):
     series = get_series(series, item=item)
-    result = crossover(series, level=level)
+    result = calc_crossover(series, level=level)
     return wrap_result(result, series)
 
 
-@wrap_function(crossunder)
+@wrap_function(calc_crossunder)
 def CROSSUNDER(series, level: float = 0.0, *, item: str = None):
     series = get_series(series, item=item)
-    result = crossunder(series, level=level)
+    result = calc_crossunder(series, level=level)
     return wrap_result(result, series)

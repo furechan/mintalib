@@ -91,13 +91,39 @@ Chaikin Money Flow
 Args:
 - period (int) : time period, default 20
 
+## calc_crossover function
+
+```python
+calc_crossover(series, level=0.0, *, wrap: bool = False)
+```
+
+Cross Over
+
+Yields a value of 1 at the point where series crosses over level
+
+Args:
+- level (float) : level to cross, default 0.0
+
+## calc_crossunder function
+
+```python
+calc_crossunder(series, level=0.0, *, wrap: bool = False)
+```
+
+Cross Under
+
+Yields a value of 1 at the point where series crosses under level
+
+Args:
+- level (float) : level to cross, default 0.0
+
 ## calc_curve function
 
 ```python
-calc_curve(series, period=20, *, option=0, offset=0, wrap: bool = False)
+calc_curve(series, period=20, *, wrap: bool = False)
 ```
 
-Curve (time curvilinear regression)
+Curve (quadratic regression)
 ## calc_dema function
 
 ```python
@@ -420,6 +446,17 @@ Relative Strength Index
 Args:
 - period (int) : time period, default 14
 
+## calc_rvalue function
+
+```python
+calc_rvalue(series, period=20, *, wrap: bool = False)
+```
+
+R-Value (linear regression)
+
+Args:
+- period (int) : time period, default 20
+
 ## calc_sar function
 
 ```python
@@ -442,10 +479,10 @@ Sign
 ## calc_slope function
 
 ```python
-calc_slope(series, period=20, *, option=0, offset=0, wrap: bool = False)
+calc_slope(series, period=20, *, wrap: bool = False)
 ```
 
-Slope (time linear regression)
+Slope (linear regression)
 
 Args:
 - period (int) : time period, default 20
@@ -529,6 +566,17 @@ Args:
 - log_percent (bool) : whether to apply log to prices before calculatio
 - percent (bool) : result as percentage of price
 
+## calc_tsf function
+
+```python
+calc_tsf(series, period=20, offset=0, *, wrap: bool = False)
+```
+
+Time Series Forecast (linear regression)
+
+Args:
+- period (int) : time period, default 20
+
 ## calc_typprice function
 
 ```python
@@ -586,32 +634,6 @@ column_accessor(data)
 ```
 
 column accessor if applicable
-## crossover function
-
-```python
-crossover(series, level=0.0, *, wrap: bool = False)
-```
-
-Cross Over
-
-Yields a value of 1 at the point where series crosses over level
-
-Args:
-- level (float) : level to cross, default 0.0
-
-## crossunder function
-
-```python
-crossunder(series, level=0.0, *, wrap: bool = False)
-```
-
-Cross Under
-
-Yields a value of 1 at the point where series crosses under level
-
-Args:
-- level (float) : level to cross, default 0.0
-
 ## dataframe_like function
 
 ```python
@@ -647,6 +669,24 @@ get_series_old(data, item: str = None, *, default_item: str = 'close')
 ```
 
 get series from either series/prices data
+## linear_regression function
+
+```python
+linear_regression(series, period=20, *, option=0, offset=0, wrap: bool = False)
+```
+
+Linear Regression
+
+Args:
+- period (int) : time period, default 20
+
+## quadratic_regression function
+
+```python
+quadratic_regression(series, period=20, *, option=0, offset=0, wrap: bool = False)
+```
+
+Curve (quadratic regression)
 ## where_flag function
 
 ```python

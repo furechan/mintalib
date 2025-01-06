@@ -27,9 +27,9 @@ def calc_trange(prices, *, log_prices: bool = False, percent: bool = False, wrap
     cdef bint use_percent = percent
 
     for i in range(size):
-        pc, hi, lo, cl = cl, high[i], low[i], close[i]
+        hi, lo, cl, pc = high[i], low[i], close[i], cl
 
-        if not (pc > 0.0 and cl > 0.0 and hi > lo > 0.0):
+        if not (hi >= lo > 0.0):
             continue
 
         if pc > hi:

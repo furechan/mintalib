@@ -20,7 +20,7 @@ from .core import (
     FLAG, UPDOWN, SIGN, LOG, EXP, DIFF, LAG, MIN, MAX, SUM, ROC, MAD,
     STDEV, SMA, EMA, RMA, WMA, HMA, DEMA, TEMA, MA, RSI, DMI, ADX, PDI,
     MDI, TRANGE, ATR, NATR, SAR, CCI, CMF, MFI, BOP, BBANDS, KELTNER, KER,
-    KAMA, MACD, PPO, SLOPE, RVALUE, FORECAST, CURVE, STOCH, STREAK, EVAL
+    KAMA, MACD, PPO, SLOPE, RVALUE, TSF, CURVE, STOCH, STREAK, EVAL
 )
 
 __all__ = [
@@ -29,6 +29,6 @@ __all__ = [
     'MIN', 'MAX', 'SUM', 'ROC', 'MAD', 'STDEV', 'SMA', 'EMA', 'RMA', 'WMA',
     'HMA', 'DEMA', 'TEMA', 'MA', 'RSI', 'DMI', 'ADX', 'PDI', 'MDI',
     'TRANGE', 'ATR', 'NATR', 'SAR', 'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS',
-    'KELTNER', 'KER', 'KAMA', 'MACD', 'PPO', 'SLOPE', 'RVALUE', 'FORECAST',
+    'KELTNER', 'KER', 'KAMA', 'MACD', 'PPO', 'SLOPE', 'RVALUE', 'TSF',
     'CURVE', 'STOCH', 'STREAK', 'EVAL'
 ]

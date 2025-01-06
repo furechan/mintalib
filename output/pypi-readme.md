@@ -11,7 +11,6 @@ The library is pre-compiled with `cython` so as not to require the `cython` runt
 > [ta-lib](https://pypi.org/project/TA-Lib/).
 
 
-
 ## Structure
 The `mintalib` package contains three main modules:
 
@@ -42,7 +41,7 @@ Most calculations are available in three flavors.
 | CMF        | Chaikin Money Flow                       |
 | CROSSOVER  | Cross Over                               |
 | CROSSUNDER | Cross Under                              |
-| CURVE      | Curve (time curvilinear regression)      |
+| CURVE      | Curve (quadratic regression)             |
 | DEMA       | Double Exponential Moving Average        |
 | DIFF       | Difference                               |
 | DMI        | Directional Movement Indicator           |
@@ -50,7 +49,6 @@ Most calculations are available in three flavors.
 | EVAL       | Expression Eval (pandas only)            |
 | EXP        | Exponential                              |
 | FLAG       | Flag for value above zero                |
-| FORECAST   | Forecast (time linear regression)        |
 | HMA        | Hull Moving Average                      |
 | KAMA       | Kaufman Adaptive Moving Average          |
 | KELTNER    | Keltner Channel                          |
@@ -72,10 +70,10 @@ Most calculations are available in three flavors.
 | RMA        | Rolling Moving Average (RSI style)       |
 | ROC        | Rate of Change                           |
 | RSI        | Relative Strength Index                  |
-| RVALUE     | RValue (time linear regression)          |
+| RVALUE     | R-Value (linear regression)              |
 | SAR        | Parabolic Stop and Reverse               |
 | SIGN       | Sign                                     |
-| SLOPE      | Slope (time linear regression)           |
+| SLOPE      | Slope (linear regression)                |
 | SMA        | Simple Moving Average                    |
 | STDEV      | Standard Deviation                       |
 | STOCH      | Stochastic Oscillator                    |
@@ -83,6 +81,7 @@ Most calculations are available in three flavors.
 | SUM        | Rolling Sum                              |
 | TEMA       | Triple Exponential Moving Average        |
 | TRANGE     | True Range                               |
+| TSF        | Time Series Forecast (linear regression) |
 | TYPPRICE   | Typical Price                            |
 | UPDOWN     | Flag for value crossing up & down levels |
 | WCLPRICE   | Weighted Close Price                     |
@@ -118,10 +117,9 @@ prices = yf.Ticker('AAPL').history('5y')
 prices = prices.rename(columns=str.lower).rename_axis(index=str.lower)
 
 # compute indicators
-sma50 = SMA(prices, 50)  # SMA of 'close' with period = 50
-sma200 = SMA(prices, 200)  # SMA of 'close' with period = 200
-high200 = MAX(prices, 200, item='high')  # MAX of 'high' with period = 200
-
+sma50 = SMA(prices, 50)  # SMA of 'close' with period 50
+sma200 = SMA(prices, 200)  # SMA of 'close' with period 200
+high200 = MAX(prices, 200, item='high')  # MAX of 'high' with period 200
 ```
 
 
@@ -139,7 +137,7 @@ sma200 = SMA(200) @ prices
 The `@` operator can also be used to compose indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
 
 ```python
-slope = ROC(1) @ EMA(20) @ prices
+emaroc = ROC(1) @ EMA(20) @ prices
 ```
 
 
@@ -151,14 +149,14 @@ Prices indicators like `ATR` can only be applied to prices dataframes.
 atr = ATR(14) @ prices
 ```
 
-Series indicators can be applied to a prices dataframe or a series. When applied to prices you must specify a column with the `item` or otherwize the indicator will use the `"close"` column by default.
+Series indicators can be applied to a prices dataframe or a series. When applied to prices you must specify a column with the `item` or otherwize the indicator will use the `'close'` column by default.
 
 ```python
 # SMA on the close column
 sma50 = SMA(50) @ prices
 
 # SMA on the volume column
-vol50 = SMA(50, item="volume") @ prices
+vol50 = SMA(50, item='volume') @ prices
 
 # Which is the same as
 vol50 = SMA(50) @ prices.volume 
@@ -201,7 +199,6 @@ In the following example, you can assign multiple columns using polars `with_col
 
 ```python
 import polars as pl
-from polars import col
 
 import yfinance as yf
 
@@ -218,8 +215,8 @@ prices = pl.from_pandas(prices, include_index=True)
 
 # compute and append indicators to prices
 result = prices.with_columns(
-    sma20 = SMA(20) @ col('close'),
-    sma50 = SMA(50) @ col('close'),
+    sma20 = SMA(20) @ pl.col('close'),
+    sma50 = SMA(50) @ pl.col('close'),
     atr14 = ATR(14) @ pl.all()
 )
 ```

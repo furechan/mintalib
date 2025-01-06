@@ -1,29 +1,25 @@
-""" Slope (time linear regression) """
+""" Slope (linear regression) """
+
 
 cdef enum:
-    SLOPE_OPTION_SLOPE = 0
-    SLOPE_OPTION_INTERCEPT = 1
-    SLOPE_OPTION_RVALUE = 2
-    SLOPE_OPTION_RMSERROR = 3
-    SLOPE_OPTION_FORECAST = 4
-
-class SlopeOption(IntEnum):
-    SLOPE = 0
-    INTERCEPT = 1
-    RVALUE = 2
-    RMSERROR = 3
-    FORECAST = 4
+    LINREG_SLOPE = 0
+    LINREG_INTERCEPT = 1
+    LINREG_RVALUE = 2
+    LINREG_RSQUARE = 3
+    LINREG_RMSERROR = 4
+    LINREG_FORECAST = 5
+    LINREG_BADOPTION = 6
 
 
-def calc_slope(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
+def linear_regression(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
     """
-    Slope (time linear regression)
+    Linear Regression
     
     Args:
         period (int) : time period, default 20
     """
 
-    if option < 0 or option > SLOPE_OPTION_FORECAST:
+    if option < 0 or option > LINREG_BADOPTION:
         raise ValueError("Invalid option %d" % option)
 
     cdef const double[:] ys = np.asarray(series, float)
@@ -77,16 +73,18 @@ def calc_slope(series, long period=20, *, int option=0, int offset=0, wrap: bool
             mse = vyy * (1 - corr * corr)
             rmse = math.sqrt(mse) if mse >= 0 else NAN
 
-            if option == SLOPE_OPTION_SLOPE:
+            if option == LINREG_SLOPE:
                 output[j] = slope
-            elif option == SLOPE_OPTION_INTERCEPT:
+            elif option == LINREG_INTERCEPT:
                 output[j] = intercept
-            elif option == SLOPE_OPTION_RVALUE:
+            elif option == LINREG_RVALUE:
                 output[j] = corr
-            elif option == SLOPE_OPTION_RMSERROR:
+            elif option == LINREG_RSQUARE:
+                output[j] = corr * corr
+            elif option == LINREG_RMSERROR:
                 output[j] = rmse
-            elif option == SLOPE_OPTION_FORECAST:
-                forecast = intercept + slope * (period + offset)
+            elif option == LINREG_FORECAST:
+                forecast = intercept + slope * (period + offset -1)
                 output[j] = forecast
 
     if wrap:
@@ -96,29 +94,57 @@ def calc_slope(series, long period=20, *, int option=0, int offset=0, wrap: bool
 
 
 
+def calc_slope(series, long period=20, *, wrap: bool = False):
+    """
+    Slope (linear regression)
+    
+    Args:
+        period (int) : time period, default 20
+    """
+
+    return linear_regression(series, period=period, option=LINREG_SLOPE, wrap=wrap)
+
+
+def calc_rvalue(series, long period=20, *, wrap: bool = False):
+    """
+    R-Value (linear regression)
+    
+    Args:
+        period (int) : time period, default 20
+    """
+
+    return linear_regression(series, period=period, option=LINREG_RVALUE, wrap=wrap)
+
+
+def calc_tsf(series, long period=20, long offset=0, *, wrap: bool = False):
+    """
+    Time Series Forecast (linear regression)
+    
+    Args:
+        period (int) : time period, default 20
+    """
+
+    return linear_regression(series, period=period, offset=offset, option=LINREG_FORECAST, wrap=wrap)
+
+
+
 @wrap_function(calc_slope)
 def SLOPE(series, period: int = 20, *, item: str = None):
-    """ Slope (time linear regression) """
-
     series = get_series(series, item=item)
-    result = calc_slope(series, period=period, option=SLOPE_OPTION_SLOPE)
+    result = calc_slope(series, period=period)
     return wrap_result(result, series)
 
 
-@wrap_function(calc_slope)
+@wrap_function(calc_rvalue)
 def RVALUE(series, period: int = 20, *, item: str = None):
-    """ RValue (time linear regression) """
-
     series = get_series(series, item=item)
-    result = calc_slope(series, period=period, option=SLOPE_OPTION_RVALUE)
+    result = calc_rvalue(series, period=period)
     return wrap_result(result, series)
 
 
-@wrap_function(calc_slope)
-def FORECAST(series, period: int = 20, offset: int = 0, *, item: str = None):
-    """ Forecast (time linear regression) """
-
+@wrap_function(calc_tsf)
+def TSF(series, period: int = 20, offset: int = 0, *, item: str = None):
     series = get_series(series, item=item)
-    result = calc_slope(series, period=period, offset=offset, option=SLOPE_OPTION_FORECAST)
+    result = calc_tsf(series, period=period, offset=offset)
     return wrap_result(result, series)
 
