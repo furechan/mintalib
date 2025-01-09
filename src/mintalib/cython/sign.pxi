@@ -34,10 +34,3 @@ def calc_sign(series, double na_value=NAN, wrap: bool = False):
     return result
 
 
-
-@wrap_function(calc_sign)
-def SIGN(series, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_sign(series)
-    return wrap_result(result, series)
-

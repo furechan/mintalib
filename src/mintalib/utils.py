@@ -3,7 +3,9 @@
 from inspect import Signature, Parameter
 
 
-def format_partial(func, params, *, name: str = None):
+def format_partial(func, data, *, name: str = None):
+    """format a partial function call"""
+
     if name is None:
         name = func.__name__
 
@@ -11,7 +13,7 @@ def format_partial(func, params, *, name: str = None):
     positional = True
     arguments = []
 
-    for k, v in params.items():
+    for k, v in data.items():
         p = signature.parameters.get(k)
 
         if not p or p.kind not in (
@@ -30,22 +32,9 @@ def format_partial(func, params, *, name: str = None):
 
 
 def lazy_repr(obj):
-    data = obj.__dict__
+    """minimal __repr__ based on __init__ signature"""
+
     cname = obj.__class__.__qualname__
 
-    signature = Signature.from_callable(obj.__init__)
-    parameters = signature.parameters.values()
-    positional = (Parameter.POSITIONAL_ONLY, Parameter.POSITIONAL_OR_KEYWORD)
+    return format_partial(obj.__init__, obj.__dict__, name=cname)
 
-    arguments = []
-
-    for p in parameters:
-        v = data.get(p.name, p.default)
-        if p.kind in positional:
-            arguments.append(f"{v!r}")
-        elif v != p.default:
-            arguments.append(f"{p.name}={v!r}")
-
-    arguments = ", ".join(arguments)
-
-    return "%s(%s)" % (cname, arguments)

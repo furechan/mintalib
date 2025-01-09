@@ -1,5 +1,10 @@
 # Change Log
 
+
+## 0.0.18
+- Refactored `functionsy` module to move logic out of core. Function names are now  **small caps**!
+- Upper case functions names are legacy and will be removed in the future. Use small caps.
+
 ## 0.0.17
 - Added `StructWrapper` to support polars expressions
 

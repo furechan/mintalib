@@ -54,10 +54,3 @@ def calc_rsi(series, long period=14, *, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_rsi)
-def RSI(series, period: int = 14, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_rsi(series, period=period)
-    return wrap_result(result, series)
-

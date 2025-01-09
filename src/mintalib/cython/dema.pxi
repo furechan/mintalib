@@ -19,10 +19,3 @@ def calc_dema(series, long period, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_dema, same_scale=True)
-def DEMA(series, period: int, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_dema(series, period=period)
-    return wrap_result(result, series)
-

@@ -41,10 +41,3 @@ def calc_min(series, long period, *, wrap: bool = False):
     return result
 
 
-
-@wrap_function(calc_min, same_scale=True)
-def MIN(series, period: int, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_min(series, period=period)
-    return wrap_result(result, series)
-

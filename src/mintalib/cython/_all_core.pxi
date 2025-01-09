@@ -28,7 +28,7 @@ include "wma.pxi"
 include "hma.pxi"
 include "dema.pxi"
 include "tema.pxi"
-include "ma.pxi"
+include "mav.pxi"
 
 include "rsi.pxi"
 include "dmi.pxi"

@@ -37,11 +37,3 @@ def calc_streak(series, *, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_streak)
-def STREAK(series, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_streak(series)
-    return wrap_result(result, series)
-
-

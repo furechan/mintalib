@@ -1,7 +1,7 @@
 """ Ganeric Moving Average """
 
 
-def calc_ma(series, long period=20, *, ma_type: str = "SMA", wrap: bool = False):
+def calc_mav(series, long period=20, *, ma_type: str = "SMA", wrap: bool = False):
     """
     Generic Moving Average
 
@@ -36,11 +36,4 @@ def calc_ma(series, long period=20, *, ma_type: str = "SMA", wrap: bool = False)
         result = wrap_result(result, series)
 
     return result
-
-
-@wrap_function(calc_ma, same_scale=True)
-def MA(series, period: int = 20, *, ma_type: str = "SMA", item: str = None):
-    series = get_series(series, item=item)
-    result = calc_ma(series, period=period, ma_type=ma_type)
-    return wrap_result(result, series)
 

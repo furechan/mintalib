@@ -13,11 +13,3 @@ def calc_exp(series, *, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_exp)
-def EXP(series, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_exp(series)
-    return wrap_result(result, series)
-
-

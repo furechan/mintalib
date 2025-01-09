@@ -28,9 +28,3 @@ def calc_bbands(prices, long period = 20, double nbdev = 2.0, *, wrap: bool = Fa
 
     return result
 
-
-@wrap_function(calc_bbands, same_scale=True)
-def BBANDS(prices, period: int = 20, nbdev: float = 2.0):
-    result = calc_bbands(prices, period=period, nbdev=nbdev)
-    return wrap_result(result, prices)
-

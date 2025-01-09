@@ -24,11 +24,3 @@ def calc_hma(series, long period, *, wrap: bool = False):
 
     return result
 
-
-
-@wrap_function(calc_hma, same_scale=True)
-def HMA(series, period: int, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_hma(series, period=period)
-    return wrap_result(result, series)
-

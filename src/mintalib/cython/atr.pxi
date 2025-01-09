@@ -89,21 +89,3 @@ def calc_natr(prices, long period=14, *, wrap: bool = False):
     return result
 
 
-
-@wrap_function(calc_trange)
-def TRANGE(prices, *, log_prices: bool = False, percent: bool = False):
-    result = calc_trange(prices, log_prices=log_prices, percent=percent)
-    return wrap_result(result, prices)
-
-
-@wrap_function(calc_atr)
-def ATR(prices, period: int = 14):
-    result = calc_atr(prices, period=period)
-    return wrap_result(result, prices)
-
-
-@wrap_function(calc_natr)
-def NATR(prices, period: int = 14):
-    result = calc_natr(prices, period=period)
-    return wrap_result(result, prices)
-

@@ -68,16 +68,3 @@ def calc_crossunder(series, double level=0.0, *, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_crossover)
-def CROSSOVER(series, level: float = 0.0, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_crossover(series, level=level)
-    return wrap_result(result, series)
-
-
-@wrap_function(calc_crossunder)
-def CROSSUNDER(series, level: float = 0.0, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_crossunder(series, level=level)
-    return wrap_result(result, series)

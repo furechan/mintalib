@@ -24,10 +24,3 @@ def calc_keltner(prices, long period = 20, double nbatr = 2.0, *, wrap: bool = F
         result = wrap_result(result, prices)
 
     return result
-
-
-@wrap_function(calc_keltner, same_scale=True)
-def KELTNER(prices, period: int = 20, nbatr: float = 2.0):
-    result = calc_keltner(prices, period=period, nbatr=nbatr)
-    return wrap_result(result, prices)
-

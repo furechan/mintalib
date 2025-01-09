@@ -25,9 +25,3 @@ def calc_bop(prices, long period = 20, *, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_bop)
-def BOP(prices, period: int = 20):
-    result = calc_bop(prices, period=period)
-    return wrap_result(result, prices)
-

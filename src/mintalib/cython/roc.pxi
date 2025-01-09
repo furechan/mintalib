@@ -33,10 +33,3 @@ def calc_roc(series, long period=1, *, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_roc)
-def ROC(series, period: int = 1, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_roc(series, period=period)
-    return wrap_result(result, series)
-

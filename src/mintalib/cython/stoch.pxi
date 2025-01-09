@@ -36,9 +36,3 @@ def calc_stoch(prices, long period=14, long fastn=3, long slown=3, *, wrap: bool
 
     return result
 
-
-@wrap_function(calc_stoch)
-def STOCH(prices, period: int = 14, fastn: int = 3, slown: int = 3):
-    result = calc_stoch(prices, period=period, fastn=fastn, slown=slown)
-    return wrap_result(result, prices)
-

@@ -1,8 +1,9 @@
 # Minimal Technical Analysis Library for Python
 
-
-This package offers a curated list of technical analysis indicators implemented in cython. It is built around `numpy` arrays and aims to be compatible with `pandas` and also `polars` where applicable.
-The library is pre-compiled with `cython` so as not to require the `cython` runtime at installation. Also it does not link with `numpy` and so avoids binary dependency issues.
+This package offers a curated list of technical analysis indicators implemented in cython yo offer improved performance.
+It is built around `numpy` arrays and aims to be compatible with `pandas` and also `polars` where applicable.
+The library is pre-compiled with `cython` so as not to require the `cython` runtime at installation.
+Also it does not link with `numpy` and should avoid binary dependency issues.
 
 
 > **Warning**
@@ -15,17 +16,11 @@ The library is pre-compiled with `cython` so as not to require the `cython` runt
 The `mintalib` package contains three main modules:
 
 - [mintalib.core](https://github.com/furechan/mintalib/blob/main/docs/mintalib.core.md)
-    low level calculation rountines implemented in cython
+    low level calculation rountines implemented in cython, with a names like `calc_sma`, `calc_ema`, etc ...  
 - [mintalib.functions](https://github.com/furechan/mintalib/blob/main/docs/mintalib.functions.md)
-    wrapper functions to compute indicators
+    wrapper functions to compute calculations on series and dataframes, with names `sma`, `ema`, etc ...
 - [mintalib.indicators](https://github.com/furechan/mintalib/blob/main/docs/mintalib.indicators.md)
-    composable interface to indicators
-
-Most calculations are available in three flavors.
-- The raw calculation routine is called something like
-`calc_sma` and is available from the `mintalib.core` module. This routine is implemented in cython.
-- A function called something like `SMA` is also available from the `mintalib.functions` module, and includes extra facilities like selection of column (`item`) and wrapping of results.
-- Finally an indicator with the same name `SMA` is available from the `mintalib.indicators` and offers a composable interface.
+    composable interface to indicators with names like `SMA`, `EMA`, etc ...
 
 
 ## List of Indicators
@@ -55,9 +50,9 @@ Most calculations are available in three flavors.
 | KER        | Kaufman Efficiency Ratio                 |
 | LAG        | Lag Function                             |
 | LOG        | Logarithm                                |
-| MA         | Generic Moving Average                   |
 | MACD       | Moving Average Convergenge Divergence    |
 | MAD        | Mean Absolute Deviation                  |
+| MAV        | Generic Moving Average                   |
 | MAX        | Rolling Maximum                          |
 | MDI        | Minus Directional Index                  |
 | MFI        | Money Flow Index                         |
@@ -88,17 +83,23 @@ Most calculations are available in three flavors.
 | WMA        | Weighted Moving Average                  |
 
 
+## Mintalib Core
+
+The calculation routines in `mintalib.core`, implemented in cython, operate on numpy arrays and return numpy arrays by default.
+Functions in `mintalib.functions` and indicators in `mintalib.indicatoers` are just wrappers around the core calculation routines.
+
+
 ## Using Functions
 
 Functions are available via the `functions` module,
-with names like `SMA`, `EMA`, `RSI`, `MACD`, all in **upper case**.
+with names like `sma`, `ema`, `rsi`, `macd`, all in **lower case**.
 The first parameter of a function is either `prices` or `series` depending on whether
 the functions expects a dataframe of prices or a single series.
 Functions that expect series data can be applied to a prices dataframe, in which case they use 
-the column specified with the `item` parameter or by default the `close` column.
+the column specified with the `item` parameter or by default the 'close' column.
 
 A `prices` dataframe can be a pandas dataframe, a polars dataframe or a dictionary of numpy arrays.
-The column names for prices are expected to include `open`, `high`, `low`, `close` all in **lower case**.
+The column names for prices are expected to include `open`, `high`, `low`, `close`, `volume` all in **lower case**.
 A `series` can be a pandas series, a polars series or any iterable compatible with numpy arrays.
 
 Functions automatically wrap their result to match their input, so that for example 
@@ -107,8 +108,7 @@ pandas based inputs will yield pandas based results with a matching index.
 
 ```python
 import yfinance as yf
-
-from mintalib.functions import SMA, MAX
+import mintalib.functions as ta
 
 # fetch prices (eg with yfinance)
 prices = yf.Ticker('AAPL').history('5y')
@@ -117,19 +117,21 @@ prices = yf.Ticker('AAPL').history('5y')
 prices = prices.rename(columns=str.lower).rename_axis(index=str.lower)
 
 # compute indicators
-sma50 = SMA(prices, 50)  # SMA of 'close' with period 50
-sma200 = SMA(prices, 200)  # SMA of 'close' with period 200
-high200 = MAX(prices, 200, item='high')  # MAX of 'high' with period 200
+sma50 = ta.sma(prices, 50)  # SMA of 'close' with period 50
+sma200 = ta.sma(prices, 200)  # SMA of 'close' with period 200
+high200 = ta.max(prices, 200, item='high')  # MAX of 'high' with period 200
 ```
 
 
 ## Using Indicators
 
-Indicators are available via the `indicators` module, with similar names as functions all in **uper case**.
+Indicators are available via the `indicators` module, with similar names as functions but in **uper case**.
 
 Indicators offer a composable interface where a function is bound with its calculation parameters. When instantiated with parameters an indicator yields a callable that can be applied to prices or series data. Indicators support the `@` operator as syntactic sugar to apply the indicator to data. So for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`, insted of `SMA(50)(prices)`.
 
 ```python
+from mintalib.indicators import ROC. SMA, EMA
+
 sma50 = SMA(50) @ prices
 sma200 = SMA(200) @ prices
 ```
@@ -137,7 +139,7 @@ sma200 = SMA(200) @ prices
 The `@` operator can also be used to compose indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
 
 ```python
-emaroc = ROC(1) @ EMA(20) @ prices
+trend = ROC(1) @ EMA(20) @ prices
 ```
 
 
@@ -182,7 +184,7 @@ result = prices.assign(
     sma50 = SMA(50),
     sma200 = SMA(200),
     rsi = RSI(14),
-    emaroc = ROC(1) @ EMA(20),
+    trend = ROC(1) @ EMA(20),
     flag = EVAL("sma50 > sma200")
 )
 ```

@@ -109,18 +109,3 @@ def calc_kama(series, int period=10, int fastn=2, int slown=30, *, wrap: bool = 
     return result
 
 
-
-@wrap_function(calc_ker)
-def KER(series, period: int = 10, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_ker(series, period=period)
-    return wrap_result(result, series)
-
-
-@wrap_function(calc_kama, same_scale=True)
-def KAMA(series, period: int = 10, fastn: int = 2, slown: int = 30, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_kama(series, period=period, fastn=fastn, slown=slown)
-    return wrap_result(result, series)
-
-

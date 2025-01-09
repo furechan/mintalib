@@ -41,10 +41,3 @@ def calc_wma(series, long period, *, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_wma, same_scale=True)
-def WMA(series, period: int, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_wma(series, period=period)
-    return wrap_result(result, series)
-

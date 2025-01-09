@@ -115,34 +115,3 @@ def calc_price(prices, item: str = None, *, wrap: bool = False):
 
     return result
 
-
-
-@wrap_function(calc_avgprice, same_scale=True)
-def AVGPRICE(prices):
-    result = calc_avgprice(prices)
-    return wrap_result(result, prices)
-
-
-@wrap_function(calc_typprice, same_scale=True)
-def TYPPRICE(prices):
-    result = calc_typprice(prices)
-    return wrap_result(result, prices)
-
-
-@wrap_function(calc_wclprice, same_scale=True)
-def WCLPRICE(prices):
-    result = calc_wclprice(prices)
-    return wrap_result(result, prices)
-
-
-@wrap_function(calc_midprice, same_scale=True)
-def MIDPRICE(prices):
-    result = calc_midprice(prices)
-    return wrap_result(result, prices)
-
-
-@wrap_function(calc_price, same_scale=True)
-def PRICE(prices, item: str = None):
-    result = calc_price(prices, item=item)
-    return wrap_result(result, prices)
-

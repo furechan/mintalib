@@ -9,7 +9,7 @@ from types import MappingProxyType
 from functools import cached_property
 
 from .utils import format_partial, lazy_repr
-
+from .core import get_series, wrap_result
 
 class StructWrapper:
     """Indicator wrapper to unnest/nest struct data"""
@@ -67,13 +67,14 @@ class Indicator(metaclass=ABCMeta):
         return self(other)
         
 
+ 
 
 class FuncIndicator(Indicator):
     """Function based Indicator"""
 
-
     def __init__(self, func, params: dict):
         self.func = func
+        self.item = params.pop('item', None)
         self.params = MappingProxyType(params)
 
     @cached_property
@@ -85,11 +86,48 @@ class FuncIndicator(Indicator):
         return getattr(self.func, name)
 
     def __repr__(self):
-        return format_partial(self.func, self.params)
+        return format_partial(self.func, self.kwargs)
 
     def __call__(self, prices):
-        return self.func(prices, **self.params)
+        if self.input_type == "series":
+            series = get_series(prices, self.item)
+            result = self.func(series, **self.params)
+        else:
+            result = self.func(prices, **self.params)
+
+        return wrap_result(result, prices)  
+
     
+class FuncWrapper(Indicator):
+    """Function based Indicator"""
+
+    def __init__(self, func, params: dict):
+        self.func = func
+        self.item = params.pop('item', None)
+        self.params = MappingProxyType(params)
+
+    @cached_property
+    def input_type(self):
+        signature = inspect.signature(self.func)
+        return next(iter(signature.parameters), None) 
+
+    def __getattr__(self, name):
+        return getattr(self.func, name)
+
+    def __repr__(self):
+        return format_partial(self.func, self.kwargs)
+
+    def __call__(self, prices):
+        if self.input_type == "series":
+            series = get_series(prices, self.item)
+            result = self.func(series, **self.params)
+        else:
+            result = self.func(prices, **self.params)
+
+        return wrap_result(result, prices)  
+
+    
+
 
 class CallableChain(Indicator):
     """Chain of Callables"""

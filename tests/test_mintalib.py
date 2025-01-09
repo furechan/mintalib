@@ -7,16 +7,14 @@ from mintalib.testing import first_param, sample_params
 
 def list_calcs():
     return [
-        k
-        for k, v in vars(core).items()
+        k for k, v in vars(core).items()
         if k.startswith(("calc_", "flag_"))
         and callable(v)
         and first_param(v) in ("prices", "series")
     ]
 
-
 def list_functions():
-    return [k for k, v in vars(functions).items() if k.isupper() and callable(v)]
+    return [k for k, v in vars(functions).items() if callable(v) and first_param(v) in ("prices", "series")]
 
 
 def list_indicators():

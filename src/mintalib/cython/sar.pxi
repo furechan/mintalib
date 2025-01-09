@@ -79,9 +79,3 @@ def calc_sar(prices, double afs=0.02, double maxaf=0.2, *, wrap: bool = False):
 
 
 
-@wrap_function(calc_sar, same_scale=True)
-def SAR(prices, afs: float = 0.02, maxaf: float = 0.2):
-    result = calc_sar(prices, afs=afs, maxaf=maxaf)
-    return wrap_result(result, prices)
-
-

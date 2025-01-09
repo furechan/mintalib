@@ -50,11 +50,3 @@ def calc_mad(series, long period=20, *, wrap: bool = False):
     return result
 
 
-
-@wrap_function(calc_mad)
-def MAD(series, period: int = 20, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_mad(series, period=period)
-    return wrap_result(result, series)
-
-

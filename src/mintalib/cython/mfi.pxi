@@ -25,9 +25,3 @@ def calc_mfi(prices, long period = 14, *, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_mfi)
-def MFI(prices, period: int = 14):
-    result = calc_mfi(prices, period=period)
-    return wrap_result(result, prices)
-

@@ -139,9 +139,3 @@ def calc_curve(series, long period=20, *, wrap: bool = False):
 
     return quadratic_regression(series, period=period, option=QUADREG_CURVE, wrap=wrap)
 
-
-@wrap_function(calc_curve)
-def CURVE(series, period: int = 20, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_curve(series, period=period)
-    return wrap_result(result, series)

@@ -24,22 +24,6 @@ def check_size(xs, *others):
     return size
 
 
-# TODO remove dateframe_like
-
-def dataframe_like(data):
-    """ check if data is dataframe like """
-
-    if isinstance(data, dict):
-        return True
-
-    if isinstance(data, np.ndarray):
-        return data.dtype.names is not None
-
-    if hasattr(data, 'columns'):
-        return True
-
-    return  False
-
 
 def column_accessor(data):
     """ column accessor if applicable """
@@ -64,21 +48,6 @@ def column_accessor(data):
 
     return  None
 
-# TODO remove get_series_old
-
-def get_series_old(data, item: str = None, *, default_item: str = 'close'):
-    """ get series from either series/prices data """
-
-    if dataframe_like(data):
-        if item is None:
-            item = default_item
-        return data[item]
-
-    if item is not None:
-        tname = type(data).__name__
-        raise ValueError(f"Cannot get series from {tname}")
-
-    return data
 
 
 def get_series(data, item: str = None, *, default_item: str = 'close'):

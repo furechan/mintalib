@@ -127,24 +127,3 @@ def calc_tsf(series, long period=20, long offset=0, *, wrap: bool = False):
     return linear_regression(series, period=period, offset=offset, option=LINREG_FORECAST, wrap=wrap)
 
 
-
-@wrap_function(calc_slope)
-def SLOPE(series, period: int = 20, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_slope(series, period=period)
-    return wrap_result(result, series)
-
-
-@wrap_function(calc_rvalue)
-def RVALUE(series, period: int = 20, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_rvalue(series, period=period)
-    return wrap_result(result, series)
-
-
-@wrap_function(calc_tsf)
-def TSF(series, period: int = 20, offset: int = 0, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_tsf(series, period=period, offset=offset)
-    return wrap_result(result, series)
-

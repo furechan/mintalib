@@ -83,27 +83,3 @@ def calc_mdi(prices, long period=14, *, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_dmi)
-def DMI(prices, period: int = 14):
-    result = calc_dmi(prices, period=period)
-    return wrap_result(result, prices)
-
-
-@wrap_function(calc_adx)
-def ADX(prices, period: int = 14):
-    result = calc_adx(prices, period=period)
-    return wrap_result(result, prices)
-
-
-@wrap_function(calc_pdi)
-def PDI(prices, period: int = 14):
-    result = calc_pdi(prices, period=period)
-    return wrap_result(result, prices)
-
-
-@wrap_function(calc_mdi)
-def MDI(prices, period: int = 14):
-    result = calc_mdi(prices, period=period)
-    return wrap_result(result, prices)
-

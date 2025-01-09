@@ -31,10 +31,3 @@ def calc_lag(series, long period, *, wrap: bool = False):
     return result
 
 
-
-@wrap_function(calc_lag)
-def LAG(series, period: int , *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_diff(series, period=period)
-    return wrap_result(result, series)
-

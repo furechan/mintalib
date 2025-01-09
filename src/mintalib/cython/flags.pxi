@@ -110,18 +110,3 @@ def where_flag(flag, x, y, z=NAN, *, wrap: bool = False):
         result = wrap_result(result, flag)
 
     return result
-
-
-@wrap_function(calc_flag)
-def FLAG(series, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_flag(series)
-    return wrap_result(result, series)
-
-
-@wrap_function(calc_updown)
-def UPDOWN(series, double up_level=0.0, double down_level=0.0, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_updown(series, up_level=up_level, down_level=down_level)
-    return wrap_result(result, series)
-

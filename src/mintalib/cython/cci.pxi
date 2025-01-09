@@ -21,8 +21,3 @@ def calc_cci(prices, long period = 20, *, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_cci)
-def CCI(prices, period: int = 20):
-    result = calc_cci(prices, period=period)
-    return wrap_result(result, prices)

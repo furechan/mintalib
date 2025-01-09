@@ -44,10 +44,3 @@ def calc_sum(series, long period, *, wrap: bool = False):
 
     return result
 
-
-@wrap_function(calc_sum)
-def SUM(series, period: int, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_sum(series, period=period)
-    return wrap_result(result, series)
-

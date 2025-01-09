@@ -33,11 +33,3 @@ def calc_diff(series, long period=1, *, wrap: bool = False):
 
     return result
 
-
-
-@wrap_function(calc_diff)
-def DIFF(series, period: int = 1, *, item: str = None):
-    series = get_series(series, item=item)
-    result = calc_diff(series, period=period)
-    return wrap_result(result, series)
-

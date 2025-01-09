@@ -29,8 +29,3 @@ def calc_cmf(prices, long period = 20, *, wrap: bool = False):
     return result
 
 
-
-@wrap_function(calc_cmf)
-def CMF(prices, period: int = 20):
-    result = calc_cmf(prices, period=period)
-    return wrap_result(result, prices)
