@@ -1,9 +1,7 @@
 # Minimal Technical Analysis Library for Python
 
-This package offers a curated list of technical analysis indicators implemented in cython yo offer improved performance.
+This package offers a curated list of technical analysis indicators implemented in cython to offer improved performance.
 It is built around `numpy` arrays and aims to be compatible with `pandas` and also `polars` where applicable.
-The library is pre-compiled with `cython` so as not to require the `cython` runtime at installation.
-Also it does not link with `numpy` and should avoid binary dependency issues.
 
 
 > **Warning**
