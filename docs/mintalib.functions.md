@@ -123,6 +123,39 @@ sign(series, na_value: float = nan, *, item: str = None)
 ```
 
 Sign
+## `step` function
+
+```python
+step(series, threshold: float = 1.0, *, item: str = None)
+```
+
+Step Function
+
+Limit value changes to threshold (in absolute value)
+
+Args:
+- threshold (float) : threshold value, default 1.0
+
+## `clag` function
+
+```python
+clag(series, period: int = 1, *, item: str = None)
+```
+
+Confirmation Lag
+
+Changes value only after a confirmation period 
+
+Args:
+- period (int) : time period, default 1
+
+## `abs` function
+
+```python
+abs(series, *, item: str = None)
+```
+
+Absolute Value
 ## `log` function
 
 ```python

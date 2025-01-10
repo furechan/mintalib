@@ -87,6 +87,24 @@ def SIGN(na_value: float = nan, *, item: str = None):
     return FuncIndicator(core.calc_sign, params=params)
 
 
+@wrap_indicator(core.calc_step)
+def STEP(threshold: 'float' = 1.0, *, item: str = None):
+    params = dict(threshold=threshold, item=item)
+    return FuncIndicator(core.calc_step, params=params)
+
+
+@wrap_indicator(core.calc_clag)
+def CLAG(period: int = 1, *, item: str = None):
+    params = dict(period=period, item=item)
+    return FuncIndicator(core.calc_clag, params=params)
+
+
+@wrap_indicator(core.calc_abs)
+def ABS(*, item: str = None):
+    params = dict(item=item)
+    return FuncIndicator(core.calc_abs, params=params)
+
+
 @wrap_indicator(core.calc_log)
 def LOG(*, item: str = None):
     params = dict(item=item)
@@ -353,10 +371,10 @@ def EVAL(expr: str):
 
 __all__ = [
     'AVGPRICE', 'TYPPRICE', 'WCLPRICE', 'MIDPRICE', 'PRICE', 'CROSSOVER',
-    'CROSSUNDER', 'FLAG', 'UPDOWN', 'SIGN', 'LOG', 'EXP', 'DIFF', 'LAG',
-    'MIN', 'MAX', 'SUM', 'ROC', 'MAD', 'STDEV', 'SMA', 'EMA', 'RMA', 'WMA',
-    'HMA', 'DEMA', 'TEMA', 'MAV', 'RSI', 'DMI', 'ADX', 'PDI', 'MDI',
-    'TRANGE', 'ATR', 'NATR', 'SAR', 'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS',
-    'KELTNER', 'KER', 'KAMA', 'MACD', 'PPO', 'SLOPE', 'RVALUE', 'TSF',
-    'CURVE', 'STOCH', 'STREAK', 'EVAL'
+    'CROSSUNDER', 'FLAG', 'UPDOWN', 'SIGN', 'STEP', 'CLAG', 'ABS', 'LOG',
+    'EXP', 'DIFF', 'LAG', 'MIN', 'MAX', 'SUM', 'ROC', 'MAD', 'STDEV',
+    'SMA', 'EMA', 'RMA', 'WMA', 'HMA', 'DEMA', 'TEMA', 'MAV', 'RSI', 'DMI',
+    'ADX', 'PDI', 'MDI', 'TRANGE', 'ATR', 'NATR', 'SAR', 'CCI', 'CMF',
+    'MFI', 'BOP', 'BBANDS', 'KELTNER', 'KER', 'KAMA', 'MACD', 'PPO',
+    'SLOPE', 'RVALUE', 'TSF', 'CURVE', 'STOCH', 'STREAK', 'EVAL'
 ]

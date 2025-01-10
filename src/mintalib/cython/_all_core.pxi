@@ -7,7 +7,10 @@ include "price.pxi"
 include "cross.pxi"
 include "flags.pxi"
 include "sign.pxi"
+include "step.pxi"
+include "clag.pxi"
 
+include "abs.pxi"
 include "log.pxi"
 include "exp.pxi"
 

@@ -122,6 +122,39 @@ SIGN(na_value: float = nan, *, item: str = None)
 ```
 
 Sign
+## `STEP` indicator
+
+```python
+STEP(threshold: float = 1.0, *, item: str = None)
+```
+
+Step Function
+
+Limit value changes to threshold (in absolute value)
+
+Args:
+- threshold (float) : threshold value, default 1.0
+
+## `CLAG` indicator
+
+```python
+CLAG(period: int = 1, *, item: str = None)
+```
+
+Confirmation Lag
+
+Changes value only after a confirmation period 
+
+Args:
+- period (int) : time period, default 1
+
+## `ABS` indicator
+
+```python
+ABS(*, item: str = None)
+```
+
+Absolute Value
 ## `LOG` indicator
 
 ```python

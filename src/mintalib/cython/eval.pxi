@@ -8,5 +8,6 @@ def calc_eval(prices, expr: str):
         expr (str) : expression to eval
     """
 
-    return prices.eval(expr)
+    # Coerce to float to avoid boolean series
+    return prices.eval(expr).astype(float)
 

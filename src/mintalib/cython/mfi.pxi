@@ -11,8 +11,9 @@ def calc_mfi(prices, long period = 14, *, wrap: bool = False):
 
     prc = calc_typprice(prices)
     volume = np.asarray(prices['volume'], float)
+    roc = calc_roc(prc, 1)
 
-    flow = prc * volume
+    flow = prc * volume * np.sign(roc)
     pflow = np.clip(flow, 0.0, None)
     nflow = -np.clip(flow, None, 0.0)
 

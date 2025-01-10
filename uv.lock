@@ -1102,7 +1102,7 @@ wheels = [
 
 [[package]]
 name = "mintalib"
-version = "0.0.17"
+version = "0.0.19"
 source = { editable = "." }
 dependencies = [
     { name = "numpy" },

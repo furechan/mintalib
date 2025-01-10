@@ -1,7 +1,8 @@
 # Minimal Technical Analysis Library for Python
 
-This package offers a curated list of technical analysis indicators implemented in cython to offer improved performance.
-It is built around `numpy` arrays and aims to be compatible with `pandas` and also `polars` where applicable.
+This package offers a list of technical analysis indicators and timeseries calculations
+all implemented in cython for improved performance. The library is built around `numpy` arrays,
+and aims to be compatible with `pandas` and `polars` where applicable.
 
 
 > **Warning**
@@ -25,12 +26,14 @@ The `mintalib` package contains three main modules:
 
 | Name       | Description                              |
 |:-----------|:-----------------------------------------|
+| ABS        | Absolute Value                           |
 | ADX        | Average Directional Index                |
 | ATR        | Average True Range                       |
 | AVGPRICE   | Average Price                            |
 | BBANDS     | Bollinger Bands                          |
 | BOP        | Balance of Power                         |
 | CCI        | Commodity Channel Index                  |
+| CLAG       | Confirmation Lag                         |
 | CMF        | Chaikin Money Flow                       |
 | CROSSOVER  | Cross Over                               |
 | CROSSUNDER | Cross Under                              |
@@ -69,6 +72,7 @@ The `mintalib` package contains three main modules:
 | SLOPE      | Slope (linear regression)                |
 | SMA        | Simple Moving Average                    |
 | STDEV      | Standard Deviation                       |
+| STEP       | Step Function                            |
 | STOCH      | Stochastic Oscillator                    |
 | STREAK     | Consecutive streak of ups or downs       |
 | SUM        | Rolling Sum                              |

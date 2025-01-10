@@ -108,6 +108,30 @@ def sign(series, na_value: float = nan, *, item: str = None):
     return wrap_result(result, series)
 
 
+@wrap_function(core.calc_step)
+def step(series, threshold: 'float' = 1.0, *, item: str = None):
+    series = get_series(series, item=item)
+    kwargs = dict(threshold=threshold)
+    result = core.calc_step(series, **kwargs)
+    return wrap_result(result, series)
+
+
+@wrap_function(core.calc_clag)
+def clag(series, period: int = 1, *, item: str = None):
+    series = get_series(series, item=item)
+    kwargs = dict(period=period)
+    result = core.calc_clag(series, **kwargs)
+    return wrap_result(result, series)
+
+
+@wrap_function(core.calc_abs)
+def abs(series, *, item: str = None):
+    series = get_series(series, item=item)
+    kwargs = dict()
+    result = core.calc_abs(series, **kwargs)
+    return wrap_result(result, series)
+
+
 @wrap_function(core.calc_log)
 def log(series, *, item: str = None):
     series = get_series(series, item=item)

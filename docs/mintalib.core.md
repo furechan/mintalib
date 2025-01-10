@@ -179,6 +179,39 @@ calc_sign(series, na_value=nan, wrap: bool = False)
 ```
 
 Sign
+## `calc_step` function
+
+```python
+calc_step(series, threshold: float = 1.0, wrap: bool = False)
+```
+
+Step Function
+
+Limit value changes to threshold (in absolute value)
+
+Args:
+- threshold (float) : threshold value, default 1.0
+
+## `calc_clag` function
+
+```python
+calc_clag(series, period=1, *, wrap: bool = False)
+```
+
+Confirmation Lag
+
+Changes value only after a confirmation period 
+
+Args:
+- period (int) : time period, default 1
+
+## `calc_abs` function
+
+```python
+calc_abs(series, *, wrap: bool = False)
+```
+
+Absolute Value
 ## `calc_log` function
 
 ```python

@@ -24,8 +24,7 @@ def calc_sma(series, long period, *, wrap: bool = False):
     cdef long maxlen = size - period + 1
 
     for i in range(maxlen):
-        vsum = 0.0
-        count = 0
+        vsum, count = 0.0, 0
 
         for j in range(period):
             v = xs[i + j]
