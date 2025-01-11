@@ -2,10 +2,20 @@
 
 
 
-def calc_flag(series, *, wrap: bool = False):
+def calc_flag(prices, expr: str = None, *, wrap: bool = False):
     """
-    Flag for value above zero
+    Flag Value
+
+    Flag value of 1 for positive, 0 for zero or negative, and NaN for missing values
+
+    Args:
+        expr (str) : expression to evaluate (optional) (pandas only!)
     """
+
+    if expr is not None:
+        series = calc_eval(prices, expr)
+    else:
+        series = prices
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size

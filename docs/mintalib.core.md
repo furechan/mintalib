@@ -182,7 +182,7 @@ Sign
 ## `calc_step` function
 
 ```python
-calc_step(series, threshold: float = 1.0, wrap: bool = False)
+calc_step(series, threshold: float = 1.0, *, wrap: bool = False)
 ```
 
 Step Function

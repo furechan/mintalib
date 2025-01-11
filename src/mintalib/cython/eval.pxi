@@ -9,5 +9,13 @@ def calc_eval(prices, expr: str):
     """
 
     # Coerce to float to avoid boolean series
-    return prices.eval(expr).astype(float)
+
+    if hasattr(prices, 'eval'):
+        return prices.eval(expr).astype(float)
+
+    if expr in prices:
+        return prices[expr]
+
+    raise ValueError(f"Expression {expr!r} not supported!")
+
 
