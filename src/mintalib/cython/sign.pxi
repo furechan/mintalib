@@ -1,7 +1,7 @@
 """ Sign function """
 
 
-def calc_sign(series, double na_value=NAN, wrap: bool = False):
+def calc_sign(series, double na_value=NAN, *, bint wrap=False):
     """Sign"""
 
     cdef const double[:] xs = np.asarray(series, float)

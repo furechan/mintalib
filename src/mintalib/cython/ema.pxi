@@ -1,6 +1,7 @@
 """ Exponential Moving Average """
 
-def calc_ema(series, long period, *, bint adjust = False, wrap: bool = False):
+@with_metadata(same_scale=True)
+def calc_ema(series, long period, *, bint adjust = False, bint wrap=False):
     """
     Exponential Moving Average
 

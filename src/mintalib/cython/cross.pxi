@@ -1,6 +1,6 @@
 """ Cross Over/Under """
 
-def calc_crossover(series, double level=0.0, *, wrap: bool = False):
+def calc_crossover(series, double level=0.0, *, bint wrap=False):
     """
     Cross Over
     

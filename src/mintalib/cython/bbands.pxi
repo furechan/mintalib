@@ -3,8 +3,8 @@
 
 bbands_result = namedtuple('bbands_result', 'upperband, middleband, lowerband')
 
-
-def calc_bbands(prices, long period = 20, double nbdev = 2.0, *, wrap: bool = False):
+@with_metadata(same_scale=True)
+def calc_bbands(prices, long period=20, double nbdev=2.0, *, bint wrap=False):
     """
     Bollinger Bands
     

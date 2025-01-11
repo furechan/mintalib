@@ -18,6 +18,18 @@ In particular the result of a function applied to a pandas series or dataframes
 will have the same index as the input.
 
 
+## `price` function
+
+```python
+price(prices, item: str = None)
+```
+
+Generic Price 
+   
+   Args:
+- item (str) : one of 'open', 'high', 'low', 'close',
+           'avg', 'mid', 'typ', 'wcl' defaults to 'close'
+
 ## `avgprice` function
 
 ```python
@@ -57,18 +69,6 @@ midprice(prices)
 Mid Price
 
 Value of (high + low) / 2
-
-## `price` function
-
-```python
-price(prices, item: str = None)
-```
-
-Generic Price 
-   
-   Args:
-- item (str) : one of 'open', 'high', 'low', 'close',
-           'avg', 'mid', 'typ', 'wcl' defaults to 'close'
 
 ## `crossover` function
 

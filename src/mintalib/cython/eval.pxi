@@ -1,6 +1,6 @@
 """ Expression eval """
 
-def calc_eval(prices, expr: str, *, as_flag: bool = False):
+def calc_eval(prices, unicode expr, *, bint as_flag=False, bint wrap=False):
     """
     Expression Eval (pandas only)
 
@@ -11,14 +11,16 @@ def calc_eval(prices, expr: str, *, as_flag: bool = False):
     # Coerce to float to avoid boolean series
 
     if hasattr(prices, 'eval'):
-        result = prices.eval(expr).astype(float)
-    elif expr in prices:
-        result = prices[expr]
+        result = prices.eval(expr)
+        result = np.asarray(result, float)
     else:
         raise ValueError(f"Expression {expr!r} not supported!")
 
     if as_flag:
-        result = calc_flag(result, wrap=True)
+        result = calc_flag(result)
+
+    if wrap:
+        result = wrap_result(result, prices)
 
     return result
 

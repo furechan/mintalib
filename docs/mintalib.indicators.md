@@ -17,6 +17,18 @@ So for example `SMA(50) @ prices` can be used to compute the 50 period simple mo
 instead of the more verbose `SMA(50)(prices)`.
 
 
+## `PRICE` indicator
+
+```python
+PRICE(item: str = None)
+```
+
+Generic Price 
+   
+   Args:
+- item (str) : one of 'open', 'high', 'low', 'close',
+           'avg', 'mid', 'typ', 'wcl' defaults to 'close'
+
 ## `AVGPRICE` indicator
 
 ```python
@@ -56,18 +68,6 @@ MIDPRICE()
 Mid Price
 
 Value of (high + low) / 2
-
-## `PRICE` indicator
-
-```python
-PRICE(item: str = None)
-```
-
-Generic Price 
-   
-   Args:
-- item (str) : one of 'open', 'high', 'low', 'close',
-           'avg', 'mid', 'typ', 'wcl' defaults to 'close'
 
 ## `CROSSOVER` indicator
 

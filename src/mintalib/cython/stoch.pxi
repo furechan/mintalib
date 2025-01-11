@@ -4,7 +4,7 @@
 stoch_result = namedtuple("stoch_result", "slowk, slowd")
 
 
-def calc_stoch(prices, long period=14, long fastn=3, long slown=3, *, wrap: bool = False):
+def calc_stoch(prices, long period=14, long fastn=3, long slown=3, *, bint wrap=False):
     """
     Stochastic Oscillator
     

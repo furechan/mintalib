@@ -1,6 +1,7 @@
 """ Step Function """
 
-def calc_step(series, threshold : float = 1.0, *, wrap: bool = False):
+
+def calc_step(series, threshold : float = 1.0, *, bint wrap=False):
     """
     Step Function
 

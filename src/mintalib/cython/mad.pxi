@@ -1,6 +1,6 @@
 """ Standard Deviation """
 
-def calc_mad(series, long period=20, *, wrap: bool = False):
+def calc_mad(series, long period=20, *, bint wrap=False):
     """
     Mean Absolute Deviation
     

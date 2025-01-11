@@ -15,7 +15,7 @@ from collections import namedtuple
 
 
 def check_size(xs, *others):
-    """ check all series have the same size and return the size """
+    """check all series have the same size and return the size"""
 
     cdef long size = xs.size
     for s in others:
@@ -26,7 +26,7 @@ def check_size(xs, *others):
 
 
 def column_accessor(data):
-    """ column accessor if applicable """
+    """column accessor if applicable"""
 
     # Standard Dictionary
     if isinstance(data, dict):
@@ -51,7 +51,7 @@ def column_accessor(data):
 
 
 def get_series(data, item: str = None, *, default_item: str = 'close'):
-    """ get series from prices or series data """
+    """get series from prices or series data"""
 
     columns = column_accessor(data)
 
@@ -68,7 +68,7 @@ def get_series(data, item: str = None, *, default_item: str = 'close'):
 
 
 def get_array(data, item: str = None, *, default_item: str = 'close', dtype=None):
-    """ get array from prices or series data """
+    """get array from prices or series data"""
 
     series = get_series(data, item, default_item=default_item)
 
@@ -76,7 +76,7 @@ def get_array(data, item: str = None, *, default_item: str = 'close', dtype=None
 
 
 def get_arrays(data, items: str = None, *, dtype=None):
-    """ get arrays from prices data """
+    """get arrays from prices data"""
 
     series = [get_series(data, item) for item in items]
     arrays = tuple(np.asarray(s, dtype=dtype) for s in series)
@@ -84,24 +84,13 @@ def get_arrays(data, items: str = None, *, dtype=None):
     return arrays
 
 
-
-def wrap_function(source, same_scale: bool = None):
-    """ update function with documentation from source """
-
-    doc = str(source.__doc__) if source else None
+def with_metadata(*, same_scale: bool = None):
+    """update function with metadata"""
 
     metadata = dict(same_scale=same_scale)
     metadata = { k: v for k, v in metadata.items() if v is not None}
 
-    if doc and metadata:
-        doc = doc.rstrip()
-        doc += "\n\n    Attributes:\n"
-        for k, v in metadata.items():
-            doc += f"        {k} = {v!r}\n"
-
     def decorator(func):
-        if doc and func.__doc__ is None:
-            func.__doc__ = doc
         for name, value in metadata.items():
             setattr(func, name, value)
         return func
@@ -109,8 +98,23 @@ def wrap_function(source, same_scale: bool = None):
     return decorator
 
 
+
+def wrap_function(source):
+    """update function with documentation from source"""
+
+    doc = source.__doc__ if source else None
+
+    def decorator(func):
+        if doc and func.__doc__ is None:
+            func.__doc__ = doc
+        return func
+
+    return decorator
+
+
+
 def wrap_indicator(source):
-    """ update indicator with documentation from source """
+    """update indicator with documentation from source"""
 
     doc = source.__doc__ if source else None
 
@@ -123,7 +127,7 @@ def wrap_indicator(source):
 
 
 def wrap_result(result, source):
-    """ wrap result to match source data form (pandas, polars) """
+    """wrap result to match source data (pandas, polars)"""
 
     pname = getattr(source, '__module__', '').partition('.')[0]
 

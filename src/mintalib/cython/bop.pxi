@@ -1,7 +1,7 @@
 """ Balance of Power """
 
 
-def calc_bop(prices, long period = 20, *, wrap: bool = False):
+def calc_bop(prices, long period=20, *, bint wrap=False):
     """
     Balance of Power
     

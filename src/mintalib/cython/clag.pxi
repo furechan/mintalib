@@ -1,6 +1,7 @@
 """ Confirmation Lag """
 
-def calc_clag(series, long period = 1, *, wrap: bool = False):
+@with_metadata(same_scale=True)
+def calc_clag(series, long period=1, *, bint wrap=False):
     """
     Confirmation Lag
 

@@ -1,7 +1,8 @@
 """ Ganeric Moving Average """
 
 
-def calc_mav(series, long period=20, *, ma_type: str = "SMA", wrap: bool = False):
+@with_metadata(same_scale=True)
+def calc_mav(series, long period=20, *, unicode ma_type = "SMA", bint wrap = False):
     """
     Generic Moving Average
 

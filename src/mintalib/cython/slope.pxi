@@ -11,7 +11,7 @@ cdef enum:
     LINREG_BADOPTION = 6
 
 
-def linear_regression(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
+def linear_regression(series, long period=20, *, int option=0, int offset=0, bint wrap=False):
     """
     Linear Regression
     
@@ -94,7 +94,7 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0, wra
 
 
 
-def calc_slope(series, long period=20, *, wrap: bool = False):
+def calc_slope(series, long period=20, *, bint wrap=False):
     """
     Slope (linear regression)
     
@@ -105,7 +105,7 @@ def calc_slope(series, long period=20, *, wrap: bool = False):
     return linear_regression(series, period=period, option=LINREG_SLOPE, wrap=wrap)
 
 
-def calc_rvalue(series, long period=20, *, wrap: bool = False):
+def calc_rvalue(series, long period=20, *, bint wrap=False):
     """
     R-Value (linear regression)
     
@@ -116,7 +116,7 @@ def calc_rvalue(series, long period=20, *, wrap: bool = False):
     return linear_regression(series, period=period, option=LINREG_RVALUE, wrap=wrap)
 
 
-def calc_tsf(series, long period=20, long offset=0, *, wrap: bool = False):
+def calc_tsf(series, long period=20, long offset=0, *, bint wrap=False):
     """
     Time Series Forecast (linear regression)
     

@@ -1,8 +1,8 @@
 """ Hull Moving Average """
 
 
-
-def calc_hma(series, long period, *, wrap: bool = False):
+@with_metadata(same_scale=True)
+def calc_hma(series, long period, *, bint wrap=False):
     """
     Hull Moving Average
 

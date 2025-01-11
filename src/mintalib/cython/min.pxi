@@ -1,7 +1,7 @@
 """ Rolling Minimum """
 
-
-def calc_min(series, long period, *, wrap: bool = False):
+@with_metadata(same_scale=True)
+def calc_min(series, long period, *, bint wrap=False):
     """
     Rolling Minimum
     

@@ -46,10 +46,17 @@ get_arrays(data, items: str = None, *, dtype=None)
 ```
 
 get arrays from prices data
+## `with_metadata` function
+
+```python
+with_metadata(*, same_scale: bool = None)
+```
+
+update function with metadata
 ## `wrap_function` function
 
 ```python
-wrap_function(source, same_scale: bool = None)
+wrap_function(source)
 ```
 
 update function with documentation from source
@@ -66,11 +73,23 @@ update indicator with documentation from source
 wrap_result(result, source)
 ```
 
-wrap result to match source data form (pandas, polars)
+wrap result to match source data (pandas, polars)
+## `calc_price` function
+
+```python
+calc_price(prices, item: str = None, *, wrap=False)
+```
+
+Generic Price 
+   
+   Args:
+- item (str) : one of 'open', 'high', 'low', 'close',
+           'avg', 'mid', 'typ', 'wcl' defaults to 'close'
+
 ## `calc_avgprice` function
 
 ```python
-calc_avgprice(prices, *, wrap: bool = False)
+calc_avgprice(prices, *, wrap=False)
 ```
 
 Average Price
@@ -80,7 +99,7 @@ Value of (open + high + low + close) / 4
 ## `calc_typprice` function
 
 ```python
-calc_typprice(prices, *, wrap: bool = False)
+calc_typprice(prices, *, wrap=False)
 ```
 
 Typical Price
@@ -90,7 +109,7 @@ Value of (high + low + close ) / 3
 ## `calc_wclprice` function
 
 ```python
-calc_wclprice(prices, *, wrap: bool = False)
+calc_wclprice(prices, *, wrap=False)
 ```
 
 Weighted Close Price
@@ -100,29 +119,17 @@ Value of (high + low + 2 * close) / 3
 ## `calc_midprice` function
 
 ```python
-calc_midprice(prices, *, wrap: bool = False)
+calc_midprice(prices, *, wrap=False)
 ```
 
 Mid Price
 
 Value of (high + low) / 2
 
-## `calc_price` function
-
-```python
-calc_price(prices, item: str = None, *, wrap: bool = False)
-```
-
-Generic Price 
-   
-   Args:
-- item (str) : one of 'open', 'high', 'low', 'close',
-           'avg', 'mid', 'typ', 'wcl' defaults to 'close'
-
 ## `calc_crossover` function
 
 ```python
-calc_crossover(series, level=0.0, *, wrap: bool = False)
+calc_crossover(series, level=0.0, *, wrap=False)
 ```
 
 Cross Over
@@ -148,7 +155,7 @@ Args:
 ## `calc_flag` function
 
 ```python
-calc_flag(series, *, wrap: bool = False)
+calc_flag(series, *, wrap=False)
 ```
 
 Flag Value
@@ -161,7 +168,7 @@ Args:
 ## `calc_updown` function
 
 ```python
-calc_updown(series, up_level=0.0, down_level=0.0, *, wrap: bool = False)
+calc_updown(series, up_level=0.0, down_level=0.0, *, wrap=False)
 ```
 
 Flag for value crossing up & down levels
@@ -173,21 +180,21 @@ Args:
 ## `where_flag` function
 
 ```python
-where_flag(flag, x, y, z=nan, *, wrap: bool = False)
+where_flag(flag, x, y, z=nan, *, wrap=False)
 ```
 
 Value according to flag
 ## `calc_sign` function
 
 ```python
-calc_sign(series, na_value=nan, wrap: bool = False)
+calc_sign(series, na_value=nan, *, wrap=False)
 ```
 
 Sign
 ## `calc_step` function
 
 ```python
-calc_step(series, threshold: float = 1.0, *, wrap: bool = False)
+calc_step(series, threshold: float = 1.0, *, wrap=False)
 ```
 
 Step Function
@@ -200,7 +207,7 @@ Args:
 ## `calc_clag` function
 
 ```python
-calc_clag(series, period=1, *, wrap: bool = False)
+calc_clag(series, period=1, *, wrap=False)
 ```
 
 Confirmation Lag
@@ -213,28 +220,28 @@ Args:
 ## `calc_abs` function
 
 ```python
-calc_abs(series, *, wrap: bool = False)
+calc_abs(series, *, wrap=False)
 ```
 
 Absolute Value
 ## `calc_log` function
 
 ```python
-calc_log(series, *, wrap: bool = False)
+calc_log(series, *, wrap=False)
 ```
 
 Logarithm
 ## `calc_exp` function
 
 ```python
-calc_exp(series, *, wrap: bool = False)
+calc_exp(series, *, wrap=False)
 ```
 
 Exponential
 ## `calc_diff` function
 
 ```python
-calc_diff(series, period=1, *, wrap: bool = False)
+calc_diff(series, period=1, *, wrap=False)
 ```
 
 Difference
@@ -247,7 +254,7 @@ Args:
 ## `calc_lag` function
 
 ```python
-calc_lag(series, period, *, wrap: bool = False)
+calc_lag(series, period, *, wrap=False)
 ```
 
 Lag Function
@@ -258,7 +265,7 @@ Args:
 ## `calc_min` function
 
 ```python
-calc_min(series, period, *, wrap: bool = False)
+calc_min(series, period, *, wrap=False)
 ```
 
 Rolling Minimum
@@ -269,14 +276,14 @@ Args:
 ## `calc_max` function
 
 ```python
-calc_max(series, period, *, wrap: bool = False)
+calc_max(series, period, *, wrap=False)
 ```
 
 Rolling Maximum
 ## `calc_sum` function
 
 ```python
-calc_sum(series, period, *, wrap: bool = False)
+calc_sum(series, period, *, wrap=False)
 ```
 
 Rolling Sum
@@ -287,7 +294,7 @@ Args:
 ## `calc_roc` function
 
 ```python
-calc_roc(series, period=1, *, wrap: bool = False)
+calc_roc(series, period=1, *, wrap=False)
 ```
 
 Rate of Change
@@ -299,7 +306,7 @@ Args:
 ## `calc_lroc` function
 
 ```python
-calc_lroc(series, period=1, *, wrap: bool = False)
+calc_lroc(series, period=1, *, wrap=False)
 ```
 
 Logarithmic Rate of Change
@@ -313,7 +320,7 @@ Args:
 ## `calc_mad` function
 
 ```python
-calc_mad(series, period=20, *, wrap: bool = False)
+calc_mad(series, period=20, *, wrap=False)
 ```
 
 Mean Absolute Deviation
@@ -324,7 +331,7 @@ Args:
 ## `calc_stdev` function
 
 ```python
-calc_stdev(series, period=20, *, wrap: bool = False)
+calc_stdev(series, period=20, *, wrap=False)
 ```
 
 Standard Deviation
@@ -335,7 +342,7 @@ Args:
 ## `calc_mav` function
 
 ```python
-calc_mav(series, period=20, *, ma_type: str = 'SMA', wrap: bool = False)
+calc_mav(series, period=20, *, ma_type='SMA', wrap=False)
 ```
 
 Generic Moving Average
@@ -349,7 +356,7 @@ Args:
 ## `calc_sma` function
 
 ```python
-calc_sma(series, period, *, wrap: bool = False)
+calc_sma(series, period, *, wrap=False)
 ```
 
 Simple Moving Average
@@ -360,7 +367,7 @@ Args:
 ## `calc_ema` function
 
 ```python
-calc_ema(series, period, *, adjust=False, wrap: bool = False)
+calc_ema(series, period, *, adjust=False, wrap=False)
 ```
 
 Exponential Moving Average
@@ -381,7 +388,7 @@ Formula:
 ## `calc_rma` function
 
 ```python
-calc_rma(series, period, *, wrap: bool = False)
+calc_rma(series, period, *, wrap=False)
 ```
 
 Rolling Moving Average (RSI style)
@@ -393,7 +400,7 @@ number of bars is equal to `period`.
 ## `calc_wma` function
 
 ```python
-calc_wma(series, period, *, wrap: bool = False)
+calc_wma(series, period, *, wrap=False)
 ```
 
 Weighted Moving Average
@@ -404,7 +411,7 @@ Args:
 ## `calc_hma` function
 
 ```python
-calc_hma(series, period, *, wrap: bool = False)
+calc_hma(series, period, *, wrap=False)
 ```
 
 Hull Moving Average
@@ -415,7 +422,7 @@ Args:
 ## `calc_dema` function
 
 ```python
-calc_dema(series, period, wrap: bool = False)
+calc_dema(series, period, *, wrap=False)
 ```
 
 Double Exponential Moving Average
@@ -426,7 +433,7 @@ Args:
 ## `calc_tema` function
 
 ```python
-calc_tema(series, period=20, *, wrap: bool = False)
+calc_tema(series, period=20, *, wrap=False)
 ```
 
 Triple Exponential Moving Average
@@ -437,14 +444,14 @@ Args:
 ## `calc_alma` function
 
 ```python
-calc_alma(series, period=9, offset=0.85, sigma=6.0, *, wrap: bool = False)
+calc_alma(series, period=9, offset=0.85, sigma=6.0, *, wrap=False)
 ```
 
 Arnaud Legoux Moving Average
 ## `calc_rsi` function
 
 ```python
-calc_rsi(series, period=14, *, wrap: bool = False)
+calc_rsi(series, period=14, *, wrap=False)
 ```
 
 Relative Strength Index
@@ -455,7 +462,7 @@ Args:
 ## `calc_dmi` function
 
 ```python
-calc_dmi(prices, period=14, *, wrap: bool = False)
+calc_dmi(prices, period=14, *, wrap=False)
 ```
 
 Directional Movement Indicator
@@ -466,7 +473,7 @@ Args:
 ## `calc_adx` function
 
 ```python
-calc_adx(prices, period=14, *, wrap: bool = False)
+calc_adx(prices, period=14, *, wrap=False)
 ```
 
 Average Directional Index
@@ -477,7 +484,7 @@ Args:
 ## `calc_pdi` function
 
 ```python
-calc_pdi(prices, period=14, *, wrap: bool = False)
+calc_pdi(prices, period=14, *, wrap=False)
 ```
 
 Plus Directional Index
@@ -488,7 +495,7 @@ Args:
 ## `calc_mdi` function
 
 ```python
-calc_mdi(prices, period=14, *, wrap: bool = False)
+calc_mdi(prices, period=14, *, wrap=False)
 ```
 
 Minus Directional Index
@@ -499,7 +506,7 @@ Args:
 ## `calc_trange` function
 
 ```python
-calc_trange(prices, *, log_prices: bool = False, percent: bool = False, wrap: bool = False)
+calc_trange(prices, *, log_prices=False, percent=False, wrap=False)
 ```
 
 True Range
@@ -511,7 +518,7 @@ Args:
 ## `calc_atr` function
 
 ```python
-calc_atr(prices, period=14, *, wrap: bool = False)
+calc_atr(prices, period=14, *, wrap=False)
 ```
 
 Average True Range
@@ -522,7 +529,7 @@ Args:
 ## `calc_natr` function
 
 ```python
-calc_natr(prices, period=14, *, wrap: bool = False)
+calc_natr(prices, period=14, *, wrap=False)
 ```
 
 Average True Range (normalized)
@@ -533,7 +540,7 @@ Args:
 ## `calc_sar` function
 
 ```python
-calc_sar(prices, afs=0.02, maxaf=0.2, *, wrap: bool = False)
+calc_sar(prices, afs=0.02, maxaf=0.2, *, wrap=False)
 ```
 
 Parabolic Stop and Reverse
@@ -545,7 +552,7 @@ Args:
 ## `calc_cci` function
 
 ```python
-calc_cci(prices, period=20, *, wrap: bool = False)
+calc_cci(prices, period=20, *, wrap=False)
 ```
 
 Commodity Channel Index
@@ -556,7 +563,7 @@ Args:
 ## `calc_cmf` function
 
 ```python
-calc_cmf(prices, period=20, *, wrap: bool = False)
+calc_cmf(prices, period=20, *, wrap=False)
 ```
 
 Chaikin Money Flow
@@ -567,7 +574,7 @@ Args:
 ## `calc_mfi` function
 
 ```python
-calc_mfi(prices, period=14, *, wrap: bool = False)
+calc_mfi(prices, period=14, *, wrap=False)
 ```
 
 Money Flow Index 
@@ -578,7 +585,7 @@ Args:
 ## `calc_bop` function
 
 ```python
-calc_bop(prices, period=20, *, wrap: bool = False)
+calc_bop(prices, period=20, *, wrap=False)
 ```
 
 Balance of Power
@@ -589,7 +596,7 @@ Args:
 ## `calc_bbands` function
 
 ```python
-calc_bbands(prices, period=20, nbdev=2.0, *, wrap: bool = False)
+calc_bbands(prices, period=20, nbdev=2.0, *, wrap=False)
 ```
 
 Bollinger Bands
@@ -601,7 +608,7 @@ Args:
 ## `calc_keltner` function
 
 ```python
-calc_keltner(prices, period=20, nbatr=2.0, *, wrap: bool = False)
+calc_keltner(prices, period=20, nbatr=2.0, *, wrap=False)
 ```
 
 Keltner Channel
@@ -613,7 +620,7 @@ Args:
 ## `calc_ker` function
 
 ```python
-calc_ker(series, period=10, *, wrap: bool = False)
+calc_ker(series, period=10, *, wrap=False)
 ```
 
 Kaufman Efficiency Ratio
@@ -624,7 +631,7 @@ Args:
 ## `calc_kama` function
 
 ```python
-calc_kama(series, period=10, fastn=2, slown=30, *, wrap: bool = False)
+calc_kama(series, period=10, fastn=2, slown=30, *, wrap=False)
 ```
 
 Kaufman Adaptive Moving Average
@@ -637,7 +644,7 @@ Args:
 ## `calc_macd` function
 
 ```python
-calc_macd(series, n1=12, n2=26, n3=9, wrap: bool = False)
+calc_macd(series, n1=12, n2=26, n3=9, *, wrap=False)
 ```
 
 Moving Average Convergenge Divergence
@@ -653,7 +660,7 @@ Outputs:
 ## `calc_ppo` function
 
 ```python
-calc_ppo(series, n1=12, n2=26, n3=9, *, wrap: bool = False)
+calc_ppo(series, n1=12, n2=26, n3=9, *, wrap=False)
 ```
 
 Price Percentage Oscillator
@@ -669,7 +676,7 @@ Outputs:
 ## `linear_regression` function
 
 ```python
-linear_regression(series, period=20, *, option=0, offset=0, wrap: bool = False)
+linear_regression(series, period=20, *, option=0, offset=0, wrap=False)
 ```
 
 Linear Regression
@@ -680,7 +687,7 @@ Args:
 ## `calc_slope` function
 
 ```python
-calc_slope(series, period=20, *, wrap: bool = False)
+calc_slope(series, period=20, *, wrap=False)
 ```
 
 Slope (linear regression)
@@ -691,7 +698,7 @@ Args:
 ## `calc_rvalue` function
 
 ```python
-calc_rvalue(series, period=20, *, wrap: bool = False)
+calc_rvalue(series, period=20, *, wrap=False)
 ```
 
 R-Value (linear regression)
@@ -702,7 +709,7 @@ Args:
 ## `calc_tsf` function
 
 ```python
-calc_tsf(series, period=20, offset=0, *, wrap: bool = False)
+calc_tsf(series, period=20, offset=0, *, wrap=False)
 ```
 
 Time Series Forecast (linear regression)
@@ -713,21 +720,21 @@ Args:
 ## `quadratic_regression` function
 
 ```python
-quadratic_regression(series, period=20, *, option=0, offset=0, wrap: bool = False)
+quadratic_regression(series, period=20, *, option=0, wrap=False)
 ```
 
 Curve (quadratic regression)
 ## `calc_curve` function
 
 ```python
-calc_curve(series, period=20, *, wrap: bool = False)
+calc_curve(series, period=20, *, wrap=False)
 ```
 
 Curve (quadratic regression)
 ## `calc_stoch` function
 
 ```python
-calc_stoch(prices, period=14, fastn=3, slown=3, *, wrap: bool = False)
+calc_stoch(prices, period=14, fastn=3, slown=3, *, wrap=False)
 ```
 
 Stochastic Oscillator
@@ -740,7 +747,7 @@ Args:
 ## `calc_streak` function
 
 ```python
-calc_streak(series, *, wrap: bool = False)
+calc_streak(series, *, wrap=False)
 ```
 
 Consecutive streak of ups or downs
@@ -750,7 +757,7 @@ Length of streak of values all up or down, times +1 or -1 whether ups or downs.
 ## `calc_eval` function
 
 ```python
-calc_eval(prices, expr: str, *, as_flag: bool = False)
+calc_eval(prices, expr, *, as_flag=False, wrap=False)
 ```
 
 Expression Eval (pandas only)

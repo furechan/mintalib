@@ -11,7 +11,7 @@ cdef enum:
 
 
 
-def quadratic_regression(series, long period=20, *, int option=0, int offset=0, wrap: bool = False):
+def quadratic_regression(series, long period=20, *, int option=0, bint wrap=False):
     """ Curve (quadratic regression) """
 
     if option < 0 or option >= QUADREG_BADOPTION:
@@ -134,7 +134,7 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0, 
 
 
 
-def calc_curve(series, long period=20, *, wrap: bool = False):
+def calc_curve(series, long period=20, *, bint wrap=False):
     """ Curve (quadratic regression) """
 
     return quadratic_regression(series, period=period, option=QUADREG_CURVE, wrap=wrap)

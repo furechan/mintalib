@@ -2,7 +2,7 @@
 
 macd_result = namedtuple('macd_result', 'macd, macdsignal, macdhist')
 
-def calc_macd(series, long n1=12, long n2=26, long n3=9, wrap: bool = False):
+def calc_macd(series, long n1=12, long n2=26, long n3=9, *, bint wrap=False):
     """
     Moving Average Convergenge Divergence
     

@@ -38,8 +38,6 @@ class StructWrapper:
 class Indicator(metaclass=ABCMeta):
     """Abstact Base class for Indicators"""
 
-    same_scale: bool = False
-
     __repr__ = lazy_repr
 
     @abstractmethod
@@ -97,36 +95,6 @@ class FuncIndicator(Indicator):
 
         return wrap_result(result, prices)  
 
-    
-class FuncWrapper(Indicator):
-    """Function based Indicator"""
-
-    def __init__(self, func, params: dict):
-        self.func = func
-        self.item = params.pop('item', None)
-        self.params = MappingProxyType(params)
-
-    @cached_property
-    def input_type(self):
-        signature = inspect.signature(self.func)
-        return next(iter(signature.parameters), None) 
-
-    def __getattr__(self, name):
-        return getattr(self.func, name)
-
-    def __repr__(self):
-        return format_partial(self.func, self.kwargs)
-
-    def __call__(self, prices):
-        if self.input_type == "series":
-            series = get_series(prices, self.item)
-            result = self.func(series, **self.params)
-        else:
-            result = self.func(prices, **self.params)
-
-        return wrap_result(result, prices)  
-
-    
 
 
 class CallableChain(Indicator):

@@ -33,6 +33,13 @@ def __getattr__(name):
 __all__ = ()
 
 
+@wrap_function(core.calc_price)
+def price(prices, item: str = None):
+    kwargs = dict()
+    result = core.calc_price(prices, **kwargs)
+    return wrap_result(result, prices)
+
+
 @wrap_function(core.calc_avgprice)
 def avgprice(prices):
     kwargs = dict()
@@ -58,13 +65,6 @@ def wclprice(prices):
 def midprice(prices):
     kwargs = dict()
     result = core.calc_midprice(prices, **kwargs)
-    return wrap_result(result, prices)
-
-
-@wrap_function(core.calc_price)
-def price(prices, item: str = None):
-    kwargs = dict()
-    result = core.calc_price(prices, **kwargs)
     return wrap_result(result, prices)
 
 

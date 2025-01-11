@@ -1,6 +1,6 @@
 """ Kaufman Adaptive Moving Average """
 
-def calc_ker(series, int period=10, *, wrap: bool = False):
+def calc_ker(series, int period=10, *, bint wrap=False):
     """
     Kaufman Efficiency Ratio
     
@@ -59,8 +59,8 @@ def calc_ker(series, int period=10, *, wrap: bool = False):
     return result
 
 
-
-def calc_kama(series, int period=10, int fastn=2, int slown=30, *, wrap: bool = False):
+@with_metadata(same_scale=True)
+def calc_kama(series, int period=10, int fastn=2, int slown=30, *, bint wrap=False):
     """
     Kaufman Adaptive Moving Average
     

@@ -1,7 +1,7 @@
 """ Standard Deviation """
 
 
-def calc_stdev(series, long period=20, *, wrap: bool = False):
+def calc_stdev(series, long period=20, *, bint wrap=False):
     """
     Standard Deviation
     

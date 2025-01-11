@@ -1,7 +1,7 @@
 """ Lag function """
 
-
-def calc_lag(series, long period, *, wrap: bool = False):
+@with_metadata(same_scale=True)
+def calc_lag(series, long period, *, bint wrap=False):
     """
     Lag Function
 

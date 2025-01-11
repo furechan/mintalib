@@ -1,6 +1,6 @@
 """ Logarithm """
 
-def calc_log(series, *, wrap: bool = False):
+def calc_log(series, *, bint wrap=False):
     """ Logarithm """
 
     cdef const double[:] xs = np.asarray(series, float)

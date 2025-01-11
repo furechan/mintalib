@@ -1,6 +1,6 @@
 """ Exponential """
 
-def calc_exp(series, *, wrap: bool = False):
+def calc_exp(series, *, bint wrap = False):
     """Exponential"""
 
     cdef const double[:] xs = np.asarray(series, float)

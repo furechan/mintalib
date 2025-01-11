@@ -2,7 +2,7 @@
 
 
 
-def calc_flag(series, *, wrap: bool = False):
+def calc_flag(series, *, bint wrap=False):
     """
     Flag Value
 
@@ -40,8 +40,7 @@ def calc_flag(series, *, wrap: bool = False):
     return result
 
 
-def calc_updown(series, double up_level=0.0, double down_level=0.0, *,
-                wrap: bool = False):
+def calc_updown(series, double up_level=0.0, double down_level=0.0, *, bint wrap=False):
     """
     Flag for value crossing up & down levels
     
@@ -81,7 +80,7 @@ def calc_updown(series, double up_level=0.0, double down_level=0.0, *,
 
 
 
-def where_flag(flag, x, y, z=NAN, *, wrap: bool = False):
+def where_flag(flag, x, y, z=NAN, *, bint wrap=False):
     """Value according to flag"""
 
     cdef const double[:] fs = np.asarray(flag, float)

@@ -1,6 +1,6 @@
 """ Logarithmic Rate of Change """
 
-def calc_lroc(series, long period=1, *, wrap: bool = False):
+def calc_lroc(series, long period=1, *, bint wrap=False):
     """
     Logarithmic Rate of Change
 

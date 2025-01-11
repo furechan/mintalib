@@ -1,7 +1,7 @@
 """ Commodity Channel Index """
 
 
-def calc_cci(prices, long period = 20, *, wrap: bool = False):
+def calc_cci(prices, long period=20, *, bint wrap=False):
     """
     Commodity Channel Index
     

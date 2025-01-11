@@ -1,7 +1,7 @@
 """Arnaud Legoux Moving Average"""
 
-
-def calc_alma(series, long period = 9, double offset = 0.85, double sigma = 6.0, *, wrap: bool = False):
+@with_metadata(same_scale=True)
+def calc_alma(series, long period = 9, double offset = 0.85, double sigma = 6.0, *, bint wrap=False):
     """Arnaud Legoux Moving Average"""
     m = offset * (period - 1)
     s = period / sigma

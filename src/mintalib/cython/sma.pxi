@@ -1,6 +1,8 @@
 """ Simple Moving Average """
 
-def calc_sma(series, long period, *, wrap: bool = False):
+
+@with_metadata(same_scale=True)
+def calc_sma(series, long period, *, bint wrap=False):
     """
     Simple Moving Average
     

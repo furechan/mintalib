@@ -1,7 +1,7 @@
 """ Relative Strencgth Index """
 
 
-def calc_rsi(series, long period=14, *, wrap: bool = False):
+def calc_rsi(series, long period=14, *, bint wrap=False):
     """
     Relative Strength Index
     

@@ -27,6 +27,12 @@ nan = float('nan')
 
 
 
+@wrap_indicator(core.calc_price)
+def PRICE(item: str = None):
+    params = dict(item=item)
+    return FuncIndicator(core.calc_price, params=params)
+
+
 @wrap_indicator(core.calc_avgprice)
 def AVGPRICE():
     params = dict()
@@ -49,12 +55,6 @@ def WCLPRICE():
 def MIDPRICE():
     params = dict()
     return FuncIndicator(core.calc_midprice, params=params)
-
-
-@wrap_indicator(core.calc_price)
-def PRICE(item: str = None):
-    params = dict(item=item)
-    return FuncIndicator(core.calc_price, params=params)
 
 
 @wrap_indicator(core.calc_crossover)
@@ -382,7 +382,7 @@ def EVAL(expr: str, *, as_flag: bool = False):
 
 
 __all__ = [
-    'AVGPRICE', 'TYPPRICE', 'WCLPRICE', 'MIDPRICE', 'PRICE', 'CROSSOVER',
+    'PRICE', 'AVGPRICE', 'TYPPRICE', 'WCLPRICE', 'MIDPRICE', 'CROSSOVER',
     'CROSSUNDER', 'FLAG', 'UPDOWN', 'SIGN', 'STEP', 'CLAG', 'ABS', 'LOG',
     'EXP', 'DIFF', 'LAG', 'MIN', 'MAX', 'SUM', 'ROC', 'LROC', 'MAD',
     'STDEV', 'MAV', 'SMA', 'EMA', 'RMA', 'WMA', 'HMA', 'DEMA', 'TEMA',

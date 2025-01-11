@@ -1,7 +1,7 @@
 """ Rolling Maximum """
 
-
-def calc_max(series, long period, *, wrap: bool = False):
+@with_metadata(same_scale=True)
+def calc_max(series, long period, *, bint wrap=False):
     """ Rolling Maximum """
 
     if period <= 0:

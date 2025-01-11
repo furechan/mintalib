@@ -1,7 +1,7 @@
 """ Difference """
 
 
-def calc_diff(series, long period=1, *, wrap: bool = False):
+def calc_diff(series, long period=1, *, bint wrap=False):
     """Difference
 
     Difference between current value and the one offset by period

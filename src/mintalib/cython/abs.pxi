@@ -1,6 +1,6 @@
 """ Logarithm """
 
-def calc_abs(series, *, wrap: bool = False):
+def calc_abs(series, *, bint wrap=False):
     """Absolute Value"""
 
     cdef const double[:] xs = np.asarray(series, float)

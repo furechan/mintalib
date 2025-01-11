@@ -1,7 +1,7 @@
 """ Streak """
 
 
-def calc_streak(series, *, wrap: bool = False):
+def calc_streak(series, *, bint wrap=False):
     """
     Consecutive streak of ups or downs
     
