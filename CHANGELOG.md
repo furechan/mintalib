@@ -5,7 +5,7 @@
 - Added `CLAG` Indicator (Confirmation Lag)
 - Added `LROC` Indicator (Logarithmic Rate of Change)
 - Added `ALMA` Indicator (Arnaud Legoux Moving Average)
-- Indicators `ROC` and `LROC` now accept negative a period
+- Indicators `ROC` and `LROC` now accept a negative period
 
 ## 0.0.18
 - Refactored `functions` module to move logic out of core. Function names are now **small caps**!
