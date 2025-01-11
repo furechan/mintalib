@@ -153,6 +153,12 @@ def ROC(period: int = 1, *, item: str = None):
     return FuncIndicator(core.calc_roc, params=params)
 
 
+@wrap_indicator(core.calc_lroc)
+def LROC(period: int = 1, *, item: str = None):
+    params = dict(period=period, item=item)
+    return FuncIndicator(core.calc_lroc, params=params)
+
+
 @wrap_indicator(core.calc_mad)
 def MAD(period: int = 20, *, item: str = None):
     params = dict(period=period, item=item)
@@ -163,6 +169,12 @@ def MAD(period: int = 20, *, item: str = None):
 def STDEV(period: int = 20, *, item: str = None):
     params = dict(period=period, item=item)
     return FuncIndicator(core.calc_stdev, params=params)
+
+
+@wrap_indicator(core.calc_mav)
+def MAV(period: int = 20, *, ma_type: str = 'SMA', item: str = None):
+    params = dict(period=period, ma_type=ma_type, item=item)
+    return FuncIndicator(core.calc_mav, params=params)
 
 
 @wrap_indicator(core.calc_sma)
@@ -207,10 +219,10 @@ def TEMA(period: int = 20, *, item: str = None):
     return FuncIndicator(core.calc_tema, params=params)
 
 
-@wrap_indicator(core.calc_mav)
-def MAV(period: int = 20, *, ma_type: str = 'SMA', item: str = None):
-    params = dict(period=period, ma_type=ma_type, item=item)
-    return FuncIndicator(core.calc_mav, params=params)
+@wrap_indicator(core.calc_alma)
+def ALMA(period: int = 9, offset: float = 0.85, sigma: float = 6.0, *, item: str = None):
+    params = dict(period=period, offset=offset, sigma=sigma, item=item)
+    return FuncIndicator(core.calc_alma, params=params)
 
 
 @wrap_indicator(core.calc_rsi)
@@ -364,17 +376,18 @@ def STREAK(*, item: str = None):
 
 
 @wrap_indicator(core.calc_eval)
-def EVAL(expr: str):
-    params = dict(expr=expr)
+def EVAL(expr: str, *, as_flag: bool = False):
+    params = dict(expr=expr, as_flag=as_flag)
     return FuncIndicator(core.calc_eval, params=params)
 
 
 __all__ = [
     'AVGPRICE', 'TYPPRICE', 'WCLPRICE', 'MIDPRICE', 'PRICE', 'CROSSOVER',
     'CROSSUNDER', 'FLAG', 'UPDOWN', 'SIGN', 'STEP', 'CLAG', 'ABS', 'LOG',
-    'EXP', 'DIFF', 'LAG', 'MIN', 'MAX', 'SUM', 'ROC', 'MAD', 'STDEV',
-    'SMA', 'EMA', 'RMA', 'WMA', 'HMA', 'DEMA', 'TEMA', 'MAV', 'RSI', 'DMI',
-    'ADX', 'PDI', 'MDI', 'TRANGE', 'ATR', 'NATR', 'SAR', 'CCI', 'CMF',
-    'MFI', 'BOP', 'BBANDS', 'KELTNER', 'KER', 'KAMA', 'MACD', 'PPO',
-    'SLOPE', 'RVALUE', 'TSF', 'CURVE', 'STOCH', 'STREAK', 'EVAL'
+    'EXP', 'DIFF', 'LAG', 'MIN', 'MAX', 'SUM', 'ROC', 'LROC', 'MAD',
+    'STDEV', 'MAV', 'SMA', 'EMA', 'RMA', 'WMA', 'HMA', 'DEMA', 'TEMA',
+    'ALMA', 'RSI', 'DMI', 'ADX', 'PDI', 'MDI', 'TRANGE', 'ATR', 'NATR',
+    'SAR', 'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS', 'KELTNER', 'KER', 'KAMA',
+    'MACD', 'PPO', 'SLOPE', 'RVALUE', 'TSF', 'CURVE', 'STOCH', 'STREAK',
+    'EVAL'
 ]

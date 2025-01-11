@@ -151,7 +151,12 @@ Args:
 calc_flag(series, *, wrap: bool = False)
 ```
 
-Flag for value above zero
+Flag Value
+
+Flag value of 1 for positive, 0 for zero or negative, and NaN for missing values
+
+Args:
+- expr (str) : expression to evaluate (optional) (pandas only!)
 
 ## `calc_updown` function
 
@@ -289,6 +294,21 @@ Rate of Change
 
 Args:
 - period (int) : time period, default 1
+    when negative the calculation is shifted back
+
+## `calc_lroc` function
+
+```python
+calc_lroc(series, period=1, *, wrap: bool = False)
+```
+
+Logarithmic Rate of Change
+
+Equivalent to the difference of log values
+
+Args:
+- period (int) : time period, default 1
+    when negative the calculation is shifted back
 
 ## `calc_mad` function
 
@@ -311,6 +331,20 @@ Standard Deviation
 
 Args:
 - period (int) : time period, default 20
+
+## `calc_mav` function
+
+```python
+calc_mav(series, period=20, *, ma_type: str = 'SMA', wrap: bool = False)
+```
+
+Generic Moving Average
+
+Moving average computed according to ma_type
+
+Args:
+- ma_type (str) : one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
+            defaults to 'SMA'
 
 ## `calc_sma` function
 
@@ -400,20 +434,13 @@ Triple Exponential Moving Average
 Args:
 - period (int) : time period, default 20
 
-## `calc_mav` function
+## `calc_alma` function
 
 ```python
-calc_mav(series, period=20, *, ma_type: str = 'SMA', wrap: bool = False)
+calc_alma(series, period=9, offset=0.85, sigma=6.0, *, wrap: bool = False)
 ```
 
-Generic Moving Average
-
-Moving average computed according to ma_type
-
-Args:
-- ma_type (str) : one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
-            defaults to 'SMA'
-
+Arnaud Legoux Moving Average
 ## `calc_rsi` function
 
 ```python
@@ -723,7 +750,7 @@ Length of streak of values all up or down, times +1 or -1 whether ups or downs.
 ## `calc_eval` function
 
 ```python
-calc_eval(prices, expr: str)
+calc_eval(prices, expr: str, *, as_flag: bool = False)
 ```
 
 Expression Eval (pandas only)

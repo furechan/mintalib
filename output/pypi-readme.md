@@ -28,6 +28,7 @@ The `mintalib` package contains three main modules:
 |:-----------|:-----------------------------------------|
 | ABS        | Absolute Value                           |
 | ADX        | Average Directional Index                |
+| ALMA       | Arnaud Legoux Moving Average             |
 | ATR        | Average True Range                       |
 | AVGPRICE   | Average Price                            |
 | BBANDS     | Bollinger Bands                          |
@@ -44,13 +45,14 @@ The `mintalib` package contains three main modules:
 | EMA        | Exponential Moving Average               |
 | EVAL       | Expression Eval (pandas only)            |
 | EXP        | Exponential                              |
-| FLAG       | Flag for value above zero                |
+| FLAG       | Flag Value                               |
 | HMA        | Hull Moving Average                      |
 | KAMA       | Kaufman Adaptive Moving Average          |
 | KELTNER    | Keltner Channel                          |
 | KER        | Kaufman Efficiency Ratio                 |
 | LAG        | Lag Function                             |
 | LOG        | Logarithm                                |
+| LROC       | Logarithmic Rate of Change               |
 | MACD       | Moving Average Convergenge Divergence    |
 | MAD        | Mean Absolute Deviation                  |
 | MAV        | Generic Moving Average                   |

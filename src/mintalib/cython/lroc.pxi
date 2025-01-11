@@ -1,9 +1,11 @@
-""" Rate of Change """
+""" Logarithmic Rate of Change """
 
-def calc_roc(series, long period=1, *, wrap: bool = False):
+def calc_lroc(series, long period=1, *, wrap: bool = False):
     """
-    Rate of Change
-    
+    Logarithmic Rate of Change
+
+    Equivalent to the difference of log values
+
     Args:
         period (int) : time period, default 1
         when negative the calculation is shifted back
@@ -24,8 +26,8 @@ def calc_roc(series, long period=1, *, wrap: bool = False):
 
     for i in range(period, size):
         v, pv = xs[i], xs[i - period]
-        if v > 0  and pv > 0:
-            roc = v / pv - 1
+        if v > 0 and pv > 0:
+            roc = math.log(v / pv)
             output[i + shift] = roc
 
     if wrap:

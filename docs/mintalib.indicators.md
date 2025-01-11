@@ -101,7 +101,12 @@ Args:
 FLAG(*, item: str = None)
 ```
 
-Flag for value above zero
+Flag Value
+
+Flag value of 1 for positive, 0 for zero or negative, and NaN for missing values
+
+Args:
+- expr (str) : expression to evaluate (optional) (pandas only!)
 
 ## `UPDOWN` indicator
 
@@ -232,6 +237,21 @@ Rate of Change
 
 Args:
 - period (int) : time period, default 1
+    when negative the calculation is shifted back
+
+## `LROC` indicator
+
+```python
+LROC(period: int = 1, *, item: str = None)
+```
+
+Logarithmic Rate of Change
+
+Equivalent to the difference of log values
+
+Args:
+- period (int) : time period, default 1
+    when negative the calculation is shifted back
 
 ## `MAD` indicator
 
@@ -254,6 +274,20 @@ Standard Deviation
 
 Args:
 - period (int) : time period, default 20
+
+## `MAV` indicator
+
+```python
+MAV(period: int = 20, *, ma_type: str = 'SMA', item: str = None)
+```
+
+Generic Moving Average
+
+Moving average computed according to ma_type
+
+Args:
+- ma_type (str) : one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
+            defaults to 'SMA'
 
 ## `SMA` indicator
 
@@ -343,20 +377,13 @@ Triple Exponential Moving Average
 Args:
 - period (int) : time period, default 20
 
-## `MAV` indicator
+## `ALMA` indicator
 
 ```python
-MAV(period: int = 20, *, ma_type: str = 'SMA', item: str = None)
+ALMA(period: int = 9, offset: float = 0.85, sigma: float = 6.0, *, item: str = None)
 ```
 
-Generic Moving Average
-
-Moving average computed according to ma_type
-
-Args:
-- ma_type (str) : one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
-            defaults to 'SMA'
-
+Arnaud Legoux Moving Average
 ## `RSI` indicator
 
 ```python
@@ -648,7 +675,7 @@ Length of streak of values all up or down, times +1 or -1 whether ups or downs.
 ## `EVAL` indicator
 
 ```python
-EVAL(expr: str)
+EVAL(expr: str, *, as_flag: bool = False)
 ```
 
 Expression Eval (pandas only)

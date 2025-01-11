@@ -10,7 +10,6 @@ def calc_diff(series, long period=1, *, wrap: bool = False):
         period (int) : time period, default 1
     """
 
-
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
@@ -18,10 +17,11 @@ def calc_diff(series, long period=1, *, wrap: bool = False):
     cdef double[:] output = result
 
     cdef double v = NAN, pv = NAN, diff = NAN
+
     cdef long i = 0
 
     if period < 0 or period >= size:
-        return result
+        raise ValueError(f"Period {period} out of range!")
 
     for i in range(period, size):
         v, pv = xs[i], xs[i - period]

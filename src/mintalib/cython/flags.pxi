@@ -2,7 +2,7 @@
 
 
 
-def calc_flag(prices, expr: str = None, *, wrap: bool = False):
+def calc_flag(series, *, wrap: bool = False):
     """
     Flag Value
 
@@ -11,11 +11,6 @@ def calc_flag(prices, expr: str = None, *, wrap: bool = False):
     Args:
         expr (str) : expression to evaluate (optional) (pandas only!)
     """
-
-    if expr is not None:
-        series = calc_eval(prices, expr)
-    else:
-        series = prices
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size

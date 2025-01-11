@@ -196,6 +196,14 @@ def roc(series, period: int = 1, *, item: str = None):
     return wrap_result(result, series)
 
 
+@wrap_function(core.calc_lroc)
+def lroc(series, period: int = 1, *, item: str = None):
+    series = get_series(series, item=item)
+    kwargs = dict(period=period)
+    result = core.calc_lroc(series, **kwargs)
+    return wrap_result(result, series)
+
+
 @wrap_function(core.calc_mad)
 def mad(series, period: int = 20, *, item: str = None):
     series = get_series(series, item=item)
@@ -209,6 +217,14 @@ def stdev(series, period: int = 20, *, item: str = None):
     series = get_series(series, item=item)
     kwargs = dict(period=period)
     result = core.calc_stdev(series, **kwargs)
+    return wrap_result(result, series)
+
+
+@wrap_function(core.calc_mav)
+def mav(series, period: int = 20, *, ma_type: str = 'SMA', item: str = None):
+    series = get_series(series, item=item)
+    kwargs = dict(period=period, ma_type=ma_type)
+    result = core.calc_mav(series, **kwargs)
     return wrap_result(result, series)
 
 
@@ -268,11 +284,11 @@ def tema(series, period: int = 20, *, item: str = None):
     return wrap_result(result, series)
 
 
-@wrap_function(core.calc_mav)
-def mav(series, period: int = 20, *, ma_type: str = 'SMA', item: str = None):
+@wrap_function(core.calc_alma)
+def alma(series, period: int = 9, offset: float = 0.85, sigma: float = 6.0, *, item: str = None):
     series = get_series(series, item=item)
-    kwargs = dict(period=period, ma_type=ma_type)
-    result = core.calc_mav(series, **kwargs)
+    kwargs = dict(period=period, offset=offset, sigma=sigma)
+    result = core.calc_alma(series, **kwargs)
     return wrap_result(result, series)
 
 
@@ -462,8 +478,8 @@ def streak(series, *, item: str = None):
 
 
 @wrap_function(core.calc_eval)
-def eval(prices, expr: str):
-    kwargs = dict(expr=expr)
+def eval(prices, expr: str, *, as_flag: bool = False):
+    kwargs = dict(expr=expr, as_flag=as_flag)
     result = core.calc_eval(prices, **kwargs)
     return wrap_result(result, prices)
 
