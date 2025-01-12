@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mintalib"
-version = "0.0.20"
+version = "0.0.21"
 readme = "output/pypi-readme.md"
 requires-python = ">=3.9"
 description = "Minimal Technical Analysis Library for Python"
