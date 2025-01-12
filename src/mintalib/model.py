@@ -11,6 +11,7 @@ from functools import cached_property
 from .utils import format_partial, lazy_repr
 from .core import get_series, wrap_result
 
+
 class StructWrapper:
     """Indicator wrapper to unnest/nest struct data"""
     def __init__(self, indicator):
@@ -80,11 +81,11 @@ class FuncIndicator(Indicator):
         signature = inspect.signature(self.func)
         return next(iter(signature.parameters), None) 
 
-    def __getattr__(self, name):
-        return getattr(self.func, name)
+    #def __getattr__(self, name):
+    #    return getattr(self.func, name)
 
     def __repr__(self):
-        return format_partial(self.func, self.kwargs)
+        return format_partial(self.func, self.params)
 
     def __call__(self, prices):
         if self.input_type == "series":
