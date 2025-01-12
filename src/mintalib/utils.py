@@ -3,6 +3,7 @@
 from inspect import Signature, Parameter
 
 
+
 def format_partial(func, data, *, name: str = None):
     """format a partial function call"""
 

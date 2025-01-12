@@ -30,355 +30,355 @@ nan = float('nan')
 @wrap_indicator(core.calc_price)
 def PRICE(item: str = None):
     params = dict(item=item)
-    return FuncIndicator(core.calc_price, params=params)
+    return FuncIndicator('PRICE', core.calc_price, params=params)
 
 
 @wrap_indicator(core.calc_avgprice)
 def AVGPRICE():
     params = dict()
-    return FuncIndicator(core.calc_avgprice, params=params)
+    return FuncIndicator('AVGPRICE', core.calc_avgprice, params=params)
 
 
 @wrap_indicator(core.calc_typprice)
 def TYPPRICE():
     params = dict()
-    return FuncIndicator(core.calc_typprice, params=params)
+    return FuncIndicator('TYPPRICE', core.calc_typprice, params=params)
 
 
 @wrap_indicator(core.calc_wclprice)
 def WCLPRICE():
     params = dict()
-    return FuncIndicator(core.calc_wclprice, params=params)
+    return FuncIndicator('WCLPRICE', core.calc_wclprice, params=params)
 
 
 @wrap_indicator(core.calc_midprice)
 def MIDPRICE():
     params = dict()
-    return FuncIndicator(core.calc_midprice, params=params)
+    return FuncIndicator('MIDPRICE', core.calc_midprice, params=params)
 
 
 @wrap_indicator(core.calc_crossover)
 def CROSSOVER(level: float = 0.0, *, item: str = None):
     params = dict(level=level, item=item)
-    return FuncIndicator(core.calc_crossover, params=params)
+    return FuncIndicator('CROSSOVER', core.calc_crossover, params=params)
 
 
 @wrap_indicator(core.calc_crossunder)
 def CROSSUNDER(level: float = 0.0, *, item: str = None):
     params = dict(level=level, item=item)
-    return FuncIndicator(core.calc_crossunder, params=params)
+    return FuncIndicator('CROSSUNDER', core.calc_crossunder, params=params)
 
 
 @wrap_indicator(core.calc_flag)
 def FLAG(*, item: str = None):
     params = dict(item=item)
-    return FuncIndicator(core.calc_flag, params=params)
+    return FuncIndicator('FLAG', core.calc_flag, params=params)
 
 
 @wrap_indicator(core.calc_updown)
 def UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, item: str = None):
     params = dict(up_level=up_level, down_level=down_level, item=item)
-    return FuncIndicator(core.calc_updown, params=params)
+    return FuncIndicator('UPDOWN', core.calc_updown, params=params)
 
 
 @wrap_indicator(core.calc_sign)
 def SIGN(na_value: float = nan, *, item: str = None):
     params = dict(na_value=na_value, item=item)
-    return FuncIndicator(core.calc_sign, params=params)
+    return FuncIndicator('SIGN', core.calc_sign, params=params)
 
 
 @wrap_indicator(core.calc_step)
 def STEP(threshold: 'float' = 1.0, *, item: str = None):
     params = dict(threshold=threshold, item=item)
-    return FuncIndicator(core.calc_step, params=params)
+    return FuncIndicator('STEP', core.calc_step, params=params)
 
 
 @wrap_indicator(core.calc_clag)
 def CLAG(period: int = 1, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_clag, params=params)
+    return FuncIndicator('CLAG', core.calc_clag, params=params)
 
 
 @wrap_indicator(core.calc_abs)
 def ABS(*, item: str = None):
     params = dict(item=item)
-    return FuncIndicator(core.calc_abs, params=params)
+    return FuncIndicator('ABS', core.calc_abs, params=params)
 
 
 @wrap_indicator(core.calc_log)
 def LOG(*, item: str = None):
     params = dict(item=item)
-    return FuncIndicator(core.calc_log, params=params)
+    return FuncIndicator('LOG', core.calc_log, params=params)
 
 
 @wrap_indicator(core.calc_exp)
 def EXP(*, item: str = None):
     params = dict(item=item)
-    return FuncIndicator(core.calc_exp, params=params)
+    return FuncIndicator('EXP', core.calc_exp, params=params)
 
 
 @wrap_indicator(core.calc_diff)
 def DIFF(period: int = 1, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_diff, params=params)
+    return FuncIndicator('DIFF', core.calc_diff, params=params)
 
 
 @wrap_indicator(core.calc_lag)
 def LAG(period: int, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_lag, params=params)
+    return FuncIndicator('LAG', core.calc_lag, params=params)
 
 
 @wrap_indicator(core.calc_min)
 def MIN(period: int, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_min, params=params)
+    return FuncIndicator('MIN', core.calc_min, params=params)
 
 
 @wrap_indicator(core.calc_max)
 def MAX(period: int, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_max, params=params)
+    return FuncIndicator('MAX', core.calc_max, params=params)
 
 
 @wrap_indicator(core.calc_sum)
 def SUM(period: int, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_sum, params=params)
+    return FuncIndicator('SUM', core.calc_sum, params=params)
 
 
 @wrap_indicator(core.calc_roc)
 def ROC(period: int = 1, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_roc, params=params)
+    return FuncIndicator('ROC', core.calc_roc, params=params)
 
 
 @wrap_indicator(core.calc_lroc)
 def LROC(period: int = 1, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_lroc, params=params)
+    return FuncIndicator('LROC', core.calc_lroc, params=params)
 
 
 @wrap_indicator(core.calc_mad)
 def MAD(period: int = 20, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_mad, params=params)
+    return FuncIndicator('MAD', core.calc_mad, params=params)
 
 
 @wrap_indicator(core.calc_stdev)
 def STDEV(period: int = 20, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_stdev, params=params)
+    return FuncIndicator('STDEV', core.calc_stdev, params=params)
 
 
 @wrap_indicator(core.calc_mav)
 def MAV(period: int = 20, *, ma_type: str = 'SMA', item: str = None):
     params = dict(period=period, ma_type=ma_type, item=item)
-    return FuncIndicator(core.calc_mav, params=params)
+    return FuncIndicator('MAV', core.calc_mav, params=params)
 
 
 @wrap_indicator(core.calc_sma)
 def SMA(period: int, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_sma, params=params)
+    return FuncIndicator('SMA', core.calc_sma, params=params)
 
 
 @wrap_indicator(core.calc_ema)
 def EMA(period: int, *, adjust: bool = False, item: str = None):
     params = dict(period=period, adjust=adjust, item=item)
-    return FuncIndicator(core.calc_ema, params=params)
+    return FuncIndicator('EMA', core.calc_ema, params=params)
 
 
 @wrap_indicator(core.calc_rma)
 def RMA(period: int, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_rma, params=params)
+    return FuncIndicator('RMA', core.calc_rma, params=params)
 
 
 @wrap_indicator(core.calc_wma)
 def WMA(period: int, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_wma, params=params)
+    return FuncIndicator('WMA', core.calc_wma, params=params)
 
 
 @wrap_indicator(core.calc_hma)
 def HMA(period: int, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_hma, params=params)
+    return FuncIndicator('HMA', core.calc_hma, params=params)
 
 
 @wrap_indicator(core.calc_dema)
 def DEMA(period: int, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_dema, params=params)
+    return FuncIndicator('DEMA', core.calc_dema, params=params)
 
 
 @wrap_indicator(core.calc_tema)
 def TEMA(period: int = 20, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_tema, params=params)
+    return FuncIndicator('TEMA', core.calc_tema, params=params)
 
 
 @wrap_indicator(core.calc_alma)
 def ALMA(period: int = 9, offset: float = 0.85, sigma: float = 6.0, *, item: str = None):
     params = dict(period=period, offset=offset, sigma=sigma, item=item)
-    return FuncIndicator(core.calc_alma, params=params)
+    return FuncIndicator('ALMA', core.calc_alma, params=params)
 
 
 @wrap_indicator(core.calc_rsi)
 def RSI(period: int = 14, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_rsi, params=params)
+    return FuncIndicator('RSI', core.calc_rsi, params=params)
 
 
 @wrap_indicator(core.calc_dmi)
 def DMI(period: int = 14):
     params = dict(period=period)
-    return FuncIndicator(core.calc_dmi, params=params)
+    return FuncIndicator('DMI', core.calc_dmi, params=params)
 
 
 @wrap_indicator(core.calc_adx)
 def ADX(period: int = 14):
     params = dict(period=period)
-    return FuncIndicator(core.calc_adx, params=params)
+    return FuncIndicator('ADX', core.calc_adx, params=params)
 
 
 @wrap_indicator(core.calc_pdi)
 def PDI(period: int = 14):
     params = dict(period=period)
-    return FuncIndicator(core.calc_pdi, params=params)
+    return FuncIndicator('PDI', core.calc_pdi, params=params)
 
 
 @wrap_indicator(core.calc_mdi)
 def MDI(period: int = 14):
     params = dict(period=period)
-    return FuncIndicator(core.calc_mdi, params=params)
+    return FuncIndicator('MDI', core.calc_mdi, params=params)
 
 
 @wrap_indicator(core.calc_trange)
 def TRANGE(*, log_prices: bool = False, percent: bool = False):
     params = dict(log_prices=log_prices, percent=percent)
-    return FuncIndicator(core.calc_trange, params=params)
+    return FuncIndicator('TRANGE', core.calc_trange, params=params)
 
 
 @wrap_indicator(core.calc_atr)
 def ATR(period: int = 14):
     params = dict(period=period)
-    return FuncIndicator(core.calc_atr, params=params)
+    return FuncIndicator('ATR', core.calc_atr, params=params)
 
 
 @wrap_indicator(core.calc_natr)
 def NATR(period: int = 14):
     params = dict(period=period)
-    return FuncIndicator(core.calc_natr, params=params)
+    return FuncIndicator('NATR', core.calc_natr, params=params)
 
 
 @wrap_indicator(core.calc_sar)
 def SAR(afs: float = 0.02, maxaf: float = 0.2):
     params = dict(afs=afs, maxaf=maxaf)
-    return FuncIndicator(core.calc_sar, params=params)
+    return FuncIndicator('SAR', core.calc_sar, params=params)
 
 
 @wrap_indicator(core.calc_cci)
 def CCI(period: int = 20):
     params = dict(period=period)
-    return FuncIndicator(core.calc_cci, params=params)
+    return FuncIndicator('CCI', core.calc_cci, params=params)
 
 
 @wrap_indicator(core.calc_cmf)
 def CMF(period: int = 20):
     params = dict(period=period)
-    return FuncIndicator(core.calc_cmf, params=params)
+    return FuncIndicator('CMF', core.calc_cmf, params=params)
 
 
 @wrap_indicator(core.calc_mfi)
 def MFI(period: int = 14):
     params = dict(period=period)
-    return FuncIndicator(core.calc_mfi, params=params)
+    return FuncIndicator('MFI', core.calc_mfi, params=params)
 
 
 @wrap_indicator(core.calc_bop)
 def BOP(period: int = 20):
     params = dict(period=period)
-    return FuncIndicator(core.calc_bop, params=params)
+    return FuncIndicator('BOP', core.calc_bop, params=params)
 
 
 @wrap_indicator(core.calc_bbands)
 def BBANDS(period: int = 20, nbdev: float = 2.0):
     params = dict(period=period, nbdev=nbdev)
-    return FuncIndicator(core.calc_bbands, params=params)
+    return FuncIndicator('BBANDS', core.calc_bbands, params=params)
 
 
 @wrap_indicator(core.calc_keltner)
 def KELTNER(period: int = 20, nbatr: float = 2.0):
     params = dict(period=period, nbatr=nbatr)
-    return FuncIndicator(core.calc_keltner, params=params)
+    return FuncIndicator('KELTNER', core.calc_keltner, params=params)
 
 
 @wrap_indicator(core.calc_ker)
 def KER(period: int = 10, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_ker, params=params)
+    return FuncIndicator('KER', core.calc_ker, params=params)
 
 
 @wrap_indicator(core.calc_kama)
 def KAMA(period: int = 10, fastn: int = 2, slown: int = 30, *, item: str = None):
     params = dict(period=period, fastn=fastn, slown=slown, item=item)
-    return FuncIndicator(core.calc_kama, params=params)
+    return FuncIndicator('KAMA', core.calc_kama, params=params)
 
 
 @wrap_indicator(core.calc_macd)
 def MACD(n1: int = 12, n2: int = 26, n3: int = 9, *, item: str = None):
     params = dict(n1=n1, n2=n2, n3=n3, item=item)
-    return FuncIndicator(core.calc_macd, params=params)
+    return FuncIndicator('MACD', core.calc_macd, params=params)
 
 
 @wrap_indicator(core.calc_ppo)
 def PPO(n1: int = 12, n2: int = 26, n3: int = 9, *, item: str = None):
     params = dict(n1=n1, n2=n2, n3=n3, item=item)
-    return FuncIndicator(core.calc_ppo, params=params)
+    return FuncIndicator('PPO', core.calc_ppo, params=params)
 
 
 @wrap_indicator(core.calc_slope)
 def SLOPE(period: int = 20, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_slope, params=params)
+    return FuncIndicator('SLOPE', core.calc_slope, params=params)
 
 
 @wrap_indicator(core.calc_rvalue)
 def RVALUE(period: int = 20, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_rvalue, params=params)
+    return FuncIndicator('RVALUE', core.calc_rvalue, params=params)
 
 
 @wrap_indicator(core.calc_tsf)
 def TSF(period: int = 20, offset: int = 0, *, item: str = None):
     params = dict(period=period, offset=offset, item=item)
-    return FuncIndicator(core.calc_tsf, params=params)
+    return FuncIndicator('TSF', core.calc_tsf, params=params)
 
 
 @wrap_indicator(core.calc_curve)
 def CURVE(period: int = 20, *, item: str = None):
     params = dict(period=period, item=item)
-    return FuncIndicator(core.calc_curve, params=params)
+    return FuncIndicator('CURVE', core.calc_curve, params=params)
 
 
 @wrap_indicator(core.calc_stoch)
 def STOCH(period: int = 14, fastn: int = 3, slown: int = 3):
     params = dict(period=period, fastn=fastn, slown=slown)
-    return FuncIndicator(core.calc_stoch, params=params)
+    return FuncIndicator('STOCH', core.calc_stoch, params=params)
 
 
 @wrap_indicator(core.calc_streak)
 def STREAK(*, item: str = None):
     params = dict(item=item)
-    return FuncIndicator(core.calc_streak, params=params)
+    return FuncIndicator('STREAK', core.calc_streak, params=params)
 
 
 @wrap_indicator(core.calc_eval)
 def EVAL(expr: str, *, as_flag: bool = False):
     params = dict(expr=expr, as_flag=as_flag)
-    return FuncIndicator(core.calc_eval, params=params)
+    return FuncIndicator('EVAL', core.calc_eval, params=params)
 
 
 __all__ = [

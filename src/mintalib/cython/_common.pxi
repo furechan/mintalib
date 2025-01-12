@@ -12,6 +12,7 @@ import numpy as np
 from enum import IntEnum
 
 from collections import namedtuple
+from types import MappingProxyType
 
 
 def check_size(xs, *others):
@@ -91,8 +92,9 @@ def with_metadata(*, same_scale: bool = None):
     metadata = { k: v for k, v in metadata.items() if v is not None}
 
     def decorator(func):
-        for name, value in metadata.items():
-            setattr(func, name, value)
+        func.metadata = MappingProxyType(metadata)
+        # for name, value in metadata.items():
+        #    setattr(func, name, value)
         return func
 
     return decorator

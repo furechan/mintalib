@@ -5,8 +5,11 @@ import inspect
 
 
 from abc import ABCMeta, abstractmethod
+from typing import Callable
 from types import MappingProxyType
+from collections.abc import Mapping
 from functools import cached_property
+
 
 from .utils import format_partial, lazy_repr
 from .core import get_series, wrap_result
@@ -71,21 +74,42 @@ class Indicator(metaclass=ABCMeta):
 class FuncIndicator(Indicator):
     """Function based Indicator"""
 
-    def __init__(self, func, params: dict):
+
+    @staticmethod
+    def indicator_name(func):
+        name = func.__name__
+        name = name.removeprefix("calc_")
+        name = name.upper()
+        return name
+
+    def __init__(self, name: str, func: Callable, params: dict):
+        self.name = name
         self.func = func
         self.item = params.pop('item', None)
         self.params = MappingProxyType(params)
+
+    @cached_property
+    def metadata(self):
+        metadata = getattr(self.func, 'metadata', None)
+
+        if isinstance(metadata, Mapping):
+            return MappingProxyType(metadata)
+
+        return None
 
     @cached_property
     def input_type(self):
         signature = inspect.signature(self.func)
         return next(iter(signature.parameters), None) 
 
-    #def __getattr__(self, name):
-    #    return getattr(self.func, name)
+    def __getattr__(self, name):
+        metadata = self.metadata
+        if metadata and name in metadata:
+            return metadata[name]
+        raise AttributeError(name)
 
     def __repr__(self):
-        return format_partial(self.func, self.params)
+        return format_partial(self.func, self.params, name=self.name)
 
     def __call__(self, prices):
         if self.input_type == "series":

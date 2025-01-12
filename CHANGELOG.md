@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.20
+- Metadata is passing through to indicators via the `metadata` attribute
+
 ## 0.0.19
 - Added `STEP` Indicator (Step Function)
 - Added `CLAG` Indicator (Confirmation Lag)
