@@ -25474,7 +25474,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_24calc_wclprice, "\n    Weighted Close Price\n    \n    Value of (high + low + 2 * close) / 3\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_24calc_wclprice, "\n    Weighted Close Price\n    \n    Value of (high + low + 2 * close) / 4\n    ");
 static PyMethodDef __pyx_mdef_8mintalib_4core_25calc_wclprice = {"calc_wclprice", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_25calc_wclprice, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_24calc_wclprice};
 static PyObject *__pyx_pw_8mintalib_4core_25calc_wclprice(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL

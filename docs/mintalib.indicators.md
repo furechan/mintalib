@@ -57,7 +57,7 @@ WCLPRICE()
 
 Weighted Close Price
 
-Value of (high + low + 2 * close) / 3
+Value of (high + low + 2 * close) / 4
 
 ## `MIDPRICE` indicator
 
