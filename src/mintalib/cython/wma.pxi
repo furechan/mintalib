@@ -18,24 +18,30 @@ def calc_wma(series, long period, *, bint wrap=False):
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double divisor = period * (period + 1) / 2
-    cdef double v = NAN, wsum = NAN
-    cdef long i = 0, j = 0
+    cdef double wdiv = period * (period + 1) / 2
+    cdef double v = NAN, rsum = 0, wsum = 0
+    cdef long i = 0, j = 0, count = 0
 
-    cdef long maxlen = size - period + 1
+    for i in range(size):
+        v = xs[i]
 
-    for i in range(maxlen):
-        wsum = 0.0
-
-        for j in range(period):
-            v = xs[i + j]
-
-            if isnan(v):
-                break
-
-            wsum += v * (j+1)
+        if v == v:
+            count += 1
+            rsum += v
+            wsum += count * v
         else:
-            output[i + j] = wsum / divisor
+            rsum = wsum = 0
+            count = 0
+
+        while count > period and j < i:
+            v, j = xs[j], j + 1
+            if v == v:
+                wsum -= rsum
+                rsum -= v
+                count -= 1
+
+        if count == period:
+            output[i] = wsum / wdiv
 
     if wrap:
         result = wrap_result(result, series)

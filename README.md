@@ -87,22 +87,15 @@ The `mintalib` package contains three main modules:
 | WMA        | Weighted Moving Average                  |
 
 
-## Mintalib Core
-
-The calculation routines in `mintalib.core`, implemented in cython, operate on numpy arrays and return numpy arrays by default.
-Functions in `mintalib.functions` and indicators in `mintalib.indicatoers` are just wrappers around the core calculation routines.
-
-
 ## Using Functions
 
-The function names are all lower case and may conflict with standard functions,
-so the best way to use this module is to alias it to a short name
+Functions are available as lower case methods like `sma`, `ema`, etc ...
+The best way to use this module is to alias it to a short name
 like `ta` and access all functions as attributes.
 
 ```python
 import mintalib.functions as ta
 ```
-
 
 The first parameter of a function is either `prices` or `series` depending on whether
 the functions expects a dataframe of prices or a single series.
@@ -139,46 +132,32 @@ high200 = ta.max(prices, 200, item='high')  # MAX of 'high' with period 200
 
 Indicators are available via the `indicators` module, with similar names as functions but in **upper case**.
 
-Indicators offer a composable interface where a function is bound with its calculation parameters. When instantiated with parameters an indicator yields a callable that can be applied to prices or series data. Indicators support the `@` operator as syntactic sugar to apply the indicator to data. So for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`, insted of `SMA(50)(prices)`.
+Indicators offer a composable interface where a function is bound with its calculation parameters. When instantiated with parameters an indicator yields a callable that can be applied to prices or series data.
+
+An indicator is a callable that accepts a series or a prices dataframe as a single parameter. You can also use the `@` operator as syntactic sugar to apply an indicator to its parameter. 
+
+So for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`, instead of the more verbose `SMA(50)(prices)`. 
 
 ```python
-from mintalib.indicators import ROC. SMA, EMA
+from mintalib.indicators import ROC, SMA, EMA
 
-sma50 = SMA(50) @ prices
-sma200 = SMA(200) @ prices
+sma50 = SMA(50) @ prices    # SMA of 'close' with period 50
+sma200 = SMA(200) @ prices  # SMA of 'close' with period 200
+high200 = MAX(200, item='high') @ prices    # MAX of 'high' with period 200
 ```
 
-The `@` operator can also be used to compose indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
+
+The `@` operator can also be used to chain indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
+
 
 ```python
+from mintalib.indicators import ROC, SMA, EMA
+
 trend = ROC(1) @ EMA(20) @ prices
 ```
 
 
-## Using Indicators with Pandas
-
-Prices indicators like `ATR` can only be applied to prices dataframes.
-
-```python
-# Average True Range
-atr = ATR(14) @ prices
-```
-
-Series indicators can be applied to a prices dataframe or a series. When applied to prices you must specify a column with the `item` or otherwize the indicator will use the `'close'` column by default.
-
-```python
-# SMA on the close column
-sma50 = SMA(50) @ prices
-
-# SMA on the volume column
-vol50 = SMA(50, item='volume') @ prices
-
-# Which is the same as
-vol50 = SMA(50) @ prices.volume 
-``` 
-
-With pandas dataframes you can compose and assign multiple indicators in one call using the builtin `assign` method.
-
+With pandas dataframes you can compose and apply multiple indicators in one call using the `assign` dataframe method.
 
 ```python
 import yfinance as yf
@@ -199,39 +178,6 @@ result = prices.assign(
     rsi = RSI(14),
     trend = ROC(1) @ EMA(20),
     flag = EVAL("sma50 > sma200")
-)
-```
-
-
-## Using Indicators with Polars
-
-Indicators can be applied to polars prices dataframes and series in the same way as with pandas. 
-
-The `@` operator has been extended to work with polars expressions. Series indicators should be applied to a `polars.col` object, while 
-prices indicators should be applied to the `polars.all()` expression. In the expression context, multi column outputs are returned as struct series.
-
-In the following example, you can assign multiple columns using polars `with_columns`.
-
-```python
-import polars as pl
-import yfinance as yf
-
-from mintalib.indicators import SMA, ATR
-
-# fetch prices (eg with yfinance)
-prices = yf.Ticker('AAPL').history('5y')
-
-# convert column and index names to lower case
-prices = prices.rename(columns=str.lower).rename_axis(index=str.lower)
-
-# convert to polars dataframe 
-prices = pl.from_pandas(prices, include_index=True)
-
-# compute and append indicators to prices
-result = prices.with_columns(
-    sma20 = SMA(20) @ pl.col('close'),
-    sma50 = SMA(50) @ pl.col('close'),
-    atr14 = ATR(14) @ pl.all()
 )
 ```
 
