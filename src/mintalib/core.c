@@ -41912,7 +41912,7 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_alma(CYTHON_UNUSED PyObject *__
  *     w = np.array([np.exp(-((i - m) ** 2) / (2 * s**2)) for i in range(period)])
  *     w = w / w.sum()             # <<<<<<<<<<<<<<
  * 
- *     padding = np.full(period-1, np.nan)
+ *     padding = np.full(period - 1, np.nan)
  */
   __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_w, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(29, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -41947,7 +41947,7 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_alma(CYTHON_UNUSED PyObject *__
   /* "src/mintalib/cython/alma.pxi":11
  *     w = w / w.sum()
  * 
- *     padding = np.full(period-1, np.nan)             # <<<<<<<<<<<<<<
+ *     padding = np.full(period - 1, np.nan)             # <<<<<<<<<<<<<<
  *     result = np.correlate(series, w, "valid")
  *     result = np.insert(result, 0, padding)
  */
@@ -41992,7 +41992,7 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_alma(CYTHON_UNUSED PyObject *__
 
   /* "src/mintalib/cython/alma.pxi":12
  * 
- *     padding = np.full(period-1, np.nan)
+ *     padding = np.full(period - 1, np.nan)
  *     result = np.correlate(series, w, "valid")             # <<<<<<<<<<<<<<
  *     result = np.insert(result, 0, padding)
  * 
@@ -42028,7 +42028,7 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_alma(CYTHON_UNUSED PyObject *__
   __pyx_t_3 = 0;
 
   /* "src/mintalib/cython/alma.pxi":13
- *     padding = np.full(period-1, np.nan)
+ *     padding = np.full(period - 1, np.nan)
  *     result = np.correlate(series, w, "valid")
  *     result = np.insert(result, 0, padding)             # <<<<<<<<<<<<<<
  * 

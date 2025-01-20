@@ -8,7 +8,7 @@ def calc_alma(series, long period = 9, double offset = 0.85, double sigma = 6.0,
     w = np.array([np.exp(-((i - m) ** 2) / (2 * s**2)) for i in range(period)])
     w = w / w.sum()
 
-    padding = np.full(period-1, np.nan)
+    padding = np.full(period - 1, np.nan)
     result = np.correlate(series, w, "valid")
     result = np.insert(result, 0, padding)
 
