@@ -223,7 +223,7 @@ Rolling Maximum
 sum(series, period: int, *, item: str = None)
 ```
 
-Rolling Sum
+Rolling sum
 
 Args:
 - period (int) : time period, required
@@ -257,14 +257,10 @@ Args:
 ## `mad` function
 
 ```python
-mad(series, period: int = 20, *, item: str = None)
+mad(series, period: int = 14, *, item: str = None)
 ```
 
-Mean Absolute Deviation
-
-Args:
-- period (int) : time period, default 20
-
+Rolling Mean Absolute Deviation
 ## `stdev` function
 
 ```python

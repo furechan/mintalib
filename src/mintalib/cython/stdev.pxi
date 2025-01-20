@@ -18,30 +18,34 @@ def calc_stdev(series, long period=20, *, bint wrap=False):
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double x, s, sx, sxx, vxx, std
+    cdef double x = NAN, vxx = NAN, std = NAN
 
-    cdef long i = 0, j = 0
+    cdef double sx = 0.0, sxx = 0.0
 
-    cdef long maxlen = size - period + 1
+    cdef long i = 0, j = 0, count = 0
 
-    for i in range(maxlen):
+    for i in range(size):
+        x = xs[i]
 
-        s = sx = sxx = 0.0
-
-        for j in range(period):
-            x = xs[i + j]
-
-            if isnan(x):
-                break
-
-            s += 1.0
+        if x != x:
+            count += 1
             sx += x
             sxx += x * x
-
         else:
-            vxx = (sxx / s - sx * sx / s / s)
+            count = 0
+            sx = sxx = 0.0
+
+        while count > period and j <i:
+            x, j = xs[j], j + 1
+            if x == x:
+                count += 1
+                sx += x
+                sxx += x * x
+
+        if count == period:
+            vxx = (sxx / count - sx * sx / count / count)
             std = math.sqrt(vxx) if vxx >= 0 else NAN
-            output[i + j] = std
+            output[i] = std
 
     if wrap:
         result = wrap_result(result, series)

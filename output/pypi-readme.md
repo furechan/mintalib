@@ -54,7 +54,7 @@ The `mintalib` package contains three main modules:
 | LOG        | Logarithm                                |
 | LROC       | Logarithmic Rate of Change               |
 | MACD       | Moving Average Convergenge Divergence    |
-| MAD        | Mean Absolute Deviation                  |
+| MAD        | Rolling Mean Absolute Deviation          |
 | MAV        | Generic Moving Average                   |
 | MAX        | Rolling Maximum                          |
 | MDI        | Minus Directional Index                  |
@@ -77,7 +77,7 @@ The `mintalib` package contains three main modules:
 | STEP       | Step Function                            |
 | STOCH      | Stochastic Oscillator                    |
 | STREAK     | Consecutive streak of ups or downs       |
-| SUM        | Rolling Sum                              |
+| SUM        | Rolling sum                              |
 | TEMA       | Triple Exponential Moving Average        |
 | TRANGE     | True Range                               |
 | TSF        | Time Series Forecast (linear regression) |

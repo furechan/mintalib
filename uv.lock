@@ -1094,7 +1094,7 @@ wheels = [
 
 [[package]]
 name = "mintalib"
-version = "0.0.20"
+version = "0.0.21"
 source = { editable = "." }
 dependencies = [
     { name = "numpy" },
@@ -1136,7 +1136,7 @@ dev = [
     { name = "nbcheck" },
     { name = "nbfixme" },
     { name = "nbmake" },
-    { name = "nbmask", specifier = ">=0.0.4" },
+    { name = "nbmask" },
     { name = "polars" },
     { name = "pyarrow", specifier = ">=18.1.0" },
     { name = "pytest" },

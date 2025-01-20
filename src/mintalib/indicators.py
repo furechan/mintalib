@@ -160,7 +160,7 @@ def LROC(period: int = 1, *, item: str = None):
 
 
 @wrap_indicator(core.calc_mad)
-def MAD(period: int = 20, *, item: str = None):
+def MAD(period: int = 14, *, item: str = None):
     params = dict(period=period, item=item)
     return FuncIndicator('MAD', core.calc_mad, params=params)
 

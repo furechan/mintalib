@@ -38,7 +38,7 @@ def calc_sma(series, long period, *, bint wrap=False):
                 rsum -= v
                 count -= 1
 
-        if count >= period:
+        if count == period:
             output[i] = rsum / count
 
     if wrap:

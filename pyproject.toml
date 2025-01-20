@@ -34,8 +34,8 @@ dev = [
     "nbfixme",
     "tabulate",
     "twine",
+    "nbmask",
     "pyarrow>=18.1.0",
-    "nbmask>=0.0.4",
 ]
 
 [tool.uv]

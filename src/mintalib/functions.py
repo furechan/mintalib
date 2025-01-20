@@ -205,7 +205,7 @@ def lroc(series, period: int = 1, *, item: str = None):
 
 
 @wrap_function(core.calc_mad)
-def mad(series, period: int = 20, *, item: str = None):
+def mad(series, period: int = 14, *, item: str = None):
     series = get_series(series, item=item)
     kwargs = dict(period=period)
     result = core.calc_mad(series, **kwargs)
