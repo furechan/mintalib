@@ -1,5 +1,6 @@
 """ Lag function """
 
+
 @with_metadata(same_scale=True)
 def calc_lag(series, long period, *, bint wrap=False):
     """
@@ -9,17 +10,17 @@ def calc_lag(series, long period, *, bint wrap=False):
         period (int) : time period, required
     """
 
-    cdef const double[:] xs = np.asarray(series, float)
+    if period < 0:
+        raise ValueError("Period cannot be negative")
+
+    cdef const double[:] xs = np.asarray(series, np.float64)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double v = NAN
+    cdef double v = np.nan
     cdef long i = 0
-
-    if period < 0 or period >= size:
-        return result
 
     for i in range(period, size):
         v = xs[i - period]
