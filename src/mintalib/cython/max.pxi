@@ -5,7 +5,7 @@ def calc_max(series, long period, *, bint wrap=False):
     """ Rolling Maximum """
 
     if period <= 0:
-        raise ValueError(f"Invalid period value {period}")
+        raise ValueError("Period must be positive")
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size

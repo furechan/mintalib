@@ -10,6 +10,9 @@ def calc_trange(prices, *, bint log_prices=False, bint percent=False, bint wrap=
         percent (bool) : result as percentage of price
     """
 
+    if log_prices and percent:
+        raise ValueError("Only one of log_prices and percent can be true")
+
     cdef const double[:] high = np.asarray(prices['high'], float)
     cdef const double[:] low = np.asarray(prices['low'], float)
     cdef const double[:] close = np.asarray(prices['close'], float)
@@ -38,7 +41,7 @@ def calc_trange(prices, *, bint log_prices=False, bint percent=False, bint wrap=
         if log_prices:
             tr = math.log(hi) - math.log(lo)
         elif percent:
-            tr = 100 * (hi - lo) / cl
+            tr = 100 * (hi - lo) / cl if cl > 0 else np.nan
         else:
             tr = (hi - lo)
 

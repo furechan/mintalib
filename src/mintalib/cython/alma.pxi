@@ -3,6 +3,13 @@
 @with_metadata(same_scale=True)
 def calc_alma(series, long period = 9, double offset = 0.85, double sigma = 6.0, *, bint wrap=False):
     """Arnaud Legoux Moving Average"""
+
+    if period <= 0:
+        raise ValueError("period must be positive")
+
+    if sigma <= 0:
+        raise ValueError("sigma must be positive")
+
     m = offset * (period - 1)
     s = period / sigma
     w = np.array([np.exp(-((i - m) ** 2) / (2 * s**2)) for i in range(period)])

@@ -13,7 +13,7 @@ def calc_lag(series, long period, *, bint wrap=False):
     if period < 0:
         raise ValueError("Period cannot be negative")
 
-    cdef const double[:] xs = np.asarray(series, np.float64)
+    cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
     cdef object result = np.full(size, np.nan)
