@@ -68,22 +68,6 @@ def get_series(data, item: str = None, *, default_item: str = 'close'):
     return data
 
 
-def get_array(data, item: str = None, *, default_item: str = 'close', dtype=None):
-    """get array from prices or series data"""
-
-    series = get_series(data, item, default_item=default_item)
-
-    return np.asarray(series, dtype=dtype)
-
-
-def get_arrays(data, items: str = None, *, dtype=None):
-    """get arrays from prices data"""
-
-    series = [get_series(data, item) for item in items]
-    arrays = tuple(np.asarray(s, dtype=dtype) for s in series)
-
-    return arrays
-
 
 def with_metadata(*, same_scale: bool = None):
     """update function with metadata"""
@@ -128,7 +112,7 @@ def wrap_indicator(source):
     return decorator
 
 
-def wrap_result(result, source):
+def wrap_result(result, source, name: str = None):
     """wrap result to match source data (pandas, polars)"""
 
     pname = getattr(source, '__module__', '').partition('.')[0]
@@ -145,7 +129,7 @@ def wrap_result(result, source):
             return pandas.DataFrame(result, index=index)
 
         if isinstance(result, np.ndarray):
-            return pandas.Series(result, index=index)
+            return pandas.Series(result, index=index, name=name)
 
     if pname == 'polars':
         polars = sys.modules['polars']
@@ -154,7 +138,7 @@ def wrap_result(result, source):
             return polars.DataFrame(result)
 
         if isinstance(result, np.ndarray):
-            return polars.Series(result)
+            return polars.Series(result, name=name)
 
     return result
 

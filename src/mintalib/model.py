@@ -1,6 +1,7 @@
 """Model classes"""
 
 import sys
+import copy
 import inspect
 
 
@@ -64,16 +65,16 @@ class Indicator(metaclass=ABCMeta):
             return other.map_batches(wrapper)
 
         if callable(other):
-            return CallableChain(self, other)
+            return ComposedIndicator(self, other)
         
         return self(other)
         
 
- 
 
 class FuncIndicator(Indicator):
     """Function based Indicator"""
 
+    output_name: str = None
 
     @staticmethod
     def indicator_name(func):
@@ -102,6 +103,7 @@ class FuncIndicator(Indicator):
         signature = inspect.signature(self.func)
         return next(iter(signature.parameters), None) 
 
+
     def __getattr__(self, name):
         metadata = self.metadata
         if metadata and name in metadata:
@@ -112,23 +114,32 @@ class FuncIndicator(Indicator):
         return format_partial(self.func, self.params, name=self.name)
 
     def __call__(self, prices):
+        output_name = getattr(self, "output_name", None)
+
         if self.input_type == "series":
             series = get_series(prices, self.item)
             result = self.func(series, **self.params)
         else:
             result = self.func(prices, **self.params)
 
-        return wrap_result(result, prices)  
+        return wrap_result(result, prices, name=output_name)  
+
+    def alias(self, name):
+        if hasattr(self, "output_names"):
+            raise ValueError("Cannot alias a multi-output indicator")
+        
+        target = copy.copy(self)
+        target.output_name = name
+        return target
 
 
-
-class CallableChain(Indicator):
-    """Chain of Callables"""
+class ComposedIndicator(Indicator):
+    """Composition of Indicators"""
 
     def __init__(self, *chain):
         items = []
         for item in chain:
-            if isinstance(item, CallableChain):
+            if isinstance(item, ComposedIndicator):
                 items.extend(item.chain)
             else:
                 items.append(item)

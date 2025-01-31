@@ -32,20 +32,6 @@ get_series(data, item: str = None, *, default_item: str = 'close')
 ```
 
 get series from prices or series data
-## `get_array` function
-
-```python
-get_array(data, item: str = None, *, default_item: str = 'close', dtype=None)
-```
-
-get array from prices or series data
-## `get_arrays` function
-
-```python
-get_arrays(data, items: str = None, *, dtype=None)
-```
-
-get arrays from prices data
 ## `with_metadata` function
 
 ```python
@@ -70,7 +56,7 @@ update indicator with documentation from source
 ## `wrap_result` function
 
 ```python
-wrap_result(result, source)
+wrap_result(result, source, name: str = None)
 ```
 
 wrap result to match source data (pandas, polars)
