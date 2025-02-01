@@ -1,6 +1,6 @@
 # Minimal Technical Analysis Library for Python
 
-This package offers a list of technical analysis indicators and timeseries calculations
+This package offers a curated list of technical analysis indicators and timeseries calculations
 all implemented in cython for improved performance. The library is built around `numpy` arrays,
 and aims to be compatible with `pandas` and also `polars` where applicable.
 
