@@ -1,4 +1,4 @@
-""" Lag function """
+""" Shift function """
 
 
 @with_metadata(same_scale=True)
