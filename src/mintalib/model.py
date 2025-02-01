@@ -4,13 +4,11 @@ import sys
 import copy
 import inspect
 
-
-from abc import ABCMeta, abstractmethod
 from typing import Callable
 from types import MappingProxyType
-from collections.abc import Mapping
 from functools import cached_property
 
+from abc import ABCMeta, abstractmethod
 
 from .utils import format_partial, lazy_repr
 from .core import get_series, wrap_result
@@ -89,26 +87,21 @@ class FuncIndicator(Indicator):
         self.item = params.pop('item', None)
         self.params = MappingProxyType(params)
 
-    @cached_property
-    def metadata(self):
-        metadata = getattr(self.func, 'metadata', None)
-
-        if isinstance(metadata, Mapping):
-            return MappingProxyType(metadata)
-
-        return None
+        metadata = getattr(func, 'metadata', None)
+        if metadata:
+            self.metadata = MappingProxyType(metadata)
 
     @cached_property
     def input_type(self):
         signature = inspect.signature(self.func)
         return next(iter(signature.parameters), None) 
 
-
-    def __getattr__(self, name):
-        metadata = self.metadata
-        if metadata and name in metadata:
-            return metadata[name]
-        raise AttributeError(name)
+    def alias(self, name):
+        if hasattr(self, "output_names"):
+            raise ValueError("Cannot alias a multi-output indicator")
+        target = copy.copy(self)
+        target.output_name = name
+        return target
 
     def __repr__(self):
         return format_partial(self.func, self.params, name=self.name)
@@ -124,13 +117,6 @@ class FuncIndicator(Indicator):
 
         return wrap_result(result, prices, name=output_name)  
 
-    def alias(self, name):
-        if hasattr(self, "output_names"):
-            raise ValueError("Cannot alias a multi-output indicator")
-        
-        target = copy.copy(self)
-        target.output_name = name
-        return target
 
 
 class ComposedIndicator(Indicator):

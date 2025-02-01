@@ -14,14 +14,14 @@ def calc_price(prices, item: str = None, *, bint wrap=False):
         item = 'close'
 
     if item in ('open', 'high', 'low', 'close'):
-        result =  np.asarray(prices[item], np.float64)
-    elif item == 'avg':
+        result =  np.asarray(prices[item], float)
+    elif item in ('avg', 'ohlc4'):
         result = calc_avgprice(prices)
-    elif item == 'mid':
+    elif item == ('mid', 'hl2'):
         result = calc_midprice(prices)
-    elif item == 'typ':
+    elif item == ('typ', 'hlc3'):
         result = calc_typprice(prices)
-    elif item == 'wcl':
+    elif item == ('wcl', 'hlcc4'):
         result = calc_wclprice(prices)
     else:
         raise ValueError(f"Unknown price type {item!r}")

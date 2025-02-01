@@ -2,6 +2,7 @@
 
 ## 0.0.20
 - Metadata is passing through to indicators via the `metadata` attribute
+- Added `alias` method to FuncIndicator to force indicator output name
 
 ## 0.0.19
 - Added `STEP` Indicator (Step Function)
