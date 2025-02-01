@@ -12,6 +12,7 @@ and aims to be compatible with `pandas` and also `polars` where applicable.
 
 
 ## Structure
+
 The `mintalib` package contains three main modules:
 
 - [mintalib.core](/docs/mintalib.core.md)
@@ -189,10 +190,10 @@ You can find example notebooks in the `examples` folder.
 
 ## Installation
 
-You can install the current version of this package with pip
+You can install this package with pip
 
 ```console
-python -mpip install git+https://github.com/furechan/mintalib.git
+pip install mintalib
 ```
 
 ## Dependencies
@@ -203,6 +204,7 @@ python -mpip install git+https://github.com/furechan/mintalib.git
 
 
 ## Related Projects
+
 - [ta-lib](https://github.com/mrjbq7/ta-lib) Python wrapper for TA-Lib
 - [qtalib](https://github.com/josephchenhk/qtalib) Quantitative Technical Analysis Library
 - [numpy](https://github.com/numpy/numpy) The fundamental package for scientific computing with Python
