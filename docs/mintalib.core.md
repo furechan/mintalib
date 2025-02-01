@@ -14,7 +14,7 @@ The `wrap` parameter dictates whether to wrap the calculation result to match th
 ## `check_size` function
 
 ```python
-check_size(xs, *others)
+check_size(*args)
 ```
 
 check all series have the same size and return the size
@@ -45,21 +45,21 @@ update function with metadata
 wrap_function(source)
 ```
 
-update function with documentation from source
+decorator to update function with documentation from source
 ## `wrap_indicator` function
 
 ```python
 wrap_indicator(source)
 ```
 
-update indicator with documentation from source
+decorator to update indicator with documentation from source
 ## `wrap_result` function
 
 ```python
 wrap_result(result, source, name: str = None)
 ```
 
-wrap result to match source data (pandas, polars)
+wrap result to match source data type
 ## `calc_price` function
 
 ```python

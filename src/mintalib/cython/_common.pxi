@@ -6,7 +6,6 @@ from libc.math cimport isnan
 cdef double NAN = float('nan')
 
 import sys
-
 import numpy as np
 
 from enum import IntEnum
@@ -15,8 +14,11 @@ from collections import namedtuple
 from types import MappingProxyType
 
 
-def check_size(xs, *others):
+
+def check_size(*args):
     """check all series have the same size and return the size"""
+
+    xs, *others = args
 
     cdef long size = xs.size
     for s in others:
@@ -86,7 +88,7 @@ def with_metadata(*, same_scale: bool = None):
 
 
 def wrap_function(source):
-    """update function with documentation from source"""
+    """decorator to update function with documentation from source"""
 
     doc = source.__doc__ if source else None
 
@@ -98,9 +100,8 @@ def wrap_function(source):
     return decorator
 
 
-
 def wrap_indicator(source):
-    """update indicator with documentation from source"""
+    """decorator to update indicator with documentation from source"""
 
     doc = source.__doc__ if source else None
 
@@ -113,7 +114,7 @@ def wrap_indicator(source):
 
 
 def wrap_result(result, source, name: str = None):
-    """wrap result to match source data (pandas, polars)"""
+    """wrap result to match source data type"""
 
     pname = getattr(source, '__module__', '').partition('.')[0]
 

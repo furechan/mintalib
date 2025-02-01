@@ -1751,7 +1751,7 @@ struct __pyx_defaults2 {
   PyObject *__pyx_arg_period;
 };
 
-/* "src/mintalib/cython/_common.pxi":72
+/* "src/mintalib/cython/_common.pxi":74
  * 
  * 
  * def with_metadata(*, same_scale: bool = None):             # <<<<<<<<<<<<<<
@@ -1764,11 +1764,11 @@ struct __pyx_obj_8mintalib_4core___pyx_scope_struct__with_metadata {
 };
 
 
-/* "src/mintalib/cython/_common.pxi":88
+/* "src/mintalib/cython/_common.pxi":90
  * 
  * 
  * def wrap_function(source):             # <<<<<<<<<<<<<<
- *     """update function with documentation from source"""
+ *     """decorator to update function with documentation from source"""
  * 
  */
 struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function {
@@ -1777,11 +1777,11 @@ struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function {
 };
 
 
-/* "src/mintalib/cython/_common.pxi":102
+/* "src/mintalib/cython/_common.pxi":103
  * 
  * 
  * def wrap_indicator(source):             # <<<<<<<<<<<<<<
- *     """update indicator with documentation from source"""
+ *     """decorator to update indicator with documentation from source"""
  * 
  */
 struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator {
@@ -2500,6 +2500,9 @@ static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name);
 /* HasAttr.proto */
 static CYTHON_INLINE int __Pyx_HasAttr(PyObject *, PyObject *);
 
+/* IterFinish.proto */
+static CYTHON_INLINE int __Pyx_IterFinish(void);
+
 /* DictGetItem.proto */
 #if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
 static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key);
@@ -2522,9 +2525,6 @@ static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr
 #define __Pyx_PyObject_DelAttrStr(o,n)   PyObject_DelAttr(o,n)
 #define __Pyx_PyObject_SetAttrStr(o,n,v) PyObject_SetAttr(o,n,v)
 #endif
-
-/* IterFinish.proto */
-static CYTHON_INLINE int __Pyx_IterFinish(void);
 
 /* PyObjectCallNoArg.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
@@ -3326,6 +3326,7 @@ static const char __pyx_k_DEMA[] = "DEMA";
 static const char __pyx_k_None[] = "None";
 static const char __pyx_k_TEMA[] = "TEMA";
 static const char __pyx_k__170[] = "?";
+static const char __pyx_k_args[] = "args";
 static const char __pyx_k_base[] = "base";
 static const char __pyx_k_bool[] = "bool";
 static const char __pyx_k_clag[] = "clag";
@@ -3757,7 +3758,7 @@ static void __pyx_memoryviewslice___pyx_pf_15View_dot_MemoryView_16_memoryviewsl
 static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_15View_dot_MemoryView___pyx_unpickle_Enum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_check_size(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_xs, PyObject *__pyx_v_others); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_check_size(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_args); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_item, PyObject *__pyx_v_default_item); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_13with_metadata_decorator(PyObject *__pyx_self, PyObject *__pyx_v_func); /* proto */
@@ -3959,6 +3960,7 @@ typedef struct {
   PyObject *__pyx_n_s_allocate_buffer;
   PyObject *__pyx_n_s_alpha;
   PyObject *__pyx_kp_u_and;
+  PyObject *__pyx_n_s_args;
   PyObject *__pyx_n_s_array;
   PyObject *__pyx_n_s_as_flag;
   PyObject *__pyx_n_s_asarray;
@@ -4724,6 +4726,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_allocate_buffer);
   Py_CLEAR(clear_module_state->__pyx_n_s_alpha);
   Py_CLEAR(clear_module_state->__pyx_kp_u_and);
+  Py_CLEAR(clear_module_state->__pyx_n_s_args);
   Py_CLEAR(clear_module_state->__pyx_n_s_array);
   Py_CLEAR(clear_module_state->__pyx_n_s_as_flag);
   Py_CLEAR(clear_module_state->__pyx_n_s_asarray);
@@ -5467,6 +5470,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_allocate_buffer);
   Py_VISIT(traverse_module_state->__pyx_n_s_alpha);
   Py_VISIT(traverse_module_state->__pyx_kp_u_and);
+  Py_VISIT(traverse_module_state->__pyx_n_s_args);
   Py_VISIT(traverse_module_state->__pyx_n_s_array);
   Py_VISIT(traverse_module_state->__pyx_n_s_as_flag);
   Py_VISIT(traverse_module_state->__pyx_n_s_asarray);
@@ -6224,6 +6228,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_allocate_buffer __pyx_mstate_global->__pyx_n_s_allocate_buffer
 #define __pyx_n_s_alpha __pyx_mstate_global->__pyx_n_s_alpha
 #define __pyx_kp_u_and __pyx_mstate_global->__pyx_kp_u_and
+#define __pyx_n_s_args __pyx_mstate_global->__pyx_n_s_args
 #define __pyx_n_s_array __pyx_mstate_global->__pyx_n_s_array
 #define __pyx_n_s_as_flag __pyx_mstate_global->__pyx_n_s_as_flag
 #define __pyx_n_s_asarray __pyx_mstate_global->__pyx_n_s_asarray
@@ -20494,130 +20499,54 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *__
 /* "src/mintalib/cython/_common.pxi":18
  * 
  * 
- * def check_size(xs, *others):             # <<<<<<<<<<<<<<
+ * def check_size(*args):             # <<<<<<<<<<<<<<
  *     """check all series have the same size and return the size"""
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_1check_size(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
+static PyObject *__pyx_pw_8mintalib_4core_1check_size(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 PyDoc_STRVAR(__pyx_doc_8mintalib_4core_check_size, "check all series have the same size and return the size");
-static PyMethodDef __pyx_mdef_8mintalib_4core_1check_size = {"check_size", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_1check_size, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_check_size};
-static PyObject *__pyx_pw_8mintalib_4core_1check_size(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyObject *__pyx_v_xs = 0;
-  PyObject *__pyx_v_others = 0;
-  #if !CYTHON_METH_FASTCALL
+static PyMethodDef __pyx_mdef_8mintalib_4core_1check_size = {"check_size", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8mintalib_4core_1check_size, METH_VARARGS|METH_KEYWORDS, __pyx_doc_8mintalib_4core_check_size};
+static PyObject *__pyx_pw_8mintalib_4core_1check_size(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_args = 0;
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[1] = {0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("check_size (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_MACROS
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
   #else
   __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
   #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  __pyx_v_others = __Pyx_ArgsSlice_FASTCALL(__pyx_args, 1, __pyx_nargs);
-  if (unlikely(!__pyx_v_others)) {
-    __Pyx_RefNannyFinishContext();
-    return NULL;
-  }
-  __Pyx_GOTREF(__pyx_v_others);
-  {
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_xs,0};
-    if (__pyx_kwds) {
-      Py_ssize_t kw_args;
-      switch (__pyx_nargs) {
-        default:
-        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-      }
-      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
-      switch (__pyx_nargs) {
-        case  0:
-        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_xs)) != 0)) {
-          (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
-          kw_args--;
-        }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 18, __pyx_L3_error)
-        else goto __pyx_L5_argtuple_error;
-      }
-      if (unlikely(kw_args > 0)) {
-        const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        const Py_ssize_t used_pos_args = (kwd_pos_args < 1) ? kwd_pos_args : 1;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, used_pos_args, "check_size") < 0)) __PYX_ERR(0, 18, __pyx_L3_error)
-      }
-    } else if (unlikely(__pyx_nargs < 1)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-    }
-    __pyx_v_xs = values[0];
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("check_size", 0, 1, 1, __pyx_nargs); __PYX_ERR(0, 18, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  {
-    Py_ssize_t __pyx_temp;
-    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
-    }
-  }
-  __Pyx_DECREF(__pyx_v_others); __pyx_v_others = 0;
-  __Pyx_AddTraceback("mintalib.core.check_size", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_check_size(__pyx_self, __pyx_v_xs, __pyx_v_others);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_VARARGS(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "check_size", 0))) return NULL;
+  __Pyx_INCREF(__pyx_args);
+  __pyx_v_args = __pyx_args;
+  __pyx_r = __pyx_pf_8mintalib_4core_check_size(__pyx_self, __pyx_v_args);
 
   /* function exit code */
-  __Pyx_DECREF(__pyx_v_others);
-  {
-    Py_ssize_t __pyx_temp;
-    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
-    }
-  }
+  __Pyx_DECREF(__pyx_v_args);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8mintalib_4core_check_size(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_xs, PyObject *__pyx_v_others) {
+static PyObject *__pyx_pf_8mintalib_4core_check_size(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_args) {
+  PyObject *__pyx_v_xs = NULL;
+  PyObject *__pyx_v_others = NULL;
   long __pyx_v_size;
   PyObject *__pyx_v_s = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  long __pyx_t_2;
-  Py_ssize_t __pyx_t_3;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *(*__pyx_t_3)(PyObject *);
   PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  int __pyx_t_7;
+  long __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_8;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -20626,74 +20555,108 @@ static PyObject *__pyx_pf_8mintalib_4core_check_size(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/_common.pxi":21
  *     """check all series have the same size and return the size"""
  * 
+ *     xs, *others = args             # <<<<<<<<<<<<<<
+ * 
+ *     cdef long size = xs.size
+ */
+  {
+    Py_ssize_t index = -1;
+    PyObject** temps[2] = {&__pyx_t_1};
+    __pyx_t_2 = PyObject_GetIter(__pyx_v_args); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2);
+    for (index=0; index < 1; index++) {
+      PyObject* item = __pyx_t_3(__pyx_t_2); if (unlikely(!item)) goto __pyx_L3_unpacking_failed;
+      __Pyx_GOTREF(item);
+      *(temps[index]) = item;
+    }
+    goto __pyx_L4_unpacking_done;
+    __pyx_L3_unpacking_failed:;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_3 = NULL;
+    if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+    __PYX_ERR(0, 21, __pyx_L1_error)
+    __pyx_L4_unpacking_done:;
+  }
+  __pyx_t_4 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_xs = __pyx_t_1;
+  __pyx_t_1 = 0;
+  __pyx_v_others = ((PyObject*)__pyx_t_4);
+  __pyx_t_4 = 0;
+
+  /* "src/mintalib/cython/_common.pxi":23
+ *     xs, *others = args
+ * 
  *     cdef long size = xs.size             # <<<<<<<<<<<<<<
  *     for s in others:
  *         if s.size != size:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_xs, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_long(__pyx_t_1); if (unlikely((__pyx_t_2 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_size = __pyx_t_2;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_xs, __pyx_n_s_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_size = __pyx_t_5;
 
-  /* "src/mintalib/cython/_common.pxi":22
+  /* "src/mintalib/cython/_common.pxi":24
  * 
  *     cdef long size = xs.size
  *     for s in others:             # <<<<<<<<<<<<<<
  *         if s.size != size:
  *                raise ValueError("Different sizes!")
  */
-  __pyx_t_1 = __pyx_v_others; __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_3 = 0;
+  __pyx_t_4 = __pyx_v_others; __Pyx_INCREF(__pyx_t_4);
+  __pyx_t_6 = 0;
   for (;;) {
     {
-      Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
+      Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_4);
       #if !CYTHON_ASSUME_SAFE_MACROS
-      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 22, __pyx_L1_error)
+      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 24, __pyx_L1_error)
       #endif
-      if (__pyx_t_3 >= __pyx_temp) break;
+      if (__pyx_t_6 >= __pyx_temp) break;
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_3); __Pyx_INCREF(__pyx_t_4); __pyx_t_3++; if (unlikely((0 < 0))) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_1 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 24, __pyx_L1_error)
     #else
-    __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     #endif
-    __Pyx_XDECREF_SET(__pyx_v_s, __pyx_t_4);
-    __pyx_t_4 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_s, __pyx_t_1);
+    __pyx_t_1 = 0;
 
-    /* "src/mintalib/cython/_common.pxi":23
+    /* "src/mintalib/cython/_common.pxi":25
  *     cdef long size = xs.size
  *     for s in others:
  *         if s.size != size:             # <<<<<<<<<<<<<<
  *                raise ValueError("Different sizes!")
  *     return size
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_s, __pyx_n_s_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_long(__pyx_v_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 23, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = PyObject_RichCompare(__pyx_t_4, __pyx_t_5, Py_NE); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 23, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(__pyx_t_7)) {
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_s, __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_7 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (unlikely(__pyx_t_8)) {
 
-      /* "src/mintalib/cython/_common.pxi":24
+      /* "src/mintalib/cython/_common.pxi":26
  *     for s in others:
  *         if s.size != size:
  *                raise ValueError("Different sizes!")             # <<<<<<<<<<<<<<
  *     return size
  * 
  */
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 24, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_Raise(__pyx_t_6, 0, 0, 0);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __PYX_ERR(0, 24, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 26, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_Raise(__pyx_t_7, 0, 0, 0);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __PYX_ERR(0, 26, __pyx_L1_error)
 
-      /* "src/mintalib/cython/_common.pxi":23
+      /* "src/mintalib/cython/_common.pxi":25
  *     cdef long size = xs.size
  *     for s in others:
  *         if s.size != size:             # <<<<<<<<<<<<<<
@@ -20702,7 +20665,7 @@ static PyObject *__pyx_pf_8mintalib_4core_check_size(CYTHON_UNUSED PyObject *__p
  */
     }
 
-    /* "src/mintalib/cython/_common.pxi":22
+    /* "src/mintalib/cython/_common.pxi":24
  * 
  *     cdef long size = xs.size
  *     for s in others:             # <<<<<<<<<<<<<<
@@ -20710,9 +20673,9 @@ static PyObject *__pyx_pf_8mintalib_4core_check_size(CYTHON_UNUSED PyObject *__p
  *                raise ValueError("Different sizes!")
  */
   }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":25
+  /* "src/mintalib/cython/_common.pxi":27
  *         if s.size != size:
  *                raise ValueError("Different sizes!")
  *     return size             # <<<<<<<<<<<<<<
@@ -20720,16 +20683,16 @@ static PyObject *__pyx_pf_8mintalib_4core_check_size(CYTHON_UNUSED PyObject *__p
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
+  __pyx_t_4 = __Pyx_PyInt_From_long(__pyx_v_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
   goto __pyx_L0;
 
   /* "src/mintalib/cython/_common.pxi":18
  * 
  * 
- * def check_size(xs, *others):             # <<<<<<<<<<<<<<
+ * def check_size(*args):             # <<<<<<<<<<<<<<
  *     """check all series have the same size and return the size"""
  * 
  */
@@ -20737,19 +20700,21 @@ static PyObject *__pyx_pf_8mintalib_4core_check_size(CYTHON_UNUSED PyObject *__p
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
   __Pyx_AddTraceback("mintalib.core.check_size", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_xs);
+  __Pyx_XDECREF(__pyx_v_others);
   __Pyx_XDECREF(__pyx_v_s);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":29
+/* "src/mintalib/cython/_common.pxi":31
  * 
  * 
  * def column_accessor(data):             # <<<<<<<<<<<<<<
@@ -20811,12 +20776,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "column_accessor") < 0)) __PYX_ERR(0, 29, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "column_accessor") < 0)) __PYX_ERR(0, 31, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -20827,7 +20792,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("column_accessor", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 29, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("column_accessor", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 31, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -20866,7 +20831,7 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("column_accessor", 1);
 
-  /* "src/mintalib/cython/_common.pxi":33
+  /* "src/mintalib/cython/_common.pxi":35
  * 
  *     # Standard Dictionary
  *     if isinstance(data, dict):             # <<<<<<<<<<<<<<
@@ -20876,7 +20841,7 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
   __pyx_t_1 = PyDict_Check(__pyx_v_data); 
   if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/_common.pxi":34
+    /* "src/mintalib/cython/_common.pxi":36
  *     # Standard Dictionary
  *     if isinstance(data, dict):
  *         return data             # <<<<<<<<<<<<<<
@@ -20888,7 +20853,7 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
     __pyx_r = __pyx_v_data;
     goto __pyx_L0;
 
-    /* "src/mintalib/cython/_common.pxi":33
+    /* "src/mintalib/cython/_common.pxi":35
  * 
  *     # Standard Dictionary
  *     if isinstance(data, dict):             # <<<<<<<<<<<<<<
@@ -20897,39 +20862,39 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
  */
   }
 
-  /* "src/mintalib/cython/_common.pxi":37
+  /* "src/mintalib/cython/_common.pxi":39
  * 
  *     # Numpy record array
  *     if isinstance(data, np.ndarray):             # <<<<<<<<<<<<<<
  *         if data.dtype.names is not None:
  *             return data
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_1 = PyObject_IsInstance(__pyx_v_data, __pyx_t_3); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_1 = PyObject_IsInstance(__pyx_v_data, __pyx_t_3); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/_common.pxi":38
+    /* "src/mintalib/cython/_common.pxi":40
  *     # Numpy record array
  *     if isinstance(data, np.ndarray):
  *         if data.dtype.names is not None:             # <<<<<<<<<<<<<<
  *             return data
  *         return None
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_dtype); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_dtype); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_names); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_names); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_1 = (__pyx_t_2 != Py_None);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_1) {
 
-      /* "src/mintalib/cython/_common.pxi":39
+      /* "src/mintalib/cython/_common.pxi":41
  *     if isinstance(data, np.ndarray):
  *         if data.dtype.names is not None:
  *             return data             # <<<<<<<<<<<<<<
@@ -20941,7 +20906,7 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
       __pyx_r = __pyx_v_data;
       goto __pyx_L0;
 
-      /* "src/mintalib/cython/_common.pxi":38
+      /* "src/mintalib/cython/_common.pxi":40
  *     # Numpy record array
  *     if isinstance(data, np.ndarray):
  *         if data.dtype.names is not None:             # <<<<<<<<<<<<<<
@@ -20950,7 +20915,7 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
  */
     }
 
-    /* "src/mintalib/cython/_common.pxi":40
+    /* "src/mintalib/cython/_common.pxi":42
  *         if data.dtype.names is not None:
  *             return data
  *         return None             # <<<<<<<<<<<<<<
@@ -20961,7 +20926,7 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "src/mintalib/cython/_common.pxi":37
+    /* "src/mintalib/cython/_common.pxi":39
  * 
  *     # Numpy record array
  *     if isinstance(data, np.ndarray):             # <<<<<<<<<<<<<<
@@ -20970,17 +20935,17 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
  */
   }
 
-  /* "src/mintalib/cython/_common.pxi":43
+  /* "src/mintalib/cython/_common.pxi":45
  * 
  *     # Regular dataframe (pandas & polars)
  *     if hasattr(data, 'columns'):             # <<<<<<<<<<<<<<
  *         return data
  * 
  */
-  __pyx_t_1 = __Pyx_HasAttr(__pyx_v_data, __pyx_n_u_columns); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_HasAttr(__pyx_v_data, __pyx_n_u_columns); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 45, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/_common.pxi":44
+    /* "src/mintalib/cython/_common.pxi":46
  *     # Regular dataframe (pandas & polars)
  *     if hasattr(data, 'columns'):
  *         return data             # <<<<<<<<<<<<<<
@@ -20992,7 +20957,7 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
     __pyx_r = __pyx_v_data;
     goto __pyx_L0;
 
-    /* "src/mintalib/cython/_common.pxi":43
+    /* "src/mintalib/cython/_common.pxi":45
  * 
  *     # Regular dataframe (pandas & polars)
  *     if hasattr(data, 'columns'):             # <<<<<<<<<<<<<<
@@ -21001,34 +20966,34 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
  */
   }
 
-  /* "src/mintalib/cython/_common.pxi":47
+  /* "src/mintalib/cython/_common.pxi":49
  * 
  *     # Struct Series (polars)
  *     if hasattr(data, 'dtype') and data.dtype.__class__.__name__ == 'Struct':             # <<<<<<<<<<<<<<
  *         return data.struct
  * 
  */
-  __pyx_t_4 = __Pyx_HasAttr(__pyx_v_data, __pyx_n_u_dtype); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_HasAttr(__pyx_v_data, __pyx_n_u_dtype); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 49, __pyx_L1_error)
   if (__pyx_t_4) {
   } else {
     __pyx_t_1 = __pyx_t_4;
     goto __pyx_L8_bool_binop_done;
   }
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_class); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_class); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_name_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_name_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_n_u_Struct, Py_EQ)); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_n_u_Struct, Py_EQ)); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_1 = __pyx_t_4;
   __pyx_L8_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/_common.pxi":48
+    /* "src/mintalib/cython/_common.pxi":50
  *     # Struct Series (polars)
  *     if hasattr(data, 'dtype') and data.dtype.__class__.__name__ == 'Struct':
  *         return data.struct             # <<<<<<<<<<<<<<
@@ -21036,13 +21001,13 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
  *     return  None
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_struct); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_struct); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "src/mintalib/cython/_common.pxi":47
+    /* "src/mintalib/cython/_common.pxi":49
  * 
  *     # Struct Series (polars)
  *     if hasattr(data, 'dtype') and data.dtype.__class__.__name__ == 'Struct':             # <<<<<<<<<<<<<<
@@ -21051,7 +21016,7 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
  */
   }
 
-  /* "src/mintalib/cython/_common.pxi":50
+  /* "src/mintalib/cython/_common.pxi":52
  *         return data.struct
  * 
  *     return  None             # <<<<<<<<<<<<<<
@@ -21062,7 +21027,7 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/_common.pxi":29
+  /* "src/mintalib/cython/_common.pxi":31
  * 
  * 
  * def column_accessor(data):             # <<<<<<<<<<<<<<
@@ -21082,7 +21047,7 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":54
+/* "src/mintalib/cython/_common.pxi":56
  * 
  * 
  * def get_series(data, item: str = None, *, default_item: str = 'close'):             # <<<<<<<<<<<<<<
@@ -21150,25 +21115,25 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 56, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_item);
           if (value) { values[1] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 56, __pyx_L3_error)
         }
       }
       if (kw_args == 1) {
         const Py_ssize_t index = 2;
         PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, *__pyx_pyargnames[index]);
         if (value) { values[index] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 56, __pyx_L3_error)
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_series") < 0)) __PYX_ERR(0, 54, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_series") < 0)) __PYX_ERR(0, 56, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -21185,7 +21150,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_series", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 54, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_series", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 56, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21199,8 +21164,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_item), (&PyUnicode_Type), 1, "item", 1))) __PYX_ERR(0, 54, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_default_item), (&PyUnicode_Type), 0, "default_item", 1))) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_item), (&PyUnicode_Type), 1, "item", 1))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_default_item), (&PyUnicode_Type), 0, "default_item", 1))) __PYX_ERR(0, 56, __pyx_L1_error)
   __pyx_r = __pyx_pf_8mintalib_4core_4get_series(__pyx_self, __pyx_v_data, __pyx_v_item, __pyx_v_default_item);
 
   /* function exit code */
@@ -21234,14 +21199,14 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
   __Pyx_RefNannySetupContext("get_series", 0);
   __Pyx_INCREF(__pyx_v_item);
 
-  /* "src/mintalib/cython/_common.pxi":57
+  /* "src/mintalib/cython/_common.pxi":59
  *     """get series from prices or series data"""
  * 
  *     columns = column_accessor(data)             # <<<<<<<<<<<<<<
  * 
  *     if columns is not None:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_column_accessor); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_column_accessor); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -21261,14 +21226,14 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_data};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __pyx_v_columns = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":59
+  /* "src/mintalib/cython/_common.pxi":61
  *     columns = column_accessor(data)
  * 
  *     if columns is not None:             # <<<<<<<<<<<<<<
@@ -21278,7 +21243,7 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
   __pyx_t_5 = (__pyx_v_columns != Py_None);
   if (__pyx_t_5) {
 
-    /* "src/mintalib/cython/_common.pxi":60
+    /* "src/mintalib/cython/_common.pxi":62
  * 
  *     if columns is not None:
  *         if item is None:             # <<<<<<<<<<<<<<
@@ -21288,7 +21253,7 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
     __pyx_t_5 = (__pyx_v_item == ((PyObject*)Py_None));
     if (__pyx_t_5) {
 
-      /* "src/mintalib/cython/_common.pxi":61
+      /* "src/mintalib/cython/_common.pxi":63
  *     if columns is not None:
  *         if item is None:
  *             item = default_item             # <<<<<<<<<<<<<<
@@ -21298,7 +21263,7 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
       __Pyx_INCREF(__pyx_v_default_item);
       __Pyx_DECREF_SET(__pyx_v_item, __pyx_v_default_item);
 
-      /* "src/mintalib/cython/_common.pxi":60
+      /* "src/mintalib/cython/_common.pxi":62
  * 
  *     if columns is not None:
  *         if item is None:             # <<<<<<<<<<<<<<
@@ -21307,7 +21272,7 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
  */
     }
 
-    /* "src/mintalib/cython/_common.pxi":62
+    /* "src/mintalib/cython/_common.pxi":64
  *         if item is None:
  *             item = default_item
  *         return columns[item]             # <<<<<<<<<<<<<<
@@ -21315,13 +21280,13 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
  *     if item is not None:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_columns, __pyx_v_item); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_columns, __pyx_v_item); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "src/mintalib/cython/_common.pxi":59
+    /* "src/mintalib/cython/_common.pxi":61
  *     columns = column_accessor(data)
  * 
  *     if columns is not None:             # <<<<<<<<<<<<<<
@@ -21330,7 +21295,7 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
  */
   }
 
-  /* "src/mintalib/cython/_common.pxi":64
+  /* "src/mintalib/cython/_common.pxi":66
  *         return columns[item]
  * 
  *     if item is not None:             # <<<<<<<<<<<<<<
@@ -21340,38 +21305,38 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
   __pyx_t_5 = (__pyx_v_item != ((PyObject*)Py_None));
   if (unlikely(__pyx_t_5)) {
 
-    /* "src/mintalib/cython/_common.pxi":65
+    /* "src/mintalib/cython/_common.pxi":67
  * 
  *     if item is not None:
  *         tname = type(data).__name__             # <<<<<<<<<<<<<<
  *         raise ValueError(f"Cannot get series from {tname}")
  * 
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)Py_TYPE(__pyx_v_data)), __pyx_n_s_name_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)Py_TYPE(__pyx_v_data)), __pyx_n_s_name_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_tname = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "src/mintalib/cython/_common.pxi":66
+    /* "src/mintalib/cython/_common.pxi":68
  *     if item is not None:
  *         tname = type(data).__name__
  *         raise ValueError(f"Cannot get series from {tname}")             # <<<<<<<<<<<<<<
  * 
  *     return data
  */
-    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_tname, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_tname, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_kp_u_Cannot_get_series_from, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_kp_u_Cannot_get_series_from, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 66, __pyx_L1_error)
+    __PYX_ERR(0, 68, __pyx_L1_error)
 
-    /* "src/mintalib/cython/_common.pxi":64
+    /* "src/mintalib/cython/_common.pxi":66
  *         return columns[item]
  * 
  *     if item is not None:             # <<<<<<<<<<<<<<
@@ -21380,7 +21345,7 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
  */
   }
 
-  /* "src/mintalib/cython/_common.pxi":68
+  /* "src/mintalib/cython/_common.pxi":70
  *         raise ValueError(f"Cannot get series from {tname}")
  * 
  *     return data             # <<<<<<<<<<<<<<
@@ -21392,7 +21357,7 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
   __pyx_r = __pyx_v_data;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/_common.pxi":54
+  /* "src/mintalib/cython/_common.pxi":56
  * 
  * 
  * def get_series(data, item: str = None, *, default_item: str = 'close'):             # <<<<<<<<<<<<<<
@@ -21416,7 +21381,7 @@ static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":72
+/* "src/mintalib/cython/_common.pxi":74
  * 
  * 
  * def with_metadata(*, same_scale: bool = None):             # <<<<<<<<<<<<<<
@@ -21475,10 +21440,10 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         const Py_ssize_t index = 0;
         PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, *__pyx_pyargnames[index]);
         if (value) { values[index] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L3_error)
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, 0, "with_metadata") < 0)) __PYX_ERR(0, 72, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, 0, "with_metadata") < 0)) __PYX_ERR(0, 74, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 0)) {
       goto __pyx_L5_argtuple_error;
@@ -21488,7 +21453,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("with_metadata", 1, 0, 0, __pyx_nargs); __PYX_ERR(0, 72, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("with_metadata", 1, 0, 0, __pyx_nargs); __PYX_ERR(0, 74, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21515,7 +21480,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":78
+/* "src/mintalib/cython/_common.pxi":80
  *     metadata = { k: v for k, v in metadata.items() if v is not None}
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
@@ -21576,12 +21541,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 78, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 80, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decorator") < 0)) __PYX_ERR(0, 78, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decorator") < 0)) __PYX_ERR(0, 80, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -21592,7 +21557,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("decorator", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 78, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("decorator", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 80, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21635,16 +21600,16 @@ static PyObject *__pyx_pf_8mintalib_4core_13with_metadata_decorator(PyObject *__
   __pyx_outer_scope = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct__with_metadata *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "src/mintalib/cython/_common.pxi":79
+  /* "src/mintalib/cython/_common.pxi":81
  * 
  *     def decorator(func):
  *         func.metadata = MappingProxyType(metadata)             # <<<<<<<<<<<<<<
  *         # for name, value in metadata.items():
  *         #    setattr(func, name, value)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_MappingProxyType); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_MappingProxyType); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_metadata)) { __Pyx_RaiseClosureNameError("metadata"); __PYX_ERR(0, 79, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_metadata)) { __Pyx_RaiseClosureNameError("metadata"); __PYX_ERR(0, 81, __pyx_L1_error) }
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
@@ -21663,14 +21628,14 @@ static PyObject *__pyx_pf_8mintalib_4core_13with_metadata_decorator(PyObject *__
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_cur_scope->__pyx_v_metadata};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_func, __pyx_n_s_metadata, __pyx_t_1) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_func, __pyx_n_s_metadata, __pyx_t_1) < 0) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":82
+  /* "src/mintalib/cython/_common.pxi":84
  *         # for name, value in metadata.items():
  *         #    setattr(func, name, value)
  *         return func             # <<<<<<<<<<<<<<
@@ -21682,7 +21647,7 @@ static PyObject *__pyx_pf_8mintalib_4core_13with_metadata_decorator(PyObject *__
   __pyx_r = __pyx_v_func;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/_common.pxi":78
+  /* "src/mintalib/cython/_common.pxi":80
  *     metadata = { k: v for k, v in metadata.items() if v is not None}
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
@@ -21703,7 +21668,7 @@ static PyObject *__pyx_pf_8mintalib_4core_13with_metadata_decorator(PyObject *__
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":72
+/* "src/mintalib/cython/_common.pxi":74
  * 
  * 
  * def with_metadata(*, same_scale: bool = None):             # <<<<<<<<<<<<<<
@@ -21735,26 +21700,26 @@ static PyObject *__pyx_pf_8mintalib_4core_6with_metadata(CYTHON_UNUSED PyObject 
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_8mintalib_4core___pyx_scope_struct__with_metadata *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 72, __pyx_L1_error)
+    __PYX_ERR(0, 74, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
 
-  /* "src/mintalib/cython/_common.pxi":75
+  /* "src/mintalib/cython/_common.pxi":77
  *     """update function with metadata"""
  * 
  *     metadata = dict(same_scale=same_scale)             # <<<<<<<<<<<<<<
  *     metadata = { k: v for k, v in metadata.items() if v is not None}
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_same_scale, __pyx_v_same_scale) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_same_scale, __pyx_v_same_scale) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_metadata = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":76
+  /* "src/mintalib/cython/_common.pxi":78
  * 
  *     metadata = dict(same_scale=same_scale)
  *     metadata = { k: v for k, v in metadata.items() if v is not None}             # <<<<<<<<<<<<<<
@@ -21762,10 +21727,10 @@ static PyObject *__pyx_pf_8mintalib_4core_6with_metadata(CYTHON_UNUSED PyObject 
  *     def decorator(func):
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L5_error)
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_3 = 0;
-    __pyx_t_6 = __Pyx_dict_iterator(__pyx_cur_scope->__pyx_v_metadata, 1, __pyx_n_s_items, (&__pyx_t_4), (&__pyx_t_5)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 76, __pyx_L5_error)
+    __pyx_t_6 = __Pyx_dict_iterator(__pyx_cur_scope->__pyx_v_metadata, 1, __pyx_n_s_items, (&__pyx_t_4), (&__pyx_t_5)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 78, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_2);
     __pyx_t_2 = __pyx_t_6;
@@ -21773,7 +21738,7 @@ static PyObject *__pyx_pf_8mintalib_4core_6with_metadata(CYTHON_UNUSED PyObject 
     while (1) {
       __pyx_t_8 = __Pyx_dict_iter_next(__pyx_t_2, __pyx_t_4, &__pyx_t_3, &__pyx_t_6, &__pyx_t_7, NULL, __pyx_t_5);
       if (unlikely(__pyx_t_8 == 0)) break;
-      if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 76, __pyx_L5_error)
+      if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 78, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_XDECREF_SET(__pyx_7genexpr__pyx_v_k, __pyx_t_6);
@@ -21782,7 +21747,7 @@ static PyObject *__pyx_pf_8mintalib_4core_6with_metadata(CYTHON_UNUSED PyObject 
       __pyx_t_7 = 0;
       __pyx_t_9 = (__pyx_7genexpr__pyx_v_v != Py_None);
       if (__pyx_t_9) {
-        if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_7genexpr__pyx_v_k, (PyObject*)__pyx_7genexpr__pyx_v_v))) __PYX_ERR(0, 76, __pyx_L5_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_7genexpr__pyx_v_k, (PyObject*)__pyx_7genexpr__pyx_v_v))) __PYX_ERR(0, 78, __pyx_L5_error)
       }
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -21800,19 +21765,19 @@ static PyObject *__pyx_pf_8mintalib_4core_6with_metadata(CYTHON_UNUSED PyObject 
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":78
+  /* "src/mintalib/cython/_common.pxi":80
  *     metadata = { k: v for k, v in metadata.items() if v is not None}
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
  *         func.metadata = MappingProxyType(metadata)
  *         # for name, value in metadata.items():
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_13with_metadata_1decorator, 0, __pyx_n_s_with_metadata_locals_decorator, ((PyObject*)__pyx_cur_scope), __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_13with_metadata_1decorator, 0, __pyx_n_s_with_metadata_locals_decorator, ((PyObject*)__pyx_cur_scope), __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_decorator = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":84
+  /* "src/mintalib/cython/_common.pxi":86
  *         return func
  * 
  *     return decorator             # <<<<<<<<<<<<<<
@@ -21824,7 +21789,7 @@ static PyObject *__pyx_pf_8mintalib_4core_6with_metadata(CYTHON_UNUSED PyObject 
   __pyx_r = __pyx_v_decorator;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/_common.pxi":72
+  /* "src/mintalib/cython/_common.pxi":74
  * 
  * 
  * def with_metadata(*, same_scale: bool = None):             # <<<<<<<<<<<<<<
@@ -21850,11 +21815,11 @@ static PyObject *__pyx_pf_8mintalib_4core_6with_metadata(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":88
+/* "src/mintalib/cython/_common.pxi":90
  * 
  * 
  * def wrap_function(source):             # <<<<<<<<<<<<<<
- *     """update function with documentation from source"""
+ *     """decorator to update function with documentation from source"""
  * 
  */
 
@@ -21866,7 +21831,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_8wrap_function, "update function with documentation from source");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_8wrap_function, "decorator to update function with documentation from source");
 static PyMethodDef __pyx_mdef_8mintalib_4core_9wrap_function = {"wrap_function", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_9wrap_function, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_8wrap_function};
 static PyObject *__pyx_pw_8mintalib_4core_9wrap_function(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -21912,12 +21877,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 90, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "wrap_function") < 0)) __PYX_ERR(0, 88, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "wrap_function") < 0)) __PYX_ERR(0, 90, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -21928,7 +21893,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("wrap_function", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 88, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("wrap_function", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 90, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21955,7 +21920,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":93
+/* "src/mintalib/cython/_common.pxi":95
  *     doc = source.__doc__ if source else None
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
@@ -22016,12 +21981,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 93, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 95, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decorator") < 0)) __PYX_ERR(0, 93, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decorator") < 0)) __PYX_ERR(0, 95, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -22032,7 +21997,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("decorator", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 93, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("decorator", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 95, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -22074,21 +22039,21 @@ static PyObject *__pyx_pf_8mintalib_4core_13wrap_function_decorator(PyObject *__
   __pyx_outer_scope = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "src/mintalib/cython/_common.pxi":94
+  /* "src/mintalib/cython/_common.pxi":96
  * 
  *     def decorator(func):
  *         if doc and func.__doc__ is None:             # <<<<<<<<<<<<<<
  *             func.__doc__ = doc
  *         return func
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_v_doc)) { __Pyx_RaiseClosureNameError("doc"); __PYX_ERR(0, 94, __pyx_L1_error) }
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_doc); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 94, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_doc)) { __Pyx_RaiseClosureNameError("doc"); __PYX_ERR(0, 96, __pyx_L1_error) }
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_doc); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 96, __pyx_L1_error)
   if (__pyx_t_2) {
   } else {
     __pyx_t_1 = __pyx_t_2;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_func, __pyx_n_s_doc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_func, __pyx_n_s_doc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = (__pyx_t_3 == Py_None);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -22096,17 +22061,17 @@ static PyObject *__pyx_pf_8mintalib_4core_13wrap_function_decorator(PyObject *__
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/_common.pxi":95
+    /* "src/mintalib/cython/_common.pxi":97
  *     def decorator(func):
  *         if doc and func.__doc__ is None:
  *             func.__doc__ = doc             # <<<<<<<<<<<<<<
  *         return func
  * 
  */
-    if (unlikely(!__pyx_cur_scope->__pyx_v_doc)) { __Pyx_RaiseClosureNameError("doc"); __PYX_ERR(0, 95, __pyx_L1_error) }
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_func, __pyx_n_s_doc, __pyx_cur_scope->__pyx_v_doc) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_v_doc)) { __Pyx_RaiseClosureNameError("doc"); __PYX_ERR(0, 97, __pyx_L1_error) }
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_func, __pyx_n_s_doc, __pyx_cur_scope->__pyx_v_doc) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
 
-    /* "src/mintalib/cython/_common.pxi":94
+    /* "src/mintalib/cython/_common.pxi":96
  * 
  *     def decorator(func):
  *         if doc and func.__doc__ is None:             # <<<<<<<<<<<<<<
@@ -22115,7 +22080,7 @@ static PyObject *__pyx_pf_8mintalib_4core_13wrap_function_decorator(PyObject *__
  */
   }
 
-  /* "src/mintalib/cython/_common.pxi":96
+  /* "src/mintalib/cython/_common.pxi":98
  *         if doc and func.__doc__ is None:
  *             func.__doc__ = doc
  *         return func             # <<<<<<<<<<<<<<
@@ -22127,7 +22092,7 @@ static PyObject *__pyx_pf_8mintalib_4core_13wrap_function_decorator(PyObject *__
   __pyx_r = __pyx_v_func;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/_common.pxi":93
+  /* "src/mintalib/cython/_common.pxi":95
  *     doc = source.__doc__ if source else None
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
@@ -22146,11 +22111,11 @@ static PyObject *__pyx_pf_8mintalib_4core_13wrap_function_decorator(PyObject *__
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":88
+/* "src/mintalib/cython/_common.pxi":90
  * 
  * 
  * def wrap_function(source):             # <<<<<<<<<<<<<<
- *     """update function with documentation from source"""
+ *     """decorator to update function with documentation from source"""
  * 
  */
 
@@ -22170,21 +22135,21 @@ static PyObject *__pyx_pf_8mintalib_4core_8wrap_function(CYTHON_UNUSED PyObject 
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 88, __pyx_L1_error)
+    __PYX_ERR(0, 90, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
 
-  /* "src/mintalib/cython/_common.pxi":91
- *     """update function with documentation from source"""
+  /* "src/mintalib/cython/_common.pxi":93
+ *     """decorator to update function with documentation from source"""
  * 
  *     doc = source.__doc__ if source else None             # <<<<<<<<<<<<<<
  * 
  *     def decorator(func):
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_source); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_source); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 93, __pyx_L1_error)
   if (__pyx_t_2) {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_source, __pyx_n_s_doc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_source, __pyx_n_s_doc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = 0;
@@ -22196,19 +22161,19 @@ static PyObject *__pyx_pf_8mintalib_4core_8wrap_function(CYTHON_UNUSED PyObject 
   __pyx_cur_scope->__pyx_v_doc = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":93
+  /* "src/mintalib/cython/_common.pxi":95
  *     doc = source.__doc__ if source else None
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
  *         if doc and func.__doc__ is None:
  *             func.__doc__ = doc
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_13wrap_function_1decorator, 0, __pyx_n_s_wrap_function_locals_decorator, ((PyObject*)__pyx_cur_scope), __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_13wrap_function_1decorator, 0, __pyx_n_s_wrap_function_locals_decorator, ((PyObject*)__pyx_cur_scope), __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_decorator = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":98
+  /* "src/mintalib/cython/_common.pxi":100
  *         return func
  * 
  *     return decorator             # <<<<<<<<<<<<<<
@@ -22220,11 +22185,11 @@ static PyObject *__pyx_pf_8mintalib_4core_8wrap_function(CYTHON_UNUSED PyObject 
   __pyx_r = __pyx_v_decorator;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/_common.pxi":88
+  /* "src/mintalib/cython/_common.pxi":90
  * 
  * 
  * def wrap_function(source):             # <<<<<<<<<<<<<<
- *     """update function with documentation from source"""
+ *     """decorator to update function with documentation from source"""
  * 
  */
 
@@ -22242,11 +22207,11 @@ static PyObject *__pyx_pf_8mintalib_4core_8wrap_function(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":102
+/* "src/mintalib/cython/_common.pxi":103
  * 
  * 
  * def wrap_indicator(source):             # <<<<<<<<<<<<<<
- *     """update indicator with documentation from source"""
+ *     """decorator to update indicator with documentation from source"""
  * 
  */
 
@@ -22258,7 +22223,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_10wrap_indicator, "update indicator with documentation from source");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_10wrap_indicator, "decorator to update indicator with documentation from source");
 static PyMethodDef __pyx_mdef_8mintalib_4core_11wrap_indicator = {"wrap_indicator", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_11wrap_indicator, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_10wrap_indicator};
 static PyObject *__pyx_pw_8mintalib_4core_11wrap_indicator(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -22304,12 +22269,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 103, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "wrap_indicator") < 0)) __PYX_ERR(0, 102, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "wrap_indicator") < 0)) __PYX_ERR(0, 103, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -22320,7 +22285,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("wrap_indicator", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 102, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("wrap_indicator", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 103, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -22347,7 +22312,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":107
+/* "src/mintalib/cython/_common.pxi":108
  *     doc = source.__doc__ if source else None
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
@@ -22408,12 +22373,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 107, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 108, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decorator") < 0)) __PYX_ERR(0, 107, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "decorator") < 0)) __PYX_ERR(0, 108, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -22424,7 +22389,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("decorator", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 107, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("decorator", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 108, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -22466,21 +22431,21 @@ static PyObject *__pyx_pf_8mintalib_4core_14wrap_indicator_decorator(PyObject *_
   __pyx_outer_scope = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "src/mintalib/cython/_common.pxi":108
+  /* "src/mintalib/cython/_common.pxi":109
  * 
  *     def decorator(func):
  *         if doc and func.__doc__ is None:             # <<<<<<<<<<<<<<
  *             func.__doc__ = doc
  *         return func
  */
-  if (unlikely(!__pyx_cur_scope->__pyx_v_doc)) { __Pyx_RaiseClosureNameError("doc"); __PYX_ERR(0, 108, __pyx_L1_error) }
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_doc); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 108, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_doc)) { __Pyx_RaiseClosureNameError("doc"); __PYX_ERR(0, 109, __pyx_L1_error) }
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_doc); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 109, __pyx_L1_error)
   if (__pyx_t_2) {
   } else {
     __pyx_t_1 = __pyx_t_2;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_func, __pyx_n_s_doc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_func, __pyx_n_s_doc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = (__pyx_t_3 == Py_None);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -22488,17 +22453,17 @@ static PyObject *__pyx_pf_8mintalib_4core_14wrap_indicator_decorator(PyObject *_
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/_common.pxi":109
+    /* "src/mintalib/cython/_common.pxi":110
  *     def decorator(func):
  *         if doc and func.__doc__ is None:
  *             func.__doc__ = doc             # <<<<<<<<<<<<<<
  *         return func
  * 
  */
-    if (unlikely(!__pyx_cur_scope->__pyx_v_doc)) { __Pyx_RaiseClosureNameError("doc"); __PYX_ERR(0, 109, __pyx_L1_error) }
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_func, __pyx_n_s_doc, __pyx_cur_scope->__pyx_v_doc) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_v_doc)) { __Pyx_RaiseClosureNameError("doc"); __PYX_ERR(0, 110, __pyx_L1_error) }
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_func, __pyx_n_s_doc, __pyx_cur_scope->__pyx_v_doc) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
 
-    /* "src/mintalib/cython/_common.pxi":108
+    /* "src/mintalib/cython/_common.pxi":109
  * 
  *     def decorator(func):
  *         if doc and func.__doc__ is None:             # <<<<<<<<<<<<<<
@@ -22507,7 +22472,7 @@ static PyObject *__pyx_pf_8mintalib_4core_14wrap_indicator_decorator(PyObject *_
  */
   }
 
-  /* "src/mintalib/cython/_common.pxi":110
+  /* "src/mintalib/cython/_common.pxi":111
  *         if doc and func.__doc__ is None:
  *             func.__doc__ = doc
  *         return func             # <<<<<<<<<<<<<<
@@ -22519,7 +22484,7 @@ static PyObject *__pyx_pf_8mintalib_4core_14wrap_indicator_decorator(PyObject *_
   __pyx_r = __pyx_v_func;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/_common.pxi":107
+  /* "src/mintalib/cython/_common.pxi":108
  *     doc = source.__doc__ if source else None
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
@@ -22538,11 +22503,11 @@ static PyObject *__pyx_pf_8mintalib_4core_14wrap_indicator_decorator(PyObject *_
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":102
+/* "src/mintalib/cython/_common.pxi":103
  * 
  * 
  * def wrap_indicator(source):             # <<<<<<<<<<<<<<
- *     """update indicator with documentation from source"""
+ *     """decorator to update indicator with documentation from source"""
  * 
  */
 
@@ -22562,21 +22527,21 @@ static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator(CYTHON_UNUSED PyObjec
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 102, __pyx_L1_error)
+    __PYX_ERR(0, 103, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
 
-  /* "src/mintalib/cython/_common.pxi":105
- *     """update indicator with documentation from source"""
+  /* "src/mintalib/cython/_common.pxi":106
+ *     """decorator to update indicator with documentation from source"""
  * 
  *     doc = source.__doc__ if source else None             # <<<<<<<<<<<<<<
  * 
  *     def decorator(func):
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_source); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_source); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 106, __pyx_L1_error)
   if (__pyx_t_2) {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_source, __pyx_n_s_doc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_source, __pyx_n_s_doc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = 0;
@@ -22588,19 +22553,19 @@ static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator(CYTHON_UNUSED PyObjec
   __pyx_cur_scope->__pyx_v_doc = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":107
+  /* "src/mintalib/cython/_common.pxi":108
  *     doc = source.__doc__ if source else None
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
  *         if doc and func.__doc__ is None:
  *             func.__doc__ = doc
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_14wrap_indicator_1decorator, 0, __pyx_n_s_wrap_indicator_locals_decorator, ((PyObject*)__pyx_cur_scope), __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_14wrap_indicator_1decorator, 0, __pyx_n_s_wrap_indicator_locals_decorator, ((PyObject*)__pyx_cur_scope), __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_decorator = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":112
+  /* "src/mintalib/cython/_common.pxi":113
  *         return func
  * 
  *     return decorator             # <<<<<<<<<<<<<<
@@ -22612,11 +22577,11 @@ static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator(CYTHON_UNUSED PyObjec
   __pyx_r = __pyx_v_decorator;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/_common.pxi":102
+  /* "src/mintalib/cython/_common.pxi":103
  * 
  * 
  * def wrap_indicator(source):             # <<<<<<<<<<<<<<
- *     """update indicator with documentation from source"""
+ *     """decorator to update indicator with documentation from source"""
  * 
  */
 
@@ -22634,11 +22599,11 @@ static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator(CYTHON_UNUSED PyObjec
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/_common.pxi":115
+/* "src/mintalib/cython/_common.pxi":116
  * 
  * 
  * def wrap_result(result, source, name: str = None):             # <<<<<<<<<<<<<<
- *     """wrap result to match source data (pandas, polars)"""
+ *     """wrap result to match source data type"""
  * 
  */
 
@@ -22650,7 +22615,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_12wrap_result, "wrap result to match source data (pandas, polars)");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_12wrap_result, "wrap result to match source data type");
 static PyMethodDef __pyx_mdef_8mintalib_4core_13wrap_result = {"wrap_result", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_13wrap_result, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_12wrap_result};
 static PyObject *__pyx_pw_8mintalib_4core_13wrap_result(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -22703,7 +22668,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 115, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -22711,21 +22676,21 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 115, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("wrap_result", 0, 2, 3, 1); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("wrap_result", 0, 2, 3, 1); __PYX_ERR(0, 116, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_name);
           if (value) { values[2] = __Pyx_Arg_NewRef_FASTCALL(value); kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 115, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "wrap_result") < 0)) __PYX_ERR(0, 115, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "wrap_result") < 0)) __PYX_ERR(0, 116, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -22743,7 +22708,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("wrap_result", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 115, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("wrap_result", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 116, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -22757,7 +22722,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(0, 116, __pyx_L1_error)
   __pyx_r = __pyx_pf_8mintalib_4core_12wrap_result(__pyx_self, __pyx_v_result, __pyx_v_source, __pyx_v_name);
 
   /* function exit code */
@@ -22795,16 +22760,16 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
   __Pyx_RefNannySetupContext("wrap_result", 0);
   __Pyx_INCREF(__pyx_v_result);
 
-  /* "src/mintalib/cython/_common.pxi":118
- *     """wrap result to match source data (pandas, polars)"""
+  /* "src/mintalib/cython/_common.pxi":119
+ *     """wrap result to match source data type"""
  * 
  *     pname = getattr(source, '__module__', '').partition('.')[0]             # <<<<<<<<<<<<<<
  * 
  *     # convert namedtuple to dict
  */
-  __pyx_t_2 = __Pyx_GetAttr3(__pyx_v_source, __pyx_n_u_module, __pyx_kp_u__14); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetAttr3(__pyx_v_source, __pyx_n_u_module, __pyx_kp_u__14); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_partition); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_partition); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -22825,17 +22790,17 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
     PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_kp_u__2};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_pname = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":121
+  /* "src/mintalib/cython/_common.pxi":122
  * 
  *     # convert namedtuple to dict
  *     if isinstance(result, tuple) and hasattr(result, '_asdict'):             # <<<<<<<<<<<<<<
@@ -22848,19 +22813,19 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
     __pyx_t_5 = __pyx_t_6;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_6 = __Pyx_HasAttr(__pyx_v_result, __pyx_n_u_asdict); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_HasAttr(__pyx_v_result, __pyx_n_u_asdict); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 122, __pyx_L1_error)
   __pyx_t_5 = __pyx_t_6;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_5) {
 
-    /* "src/mintalib/cython/_common.pxi":122
+    /* "src/mintalib/cython/_common.pxi":123
  *     # convert namedtuple to dict
  *     if isinstance(result, tuple) and hasattr(result, '_asdict'):
  *         result = result._asdict()             # <<<<<<<<<<<<<<
  * 
  *     if pname == 'pandas':
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_result, __pyx_n_s_asdict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_result, __pyx_n_s_asdict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_2 = NULL;
     __pyx_t_4 = 0;
@@ -22880,14 +22845,14 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
       PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_result, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src/mintalib/cython/_common.pxi":121
+    /* "src/mintalib/cython/_common.pxi":122
  * 
  *     # convert namedtuple to dict
  *     if isinstance(result, tuple) and hasattr(result, '_asdict'):             # <<<<<<<<<<<<<<
@@ -22896,47 +22861,47 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  */
   }
 
-  /* "src/mintalib/cython/_common.pxi":124
+  /* "src/mintalib/cython/_common.pxi":125
  *         result = result._asdict()
  * 
  *     if pname == 'pandas':             # <<<<<<<<<<<<<<
  *         pandas = sys.modules['pandas']
  *         index = getattr(source, 'index', None)
  */
-  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_pname, __pyx_n_u_pandas, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_pname, __pyx_n_u_pandas, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 125, __pyx_L1_error)
   if (__pyx_t_5) {
 
-    /* "src/mintalib/cython/_common.pxi":125
+    /* "src/mintalib/cython/_common.pxi":126
  * 
  *     if pname == 'pandas':
  *         pandas = sys.modules['pandas']             # <<<<<<<<<<<<<<
  *         index = getattr(source, 'index', None)
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_sys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_sys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_modules); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_modules); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_u_pandas); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_u_pandas); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_pandas = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "src/mintalib/cython/_common.pxi":126
+    /* "src/mintalib/cython/_common.pxi":127
  *     if pname == 'pandas':
  *         pandas = sys.modules['pandas']
  *         index = getattr(source, 'index', None)             # <<<<<<<<<<<<<<
  * 
  *         if isinstance(result, dict):
  */
-    __pyx_t_3 = __Pyx_GetAttr3(__pyx_v_source, __pyx_n_u_index, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetAttr3(__pyx_v_source, __pyx_n_u_index, Py_None); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_v_index = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "src/mintalib/cython/_common.pxi":128
+    /* "src/mintalib/cython/_common.pxi":129
  *         index = getattr(source, 'index', None)
  * 
  *         if isinstance(result, dict):             # <<<<<<<<<<<<<<
@@ -22946,7 +22911,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
     __pyx_t_5 = PyDict_Check(__pyx_v_result); 
     if (__pyx_t_5) {
 
-      /* "src/mintalib/cython/_common.pxi":129
+      /* "src/mintalib/cython/_common.pxi":130
  * 
  *         if isinstance(result, dict):
  *             return pandas.DataFrame(result, index=index)             # <<<<<<<<<<<<<<
@@ -22954,17 +22919,17 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  *         if isinstance(result, np.ndarray):
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_pandas, __pyx_n_s_DataFrame); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_pandas, __pyx_n_s_DataFrame); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_INCREF(__pyx_v_result);
       __Pyx_GIVEREF(__pyx_v_result);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_result)) __PYX_ERR(0, 129, __pyx_L1_error);
-      __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_result)) __PYX_ERR(0, 130, __pyx_L1_error);
+      __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_index, __pyx_v_index) < 0) __PYX_ERR(0, 129, __pyx_L1_error)
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 129, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_index, __pyx_v_index) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 130, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -22973,7 +22938,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
       __pyx_t_7 = 0;
       goto __pyx_L0;
 
-      /* "src/mintalib/cython/_common.pxi":128
+      /* "src/mintalib/cython/_common.pxi":129
  *         index = getattr(source, 'index', None)
  * 
  *         if isinstance(result, dict):             # <<<<<<<<<<<<<<
@@ -22982,23 +22947,23 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  */
     }
 
-    /* "src/mintalib/cython/_common.pxi":131
+    /* "src/mintalib/cython/_common.pxi":132
  *             return pandas.DataFrame(result, index=index)
  * 
  *         if isinstance(result, np.ndarray):             # <<<<<<<<<<<<<<
  *             return pandas.Series(result, index=index, name=name)
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 131, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 132, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_5 = PyObject_IsInstance(__pyx_v_result, __pyx_t_2); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 131, __pyx_L1_error)
+    __pyx_t_5 = PyObject_IsInstance(__pyx_v_result, __pyx_t_2); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 132, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_5) {
 
-      /* "src/mintalib/cython/_common.pxi":132
+      /* "src/mintalib/cython/_common.pxi":133
  * 
  *         if isinstance(result, np.ndarray):
  *             return pandas.Series(result, index=index, name=name)             # <<<<<<<<<<<<<<
@@ -23006,18 +22971,18 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  *     if pname == 'polars':
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_pandas, __pyx_n_s_Series); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_pandas, __pyx_n_s_Series); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 132, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_INCREF(__pyx_v_result);
       __Pyx_GIVEREF(__pyx_v_result);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_result)) __PYX_ERR(0, 132, __pyx_L1_error);
-      __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_result)) __PYX_ERR(0, 133, __pyx_L1_error);
+      __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_index, __pyx_v_index) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_index, __pyx_v_index) < 0) __PYX_ERR(0, 133, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) __PYX_ERR(0, 133, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -23026,7 +22991,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
       __pyx_t_3 = 0;
       goto __pyx_L0;
 
-      /* "src/mintalib/cython/_common.pxi":131
+      /* "src/mintalib/cython/_common.pxi":132
  *             return pandas.DataFrame(result, index=index)
  * 
  *         if isinstance(result, np.ndarray):             # <<<<<<<<<<<<<<
@@ -23035,7 +23000,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  */
     }
 
-    /* "src/mintalib/cython/_common.pxi":124
+    /* "src/mintalib/cython/_common.pxi":125
  *         result = result._asdict()
  * 
  *     if pname == 'pandas':             # <<<<<<<<<<<<<<
@@ -23044,35 +23009,35 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  */
   }
 
-  /* "src/mintalib/cython/_common.pxi":134
+  /* "src/mintalib/cython/_common.pxi":135
  *             return pandas.Series(result, index=index, name=name)
  * 
  *     if pname == 'polars':             # <<<<<<<<<<<<<<
  *         polars = sys.modules['polars']
  * 
  */
-  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_pname, __pyx_n_u_polars, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_pname, __pyx_n_u_polars, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 135, __pyx_L1_error)
   if (__pyx_t_5) {
 
-    /* "src/mintalib/cython/_common.pxi":135
+    /* "src/mintalib/cython/_common.pxi":136
  * 
  *     if pname == 'polars':
  *         polars = sys.modules['polars']             # <<<<<<<<<<<<<<
  * 
  *         if isinstance(result, dict):
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_sys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_sys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_modules); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_modules); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_u_polars); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_u_polars); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_polars = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "src/mintalib/cython/_common.pxi":137
+    /* "src/mintalib/cython/_common.pxi":138
  *         polars = sys.modules['polars']
  * 
  *         if isinstance(result, dict):             # <<<<<<<<<<<<<<
@@ -23082,7 +23047,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
     __pyx_t_5 = PyDict_Check(__pyx_v_result); 
     if (__pyx_t_5) {
 
-      /* "src/mintalib/cython/_common.pxi":138
+      /* "src/mintalib/cython/_common.pxi":139
  * 
  *         if isinstance(result, dict):
  *             return polars.DataFrame(result)             # <<<<<<<<<<<<<<
@@ -23090,7 +23055,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  *         if isinstance(result, np.ndarray):
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_polars, __pyx_n_s_DataFrame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_polars, __pyx_n_s_DataFrame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_7 = NULL;
       __pyx_t_4 = 0;
@@ -23110,7 +23075,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
         PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_v_result};
         __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 138, __pyx_L1_error)
+        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
@@ -23118,7 +23083,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
       __pyx_t_3 = 0;
       goto __pyx_L0;
 
-      /* "src/mintalib/cython/_common.pxi":137
+      /* "src/mintalib/cython/_common.pxi":138
  *         polars = sys.modules['polars']
  * 
  *         if isinstance(result, dict):             # <<<<<<<<<<<<<<
@@ -23127,23 +23092,23 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  */
     }
 
-    /* "src/mintalib/cython/_common.pxi":140
+    /* "src/mintalib/cython/_common.pxi":141
  *             return polars.DataFrame(result)
  * 
  *         if isinstance(result, np.ndarray):             # <<<<<<<<<<<<<<
  *             return polars.Series(result, name=name)
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 141, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_5 = PyObject_IsInstance(__pyx_v_result, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_5 = PyObject_IsInstance(__pyx_v_result, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 141, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_5) {
 
-      /* "src/mintalib/cython/_common.pxi":141
+      /* "src/mintalib/cython/_common.pxi":142
  * 
  *         if isinstance(result, np.ndarray):
  *             return polars.Series(result, name=name)             # <<<<<<<<<<<<<<
@@ -23151,17 +23116,17 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  *     return result
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_polars, __pyx_n_s_Series); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_polars, __pyx_n_s_Series); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 141, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_INCREF(__pyx_v_result);
       __Pyx_GIVEREF(__pyx_v_result);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_result)) __PYX_ERR(0, 141, __pyx_L1_error);
-      __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 141, __pyx_L1_error)
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_result)) __PYX_ERR(0, 142, __pyx_L1_error);
+      __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_name, __pyx_v_name) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_name, __pyx_v_name) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -23170,7 +23135,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
       __pyx_t_2 = 0;
       goto __pyx_L0;
 
-      /* "src/mintalib/cython/_common.pxi":140
+      /* "src/mintalib/cython/_common.pxi":141
  *             return polars.DataFrame(result)
  * 
  *         if isinstance(result, np.ndarray):             # <<<<<<<<<<<<<<
@@ -23179,7 +23144,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  */
     }
 
-    /* "src/mintalib/cython/_common.pxi":134
+    /* "src/mintalib/cython/_common.pxi":135
  *             return pandas.Series(result, index=index, name=name)
  * 
  *     if pname == 'polars':             # <<<<<<<<<<<<<<
@@ -23188,7 +23153,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  */
   }
 
-  /* "src/mintalib/cython/_common.pxi":143
+  /* "src/mintalib/cython/_common.pxi":144
  *             return polars.Series(result, name=name)
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -23199,11 +23164,11 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/_common.pxi":115
+  /* "src/mintalib/cython/_common.pxi":116
  * 
  * 
  * def wrap_result(result, source, name: str = None):             # <<<<<<<<<<<<<<
- *     """wrap result to match source data (pandas, polars)"""
+ *     """wrap result to match source data type"""
  * 
  */
 
@@ -59522,6 +59487,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_allocate_buffer, __pyx_k_allocate_buffer, sizeof(__pyx_k_allocate_buffer), 0, 0, 1, 1},
     {&__pyx_n_s_alpha, __pyx_k_alpha, sizeof(__pyx_k_alpha), 0, 0, 1, 1},
     {&__pyx_kp_u_and, __pyx_k_and, sizeof(__pyx_k_and), 0, 1, 0, 0},
+    {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
     {&__pyx_n_s_array, __pyx_k_array, sizeof(__pyx_k_array), 0, 0, 1, 1},
     {&__pyx_n_s_as_flag, __pyx_k_as_flag, sizeof(__pyx_k_as_flag), 0, 0, 1, 1},
     {&__pyx_n_s_asarray, __pyx_k_asarray, sizeof(__pyx_k_asarray), 0, 0, 1, 1},
@@ -59987,7 +59953,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 26, __pyx_L1_error)
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(1, 23, __pyx_L1_error)
   __pyx_builtin_round = __Pyx_GetBuiltinName(__pyx_n_s_round); if (!__pyx_builtin_round) __PYX_ERR(2, 16, __pyx_L1_error)
   __pyx_builtin___import__ = __Pyx_GetBuiltinName(__pyx_n_s_import); if (!__pyx_builtin___import__) __PYX_ERR(3, 100, __pyx_L1_error)
@@ -60044,46 +60010,46 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "src/mintalib/cython/_common.pxi":24
+  /* "src/mintalib/cython/_common.pxi":26
  *     for s in others:
  *         if s.size != size:
  *                raise ValueError("Different sizes!")             # <<<<<<<<<<<<<<
  *     return size
  * 
  */
-  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_u_Different_sizes); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_u_Different_sizes); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "src/mintalib/cython/_common.pxi":78
+  /* "src/mintalib/cython/_common.pxi":80
  *     metadata = { k: v for k, v in metadata.items() if v is not None}
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
  *         func.metadata = MappingProxyType(metadata)
  *         # for name, value in metadata.items():
  */
-  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_n_s_func); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_n_s_func); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_decorator, 78, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_decorator, 80, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 80, __pyx_L1_error)
 
-  /* "src/mintalib/cython/_common.pxi":93
+  /* "src/mintalib/cython/_common.pxi":95
  *     doc = source.__doc__ if source else None
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
  *         if doc and func.__doc__ is None:
  *             func.__doc__ = doc
  */
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_decorator, 93, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_decorator, 95, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 95, __pyx_L1_error)
 
-  /* "src/mintalib/cython/_common.pxi":107
+  /* "src/mintalib/cython/_common.pxi":108
  *     doc = source.__doc__ if source else None
  * 
  *     def decorator(func):             # <<<<<<<<<<<<<<
  *         if doc and func.__doc__ is None:
  *             func.__doc__ = doc
  */
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_decorator, 107, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_decorator, 108, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 108, __pyx_L1_error)
 
   /* "src/mintalib/cython/price.pxi":20
  *     elif item in ('avg', 'ohlc4'):
@@ -60299,86 +60265,86 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "src/mintalib/cython/_common.pxi":18
  * 
  * 
- * def check_size(xs, *others):             # <<<<<<<<<<<<<<
+ * def check_size(*args):             # <<<<<<<<<<<<<<
  *     """check all series have the same size and return the size"""
  * 
  */
-  __pyx_tuple__36 = PyTuple_Pack(4, __pyx_n_s_xs, __pyx_n_s_others, __pyx_n_s_size, __pyx_n_s_s); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_tuple__36 = PyTuple_Pack(5, __pyx_n_s_args, __pyx_n_s_xs, __pyx_n_s_others, __pyx_n_s_size, __pyx_n_s_s); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_check_size, 18, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_check_size, 18, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 18, __pyx_L1_error)
 
-  /* "src/mintalib/cython/_common.pxi":29
+  /* "src/mintalib/cython/_common.pxi":31
  * 
  * 
  * def column_accessor(data):             # <<<<<<<<<<<<<<
  *     """column accessor if applicable"""
  * 
  */
-  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_n_s_data); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_n_s_data); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__38);
   __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_column_accessor, 29, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_column_accessor, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 31, __pyx_L1_error)
 
-  /* "src/mintalib/cython/_common.pxi":54
+  /* "src/mintalib/cython/_common.pxi":56
  * 
  * 
  * def get_series(data, item: str = None, *, default_item: str = 'close'):             # <<<<<<<<<<<<<<
  *     """get series from prices or series data"""
  * 
  */
-  __pyx_tuple__40 = PyTuple_Pack(5, __pyx_n_s_data, __pyx_n_s_item, __pyx_n_s_default_item, __pyx_n_s_columns, __pyx_n_s_tname); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_tuple__40 = PyTuple_Pack(5, __pyx_n_s_data, __pyx_n_s_item, __pyx_n_s_default_item, __pyx_n_s_columns, __pyx_n_s_tname); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__40);
   __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(2, 0, 1, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_get_series, 54, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 54, __pyx_L1_error)
-  __pyx_tuple__42 = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(2, 0, 1, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_get_series, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_tuple__42 = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__42);
   __Pyx_GIVEREF(__pyx_tuple__42);
 
-  /* "src/mintalib/cython/_common.pxi":72
+  /* "src/mintalib/cython/_common.pxi":74
  * 
  * 
  * def with_metadata(*, same_scale: bool = None):             # <<<<<<<<<<<<<<
  *     """update function with metadata"""
  * 
  */
-  __pyx_tuple__43 = PyTuple_Pack(6, __pyx_n_s_same_scale, __pyx_n_s_metadata, __pyx_n_s_decorator, __pyx_n_s_decorator, __pyx_n_s_k, __pyx_n_s_v); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_tuple__43 = PyTuple_Pack(6, __pyx_n_s_same_scale, __pyx_n_s_metadata, __pyx_n_s_decorator, __pyx_n_s_decorator, __pyx_n_s_k, __pyx_n_s_v); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__43);
   __Pyx_GIVEREF(__pyx_tuple__43);
-  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(0, 0, 1, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_with_metadata, 72, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(0, 0, 1, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_with_metadata, 74, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 74, __pyx_L1_error)
 
-  /* "src/mintalib/cython/_common.pxi":88
+  /* "src/mintalib/cython/_common.pxi":90
  * 
  * 
  * def wrap_function(source):             # <<<<<<<<<<<<<<
- *     """update function with documentation from source"""
+ *     """decorator to update function with documentation from source"""
  * 
  */
-  __pyx_tuple__45 = PyTuple_Pack(4, __pyx_n_s_source, __pyx_n_s_doc_2, __pyx_n_s_decorator, __pyx_n_s_decorator); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_tuple__45 = PyTuple_Pack(4, __pyx_n_s_source, __pyx_n_s_doc_2, __pyx_n_s_decorator, __pyx_n_s_decorator); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__45);
   __Pyx_GIVEREF(__pyx_tuple__45);
-  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_wrap_function, 88, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_wrap_function, 90, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 90, __pyx_L1_error)
 
-  /* "src/mintalib/cython/_common.pxi":102
+  /* "src/mintalib/cython/_common.pxi":103
  * 
  * 
  * def wrap_indicator(source):             # <<<<<<<<<<<<<<
- *     """update indicator with documentation from source"""
+ *     """decorator to update indicator with documentation from source"""
  * 
  */
-  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_wrap_indicator, 102, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_wrap_indicator, 103, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 103, __pyx_L1_error)
 
-  /* "src/mintalib/cython/_common.pxi":115
+  /* "src/mintalib/cython/_common.pxi":116
  * 
  * 
  * def wrap_result(result, source, name: str = None):             # <<<<<<<<<<<<<<
- *     """wrap result to match source data (pandas, polars)"""
+ *     """wrap result to match source data type"""
  * 
  */
-  __pyx_tuple__48 = PyTuple_Pack(7, __pyx_n_s_result, __pyx_n_s_source, __pyx_n_s_name, __pyx_n_s_pname, __pyx_n_s_pandas, __pyx_n_s_index, __pyx_n_s_polars); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_tuple__48 = PyTuple_Pack(7, __pyx_n_s_result, __pyx_n_s_source, __pyx_n_s_name, __pyx_n_s_pname, __pyx_n_s_pandas, __pyx_n_s_index, __pyx_n_s_polars); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__48);
   __Pyx_GIVEREF(__pyx_tuple__48);
-  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_wrap_result, 115, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_mintalib_cython__common_pxi, __pyx_n_s_wrap_result, 116, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 116, __pyx_L1_error)
 
   /* "src/mintalib/cython/price.pxi":4
  * 
@@ -61255,15 +61221,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_8mintalib_4core___pyx_scope_struct__with_metadata = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_scope_struct__with_metadata_spec, NULL); if (unlikely(!__pyx_ptype_8mintalib_4core___pyx_scope_struct__with_metadata)) __PYX_ERR(0, 72, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_scope_struct__with_metadata_spec, __pyx_ptype_8mintalib_4core___pyx_scope_struct__with_metadata) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_ptype_8mintalib_4core___pyx_scope_struct__with_metadata = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_scope_struct__with_metadata_spec, NULL); if (unlikely(!__pyx_ptype_8mintalib_4core___pyx_scope_struct__with_metadata)) __PYX_ERR(0, 74, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_scope_struct__with_metadata_spec, __pyx_ptype_8mintalib_4core___pyx_scope_struct__with_metadata) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
   #else
   __pyx_ptype_8mintalib_4core___pyx_scope_struct__with_metadata = &__pyx_type_8mintalib_4core___pyx_scope_struct__with_metadata;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_8mintalib_4core___pyx_scope_struct__with_metadata) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_8mintalib_4core___pyx_scope_struct__with_metadata) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_8mintalib_4core___pyx_scope_struct__with_metadata->tp_print = 0;
@@ -61274,15 +61240,15 @@ static int __Pyx_modinit_type_init_code(void) {
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_spec, NULL); if (unlikely(!__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function)) __PYX_ERR(0, 88, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_spec, __pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_spec, NULL); if (unlikely(!__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function)) __PYX_ERR(0, 90, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_spec, __pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
   #else
   __pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function = &__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function->tp_print = 0;
@@ -61293,15 +61259,15 @@ static int __Pyx_modinit_type_init_code(void) {
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_spec, NULL); if (unlikely(!__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator)) __PYX_ERR(0, 102, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_spec, __pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_spec, NULL); if (unlikely(!__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator)) __PYX_ERR(0, 103, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_spec, __pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
   #else
   __pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator = &__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator->tp_print = 0;
@@ -62297,93 +62263,93 @@ if (!__Pyx_RefNanny) {
  * cdef double NAN = float('nan')
  * 
  * import sys             # <<<<<<<<<<<<<<
- * 
  * import numpy as np
+ * 
  */
   __pyx_t_7 = __Pyx_ImportDottedModule(__pyx_n_s_sys, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_sys, __pyx_t_7) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":10
- * import sys
+  /* "src/mintalib/cython/_common.pxi":9
  * 
+ * import sys
  * import numpy as np             # <<<<<<<<<<<<<<
  * 
  * from enum import IntEnum
  */
-  __pyx_t_7 = __Pyx_ImportDottedModule(__pyx_n_s_numpy, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_ImportDottedModule(__pyx_n_s_numpy, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_7) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_7) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":12
+  /* "src/mintalib/cython/_common.pxi":11
  * import numpy as np
  * 
  * from enum import IntEnum             # <<<<<<<<<<<<<<
  * 
  * from collections import namedtuple
  */
-  __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_INCREF(__pyx_n_s_IntEnum);
   __Pyx_GIVEREF(__pyx_n_s_IntEnum);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_n_s_IntEnum)) __PYX_ERR(0, 12, __pyx_L1_error);
-  __pyx_t_4 = __Pyx_Import(__pyx_n_s_enum, __pyx_t_7, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_n_s_IntEnum)) __PYX_ERR(0, 11, __pyx_L1_error);
+  __pyx_t_4 = __Pyx_Import(__pyx_n_s_enum, __pyx_t_7, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_IntEnum); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_IntEnum); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_IntEnum, __pyx_t_7) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_IntEnum, __pyx_t_7) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":14
+  /* "src/mintalib/cython/_common.pxi":13
  * from enum import IntEnum
  * 
  * from collections import namedtuple             # <<<<<<<<<<<<<<
  * from types import MappingProxyType
  * 
  */
-  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_n_s_namedtuple);
   __Pyx_GIVEREF(__pyx_n_s_namedtuple);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_4, 0, __pyx_n_s_namedtuple)) __PYX_ERR(0, 14, __pyx_L1_error);
-  __pyx_t_7 = __Pyx_Import(__pyx_n_s_collections, __pyx_t_4, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_4, 0, __pyx_n_s_namedtuple)) __PYX_ERR(0, 13, __pyx_L1_error);
+  __pyx_t_7 = __Pyx_Import(__pyx_n_s_collections, __pyx_t_4, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_namedtuple); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_7, __pyx_n_s_namedtuple); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_namedtuple, __pyx_t_4) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_namedtuple, __pyx_t_4) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":15
+  /* "src/mintalib/cython/_common.pxi":14
  * 
  * from collections import namedtuple
  * from types import MappingProxyType             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_INCREF(__pyx_n_s_MappingProxyType);
   __Pyx_GIVEREF(__pyx_n_s_MappingProxyType);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_n_s_MappingProxyType)) __PYX_ERR(0, 15, __pyx_L1_error);
-  __pyx_t_4 = __Pyx_Import(__pyx_n_s_types, __pyx_t_7, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_n_s_MappingProxyType)) __PYX_ERR(0, 14, __pyx_L1_error);
+  __pyx_t_4 = __Pyx_Import(__pyx_n_s_types, __pyx_t_7, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_MappingProxyType); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_MappingProxyType); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_MappingProxyType, __pyx_t_7) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_MappingProxyType, __pyx_t_7) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "src/mintalib/cython/_common.pxi":18
  * 
  * 
- * def check_size(xs, *others):             # <<<<<<<<<<<<<<
+ * def check_size(*args):             # <<<<<<<<<<<<<<
  *     """check all series have the same size and return the size"""
  * 
  */
@@ -62392,104 +62358,104 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_check_size, __pyx_t_4) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":29
+  /* "src/mintalib/cython/_common.pxi":31
  * 
  * 
  * def column_accessor(data):             # <<<<<<<<<<<<<<
  *     """column accessor if applicable"""
  * 
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_3column_accessor, 0, __pyx_n_s_column_accessor, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_3column_accessor, 0, __pyx_n_s_column_accessor, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_column_accessor, __pyx_t_4) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_column_accessor, __pyx_t_4) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":54
+  /* "src/mintalib/cython/_common.pxi":56
  * 
  * 
  * def get_series(data, item: str = None, *, default_item: str = 'close'):             # <<<<<<<<<<<<<<
  *     """get series from prices or series data"""
  * 
  */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_default_item, ((PyObject*)__pyx_n_u_close)) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_default_item, ((PyObject*)__pyx_n_u_close)) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_item, __pyx_n_s_str) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_default_item, __pyx_n_s_str) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_5get_series, 0, __pyx_n_s_get_series, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_item, __pyx_n_s_str) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_default_item, __pyx_n_s_str) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_5get_series, 0, __pyx_n_s_get_series, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__42);
   __Pyx_CyFunction_SetDefaultsKwDict(__pyx_t_5, __pyx_t_4);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_series, __pyx_t_5) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_series, __pyx_t_5) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":72
+  /* "src/mintalib/cython/_common.pxi":74
  * 
  * 
  * def with_metadata(*, same_scale: bool = None):             # <<<<<<<<<<<<<<
  *     """update function with metadata"""
  * 
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_same_scale, Py_None) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_same_scale, Py_None) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_same_scale, __pyx_n_s_bool) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_7with_metadata, 0, __pyx_n_s_with_metadata, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_same_scale, __pyx_n_s_bool) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_7with_metadata, 0, __pyx_n_s_with_metadata, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetDefaultsKwDict(__pyx_t_4, __pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_with_metadata, __pyx_t_4) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_with_metadata, __pyx_t_4) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":88
+  /* "src/mintalib/cython/_common.pxi":90
  * 
  * 
  * def wrap_function(source):             # <<<<<<<<<<<<<<
- *     """update function with documentation from source"""
+ *     """decorator to update function with documentation from source"""
  * 
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_9wrap_function, 0, __pyx_n_s_wrap_function, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_9wrap_function, 0, __pyx_n_s_wrap_function, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_wrap_function, __pyx_t_4) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_wrap_function, __pyx_t_4) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":102
+  /* "src/mintalib/cython/_common.pxi":103
  * 
  * 
  * def wrap_indicator(source):             # <<<<<<<<<<<<<<
- *     """update indicator with documentation from source"""
+ *     """decorator to update indicator with documentation from source"""
  * 
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_11wrap_indicator, 0, __pyx_n_s_wrap_indicator, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_11wrap_indicator, 0, __pyx_n_s_wrap_indicator, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_wrap_indicator, __pyx_t_4) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_wrap_indicator, __pyx_t_4) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/_common.pxi":115
+  /* "src/mintalib/cython/_common.pxi":116
  * 
  * 
  * def wrap_result(result, source, name: str = None):             # <<<<<<<<<<<<<<
- *     """wrap result to match source data (pandas, polars)"""
+ *     """wrap result to match source data type"""
  * 
  */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_name, __pyx_n_s_str) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_13wrap_result, 0, __pyx_n_s_wrap_result, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_name, __pyx_n_s_str) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_13wrap_result, 0, __pyx_n_s_wrap_result, NULL, __pyx_n_s_mintalib_core, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_7, __pyx_tuple__42);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_7, __pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_wrap_result, __pyx_t_7) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_wrap_result, __pyx_t_7) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
   /* "src/mintalib/cython/price.pxi":4
@@ -67501,6 +67467,21 @@ static CYTHON_INLINE int __Pyx_HasAttr(PyObject *o, PyObject *n) {
     }
 }
 
+/* IterFinish */
+static CYTHON_INLINE int __Pyx_IterFinish(void) {
+    PyObject* exc_type;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    exc_type = __Pyx_PyErr_CurrentExceptionType();
+    if (unlikely(exc_type)) {
+        if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration)))
+            return -1;
+        __Pyx_PyErr_Clear();
+        return 0;
+    }
+    return 0;
+}
+
 /* DictGetItem */
 #if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
 static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key) {
@@ -67543,21 +67524,6 @@ static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr
     return PyObject_SetAttr(obj, attr_name, value);
 }
 #endif
-
-/* IterFinish */
-static CYTHON_INLINE int __Pyx_IterFinish(void) {
-    PyObject* exc_type;
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    exc_type = __Pyx_PyErr_CurrentExceptionType();
-    if (unlikely(exc_type)) {
-        if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration)))
-            return -1;
-        __Pyx_PyErr_Clear();
-        return 0;
-    }
-    return 0;
-}
 
 /* PyObjectCallNoArg */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
