@@ -117,6 +117,12 @@ def EXP(*, item: str = None):
     return FuncIndicator('EXP', core.calc_exp, params=params)
 
 
+@wrap_indicator(core.calc_shift)
+def SHIFT(period: int, *, item: str = None):
+    params = dict(period=period, item=item)
+    return FuncIndicator('SHIFT', core.calc_shift, params=params)
+
+
 @wrap_indicator(core.calc_diff)
 def DIFF(period: int = 1, *, item: str = None):
     params = dict(period=period, item=item)
@@ -384,10 +390,10 @@ def EVAL(expr: str, *, as_flag: bool = False):
 __all__ = [
     'PRICE', 'AVGPRICE', 'TYPPRICE', 'WCLPRICE', 'MIDPRICE', 'CROSSOVER',
     'CROSSUNDER', 'FLAG', 'UPDOWN', 'SIGN', 'STEP', 'CLAG', 'ABS', 'LOG',
-    'EXP', 'DIFF', 'LAG', 'MIN', 'MAX', 'SUM', 'ROC', 'LROC', 'MAD',
-    'STDEV', 'MAV', 'SMA', 'EMA', 'RMA', 'WMA', 'HMA', 'DEMA', 'TEMA',
-    'ALMA', 'RSI', 'DMI', 'ADX', 'PDI', 'MDI', 'TRANGE', 'ATR', 'NATR',
-    'SAR', 'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS', 'KELTNER', 'KER', 'KAMA',
-    'MACD', 'PPO', 'SLOPE', 'RVALUE', 'TSF', 'CURVE', 'STOCH', 'STREAK',
-    'EVAL'
+    'EXP', 'SHIFT', 'DIFF', 'LAG', 'MIN', 'MAX', 'SUM', 'ROC', 'LROC',
+    'MAD', 'STDEV', 'MAV', 'SMA', 'EMA', 'RMA', 'WMA', 'HMA', 'DEMA',
+    'TEMA', 'ALMA', 'RSI', 'DMI', 'ADX', 'PDI', 'MDI', 'TRANGE', 'ATR',
+    'NATR', 'SAR', 'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS', 'KELTNER', 'KER',
+    'KAMA', 'MACD', 'PPO', 'SLOPE', 'RVALUE', 'TSF', 'CURVE', 'STOCH',
+    'STREAK', 'EVAL'
 ]

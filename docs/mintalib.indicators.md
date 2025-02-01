@@ -174,6 +174,17 @@ EXP(*, item: str = None)
 ```
 
 Exponential
+## `SHIFT` indicator
+
+```python
+SHIFT(period: int, *, item: str = None)
+```
+
+Shift Function
+
+Args:
+- period (int) : time period, required
+
 ## `DIFF` indicator
 
 ```python

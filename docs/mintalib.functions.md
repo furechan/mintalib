@@ -175,6 +175,17 @@ exp(series, *, item: str = None)
 ```
 
 Exponential
+## `shift` function
+
+```python
+shift(series, period: int, *, item: str = None)
+```
+
+Shift Function
+
+Args:
+- period (int) : time period, required
+
 ## `diff` function
 
 ```python

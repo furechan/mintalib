@@ -148,6 +148,14 @@ def exp(series, *, item: str = None):
     return wrap_result(result, series)
 
 
+@wrap_function(core.calc_shift)
+def shift(series, period: int, *, item: str = None):
+    series = get_series(series, item=item)
+    kwargs = dict(period=period)
+    result = core.calc_shift(series, **kwargs)
+    return wrap_result(result, series)
+
+
 @wrap_function(core.calc_diff)
 def diff(series, period: int = 1, *, item: str = None):
     series = get_series(series, item=item)

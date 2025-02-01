@@ -224,6 +224,17 @@ calc_exp(series, *, wrap=False)
 ```
 
 Exponential
+## `calc_shift` function
+
+```python
+calc_shift(series, period, *, wrap=False)
+```
+
+Shift Function
+
+Args:
+- period (int) : time period, required
+
 ## `calc_diff` function
 
 ```python

@@ -71,6 +71,7 @@ The `mintalib` package contains three main modules:
 | RSI        | Relative Strength Index                  |
 | RVALUE     | R-Value (linear regression)              |
 | SAR        | Parabolic Stop and Reverse               |
+| SHIFT      | Shift Function                           |
 | SIGN       | Sign                                     |
 | SLOPE      | Slope (linear regression)                |
 | SMA        | Simple Moving Average                    |
