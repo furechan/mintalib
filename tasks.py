@@ -9,8 +9,6 @@ PACKAGE = "mintalib"
 ROOT = Path(__file__).parent
 
 
-
-
 @task
 def info(ctx):
     """Check package versions"""
