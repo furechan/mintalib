@@ -2,7 +2,7 @@
 
 This package offers a list of technical analysis indicators and timeseries calculations
 all implemented in cython for improved performance. The library is built around `numpy` arrays,
-and aims to be compatible with `pandas` and `polars` where applicable.
+and aims to be compatible with `pandas` and also `polars` where applicable.
 
 
 > **Warning**
@@ -108,7 +108,7 @@ The column names for prices are expected to include `open`, `high`, `low`, `clos
 
 A `series` can be a pandas series, a polars series or any iterable compatible with numpy arrays.
 
-Functions automatically wrap the result to match the type and the index ofthe input data when applicable.
+Functions automatically wrap the result to match the type and the index of the input data when applicable.
 
 
 ```python
