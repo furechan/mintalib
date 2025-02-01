@@ -1,7 +1,6 @@
 # noinspection PyUnresolvedReferences
 
 import re
-
 from pathlib import Path
 from invoke import task  # type: ignore
 
@@ -50,7 +49,6 @@ def make(ctx):
 @task(clean)
 def build(ctx):
     """Build project sdist"""
-    print("Bulding sdist ... (use make to cythonize)")
     ctx.run("uv build --sdist")
 
 
