@@ -35,7 +35,7 @@ dev = [
     "tabulate",
     "twine",
     "nbmask",
-    "pyarrow>=18.1.0",
+    "pyarrow",
 ]
 
 [tool.uv]

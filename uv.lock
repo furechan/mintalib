@@ -1138,7 +1138,7 @@ dev = [
     { name = "nbmake" },
     { name = "nbmask" },
     { name = "polars" },
-    { name = "pyarrow", specifier = ">=18.1.0" },
+    { name = "pyarrow" },
     { name = "pytest" },
     { name = "setuptools" },
     { name = "tabulate" },
