@@ -2,7 +2,7 @@
 
 This package offers a curated list of technical analysis indicators and timeseries calculations
 all implemented in cython for improved performance. The library is built around `numpy` arrays,
-and aims to be compatible with `pandas` and also `polars` where applicable.
+and is compatible with `pandas` dataframes and series.
 
 
 > **Warning**
@@ -105,10 +105,10 @@ the functions expects a dataframe of prices or a single series.
 Functions that expect series data can be applied to a prices dataframe, in which case they use 
 the column specified with the `item` parameter or by default the 'close' column.
 
-A `prices` dataframe can be a pandas dataframe, a polars dataframe or a dictionary of numpy arrays.
+A `prices` dataframe can be a pandas dataframe or a dictionary of numpy arrays.
 The column names for prices are expected to include `open`, `high`, `low`, `close`, `volume` all in **lower case**.
 
-A `series` can be a pandas series, a polars series or any iterable compatible with numpy arrays.
+A `series` can be a pandas series or any iterable compatible with numpy arrays.
 
 Functions automatically wrap the result to match the type and the index of the input data when applicable.
 
@@ -210,7 +210,6 @@ pip install mintalib
 - [qtalib](https://github.com/josephchenhk/qtalib) Quantitative Technical Analysis Library
 - [numpy](https://github.com/numpy/numpy) The fundamental package for scientific computing with Python
 - [pandas](https://github.com/pandas-dev/pandas) Flexible and powerful data analysis / manipulation library for Python
-- [polars](https://github.com/pola-rs/polars) Fast multi-threaded, hybrid-out-of-core query engine focussing on DataFrame front-ends
 - [yfinance](https://github.com/ranaroussi/yfinance) Download market data from Yahoo! Finance's API
 
 

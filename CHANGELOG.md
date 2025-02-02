@@ -15,18 +15,12 @@
 - Refactored `functions` module to move logic out of core. Function names are now **small caps**!
 - Upper case functions names are legacy and will be removed in the future. Use small caps.
 
-## 0.0.17
-- Added `StructWrapper` to support polars expressions
-
 ## 0.0.16
 - Added `DMI` indicator with grouped calculation for `ADX`, `PDI` and `MDI`
 - Renamed `PLUSDI`, `MINUSDI` to `PDI`, `MDI` 
 
 ## 0.0.15
 - Fixed pypi-readme.md
-
-## 0.0.14
-- `@` operator extended for polars expressions
 
 ## 0.0.13
 - Added `CURVE` indicator
