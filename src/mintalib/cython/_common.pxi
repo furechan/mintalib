@@ -139,7 +139,7 @@ def wrap_result(result, source, name: str = None):
             return polars.DataFrame(result)
 
         if isinstance(result, np.ndarray):
-            return polars.Series(result, name=name)
+            return polars.Series(name=name, values=result)
 
     return result
 

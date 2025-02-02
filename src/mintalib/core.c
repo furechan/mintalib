@@ -3466,6 +3466,7 @@ static const char __pyx_k_struct[] = "struct";
 static const char __pyx_k_trange[] = "trange";
 static const char __pyx_k_unpack[] = "unpack";
 static const char __pyx_k_update[] = "update";
+static const char __pyx_k_values[] = "values";
 static const char __pyx_k_volume[] = "volume";
 static const char __pyx_k_IntEnum[] = "IntEnum";
 static const char __pyx_k_as_flag[] = "as_flag";
@@ -4389,6 +4390,7 @@ typedef struct {
   PyObject *__pyx_n_s_v;
   PyObject *__pyx_n_u_valid;
   PyObject *__pyx_n_s_value;
+  PyObject *__pyx_n_s_values;
   PyObject *__pyx_n_s_version_info;
   PyObject *__pyx_n_s_volume;
   PyObject *__pyx_n_u_volume;
@@ -5154,6 +5156,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_v);
   Py_CLEAR(clear_module_state->__pyx_n_u_valid);
   Py_CLEAR(clear_module_state->__pyx_n_s_value);
+  Py_CLEAR(clear_module_state->__pyx_n_s_values);
   Py_CLEAR(clear_module_state->__pyx_n_s_version_info);
   Py_CLEAR(clear_module_state->__pyx_n_s_volume);
   Py_CLEAR(clear_module_state->__pyx_n_u_volume);
@@ -5897,6 +5900,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_v);
   Py_VISIT(traverse_module_state->__pyx_n_u_valid);
   Py_VISIT(traverse_module_state->__pyx_n_s_value);
+  Py_VISIT(traverse_module_state->__pyx_n_s_values);
   Py_VISIT(traverse_module_state->__pyx_n_s_version_info);
   Py_VISIT(traverse_module_state->__pyx_n_s_volume);
   Py_VISIT(traverse_module_state->__pyx_n_u_volume);
@@ -6654,6 +6658,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_v __pyx_mstate_global->__pyx_n_s_v
 #define __pyx_n_u_valid __pyx_mstate_global->__pyx_n_u_valid
 #define __pyx_n_s_value __pyx_mstate_global->__pyx_n_s_value
+#define __pyx_n_s_values __pyx_mstate_global->__pyx_n_s_values
 #define __pyx_n_s_version_info __pyx_mstate_global->__pyx_n_s_version_info
 #define __pyx_n_s_volume __pyx_mstate_global->__pyx_n_s_volume
 #define __pyx_n_u_volume __pyx_mstate_global->__pyx_n_u_volume
@@ -23091,7 +23096,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
  *             return polars.DataFrame(result)
  * 
  *         if isinstance(result, np.ndarray):             # <<<<<<<<<<<<<<
- *             return polars.Series(result, name=name)
+ *             return polars.Series(name=name, values=result)
  * 
  */
     __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 141, __pyx_L1_error)
@@ -23106,35 +23111,30 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
       /* "src/mintalib/cython/_common.pxi":142
  * 
  *         if isinstance(result, np.ndarray):
- *             return polars.Series(result, name=name)             # <<<<<<<<<<<<<<
+ *             return polars.Series(name=name, values=result)             # <<<<<<<<<<<<<<
  * 
  *     return result
  */
       __Pyx_XDECREF(__pyx_r);
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_polars, __pyx_n_s_Series); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_INCREF(__pyx_v_result);
-      __Pyx_GIVEREF(__pyx_v_result);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_result)) __PYX_ERR(0, 142, __pyx_L1_error);
-      __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 142, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_name, __pyx_v_name) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_values, __pyx_v_result) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_name, __pyx_v_name) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_r = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __pyx_r = __pyx_t_7;
+      __pyx_t_7 = 0;
       goto __pyx_L0;
 
       /* "src/mintalib/cython/_common.pxi":141
  *             return polars.DataFrame(result)
  * 
  *         if isinstance(result, np.ndarray):             # <<<<<<<<<<<<<<
- *             return polars.Series(result, name=name)
+ *             return polars.Series(name=name, values=result)
  * 
  */
     }
@@ -23149,7 +23149,7 @@ static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *
   }
 
   /* "src/mintalib/cython/_common.pxi":144
- *             return polars.Series(result, name=name)
+ *             return polars.Series(name=name, values=result)
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -59890,6 +59890,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_v, __pyx_k_v, sizeof(__pyx_k_v), 0, 0, 1, 1},
     {&__pyx_n_u_valid, __pyx_k_valid, sizeof(__pyx_k_valid), 0, 1, 0, 1},
     {&__pyx_n_s_value, __pyx_k_value, sizeof(__pyx_k_value), 0, 0, 1, 1},
+    {&__pyx_n_s_values, __pyx_k_values, sizeof(__pyx_k_values), 0, 0, 1, 1},
     {&__pyx_n_s_version_info, __pyx_k_version_info, sizeof(__pyx_k_version_info), 0, 0, 1, 1},
     {&__pyx_n_s_volume, __pyx_k_volume, sizeof(__pyx_k_volume), 0, 0, 1, 1},
     {&__pyx_n_u_volume, __pyx_k_volume, sizeof(__pyx_k_volume), 0, 1, 0, 1},
