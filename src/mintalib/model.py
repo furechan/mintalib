@@ -10,8 +10,8 @@ from functools import cached_property
 
 from abc import ABCMeta, abstractmethod
 
-from .utils import format_partial, lazy_repr
 from .core import get_series, wrap_result
+from .utils import format_partial, lazy_repr
 
 
 class StructWrapper:
@@ -67,6 +67,10 @@ class Indicator(metaclass=ABCMeta):
         
         return self(other)
         
+    def get_series(self, data):
+        """Series data accessor"""
+        item = getattr(self, "item", None)
+        return get_series(data, item=item)
 
 
 class FuncIndicator(Indicator):

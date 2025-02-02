@@ -6,33 +6,25 @@ def calc_flag(series, *, bint wrap=False):
     """
     Flag Value
 
-    Flag value of 1 for positive, 0 for zero or negative, and NaN for missing values
-
-    Args:
-        expr (str) : expression to evaluate (optional) (pandas only!)
+    Flag value of 1 for positive, 0 for zero or negative, and NaN otherwize
     """
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, NAN)
+    cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
     cdef double value = NAN
-    cdef double flag = NAN
     cdef long i = 0
 
     for i in range(size):
         value = xs[i]
 
-        if isnan(value):
-            flag = NAN
-        elif value > 0.0:
-            flag = 1.0
-        else:
-            flag = 0.0
-
-        output[i] = flag
+        if value > 0.0:
+            output[i] = 1.0
+        elif value <= 0:
+            output[i] = 0.0
 
     if wrap:
         result = wrap_result(result, series)
@@ -52,12 +44,11 @@ def calc_updown(series, double up_level=0.0, double down_level=0.0, *, bint wrap
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, NAN)
+    cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double start_flag=NAN, up_flag = 1.0, down_flag=0.0 
+    cdef double flag = NAN, up_flag = 1.0, down_flag=0.0 
     cdef double value = NAN, prev = NAN
-    cdef double flag = start_flag
     cdef long i = 0
 
     for i in range(size):
@@ -70,7 +61,7 @@ def calc_updown(series, double up_level=0.0, double down_level=0.0, *, bint wrap
 
         output[i] = flag
 
-        if not isnan(value):
+        if value == value:
             prev = value
 
     if wrap:
@@ -81,7 +72,7 @@ def calc_updown(series, double up_level=0.0, double down_level=0.0, *, bint wrap
 
 
 def where_flag(flag, x, y, z=NAN, *, bint wrap=False):
-    """Value according to flag"""
+    """Value according to flag, selecting between x, y or z"""
 
     cdef const double[:] fs = np.asarray(flag, float)
 
@@ -91,7 +82,7 @@ def where_flag(flag, x, y, z=NAN, *, bint wrap=False):
     cdef const double[:] ys = np.broadcast_to(np.float_(y), size)
     cdef const double[:] zs = np.broadcast_to(np.float_(z), size)
 
-    cdef object result = np.full(size, NAN)
+    cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
     cdef double value = NAN

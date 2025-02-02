@@ -146,10 +146,7 @@ calc_flag(series, *, wrap: bool = False)
 
 Flag Value
 
-Flag value of 1 for positive, 0 for zero or negative, and NaN for missing values
-
-Args:
-- expr (str) : expression to evaluate (optional) (pandas only!)
+Flag value of 1 for positive, 0 for zero or negative, and NaN otherwize
 
 ## `calc_updown` function
 
@@ -169,7 +166,7 @@ Args:
 where_flag(flag, x, y, z: float = nan, *, wrap: bool = False)
 ```
 
-Value according to flag
+Value according to flag, selecting between x, y or z
 ## `calc_sign` function
 
 ```python

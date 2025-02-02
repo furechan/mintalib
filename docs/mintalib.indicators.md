@@ -103,10 +103,7 @@ FLAG(*, item: str = None)
 
 Flag Value
 
-Flag value of 1 for positive, 0 for zero or negative, and NaN for missing values
-
-Args:
-- expr (str) : expression to evaluate (optional) (pandas only!)
+Flag value of 1 for positive, 0 for zero or negative, and NaN otherwize
 
 ## `UPDOWN` indicator
 
