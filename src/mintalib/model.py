@@ -32,6 +32,30 @@ class Indicator(metaclass=ABCMeta):
         item = getattr(self, "item", None)
         return get_series(data, item=item)
 
+    def alias(self, name: str):
+        return AliasedIndicator(self, name)
+
+
+class AliasedIndicator(Indicator):
+    """Aliased Indicator"""
+
+    def __init__(self, indicator, name):
+        self.indicator = indicator
+        self.name = name
+    
+    def __repr__(self):
+        return f"{self.indicator!r}.alias({self.name!r})"
+
+    def __call__(self, data):
+        result = self.indicator(data)
+        rtype = type(result).__name__
+
+        if rtype == "Series" and hasattr(result, "rename"):
+            return result.rename(self.name)
+
+        raise ValueError(f"Cannot rename {rtype} result")
+
+
 
 class FuncIndicator(Indicator):
     """Function based Indicator"""
@@ -60,12 +84,13 @@ class FuncIndicator(Indicator):
         signature = inspect.signature(self.func)
         return next(iter(signature.parameters), None)
 
-    def alias(self, name):
+    def alias_legacy(self, name):
         if hasattr(self, "output_names"):
             raise ValueError("Cannot alias a multi-output indicator")
         target = copy.copy(self)
         target.output_name = name
         return target
+
 
     def __repr__(self):
         return format_partial(self.func, self.params, name=self.name)
