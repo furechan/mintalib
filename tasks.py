@@ -8,10 +8,37 @@ PACKAGE = "mintalib"
 ROOT = Path(__file__).parent
 
 
+def get_version():
+    """Get version from pyproject"""
+    data = ROOT.joinpath("pyproject.toml").read_text()
+    pattern = r"^version \s* = \s* \"(.+)\" \s*"
+    match = re.search(pattern, data, flags=re.VERBOSE | re.MULTILINE)
+    return match.group(1)
+
+
+def bump_version():
+    """Bump patch version in pyproject"""
+    pyproject = ROOT.joinpath("pyproject.toml").resolve(strict=True)
+    buffer = pyproject.read_text()
+    pattern = r"^version \s* = \s* \"(.+)\" \s*"
+    match = re.search(pattern, buffer, flags=re.VERBOSE | re.MULTILINE)
+    if not match:
+        raise ValueError("Could not find version setting")
+    version = tuple(int(i) for i in match.group(1).split("."))
+    version = version[:-1] + (version[-1] + 1,)
+    version = ".".join(str(v) for v in version)
+    print(f"Updating version to {version} ...")
+    output = re.sub(
+        pattern, f'version = "{version}"\n', buffer, flags=re.VERBOSE | re.MULTILINE
+    )
+    pyproject.write_text(output)
+
+
 @task
 def info(ctx):
-    """Check package versions"""
-    ctx.run(f"uv pip show {PACKAGE}")
+    """Check package version"""
+    version = get_version()
+    print(f"Working version: {version}")
 
 
 @task
@@ -68,18 +95,5 @@ def publish(ctx, testpypi=False):
 
 @task
 def bump(ctx):
-    """Bump patch version in pyproject"""
-    pyproject = Path(__file__).joinpath("../pyproject.toml").resolve(strict=True)
-    buffer = pyproject.read_text()
-    pattern = r"^version \s* = \s* \"(.+)\" \s*"
-    match = re.search(pattern, buffer, flags=re.VERBOSE | re.MULTILINE)
-    if not match:
-        raise ValueError("Could not find version setting")
-    version = tuple(int(i) for i in match.group(1).split("."))
-    version = version[:-1] + (version[-1] + 1,)
-    version = ".".join(str(v) for v in version)
-    print(f"Updating version to {version} ...")
-    output = re.sub(
-        pattern, f'version = "{version}"\n', buffer, flags=re.VERBOSE | re.MULTILINE
-    )
-    pyproject.write_text(output)
+    """Bump project version"""
+    bump_version()

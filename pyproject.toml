@@ -28,6 +28,7 @@ dev = [
     "nbmake",
     "polars",
     "yfinance",
+    "matplotlib",
     "mplfinance",
     "toml",
     "nbcheck",
