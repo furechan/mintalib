@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.0.21
+## 0.0.22
 - Added `QSF` Indicator (Quadratic Series Forecast)  
 
 ## 0.0.20
