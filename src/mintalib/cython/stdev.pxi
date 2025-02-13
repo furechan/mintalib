@@ -27,7 +27,7 @@ def calc_stdev(series, long period=20, *, bint wrap=False):
     for i in range(size):
         x = xs[i]
 
-        if x != x:
+        if x == x:
             count += 1
             sx += x
             sxx += x * x
@@ -35,12 +35,12 @@ def calc_stdev(series, long period=20, *, bint wrap=False):
             count = 0
             sx = sxx = 0.0
 
-        while count > period and j <i:
+        while count > period and j < i:
             x, j = xs[j], j + 1
             if x == x:
-                count += 1
-                sx += x
-                sxx += x * x
+                count -= 1
+                sx -= x
+                sxx -= x * x
 
         if count == period:
             vxx = (sxx / count - sx * sx / count / count)

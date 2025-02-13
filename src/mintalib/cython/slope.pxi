@@ -30,19 +30,20 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0, bin
 
     cdef double x, y, s, sx, sy, sxy, sxx, syy, vxy, vxx, vyy
     cdef double corr, slope, intercept, mse, rmse, forecast
+    cdef double xbeg = 0.0, xend = xbeg + (period -1)
 
     cdef long i = 0, j = 0
 
     if period >= size:
         return result
 
-    # 1 <= x <= period
-    x = s = sx = sxx = 0.0
+    x = xbeg
+    s = sx = sxx = 0.0
     for i in range(period):
-        x += 1.0
         s += 1
         sx += x
         sxx += x*x
+        x += 1.0
 
     vxx = (sxx / s - sx * sx / s / s )
 
@@ -51,18 +52,18 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0, bin
 
     for j in range(period - 1, size):
 
-        x = 0.0
+        x = xbeg
         sy = sxy = syy = 0.0
         i = j - period + 1
 
         while i <= j:
-            x += 1.0
             y = ys[i]
-            if isnan(y):
+            if y != y:
                 break
             sy += y
             sxy += x * y
             syy += y * y
+            x += 1.0
             i += 1
         else:
             vxy = (sxy / s - sx * sy / s / s)
@@ -75,17 +76,28 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0, bin
 
             if option == LINREG_SLOPE:
                 output[j] = slope
-            elif option == LINREG_INTERCEPT:
+                continue
+
+            if option == LINREG_INTERCEPT:
                 output[j] = intercept
-            elif option == LINREG_RVALUE:
+                continue
+
+            if option == LINREG_RVALUE:
                 output[j] = corr
-            elif option == LINREG_RSQUARE:
+                continue
+
+            if option == LINREG_RSQUARE:
                 output[j] = corr * corr
-            elif option == LINREG_RMSERROR:
+                continue
+
+            if option == LINREG_RMSERROR:
                 output[j] = rmse
-            elif option == LINREG_FORECAST:
-                forecast = intercept + slope * (period + offset -1)
+                continue
+
+            if option == LINREG_FORECAST:
+                forecast = intercept + slope * (xend + offset)
                 output[j] = forecast
+                continue
 
     if wrap:
         result = wrap_result(result, series)

@@ -7,11 +7,12 @@ cdef enum:
     QUADREG_RVALUE = 2
     QUADREG_RSQUARE = 3
     QUADREG_RMSERROR = 4
-    QUADREG_BADOPTION = 5
+    QUADREG_FORECAST = 5
+    QUADREG_BADOPTION = 6
 
 
 
-def quadratic_regression(series, long period=20, *, int option=0, bint wrap=False):
+def quadratic_regression(series, long period=20, *, int option=0, int offset=0, bint wrap=False):
     """ Curve (quadratic regression) """
 
     if option < 0 or option >= QUADREG_BADOPTION:
@@ -28,7 +29,8 @@ def quadratic_regression(series, long period=20, *, int option=0, bint wrap=Fals
     cdef double z, sz, szz, vzz
     cdef double s, sxz, vxz, syz, vyz
 
-    cdef double slope, curve, intercept, mse, rmse, rvalue, rsquare
+    cdef double slope, curve, intercept, mse, rmse, rvalue
+    cdef double xbeg = (1-period) / 2, xend = xbeg + (period -1)
 
     cdef bint skip = 0
 
@@ -37,9 +39,8 @@ def quadratic_regression(series, long period=20, *, int option=0, bint wrap=Fals
     if period >= size:
         return result
 
+    x = xbeg
     s = sx = sxx = sy = syy = 0.0
-
-    x = (1 - period) / 2.0
     for i in range(period):
         y = x * x
         s += 1
@@ -58,19 +59,20 @@ def quadratic_regression(series, long period=20, *, int option=0, bint wrap=Fals
     for j in range(period - 1, size):
         skip = False
 
+        x = xbeg
         sz = sxz = szz = 0.0
-        x = (1 - period) / 2.0
         i = j - period + 1
+
         while i <= j:
             z = zs[i]
-            if isnan(z):
+            if z != z:
                 skip = True
                 break
             sz += z
             sxz += x * z
             szz += z * z
-            i += 1
             x += 1.0
+            i += 1
 
         if skip:
             continue
@@ -84,20 +86,21 @@ def quadratic_regression(series, long period=20, *, int option=0, bint wrap=Fals
             output[j] = slope
             continue
 
+        x = xbeg
         sz = syz = szz = 0.0
-        x = (1 - period) / 2.0
         i = j - period + 1
+
         while i <= j:
             y = x * x
             z = zs[i] - slope * x
-            if isnan(z):
+            if z != z:
                 skip = True
                 break
             sz += z
             syz += y * z
             szz += z * z
-            i += 1
             x += 1.0
+            i += 1
 
         if skip:
             continue
@@ -106,6 +109,7 @@ def quadratic_regression(series, long period=20, *, int option=0, bint wrap=Fals
         vzz = (szz / s - sz * sz / s / s)
 
         curve = vyz / vyy
+        intercept = (sz - curve * sy) / s
         rvalue = vyz / math.sqrt(vyy * vzz) if vyy * vzz > 0 else NAN
         mse = (1.0 - rvalue * rvalue) * vzz
         rmse = math.sqrt(mse) if mse >= 0 else NAN
@@ -127,6 +131,12 @@ def quadratic_regression(series, long period=20, *, int option=0, bint wrap=Fals
             output[j] = rmse
             continue
 
+        if option == QUADREG_FORECAST:
+            forecast = intercept + slope * (xend + offset)
+            forecast += curve * (xend + offset) * (xend + offset)
+            output[j] = forecast
+
+
     if wrap:
         result = wrap_result(result, series)
 
@@ -139,3 +149,13 @@ def calc_curve(series, long period=20, *, bint wrap=False):
 
     return quadratic_regression(series, period=period, option=QUADREG_CURVE, wrap=wrap)
 
+
+def calc_qsf(series, long period=20, long offset=0, *, bint wrap=False):
+    """
+    Quadratic Series Forecast (quadratic regression)
+    
+    Args:
+        period (int) : time period, default 20
+    """
+
+    return quadratic_regression(series, period=period, offset=offset, option=QUADREG_FORECAST, wrap=wrap)

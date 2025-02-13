@@ -1,8 +1,11 @@
 # Change Log
 
+## 0.0.21
+- Added `QSF` Indicator (Quadratic Series Forecast)  
+
 ## 0.0.20
 - Metadata is passing through to indicators via the `metadata` attribute
-- Added `alias` method to FuncIndicator to force indicator output name
+- Added `alias` method to FuncIndicator to set indicator output name
 
 ## 0.0.19
 - Added `STEP` Indicator (Step Function)

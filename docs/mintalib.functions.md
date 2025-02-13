@@ -654,6 +654,17 @@ curve(series, period: int = 20, *, item: str = None)
 ```
 
 Curve (quadratic regression)
+## `qsf` function
+
+```python
+qsf(series, period: int = 20, offset: int = 0, *, item: str = None)
+```
+
+Quadratic Series Forecast (quadratic regression)
+
+Args:
+- period (int) : time period, default 20
+
 ## `stoch` function
 
 ```python

@@ -369,6 +369,12 @@ def CURVE(period: int = 20, *, item: str = None):
     return FuncIndicator('CURVE', core.calc_curve, params=params)
 
 
+@wrap_indicator(core.calc_qsf)
+def QSF(period: int = 20, offset: int = 0, *, item: str = None):
+    params = dict(period=period, offset=offset, item=item)
+    return FuncIndicator('QSF', core.calc_qsf, params=params)
+
+
 @wrap_indicator(core.calc_stoch)
 def STOCH(period: int = 14, fastn: int = 3, slown: int = 3):
     params = dict(period=period, fastn=fastn, slown=slown)
@@ -394,6 +400,6 @@ __all__ = [
     'MAD', 'STDEV', 'MAV', 'SMA', 'EMA', 'RMA', 'WMA', 'HMA', 'DEMA',
     'TEMA', 'ALMA', 'RSI', 'DMI', 'ADX', 'PDI', 'MDI', 'TRANGE', 'ATR',
     'NATR', 'SAR', 'CCI', 'CMF', 'MFI', 'BOP', 'BBANDS', 'KELTNER', 'KER',
-    'KAMA', 'MACD', 'PPO', 'SLOPE', 'RVALUE', 'TSF', 'CURVE', 'STOCH',
-    'STREAK', 'EVAL'
+    'KAMA', 'MACD', 'PPO', 'SLOPE', 'RVALUE', 'TSF', 'CURVE', 'QSF',
+    'STOCH', 'STREAK', 'EVAL'
 ]

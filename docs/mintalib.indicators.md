@@ -653,6 +653,17 @@ CURVE(period: int = 20, *, item: str = None)
 ```
 
 Curve (quadratic regression)
+## `QSF` indicator
+
+```python
+QSF(period: int = 20, offset: int = 0, *, item: str = None)
+```
+
+Quadratic Series Forecast (quadratic regression)
+
+Args:
+- period (int) : time period, default 20
+
 ## `STOCH` indicator
 
 ```python

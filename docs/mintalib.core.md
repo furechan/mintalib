@@ -710,7 +710,7 @@ Args:
 ## `quadratic_regression` function
 
 ```python
-quadratic_regression(series, period: int = 20, *, option: int = 0, wrap: bool = False)
+quadratic_regression(series, period: int = 20, *, option: int = 0, offset: int = 0, wrap: bool = False)
 ```
 
 Curve (quadratic regression)
@@ -721,6 +721,17 @@ calc_curve(series, period: int = 20, *, wrap: bool = False)
 ```
 
 Curve (quadratic regression)
+## `calc_qsf` function
+
+```python
+calc_qsf(series, period: int = 20, offset: int = 0, *, wrap: bool = False)
+```
+
+Quadratic Series Forecast (quadratic regression)
+
+Args:
+- period (int) : time period, default 20
+
 ## `calc_stoch` function
 
 ```python

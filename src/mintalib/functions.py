@@ -470,6 +470,14 @@ def curve(series, period: int = 20, *, item: str = None):
     return wrap_result(result, series)
 
 
+@wrap_function(core.calc_qsf)
+def qsf(series, period: int = 20, offset: int = 0, *, item: str = None):
+    series = get_series(series, item=item)
+    kwargs = dict(period=period, offset=offset)
+    result = core.calc_qsf(series, **kwargs)
+    return wrap_result(result, series)
+
+
 @wrap_function(core.calc_stoch)
 def stoch(prices, period: int = 14, fastn: int = 3, slown: int = 3):
     kwargs = dict(period=period, fastn=fastn, slown=slown)
