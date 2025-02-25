@@ -37,6 +37,7 @@ dev = [
     "twine",
     "nbmask",
     "pyarrow",
+    "pdoc>=15.0.1",
 ]
 
 [tool.uv]
