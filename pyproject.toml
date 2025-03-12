@@ -38,6 +38,7 @@ dev = [
     "nbmask",
     "pyarrow",
     "pdoc>=15.0.1",
+    "pytest-sugar>=1.0.0",
 ]
 
 [tool.uv]

@@ -4,6 +4,9 @@ import pandas as pd
 
 from importlib import resources
 
+from pandas.api.types import is_object_dtype
+
+
 TIMEZONE = "America/New_York"
 FREQUENCIES = "daily", "hourly", "minute"
 
@@ -16,12 +19,13 @@ def sample_prices(freq: str = "daily", *, max_bars: int = 0, item: str = None):
 
     fname = f"{freq}-prices.csv"
     path = resources.files(__name__).joinpath(fname)
-    # Note that path here is a traversable not a Path object
+    # path here is a traversable similar to a Path object
 
     with path.open("r") as file:
         prices = pd.read_csv(file, index_col=0, parse_dates=True)
 
-    if freq != "daily":
+    # Check index dtype, same as index.dtype == "object"
+    if is_object_dtype(prices.index):
         prices.index = pd.to_datetime(prices.index, utc=True).tz_convert(TIMEZONE)
 
     if max_bars > 0:
