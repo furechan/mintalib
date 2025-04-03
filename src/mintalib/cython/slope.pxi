@@ -5,10 +5,9 @@ cdef enum:
     LINREG_SLOPE = 0
     LINREG_INTERCEPT = 1
     LINREG_RVALUE = 2
-    LINREG_RSQUARE = 3
-    LINREG_RMSERROR = 4
-    LINREG_FORECAST = 5
-    LINREG_BADOPTION = 6
+    LINREG_FORECAST = 4
+    LINREG_BADOPTION = 5
+
 
 
 def linear_regression(series, long period=20, *, int option=0, int offset=0, bint wrap=False):
@@ -19,8 +18,11 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0, bin
         period (int) : time period, default 20
     """
 
+    if period < 2:
+        raise ValueError(f"Invalid period {period}, should be greater than 2")  
+
     if option < 0 or option > LINREG_BADOPTION:
-        raise ValueError("Invalid option %d" % option)
+        raise ValueError(f"Invalid option {option}")
 
     cdef const double[:] ys = np.asarray(series, float)
     cdef long size = ys.size
@@ -28,81 +30,78 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0, bin
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double x, y, s, sx, sy, sxy, sxx, syy, vxy, vxx, vyy
-    cdef double corr, slope, intercept, mse, rmse, forecast
-    cdef double xbeg = 0.0, xend = xbeg + (period -1)
-
-    cdef long i = 0, j = 0
-
     if period >= size:
         return result
 
-    x = xbeg
-    s = sx = sxx = 0.0
-    for i in range(period):
+    cdef double x, y
+    cdef double s, sx, sy, sxy, sx2, sy2
+    cdef double vxy, vxx, vyy
+    cdef double corr, slope, intercept, forecast
+
+    cdef long i = 0, j = 0
+
+    s = sx = sy = sxy = sx2 = sy2 = 0.0
+
+    for i in range(size):
+        x, y = i, ys[i]
+
+        if y != y:
+            s = sx = sy = sxy = sx2 = sy2 = 0.0
+            continue
+
+        if s == 0:
+            j = i
+
         s += 1
         sx += x
-        sxx += x*x
-        x += 1.0
+        sy += y
+        sxy += x * y
+        sx2 += x * x
+        sy2 += y * y
 
-    vxx = (sxx / s - sx * sx / s / s )
+        if s < period:
+            continue
 
-    if vxx <= 0:
-        return result
+        while s > period and j < size:
+            x, y, j = j, ys[j], j+1
+            s -= 1
+            sx -= x
+            sy -= y
+            sxy -= x * y
+            sx2 -= x * x
+            sy2 -= y * y
 
-    for j in range(period - 1, size):
+        vxy = (sxy / s - sx * sy / s / s)
+        vxx = (sx2 / s - sx * sx / s / s)
+        vyy = (sy2 / s - sy * sy / s / s)
 
-        x = xbeg
-        sy = sxy = syy = 0.0
-        i = j - period + 1
+        slope = vxy / vxx if vxx > 0  else NAN
+        intercept = (sy - slope * sx) / s
+        corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN
 
-        while i <= j:
-            y = ys[i]
-            if y != y:
-                break
-            sy += y
-            sxy += x * y
-            syy += y * y
-            x += 1.0
-            i += 1
-        else:
-            vxy = (sxy / s - sx * sy / s / s)
-            vyy = (syy / s - sy * sy / s / s)
-            slope = vxy / vxx
-            intercept = (sy - slope * sx) / s
-            corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN
-            mse = vyy * (1 - corr * corr)
-            rmse = math.sqrt(mse) if mse >= 0 else NAN
 
-            if option == LINREG_SLOPE:
-                output[j] = slope
-                continue
+        if option == LINREG_SLOPE:
+            output[i] = slope
+            continue
 
-            if option == LINREG_INTERCEPT:
-                output[j] = intercept
-                continue
+        if option == LINREG_INTERCEPT:
+            output[i] = intercept
+            continue
 
-            if option == LINREG_RVALUE:
-                output[j] = corr
-                continue
+        if option == LINREG_RVALUE:
+            output[i] = corr
+            continue
 
-            if option == LINREG_RSQUARE:
-                output[j] = corr * corr
-                continue
-
-            if option == LINREG_RMSERROR:
-                output[j] = rmse
-                continue
-
-            if option == LINREG_FORECAST:
-                forecast = intercept + slope * (xend + offset)
-                output[j] = forecast
-                continue
+        if option == LINREG_FORECAST:
+            forecast = intercept + slope * (i + offset)
+            output[i] = forecast
+            continue
 
     if wrap:
         result = wrap_result(result, series)
 
     return result
+
 
 
 

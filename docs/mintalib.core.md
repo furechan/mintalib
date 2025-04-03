@@ -713,7 +713,11 @@ Args:
 quadratic_regression(series, period: int = 20, *, option: int = 0, offset: int = 0, wrap: bool = False)
 ```
 
-Curve (quadratic regression)
+Quadratic Regression
+
+Args:
+- period (int) : time period, default 20
+
 ## `calc_curve` function
 
 ```python
