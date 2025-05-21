@@ -453,7 +453,7 @@ trange(prices, *, log_prices: bool = False, percent: bool = False)
 True Range
 
 Args:
-- log_percent (bool) : whether to apply log to prices before calculatio
+- log_prices (bool) : whether to apply log to prices before calculation
 - percent (bool) : result as percentage of price
 
 ## `atr` function

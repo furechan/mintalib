@@ -79,8 +79,6 @@ def with_metadata(*, same_scale: bool = None):
 
     def decorator(func):
         func.metadata = MappingProxyType(metadata)
-        # for name, value in metadata.items():
-        #    setattr(func, name, value)
         return func
 
     return decorator
