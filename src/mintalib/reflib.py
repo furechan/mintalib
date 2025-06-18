@@ -1,6 +1,6 @@
 """
     Alternate implementation of indicators for reference/testing purposes
-    Calculations are mostly pandas based
+    Calculations are pandas/numpy based
 """
 
 import numpy as np
