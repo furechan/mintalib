@@ -26,6 +26,8 @@ dev = [
     "ipykernel",
     "pytest",
     "nbmake",
+    "pyright",
+    "mypy",
     "polars",
     "yfinance",
     "matplotlib",
