@@ -67,8 +67,8 @@ def make(ctx):
     ctx.run("python setup.py build_ext --inplace")
 
     with ctx.cd("scripts"):
-        ctx.run("ipython make-newfuncs.ipynb")
-        ctx.run("ipython make-newindics.ipynb")
+        ctx.run("ipython make-functions.ipynb")
+        ctx.run("ipython make-indicators.ipynb")
         ctx.run("ipython update-readme.ipynb")
         ctx.run("ipython update-docs.ipynb")
 
@@ -84,6 +84,11 @@ def dump(ctx):
     """Dump sdist contents"""
     for file in ROOT.glob("dist/*.tar.gz"):
         ctx.run(f"tar -tf {file}")
+
+@task
+def docs(ctx):
+    """Generate documentation"""
+    ctx.run("pdoc mintalib -o docs")
 
 
 @task

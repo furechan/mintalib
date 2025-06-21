@@ -9,7 +9,7 @@ from functools import cached_property
 
 from abc import ABCMeta, abstractmethod
 
-from .core import get_series, wrap_result
+from .core import get_series, wrap_result, column_accessor
 from .utils import format_partial, lazy_repr
 
 
@@ -102,6 +102,7 @@ class FuncIndicator(Indicator):
             series = get_series(prices, self.item)
             result = self.func(series, **self.params)
         else:
+            prices = column_accessor(prices)
             result = self.func(prices, **self.params)
 
         return wrap_result(result, prices, name=output_name)
