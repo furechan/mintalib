@@ -1,6 +1,6 @@
 """ Triple Exponential Moving Average """
 
-@with_metadata(same_scale=True)
+@add_metadata(same_scale=True)
 def calc_tema(series, long period=20, *, bint wrap=False):
     """
     Triple Exponential Moving Average

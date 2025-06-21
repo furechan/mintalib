@@ -1,6 +1,6 @@
 """ Weighted Moving Average """
 
-@with_metadata(same_scale=True)
+@add_metadata(same_scale=True)
 def calc_wma(series, long period, *, bint wrap=False):
     """
     Weighted Moving Average

@@ -1,6 +1,6 @@
 """ Rolling Maximum """
 
-@with_metadata(same_scale=True)
+@add_metadata(same_scale=True)
 def calc_max(series, long period, *, bint wrap=False):
     """ Rolling Maximum """
 

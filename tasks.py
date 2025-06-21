@@ -70,7 +70,6 @@ def make(ctx):
         ctx.run("ipython make-functions.ipynb")
         ctx.run("ipython make-indicators.ipynb")
         ctx.run("ipython update-readme.ipynb")
-        ctx.run("ipython update-docs.ipynb")
 
 
 @task(clean)

@@ -59,7 +59,7 @@ def calc_ker(series, int period=10, *, bint wrap=False):
     return result
 
 
-@with_metadata(same_scale=True)
+@add_metadata(same_scale=True)
 def calc_kama(series, int period=10, int fastn=2, int slown=30, *, bint wrap=False):
     """
     Kaufman Adaptive Moving Average

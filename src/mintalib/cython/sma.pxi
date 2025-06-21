@@ -1,7 +1,7 @@
 """ Simple Moving Average """
 
 
-@with_metadata(same_scale=True)
+# @add_metadata(same_scale=True)
 def calc_sma(series, long period, *, bint wrap=False):
     """
     Simple Moving Average

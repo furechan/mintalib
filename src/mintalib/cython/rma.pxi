@@ -1,6 +1,6 @@
 """ Rolling Moving Average (RSI Style) """
 
-@with_metadata(same_scale=True)
+@add_metadata(same_scale=True)
 def calc_rma(series, long period, *, bint wrap=False):
     """
     Rolling Moving Average (RSI style)

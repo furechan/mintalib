@@ -1,7 +1,7 @@
 """ Shift function """
 
 
-@with_metadata(same_scale=True)
+@add_metadata(same_scale=True)
 def calc_shift(series, long period, *, bint wrap=False):
     """
     Shift Function

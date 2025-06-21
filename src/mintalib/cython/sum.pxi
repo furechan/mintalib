@@ -1,6 +1,6 @@
 """ Rolling Sum """
 
-@with_metadata(same_scale=True)
+@add_metadata(same_scale=True)
 def calc_sum(series, long period, *, bint wrap=False):
     """
     Rolling sum

@@ -1,7 +1,7 @@
 """ Price """
 
 
-@with_metadata(same_scale=True)
+@add_metadata(same_scale=True)
 def calc_price(prices, item: str = None, *, bint wrap=False):
     """ Generic Price 
     

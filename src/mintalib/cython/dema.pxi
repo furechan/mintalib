@@ -1,6 +1,6 @@
 """ Double Exponential Moving Average """
 
-@with_metadata(same_scale=True)
+@add_metadata(same_scale=True)
 def calc_dema(series, long period, *, bint wrap=False):
     """
     Double Exponential Moving Average

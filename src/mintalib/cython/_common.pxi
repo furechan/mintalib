@@ -70,8 +70,7 @@ def get_series(data, item: str = None, *, default_item: str = 'close'):
     return data
 
 
-
-def with_metadata(*, same_scale: bool = None):
+def add_metadata(*, same_scale: bool = None):
     """update function with metadata"""
 
     metadata = dict(same_scale=same_scale)
@@ -82,6 +81,7 @@ def with_metadata(*, same_scale: bool = None):
         return func
 
     return decorator
+
 
 
 
