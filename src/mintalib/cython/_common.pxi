@@ -70,10 +70,16 @@ def get_series(data, item: str = None, *, default_item: str = 'close'):
     return data
 
 
-def add_metadata(*, same_scale: bool = None):
+def add_metadata(*, same_scale: bool = None, output_names: list | tuple = None):
     """update function with metadata"""
 
-    metadata = dict(same_scale=same_scale)
+    if same_scale is not None:
+        same_scale = bool(same_scale)
+
+    if output_names is not None:
+        output_names = tuple(output_names)
+
+    metadata = dict(same_scale=same_scale, output_names=output_names)
     metadata = { k: v for k, v in metadata.items() if v is not None}
 
     def decorator(func):
