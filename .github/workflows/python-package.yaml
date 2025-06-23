@@ -36,4 +36,4 @@ jobs:
     - name: Test with pytest
       run: pytest
     - name: Lint with ruff
-      run: ruff check src --output-format=github
+      run: ruff check src tests --output-format=github
