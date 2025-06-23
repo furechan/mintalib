@@ -25,69 +25,69 @@ The `mintalib` package contains three main modules:
 
 ## List of Indicators
 
-| Name       | Description                                      |
-|:-----------|:-------------------------------------------------|
-| ABS        | Absolute Value                                   |
-| ADX        | Average Directional Index                        |
-| ALMA       | Arnaud Legoux Moving Average                     |
-| ATR        | Average True Range                               |
-| AVGPRICE   | Average Price                                    |
-| BBANDS     | Bollinger Bands                                  |
-| BOP        | Balance of Power                                 |
-| CCI        | Commodity Channel Index                          |
-| CLAG       | Confirmation Lag                                 |
-| CMF        | Chaikin Money Flow                               |
-| CROSSOVER  | Cross Over                                       |
-| CROSSUNDER | Cross Under                                      |
-| CURVE      | Curve (quadratic regression)                     |
-| DEMA       | Double Exponential Moving Average                |
-| DIFF       | Difference                                       |
-| DMI        | Directional Movement Indicator                   |
-| EMA        | Exponential Moving Average                       |
-| EVAL       | Expression Eval (pandas only)                    |
-| EXP        | Exponential                                      |
-| FLAG       | Flag Value                                       |
-| HMA        | Hull Moving Average                              |
-| KAMA       | Kaufman Adaptive Moving Average                  |
-| KELTNER    | Keltner Channel                                  |
-| KER        | Kaufman Efficiency Ratio                         |
-| LAG        | Lag Function                                     |
-| LOG        | Logarithm                                        |
-| LROC       | Logarithmic Rate of Change                       |
-| MACD       | Moving Average Convergenge Divergence            |
-| MAD        | Rolling Mean Absolute Deviation                  |
-| MAV        | Generic Moving Average                           |
-| MAX        | Rolling Maximum                                  |
-| MDI        | Minus Directional Index                          |
-| MFI        | Money Flow Index                                 |
-| MIDPRICE   | Mid Price                                        |
-| MIN        | Rolling Minimum                                  |
-| NATR       | Average True Range (normalized)                  |
-| PDI        | Plus Directional Index                           |
-| PPO        | Price Percentage Oscillator                      |
-| PRICE      | Generic Price                                    |
-| QSF        | Quadratic Series Forecast (quadratic regression) |
-| RMA        | Rolling Moving Average (RSI style)               |
-| ROC        | Rate of Change                                   |
-| RSI        | Relative Strength Index                          |
-| RVALUE     | R-Value (linear regression)                      |
-| SAR        | Parabolic Stop and Reverse                       |
-| SHIFT      | Shift Function                                   |
-| SIGN       | Sign                                             |
-| SLOPE      | Slope (linear regression)                        |
-| SMA        | Simple Moving Average                            |
-| STDEV      | Standard Deviation                               |
-| STEP       | Step Function                                    |
-| STOCH      | Stochastic Oscillator                            |
-| STREAK     | Consecutive streak of ups or downs               |
-| SUM        | Rolling sum                                      |
-| TEMA       | Triple Exponential Moving Average                |
-| TRANGE     | True Range                                       |
-| TSF        | Time Series Forecast (linear regression)         |
-| TYPPRICE   | Typical Price                                    |
-| UPDOWN     | Flag for value crossing up & down levels         |
-| WCLPRICE   | Weighted Close Price                             |
-| WMA        | Weighted Moving Average                          |
+| Name                                               | Description                                      |
+|:---------------------------------------------------|:-------------------------------------------------|
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Absolute Value                                   |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Average Directional Index                        |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Arnaud Legoux Moving Average                     |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Average True Range                               |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Average Price                                    |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Bollinger Bands                                  |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Balance of Power                                 |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Commodity Channel Index                          |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Confirmation Lag                                 |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Chaikin Money Flow                               |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Cross Over                                       |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Cross Under                                      |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Curve (quadratic regression)                     |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Double Exponential Moving Average                |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Difference                                       |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Directional Movement Indicator                   |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Exponential Moving Average                       |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Expression Eval (pandas only)                    |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Exponential                                      |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Flag Value                                       |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Hull Moving Average                              |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Kaufman Adaptive Moving Average                  |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Keltner Channel                                  |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Kaufman Efficiency Ratio                         |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Lag Function                                     |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Logarithm                                        |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Logarithmic Rate of Change                       |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Moving Average Convergenge Divergence            |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Rolling Mean Absolute Deviation                  |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Generic Moving Average                           |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Rolling Maximum                                  |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Minus Directional Index                          |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Money Flow Index                                 |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Mid Price                                        |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Rolling Minimum                                  |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Average True Range (normalized)                  |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Plus Directional Index                           |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Price Percentage Oscillator                      |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Generic Price                                    |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Quadratic Series Forecast (quadratic regression) |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Rolling Moving Average (RSI style)               |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Rate of Change                                   |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Relative Strength Index                          |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | R-Value (linear regression)                      |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Parabolic Stop and Reverse                       |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Shift Function                                   |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Sign                                             |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Slope (linear regression)                        |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Simple Moving Average                            |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Standard Deviation                               |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Step Function                                    |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Stochastic Oscillator                            |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Consecutive streak of ups or downs               |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Rolling sum                                      |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Triple Exponential Moving Average                |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | True Range                                       |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Time Series Forecast (linear regression)         |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Typical Price                                    |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Flag for value crossing up & down levels         |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Weighted Close Price                             |
+| wrap_indicator.<locals>.decorator.<locals>.wrapper | Weighted Moving Average                          |
 
 
 ## Using Functions

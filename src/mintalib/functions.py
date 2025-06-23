@@ -27,6 +27,7 @@ from .core import get_series, wrap_result, column_accessor
 nan = float('nan')
 
 def wrap_function(calc_func):
+
     sig = inspect.signature(calc_func)
     first_param = next(iter(sig.parameters))
 
@@ -50,6 +51,7 @@ def wrap_function(calc_func):
 
         return wrapper
     return decorator
+
 
 @wrap_function(core.calc_abs)
 def abs(prices, *, item: str = None): ...

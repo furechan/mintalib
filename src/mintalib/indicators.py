@@ -26,7 +26,7 @@ from .model import FuncIndicator
 nan = float('nan')
 
 def wrap_indicator(calc_func):
-    """decorator to update indicator with documentation from source"""
+    """Decorator to wrap indicators"""
 
     def decorator(func):
         name = func.__name__
@@ -50,6 +50,7 @@ def wrap_indicator(calc_func):
         return wrapper
 
     return decorator
+
 
 @wrap_indicator(core.calc_abs)
 def ABS(*, item: str = None): ...

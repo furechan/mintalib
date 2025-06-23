@@ -1615,8 +1615,8 @@ typedef struct {
 struct __pyx_defaults;
 struct __pyx_defaults1;
 struct __pyx_obj_8mintalib_4core___pyx_scope_struct__add_metadata;
-struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function;
-struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator;
+struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old;
+struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old;
 struct __pyx_array_obj;
 struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
@@ -1706,11 +1706,11 @@ struct __pyx_obj_8mintalib_4core___pyx_scope_struct__add_metadata {
 /* "src/mintalib/cython/_common.pxi":94
  * 
  * 
- * def wrap_function(source):             # <<<<<<<<<<<<<<
+ * def wrap_function_old(source):             # <<<<<<<<<<<<<<
  *     """decorator to update function with documentation from source"""
  * 
 */
-struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function {
+struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old {
   PyObject_HEAD
   PyObject *__pyx_v_doc;
 };
@@ -1719,11 +1719,11 @@ struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function {
 /* "src/mintalib/cython/_common.pxi":107
  * 
  * 
- * def wrap_indicator(source):             # <<<<<<<<<<<<<<
+ * def wrap_indicator_old(source):             # <<<<<<<<<<<<<<
  *     """decorator to update indicator with documentation from source"""
  * 
 */
-struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator {
+struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old {
   PyObject_HEAD
   PyObject *__pyx_v_doc;
 };
@@ -3653,7 +3653,6 @@ static const char __pyx_k_class_getitem[] = "__class_getitem__";
 static const char __pyx_k_mintalib_core[] = "mintalib.core";
 static const char __pyx_k_not_supported[] = " not supported!";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
-static const char __pyx_k_wrap_function[] = "wrap_function";
 static const char __pyx_k_AssertionError[] = "AssertionError";
 static const char __pyx_k_Invalid_option[] = "Invalid option ";
 static const char __pyx_k_Invalid_period[] = "Invalid period ";
@@ -3663,7 +3662,6 @@ static const char __pyx_k_XQhgWA_q_AXQ_1[] = "\320\000\025\320\025(\250\001\360\
 static const char __pyx_k_b_Rt1A_q_AXQ_1[] = "\320\000\030\230\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\340\004\r\210R\210t\2201\220A\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
 static const char __pyx_k_calc_crossover[] = "calc_crossover";
 static const char __pyx_k_keltner_result[] = "keltner_result";
-static const char __pyx_k_wrap_indicator[] = "wrap_indicator";
 static const char __pyx_k_7q_q_xwhgM__dde[] = "\320\000\025\320\025%\320%7\260q\360\020\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270h\300g\320M_\320_d\320de";
 static const char __pyx_k_Different_sizes[] = "Different sizes!";
 static const char __pyx_k_Invalid_ma_type[] = "Invalid ma_type ";
@@ -3678,10 +3676,12 @@ static const char __pyx_k_MappingProxyType[] = "MappingProxyType";
 static const char __pyx_k_b_9AXQ_4q_q_AXQ_1[] = "\320\000\030\230\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\340\t\013\2109\220A\220X\230Q\330\010\021\220\022\2204\220q\230\001\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
 static const char __pyx_k_linear_regression[] = "linear_regression";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
+static const char __pyx_k_wrap_function_old[] = "wrap_function_old";
 static const char __pyx_k_Unknown_price_type[] = "Unknown price type ";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
+static const char __pyx_k_wrap_indicator_old[] = "wrap_indicator_old";
 static const char __pyx_k_Invalid_period_value[] = "Invalid period value ";
 static const char __pyx_k_quadratic_regression[] = "quadratic_regression";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
@@ -3777,7 +3777,6 @@ static const char __pyx_k_wc_j_4A_b_Rq_5_r_A_K_A_U_1_Baq[] = "\320\000\027\320\0
 static const char __pyx_k_wc_j_4A_b_Rq_5_r_A_L_A_U_1_Baq[] = "\200\001\330%&\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\022\320\0334\260A\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220L\240\001\330\004\022\220'\230\033\240A\340\004\010\210\005\210U\220!\2201\330\010\014\210B\210a\210q\340\010\013\2102\210S\220\001\330\014\024\220A\330\014\025\220Q\340\014\023\2201\330\014\024\220A\340\010\016\210f\220B\220g\230T\240\022\2402\240Q\330\014\017\210t\2202\220Q\220d\230\"\230B\230a\330\014\017\210r\220\023\220A\330\020\030\230\001\330\020\031\230\021\340\010\013\2106\220\023\220A\330\014\022\220!\2205\230\001\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
 static const char __pyx_k_wc_j_4A_b_Rq_5_r_A_wc_Rq_L_A_U[] = "\200\001\330%&\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\022\320\0334\260A\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\027\220w\230c\240\027\250\002\250#\250R\250q\330\004\024\220L\240\n\250!\330\004\022\220'\230\033\240A\340\004\010\210\005\210U\220!\2201\330\010\014\210B\210a\210q\340\010\013\2102\210S\220\001\330\014\025\220Q\330\014\024\220A\330\014\024\220F\230\"\230A\340\014\023\2207\230!\330\014\024\220A\340\010\016\210f\220B\220g\230T\240\022\2402\240Q\330\014\017\210t\2202\220Q\220d\230\"\230B\230a\330\014\017\210r\220\023\220A\330\020\030\230\001\330\020\030\230\001\330\020\031\230\021\340\010\013\2106\220\023\220A\330\014\022\220!\2205\230\005\230R\230q\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
 static const char __pyx_k_wc_j_b_Rq_5_r_A_Kq_uBgRq_U_1_a[] = "\200\001\330%&\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220K\230q\340\004\027\220u\230B\230g\240R\240q\330\004\022\220'\230\021\340\004\010\210\005\210U\220!\2201\330\010\016\210a\340\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2202\220R\220q\330\014\017\210u\220A\220Q\330\020\021\330\014\017\210t\2202\220S\230\001\330\020\026\220a\340\010\016\210a\210r\220\022\2205\230\001\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
-static const char __pyx_k_wrap_function_locals_decorator[] = "wrap_function.<locals>.decorator";
 static const char __pyx_k_0_b_Rq_5_s_A_A_U_1_1_6_9A_5_4uA[] = "\320\000\033\320\0330\260\001\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240s\250&\260\001\330\004\034\230A\340\004\027\220}\240A\340\004\022\220!\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2106\220\022\2209\230A\330\014\022\220!\2205\230\001\340\010\013\2104\210u\220A\220Q\330\014\023\2201\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
 static const char __pyx_k_1_6_1_r_Zq_a_5_r_A_Zz_k_Q_U_1_3[] = "\200\001\330\025&\320&;\2701\360\022\000\005!\240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004\025\220Z\230q\240\006\240a\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\025\220[\240\n\250!\330\004\025\220Z\230z\250\032\260;\270k\310\021\340\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\013\2103\210c\220\021\330\014\020\220\005\220T\230\021\340\010\014\210E\220\024\220Q\220d\230#\230Q\230a\340\010\013\2105\220\003\2203\220c\230\024\230S\240\003\2401\330\014\r\340\010\016\210f\220C\220r\230\030\240\021\330\010\016\210f\220C\220r\230\030\240\021\360\006\000\t\014\2106\220\022\2202\220T\230\023\230B\230a\330\014\020\220\005\220T\230\030\240\024\240T\250\026\250q\340\r\023\2202\220R\220t\2303\230b\240\001\330\014\020\220\005\220T\230\030\240\024\240T\250\025\250a\250q\340\010\016\210a\210u\220A\360\010\000\t\014\2106\220\023\220A\340\014\017\210s\220\"\220A\330\020\024\220E\230\024\230X\240U\250%\250u\260A\260Q\340\020\024\220E\230\024\230X\240U\250%\250v\260Q\360\006\000\r\024\2203\220c\230\023\230B\230a\360\006\000\r\020\210v\220R\220q\330\020\023\2204\220r\230\021\330\024\032\230!\330\020\023\2203\220b\230\001\330\024\031\230\021\330\024\032\230!\330\014\017\210v\220R\220q\330\020\023\2204\220r\230\021\330\024\032\230!\330\020\023\2203\220b\230\001\330\024\031\230\021\330\024\032\230!\340\010\013\2106\220\024\220S\230\002\230!\330\014\021\220\021\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
 static const char __pyx_k_1_81HA_81HA_9AWA_d_U_F_A_XQe1_4[] = "\320\000\025\220\\\240\034\250^\2701\360\032\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220H\230A\340\t\013\2109\220A\220W\230A\330\010\016\210d\220#\220U\230\"\230F\240\"\240A\340\004\r\210X\220Q\220e\2301\330\004\013\2104\210r\220\021\340\004\r\210Z\220q\230\005\230X\240Q\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
@@ -3806,7 +3805,6 @@ static const char __pyx_k_src_mintalib_cython_keltner_pxi[] = "src/mintalib/cyth
 static const char __pyx_k_wb_j_b_Rq_5_r_A_Ba_U_81_Bar_1_a[] = "\200\001\330%&\360\020\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220B\220a\330\004\022\220!\340\004\010\210\005\210U\220!\2208\2301\330\010\014\210B\210a\210r\220\022\2201\330\010\016\210a\210u\220A\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
 static const char __pyx_k_wc_j_4A_b_Rq_5_q_A_Ba_a_Q_U_1_1[] = "\200\001\330%&\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\022\320\0334\260A\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\004\230B\230a\330\004\030\230\001\330\004\026\220a\330\004\030\230\001\340\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2104\210u\220A\220Q\330\014\025\220Q\330\014\017\210v\220S\230\001\330\020\031\230\021\330\020\026\220f\230B\230a\340\020\027\220v\230S\240\006\240b\250\001\340\010\013\2106\220\023\220A\330\014\022\220!\2205\230\001\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
 static const char __pyx_k_wc_j_4A_b_Rq_5_q_A_Cwb_t2Q_iq_a[] = "\200\001\330%:\270!\360$\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\022\320\0334\260A\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\004\230C\230w\240b\250\001\330\004\027\220t\2302\230Q\330\004\030\230\001\330\004\026\220i\230q\330\004\026\220a\340\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2104\210u\220A\220Q\330\014\025\220Q\340\014\017\210u\220A\220Q\330\020\026\220a\330\020\026\220a\330\020\026\220a\330\021\022\330\020\026\220f\230B\230d\240\"\240A\330\020\026\220d\230\"\230D\240\002\240!\330\020\026\220d\230\"\230A\340\020\027\220v\230S\240\006\240b\250\001\340\010\013\2106\220\023\220A\330\014\022\220!\2205\230\001\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
-static const char __pyx_k_wrap_indicator_locals_decorator[] = "wrap_indicator.<locals>.decorator";
 static const char __pyx_k_z_q_z_4vWG1_1_q_wavQ_q_wavYd_fJ[] = "\200\001\360\010\000\005\010\200z\220\021\220&\230\001\330\010\017\210q\360\006\000\005\010\200z\220\021\220&\230\002\230!\330\010\013\2104\210v\220W\230G\2401\330\014\023\2201\330\010\017\210q\360\006\000\005\010\200w\210a\210v\220Q\330\010\017\210q\360\006\000\005\010\200w\210a\210v\220Y\230d\240$\240f\250J\260j\300\003\3001\330\010\017\210t\2201\340\004\014\210A";
 static const char __pyx_k_All_dimensions_preceding_dimensi[] = "All dimensions preceding dimension %d must be indexed and not sliced";
 static const char __pyx_k_Buffer_view_does_not_expose_stri[] = "Buffer view does not expose strides";
@@ -3827,6 +3825,8 @@ static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __red
 static const char __pyx_k_period_must_be_greater_than_zero[] = "period must be greater than zero";
 static const char __pyx_k_unable_to_allocate_shape_and_str[] = "unable to allocate shape and strides.";
 static const char __pyx_k_wc_j_b_Rq_5_r_A_Kq_uBgRq_U_1_a_2[] = "\200\001\330%&\360\006\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220K\230q\340\004\027\220u\230B\230g\240R\240q\330\004\022\220'\230\021\340\004\010\210\005\210U\220!\2201\330\010\016\210a\340\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2202\220R\220q\330\014\017\210u\220A\220Q\330\020\021\330\014\017\210t\2202\220S\230\001\330\020\026\220a\340\010\016\210a\210r\220\022\2205\230\001\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
+static const char __pyx_k_wrap_function_old_locals_decorat[] = "wrap_function_old.<locals>.decorator";
+static const char __pyx_k_wrap_indicator_old_locals_decora[] = "wrap_indicator_old.<locals>.decorator";
 static const char __pyx_k_Q_2XQfAYa_HAV1HA_BhavQj_avU_e2T_2[] = "\320\000\035\230Q\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220U\230!\340\004\016\210e\2202\220T\230\022\2302\230R\230w\240b\250\001\340\004\007\200q\330\010\021\220\033\230A\230X\240Q\340\004\013\2101";
 /* #### Code section: decls ### */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -3875,10 +3875,10 @@ static PyObject *__pyx_pf_8mintalib_4core_2column_accessor(CYTHON_UNUSED PyObjec
 static PyObject *__pyx_pf_8mintalib_4core_4get_series(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_data, PyObject *__pyx_v_item, PyObject *__pyx_v_default_item); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_12add_metadata_decorator(PyObject *__pyx_self, PyObject *__pyx_v_func); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_6add_metadata(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_same_scale, PyObject *__pyx_v_output_names); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_13wrap_function_decorator(PyObject *__pyx_self, PyObject *__pyx_v_func); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_8wrap_function(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_14wrap_indicator_decorator(PyObject *__pyx_self, PyObject *__pyx_v_func); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_17wrap_function_old_decorator(PyObject *__pyx_self, PyObject *__pyx_v_func); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_8wrap_function_old(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_18wrap_indicator_old_decorator(PyObject *__pyx_self, PyObject *__pyx_v_func); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator_old(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_12wrap_result(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_result, PyObject *__pyx_v_source, PyObject *__pyx_v_name); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_14calc_price(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_prices, PyObject *__pyx_v_item, int __pyx_v_wrap); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_16calc_avgprice(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_prices, int __pyx_v_wrap); /* proto */
@@ -3949,8 +3949,8 @@ static PyObject *__pyx_pf_8mintalib_4core_140calc_eval(CYTHON_UNUSED PyObject *_
 static PyObject *__pyx_tp_new_8mintalib_4core___pyx_defaults(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_8mintalib_4core___pyx_defaults1(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct__add_metadata(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct_1_wrap_function(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct_2_wrap_indicator(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct_1_wrap_function_old(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_Enum(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -3996,8 +3996,8 @@ typedef struct {
   PyObject *__pyx_type_8mintalib_4core___pyx_defaults;
   PyObject *__pyx_type_8mintalib_4core___pyx_defaults1;
   PyObject *__pyx_type_8mintalib_4core___pyx_scope_struct__add_metadata;
-  PyObject *__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function;
-  PyObject *__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator;
+  PyObject *__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_old;
+  PyObject *__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old;
   PyObject *__pyx_type___pyx_array;
   PyObject *__pyx_type___pyx_MemviewEnum;
   PyObject *__pyx_type___pyx_memoryview;
@@ -4005,8 +4005,8 @@ typedef struct {
   PyTypeObject *__pyx_ptype_8mintalib_4core___pyx_defaults;
   PyTypeObject *__pyx_ptype_8mintalib_4core___pyx_defaults1;
   PyTypeObject *__pyx_ptype_8mintalib_4core___pyx_scope_struct__add_metadata;
-  PyTypeObject *__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function;
-  PyTypeObject *__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator;
+  PyTypeObject *__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old;
+  PyTypeObject *__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old;
   PyTypeObject *__pyx_array_type;
   PyTypeObject *__pyx_MemviewEnum_type;
   PyTypeObject *__pyx_memoryview_type;
@@ -4047,13 +4047,13 @@ int __pyx_freecount_8mintalib_4core___pyx_scope_struct__add_metadata;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *__pyx_freelist_8mintalib_4core___pyx_scope_struct_1_wrap_function[8];
-int __pyx_freecount_8mintalib_4core___pyx_scope_struct_1_wrap_function;
+struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *__pyx_freelist_8mintalib_4core___pyx_scope_struct_1_wrap_function_old[8];
+int __pyx_freecount_8mintalib_4core___pyx_scope_struct_1_wrap_function_old;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *__pyx_freelist_8mintalib_4core___pyx_scope_struct_2_wrap_indicator[8];
-int __pyx_freecount_8mintalib_4core___pyx_scope_struct_2_wrap_indicator;
+struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *__pyx_freelist_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old[8];
+int __pyx_freecount_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old;
 #endif
 /* CodeObjectCache.module_state_decls */
 struct __Pyx_CodeObjectCache __pyx_code_cache;
@@ -4588,10 +4588,10 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_where __pyx_string_tab[502]
 #define __pyx_n_u_where_flag __pyx_string_tab[503]
 #define __pyx_n_u_wrap __pyx_string_tab[504]
-#define __pyx_n_u_wrap_function __pyx_string_tab[505]
-#define __pyx_n_u_wrap_function_locals_decorator __pyx_string_tab[506]
-#define __pyx_n_u_wrap_indicator __pyx_string_tab[507]
-#define __pyx_n_u_wrap_indicator_locals_decorator __pyx_string_tab[508]
+#define __pyx_n_u_wrap_function_old __pyx_string_tab[505]
+#define __pyx_n_u_wrap_function_old_locals_decorat __pyx_string_tab[506]
+#define __pyx_n_u_wrap_indicator_old __pyx_string_tab[507]
+#define __pyx_n_u_wrap_indicator_old_locals_decora __pyx_string_tab[508]
 #define __pyx_n_u_wrap_result __pyx_string_tab[509]
 #define __pyx_n_u_wsum __pyx_string_tab[510]
 #define __pyx_n_u_x __pyx_string_tab[511]
@@ -4626,10 +4626,10 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_type_8mintalib_4core___pyx_defaults1);
   Py_CLEAR(clear_module_state->__pyx_ptype_8mintalib_4core___pyx_scope_struct__add_metadata);
   Py_CLEAR(clear_module_state->__pyx_type_8mintalib_4core___pyx_scope_struct__add_metadata);
-  Py_CLEAR(clear_module_state->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function);
-  Py_CLEAR(clear_module_state->__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function);
-  Py_CLEAR(clear_module_state->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator);
-  Py_CLEAR(clear_module_state->__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator);
+  Py_CLEAR(clear_module_state->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old);
+  Py_CLEAR(clear_module_state->__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_old);
+  Py_CLEAR(clear_module_state->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old);
+  Py_CLEAR(clear_module_state->__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old);
   Py_CLEAR(clear_module_state->__pyx_array_type);
   Py_CLEAR(clear_module_state->__pyx_type___pyx_array);
   Py_CLEAR(clear_module_state->__pyx_MemviewEnum_type);
@@ -4683,10 +4683,10 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_type_8mintalib_4core___pyx_defaults1);
   Py_VISIT(traverse_module_state->__pyx_ptype_8mintalib_4core___pyx_scope_struct__add_metadata);
   Py_VISIT(traverse_module_state->__pyx_type_8mintalib_4core___pyx_scope_struct__add_metadata);
-  Py_VISIT(traverse_module_state->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function);
-  Py_VISIT(traverse_module_state->__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function);
-  Py_VISIT(traverse_module_state->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator);
-  Py_VISIT(traverse_module_state->__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator);
+  Py_VISIT(traverse_module_state->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old);
+  Py_VISIT(traverse_module_state->__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_old);
+  Py_VISIT(traverse_module_state->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old);
+  Py_VISIT(traverse_module_state->__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old);
   Py_VISIT(traverse_module_state->__pyx_array_type);
   Py_VISIT(traverse_module_state->__pyx_type___pyx_array);
   Py_VISIT(traverse_module_state->__pyx_MemviewEnum_type);
@@ -19451,22 +19451,22 @@ static PyObject *__pyx_pf_8mintalib_4core_6add_metadata(CYTHON_UNUSED PyObject *
 /* "src/mintalib/cython/_common.pxi":94
  * 
  * 
- * def wrap_function(source):             # <<<<<<<<<<<<<<
+ * def wrap_function_old(source):             # <<<<<<<<<<<<<<
  *     """decorator to update function with documentation from source"""
  * 
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_9wrap_function(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8mintalib_4core_9wrap_function_old(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_8wrap_function, "decorator to update function with documentation from source");
-static PyMethodDef __pyx_mdef_8mintalib_4core_9wrap_function = {"wrap_function", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_9wrap_function, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_8wrap_function};
-static PyObject *__pyx_pw_8mintalib_4core_9wrap_function(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_8wrap_function_old, "decorator to update function with documentation from source");
+static PyMethodDef __pyx_mdef_8mintalib_4core_9wrap_function_old = {"wrap_function_old", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_9wrap_function_old, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_8wrap_function_old};
+static PyObject *__pyx_pw_8mintalib_4core_9wrap_function_old(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -19484,7 +19484,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("wrap_function (wrapper)", 0);
+  __Pyx_RefNannySetupContext("wrap_function_old (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -19507,9 +19507,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "wrap_function", 0) < 0) __PYX_ERR(1, 94, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "wrap_function_old", 0) < 0) __PYX_ERR(1, 94, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("wrap_function", 1, 1, 1, i); __PYX_ERR(1, 94, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("wrap_function_old", 1, 1, 1, i); __PYX_ERR(1, 94, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -19521,18 +19521,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("wrap_function", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 94, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("wrap_function_old", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 94, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("mintalib.core.wrap_function", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.wrap_function_old", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_8wrap_function(__pyx_self, __pyx_v_source);
+  __pyx_r = __pyx_pf_8mintalib_4core_8wrap_function_old(__pyx_self, __pyx_v_source);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -19551,15 +19551,15 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_13wrap_function_1decorator(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8mintalib_4core_17wrap_function_old_1decorator(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_8mintalib_4core_13wrap_function_1decorator = {"decorator", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_13wrap_function_1decorator, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8mintalib_4core_13wrap_function_1decorator(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8mintalib_4core_17wrap_function_old_1decorator = {"decorator", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_17wrap_function_old_1decorator, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8mintalib_4core_17wrap_function_old_1decorator(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -19621,11 +19621,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("mintalib.core.wrap_function.decorator", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.wrap_function_old.decorator", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_13wrap_function_decorator(__pyx_self, __pyx_v_func);
+  __pyx_r = __pyx_pf_8mintalib_4core_17wrap_function_old_decorator(__pyx_self, __pyx_v_func);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -19635,9 +19635,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8mintalib_4core_13wrap_function_decorator(PyObject *__pyx_self, PyObject *__pyx_v_func) {
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *__pyx_cur_scope;
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *__pyx_outer_scope;
+static PyObject *__pyx_pf_8mintalib_4core_17wrap_function_old_decorator(PyObject *__pyx_self, PyObject *__pyx_v_func) {
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *__pyx_cur_scope;
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *__pyx_outer_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -19647,7 +19647,7 @@ static PyObject *__pyx_pf_8mintalib_4core_13wrap_function_decorator(PyObject *__
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("decorator", 0);
-  __pyx_outer_scope = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
   /* "src/mintalib/cython/_common.pxi":100
@@ -19714,7 +19714,7 @@ static PyObject *__pyx_pf_8mintalib_4core_13wrap_function_decorator(PyObject *__
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("mintalib.core.wrap_function.decorator", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.wrap_function_old.decorator", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -19725,13 +19725,13 @@ static PyObject *__pyx_pf_8mintalib_4core_13wrap_function_decorator(PyObject *__
 /* "src/mintalib/cython/_common.pxi":94
  * 
  * 
- * def wrap_function(source):             # <<<<<<<<<<<<<<
+ * def wrap_function_old(source):             # <<<<<<<<<<<<<<
  *     """decorator to update function with documentation from source"""
  * 
 */
 
-static PyObject *__pyx_pf_8mintalib_4core_8wrap_function(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source) {
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *__pyx_cur_scope;
+static PyObject *__pyx_pf_8mintalib_4core_8wrap_function_old(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source) {
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *__pyx_cur_scope;
   PyObject *__pyx_v_decorator = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -19741,10 +19741,10 @@ static PyObject *__pyx_pf_8mintalib_4core_8wrap_function(CYTHON_UNUSED PyObject 
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("wrap_function", 0);
-  __pyx_cur_scope = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *)__pyx_tp_new_8mintalib_4core___pyx_scope_struct_1_wrap_function(__pyx_mstate_global->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __Pyx_RefNannySetupContext("wrap_function_old", 0);
+  __pyx_cur_scope = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *)__pyx_tp_new_8mintalib_4core___pyx_scope_struct_1_wrap_function_old(__pyx_mstate_global->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(1, 94, __pyx_L1_error)
   } else {
@@ -19779,7 +19779,7 @@ static PyObject *__pyx_pf_8mintalib_4core_8wrap_function(CYTHON_UNUSED PyObject 
  *         if doc and func.__doc__ is None:
  *             func.__doc__ = doc
 */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_13wrap_function_1decorator, 0, __pyx_mstate_global->__pyx_n_u_wrap_function_locals_decorator, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 99, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_17wrap_function_old_1decorator, 0, __pyx_mstate_global->__pyx_n_u_wrap_function_old_locals_decorat, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_decorator = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -19799,7 +19799,7 @@ static PyObject *__pyx_pf_8mintalib_4core_8wrap_function(CYTHON_UNUSED PyObject 
   /* "src/mintalib/cython/_common.pxi":94
  * 
  * 
- * def wrap_function(source):             # <<<<<<<<<<<<<<
+ * def wrap_function_old(source):             # <<<<<<<<<<<<<<
  *     """decorator to update function with documentation from source"""
  * 
 */
@@ -19808,7 +19808,7 @@ static PyObject *__pyx_pf_8mintalib_4core_8wrap_function(CYTHON_UNUSED PyObject 
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("mintalib.core.wrap_function", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.wrap_function_old", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_decorator);
@@ -19821,22 +19821,22 @@ static PyObject *__pyx_pf_8mintalib_4core_8wrap_function(CYTHON_UNUSED PyObject 
 /* "src/mintalib/cython/_common.pxi":107
  * 
  * 
- * def wrap_indicator(source):             # <<<<<<<<<<<<<<
+ * def wrap_indicator_old(source):             # <<<<<<<<<<<<<<
  *     """decorator to update indicator with documentation from source"""
  * 
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_11wrap_indicator(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8mintalib_4core_11wrap_indicator_old(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_10wrap_indicator, "decorator to update indicator with documentation from source");
-static PyMethodDef __pyx_mdef_8mintalib_4core_11wrap_indicator = {"wrap_indicator", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_11wrap_indicator, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_10wrap_indicator};
-static PyObject *__pyx_pw_8mintalib_4core_11wrap_indicator(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_10wrap_indicator_old, "decorator to update indicator with documentation from source");
+static PyMethodDef __pyx_mdef_8mintalib_4core_11wrap_indicator_old = {"wrap_indicator_old", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_11wrap_indicator_old, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_10wrap_indicator_old};
+static PyObject *__pyx_pw_8mintalib_4core_11wrap_indicator_old(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -19854,7 +19854,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("wrap_indicator (wrapper)", 0);
+  __Pyx_RefNannySetupContext("wrap_indicator_old (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -19877,9 +19877,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "wrap_indicator", 0) < 0) __PYX_ERR(1, 107, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "wrap_indicator_old", 0) < 0) __PYX_ERR(1, 107, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("wrap_indicator", 1, 1, 1, i); __PYX_ERR(1, 107, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("wrap_indicator_old", 1, 1, 1, i); __PYX_ERR(1, 107, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -19891,18 +19891,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("wrap_indicator", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 107, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("wrap_indicator_old", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 107, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("mintalib.core.wrap_indicator", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.wrap_indicator_old", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_10wrap_indicator(__pyx_self, __pyx_v_source);
+  __pyx_r = __pyx_pf_8mintalib_4core_10wrap_indicator_old(__pyx_self, __pyx_v_source);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -19921,15 +19921,15 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_14wrap_indicator_1decorator(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8mintalib_4core_18wrap_indicator_old_1decorator(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_8mintalib_4core_14wrap_indicator_1decorator = {"decorator", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_14wrap_indicator_1decorator, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8mintalib_4core_14wrap_indicator_1decorator(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8mintalib_4core_18wrap_indicator_old_1decorator = {"decorator", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_18wrap_indicator_old_1decorator, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8mintalib_4core_18wrap_indicator_old_1decorator(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -19991,11 +19991,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("mintalib.core.wrap_indicator.decorator", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.wrap_indicator_old.decorator", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_14wrap_indicator_decorator(__pyx_self, __pyx_v_func);
+  __pyx_r = __pyx_pf_8mintalib_4core_18wrap_indicator_old_decorator(__pyx_self, __pyx_v_func);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -20005,9 +20005,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8mintalib_4core_14wrap_indicator_decorator(PyObject *__pyx_self, PyObject *__pyx_v_func) {
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *__pyx_cur_scope;
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *__pyx_outer_scope;
+static PyObject *__pyx_pf_8mintalib_4core_18wrap_indicator_old_decorator(PyObject *__pyx_self, PyObject *__pyx_v_func) {
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *__pyx_cur_scope;
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *__pyx_outer_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -20017,7 +20017,7 @@ static PyObject *__pyx_pf_8mintalib_4core_14wrap_indicator_decorator(PyObject *_
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("decorator", 0);
-  __pyx_outer_scope = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
   /* "src/mintalib/cython/_common.pxi":113
@@ -20084,7 +20084,7 @@ static PyObject *__pyx_pf_8mintalib_4core_14wrap_indicator_decorator(PyObject *_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("mintalib.core.wrap_indicator.decorator", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.wrap_indicator_old.decorator", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -20095,13 +20095,13 @@ static PyObject *__pyx_pf_8mintalib_4core_14wrap_indicator_decorator(PyObject *_
 /* "src/mintalib/cython/_common.pxi":107
  * 
  * 
- * def wrap_indicator(source):             # <<<<<<<<<<<<<<
+ * def wrap_indicator_old(source):             # <<<<<<<<<<<<<<
  *     """decorator to update indicator with documentation from source"""
  * 
 */
 
-static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source) {
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *__pyx_cur_scope;
+static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator_old(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_source) {
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *__pyx_cur_scope;
   PyObject *__pyx_v_decorator = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -20111,10 +20111,10 @@ static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator(CYTHON_UNUSED PyObjec
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("wrap_indicator", 0);
-  __pyx_cur_scope = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *)__pyx_tp_new_8mintalib_4core___pyx_scope_struct_2_wrap_indicator(__pyx_mstate_global->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __Pyx_RefNannySetupContext("wrap_indicator_old", 0);
+  __pyx_cur_scope = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *)__pyx_tp_new_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old(__pyx_mstate_global->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(1, 107, __pyx_L1_error)
   } else {
@@ -20149,7 +20149,7 @@ static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator(CYTHON_UNUSED PyObjec
  *         if doc and func.__doc__ is None:
  *             func.__doc__ = doc
 */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_14wrap_indicator_1decorator, 0, __pyx_mstate_global->__pyx_n_u_wrap_indicator_locals_decorator, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 112, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_18wrap_indicator_old_1decorator, 0, __pyx_mstate_global->__pyx_n_u_wrap_indicator_old_locals_decora, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_decorator = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -20169,7 +20169,7 @@ static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator(CYTHON_UNUSED PyObjec
   /* "src/mintalib/cython/_common.pxi":107
  * 
  * 
- * def wrap_indicator(source):             # <<<<<<<<<<<<<<
+ * def wrap_indicator_old(source):             # <<<<<<<<<<<<<<
  *     """decorator to update indicator with documentation from source"""
  * 
 */
@@ -20178,7 +20178,7 @@ static PyObject *__pyx_pf_8mintalib_4core_10wrap_indicator(CYTHON_UNUSED PyObjec
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("mintalib.core.wrap_indicator", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.wrap_indicator_old", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_decorator);
@@ -54943,16 +54943,16 @@ static PyTypeObject __pyx_type_8mintalib_4core___pyx_scope_struct__add_metadata 
 };
 #endif
 
-static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct_1_wrap_function(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct_1_wrap_function_old(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_1_wrap_function > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function)))) {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_8mintalib_4core___pyx_scope_struct_1_wrap_function[--__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_1_wrap_function];
-    memset(o, 0, sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function));
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_1_wrap_function_old > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old)))) {
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_8mintalib_4core___pyx_scope_struct_1_wrap_function_old[--__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_1_wrap_function_old];
+    memset(o, 0, sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -54965,11 +54965,11 @@ static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct_1_wrap_function
   return o;
 }
 
-static void __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_1_wrap_function(PyObject *o) {
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *)o;
+static void __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_1_wrap_function_old(PyObject *o) {
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_1_wrap_function) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_1_wrap_function_old) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -54977,8 +54977,8 @@ static void __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_1_wrap_function(
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->__pyx_v_doc);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_1_wrap_function < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function)))) {
-    __pyx_mstate_global->__pyx_freelist_8mintalib_4core___pyx_scope_struct_1_wrap_function[__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_1_wrap_function++] = ((struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *)o);
+  if (((int)(__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_1_wrap_function_old < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old)))) {
+    __pyx_mstate_global->__pyx_freelist_8mintalib_4core___pyx_scope_struct_1_wrap_function_old[__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_1_wrap_function_old++] = ((struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *)o);
   } else
   #endif
   {
@@ -54993,9 +54993,9 @@ static void __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_1_wrap_function(
   }
 }
 
-static int __pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_1_wrap_function(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_1_wrap_function_old(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *)o;
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -55006,37 +55006,37 @@ static int __pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_1_wrap_function(
   return 0;
 }
 
-static int __pyx_tp_clear_8mintalib_4core___pyx_scope_struct_1_wrap_function(PyObject *o) {
+static int __pyx_tp_clear_8mintalib_4core___pyx_scope_struct_1_wrap_function_old(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function *)o;
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old *)o;
   tmp = ((PyObject*)p->__pyx_v_doc);
   p->__pyx_v_doc = Py_None; Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_1_wrap_function},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_1_wrap_function},
-  {Py_tp_clear, (void *)__pyx_tp_clear_8mintalib_4core___pyx_scope_struct_1_wrap_function},
-  {Py_tp_new, (void *)__pyx_tp_new_8mintalib_4core___pyx_scope_struct_1_wrap_function},
+static PyType_Slot __pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_old_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_1_wrap_function_old},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_1_wrap_function_old},
+  {Py_tp_clear, (void *)__pyx_tp_clear_8mintalib_4core___pyx_scope_struct_1_wrap_function_old},
+  {Py_tp_new, (void *)__pyx_tp_new_8mintalib_4core___pyx_scope_struct_1_wrap_function_old},
   {0, 0},
 };
-static PyType_Spec __pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_spec = {
-  "mintalib.core.__pyx_scope_struct_1_wrap_function",
-  sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function),
+static PyType_Spec __pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_old_spec = {
+  "mintalib.core.__pyx_scope_struct_1_wrap_function_old",
+  sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_slots,
+  __pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_old_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function = {
+static PyTypeObject __pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_old = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mintalib.core.""__pyx_scope_struct_1_wrap_function", /*tp_name*/
-  sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function), /*tp_basicsize*/
+  "mintalib.core.""__pyx_scope_struct_1_wrap_function_old", /*tp_name*/
+  sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_1_wrap_function_old), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_1_wrap_function, /*tp_dealloc*/
+  __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_1_wrap_function_old, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -55058,8 +55058,8 @@ static PyTypeObject __pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_functio
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_1_wrap_function, /*tp_traverse*/
-  __pyx_tp_clear_8mintalib_4core___pyx_scope_struct_1_wrap_function, /*tp_clear*/
+  __pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_1_wrap_function_old, /*tp_traverse*/
+  __pyx_tp_clear_8mintalib_4core___pyx_scope_struct_1_wrap_function_old, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
@@ -55076,7 +55076,7 @@ static PyTypeObject __pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_functio
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_8mintalib_4core___pyx_scope_struct_1_wrap_function, /*tp_new*/
+  __pyx_tp_new_8mintalib_4core___pyx_scope_struct_1_wrap_function_old, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -55109,16 +55109,16 @@ static PyTypeObject __pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_functio
 };
 #endif
 
-static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct_2_wrap_indicator(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_2_wrap_indicator > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator)))) {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_8mintalib_4core___pyx_scope_struct_2_wrap_indicator[--__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_2_wrap_indicator];
-    memset(o, 0, sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator));
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old)))) {
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old[--__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old];
+    memset(o, 0, sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -55131,11 +55131,11 @@ static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct_2_wrap_indicato
   return o;
 }
 
-static void __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_2_wrap_indicator(PyObject *o) {
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *)o;
+static void __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old(PyObject *o) {
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_2_wrap_indicator) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -55143,8 +55143,8 @@ static void __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_2_wrap_indicator
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->__pyx_v_doc);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_2_wrap_indicator < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator)))) {
-    __pyx_mstate_global->__pyx_freelist_8mintalib_4core___pyx_scope_struct_2_wrap_indicator[__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_2_wrap_indicator++] = ((struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *)o);
+  if (((int)(__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old)))) {
+    __pyx_mstate_global->__pyx_freelist_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old[__pyx_mstate_global->__pyx_freecount_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old++] = ((struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *)o);
   } else
   #endif
   {
@@ -55159,9 +55159,9 @@ static void __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_2_wrap_indicator
   }
 }
 
-static int __pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_2_wrap_indicator(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *)o;
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -55172,37 +55172,37 @@ static int __pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_2_wrap_indicator
   return 0;
 }
 
-static int __pyx_tp_clear_8mintalib_4core___pyx_scope_struct_2_wrap_indicator(PyObject *o) {
+static int __pyx_tp_clear_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator *)o;
+  struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *p = (struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old *)o;
   tmp = ((PyObject*)p->__pyx_v_doc);
   p->__pyx_v_doc = Py_None; Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_2_wrap_indicator},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_2_wrap_indicator},
-  {Py_tp_clear, (void *)__pyx_tp_clear_8mintalib_4core___pyx_scope_struct_2_wrap_indicator},
-  {Py_tp_new, (void *)__pyx_tp_new_8mintalib_4core___pyx_scope_struct_2_wrap_indicator},
+static PyType_Slot __pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old},
+  {Py_tp_clear, (void *)__pyx_tp_clear_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old},
+  {Py_tp_new, (void *)__pyx_tp_new_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old},
   {0, 0},
 };
-static PyType_Spec __pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_spec = {
-  "mintalib.core.__pyx_scope_struct_2_wrap_indicator",
-  sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator),
+static PyType_Spec __pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old_spec = {
+  "mintalib.core.__pyx_scope_struct_2_wrap_indicator_old",
+  sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_slots,
+  __pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator = {
+static PyTypeObject __pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mintalib.core.""__pyx_scope_struct_2_wrap_indicator", /*tp_name*/
-  sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator), /*tp_basicsize*/
+  "mintalib.core.""__pyx_scope_struct_2_wrap_indicator_old", /*tp_name*/
+  sizeof(struct __pyx_obj_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_2_wrap_indicator, /*tp_dealloc*/
+  __pyx_tp_dealloc_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -55224,8 +55224,8 @@ static PyTypeObject __pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicat
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_2_wrap_indicator, /*tp_traverse*/
-  __pyx_tp_clear_8mintalib_4core___pyx_scope_struct_2_wrap_indicator, /*tp_clear*/
+  __pyx_tp_traverse_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old, /*tp_traverse*/
+  __pyx_tp_clear_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
@@ -55242,7 +55242,7 @@ static PyTypeObject __pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicat
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_8mintalib_4core___pyx_scope_struct_2_wrap_indicator, /*tp_new*/
+  __pyx_tp_new_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -56274,35 +56274,35 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function)) __PYX_ERR(1, 94, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_spec, __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function) < 0) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_old_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old)) __PYX_ERR(1, 94, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_old_spec, __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old) < 0) __PYX_ERR(1, 94, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function = &__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function;
+  __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old = &__pyx_type_8mintalib_4core___pyx_scope_struct_1_wrap_function_old;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function) < 0) __PYX_ERR(1, 94, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old) < 0) __PYX_ERR(1, 94, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function->tp_dictoffset && __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old->tp_dictoffset && __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_1_wrap_function_old->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator)) __PYX_ERR(1, 107, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_spec, __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator) < 0) __PYX_ERR(1, 107, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old)) __PYX_ERR(1, 107, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old_spec, __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old) < 0) __PYX_ERR(1, 107, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator = &__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator;
+  __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old = &__pyx_type_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator) < 0) __PYX_ERR(1, 107, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old) < 0) __PYX_ERR(1, 107, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator->tp_dictoffset && __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old->tp_dictoffset && __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_scope_struct_2_wrap_indicator_old->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   __pyx_vtabptr_array = &__pyx_vtable_array;
@@ -57443,25 +57443,25 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   /* "src/mintalib/cython/_common.pxi":94
  * 
  * 
- * def wrap_function(source):             # <<<<<<<<<<<<<<
+ * def wrap_function_old(source):             # <<<<<<<<<<<<<<
  *     """decorator to update function with documentation from source"""
  * 
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_9wrap_function, 0, __pyx_mstate_global->__pyx_n_u_wrap_function, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_9wrap_function_old, 0, __pyx_mstate_global->__pyx_n_u_wrap_function_old, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_wrap_function, __pyx_t_4) < 0) __PYX_ERR(1, 94, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_wrap_function_old, __pyx_t_4) < 0) __PYX_ERR(1, 94, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "src/mintalib/cython/_common.pxi":107
  * 
  * 
- * def wrap_indicator(source):             # <<<<<<<<<<<<<<
+ * def wrap_indicator_old(source):             # <<<<<<<<<<<<<<
  *     """decorator to update indicator with documentation from source"""
  * 
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_11wrap_indicator, 0, __pyx_mstate_global->__pyx_n_u_wrap_indicator, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 107, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_11wrap_indicator_old, 0, __pyx_mstate_global->__pyx_n_u_wrap_indicator_old, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_wrap_indicator, __pyx_t_4) < 0) __PYX_ERR(1, 107, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_wrap_indicator_old, __pyx_t_4) < 0) __PYX_ERR(1, 107, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "src/mintalib/cython/_common.pxi":120
@@ -60803,10 +60803,10 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_where, sizeof(__pyx_k_where), 0, 1, 1}, /* PyObject cname: __pyx_n_u_where */
   {__pyx_k_where_flag, sizeof(__pyx_k_where_flag), 0, 1, 1}, /* PyObject cname: __pyx_n_u_where_flag */
   {__pyx_k_wrap, sizeof(__pyx_k_wrap), 0, 1, 1}, /* PyObject cname: __pyx_n_u_wrap */
-  {__pyx_k_wrap_function, sizeof(__pyx_k_wrap_function), 0, 1, 1}, /* PyObject cname: __pyx_n_u_wrap_function */
-  {__pyx_k_wrap_function_locals_decorator, sizeof(__pyx_k_wrap_function_locals_decorator), 0, 1, 1}, /* PyObject cname: __pyx_n_u_wrap_function_locals_decorator */
-  {__pyx_k_wrap_indicator, sizeof(__pyx_k_wrap_indicator), 0, 1, 1}, /* PyObject cname: __pyx_n_u_wrap_indicator */
-  {__pyx_k_wrap_indicator_locals_decorator, sizeof(__pyx_k_wrap_indicator_locals_decorator), 0, 1, 1}, /* PyObject cname: __pyx_n_u_wrap_indicator_locals_decorator */
+  {__pyx_k_wrap_function_old, sizeof(__pyx_k_wrap_function_old), 0, 1, 1}, /* PyObject cname: __pyx_n_u_wrap_function_old */
+  {__pyx_k_wrap_function_old_locals_decorat, sizeof(__pyx_k_wrap_function_old_locals_decorat), 0, 1, 1}, /* PyObject cname: __pyx_n_u_wrap_function_old_locals_decorat */
+  {__pyx_k_wrap_indicator_old, sizeof(__pyx_k_wrap_indicator_old), 0, 1, 1}, /* PyObject cname: __pyx_n_u_wrap_indicator_old */
+  {__pyx_k_wrap_indicator_old_locals_decora, sizeof(__pyx_k_wrap_indicator_old_locals_decora), 0, 1, 1}, /* PyObject cname: __pyx_n_u_wrap_indicator_old_locals_decora */
   {__pyx_k_wrap_result, sizeof(__pyx_k_wrap_result), 0, 1, 1}, /* PyObject cname: __pyx_n_u_wrap_result */
   {__pyx_k_wsum, sizeof(__pyx_k_wsum), 0, 1, 1}, /* PyObject cname: __pyx_n_u_wsum */
   {__pyx_k_x, sizeof(__pyx_k_x), 0, 1, 1}, /* PyObject cname: __pyx_n_u_x */
@@ -61119,12 +61119,12 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 94, 25};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_source, __pyx_mstate->__pyx_n_u_doc_2, __pyx_mstate->__pyx_n_u_decorator, __pyx_mstate->__pyx_n_u_decorator};
-    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython__common_pxi, __pyx_mstate->__pyx_n_u_wrap_function, __pyx_k_L_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython__common_pxi, __pyx_mstate->__pyx_n_u_wrap_function_old, __pyx_k_L_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 107, 25};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_source, __pyx_mstate->__pyx_n_u_doc_2, __pyx_mstate->__pyx_n_u_decorator, __pyx_mstate->__pyx_n_u_decorator};
-    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython__common_pxi, __pyx_mstate->__pyx_n_u_wrap_indicator, __pyx_k_L_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython__common_pxi, __pyx_mstate->__pyx_n_u_wrap_indicator_old, __pyx_k_L_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 7, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 120, 232};

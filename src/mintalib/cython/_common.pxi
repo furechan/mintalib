@@ -91,7 +91,7 @@ def add_metadata(*, same_scale: bool = None, output_names: list | tuple = None):
 
 
 
-def wrap_function(source):
+def wrap_function_old(source):
     """decorator to update function with documentation from source"""
 
     doc = source.__doc__ if source else None
@@ -104,7 +104,7 @@ def wrap_function(source):
     return decorator
 
 
-def wrap_indicator(source):
+def wrap_indicator_old(source):
     """decorator to update indicator with documentation from source"""
 
     doc = source.__doc__ if source else None
