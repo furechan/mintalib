@@ -44,6 +44,7 @@ def wrap_indicator(calc_func):
             )
 
         wrapper.__name__ = func.__name__
+        wrapper.__qualname__ = func.__qualname__
         wrapper.__doc__ = calc_func.__doc__
         wrapper.__signature__ = sig
 
