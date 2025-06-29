@@ -1,6 +1,6 @@
 # Minimal Technical Analysis Library for Python
 
-This package offers a curated list of technical analysis indicators and timeseries calculations implemented in cython for improved performance. The library is built around `numpy` arrays with wrappers for `pandas` and `polars` dataframes and series.
+This package offers a curated list of technical analysis indicators and timeseries calculations implemented in cython. The library is built around `numpy` arrays with wrappers for `pandas` and `polars` dataframes and series.
 
 
 > **Warning**
@@ -13,12 +13,14 @@ This package offers a curated list of technical analysis indicators and timeseri
 
 The `mintalib` package contains three main modules:
 
-- [mintalib.core](/docs/mintalib.core.md)
+- `mintalib.core`:
     core calculation rountines implemented in cython, with names like `calc_sma`, `calc_ema`, etc ...  
-- [mintalib.functions](/docs/mintalib.functions.md)
+- `mintalib.functions`:
     wrapper functions to compute calculations on series and dataframes, with names like `sma`, `ema`, etc ...
-- [mintalib.indicators](/docs/mintalib.indicators.md)
+- `mintalib.indicators`
     composable interface to indicators with names like `SMA`, `EMA`, etc ...
+- `mintalib.expressions`
+    polars expressions library with names like `SMA`, `EMA`, etc ...
 
 
 ## List of Indicators
@@ -101,13 +103,11 @@ import mintalib.functions as ta
 The first parameter of a function is either `prices` or `series` depending on whether
 the functions expects a dataframe of prices or a single series.
 
-Functions that expect series data can be applied to a prices dataframe, in which case they use 
-the column specified with the `item` parameter or by default the 'close' column.
+Functions that expect series data can also be applied to a prices dataframe, in which case they use the column specified with the `item` parameter or by default the 'close' column.
 
-A `prices` dataframe can be a pandas dataframe or a dictionary of numpy arrays.
-The column names for prices are expected to include `open`, `high`, `low`, `close`, `volume` all in **lower case**.
+A `prices` dataframe can be a pandas or polars dataframe. The column names for prices are expected to include `open`, `high`, `low`, `close`, `volume` all in **lower case**.
 
-A `series` can be a pandas series or any iterable compatible with numpy arrays.
+A `series` can be a pandas or polars series.
 
 Functions automatically wrap the result to match the type and the index of the input data when applicable.
 
@@ -131,7 +131,11 @@ high200 = ta.max(prices, 200, item='high')  # MAX of 'high' with period 200
 
 ## Using Indicators
 
-Indicators are available via the `indicators` module, with similar names as functions but in **upper case**.
+Indicators are available via the `indicators` module, with similar names as functions but in **upper case**. Indicators are best imported directly in the name space like:
+
+```python
+from mintalib.indicators import SMA, EMA, ROC, MACD
+```
 
 Indicators offer a composable interface where a function is bound with its calculation parameters. When instantiated with parameters an indicator yields a callable that can be applied to prices or series data.
 
@@ -140,23 +144,19 @@ An indicator is a callable that accepts a series or a prices dataframe as a sing
 So for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`, instead of the more verbose `SMA(50)(prices)`. 
 
 ```python
-from mintalib.indicators import ROC, SMA, EMA
-
 sma50 = SMA(50) @ prices    # SMA of 'close' with period 50
 sma200 = SMA(200) @ prices  # SMA of 'close' with period 200
 high200 = MAX(200, item='high') @ prices    # MAX of 'high' with period 200
 ```
 
-
 The `@` operator can also be used to chain indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
 
 
 ```python
-from mintalib.indicators import ROC, SMA, EMA
-
 trend = ROC(1) @ EMA(20) @ prices
 ```
 
+## Using indicators with pandas
 
 With pandas dataframes you can compose and apply multiple indicators in one call using the `assign` dataframe method.
 
