@@ -237,7 +237,7 @@ pip install mintalib
 
 ## Dependencies
 
-- python >= 3.9
+- python >= 3.10
 - numpy
 - pandas
 - polars [optional]
@@ -246,8 +246,7 @@ pip install mintalib
 
 - [ta-lib](https://github.com/mrjbq7/ta-lib) Python wrapper for TA-Lib
 - [qtalib](https://github.com/josephchenhk/qtalib) Quantitative Technical Analysis Library
-- [numpy](https://github.com/numpy/numpy) The fundamental package for scientific computing with Python
-- [pandas](https://github.com/pandas-dev/pandas) Flexible and powerful data analysis / manipulation library for Python
-- [yfinance](https://github.com/ranaroussi/yfinance) Download market data from Yahoo! Finance's API
+- [polars-ta](https://github.com/wukan1986/polars_ta) Technical Analysis Indicators for polars
+- [polars-talib](https://github.com/Yvictor/polars_ta_extension) Polars extension for Ta-Lib: Support Ta-Lib functions in Polars expressions
 
 
