@@ -42,9 +42,9 @@ def get_struct_expr(src):
 
 
 def wrap_expression(calc_func):
-    signature = inspect.signature(calc_func)
-    first_param = next(iter(signature.parameters.values()))
-    prices_input = first_param.name == 'prices'
+    calc_sig = inspect.signature(calc_func)
+    first_param = next(iter(calc_sig.parameters.values()))
+    force_struct = first_param.name == 'prices'
 
     def decorator(func):
         name = func.__name__.lower()
@@ -52,33 +52,32 @@ def wrap_expression(calc_func):
         output_names = metadata.get('output_names', ())
         output_type = Struct({n: Float64 for n in output_names}) if output_names else Float64
         signature = inspect.signature(func)
-        first_param = next(iter(signature.parameters.values()))
 
         @wraps(func)
         def wrapper(*args, **kwargs):
-            if first_param.name == 'src':
-                src, *args = args
-            else:
-                src = kwargs.pop('src', None)
+            bound_args = signature.bind(*args, **kwargs)
+            args, kwargs = (), dict(bound_args.arguments)
 
-            if prices_input:
+            src = kwargs.pop('src', None)
+
+            if force_struct:
                 source = get_struct_expr(src)
             else:
                 source = get_series_expr(src)
 
             def batch_func(prices):
-                if prices_input:
-                    prices = prices.struct
+                if force_struct:
+                    prices = prices.struct.unnest()
 
                 output = calc_func(prices, *args, **kwargs)
                 
-                if output_names:
-                    return pl.DataFrame(output._asdict()).fill_nan(None).to_struct(name)
+                if isinstance(output, tuple):
+                    return pl.DataFrame(output._asdict()).fill_nan(None).to_struct()
                 else:
                     return pl.Series(output).fill_nan(None)
             
-            expr = source.map_batches(batch_func, return_dtype=output_type)
-            expr = expr.struct.unnest() if output_names else expr.alias(name)
+            expr = source.map_batches(batch_func, return_dtype=output_type).alias(name)
+#            expr = expr.struct.unnest() if output_names else expr.alias(name)
             
             return expr
         
