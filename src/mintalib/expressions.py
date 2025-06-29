@@ -3,6 +3,7 @@
 # PREAMBLE Do not edit! This file was generated
 
 import inspect
+
 import polars as pl
 
 from polars.datatypes import Struct, Float64
@@ -10,8 +11,6 @@ from polars.datatypes import Struct, Float64
 from . import core
 
 from typing import Union, TypeAlias
-
-from functools import wraps
 
 
 IntoExpr: TypeAlias = Union[pl.Expr, str, pl.Series]

@@ -17,9 +17,9 @@ The `mintalib` package contains four main modules:
     core calculation rountines implemented in cython, with names like `calc_sma`, `calc_ema`, etc ...  
 - `mintalib.functions`:
     wrapper functions to compute calculations on series and dataframes, with names like `sma`, `ema`, etc ...
-- `mintalib.indicators`
+- `mintalib.indicators`:
     composable interface to indicators with names like `SMA`, `EMA`, etc ...
-- `mintalib.expressions`
+- `mintalib.expressions`:
     polars expressions library with names like `SMA`, `EMA`, etc ...
 
 
@@ -241,6 +241,7 @@ pip install mintalib
 - numpy
 - pandas
 - polars [optional]
+
 
 ## Related Projects
 
