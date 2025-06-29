@@ -151,7 +151,6 @@ high200 = MAX(200, item='high') @ prices    # MAX of 'high' with period 200
 
 The `@` operator can also be used to chain indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
 
-
 ```python
 trend = ROC(1) @ EMA(20) @ prices
 ```
@@ -206,7 +205,7 @@ prices.select(
 )
 ```
 
-In prices based expressions like `ATR`, the `src` argument becomes optional et defaults to `'*'`, which means it applies to the whole prices dataframe.
+In prices based expressions like `ATR`, the `src` argument is optional and keyword only. 
 
 ```python
 prices.select(
@@ -221,8 +220,6 @@ prices.select(
     MACD('close').struct.field('*')
 )
 ```
-
-
 
 
 ## Example Notebooks
@@ -241,9 +238,9 @@ pip install mintalib
 ## Dependencies
 
 - python >= 3.9
-- pandas
 - numpy
-
+- pandas
+- polars [optional]
 
 ## Related Projects
 

@@ -11,6 +11,7 @@ description = "Minimal Technical Analysis Library for Python"
 urls.homepage = "https://github.com/furechan/mintalib"
 authors = [{ name = "Furechan", email = "furechan@xsmail.com" }]
 dependencies = ["numpy", "pandas"]
+optional-dependencies.polars = ["polars"]
 keywords = ["python", "cython", "finance", "technical-analysis", "indicators"]
 classifiers = [
     "Programming Language :: Python :: 3",

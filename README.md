@@ -238,9 +238,9 @@ pip install mintalib
 ## Dependencies
 
 - python >= 3.9
-- pandas
 - numpy
-
+- pandas
+- polars [optional]
 
 ## Related Projects
 

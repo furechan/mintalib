@@ -1037,11 +1037,16 @@ wheels = [
 
 [[package]]
 name = "mintalib"
-version = "0.0.23"
+version = "0.0.24"
 source = { editable = "." }
 dependencies = [
     { name = "numpy" },
     { name = "pandas" },
+]
+
+[package.optional-dependencies]
+polars = [
+    { name = "polars" },
 ]
 
 [package.dev-dependencies]
@@ -1073,7 +1078,9 @@ dev = [
 requires-dist = [
     { name = "numpy" },
     { name = "pandas" },
+    { name = "polars", marker = "extra == 'polars'" },
 ]
+provides-extras = ["polars"]
 
 [package.metadata.requires-dev]
 dev = [
