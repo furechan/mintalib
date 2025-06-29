@@ -90,33 +90,6 @@ def add_metadata(*, same_scale: bool = None, output_names: list | tuple = None):
 
 
 
-
-def wrap_function_old(source):
-    """decorator to update function with documentation from source"""
-
-    doc = source.__doc__ if source else None
-
-    def decorator(func):
-        if doc and func.__doc__ is None:
-            func.__doc__ = doc
-        return func
-
-    return decorator
-
-
-def wrap_indicator_old(source):
-    """decorator to update indicator with documentation from source"""
-
-    doc = source.__doc__ if source else None
-
-    def decorator(func):
-        if doc and func.__doc__ is None:
-            func.__doc__ = doc
-        return func
-
-    return decorator
-
-
 def wrap_result(result, source, name: str = None):
     """wrap result to match source data type"""
 
@@ -140,10 +113,10 @@ def wrap_result(result, source, name: str = None):
         polars = sys.modules['polars']
 
         if isinstance(result, dict):
-            return polars.DataFrame(result)
+            return polars.DataFrame(result).fill_nan(None)
 
         if isinstance(result, np.ndarray):
-            return polars.Series(name=name, values=result)
+            return polars.Series(name=name, values=result).fill_nan(None)
 
     return result
 

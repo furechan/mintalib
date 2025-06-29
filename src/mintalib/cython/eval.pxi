@@ -12,9 +12,13 @@ def calc_eval(prices, unicode expr, *, bint as_flag=False, bint wrap=False):
 
     if hasattr(prices, 'eval'):
         result = prices.eval(expr)
-        result = np.asarray(result, float)
+    elif hasattr(prices, 'sql'):
+        query = f"SELECT ({expr}) FROM self"
+        result = prices.sql(query)
     else:
-        raise ValueError(f"Expression {expr!r} not supported!")
+        raise ValueError(f"Prices type {prices.__class__.__name__} not supported!")
+
+    result = np.asarray(result, float)
 
     if as_flag:
         result = calc_flag(result)
