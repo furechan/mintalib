@@ -2,6 +2,7 @@
 
 ppo_result = namedtuple('ppo_result', 'ppo, pposignal, ppohist')
 
+@add_metadata(output_names=('ppo', 'pposignal', 'ppohist'))
 def calc_ppo(series, long n1=12, long n2=26, long n3=9, *, bint wrap=False):
     """
     Price Percentage Oscillator

@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "mintalib"
 version = "0.0.23"
 readme = "output/pypi-readme.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 description = "Minimal Technical Analysis Library for Python"
 urls.homepage = "https://github.com/furechan/mintalib"
 authors = [{ name = "Furechan", email = "furechan@xsmail.com" }]

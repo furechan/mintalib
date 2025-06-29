@@ -2,7 +2,7 @@
 
 dmi_result = namedtuple('dmi_result', 'adx, pdi, mdi')
 
-
+@add_metadata(output_names=('adx', 'pdi', 'mdi'))
 def calc_dmi(prices, long period=14, *, bint wrap=False):
     """
     Directional Movement Indicator
