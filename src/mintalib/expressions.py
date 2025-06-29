@@ -53,7 +53,6 @@ def wrap_expression(calc_func):
         output_type = Struct({n: Float64 for n in output_names}) if output_names else Float64
         signature = inspect.signature(func)
 
-        @wraps(func)
         def wrapper(*args, **kwargs):
             bound_args = signature.bind(*args, **kwargs)
             args, kwargs = (), dict(bound_args.arguments)
@@ -81,7 +80,14 @@ def wrap_expression(calc_func):
             
             return expr
         
+        wrapper.__name__ = func.__name__
+        wrapper.__qualname__ = func.__qualname__
+        wrapper.__doc__ = calc_func.__doc__
+        wrapper.__signature__ = signature
+
         return wrapper
+    
+
     return decorator
 
 @wrap_expression(core.calc_abs)
