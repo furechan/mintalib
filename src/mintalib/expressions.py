@@ -87,7 +87,6 @@ def wrap_expression(calc_func):
 
         return wrapper
     
-
     return decorator
 
 @wrap_expression(core.calc_abs)

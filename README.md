@@ -11,7 +11,7 @@ This package offers a curated list of technical analysis indicators and timeseri
 
 ## Structure
 
-The `mintalib` package contains three main modules:
+The `mintalib` package contains four main modules:
 
 - `mintalib.core`:
     core calculation rountines implemented in cython, with names like `calc_sma`, `calc_ema`, etc ...  
