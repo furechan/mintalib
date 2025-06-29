@@ -1,6 +1,6 @@
 # Minimal Technical Analysis Library for Python
 
-This package offers a curated list of technical analysis indicators and timeseries calculations implemented in cython. The library is built around `numpy` arrays with wrappers for `pandas` and `polars` dataframes and series.
+This package offers a curated list of technical analysis indicators and timeseries calculations implemented in cython. The library is built around `numpy` arrays, and comes with wrappers for `pandas` and `polars` dataframes and series.
 
 
 > **Warning**
@@ -11,7 +11,7 @@ This package offers a curated list of technical analysis indicators and timeseri
 
 ## Structure
 
-The `mintalib` package contains three main modules:
+The `mintalib` package contains four main modules:
 
 - `mintalib.core`:
     core calculation rountines implemented in cython, with names like `calc_sma`, `calc_ema`, etc ...  
@@ -156,7 +156,7 @@ The `@` operator can also be used to chain indicators, where for example `ROC(1)
 trend = ROC(1) @ EMA(20) @ prices
 ```
 
-## Using indicators with pandas
+## Using Indicators with pandas
 
 With pandas dataframes you can compose and apply multiple indicators in one call using the `assign` dataframe method.
 
@@ -181,6 +181,48 @@ result = prices.assign(
     flag = EVAL("sma50 > sma200")
 )
 ```
+
+## Using Expressions with polars (experimental)
+
+Expressions are available via the `expressions` module, with similar names as functions but in **upper case**. Expressions are best imported directly in the name space like:
+
+```python
+from mintalib.expressions import SMA, EMA, ROC, MACD, ATR
+```
+
+Series based expressions have a first argument `src` that is required. The `src` parameter can be a column name or a polars expression. So for example `SMA('close', period=50)`, is equivalent to `SMA(pl.col('close'), period=50)`.
+
+```python
+prices.select(
+    SMA('close', period=50)
+)
+```
+
+Series expressions can also be applied with the polars `pipe` method as in:
+
+```python
+prices.select(
+    pl.col('close').pipe(SMA, period=50)
+)
+```
+
+In prices based expressions like `ATR`, the `src` argument becomes optional et defaults to `'*'`, which means it applies to the whole prices dataframe.
+
+```python
+prices.select(
+    ATR(period=14)
+)
+```
+
+Multi-column expressions like `MACD` return a struct series instead of a dataframe. You can access the fields with the polars `struct` accessor. So for example to convert he `MACD` expression to individual columns you can use the following:
+
+```python
+prices.select(
+    MACD('close').struct.field('*')
+)
+```
+
+
 
 
 ## Example Notebooks
