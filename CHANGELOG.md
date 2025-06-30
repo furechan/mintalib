@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.25
+- Added some expression tests
+
 ## 0.0.24
 - Added polars expressions (experimental)
 
@@ -21,7 +24,7 @@
 - Indicators `ROC` and `LROC` now accept a negative period
 
 ## 0.0.18
-- Refactored `functions` module to move logic out of core. Function names are now **small caps**!
+- Refactored `functions` module to move logic out of core. Function names are now small caps!
 - Upper case functions names are legacy and will be removed in the future. Use small caps.
 
 ## 0.0.16

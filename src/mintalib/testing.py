@@ -15,6 +15,8 @@ def first_param(func: Callable):
 def sample_param(param: Parameter):
     """Sample value for parameters without ac default value"""
 
+    if param.name == "src":
+        return "close"
     if param.name == "expr":
         return "close"
     if param.name == "period":

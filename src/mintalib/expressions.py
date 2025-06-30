@@ -156,10 +156,6 @@ def DMI(period: int = 14, *, src='*'): ...
 def EMA(src, period: int, *, adjust: bool = False): ...
 
 
-@wrap_expression(core.calc_eval)
-def EVAL(expr: str, *, as_flag: bool = False, src='*'): ...
-
-
 @wrap_expression(core.calc_exp)
 def EXP(src): ...
 
@@ -335,10 +331,10 @@ def WMA(src, period: int): ...
 __all__ = [
     'ABS', 'ADX', 'ALMA', 'ATR', 'AVGPRICE', 'BBANDS', 'BOP', 'CCI',
     'CLAG', 'CMF', 'CROSSOVER', 'CROSSUNDER', 'CURVE', 'DEMA', 'DIFF',
-    'DMI', 'EMA', 'EVAL', 'EXP', 'FLAG', 'HMA', 'KAMA', 'KELTNER', 'KER',
-    'LAG', 'LOG', 'LROC', 'MACD', 'MAD', 'MAV', 'MAX', 'MDI', 'MFI',
-    'MIDPRICE', 'MIN', 'NATR', 'PDI', 'PPO', 'PRICE', 'QSF', 'RMA', 'ROC',
-    'RSI', 'RVALUE', 'SAR', 'SHIFT', 'SIGN', 'SLOPE', 'SMA', 'STDEV',
-    'STEP', 'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TSF', 'TYPPRICE',
+    'DMI', 'EMA', 'EXP', 'FLAG', 'HMA', 'KAMA', 'KELTNER', 'KER', 'LAG',
+    'LOG', 'LROC', 'MACD', 'MAD', 'MAV', 'MAX', 'MDI', 'MFI', 'MIDPRICE',
+    'MIN', 'NATR', 'PDI', 'PPO', 'PRICE', 'QSF', 'RMA', 'ROC', 'RSI',
+    'RVALUE', 'SAR', 'SHIFT', 'SIGN', 'SLOPE', 'SMA', 'STDEV', 'STEP',
+    'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TSF', 'TYPPRICE',
     'UPDOWN', 'WCLPRICE', 'WMA'
 ]
