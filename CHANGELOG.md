@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.24
+- Added polars expressions (experimental)
+
+## 0.0.23
+- Refactored indicators as simple wrappers
+
 ## 0.0.22
 - Added `QSF` Indicator (Quadratic Series Forecast)  
 
