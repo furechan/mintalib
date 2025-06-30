@@ -1,6 +1,6 @@
 # Minimal Technical Analysis Library for Python
 
-This package offers a curated list of technical analysis indicators and timeseries calculations implemented in cython. The library is built around `numpy` arrays, and comes with wrappers for `pandas` and `polars` dataframes and series.
+This package offers a curated list of technical analysis indicators and timeseries calculations implemented in cython with the aim of improved performance. The library is built around `numpy` arrays, and comes with wrappers for `pandas` and `polars` dataframes and series.
 
 
 > **Warning** This project is experimental and the interface can change.
@@ -89,9 +89,8 @@ The `mintalib` package contains four main modules:
 
 ## Using Functions
 
-Functions are available as lower case methods like `sma`, `ema`, etc ...
-The best way to use this module is to alias it to a short name
-like `ta` and access all functions as attributes.
+Functions are available via the `mintalib.functins` module, with **lower case** names like `sma`, `ema`, etc ...
+The best way to use this module is to import it with a short alias name like `ta`.
 
 ```python
 import mintalib.functions as ta
@@ -128,7 +127,7 @@ high200 = ta.max(prices, 200, item='high')  # MAX of 'high' with period 200
 
 ## Using Indicators
 
-Indicators are available via the `indicators` module, with similar names as functions but in **upper case**. Indicators are best imported directly in the name space like:
+Indicators are available via the `mintalib.indicators` module, with similar names as functions but in **upper case**. Indicators are best imported directly in the name space like:
 
 ```python
 from mintalib.indicators import SMA, EMA, ROC, MACD
@@ -180,7 +179,7 @@ result = prices.assign(
 
 ## Using Expressions with polars (experimental)
 
-Expressions are available via the `expressions` module, with similar names as functions but in **upper case**. Expressions are best imported directly in the name space like:
+Expressions are available via the `mintalib.expressions` module, with similar names as functions but in **upper case**. Expressions are best imported directly in the name space like:
 
 ```python
 from mintalib.expressions import SMA, EMA, ROC, MACD, ATR
