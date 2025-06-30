@@ -3,10 +3,7 @@
 This package offers a curated list of technical analysis indicators and timeseries calculations implemented in cython. The library is built around `numpy` arrays, and comes with wrappers for `pandas` and `polars` dataframes and series.
 
 
-> **Warning**
-> This project is experimental and the interface can change.
-> For a similar project with a mature api you may want to look into
-> [ta-lib](https://pypi.org/project/TA-Lib/).
+> **Warning** This project is experimental and the interface can change.
 
 
 ## Structure
@@ -224,7 +221,7 @@ prices.select(
 
 ## Example Notebooks
 
-You can find example notebooks in the `examples` folder. 
+Example notebooks in the `examples` folder. 
 
 
 ## Installation
