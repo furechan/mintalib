@@ -4,6 +4,7 @@ import pandas as pd
 
 from importlib import resources
 
+from functools import lru_cache
 from pandas.api.types import is_object_dtype
 
 
@@ -11,6 +12,7 @@ TIMEZONE = "America/New_York"
 FREQUENCIES = "daily", "hourly", "minute"
 
 
+@lru_cache
 def sample_prices(freq: str = "daily", *, max_bars: int = 0, item: str = None):
     """Sample prices"""
 
