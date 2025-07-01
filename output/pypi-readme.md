@@ -1,12 +1,9 @@
 # Minimal Technical Analysis Library for Python
 
-This package offers a curated list of technical analysis indicators and timeseries calculations implemented in cython. The library is built around `numpy` arrays, and comes with wrappers for `pandas` and `polars` dataframes and series.
+This package offers a curated list of technical analysis indicators and timeseries calculations implemented in cython with the aim of improved performance. The library is built around `numpy` arrays, and comes with wrappers for `pandas` and `polars` dataframes and series.
 
 
-> **Warning**
-> This project is experimental and the interface can change.
-> For a similar project with a mature api you may want to look into
-> [ta-lib](https://pypi.org/project/TA-Lib/).
+> **Warning** This project is experimental and the interface can change.
 
 
 ## Structure
@@ -17,9 +14,9 @@ The `mintalib` package contains four main modules:
     core calculation rountines implemented in cython, with names like `calc_sma`, `calc_ema`, etc ...  
 - `mintalib.functions`:
     wrapper functions to compute calculations on series and dataframes, with names like `sma`, `ema`, etc ...
-- `mintalib.indicators`
+- `mintalib.indicators`:
     composable interface to indicators with names like `SMA`, `EMA`, etc ...
-- `mintalib.expressions`
+- `mintalib.expressions`:
     polars expressions library with names like `SMA`, `EMA`, etc ...
 
 
@@ -92,9 +89,8 @@ The `mintalib` package contains four main modules:
 
 ## Using Functions
 
-Functions are available as lower case methods like `sma`, `ema`, etc ...
-The best way to use this module is to alias it to a short name
-like `ta` and access all functions as attributes.
+Functions are available via the `mintalib.functins` module, with **lower case** names like `sma`, `ema`, etc ...
+The best way to use this module is to import it with a short alias name like `ta`.
 
 ```python
 import mintalib.functions as ta
@@ -131,7 +127,7 @@ high200 = ta.max(prices, 200, item='high')  # MAX of 'high' with period 200
 
 ## Using Indicators
 
-Indicators are available via the `indicators` module, with similar names as functions but in **upper case**. Indicators are best imported directly in the name space like:
+Indicators are available via the `mintalib.indicators` module, with similar names as functions but in **upper case**. Indicators are best imported directly in the name space like:
 
 ```python
 from mintalib.indicators import SMA, EMA, ROC, MACD
@@ -183,7 +179,7 @@ result = prices.assign(
 
 ## Using Expressions with polars (experimental)
 
-Expressions are available via the `expressions` module, with similar names as functions but in **upper case**. Expressions are best imported directly in the name space like:
+Expressions are available via the `mintalib.expressions` module, with similar names as functions but in **upper case**. Expressions are best imported directly in the name space like:
 
 ```python
 from mintalib.expressions import SMA, EMA, ROC, MACD, ATR
@@ -224,7 +220,7 @@ prices.select(
 
 ## Example Notebooks
 
-You can find example notebooks in the `examples` folder. 
+Example notebooks in the `examples` folder. 
 
 
 ## Installation
@@ -237,17 +233,17 @@ pip install mintalib
 
 ## Dependencies
 
-- python >= 3.9
+- python >= 3.10
 - numpy
 - pandas
 - polars [optional]
+
 
 ## Related Projects
 
 - [ta-lib](https://github.com/mrjbq7/ta-lib) Python wrapper for TA-Lib
 - [qtalib](https://github.com/josephchenhk/qtalib) Quantitative Technical Analysis Library
-- [numpy](https://github.com/numpy/numpy) The fundamental package for scientific computing with Python
-- [pandas](https://github.com/pandas-dev/pandas) Flexible and powerful data analysis / manipulation library for Python
-- [yfinance](https://github.com/ranaroussi/yfinance) Download market data from Yahoo! Finance's API
+- [polars-ta](https://github.com/wukan1986/polars_ta) Technical Analysis Indicators for polars
+- [polars-talib](https://github.com/Yvictor/polars_ta_extension) Polars extension for Ta-Lib: Support Ta-Lib functions in Polars expressions
 
 
