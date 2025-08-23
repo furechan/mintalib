@@ -14,7 +14,7 @@ from .utils import format_partial, lazy_repr
 
 
 class Indicator(metaclass=ABCMeta):
-    """Abstact Base class for Indicators"""
+    """Abstact Base Class for Indicators"""
 
     __repr__ = lazy_repr
 
@@ -58,7 +58,7 @@ class AliasedIndicator(Indicator):
 
 
 class FuncIndicator(Indicator):
-    """Function based Indicator"""
+    """Function Based Indicator"""
 
     output_name: str = None
 
