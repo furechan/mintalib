@@ -5,6 +5,7 @@
 - Added `BBP` Indicator (Bolling Bands Percent)
 - Added `BBW` Indicator (Bolling Bands Width)
 - Modified `STREAK` Indicator. Counts values above zero
+- Switched to `tox.toml`
 
 ## 0.0.24
 - Added polars expressions (experimental)
