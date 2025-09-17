@@ -2,6 +2,9 @@
 
 ## 0.0.25
 - Added some expression tests
+- Added `BBP` Indicator (Bolling Bands Percent)
+- Added `BBW` Indicator (Bolling Bands Width)
+- Modified `STREAK` Indicator. Counts values above zero
 
 ## 0.0.24
 - Added polars expressions (experimental)
