@@ -30,6 +30,8 @@ The `mintalib` package contains four main modules:
 | ATR        | Average True Range                               |
 | AVGPRICE   | Average Price                                    |
 | BBANDS     | Bollinger Bands                                  |
+| BBP        | Bollinger Bands Percent (%B)                     |
+| BBW        | Bollinger Bands Width                            |
 | BOP        | Balance of Power                                 |
 | CCI        | Commodity Channel Index                          |
 | CLAG       | Confirmation Lag                                 |
@@ -76,7 +78,7 @@ The `mintalib` package contains four main modules:
 | STDEV      | Standard Deviation                               |
 | STEP       | Step Function                                    |
 | STOCH      | Stochastic Oscillator                            |
-| STREAK     | Consecutive streak of ups or downs               |
+| STREAK     | Consecutive streak of values above zero          |
 | SUM        | Rolling sum                                      |
 | TEMA       | Triple Exponential Moving Average                |
 | TRANGE     | True Range                                       |

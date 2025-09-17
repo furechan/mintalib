@@ -72,6 +72,12 @@ def avgprice(prices): ...
 @wrap_function(core.calc_bbands)
 def bbands(prices, period: int = 20, nbdev: float = 2.0): ...
 
+@wrap_function(core.calc_bbp)
+def bbp(prices, period: int = 20, nbdev: float = 2.0): ...
+
+@wrap_function(core.calc_bbw)
+def bbw(prices, period: int = 20, nbdev: float = 2.0): ...
+
 @wrap_function(core.calc_bop)
 def bop(prices, period: int = 20): ...
 
@@ -238,10 +244,10 @@ def wclprice(prices): ...
 def wma(prices, period: int, *, item: str = None): ...
 
 __all__ = [
-    'abs', 'adx', 'alma', 'atr', 'avgprice', 'bbands', 'bop', 'cci',
-    'clag', 'cmf', 'crossover', 'crossunder', 'curve', 'dema', 'diff',
-    'dmi', 'ema', 'eval', 'exp', 'flag', 'hma', 'kama', 'keltner', 'ker',
-    'lag', 'log', 'lroc', 'macd', 'mad', 'mav', 'max', 'mdi', 'mfi',
+    'abs', 'adx', 'alma', 'atr', 'avgprice', 'bbands', 'bbp', 'bbw', 'bop',
+    'cci', 'clag', 'cmf', 'crossover', 'crossunder', 'curve', 'dema',
+    'diff', 'dmi', 'ema', 'eval', 'exp', 'flag', 'hma', 'kama', 'keltner',
+    'ker', 'lag', 'log', 'lroc', 'macd', 'mad', 'mav', 'max', 'mdi', 'mfi',
     'midprice', 'min', 'natr', 'pdi', 'ppo', 'price', 'qsf', 'rma', 'roc',
     'rsi', 'rvalue', 'sar', 'shift', 'sign', 'slope', 'sma', 'stdev',
     'step', 'stoch', 'streak', 'sum', 'tema', 'trange', 'tsf', 'typprice',

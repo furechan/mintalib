@@ -71,6 +71,12 @@ def AVGPRICE(): ...
 @wrap_indicator(core.calc_bbands)
 def BBANDS(period: int = 20, nbdev: float = 2.0): ...
 
+@wrap_indicator(core.calc_bbp)
+def BBP(period: int = 20, nbdev: float = 2.0): ...
+
+@wrap_indicator(core.calc_bbw)
+def BBW(period: int = 20, nbdev: float = 2.0): ...
+
 @wrap_indicator(core.calc_bop)
 def BOP(period: int = 20): ...
 
@@ -237,10 +243,10 @@ def WCLPRICE(): ...
 def WMA(period: int, *, item: str = None): ...
 
 __all__ = [
-    'ABS', 'ADX', 'ALMA', 'ATR', 'AVGPRICE', 'BBANDS', 'BOP', 'CCI',
-    'CLAG', 'CMF', 'CROSSOVER', 'CROSSUNDER', 'CURVE', 'DEMA', 'DIFF',
-    'DMI', 'EMA', 'EVAL', 'EXP', 'FLAG', 'HMA', 'KAMA', 'KELTNER', 'KER',
-    'LAG', 'LOG', 'LROC', 'MACD', 'MAD', 'MAV', 'MAX', 'MDI', 'MFI',
+    'ABS', 'ADX', 'ALMA', 'ATR', 'AVGPRICE', 'BBANDS', 'BBP', 'BBW', 'BOP',
+    'CCI', 'CLAG', 'CMF', 'CROSSOVER', 'CROSSUNDER', 'CURVE', 'DEMA',
+    'DIFF', 'DMI', 'EMA', 'EVAL', 'EXP', 'FLAG', 'HMA', 'KAMA', 'KELTNER',
+    'KER', 'LAG', 'LOG', 'LROC', 'MACD', 'MAD', 'MAV', 'MAX', 'MDI', 'MFI',
     'MIDPRICE', 'MIN', 'NATR', 'PDI', 'PPO', 'PRICE', 'QSF', 'RMA', 'ROC',
     'RSI', 'RVALUE', 'SAR', 'SHIFT', 'SIGN', 'SLOPE', 'SMA', 'STDEV',
     'STEP', 'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TSF', 'TYPPRICE',

@@ -3,9 +3,7 @@
 
 def calc_streak(series, *, bint wrap=False):
     """
-    Consecutive streak of ups or downs
-    
-    Length of streak of values all up or down, times +1 or -1 whether ups or downs.
+    Consecutive streak of values above zero
     """
 
     cdef const double[:] xs = np.asarray(series, float)
@@ -14,7 +12,7 @@ def calc_streak(series, *, bint wrap=False):
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double value = NAN, prev = NAN, diff=NAN
+    cdef double value = NAN
     cdef double streak = NAN
 
     cdef long i = 0
@@ -22,13 +20,10 @@ def calc_streak(series, *, bint wrap=False):
     for i in range(size):
         value = xs[i]
 
-        if not isnan(value):
-            diff, prev = value - prev, value
-
-            if diff > 0:
-                streak = streak + 1 if streak>0 else 1.0 
-            elif diff < 0:
-                streak = streak - 1 if streak<0 else -1.0 
+        if value > 0:
+            streak += 1 
+        else:
+            streak = 0
 
         output[i] = streak
 
