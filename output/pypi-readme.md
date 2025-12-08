@@ -22,71 +22,72 @@ The `mintalib` package contains four main modules:
 
 ## List of Indicators
 
-| Name       | Description                                      |
-|:-----------|:-------------------------------------------------|
-| ABS        | Absolute Value                                   |
-| ADX        | Average Directional Index                        |
-| ALMA       | Arnaud Legoux Moving Average                     |
-| ATR        | Average True Range                               |
-| AVGPRICE   | Average Price                                    |
-| BBANDS     | Bollinger Bands                                  |
-| BBP        | Bollinger Bands Percent (%B)                     |
-| BBW        | Bollinger Bands Width                            |
-| BOP        | Balance of Power                                 |
-| CCI        | Commodity Channel Index                          |
-| CLAG       | Confirmation Lag                                 |
-| CMF        | Chaikin Money Flow                               |
-| CROSSOVER  | Cross Over                                       |
-| CROSSUNDER | Cross Under                                      |
-| CURVE      | Curve (quadratic regression)                     |
-| DEMA       | Double Exponential Moving Average                |
-| DIFF       | Difference                                       |
-| DMI        | Directional Movement Indicator                   |
-| EMA        | Exponential Moving Average                       |
-| EVAL       | Expression Eval (pandas only)                    |
-| EXP        | Exponential                                      |
-| FLAG       | Flag Value                                       |
-| HMA        | Hull Moving Average                              |
-| KAMA       | Kaufman Adaptive Moving Average                  |
-| KELTNER    | Keltner Channel                                  |
-| KER        | Kaufman Efficiency Ratio                         |
-| LAG        | Lag Function                                     |
-| LOG        | Logarithm                                        |
-| LROC       | Logarithmic Rate of Change                       |
-| MACD       | Moving Average Convergenge Divergence            |
-| MAD        | Rolling Mean Absolute Deviation                  |
-| MAV        | Generic Moving Average                           |
-| MAX        | Rolling Maximum                                  |
-| MDI        | Minus Directional Index                          |
-| MFI        | Money Flow Index                                 |
-| MIDPRICE   | Mid Price                                        |
-| MIN        | Rolling Minimum                                  |
-| NATR       | Average True Range (normalized)                  |
-| PDI        | Plus Directional Index                           |
-| PPO        | Price Percentage Oscillator                      |
-| PRICE      | Generic Price                                    |
-| QSF        | Quadratic Series Forecast (quadratic regression) |
-| RMA        | Rolling Moving Average (RSI style)               |
-| ROC        | Rate of Change                                   |
-| RSI        | Relative Strength Index                          |
-| RVALUE     | R-Value (linear regression)                      |
-| SAR        | Parabolic Stop and Reverse                       |
-| SHIFT      | Shift Function                                   |
-| SIGN       | Sign                                             |
-| SLOPE      | Slope (linear regression)                        |
-| SMA        | Simple Moving Average                            |
-| STDEV      | Standard Deviation                               |
-| STEP       | Step Function                                    |
-| STOCH      | Stochastic Oscillator                            |
-| STREAK     | Consecutive streak of values above zero          |
-| SUM        | Rolling sum                                      |
-| TEMA       | Triple Exponential Moving Average                |
-| TRANGE     | True Range                                       |
-| TSF        | Time Series Forecast (linear regression)         |
-| TYPPRICE   | Typical Price                                    |
-| UPDOWN     | Flag for value crossing up & down levels         |
-| WCLPRICE   | Weighted Close Price                             |
-| WMA        | Weighted Moving Average                          |
+| Name       | Description                                                   |
+|:-----------|:--------------------------------------------------------------|
+| ABS        | Absolute Value                                                |
+| ADX        | Average Directional Index                                     |
+| ALMA       | Arnaud Legoux Moving Average                                  |
+| ATR        | Average True Range                                            |
+| AVGPRICE   | Average Price                                                 |
+| BBANDS     | Bollinger Bands                                               |
+| BBP        | Bollinger Bands Percent (%B)                                  |
+| BBW        | Bollinger Bands Width                                         |
+| BOP        | Balance of Power                                              |
+| CCI        | Commodity Channel Index                                       |
+| CLAG       | Confirmation Lag                                              |
+| CMF        | Chaikin Money Flow                                            |
+| CROSSOVER  | Cross Over                                                    |
+| CROSSUNDER | Cross Under                                                   |
+| CURVE      | Curve (quadratic regression)                                  |
+| DEMA       | Double Exponential Moving Average                             |
+| DIFF       | Difference                                                    |
+| DMI        | Directional Movement Indicator                                |
+| EMA        | Exponential Moving Average                                    |
+| EVAL       | Expression Eval (pandas only)                                 |
+| EXP        | Exponential                                                   |
+| FLAG       | Flag Value                                                    |
+| HMA        | Hull Moving Average                                           |
+| KAMA       | Kaufman Adaptive Moving Average                               |
+| KELTNER    | Keltner Channel                                               |
+| KER        | Kaufman Efficiency Ratio                                      |
+| LAG        | Lag Function                                                  |
+| LOG        | Logarithm                                                     |
+| LROC       | Logarithmic Rate of Change                                    |
+| MACD       | Moving Average Convergenge Divergence                         |
+| MACDV      | Moving Average Convergenge Divergence - Volatility Normalized |
+| MAD        | Rolling Mean Absolute Deviation                               |
+| MAV        | Generic Moving Average                                        |
+| MAX        | Rolling Maximum                                               |
+| MDI        | Minus Directional Index                                       |
+| MFI        | Money Flow Index                                              |
+| MIDPRICE   | Mid Price                                                     |
+| MIN        | Rolling Minimum                                               |
+| NATR       | Average True Range (normalized)                               |
+| PDI        | Plus Directional Index                                        |
+| PPO        | Price Percentage Oscillator                                   |
+| PRICE      | Generic Price                                                 |
+| QSF        | Quadratic Series Forecast (quadratic regression)              |
+| RMA        | Rolling Moving Average (RSI style)                            |
+| ROC        | Rate of Change                                                |
+| RSI        | Relative Strength Index                                       |
+| RVALUE     | R-Value (linear regression)                                   |
+| SAR        | Parabolic Stop and Reverse                                    |
+| SHIFT      | Shift Function                                                |
+| SIGN       | Sign                                                          |
+| SLOPE      | Slope (linear regression)                                     |
+| SMA        | Simple Moving Average                                         |
+| STDEV      | Standard Deviation                                            |
+| STEP       | Step Function                                                 |
+| STOCH      | Stochastic Oscillator                                         |
+| STREAK     | Consecutive streak of values above zero                       |
+| SUM        | Rolling sum                                                   |
+| TEMA       | Triple Exponential Moving Average                             |
+| TRANGE     | True Range                                                    |
+| TSF        | Time Series Forecast (linear regression)                      |
+| TYPPRICE   | Typical Price                                                 |
+| UPDOWN     | Flag for value crossing up & down levels                      |
+| WCLPRICE   | Weighted Close Price                                          |
+| WMA        | Weighted Moving Average                                       |
 
 
 ## Using Functions

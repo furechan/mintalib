@@ -144,6 +144,9 @@ def lroc(prices, period: int = 1, *, item: str = None): ...
 @wrap_function(core.calc_macd)
 def macd(prices, n1: int = 12, n2: int = 26, n3: int = 9, *, item: str = None): ...
 
+@wrap_function(core.calc_macdv)
+def macdv(prices, n1: int = 12, n2: int = 26, n3: int = 9): ...
+
 @wrap_function(core.calc_mad)
 def mad(prices, period: int = 14, *, item: str = None): ...
 
@@ -247,9 +250,9 @@ __all__ = [
     'abs', 'adx', 'alma', 'atr', 'avgprice', 'bbands', 'bbp', 'bbw', 'bop',
     'cci', 'clag', 'cmf', 'crossover', 'crossunder', 'curve', 'dema',
     'diff', 'dmi', 'ema', 'eval', 'exp', 'flag', 'hma', 'kama', 'keltner',
-    'ker', 'lag', 'log', 'lroc', 'macd', 'mad', 'mav', 'max', 'mdi', 'mfi',
-    'midprice', 'min', 'natr', 'pdi', 'ppo', 'price', 'qsf', 'rma', 'roc',
-    'rsi', 'rvalue', 'sar', 'shift', 'sign', 'slope', 'sma', 'stdev',
-    'step', 'stoch', 'streak', 'sum', 'tema', 'trange', 'tsf', 'typprice',
-    'updown', 'wclprice', 'wma'
+    'ker', 'lag', 'log', 'lroc', 'macd', 'macdv', 'mad', 'mav', 'max',
+    'mdi', 'mfi', 'midprice', 'min', 'natr', 'pdi', 'ppo', 'price', 'qsf',
+    'rma', 'roc', 'rsi', 'rvalue', 'sar', 'shift', 'sign', 'slope', 'sma',
+    'stdev', 'step', 'stoch', 'streak', 'sum', 'tema', 'trange', 'tsf',
+    'typprice', 'updown', 'wclprice', 'wma'
 ]

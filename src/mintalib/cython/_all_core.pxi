@@ -52,8 +52,9 @@ include "keltner.pxi"
 
 include "kama.pxi"
 
-include "macd.pxi"
 include "ppo.pxi"
+include "macd.pxi"
+include "macdv.pxi"
 
 include "slope.pxi"
 include "curve.pxi"

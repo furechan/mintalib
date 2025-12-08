@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "mintalib"
 version = "0.0.25"
 readme = "output/pypi-readme.md"
+license = { text = "MIT License" }
 requires-python = ">=3.10"
 description = "Minimal Technical Analysis Library for Python"
 urls.homepage = "https://github.com/furechan/mintalib"
@@ -15,7 +16,6 @@ optional-dependencies.polars = ["polars"]
 keywords = ["cython", "technical-analysis", "indicators"]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 

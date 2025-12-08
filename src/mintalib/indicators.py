@@ -143,6 +143,9 @@ def LROC(period: int = 1, *, item: str = None): ...
 @wrap_indicator(core.calc_macd)
 def MACD(n1: int = 12, n2: int = 26, n3: int = 9, *, item: str = None): ...
 
+@wrap_indicator(core.calc_macdv)
+def MACDV(n1: int = 12, n2: int = 26, n3: int = 9): ...
+
 @wrap_indicator(core.calc_mad)
 def MAD(period: int = 14, *, item: str = None): ...
 
@@ -246,9 +249,9 @@ __all__ = [
     'ABS', 'ADX', 'ALMA', 'ATR', 'AVGPRICE', 'BBANDS', 'BBP', 'BBW', 'BOP',
     'CCI', 'CLAG', 'CMF', 'CROSSOVER', 'CROSSUNDER', 'CURVE', 'DEMA',
     'DIFF', 'DMI', 'EMA', 'EVAL', 'EXP', 'FLAG', 'HMA', 'KAMA', 'KELTNER',
-    'KER', 'LAG', 'LOG', 'LROC', 'MACD', 'MAD', 'MAV', 'MAX', 'MDI', 'MFI',
-    'MIDPRICE', 'MIN', 'NATR', 'PDI', 'PPO', 'PRICE', 'QSF', 'RMA', 'ROC',
-    'RSI', 'RVALUE', 'SAR', 'SHIFT', 'SIGN', 'SLOPE', 'SMA', 'STDEV',
-    'STEP', 'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TSF', 'TYPPRICE',
-    'UPDOWN', 'WCLPRICE', 'WMA'
+    'KER', 'LAG', 'LOG', 'LROC', 'MACD', 'MACDV', 'MAD', 'MAV', 'MAX',
+    'MDI', 'MFI', 'MIDPRICE', 'MIN', 'NATR', 'PDI', 'PPO', 'PRICE', 'QSF',
+    'RMA', 'ROC', 'RSI', 'RVALUE', 'SAR', 'SHIFT', 'SIGN', 'SLOPE', 'SMA',
+    'STDEV', 'STEP', 'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TSF',
+    'TYPPRICE', 'UPDOWN', 'WCLPRICE', 'WMA'
 ]
