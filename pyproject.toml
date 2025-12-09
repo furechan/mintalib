@@ -44,9 +44,6 @@ dev = [
     "pytest-sugar>=1.0.0",
 ]
 
-[tool.uv]
-python-preference = "managed"
-
 [tool.pytest.ini_options]
 addopts = ["-p no:cacheprovider"]
 testpaths = ["tests"]
