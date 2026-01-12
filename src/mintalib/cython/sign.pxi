@@ -1,7 +1,7 @@
 """ Sign function """
 
 
-def calc_sign(series, double na_value=NAN, *, bint wrap=False):
+def calc_sign(series, *, bint wrap=False):
     """Sign"""
 
     cdef const double[:] xs = np.asarray(series, float)
@@ -17,13 +17,11 @@ def calc_sign(series, double na_value=NAN, *, bint wrap=False):
     for i in range(size):
         value = xs[i]
 
-        if isnan(value):
-            sign = na_value
-        elif value > 0:
+        if value > 0:
             sign = 1.0
         elif value < 0:
             sign = -1.0
-        else:
+        elif value == 0:
             sign = 0.0
 
         output[i] = sign

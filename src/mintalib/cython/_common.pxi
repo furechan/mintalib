@@ -82,11 +82,11 @@ def add_metadata(*, same_scale: bool = None, output_names: list | tuple = None):
     metadata = dict(same_scale=same_scale, output_names=output_names)
     metadata = { k: v for k, v in metadata.items() if v is not None}
 
-    def decorator(func):
+    def wrapper(func):
         func.metadata = MappingProxyType(metadata)
         return func
 
-    return decorator
+    return wrapper
 
 
 

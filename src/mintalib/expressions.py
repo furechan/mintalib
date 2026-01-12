@@ -112,6 +112,14 @@ def AVGPRICE(*, src='*'): ...
 def BBANDS(period: int = 20, nbdev: float = 2.0, *, src='*'): ...
 
 
+@wrap_expression(core.calc_bbp)
+def BBP(period: int = 20, nbdev: float = 2.0, *, src='*'): ...
+
+
+@wrap_expression(core.calc_bbw)
+def BBW(period: int = 20, nbdev: float = 2.0, *, src='*'): ...
+
+
 @wrap_expression(core.calc_bop)
 def BOP(period: int = 20, *, src='*'): ...
 
@@ -269,7 +277,7 @@ def SHIFT(src, period: int): ...
 
 
 @wrap_expression(core.calc_sign)
-def SIGN(src, na_value: float = nan): ...
+def SIGN(src): ...
 
 
 @wrap_expression(core.calc_slope)
@@ -329,12 +337,12 @@ def WMA(src, period: int): ...
 
 
 __all__ = [
-    'ABS', 'ADX', 'ALMA', 'ATR', 'AVGPRICE', 'BBANDS', 'BOP', 'CCI',
-    'CLAG', 'CMF', 'CROSSOVER', 'CROSSUNDER', 'CURVE', 'DEMA', 'DIFF',
-    'DMI', 'EMA', 'EXP', 'FLAG', 'HMA', 'KAMA', 'KELTNER', 'KER', 'LAG',
-    'LOG', 'LROC', 'MACD', 'MAD', 'MAV', 'MAX', 'MDI', 'MFI', 'MIDPRICE',
-    'MIN', 'NATR', 'PDI', 'PPO', 'PRICE', 'QSF', 'RMA', 'ROC', 'RSI',
-    'RVALUE', 'SAR', 'SHIFT', 'SIGN', 'SLOPE', 'SMA', 'STDEV', 'STEP',
-    'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TSF', 'TYPPRICE',
+    'ABS', 'ADX', 'ALMA', 'ATR', 'AVGPRICE', 'BBANDS', 'BBP', 'BBW', 'BOP',
+    'CCI', 'CLAG', 'CMF', 'CROSSOVER', 'CROSSUNDER', 'CURVE', 'DEMA',
+    'DIFF', 'DMI', 'EMA', 'EXP', 'FLAG', 'HMA', 'KAMA', 'KELTNER', 'KER',
+    'LAG', 'LOG', 'LROC', 'MACD', 'MAD', 'MAV', 'MAX', 'MDI', 'MFI',
+    'MIDPRICE', 'MIN', 'NATR', 'PDI', 'PPO', 'PRICE', 'QSF', 'RMA', 'ROC',
+    'RSI', 'RVALUE', 'SAR', 'SHIFT', 'SIGN', 'SLOPE', 'SMA', 'STDEV',
+    'STEP', 'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TSF', 'TYPPRICE',
     'UPDOWN', 'WCLPRICE', 'WMA'
 ]

@@ -1,56 +1,23 @@
+
 """
 Factory functions for technical analysis indicators.
 
 Indicator factory names are all upper case.
 
-Indicators offer a composable interface where a calculation routine
-is bound together with its calculation parameters.
+Indicators offer a composable interface where a calculation routine is bound with its calculation parameters.
 
-An indicator object is a callable that can be applied to prices or series data.
+An indicator is a callable and can be applied to prices or series data as in `SMA(50)(prices)`.
 
-Indicators can be chained with the `@` operator as in `ROC(1) @ SMA(20)`.
+Indicators support the `@` operator to chain indicators together as in `ROC(1) @ SMA(20)`.
 
-The `@` operator can also be used to apply an indicator to its parameter.
-
-So for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`,
-instead of the more verbose `SMA(50)(prices)`.
+The `@` operator can also be used to apply an indicator to its parameter as in `SMA(50) @ prices`.
 """
 
-# PREAMBLE Do not edit! This file was generated
+# Do not edit! This file was generated
 
-import inspect
+from mintalib import core
+from mintalib.model import wrap_indicator
 
-from . import core
-from .model import FuncIndicator
-
-nan = float('nan')
-
-def wrap_indicator(calc_func):
-    """Decorator to wrap indicators"""
-
-    def decorator(func):
-        name = func.__name__
-        sig = inspect.signature(func)
-
-        def wrapper(*args, **kwargs):
-            binding = sig.bind(*args, **kwargs)
-            binding.apply_defaults()
-            params = dict(binding.arguments)
-
-            return FuncIndicator(
-                name=name,
-                func=calc_func,
-                params=params,
-            )
-
-        wrapper.__name__ = func.__name__
-        wrapper.__qualname__ = func.__qualname__
-        wrapper.__doc__ = calc_func.__doc__
-        wrapper.__signature__ = sig
-
-        return wrapper
-
-    return decorator
 
 
 @wrap_indicator(core.calc_abs)
@@ -201,7 +168,7 @@ def SAR(afs: float = 0.02, maxaf: float = 0.2): ...
 def SHIFT(period: int, *, item: str = None): ...
 
 @wrap_indicator(core.calc_sign)
-def SIGN(na_value: float = nan, *, item: str = None): ...
+def SIGN(*, item: str = None): ...
 
 @wrap_indicator(core.calc_slope)
 def SLOPE(period: int = 20, *, item: str = None): ...

@@ -1,3 +1,4 @@
+
 """
 Calculation functions for technical analysis indicators.
 
@@ -17,41 +18,11 @@ In particular the result of a function applied to a pandas series or dataframes
 will have the same index as the input.
 """
 
-# PREAMBLE Do not edit! This file was generated
+# Do not edit! This file was generated
 
-import inspect
+from mintalib import core
+from mintalib.model import wrap_function
 
-from . import core
-from .core import get_series, wrap_result, column_accessor
-
-nan = float('nan')
-
-def wrap_function(calc_func):
-
-    sig = inspect.signature(calc_func)
-    first_param = next(iter(sig.parameters))
-
-    def decorator(func):
-        sig = inspect.signature(func)
-
-        def wrapper(prices, *args, **kwargs):
-            item = kwargs.pop('item', None)
-
-            if first_param == 'series':
-                input = get_series(prices, item)
-            else:
-                input = column_accessor(prices)
-
-            result = calc_func(input, *args, **kwargs)
-            return wrap_result(result, prices)
-
-        wrapper.__name__ = func.__name__
-        wrapper.__qualname__ = func.__qualname__
-        wrapper.__doc__ = calc_func.__doc__
-        wrapper.__signature__ = sig
-
-        return wrapper
-    return decorator
 
 
 @wrap_function(core.calc_abs)
@@ -202,7 +173,7 @@ def sar(prices, afs: float = 0.02, maxaf: float = 0.2): ...
 def shift(prices, period: int, *, item: str = None): ...
 
 @wrap_function(core.calc_sign)
-def sign(prices, na_value: float = nan, *, item: str = None): ...
+def sign(prices, *, item: str = None): ...
 
 @wrap_function(core.calc_slope)
 def slope(prices, period: int = 20, *, item: str = None): ...
