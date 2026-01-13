@@ -22,7 +22,7 @@ def annotate_parameter(param):
         if param.name == "period":
             return param.replace(annotation=int)
 
-        if param.name not in ("series", "prices"):
+        if param.name not in ("series", "prices", "src"):
             warnings.warn(f"Missing annotation for {param.name}", stacklevel=2)
 
     return param
