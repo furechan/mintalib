@@ -13,10 +13,10 @@ Indicators support the `@` operator to chain indicators together as in `ROC(1) @
 The `@` operator can also be used to apply an indicator to its parameter as in `SMA(50) @ prices`.
 """
 
-# Do not edit! This file was generated
+# Do not edit! This file was generated.
 
 from mintalib import core
-from mintalib.model import wrap_indicator
+from mintalib.model.indicator import wrap_indicator
 
 
 

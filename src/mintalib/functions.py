@@ -18,10 +18,10 @@ In particular the result of a function applied to a pandas series or dataframes
 will have the same index as the input.
 """
 
-# Do not edit! This file was generated
+# Do not edit! This file was generated.
 
 from mintalib import core
-from mintalib.model import wrap_function
+from mintalib.model.function import wrap_function
 
 
 

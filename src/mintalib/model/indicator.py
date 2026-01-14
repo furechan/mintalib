@@ -1,7 +1,5 @@
-"""Model classes"""
+"""Indicator Model"""
 
-import sys
-import copy
 import inspect
 
 from typing import Callable
@@ -10,71 +8,56 @@ from functools import cached_property
 
 from abc import ABCMeta, abstractmethod
 
-from .core import get_series, wrap_result
-from .utils import format_partial, lazy_repr
-
-
-class StructWrapper:
-    """Indicator wrapper to unnest/nest struct data"""
-    def __init__(self, indicator):
-        self.indicator = indicator
-    
-    def __getattr__(self, name):
-        return getattr(self.indicator, name)
-    
-    def __repr__(self):
-        return repr(self.indicator)
-    
-    def __call__(self, data):
-        # Unnest data if applicable
-        if hasattr(data, 'dtype') and data.dtype.__class__.__name__ == 'Struct':
-            data = data.struct
-        # Call indicator
-        result = self.indicator(data)
-        # Convert result to struct if applicable
-        if hasattr(result, 'to_struct'):
-            cname = self.indicator.__class__.__name__
-            result = result.to_struct(cname.lower())
-        return result
+from ..core import get_series, wrap_result, column_accessor
+from ..utils import format_partial, lazy_repr
 
 
 class Indicator(metaclass=ABCMeta):
-    """Abstact Base class for Indicators"""
+    """Abstact Base Class for Indicators"""
 
     __repr__ = lazy_repr
 
     @abstractmethod
     def __call__(self, data): ...
 
-    @property
-    @abstractmethod
-    def input_type(self):
-        """input type: wether "series" or "prices"""
-        ...
-
     def __matmul__(self, other):
-        if hasattr(other, 'map_batches'): # polars expression
-            polars = sys.modules.get("polars")
-            if str(other) == "*" and polars:
-                other = polars.struct(other)
-            elif self.input_type != "series":
-                raise NotImplementedError
-            wrapper = StructWrapper(self)
-            return other.map_batches(wrapper)
-
         if callable(other):
             return ComposedIndicator(self, other)
-        
+
         return self(other)
-        
+
     def get_series(self, data):
         """Series data accessor"""
         item = getattr(self, "item", None)
         return get_series(data, item=item)
 
+    def alias(self, name: str):
+        return AliasedIndicator(self, name)
+
+
+class AliasedIndicator(Indicator):
+    """Aliased Indicator"""
+
+    def __init__(self, indicator, name):
+        self.indicator = indicator
+        self.name = name
+    
+    def __repr__(self):
+        return f"{self.indicator!r}.alias({self.name!r})"
+
+    def __call__(self, data):
+        result = self.indicator(data)
+        rtype = type(result).__name__
+
+        if rtype == "Series" and hasattr(result, "rename"):
+            return result.rename(self.name)
+
+        raise ValueError(f"Cannot rename {rtype} result")
+
+
 
 class FuncIndicator(Indicator):
-    """Function based Indicator"""
+    """Function Based Indicator"""
 
     output_name: str = None
 
@@ -88,24 +71,17 @@ class FuncIndicator(Indicator):
     def __init__(self, name: str, func: Callable, params: dict):
         self.name = name
         self.func = func
-        self.item = params.pop('item', None)
+        self.item = params.pop("item", None)
         self.params = MappingProxyType(params)
 
-        metadata = getattr(func, 'metadata', None)
+        metadata = getattr(func, "metadata", None)
         if metadata:
             self.metadata = MappingProxyType(metadata)
 
     @cached_property
     def input_type(self):
         signature = inspect.signature(self.func)
-        return next(iter(signature.parameters), None) 
-
-    def alias(self, name):
-        if hasattr(self, "output_names"):
-            raise ValueError("Cannot alias a multi-output indicator")
-        target = copy.copy(self)
-        target.output_name = name
-        return target
+        return next(iter(signature.parameters), None)
 
     def __repr__(self):
         return format_partial(self.func, self.params, name=self.name)
@@ -117,10 +93,10 @@ class FuncIndicator(Indicator):
             series = get_series(prices, self.item)
             result = self.func(series, **self.params)
         else:
+            prices = column_accessor(prices)
             result = self.func(prices, **self.params)
 
-        return wrap_result(result, prices, name=output_name)  
-
+        return wrap_result(result, prices, name=output_name)
 
 
 class ComposedIndicator(Indicator):
@@ -135,11 +111,6 @@ class ComposedIndicator(Indicator):
                 items.append(item)
         self.chain = tuple(items)
 
-    @cached_property
-    def input_type(self):
-        if self.chain:
-            return self.chain[-1].input_type
-
     def __repr__(self):
         return " @ ".join(repr(fn) for fn in self.chain)
 
@@ -147,4 +118,32 @@ class ComposedIndicator(Indicator):
         for fn in reversed(self.chain):
             data = fn(data)
         return data
+
+
+def wrap_indicator(calc_func):
+    """Decorator to wrap indicators"""
+
+    def decorator(func):
+        name = func.__name__
+        sig = inspect.signature(func)
+
+        def wrapper(*args, **kwargs):
+            binding = sig.bind(*args, **kwargs)
+            binding.apply_defaults()
+            params = dict(binding.arguments)
+
+            return FuncIndicator(
+                name=name,
+                func=calc_func,
+                params=params,
+            )
+
+        wrapper.__name__ = func.__name__
+        wrapper.__qualname__ = func.__qualname__
+        wrapper.__doc__ = calc_func.__doc__
+        wrapper.__signature__ = sig
+
+        return wrapper
+
+    return decorator
 
