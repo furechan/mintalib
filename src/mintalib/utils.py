@@ -39,3 +39,28 @@ def lazy_repr(obj):
 
     return format_partial(obj.__init__, obj.__dict__, name=cname)
 
+
+def convert_dataframe(data, backend: str = "pandas"):
+    """convert data to target format"""
+
+    pname = getattr(data, '__module__', '').partition('.')[0]
+
+    if backend == pname:
+        return data
+
+    if backend == "pandas":
+        if hasattr(data, 'to_pandas'):
+            return data.to_pandas()
+        else:
+            raise ValueError(f"Cannot convert {type(data)!r} to pandas")
+
+    if backend == "polars":
+        import polars
+
+        if pname == 'pandas':
+            return polars.from_pandas(data, include_index=True)
+        else:
+            return polars.from_dataframe(data)
+        
+    raise ValueError(f"Unknown backend {backend!r}")
+

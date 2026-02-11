@@ -7,13 +7,15 @@ from importlib import resources
 from functools import lru_cache
 from pandas.api.types import is_object_dtype
 
+from ..utils import convert_dataframe
+
 
 TIMEZONE = "America/New_York"
 FREQUENCIES = "daily", "hourly", "minute"
 
 
 @lru_cache
-def sample_prices(freq: str = "daily", *, max_bars: int = 0, item: str = None):
+def sample_prices(freq: str = "daily", *, backend: str = None):
     """Sample prices"""
 
     if freq not in FREQUENCIES:
@@ -30,10 +32,7 @@ def sample_prices(freq: str = "daily", *, max_bars: int = 0, item: str = None):
     if is_object_dtype(prices.index):
         prices.index = pd.to_datetime(prices.index, utc=True).tz_convert(TIMEZONE)
 
-    if max_bars > 0:
-        prices = prices.tail(max_bars)
-
-    if item:
-        return prices[item]
+    if backend is not None:
+        prices = convert_dataframe(prices, backend=backend)
 
     return prices
