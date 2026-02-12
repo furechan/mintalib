@@ -20,8 +20,15 @@ will have the same index as the input.
 
 # Do not edit! This file was generated.
 
+import warnings
 from mintalib import core
 from mintalib.model.function import wrap_function
+
+warnings.warn(
+    f"Module {__name__} is deprecated and will be removed in a future release!", 
+    DeprecationWarning,
+    stacklevel=2)
+
 
 
 

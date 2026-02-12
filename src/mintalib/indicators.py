@@ -1,16 +1,12 @@
 
 """
-Factory functions for technical analysis indicators.
+Indicators offer a composable interface where a calculation routine is bound with its parameters.
 
-Indicator factory names are all upper case.
+An indicator instance is a callable and can be applied to prices or series data as in `SMA(50)(prices)`.
 
-Indicators offer a composable interface where a calculation routine is bound with its calculation parameters.
+The `@` operator can be used to apply an indicator to its input data as in `SMA(50) @ prices`
+or to chain indicators as in `ROC(1) @ SMA(20)`.
 
-An indicator is a callable and can be applied to prices or series data as in `SMA(50)(prices)`.
-
-Indicators support the `@` operator to chain indicators together as in `ROC(1) @ SMA(20)`.
-
-The `@` operator can also be used to apply an indicator to its parameter as in `SMA(50) @ prices`.
 """
 
 # Do not edit! This file was generated.

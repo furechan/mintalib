@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.0.26
+- Added a `pandas` extension module `mintalib.pandas`
+- Added a `polars` extension module `mintalib.polars`
+- `functions` and `expressions` modules are legacy
+
 ## 0.0.25
 - Added some expression tests
 - Added `BBP` Indicator (Bolling Bands Percent)

@@ -1,6 +1,6 @@
 # Minimal Technical Analysis Library for Python
 
-This package offers a curated list of technical analysis indicators implemented in `cython` for optimal performance. The library is built around `numpy` arrays and also offers an interface for `pandas` and `polars` dataframes and series.
+This package offers a curated list of technical analysis indicators implemented in `cython` for optimal performance. The library is built around `numpy` arrays and offers an interface for `pandas` and `polars` dataframes and series.
 
 
 > **Warning** This project is experimental and the interface can change.
@@ -8,17 +8,16 @@ This package offers a curated list of technical analysis indicators implemented 
 
 ## Core Functions
 
-Core calculations functions are implemented in the `core` module with names like `calc_sma`, `calc_atr`, `calc_macd`, etc.
+Core calculation functions are implemented in the `core` module with names like `calc_sma`, `calc_atr`, `calc_macd`, etc.
 
 The first parameter of a function is either `prices` or `series` depending on whether
 the function expects a dataframe of prices or a single series.
 
 A `prices` dataframe can be a pandas or polars dataframe. The column names for prices are expected to include `open`, `high`, `low`, `close`, `volume` all in **lower case**.
 
-A `series` can be a pandas or polars series.
+A `series` can be a pandas/polars series or a numpy array.
 
-These functions return a numpy array or a tuple of numpy arrays, regardless of the type of inputs.
-
+These functions return a numpy array or a tuple of numpy arrays.
 
 ```python
 from mintalib.core import calc_sma, calc_atr
@@ -29,46 +28,9 @@ sma = calc_sma(prices['close'], 50)
 atr = calc_atr(prices)
 ```
 
-
-## Using Indicators (Legacy Interface)
-
-Indicators are available via the `mintalib.indicators` module with names in **upper case**. Indicators are best imported directly in the name space like:
-
-```python
-from mintalib.indicators import SMA, EMA, ROC, MACD
-```
-
-Indicators offer a composable interface where a function is bound with its calculation parameters. When instantiated with parameters an indicator yields a callable that can be applied to prices or series data.
-
-An indicator is a callable that accepts a series or a prices dataframe as a single parameter. You can also use the `@` operator as syntactic sugar to apply an indicator to its parameter. 
-
-So for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`, instead of the more verbose `SMA(50)(prices)`. 
-
-```python
-sma50 = SMA(50) @ prices    # SMA of 'close' with period 50
-sma200 = SMA(200) @ prices  # SMA of 'close' with period 200
-high200 = MAX(200, item='high') @ prices    # MAX of 'high' with period 200
-```
-
-The `@` operator can also be used to chain indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
-
-```python
-trend = ROC(1) @ EMA(20) @ prices
-```
-
-With pandas dataframes you can compose and apply multiple indicators in one call using the `assign` dataframe method.
-
-```python
-result = prices.assign(
-    sma50 = SMA(50),
-    sma200 = SMA(200),
-    rsi = RSI(14)
-)
-```
-
 # Pandas Extension
 
-Mintalib can be used as a pandas extension using a `ts` accessor. Series calculations are accessible on pandas series, and prices calculations are accessible on dataframes.
+Mintalib can be used as a pandas extension via a `ts` accessor. Series calculations are accessible on pandas series, and prices calculations are accessible on dataframes.
 
 To activate the extension you only need to import the module `mintalib.pandas`.
 
@@ -78,12 +40,12 @@ import mintlalib.pandas # noqa F401
 prices = ... # pandas DataFrame
 
 sma = prices.close.ts.sma(50)
-atr = prices.ta.atr()
+atr = prices.ts.atr()
 ```
 
 # Polars Extension
 
-Mintalib can be used as a polars extension using a `ts` accessor. Series calculations are accessible on pandas series, and prices calculations are accessible on dataframes. 
+Mintalib can be used as a polars extension via a `ts` accessor. Series calculations are accessible on pandas series, and prices calculations are accessible on dataframes. 
 
 To activate the extension you only need to import the module `mintalib.polars`.
 
@@ -94,10 +56,10 @@ import mintlalib.polars # noqa F401
 prices = ... # polars DataFrame
 
 sma = prices['close'].ts.sma(50)
-atr = prices.ta.atr()
+atr = prices.ts.atr()
 ```
 
-The extension can also be used with polars expressions under the `ts` namespace. Indicators that expect a prices dataframe can be computed on a struct exprevssion with the required fields (see `OHLCV` in example below). When using expressions please note that multi column outputs from indicators like `macd` are returned as polars struct expressions.
+The extension can also be used with polars expressions via the `ts` namespace. Indicators that expect a prices dataframe should be based on a struct expression with all required fields (see `OHLCV` in example below). When using expressions please note that indicators with multi column outputs like `macd` return a polars struct expressions.
 
 
 ```python
@@ -112,6 +74,37 @@ prices.select(
     CLOSE.ts.macd().struct.unnest(),
     sma=CLOSE.ts.sma(50)
     atr=OHLCV.ts.atr()
+)
+```
+
+
+
+## Using Indicators (Legacy Interface)
+
+Indicators offer a composable interface where a calculation function is bound with its parameters into a callable object. Indicators are accessible from the `mintalib.indicators` module with names like `EMA`, `SMA`, `ATR`, `MACD`, etc ... 
+
+An indicator instance can be invoked as a function or via the `@` operator as syntactic sugar. 
+
+So for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`, instead of the more verbose `SMA(50)(prices)`. 
+
+The `@` operator can also be used to chain indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
+
+```python
+from mintalib.indicators import SMA, EMA, ROC, MACD
+
+sma50 = SMA(50) @ prices    # SMA of 'close' with period 50
+sma200 = SMA(200) @ prices  # SMA of 'close' with period 200
+high200 = MAX(200, item='high') @ prices    # MAX of 'high' with period 200
+trend = ROC(1) @ EMA(20) @ prices
+```
+
+Indicators can be used as parameters to the pandas `assign` and other methods.
+
+```python
+result = prices.assign(
+    sma50 = SMA(50),
+    sma200 = SMA(200),
+    rsi = RSI(14)
 )
 ```
 
@@ -185,7 +178,6 @@ prices.select(
 | UPDOWN     | Flag for value crossing up & down levels                      |
 | WCLPRICE   | Weighted Close Price                                          |
 | WMA        | Weighted Moving Average                                       |
-
 
 
 ## Example Notebooks

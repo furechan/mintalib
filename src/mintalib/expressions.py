@@ -3,8 +3,15 @@
 
 # Do not Edit! This file was generated.
 
+import warnings
 from mintalib import core
 from mintalib.model.expression import wrap_expression
+
+warnings.warn(
+    f"Module {__name__} is deprecated and will be removed in a future release!", 
+    DeprecationWarning,
+    stacklevel=2)
+
 
 @wrap_expression(core.calc_abs)
 def ABS(src): ...
