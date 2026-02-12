@@ -78,14 +78,13 @@ prices.select(
 ```
 
 
-
-## Using Indicators (Legacy Interface)
+## Using Indicators
 
 Indicators offer a composable interface where a calculation function is bound with its parameters into a callable object. Indicators are accessible from the `mintalib.indicators` module with names like `EMA`, `SMA`, `ATR`, `MACD`, etc ... 
 
 An indicator instance can be invoked as a function or via the `@` operator as syntactic sugar. 
 
-So for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`, instead of the more verbose `SMA(50)(prices)`. 
+So for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`, in place of `SMA(50)(prices)`. 
 
 The `@` operator can also be used to chain indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
 
