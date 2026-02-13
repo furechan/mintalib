@@ -35,7 +35,7 @@ Mintalib can be used as a pandas extension via a `ts` accessor. Series calculati
 To activate the extension you only need to import the module `mintalib.pandas`.
 
 ```python
-import mintlalib.pandas # noqa F401
+import mintalib.pandas # noqa F401
 
 prices = ... # pandas DataFrame
 
@@ -52,7 +52,7 @@ To activate the extension you only need to import the module `mintalib.polars`.
 
 
 ```python
-from mintlalib.polars import CLOSE, OHLCV
+from mintalib.polars import CLOSE, OHLCV
 
 # CLOSE is short-hand for pl.col('close')
 # OHLCV is short-hand for pl.struct(['open', 'high', 'low', 'close', 'volume'])
