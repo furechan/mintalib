@@ -45,21 +45,10 @@ atr = prices.ts.atr()
 
 # Polars Extension
 
-Mintalib can be used as a polars extension via a `ts` accessor. Series calculations are accessible on pandas series, and prices calculations are accessible on dataframes. 
+Mintalib can be used as a polars extension via a `ts` accessor for polars series, dataframes and expressions. 
+Indicators that expect a prices inputs should be invoked on a struct with all required fields (see `OHLCV` in example below). Indicators with multi column outputs like `macd` return a polars struct.
 
 To activate the extension you only need to import the module `mintalib.polars`.
-
-
-```python
-import mintlalib.polars # noqa F401
-
-prices = ... # polars DataFrame
-
-sma = prices['close'].ts.sma(50)
-atr = prices.ts.atr()
-```
-
-The extension can also be used with polars expressions via the `ts` namespace. Indicators that expect a prices dataframe should be based on a struct expression with all required fields (see `OHLCV` in example below). When using expressions please note that indicators with multi column outputs like `macd` return a polars struct expressions.
 
 
 ```python
@@ -78,7 +67,7 @@ prices.select(
 ```
 
 
-## Using Indicators
+## Using Indicators (Legacy Interface)
 
 Indicators offer a composable interface where a calculation function is bound with its parameters into a callable object. Indicators are accessible from the `mintalib.indicators` module with names like `EMA`, `SMA`, `ATR`, `MACD`, etc ... 
 
@@ -91,19 +80,13 @@ The `@` operator can also be used to chain indicators, where for example `ROC(1)
 ```python
 from mintalib.indicators import SMA, EMA, ROC, MACD
 
-sma50 = SMA(50) @ prices    # SMA of 'close' with period 50
-sma200 = SMA(200) @ prices  # SMA of 'close' with period 200
-high200 = MAX(200, item='high') @ prices    # MAX of 'high' with period 200
-trend = ROC(1) @ EMA(20) @ prices
-```
+prices = ... # pandas DataFrame
 
-Indicators can be used as parameters to the pandas `assign` and other methods.
-
-```python
 result = prices.assign(
     sma50 = SMA(50),
     sma200 = SMA(200),
-    rsi = RSI(14)
+    rsi = RSI(14),
+    trend = ROC(1) @ EMA(20)
 )
 ```
 
