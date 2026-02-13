@@ -36,6 +36,9 @@
             <li>
                     <a class="function" href="#lazy_repr">lazy_repr</a>
             </li>
+            <li>
+                    <a class="function" href="#convert_dataframe">convert_dataframe</a>
+            </li>
     </ul>
 
 
@@ -99,6 +102,31 @@
 </span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>    <span class="n">cname</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__qualname__</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>
 </span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>    <span class="k">return</span> <span class="n">format_partial</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">cname</span><span class="p">)</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_dataframe</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;pandas&quot;</span><span class="p">):</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;convert data to target format&quot;&quot;&quot;</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="n">pname</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;__module__&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="n">pname</span><span class="p">:</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>        <span class="k">return</span> <span class="n">data</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;pandas&quot;</span><span class="p">:</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;to_pandas&#39;</span><span class="p">):</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>            <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot convert </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">!r}</span><span class="s2"> to pandas&quot;</span><span class="p">)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;polars&quot;</span><span class="p">:</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="kn">import</span><span class="w"> </span><span class="nn">polars</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>        <span class="k">if</span> <span class="n">pname</span> <span class="o">==</span> <span class="s1">&#39;pandas&#39;</span><span class="p">:</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>            <span class="k">return</span> <span class="n">polars</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">include_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>            <span class="k">return</span> <span class="n">polars</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown backend </span><span class="si">{</span><span class="n">backend</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -169,6 +197,48 @@
 
 
             <div class="docstring"><p>minimal __repr__ based on __init__ signature</p>
+</div>
+
+
+                </section>
+                <section id="convert_dataframe">
+                            <input id="convert_dataframe-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">convert_dataframe</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">data</span>, </span><span class="param"><span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;pandas&#39;</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="convert_dataframe-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#convert_dataframe"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="convert_dataframe-44"><a href="#convert_dataframe-44"><span class="linenos">44</span></a><span class="k">def</span><span class="w"> </span><span class="nf">convert_dataframe</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;pandas&quot;</span><span class="p">):</span>
+</span><span id="convert_dataframe-45"><a href="#convert_dataframe-45"><span class="linenos">45</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;convert data to target format&quot;&quot;&quot;</span>
+</span><span id="convert_dataframe-46"><a href="#convert_dataframe-46"><span class="linenos">46</span></a>
+</span><span id="convert_dataframe-47"><a href="#convert_dataframe-47"><span class="linenos">47</span></a>    <span class="n">pname</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;__module__&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="convert_dataframe-48"><a href="#convert_dataframe-48"><span class="linenos">48</span></a>
+</span><span id="convert_dataframe-49"><a href="#convert_dataframe-49"><span class="linenos">49</span></a>    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="n">pname</span><span class="p">:</span>
+</span><span id="convert_dataframe-50"><a href="#convert_dataframe-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="n">data</span>
+</span><span id="convert_dataframe-51"><a href="#convert_dataframe-51"><span class="linenos">51</span></a>
+</span><span id="convert_dataframe-52"><a href="#convert_dataframe-52"><span class="linenos">52</span></a>    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;pandas&quot;</span><span class="p">:</span>
+</span><span id="convert_dataframe-53"><a href="#convert_dataframe-53"><span class="linenos">53</span></a>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;to_pandas&#39;</span><span class="p">):</span>
+</span><span id="convert_dataframe-54"><a href="#convert_dataframe-54"><span class="linenos">54</span></a>            <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+</span><span id="convert_dataframe-55"><a href="#convert_dataframe-55"><span class="linenos">55</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="convert_dataframe-56"><a href="#convert_dataframe-56"><span class="linenos">56</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot convert </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">!r}</span><span class="s2"> to pandas&quot;</span><span class="p">)</span>
+</span><span id="convert_dataframe-57"><a href="#convert_dataframe-57"><span class="linenos">57</span></a>
+</span><span id="convert_dataframe-58"><a href="#convert_dataframe-58"><span class="linenos">58</span></a>    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;polars&quot;</span><span class="p">:</span>
+</span><span id="convert_dataframe-59"><a href="#convert_dataframe-59"><span class="linenos">59</span></a>        <span class="kn">import</span><span class="w"> </span><span class="nn">polars</span>
+</span><span id="convert_dataframe-60"><a href="#convert_dataframe-60"><span class="linenos">60</span></a>
+</span><span id="convert_dataframe-61"><a href="#convert_dataframe-61"><span class="linenos">61</span></a>        <span class="k">if</span> <span class="n">pname</span> <span class="o">==</span> <span class="s1">&#39;pandas&#39;</span><span class="p">:</span>
+</span><span id="convert_dataframe-62"><a href="#convert_dataframe-62"><span class="linenos">62</span></a>            <span class="k">return</span> <span class="n">polars</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">include_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="convert_dataframe-63"><a href="#convert_dataframe-63"><span class="linenos">63</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="convert_dataframe-64"><a href="#convert_dataframe-64"><span class="linenos">64</span></a>            <span class="k">return</span> <span class="n">polars</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span id="convert_dataframe-65"><a href="#convert_dataframe-65"><span class="linenos">65</span></a>        
+</span><span id="convert_dataframe-66"><a href="#convert_dataframe-66"><span class="linenos">66</span></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown backend </span><span class="si">{</span><span class="n">backend</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>convert data to target format</p>
 </div>
 
 
