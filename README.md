@@ -55,7 +55,7 @@ To activate the extension you only need to import the module `mintalib.polars`.
 from mintlalib.polars import CLOSE, OHLCV
 
 # CLOSE is short-hand for pl.col('close')
-# OHLCV is short-hand for pl.struct(['open', 'high', 'low', 'close', 'value'])
+# OHLCV is short-hand for pl.struct(['open', 'high', 'low', 'close', 'volume'])
 
 prices = ... # polars DataFrame
 
