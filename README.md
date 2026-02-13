@@ -3,7 +3,7 @@
 This package offers a curated list of technical analysis indicators implemented in `cython` for optimal performance. The library is built around `numpy` arrays and offers an interface for `pandas` and `polars` dataframes and series.
 
 
-> **Warning** This project is experimental and the interface can change.
+> **Warning** This project is experimental and the interface is likely to change.
 
 
 ## Core Functions
