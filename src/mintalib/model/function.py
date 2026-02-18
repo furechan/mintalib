@@ -14,16 +14,16 @@ def wrap_function(calc_func):
     def decorator(func):
         sig = inspect.signature(func)
 
-        def wrapper(prices, *args, **kwargs):
+        def wrapper(srcdata, *args, **kwargs):
             item = kwargs.pop('item', None)
 
             if first_param == 'series':
-                input = get_series(prices, item)
+                data = get_series(srcdata, item=item)
             else:
-                input = column_accessor(prices)
+                data = column_accessor(srcdata)
 
-            result = calc_func(input, *args, **kwargs)
-            return wrap_result(result, prices)
+            result = calc_func(data, *args, **kwargs)
+            return wrap_result(result, srcdata)
 
         wrapper.__name__ = func.__name__
         wrapper.__qualname__ = func.__qualname__

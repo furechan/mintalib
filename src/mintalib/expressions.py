@@ -1,5 +1,11 @@
+"""
+Expressions Module
 
-"""Expressions Module"""
+This module contains polars expression factory functions with names in upper caps like `SMA`, `EMA`, etc
+
+Series based expressions accept an expression as their first parameter `src`.
+For prices/multi-column based expressions the parameter is optional.
+"""
 
 # Do not Edit! This file was generated.
 
