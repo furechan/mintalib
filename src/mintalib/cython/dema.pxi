@@ -1,7 +1,7 @@
 """ Double Exponential Moving Average """
 
 @add_metadata(same_scale=True)
-def calc_dema(series, long period, *, bint wrap=False):
+def calc_dema(series, long period):
     """
     Double Exponential Moving Average
  
@@ -13,9 +13,6 @@ def calc_dema(series, long period, *, bint wrap=False):
     ema2 = calc_ema(ema1, period)
 
     result = 2 * ema1 - ema2
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

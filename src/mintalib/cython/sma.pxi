@@ -2,7 +2,7 @@
 
 
 # @add_metadata(same_scale=True)
-def calc_sma(series, long period, *, bint wrap=False):
+def calc_sma(series, long period):
     """
     Simple Moving Average
     
@@ -40,9 +40,6 @@ def calc_sma(series, long period, *, bint wrap=False):
 
         if count == period:
             output[i] = rsum / count
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

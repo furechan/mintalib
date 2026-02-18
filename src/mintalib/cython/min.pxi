@@ -1,7 +1,7 @@
 """ Rolling Minimum """
 
 @add_metadata(same_scale=True)
-def calc_min(series, long period, *, bint wrap=False):
+def calc_min(series, long period):
     """
     Rolling Minimum
     
@@ -34,9 +34,6 @@ def calc_min(series, long period, *, bint wrap=False):
                 res = v
 
         output[i + j] = res
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

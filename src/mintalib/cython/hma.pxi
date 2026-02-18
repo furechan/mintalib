@@ -2,7 +2,7 @@
 
 
 @add_metadata(same_scale=True)
-def calc_hma(series, long period, *, bint wrap=False):
+def calc_hma(series, long period):
     """
     Hull Moving Average
 
@@ -18,9 +18,6 @@ def calc_hma(series, long period, *, bint wrap=False):
     m3 = (2 *  m1) - m2
 
     result = calc_wma(m3, round(math.sqrt(period)))
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

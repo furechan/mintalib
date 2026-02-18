@@ -1,7 +1,7 @@
 """ Rolling Mean Absolute Deviation """
 
 
-def calc_mad(series, period: int = 14, *, bint wrap=False):
+def calc_mad(series, period: int = 14):
     """Rolling Mean Absolute Deviation"""
 
     if period <= 0:
@@ -11,8 +11,5 @@ def calc_mad(series, period: int = 14, *, bint wrap=False):
 
     diff = xs - calc_sma(xs, period)
     result = calc_sma(np.abs(diff), period)
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result

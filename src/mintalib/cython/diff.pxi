@@ -1,7 +1,7 @@
 """ Difference """
 
 
-def calc_diff(series, long period=1, *, bint wrap=False):
+def calc_diff(series, long period=1):
     """Difference
 
     Difference between current value and the one offset by period
@@ -27,9 +27,6 @@ def calc_diff(series, long period=1, *, bint wrap=False):
         v, pv = xs[i], xs[i - period]
         diff = v  - pv
         output[i] = diff
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

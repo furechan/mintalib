@@ -8,7 +8,7 @@ cdef enum:
 
 
 
-def quadratic_regression(series, long period=20, *, int option=0, int offset=0, bint wrap=False):
+def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
     """
     Quadratic Regression
     
@@ -99,20 +99,17 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0, 
             output[i] = forecast
             continue
 
-    if wrap:
-        result = wrap_result(result, series)
-
     return result
 
 
 
-def calc_curve(series, long period=20, *, bint wrap=False):
+def calc_curve(series, long period=20):
     """ Curve (quadratic regression) """
 
-    return quadratic_regression(series, period=period, option=QUADREG_CURVE, wrap=wrap)
+    return quadratic_regression(series, period=period, option=QUADREG_CURVE)
 
 
-def calc_qsf(series, long period=20, long offset=0, *, bint wrap=False):
+def calc_qsf(series, long period=20, long offset=0):
     """
     Quadratic Series Forecast (quadratic regression)
     
@@ -120,4 +117,4 @@ def calc_qsf(series, long period=20, long offset=0, *, bint wrap=False):
         period (int) : time period, default 20
     """
 
-    return quadratic_regression(series, period=period, offset=offset, option=QUADREG_FORECAST, wrap=wrap)
+    return quadratic_regression(series, period=period, offset=offset, option=QUADREG_FORECAST)

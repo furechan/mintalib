@@ -1,7 +1,7 @@
 """ Weighted Moving Average """
 
 @add_metadata(same_scale=True)
-def calc_wma(series, long period, *, bint wrap=False):
+def calc_wma(series, long period):
     """
     Weighted Moving Average
         
@@ -42,9 +42,6 @@ def calc_wma(series, long period, *, bint wrap=False):
 
         if count == period:
             output[i] = wsum / wdiv
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

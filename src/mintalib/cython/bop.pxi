@@ -1,7 +1,7 @@
 """ Balance of Power """
 
 
-def calc_bop(prices, long period=20, *, bint wrap=False):
+def calc_bop(prices, long period=20):
     """
     Balance of Power
     
@@ -19,9 +19,6 @@ def calc_bop(prices, long period=20, *, bint wrap=False):
     with np.errstate(all='ignore'):
         bop = (close - open) / (high - low)
         result = calc_sma(bop, period)
-
-    if wrap:
-        result = wrap_result(result, prices)
 
     return result
 

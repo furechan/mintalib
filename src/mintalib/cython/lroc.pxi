@@ -1,6 +1,6 @@
 """ Logarithmic Rate of Change """
 
-def calc_lroc(series, long period=1, *, bint wrap=False):
+def calc_lroc(series, long period=1):
     """
     Logarithmic Rate of Change
 
@@ -29,9 +29,6 @@ def calc_lroc(series, long period=1, *, bint wrap=False):
         if v > 0 and pv > 0:
             roc = math.log(v / pv)
             output[i + shift] = roc
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

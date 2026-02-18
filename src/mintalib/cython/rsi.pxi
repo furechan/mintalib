@@ -1,7 +1,7 @@
 """ Relative Strencgth Index """
 
 
-def calc_rsi(series, long period=14, *, bint wrap=False):
+def calc_rsi(series, long period=14):
     """
     Relative Strength Index
     
@@ -48,9 +48,6 @@ def calc_rsi(series, long period=14, *, bint wrap=False):
 
         if not isnan(rsi):
             output[i] = rsi
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

@@ -1,7 +1,7 @@
 """ Commodity Channel Index """
 
 
-def calc_cci(prices, long period=20, *, bint wrap=False):
+def calc_cci(prices, long period=20):
     """
     Commodity Channel Index
     
@@ -15,9 +15,6 @@ def calc_cci(prices, long period=20, *, bint wrap=False):
 
     with np.errstate(divide='ignore'):
         result = (prc - sma) / div
-
-    if wrap:
-        result = wrap_result(result, prices)
 
     return result
 

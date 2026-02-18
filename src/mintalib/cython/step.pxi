@@ -1,7 +1,7 @@
 """ Step Function """
 
 
-def calc_step(series, threshold : float = 1.0, *, bint wrap=False):
+def calc_step(series, threshold : float = 1.0):
     """
     Step Function
 
@@ -36,9 +36,6 @@ def calc_step(series, threshold : float = 1.0, *, bint wrap=False):
             value = ll
 
         output[i] = value
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

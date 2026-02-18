@@ -1,7 +1,7 @@
 """ Average True Range """
 
 
-def calc_trange(prices, *, bint log_prices=False, bint percent=False, bint wrap=False):
+def calc_trange(prices, *, bint log_prices=False, bint percent=False):
     """
     True Range
     
@@ -47,14 +47,11 @@ def calc_trange(prices, *, bint log_prices=False, bint percent=False, bint wrap=
 
         output[i] = tr
 
-    if wrap:
-        result = wrap_result(result, prices)
-
     return result
 
 
 
-def calc_atr(prices, long period=14, *, bint wrap=False):
+def calc_atr(prices, long period=14):
     """
     Average True Range
     
@@ -65,14 +62,11 @@ def calc_atr(prices, long period=14, *, bint wrap=False):
     trange = calc_trange(prices)
     result = calc_rma(trange, period)
 
-    if wrap:
-        result = wrap_result(result, prices)
-
     return result
 
 
 
-def calc_natr(prices, long period=14, *, bint wrap = False):
+def calc_natr(prices, long period=14):
     """
     Average True Range (normalized)
     
@@ -82,9 +76,6 @@ def calc_natr(prices, long period=14, *, bint wrap = False):
 
     trange = calc_trange(prices, percent=True)
     result = calc_rma(trange, period)
-
-    if wrap:
-        result = wrap_result(result, prices)
 
     return result
 

@@ -1,7 +1,7 @@
 """ Streak """
 
 
-def calc_streak(series, *, bint wrap=False):
+def calc_streak(series):
     """
     Consecutive streak of values above zero
     """
@@ -26,9 +26,6 @@ def calc_streak(series, *, bint wrap=False):
             streak = 0
 
         output[i] = streak
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

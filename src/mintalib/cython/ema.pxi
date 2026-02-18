@@ -1,7 +1,7 @@
 """ Exponential Moving Average """
 
 @add_metadata(same_scale=True)
-def calc_ema(series, long period, *, bint adjust = False, bint wrap=False):
+def calc_ema(series, long period, *, bint adjust = False):
     """
     Exponential Moving Average
 
@@ -55,9 +55,6 @@ def calc_ema(series, long period, *, bint adjust = False, bint wrap=False):
 
         if count >= period:
             output[i] = ema
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

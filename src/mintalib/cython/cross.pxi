@@ -1,6 +1,6 @@
 """ Cross Over/Under """
 
-def calc_crossover(series, double level=0.0, *, bint wrap=False):
+def calc_crossover(series, double level=0.0):
     """
     Cross Over
     
@@ -29,13 +29,10 @@ def calc_crossover(series, double level=0.0, *, bint wrap=False):
         if not isnan(value):
             prev = value
 
-    if wrap:
-        result = wrap_result(result, series)
-
     return result
 
 
-def calc_crossunder(series, double level=0.0, *, wrap: bool = False):
+def calc_crossunder(series, double level=0.0):
     """
     Cross Under
 
@@ -62,9 +59,6 @@ def calc_crossunder(series, double level=0.0, *, wrap: bool = False):
 
         if not isnan(value):
             prev = value
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

@@ -1,7 +1,7 @@
 """ Sign function """
 
 
-def calc_sign(series, *, bint wrap=False):
+def calc_sign(series):
     """Sign"""
 
     cdef const double[:] xs = np.asarray(series, float)
@@ -25,9 +25,6 @@ def calc_sign(series, *, bint wrap=False):
             sign = 0.0
 
         output[i] = sign
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

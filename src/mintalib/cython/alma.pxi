@@ -1,7 +1,7 @@
 """Arnaud Legoux Moving Average"""
 
 @add_metadata(same_scale=True)
-def calc_alma(series, long period = 9, double offset = 0.85, double sigma = 6.0, *, bint wrap=False):
+def calc_alma(series, long period = 9, double offset = 0.85, double sigma = 6.0):
     """Arnaud Legoux Moving Average"""
 
     if period <= 0:
@@ -18,8 +18,5 @@ def calc_alma(series, long period = 9, double offset = 0.85, double sigma = 6.0,
     padding = np.full(period - 1, np.nan)
     result = np.correlate(series, w, "valid")
     result = np.insert(result, 0, padding)
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result

@@ -2,7 +2,7 @@
 
 
 @add_metadata(same_scale=True)
-def calc_price(prices, item: str = None, *, bint wrap=False):
+def calc_price(prices, item: str = None):
     """ Generic Price 
     
     Args:
@@ -26,13 +26,10 @@ def calc_price(prices, item: str = None, *, bint wrap=False):
     else:
         raise ValueError(f"Unknown price type {item!r}")
 
-    if wrap:
-        result = wrap_result(result, prices)
-
     return result
 
 
-def calc_avgprice(prices, *, bint wrap=False):
+def calc_avgprice(prices):
     """
     Average Price
     
@@ -48,13 +45,10 @@ def calc_avgprice(prices, *, bint wrap=False):
 
     result = (open + high + low + close) / 4.0
 
-    if wrap:
-        result = wrap_result(result, prices)
-
     return result
 
 
-def calc_typprice(prices, *, bint wrap=False):
+def calc_typprice(prices):
     """
     Typical Price
 
@@ -69,13 +63,10 @@ def calc_typprice(prices, *, bint wrap=False):
 
     result = (high + low + close) / 3.0
    
-    if wrap:
-        result = wrap_result(result, prices)
-
     return result
 
 
-def calc_wclprice(prices, *, bint wrap=False):
+def calc_wclprice(prices):
     """
     Weighted Close Price
     
@@ -90,14 +81,11 @@ def calc_wclprice(prices, *, bint wrap=False):
 
     result = (high + low + 2 * close) / 4.0
 
-    if wrap:
-        result = wrap_result(result, prices)
-
     return result
 
 
 
-def calc_midprice(prices, *, bint wrap=False):
+def calc_midprice(prices):
     """
     Mid Price
     
@@ -110,9 +98,6 @@ def calc_midprice(prices, *, bint wrap=False):
     check_size(high, low)
 
     result = (high + low) / 2.0
-
-    if wrap:
-        result = wrap_result(result, prices)
 
     return result
 

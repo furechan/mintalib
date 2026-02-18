@@ -1,6 +1,6 @@
 """ Expression eval """
 
-def calc_eval(prices, unicode expr, *, bint as_flag=False, bint wrap=False):
+def calc_eval(prices, unicode expr, *, bint as_flag=False):
     """
     Expression Eval (pandas only)
 
@@ -22,9 +22,6 @@ def calc_eval(prices, unicode expr, *, bint as_flag=False, bint wrap=False):
 
     if as_flag:
         result = calc_flag(result)
-
-    if wrap:
-        result = wrap_result(result, prices)
 
     return result
 

@@ -10,7 +10,7 @@ cdef enum:
 
 
 
-def linear_regression(series, long period=20, *, int option=0, int offset=0, bint wrap=False):
+def linear_regression(series, long period=20, *, int option=0, int offset=0):
     """
     Linear Regression
     
@@ -97,15 +97,12 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0, bin
             output[i] = forecast
             continue
 
-    if wrap:
-        result = wrap_result(result, series)
-
     return result
 
 
 
 
-def calc_slope(series, long period=20, *, bint wrap=False):
+def calc_slope(series, long period=20):
     """
     Slope (linear regression)
     
@@ -113,10 +110,10 @@ def calc_slope(series, long period=20, *, bint wrap=False):
         period (int) : time period, default 20
     """
 
-    return linear_regression(series, period=period, option=LINREG_SLOPE, wrap=wrap)
+    return linear_regression(series, period=period, option=LINREG_SLOPE)
 
 
-def calc_rvalue(series, long period=20, *, bint wrap=False):
+def calc_rvalue(series, long period=20):
     """
     R-Value (linear regression)
     
@@ -124,10 +121,10 @@ def calc_rvalue(series, long period=20, *, bint wrap=False):
         period (int) : time period, default 20
     """
 
-    return linear_regression(series, period=period, option=LINREG_RVALUE, wrap=wrap)
+    return linear_regression(series, period=period, option=LINREG_RVALUE)
 
 
-def calc_tsf(series, long period=20, long offset=0, *, bint wrap=False):
+def calc_tsf(series, long period=20, long offset=0):
     """
     Time Series Forecast (linear regression)
     
@@ -135,6 +132,6 @@ def calc_tsf(series, long period=20, long offset=0, *, bint wrap=False):
         period (int) : time period, default 20
     """
 
-    return linear_regression(series, period=period, offset=offset, option=LINREG_FORECAST, wrap=wrap)
+    return linear_regression(series, period=period, offset=offset, option=LINREG_FORECAST)
 
 

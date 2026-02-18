@@ -8,6 +8,9 @@ import numpy as np
 
 NAMESPACE = "ts"
 
+OPEN = pl.col('open')
+HIGH = pl.col('high')
+LOW = pl.col('low')
 CLOSE = pl.col('close')
 OHLCV = pl.struct(['open', 'high', 'low', 'close', 'volume'])
 
@@ -117,7 +120,7 @@ def setup():
             setattr(SeriesCalc, name, wrapper)
             
         else:
-            warnings.warn(f"Unexpected signature for {cname}. First parameter name is neither `series` or `prices`")
+            warnings.warn(f"Unexpected signature for {cname}. Looking for `series` or `prices` as first parameter name")
 
 setup()
 

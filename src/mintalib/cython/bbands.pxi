@@ -5,7 +5,7 @@ bbands_result = namedtuple('bbands_result', 'upperband, middleband, lowerband')
 
 
 @add_metadata(same_scale=True, output_names=('upperband', 'middleband', 'lowerband'))
-def calc_bbands(prices, long period=20, double nbdev=2.0, *, bint wrap=False):
+def calc_bbands(prices, long period=20, double nbdev=2.0):
     """
     Bollinger Bands
     
@@ -24,14 +24,11 @@ def calc_bbands(prices, long period=20, double nbdev=2.0, *, bint wrap=False):
 
     result = bbands_result(upper, middle, lower)
 
-    if wrap:
-        result = wrap_result(result, prices)
-
     return result
 
 
 @add_metadata(same_scale=False)
-def calc_bbp(prices, long period=20, double nbdev=2.0, *, bint wrap=False):
+def calc_bbp(prices, long period=20, double nbdev=2.0):
     """
     Bollinger Bands Percent (%B)
     
@@ -51,15 +48,12 @@ def calc_bbp(prices, long period=20, double nbdev=2.0, *, bint wrap=False):
     with np.errstate(divide='ignore', invalid='ignore'):
         result = (prc - lower) / (upper - lower) * 100
 
-    if wrap:
-        result = wrap_result(result, prices)
-
     return result
 
 
 
 @add_metadata(same_scale=False)
-def calc_bbw(prices, long period=20, double nbdev=2.0, *, bint wrap=False):
+def calc_bbw(prices, long period=20, double nbdev=2.0):
     """
     Bollinger Bands Width
     
@@ -78,8 +72,5 @@ def calc_bbw(prices, long period=20, double nbdev=2.0, *, bint wrap=False):
 
     with np.errstate(divide='ignore', invalid='ignore'):
         result = (upper - lower) / middle * 100
-
-    if wrap:
-        result = wrap_result(result, prices)
 
     return result

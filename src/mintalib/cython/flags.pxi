@@ -2,7 +2,7 @@
 
 
 
-def calc_flag(series, *, bint wrap=False):
+def calc_flag(series):
     """
     Flag Value
 
@@ -26,13 +26,10 @@ def calc_flag(series, *, bint wrap=False):
         elif value <= 0:
             output[i] = 0.0
 
-    if wrap:
-        result = wrap_result(result, series)
-
     return result
 
 
-def calc_updown(series, double up_level=0.0, double down_level=0.0, *, bint wrap=False):
+def calc_updown(series, double up_level=0.0, double down_level=0.0):
     """
     Flag for value crossing up & down levels
     
@@ -64,14 +61,11 @@ def calc_updown(series, double up_level=0.0, double down_level=0.0, *, bint wrap
         if value == value:
             prev = value
 
-    if wrap:
-        result = wrap_result(result, series)
-
     return result
 
 
 
-def where_flag(flag, x, y, z=NAN, *, bint wrap=False):
+def where_flag(flag, x, y, z=NAN):
     """Value according to flag, selecting between x, y or z"""
 
     cdef const double[:] fs = np.asarray(flag, float)
@@ -100,8 +94,5 @@ def where_flag(flag, x, y, z=NAN, *, bint wrap=False):
             value = zs[i]
 
         output[i] = value
-
-    if wrap:
-        result = wrap_result(result, flag)
 
     return result

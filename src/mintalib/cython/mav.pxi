@@ -2,7 +2,7 @@
 
 
 @add_metadata(same_scale=True)
-def calc_mav(series, long period=20, *, unicode ma_type = "SMA", bint wrap = False):
+def calc_mav(series, long period=20, *, unicode ma_type = "SMA"):
     """
     Generic Moving Average
 
@@ -32,9 +32,6 @@ def calc_mav(series, long period=20, *, unicode ma_type = "SMA", bint wrap = Fal
         result = calc_tema(series, period)
     else:
         raise ValueError(f"Invalid ma_type {ma_type}")
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

@@ -1,7 +1,7 @@
 """ Standard Deviation """
 
 
-def calc_stdev(series, long period=20, *, bint wrap=False):
+def calc_stdev(series, long period=20):
     """
     Standard Deviation
     
@@ -46,9 +46,6 @@ def calc_stdev(series, long period=20, *, bint wrap=False):
             vxx = (sxx / count - sx * sx / count / count)
             std = math.sqrt(vxx) if vxx >= 0 else NAN
             output[i] = std
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

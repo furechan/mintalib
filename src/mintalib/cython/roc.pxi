@@ -1,6 +1,6 @@
 """ Rate of Change """
 
-def calc_roc(series, long period=1, *, bint wrap=False):
+def calc_roc(series, long period=1):
     """
     Rate of Change
     
@@ -27,9 +27,6 @@ def calc_roc(series, long period=1, *, bint wrap=False):
         if v > 0  and pv > 0:
             roc = v / pv - 1
             output[i + shift] = roc
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

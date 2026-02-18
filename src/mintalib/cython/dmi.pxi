@@ -3,7 +3,7 @@
 dmi_result = namedtuple('dmi_result', 'adx, pdi, mdi')
 
 @add_metadata(output_names=('adx', 'pdi', 'mdi'))
-def calc_dmi(prices, long period=14, *, bint wrap=False):
+def calc_dmi(prices, long period=14):
     """
     Directional Movement Indicator
 
@@ -30,13 +30,10 @@ def calc_dmi(prices, long period=14, *, bint wrap=False):
 
     result = dmi_result(adx, pdi, mdi)
 
-    if wrap:
-        result = wrap_result(result, prices)
-
     return result
 
 
-def calc_adx(prices, long period=14, *, bint wrap=False):
+def calc_adx(prices, long period=14):
     """
     Average Directional Index
 
@@ -46,13 +43,10 @@ def calc_adx(prices, long period=14, *, bint wrap=False):
 
     result = calc_dmi(prices, period=period).adx
 
-    if wrap:
-        result = wrap_result(result, prices)
-
     return result
 
 
-def calc_pdi(prices, long period=14, *, bint wrap=False):
+def calc_pdi(prices, long period=14):
     """
     Plus Directional Index
 
@@ -62,13 +56,10 @@ def calc_pdi(prices, long period=14, *, bint wrap=False):
 
     result = calc_dmi(prices, period=period).pdi
 
-    if wrap:
-        result = wrap_result(result, prices)
-
     return result
 
 
-def calc_mdi(prices, long period=14, *, bint wrap=False):
+def calc_mdi(prices, long period=14):
     """
     Minus Directional Index
 
@@ -77,9 +68,6 @@ def calc_mdi(prices, long period=14, *, bint wrap=False):
     """
 
     result = calc_dmi(prices, period=period).mdi
-
-    if wrap:
-        result = wrap_result(result, prices)
 
     return result
 

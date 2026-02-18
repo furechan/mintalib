@@ -1,7 +1,7 @@
 """ Money Flow Index """
 
 
-def calc_mfi(prices, long period = 14, *, bint wrap=False):
+def calc_mfi(prices, long period = 14):
     """
     Money Flow Index 
     
@@ -20,9 +20,6 @@ def calc_mfi(prices, long period = 14, *, bint wrap=False):
     with np.errstate(divide='ignore'):
         ratio = calc_sum(pflow, period) / calc_sum(nflow, period)
         result = 100 - 100 / (1 + ratio)
-
-    if wrap:
-        result = wrap_result(result, prices)
 
     return result
 

@@ -1,7 +1,7 @@
 """ Rolling Moving Average (RSI Style) """
 
 @add_metadata(same_scale=True)
-def calc_rma(series, long period, *, bint wrap=False):
+def calc_rma(series, long period):
     """
     Rolling Moving Average (RSI style)
 
@@ -39,9 +39,6 @@ def calc_rma(series, long period, *, bint wrap=False):
 
         if count >= period:
             output[i] = rma
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

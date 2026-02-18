@@ -1,7 +1,7 @@
 """ Triple Exponential Moving Average """
 
 @add_metadata(same_scale=True)
-def calc_tema(series, long period=20, *, bint wrap=False):
+def calc_tema(series, long period=20):
     """
     Triple Exponential Moving Average
     
@@ -14,9 +14,6 @@ def calc_tema(series, long period=20, *, bint wrap=False):
     ema3 = calc_ema(ema2, period)
 
     result = 3 * ema1 - 3 * ema2 + ema3
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

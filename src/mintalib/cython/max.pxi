@@ -1,7 +1,7 @@
 """ Rolling Maximum """
 
 @add_metadata(same_scale=True)
-def calc_max(series, long period, *, bint wrap=False):
+def calc_max(series, long period):
     """ Rolling Maximum """
 
     if period <= 0:
@@ -29,9 +29,6 @@ def calc_max(series, long period, *, bint wrap=False):
                 res = v
 
         output[i + j] = res
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

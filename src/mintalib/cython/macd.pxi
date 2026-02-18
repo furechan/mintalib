@@ -3,7 +3,7 @@
 macd_result = namedtuple('macd_result', 'macd, macdsignal, macdhist')
 
 @add_metadata(output_names=('macd', 'macdsignal', 'macdhist'))
-def calc_macd(series, long n1=12, long n2=26, long n3=9, *, bint wrap=False):
+def calc_macd(series, long n1=12, long n2=26, long n3=9):
     """
     Moving Average Convergenge Divergence
     
@@ -24,9 +24,6 @@ def calc_macd(series, long n1=12, long n2=26, long n3=9, *, bint wrap=False):
     hist = macd - signal
 
     result = macd_result(macd, signal, hist)
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

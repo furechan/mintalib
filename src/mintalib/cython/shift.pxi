@@ -2,7 +2,7 @@
 
 
 @add_metadata(same_scale=True)
-def calc_shift(series, long period, *, bint wrap=False):
+def calc_shift(series, long period):
     """
     Shift Function
 
@@ -23,9 +23,6 @@ def calc_shift(series, long period, *, bint wrap=False):
 
     for i in range(start, stop):
         output[i] = xs[i - period]
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

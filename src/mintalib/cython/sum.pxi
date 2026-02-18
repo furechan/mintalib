@@ -1,7 +1,7 @@
 """ Rolling Sum """
 
 @add_metadata(same_scale=True)
-def calc_sum(series, long period, *, bint wrap=False):
+def calc_sum(series, long period):
     """
     Rolling sum
     
@@ -39,9 +39,6 @@ def calc_sum(series, long period, *, bint wrap=False):
 
         if count == period:
             output[i] = rsum
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

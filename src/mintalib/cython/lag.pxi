@@ -2,7 +2,7 @@
 
 
 @add_metadata(same_scale=True)
-def calc_lag(series, long period, *, bint wrap=False):
+def calc_lag(series, long period):
     """
     Lag Function
 
@@ -25,9 +25,6 @@ def calc_lag(series, long period, *, bint wrap=False):
     for i in range(period, size):
         v = xs[i - period]
         output[i] = v
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 

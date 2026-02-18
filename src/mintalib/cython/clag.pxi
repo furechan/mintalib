@@ -1,7 +1,7 @@
 """ Confirmation Lag """
 
 @add_metadata(same_scale=True)
-def calc_clag(series, long period=1, *, bint wrap=False):
+def calc_clag(series, long period=1):
     """
     Confirmation Lag
 
@@ -41,9 +41,6 @@ def calc_clag(series, long period=1, *, bint wrap=False):
             clag = value
 
         output[i] = clag
-
-    if wrap:
-        result = wrap_result(result, series)
 
     return result
 
