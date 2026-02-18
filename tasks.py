@@ -69,6 +69,7 @@ def make(ctx):
     with ctx.cd("scripts"):
         ctx.run("ipython make-functions.ipynb")
         ctx.run("ipython make-indicators.ipynb")
+        ctx.run("ipython make-expressions.ipynb")
         ctx.run("ipython update-readme.ipynb")
 
 
