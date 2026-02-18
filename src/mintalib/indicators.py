@@ -1,12 +1,9 @@
-
 """
 Indicators offer a composable interface where a calculation routine is bound with its parameters.
 
-An indicator instance is a callable and can be applied to prices or series data as in `SMA(50)(prices)`.
+An indicator instance is a callable and can be applied to prices or series data as if it were a function e.g. `SMA(50)(prices)`.
 
-The `@` operator can be used to apply an indicator to its input data as in `SMA(50) @ prices`
-or to chain indicators as in `ROC(1) @ SMA(20)`.
-
+Indicators also support the `@` operator to apply them to their input data e.g. `SMA(50) @ prices` or to chain them together e.g. `ROC(1) @ EMA(20)`.
 """
 
 # Do not edit! This file was generated.

@@ -7,7 +7,7 @@ Series based expressions accept an expression as their first parameter `src`.
 For prices/multi-column based expressions the parameter is optional.
 """
 
-# Do not Edit! This file was generated.
+# Do not edit! This file was generated.
 
 from mintalib import core
 from mintalib.model.expression import wrap_expression
