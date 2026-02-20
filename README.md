@@ -5,7 +5,7 @@ This package offers a curated list of technical analysis indicators implemented 
 > **Warning** This project is experimental and the interface is likely to change.
 
 
-## Functions
+## Concrete Functions
 
 Concrete calculation functions are available from the `mintalib.function` module with names like `sma`, `atr`, `macd`, etc.
 
@@ -25,22 +25,8 @@ sma = ta.sma(prices, 50)
 atr = ta.atr(prices, 14)
 ```
 
-# Pandas Extension
 
-Mintalib can be used as a pandas extension via a `ts` accessor. Series calculations are accessible on pandas series, and prices calculations are accessible on dataframes.
-
-To activate the extension you only need to import the module `mintalib.pandas`.
-
-```python
-import mintalib.pandas # noqa F401
-
-prices = ... # pandas DataFrame
-
-sma = prices.close.ts.sma(50)
-atr = prices.ts.atr(14)
-```
-
-# Polars Expressions
+## Polars Expressions
 
 Mintalib offers expression factory methods via the `mintalib.expressions` module.
 The methods accept a source expression through the keyword-only `src` parameter.
@@ -60,7 +46,7 @@ prices.select(
 )
 ```
 
-# Polars Extension
+## Polars Extension
 
 Mintalib can be used as a polars extension via a `ts` accessor for polars series, dataframes and expressions. 
 Indicators that expect a prices inputs should be invoked on a struct with all required fields (see `OHLC` in example below). Indicators with multi column outputs like `macd` return a polars struct.
@@ -84,6 +70,20 @@ prices.select(
 )
 ```
 
+## Pandas Extension
+
+Mintalib can be used as a pandas extension via a `ts` accessor. Series calculations are accessible on pandas series, and prices calculations are accessible on dataframes.
+
+To activate the extension you only need to import the module `mintalib.pandas`.
+
+```python
+import mintalib.pandas # noqa F401
+
+prices = ... # pandas DataFrame
+
+sma = prices.close.ts.sma(50)
+atr = prices.ts.atr(14)
+```
 
 ## Using Indicators (Legacy Interface)
 
