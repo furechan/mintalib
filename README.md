@@ -1,8 +1,6 @@
 # Minimal Technical Analysis Library for Python
 
-This package offers a curated list of technical analysis indicators implemented in `cython` for optimal performance. The library is built around `numpy` arrays and offers an interface for `pandas` and `polars` dataframes and series.
-
-It offers a variety of interfaces: concrete functions, indicators, expressions as well as a pandas and polars extension. Pick the interface you prefer.
+This package offers a curated list of technical analysis indicators implemented in `cython` for optimal performance. The library is built around `numpy` arrays and offers a variety interface for `pandas` and `polars` dataframes and series.
 
 > **Warning** This project is experimental and the interface is likely to change.
 
@@ -44,8 +42,8 @@ atr = prices.ts.atr(14)
 
 # Polars Expressions
 
-Mintalib offers expression factory functions via the `mintalib.expressions` module.
-The functions accept a source expression through the keyword-only `src` parameter.
+Mintalib offers expression factory methods via the `mintalib.expressions` module.
+The methods accept a source expression through the keyword-only `src` parameter.
 The source expression can also be passed as the first parameter to facilitate the use with `pipe`.
 
 
