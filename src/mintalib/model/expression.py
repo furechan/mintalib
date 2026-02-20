@@ -53,6 +53,12 @@ def wrap_expression(calc_func):
         signature = inspect.signature(func)
 
         def wrapper(*args, **kwargs):
+            if args and isinstance(args[0], pl.Expr):
+                if 'src' in kwargs:
+                    raise ValueError("Cannot specify 'src' as a keyword argument when using a positional Polars expression.")
+                kwargs['src'] = args[0]
+                args = args[1:]
+
             bound_args = signature.bind(*args, **kwargs)
             args, kwargs = (), dict(bound_args.arguments)
 

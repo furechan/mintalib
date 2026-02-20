@@ -1,5 +1,4 @@
 import inspect
-import warnings
 
 import polars as pl
 from polars.datatypes import Struct, Float64
@@ -12,9 +11,9 @@ OPEN = pl.col('open')
 HIGH = pl.col('high')
 LOW = pl.col('low')
 CLOSE = pl.col('close')
-OHLCV = pl.struct(['open', 'high', 'low', 'close', 'volume'])
+OHLC = pl.struct(['open', 'high', 'low', 'close'])
 
-__all__ = "OPEN", "HIGH", "LOW", "CLOSE", "OHLCV"
+__all__ = "OPEN", "HIGH", "LOW", "CLOSE", "OHLC"
 
 
 def wrap_polars(result, name: str):

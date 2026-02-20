@@ -1,5 +1,5 @@
 """
-Polars Expressions Factory Methods
+Polars Expression Factory Methods
 """
 
 # Do not edit! This file was generated.
