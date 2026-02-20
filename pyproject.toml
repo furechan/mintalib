@@ -29,6 +29,7 @@ dev = [
     "nbmake",
     "pyright",
     "mypy",
+    "ruff",
     "polars",
     "yfinance",
     "matplotlib",
