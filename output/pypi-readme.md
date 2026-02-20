@@ -2,7 +2,7 @@
 
 This package offers a curated list of technical analysis indicators implemented in `cython` for optimal performance. The library is built around `numpy` arrays and offers an interface for `pandas` and `polars` dataframes and series.
 
-It offers a variety of interfaces: concrete functions, indicators, expressions and pandas or polars extensions.
+It offers a variety of interfaces: concrete functions, indicators, expressions as well as a pandas and polars extension. Pick the interface you prefer.
 
 > **Warning** This project is experimental and the interface is likely to change.
 
@@ -23,8 +23,8 @@ import mintalib.functions as ta
 
 prices = ... # pandas/polars DataFrame
 
-sma = ta.sma(prices['close'], 50)
-atr = ta.atr(prices)
+sma = ta.sma(prices, 50)
+atr = ta.atr(prices, 14)
 ```
 
 # Pandas Extension
@@ -39,29 +39,50 @@ import mintalib.pandas # noqa F401
 prices = ... # pandas DataFrame
 
 sma = prices.close.ts.sma(50)
-atr = prices.ts.atr()
+atr = prices.ts.atr(14)
+```
+
+# Polars Expressions
+
+Mintalib offers expression factory functions via the `mintalib.expressions` module.
+The functions accept a source expression through the keyword-only `src` parameter.
+The source expression can also be passed as the first parameter to facilitate the use with `pipe`.
+
+
+```python
+import mintalib.expressions as ta
+
+prices = ... # polars DataFrame
+
+prices.select(
+    ta.macd().struct.unnest(),
+    sma=ta.sma(50),
+    atr=ta.atr(14),
+    trend=ta.ema(50).pipe(ta.roc, 1)
+)
 ```
 
 # Polars Extension
 
 Mintalib can be used as a polars extension via a `ts` accessor for polars series, dataframes and expressions. 
-Indicators that expect a prices inputs should be invoked on a struct with all required fields (see `OHLCV` in example below). Indicators with multi column outputs like `macd` return a polars struct.
+Indicators that expect a prices inputs should be invoked on a struct with all required fields (see `OHLC` in example below). Indicators with multi column outputs like `macd` return a polars struct.
 
 To activate the extension you only need to import the module `mintalib.polars`.
 
 
 ```python
-from mintalib.polars import CLOSE, OHLCV
+from mintalib.polars import CLOSE, OHLC
 
 # CLOSE is short-hand for pl.col('close')
-# OHLCV is short-hand for pl.struct(['open', 'high', 'low', 'close', 'volume'])
+# OHLC is short-hand for pl.struct(['open', 'high', 'low', 'close'])
 
 prices = ... # polars DataFrame
 
 prices.select(
     CLOSE.ts.macd().struct.unnest(),
-    sma=CLOSE.ts.sma(50)
-    atr=OHLCV.ts.atr()
+    sma=CLOSE.ts.sma(50),
+    atr=OHLC.ts.atr(),
+    trend=CLOSE.ts.ema(20).ts.roc(1)
 )
 ```
 
