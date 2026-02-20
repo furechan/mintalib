@@ -1,7 +1,7 @@
 # Change Log
 
 ## 0.0.27
-- Removed `wrap` argument from all calc methods
+- Removed `wrap` parameter from all calc methods
 
 ## 0.0.26
 - Added a `pandas` extension module `mintalib.pandas`

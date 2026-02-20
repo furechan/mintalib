@@ -14,6 +14,8 @@ LOW = pl.col('low')
 CLOSE = pl.col('close')
 OHLCV = pl.struct(['open', 'high', 'low', 'close', 'volume'])
 
+__all__ = "OPEN", "HIGH", "LOW", "CLOSE", "OHLCV"
+
 
 def wrap_polars(result, name: str):
     """ wrap result to polars """
@@ -69,10 +71,16 @@ def expression_method(func):
 def accessor_method(func):
     name = func.__name__
     name = name.removeprefix("calc_")
+    sig = inspect.signature(func)
+    fparam = list(sig.parameters.values())[0]
+
     def wrapper(self, *args, **kwargs):
         data = self._data
+        if isinstance(data, pl.DataFrame) and fparam.name == "series":
+            data = data['close']
         result = func(data, *args, **kwargs)
         return wrap_polars(result, name=name)
+    
     return wrapper
 
 
@@ -100,6 +108,7 @@ class ExpressionCalc:
 
 def setup():
     from . import core
+
     calc_methods = [m for m in dir(core) if m.startswith("calc_")]
 
     for cname in calc_methods:
@@ -111,16 +120,14 @@ def setup():
         wrapper = expression_method(func)
         setattr(ExpressionCalc, name, wrapper)
 
-        if fparam.name == "prices":
-            wrapper = accessor_method(func)
-            setattr(DataFrameCalc, name, wrapper)
+        wrapper = accessor_method(func)
+        setattr(DataFrameCalc, name, wrapper)
 
-        elif fparam.name == "series":
+        if fparam.name == "series":
             wrapper = accessor_method(func)
             setattr(SeriesCalc, name, wrapper)
+
             
-        else:
-            warnings.warn(f"Unexpected signature for {cname}. Looking for `series` or `prices` as first parameter name")
 
 setup()
 

@@ -4,19 +4,24 @@ import inspect
 
 import polars as pl
 
+from typing import TypeAlias
 from polars.datatypes import Struct, Float64
 
-# from typing import Union, TypeAlias
-# IntoExpr: TypeAlias = Union[pl.Expr, str, pl.Series]
+
+IntoExpr: TypeAlias = pl.Expr | str
 
 
 def get_series_expr(src):
+    if src is None:
+        return pl.col("close")
+    
     if isinstance(src, str):
         return pl.col(src)
-    elif isinstance(src, pl.Expr):
+    
+    if isinstance(src, pl.Expr):
         return src
-    else:
-        raise ValueError("src must be a string or a Polars Series.")
+
+    raise ValueError("src must be a string or a Polars Series.")
 
 
 def get_struct_expr(src):
@@ -24,10 +29,13 @@ def get_struct_expr(src):
         return pl.struct("*")
     
     if isinstance(src, str):
-        return pl.col(src).struct
+        return pl.struct(src)
     
     if isinstance(src, pl.Expr):
-        return pl.struct(src)
+        if src.meta.has_multiple_outputs():
+            return pl.struct(src)
+        else:
+            return src
         
     raise ValueError(f"Unsupported src type: {type(src)}")
 

@@ -26,10 +26,16 @@ def wrap_pandas(result, source, name: str = None):
 
 
 def wrap_method(func):
+    sig = inspect.signature(func)
+    fparam = list(sig.parameters.values())[0]
+
     def wrapper(self, *args, **kwargs):
         data = self._data
+        if isinstance(data, pd.DataFrame) and fparam.name == "series":
+            data = data['close']
         result = func(data, *args, **kwargs)
         return wrap_pandas(result, data)
+
     return wrapper
 
 
@@ -62,16 +68,12 @@ def setup():
         sig = inspect.signature(func)
         fparam = list(sig.parameters.values())[0]
 
-        if fparam.name == "prices":
-            wrapper = wrap_method(func)
-            setattr(DataFrameCalc, name, wrapper)
+        wrapper = wrap_method(func)
+        setattr(DataFrameCalc, name, wrapper)
 
-        elif fparam.name == "series":
+        if fparam.name == "series":
             wrapper = wrap_method(func)
             setattr(SeriesCalc, name, wrapper)
-
-        else:
-            warnings.warn(f"Unexpected signature for {cname}. First parameter name is neither `series` or `prices`")
 
 setup()
 

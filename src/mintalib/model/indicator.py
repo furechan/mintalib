@@ -7,9 +7,24 @@ from types import MappingProxyType
 from functools import cached_property
 
 from abc import ABCMeta, abstractmethod
+from typing import Protocol, Sequence, Any
 
 from ..core import get_series, wrap_result, column_accessor
 from ..utils import format_partial, lazy_repr
+
+
+class DataFrameLike(Protocol):
+    """Basic DataFrame Protocol for typing"""
+    @property
+    def columns(self) -> Sequence[Any]: ...
+    def __getitem__(self, key: Any) -> Any: ...
+
+
+class SeriesLike(Protocol):
+    """Basic Series Protocol for typing"""
+    @property
+    def name(self) -> str | None: ...
+    def to_numpy(self) -> Any: ...
 
 
 class Indicator(metaclass=ABCMeta):

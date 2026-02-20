@@ -206,13 +206,3 @@ def wclprice(prices): ...
 @wrap_function(core.calc_wma)
 def wma(series, period: int): ...
 
-__all__ = [
-    'abs', 'adx', 'alma', 'atr', 'avgprice', 'bbands', 'bbp', 'bbw', 'bop',
-    'cci', 'clag', 'cmf', 'crossover', 'crossunder', 'curve', 'dema',
-    'diff', 'dmi', 'ema', 'eval', 'exp', 'flag', 'hma', 'kama', 'keltner',
-    'ker', 'lag', 'log', 'lroc', 'macd', 'macdv', 'mad', 'mav', 'max',
-    'mdi', 'mfi', 'midprice', 'min', 'natr', 'pdi', 'ppo', 'price', 'qsf',
-    'rma', 'roc', 'rsi', 'rvalue', 'sar', 'shift', 'sign', 'slope', 'sma',
-    'stdev', 'step', 'stoch', 'streak', 'sum', 'tema', 'trange', 'tsf',
-    'typprice', 'updown', 'wclprice', 'wma'
-]

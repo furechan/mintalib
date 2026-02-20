@@ -2,13 +2,14 @@
 
 This package offers a curated list of technical analysis indicators implemented in `cython` for optimal performance. The library is built around `numpy` arrays and offers an interface for `pandas` and `polars` dataframes and series.
 
+It offers a variety of interfaces: concrete functions, indicators, expressions and pandas or polars extensions.
 
 > **Warning** This project is experimental and the interface is likely to change.
 
 
-## Core Functions
+## Functions
 
-Core calculation functions are implemented in the `core` module with names like `calc_sma`, `calc_atr`, `calc_macd`, etc.
+Concrete calculation functions are available from the `mintalib.function` module with names like `sma`, `atr`, `macd`, etc.
 
 The first parameter of a function is either `prices` or `series` depending on whether
 the function expects a dataframe of prices or a single series.
@@ -17,15 +18,13 @@ A `prices` dataframe can be a pandas or polars dataframe. The column names for p
 
 A `series` can be a pandas/polars series or a numpy array.
 
-These functions return a numpy array or a tuple of numpy arrays.
-
 ```python
-from mintalib.core import calc_sma, calc_atr
+import mintalib.functions as ta
 
 prices = ... # pandas/polars DataFrame
 
-sma = calc_sma(prices['close'], 50)
-atr = calc_atr(prices)
+sma = ta.sma(prices['close'], 50)
+atr = ta.atr(prices)
 ```
 
 # Pandas Extension
