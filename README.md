@@ -1,13 +1,13 @@
 # Minimal Technical Analysis Library for Python
 
-This package offers a curated list of technical analysis indicators implemented in `cython` for optimal performance. The library is built around `numpy` arrays and offers a variety of interfaces for `pandas` and `polars` dataframes and series.
+This package offers a curated list of technical analysis indicators implemented in `Cython` for optimal performance. The library is built around `numpy` arrays and offers a variety of interfaces for `pandas` and `polars` dataframes and series.
 
 > **Warning** This project is experimental and the interface is likely to change.
 
 
 ## Concrete Functions
 
-Concrete calculation functions are available from the `mintalib.function` module with names like `sma`, `atr`, `macd`, etc.
+Concrete calculation functions are available from the `mintalib.functions` module with names in lower case like `sma`, `atr`, `macd`, etc.
 
 The first parameter of a function is either `prices` or `series` depending on whether
 the function expects a dataframe of prices or a single series.
@@ -28,21 +28,21 @@ atr = ta.atr(prices, 14)
 
 ## Polars Expressions
 
-Mintalib offers expression factory methods via the `mintalib.expressions` module.
-The methods accept a source expression through the keyword-only `src` parameter.
-The source expression can also be passed as the first parameter to facilitate the use with `pipe`.
+Mintalib offers expression factory methods via the `mintalib.expressions` module with names in upper case like `EMA`, `SMA`, `ATR`, `MACD`, ...
+The methods accept a source expression as an optional keyword-only `src` parameter.
+The source expression can also be passed as the first parameter to facilitate the use with `pipe`. Multi column output calculations like `MACD` return a tuple of expressions.
 
 
 ```python
-import mintalib.expressions as ta
+from mintalib.expressions import EMA, SMA, ATR, ROC, MACD
 
 prices = ... # polars DataFrame
 
 prices.select(
-    ta.macd().struct.unnest(),
-    sma=ta.sma(50),
-    atr=ta.atr(14),
-    trend=ta.ema(50).pipe(ta.roc, 1)
+    MACD(),
+    sma=SMA(50),
+    atr=ATR(14),
+    trend=EMA(50).pipe(ROC, 1)
 )
 ```
 
@@ -87,7 +87,7 @@ atr = prices.ts.atr(14)
 
 ## Using Indicators (Legacy Interface)
 
-Indicators offer a composable interface where a calculation function is bound with its parameters into a callable object. Indicators are accessible from the `mintalib.indicators` module with names like `EMA`, `SMA`, `ATR`, `MACD`, etc ... 
+Indicators offer a composable interface where a calculation function is bound with its parameters into a callable object. Indicators are accessible from the `mintalib.indicators` module with names in upper case like `EMA`, `SMA`, `ATR`, `MACD`, etc ... 
 
 An indicator instance can be invoked as a function or via the `@` operator as syntactic sugar. 
 
@@ -96,7 +96,7 @@ So for example `SMA(50) @ prices` can be used to compute the 50 period simple mo
 The `@` operator can also be used to chain indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
 
 ```python
-from mintalib.indicators import SMA, EMA, ROC, MACD
+from mintalib.indicators import SMA, EMA, ROC, RSI, MACD
 
 prices = ... # pandas DataFrame
 
@@ -143,8 +143,8 @@ result = prices.assign(
 | LAG        | Lag Function                                                  |
 | LOG        | Logarithm                                                     |
 | LROC       | Logarithmic Rate of Change                                    |
-| MACD       | Moving Average Convergenge Divergence                         |
-| MACDV      | Moving Average Convergenge Divergence - Volatility Normalized |
+| MACD       | Moving Average Convergence Divergence                         |
+| MACDV      | Moving Average Convergence Divergence - Volatility Normalized |
 | MAD        | Rolling Mean Absolute Deviation                               |
 | MAV        | Generic Moving Average                                        |
 | MAX        | Rolling Maximum                                               |

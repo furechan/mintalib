@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.29
+- Expressions are now uppercase `SMA`, `EMA`, ...
+
 ## 0.0.27
 - Removed `wrap` parameter from all calc methods
 

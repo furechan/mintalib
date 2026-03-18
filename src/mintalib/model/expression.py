@@ -11,6 +11,7 @@ from polars.datatypes import Struct, Float64
 IntoExpr: TypeAlias = pl.Expr | str
 
 
+
 def get_series_expr(src):
     if src is None:
         return pl.col("close")
@@ -81,7 +82,9 @@ def wrap_expression(calc_func):
                     return pl.Series(output).fill_nan(None)
             
             expr = source.map_batches(batch_func, return_dtype=output_type).alias(name)
-#            expr = expr.struct.unnest() if output_names else expr.alias(name)
+
+            if output_names:
+                return tuple(expr.struct.field(n) for n in output_names)
             
             return expr
         

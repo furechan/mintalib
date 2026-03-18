@@ -5,7 +5,7 @@ macdv_result = namedtuple('macdv_result', 'macdv, macdvsignal, macdvhist')
 @add_metadata(output_names=('macdv', 'macdvsignal', 'macdvhist'))
 def calc_macdv(prices, long n1=12, long n2=26, long n3=9):
     """
-    Moving Average Convergenge Divergence - Volatility Normalized
+    Moving Average Convergence Divergence - Volatility Normalized
     
     Args:
         n1 (int) : show time period, default 12

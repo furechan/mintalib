@@ -3,6 +3,10 @@
 from inspect import Signature, Parameter
 
 
+def get_metadata(func, name: str, default=None):
+    """get metadata for a function"""
+    return getattr(func, 'metadata', {}).get(name, default)
+
 
 def format_partial(func, data, *, name: str = None):
     """format a partial function call"""

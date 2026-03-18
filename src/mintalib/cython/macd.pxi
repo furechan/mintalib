@@ -5,7 +5,7 @@ macd_result = namedtuple('macd_result', 'macd, macdsignal, macdhist')
 @add_metadata(output_names=('macd', 'macdsignal', 'macdhist'))
 def calc_macd(series, long n1=12, long n2=26, long n3=9):
     """
-    Moving Average Convergenge Divergence
+    Moving Average Convergence Divergence
     
     Args:
         n1 (int) : show time period, default 12
