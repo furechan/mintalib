@@ -28,8 +28,8 @@ Mintalib provides four interfaces for different workflows:
 
 - **Functions** (`mintalib.functions`) — plain functions, useful for scripting or building custom pipelines
 - **Polars Expressions** (`mintalib.expressions`) — composable polars expressions, best for polars-native workflows
-- **Polars Extension** (`mintalib.polars`) — `ts` accessor on polars series, dataframes, and expressions
-- **Pandas Extension** (`mintalib.pandas`) — `ts` accessor on pandas series and dataframes
+- **Polars Accessor** (`mintalib.polars`) — `ts` accessor on polars series, dataframes, and expressions
+- **Pandas Accessor** (`mintalib.pandas`) — `ts` accessor on pandas series and dataframes
 - **Indicators** (`mintalib.indicators`) — callable objects that bind a calculation with its parameters, work with both pandas and polars
 
 
@@ -73,12 +73,12 @@ prices.select(
 )
 ```
 
-## Polars Extension
+## Polars Accessor
 
-Mintalib can be used as a polars extension via a `ts` accessor for polars series, dataframes and expressions.
+Mintalib provides a `ts` accessor for polars series, dataframes and expressions via the `mintalib.polars` module.
 Indicators that expect a prices input should be invoked on a struct with all required fields (see `OHLC` in example below). Indicators with multi column outputs like `macd` return a polars struct.
 
-To activate the extension you only need to import the module `mintalib.polars`.
+To activate the accessor you only need to import the module `mintalib.polars`.
 
 
 ```python
@@ -97,11 +97,11 @@ prices.select(
 )
 ```
 
-## Pandas Extension
+## Pandas Accessor
 
-Mintalib can be used as a pandas extension via a `ts` accessor. Series calculations are accessible on pandas series, and prices calculations are accessible on dataframes.
+Mintalib provides a `ts` accessor for pandas series and dataframes via the `mintalib.pandas` module. Series calculations are accessible on pandas series, and prices calculations are accessible on dataframes.
 
-To activate the extension you only need to import the module `mintalib.pandas`.
+To activate the accessor you only need to import the module `mintalib.pandas`.
 
 ```python
 import mintalib.pandas  # activates the ts accessor
