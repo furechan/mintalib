@@ -24,12 +24,10 @@ pip install mintalib
 
 ## Interfaces
 
-Mintalib provides four interfaces for different workflows:
+Mintalib provides three interfaces for different workflows:
 
 - **Functions** (`mintalib.functions`) — plain functions, useful for scripting or building custom pipelines
 - **Polars Expressions** (`mintalib.expressions`) — composable polars expressions, best for polars-native workflows
-- **Polars Accessor** (`mintalib.polars`) — `ts` accessor on polars series, dataframes, and expressions
-- **Pandas Accessor** (`mintalib.pandas`) — `ts` accessor on pandas series and dataframes
 - **Indicators** (`mintalib.indicators`) — callable objects that bind a calculation with its parameters, work with both pandas and polars
 
 
@@ -65,51 +63,12 @@ from mintalib.expressions import EMA, SMA, ATR, ROC, MACD
 
 prices = ... # polars DataFrame
 
-prices.select(
+prices.with_columns(
     MACD(),                      # uses 'close' by default
     sma=SMA(50),
     atr=ATR(14),
     trend=EMA(50).pipe(ROC, 1)   # ROC(1) applied to EMA(50)
 )
-```
-
-## Polars Accessor
-
-Mintalib provides a `ts` accessor for polars series, dataframes and expressions via the `mintalib.polars` module.
-Indicators that expect a prices input should be invoked on a struct with all required fields (see `OHLC` in example below). Indicators with multi column outputs like `macd` return a polars struct.
-
-To activate the accessor you only need to import the module `mintalib.polars`.
-
-
-```python
-from mintalib.polars import CLOSE, OHLC
-
-# CLOSE is short-hand for pl.col('close')
-# OHLC is short-hand for pl.struct(['open', 'high', 'low', 'close'])
-
-prices = ... # polars DataFrame
-
-prices.select(
-    CLOSE.ts.macd().struct.unnest(),
-    sma=CLOSE.ts.sma(50),
-    atr=OHLC.ts.atr(),
-    trend=CLOSE.ts.ema(20).ts.roc(1)
-)
-```
-
-## Pandas Accessor
-
-Mintalib provides a `ts` accessor for pandas series and dataframes via the `mintalib.pandas` module. Series calculations are accessible on pandas series, and prices calculations are accessible on dataframes.
-
-To activate the accessor you only need to import the module `mintalib.pandas`.
-
-```python
-import mintalib.pandas  # activates the ts accessor
-
-prices = ... # pandas DataFrame
-
-sma = prices.close.ts.sma(50)
-atr = prices.ts.atr(14)
 ```
 
 ## Using Indicators
