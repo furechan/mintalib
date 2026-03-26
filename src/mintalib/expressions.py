@@ -1,5 +1,15 @@
 """
 Polars Expression Factory Methods
+
+Functions in this module are polars expression factories, typically named after
+the indicator in upper case as in `SMA`, `EMA`, `MACD`.
+
+The optional `src` keyword parameter allows overriding the default input column.
+For series-based indicators the default is `CLOSE` (i.e. `pl.col("close")`).
+For price-based indicators `src` is not applicable and should be left as `None`.
+
+Multi-output indicators like `MACD` and `BBANDS` return a polars struct expression
+that can be unpacked with `.unnest()`.
 """
 
 # Do not edit! This file was generated.

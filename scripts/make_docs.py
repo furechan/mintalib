@@ -17,8 +17,12 @@ MODULES = [
 OUTPUT_DIR = Path(__file__).parent.parent / "docs"
 
 
+def clean_type(text: str) -> str:
+    return text.replace("polars.expr.expr.Expr", "polars.Expr")
+
+
 def format_signature(name, sig):
-    return f"`{name}{sig}`"
+    return f"`{clean_type(name + str(sig))}`"
 
 
 def render_module(module_name: str) -> str:
@@ -51,7 +55,7 @@ def render_module(module_name: str) -> str:
                 sig = None
             doc = inspect.getdoc(fn) or ""
             lines.append(f"---\n" if lines[-1] != "---\n" else "")
-            lines.append(f"### `{name}{sig}`\n" if sig else f"### `{name}`\n")
+            lines.append(f"### `{clean_type(name + str(sig))}`\n" if sig else f"### `{name}`\n")
             if doc:
                 lines.append(doc)
                 lines.append("")
@@ -69,7 +73,7 @@ def render_module(module_name: str) -> str:
             annotation = getattr(m, "annotation_str", "").lstrip(": ")
             default = getattr(m, "default_value_str", "")
             if annotation:
-                lines.append(f"### `{m.name}: {annotation}`\n")
+                lines.append(f"### `{clean_type(m.name + ': ' + annotation)}`\n")
             else:
                 lines.append(f"### `{m.name}`\n")
             if not m.docstring and default:
