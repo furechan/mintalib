@@ -87,8 +87,8 @@ def dump(ctx):
 
 @task
 def docs(ctx):
-    """Generate documentation"""
-    ctx.run("pdoc mintalib -o docs")
+    """Generate Markdown documentation"""
+    ctx.run("python scripts/make_docs.py")
 
 
 @task
