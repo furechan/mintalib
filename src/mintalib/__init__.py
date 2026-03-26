@@ -10,6 +10,11 @@ Minimal technical analysis library for Python.
 - [mintalib.indicators](mintalib.indicators.md) — composable indicator objects for pandas and numpy, named `SMA`, `EMA`, etc.
 - [mintalib.expressions](mintalib.expressions.md) — polars expression factories, named `SMA`, `EMA`, etc.
 
+## Experimental Modules
+
+- `mintalib.pandas` — `ts` accessor for pandas DataFrame and Series (import to register)
+- `mintalib.polars` — `ts` accessor for polars DataFrame, Series, and Expr (import to register)
+
 ## Naming Conventions
 
 - Core functions use lower case prefixed with `calc_`: `calc_sma`, `calc_ema`, `calc_macd`
