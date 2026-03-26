@@ -237,8 +237,8 @@ Args:
 Moving Average Convergence Divergence
 
 Args:
-    n1 (int) : show time period, default 12
-    n2 (int) : long time periodm, default 26
+    n1 (int) : short time period, default 12
+    n2 (int) : long time period, default 26
     n3 (int) : signal time period, default 9  
 
 Outputs:
@@ -249,8 +249,8 @@ Outputs:
 Moving Average Convergence Divergence - Volatility Normalized
 
 Args:
-    n1 (int) : show time period, default 12
-    n2 (int) : long time periodm, default 26
+    n1 (int) : short time period, default 12
+    n2 (int) : long time period, default 26
     n3 (int) : signal time period, default 9  
 
 Outputs:
@@ -329,11 +329,15 @@ Outputs:
 
 ### `PRICE(item: str = None, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
-Generic Price 
+Generic Price
 
 Args:
-    item (str) : one of 'open', 'high', 'low', 'close',
-        'avg', 'mid', 'typ', 'wcl' defaults to 'close'
+    item (str) : price type, one of:
+        'open', 'high', 'low', 'close' (default),
+        'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
+        'mid' or 'hl2'    — mid price (high + low) / 2,
+        'typ' or 'hlc3'   — typical price (high + low + close) / 3,
+        'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
 
 ### `QSF(period: int = 20, offset: int = 0, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
@@ -379,13 +383,6 @@ Parabolic Stop and Reverse
 Args:
     afs (float) : starting acceleration factor, default 0.02
     maxaf (float) : maximum acceleration factor, default 0.2
-
-### `SHIFT(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
-
-Shift Function
-
-Args:
-    period (int) : time period, required
 
 ### `SIGN(*, src: polars.Expr | str | None = None) -> polars.Expr`
 

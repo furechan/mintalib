@@ -3,11 +3,16 @@
 
 @add_metadata(same_scale=True)
 def calc_price(prices, item: str = None):
-    """ Generic Price 
-    
+    """
+    Generic Price
+
     Args:
-        item (str) : one of 'open', 'high', 'low', 'close',
-            'avg', 'mid', 'typ', 'wcl' defaults to 'close'
+        item (str) : price type, one of:
+            'open', 'high', 'low', 'close' (default),
+            'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
+            'mid' or 'hl2'    — mid price (high + low) / 2,
+            'typ' or 'hlc3'   — typical price (high + low + close) / 3,
+            'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
     """
 
     if item is None:
@@ -17,11 +22,11 @@ def calc_price(prices, item: str = None):
         result =  np.asarray(prices[item], float)
     elif item in ('avg', 'ohlc4'):
         result = calc_avgprice(prices)
-    elif item == ('mid', 'hl2'):
+    elif item in ('mid', 'hl2'):
         result = calc_midprice(prices)
-    elif item == ('typ', 'hlc3'):
+    elif item in ('typ', 'hlc3'):
         result = calc_typprice(prices)
-    elif item == ('wcl', 'hlcc4'):
+    elif item in ('wcl', 'hlcc4'):
         result = calc_wclprice(prices)
     else:
         raise ValueError(f"Unknown price type {item!r}")

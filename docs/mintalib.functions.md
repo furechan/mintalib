@@ -2,10 +2,15 @@
 
 Calculation functions for technical analysis indicators.
 
-These functions are a thin wrapper arround core calculation routine that handle input and output type conversion.
+These functions are thin wrappers around core calculation routines that handle input and output type conversion.
 
-The function names are all lower case like `sma`, `ema`, etc 
-To avoid name conflicts it is advised to import the module as a whole with a short alias like `ta`.
+The function names are all lower case like `sma`, `ema`, etc.
+Some names like `abs`, `min`, `max`, `sum` shadow Python builtins.
+It is advised to import the module with a short alias rather than importing names directly:
+
+```python
+import mintalib.functions as ta
+```
 
 ---
 
@@ -155,10 +160,14 @@ Formula:
 
 ### `eval(prices, expr: str, *, as_flag: bool = False)`
 
-Expression Eval (pandas only)
+Expression Eval
+
+Evaluates an expression against the prices dataframe.
+Uses `DataFrame.eval` for pandas and `DataFrame.sql` for polars.
 
 Args:
     expr (str) : expression to eval
+    as_flag (bool) : whether to return result as a flag value
 
 ### `exp(series)`
 
@@ -227,8 +236,8 @@ Args:
 Moving Average Convergence Divergence
 
 Args:
-    n1 (int) : show time period, default 12
-    n2 (int) : long time periodm, default 26
+    n1 (int) : short time period, default 12
+    n2 (int) : long time period, default 26
     n3 (int) : signal time period, default 9  
 
 Outputs:
@@ -239,8 +248,8 @@ Outputs:
 Moving Average Convergence Divergence - Volatility Normalized
 
 Args:
-    n1 (int) : show time period, default 12
-    n2 (int) : long time periodm, default 26
+    n1 (int) : short time period, default 12
+    n2 (int) : long time period, default 26
     n3 (int) : signal time period, default 9  
 
 Outputs:
@@ -319,11 +328,15 @@ Outputs:
 
 ### `price(prices, item: str = None)`
 
-Generic Price 
+Generic Price
 
 Args:
-    item (str) : one of 'open', 'high', 'low', 'close',
-        'avg', 'mid', 'typ', 'wcl' defaults to 'close'
+    item (str) : price type, one of:
+        'open', 'high', 'low', 'close' (default),
+        'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
+        'mid' or 'hl2'    — mid price (high + low) / 2,
+        'typ' or 'hlc3'   — typical price (high + low + close) / 3,
+        'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
 
 ### `qsf(series, period: int = 20, offset: int = 0)`
 
@@ -369,13 +382,6 @@ Parabolic Stop and Reverse
 Args:
     afs (float) : starting acceleration factor, default 0.02
     maxaf (float) : maximum acceleration factor, default 0.2
-
-### `shift(series, period: int)`
-
-Shift Function
-
-Args:
-    period (int) : time period, required
 
 ### `sign(series)`
 

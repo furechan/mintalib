@@ -2,10 +2,14 @@
 
 def calc_eval(prices, unicode expr, *, bint as_flag=False):
     """
-    Expression Eval (pandas only)
+    Expression Eval
+
+    Evaluates an expression against the prices dataframe.
+    Uses `DataFrame.eval` for pandas and `DataFrame.sql` for polars.
 
     Args:
         expr (str) : expression to eval
+        as_flag (bool) : whether to return result as a flag value
     """
 
     # Coerce to float to avoid boolean series

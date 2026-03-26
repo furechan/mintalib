@@ -1,10 +1,15 @@
 """
 Calculation functions for technical analysis indicators.
 
-These functions are a thin wrapper arround core calculation routine that handle input and output type conversion.
+These functions are thin wrappers around core calculation routines that handle input and output type conversion.
 
-The function names are all lower case like `sma`, `ema`, etc 
-To avoid name conflicts it is advised to import the module as a whole with a short alias like `ta`.
+The function names are all lower case like `sma`, `ema`, etc.
+Some names like `abs`, `min`, `max`, `sum` shadow Python builtins.
+It is advised to import the module with a short alias rather than importing names directly:
+
+```python
+import mintalib.functions as ta
+```
 """
 
 # Do not edit! This file was generated.
@@ -157,9 +162,6 @@ def rvalue(series, period: int = 20): ...
 
 @wrap_function(core.calc_sar)
 def sar(prices, afs: float = 0.02, maxaf: float = 0.2): ...
-
-@wrap_function(core.calc_shift)
-def shift(series, period: int): ...
 
 @wrap_function(core.calc_sign)
 def sign(series): ...

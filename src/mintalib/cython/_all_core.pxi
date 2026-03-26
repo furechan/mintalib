@@ -15,7 +15,6 @@ include "abs.pxi"
 include "log.pxi"
 include "exp.pxi"
 
-include "shift.pxi"
 include "diff.pxi"
 include "lag.pxi"
 include "min.pxi"

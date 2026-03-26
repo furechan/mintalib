@@ -196,10 +196,14 @@ Formula:
 
 ### `calc_eval(prices, expr, *, as_flag=False)`
 
-Expression Eval (pandas only)
+Expression Eval
+
+Evaluates an expression against the prices dataframe.
+Uses `DataFrame.eval` for pandas and `DataFrame.sql` for polars.
 
 Args:
     expr (str) : expression to eval
+    as_flag (bool) : whether to return result as a flag value
 
 ---
 
@@ -288,8 +292,8 @@ Args:
 Moving Average Convergence Divergence
 
 Args:
-    n1 (int) : show time period, default 12
-    n2 (int) : long time periodm, default 26
+    n1 (int) : short time period, default 12
+    n2 (int) : long time period, default 26
     n3 (int) : signal time period, default 9  
 
 Outputs:
@@ -302,8 +306,8 @@ Outputs:
 Moving Average Convergence Divergence - Volatility Normalized
 
 Args:
-    n1 (int) : show time period, default 12
-    n2 (int) : long time periodm, default 26
+    n1 (int) : short time period, default 12
+    n2 (int) : long time period, default 26
     n3 (int) : signal time period, default 9  
 
 Outputs:
@@ -404,11 +408,15 @@ Outputs:
 
 ### `calc_price(prices, item: 'str' = None)`
 
-Generic Price 
+Generic Price
 
 Args:
-    item (str) : one of 'open', 'high', 'low', 'close',
-        'avg', 'mid', 'typ', 'wcl' defaults to 'close'
+    item (str) : price type, one of:
+        'open', 'high', 'low', 'close' (default),
+        'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
+        'mid' or 'hl2'    — mid price (high + low) / 2,
+        'typ' or 'hlc3'   — typical price (high + low + close) / 3,
+        'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
 
 ---
 
@@ -466,15 +474,6 @@ Parabolic Stop and Reverse
 Args:
     afs (float) : starting acceleration factor, default 0.02
     maxaf (float) : maximum acceleration factor, default 0.2
-
----
-
-### `calc_shift(series, period)`
-
-Shift Function
-
-Args:
-    period (int) : time period, required
 
 ---
 

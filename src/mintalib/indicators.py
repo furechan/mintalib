@@ -157,9 +157,6 @@ def RVALUE(period: int = 20, *, item: str = None): ...
 @wrap_indicator(core.calc_sar)
 def SAR(afs: float = 0.02, maxaf: float = 0.2): ...
 
-@wrap_indicator(core.calc_shift)
-def SHIFT(period: int, *, item: str = None): ...
-
 @wrap_indicator(core.calc_sign)
 def SIGN(*, item: str = None): ...
 
@@ -211,7 +208,7 @@ __all__ = [
     'DIFF', 'DMI', 'EMA', 'EVAL', 'EXP', 'FLAG', 'HMA', 'KAMA', 'KELTNER',
     'KER', 'LAG', 'LOG', 'LROC', 'MACD', 'MACDV', 'MAD', 'MAV', 'MAX',
     'MDI', 'MFI', 'MIDPRICE', 'MIN', 'NATR', 'PDI', 'PPO', 'PRICE', 'QSF',
-    'RMA', 'ROC', 'RSI', 'RVALUE', 'SAR', 'SHIFT', 'SIGN', 'SLOPE', 'SMA',
-    'STDEV', 'STEP', 'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TSF',
-    'TYPPRICE', 'UPDOWN', 'WCLPRICE', 'WMA'
+    'RMA', 'ROC', 'RSI', 'RVALUE', 'SAR', 'SIGN', 'SLOPE', 'SMA', 'STDEV',
+    'STEP', 'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TSF', 'TYPPRICE',
+    'UPDOWN', 'WCLPRICE', 'WMA'
 ]
