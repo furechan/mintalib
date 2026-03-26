@@ -12,6 +12,11 @@ Run tests:
 pytest
 ```
 
+Generate docs (do not edit `docs/` directly):
+```console
+invoke docs
+```
+
 After editing any `.pxi` file, re-run `uv sync` to recompile.
 
 ## Project Conventions

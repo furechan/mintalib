@@ -13,7 +13,7 @@ LOW = pl.col('low')
 CLOSE = pl.col('close')
 OHLC = pl.struct(['open', 'high', 'low', 'close'])
 
-__all__ = "OPEN", "HIGH", "LOW", "CLOSE", "OHLC"
+__all__ = "OPEN", "HIGH", "LOW", "CLOSE", "OHLC", "DataFrameCalc", "SeriesCalc", "ExpressionCalc"
 
 
 def wrap_polars(result, name: str):
@@ -65,13 +65,21 @@ def expression_method(func):
 
         return result
 
+    wrapper.__name__ = name
+    wrapper.__qualname__ = f"ExpressionCalc.{name}"
+    wrapper.__module__ = __name__
+    wrapper.__doc__ = func.__doc__
+    wrapper.__signature__ = newsig
+
     return wrapper
 
 def accessor_method(func):
     name = func.__name__
     name = name.removeprefix("calc_")
     sig = inspect.signature(func)
-    fparam = list(sig.parameters.values())[0]
+    params = list(sig.parameters.values())
+    fparam = params[0]
+    newsig = inspect.Signature(params[1:])
 
     def wrapper(self, *args, **kwargs):
         data = self._data
@@ -79,7 +87,12 @@ def accessor_method(func):
             data = data['close']
         result = func(data, *args, **kwargs)
         return wrap_polars(result, name=name)
-    
+
+    wrapper.__name__ = name
+    wrapper.__module__ = __name__
+    wrapper.__doc__ = func.__doc__
+    wrapper.__signature__ = newsig
+
     return wrapper
 
 
