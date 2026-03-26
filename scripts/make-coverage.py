@@ -9,7 +9,7 @@ import mintalib.expressions as expressions
 import mintalib.pandas as mpandas
 import mintalib.polars as mpolars
 
-OUTPUT = Path(__file__).parent.parent / "docs" / "coverage.md"
+OUTPUT = Path(__file__).parent.parent / "output" / "coverage.md"
 
 # Use core as authoritative source of indicator names
 all_bases = sorted(n.removeprefix("calc_") for n in dir(core) if n.startswith("calc_"))

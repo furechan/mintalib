@@ -5,4 +5,4 @@
 - [mintalib.functions](mintalib.functions.md)
 - [mintalib.indicators](mintalib.indicators.md)
 - [mintalib.expressions](mintalib.expressions.md)
-- [Interface Coverage](coverage.md)
+
