@@ -1,3 +1,5 @@
+__pdoc__ = {"reflib": False}
+
 """
 Minimal technical analysis library for Python.
 
