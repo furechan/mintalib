@@ -12,9 +12,13 @@ from mintalib import core
 from mintalib.model.expression import wrap_expression
 
 IntoExpr: TypeAlias = pl.Expr | str | None
+"""Type alias for polars expressions accepted as inputs (pl.Expr, column name, or None)."""
 
 CLOSE = pl.col('close')
+"""Expression for the close price column."""
+
 OHLC = pl.struct(['open', 'high', 'low', 'close'])
+"""Expression for open, high, low, close columns as a struct."""
 
 
 

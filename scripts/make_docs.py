@@ -18,7 +18,7 @@ OUTPUT_DIR = Path(__file__).parent.parent / "docs"
 
 
 def format_signature(name, sig):
-    return f"{name}{sig}"
+    return f"`{name}{sig}`"
 
 
 def render_module(module_name: str) -> str:
@@ -51,7 +51,7 @@ def render_module(module_name: str) -> str:
                 sig = None
             doc = inspect.getdoc(fn) or ""
             lines.append(f"---\n" if lines[-1] != "---\n" else "")
-            lines.append(f"### {name}{sig}\n" if sig else f"### {name}\n")
+            lines.append(f"### `{name}{sig}`\n" if sig else f"### `{name}`\n")
             if doc:
                 lines.append(doc)
                 lines.append("")
@@ -66,7 +66,16 @@ def render_module(module_name: str) -> str:
         elif m.kind == "class":
             lines.append(f"## {m.name}\n")
         else:
-            lines.append(f"### {m.name}\n")
+            annotation = getattr(m, "annotation_str", "").lstrip(": ")
+            default = getattr(m, "default_value_str", "")
+            if annotation:
+                lines.append(f"### `{m.name}: {annotation}`\n")
+            else:
+                lines.append(f"### `{m.name}`\n")
+            if not m.docstring and default:
+                value = repr(m.obj) if hasattr(m, "obj") and m.obj is not None else default
+                lines.append(value)
+                lines.append("")
 
         if m.docstring:
             lines.append(m.docstring.strip())

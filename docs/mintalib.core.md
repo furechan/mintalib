@@ -12,13 +12,13 @@ The `wrap` parameter dictates whether to wrap the calculation result to match th
 
 ---
 
-### calc_abs(series)
+### `calc_abs(series)`
 
 Absolute Value
 
 ---
 
-### calc_adx(prices, period=14)
+### `calc_adx(prices, period=14)`
 
 Average Directional Index
 
@@ -27,13 +27,13 @@ Args:
 
 ---
 
-### calc_alma(series, period=9, offset=0.85, sigma=6.0)
+### `calc_alma(series, period=9, offset=0.85, sigma=6.0)`
 
 Arnaud Legoux Moving Average
 
 ---
 
-### calc_atr(prices, period=14)
+### `calc_atr(prices, period=14)`
 
 Average True Range
 
@@ -42,7 +42,7 @@ Args:
 
 ---
 
-### calc_avgprice(prices)
+### `calc_avgprice(prices)`
 
 Average Price
 
@@ -50,7 +50,7 @@ Value of (open + high + low + close) / 4
 
 ---
 
-### calc_bbands(prices, period=20, nbdev=2.0)
+### `calc_bbands(prices, period=20, nbdev=2.0)`
 
 Bollinger Bands
 
@@ -60,7 +60,7 @@ Args:
 
 ---
 
-### calc_bbp(prices, period=20, nbdev=2.0)
+### `calc_bbp(prices, period=20, nbdev=2.0)`
 
 Bollinger Bands Percent (%B)
 
@@ -70,7 +70,7 @@ Args:
 
 ---
 
-### calc_bbw(prices, period=20, nbdev=2.0)
+### `calc_bbw(prices, period=20, nbdev=2.0)`
 
 Bollinger Bands Width
 
@@ -80,7 +80,7 @@ Args:
 
 ---
 
-### calc_bop(prices, period=20)
+### `calc_bop(prices, period=20)`
 
 Balance of Power
 
@@ -89,7 +89,7 @@ Args:
 
 ---
 
-### calc_cci(prices, period=20)
+### `calc_cci(prices, period=20)`
 
 Commodity Channel Index
 
@@ -98,7 +98,7 @@ Args:
 
 ---
 
-### calc_clag(series, period=1)
+### `calc_clag(series, period=1)`
 
 Confirmation Lag
 
@@ -109,7 +109,7 @@ Args:
 
 ---
 
-### calc_cmf(prices, period=20)
+### `calc_cmf(prices, period=20)`
 
 Chaikin Money Flow
 
@@ -118,7 +118,7 @@ Args:
 
 ---
 
-### calc_crossover(series, level=0.0)
+### `calc_crossover(series, level=0.0)`
 
 Cross Over
 
@@ -129,7 +129,7 @@ Args:
 
 ---
 
-### calc_crossunder(series, level=0.0)
+### `calc_crossunder(series, level=0.0)`
 
 Cross Under
 
@@ -140,13 +140,13 @@ Args:
 
 ---
 
-### calc_curve(series, period=20)
+### `calc_curve(series, period=20)`
 
 Curve (quadratic regression) 
 
 ---
 
-### calc_dema(series, period)
+### `calc_dema(series, period)`
 
 Double Exponential Moving Average
 
@@ -155,7 +155,7 @@ Args:
 
 ---
 
-### calc_diff(series, period=1)
+### `calc_diff(series, period=1)`
 
 Difference
 
@@ -166,7 +166,7 @@ Args:
 
 ---
 
-### calc_dmi(prices, period=14)
+### `calc_dmi(prices, period=14)`
 
 Directional Movement Indicator
 
@@ -175,7 +175,7 @@ Args:
 
 ---
 
-### calc_ema(series, period, *, adjust=False)
+### `calc_ema(series, period, *, adjust=False)`
 
 Exponential Moving Average
 
@@ -194,7 +194,7 @@ Formula:
 
 ---
 
-### calc_eval(prices, expr, *, as_flag=False)
+### `calc_eval(prices, expr, *, as_flag=False)`
 
 Expression Eval (pandas only)
 
@@ -203,13 +203,13 @@ Args:
 
 ---
 
-### calc_exp(series)
+### `calc_exp(series)`
 
 Exponential
 
 ---
 
-### calc_flag(series)
+### `calc_flag(series)`
 
 Flag Value
 
@@ -217,7 +217,7 @@ Flag value of 1 for positive, 0 for zero or negative, and NaN otherwize
 
 ---
 
-### calc_hma(series, period)
+### `calc_hma(series, period)`
 
 Hull Moving Average
 
@@ -226,7 +226,7 @@ Args:
 
 ---
 
-### calc_kama(series, period=10, fastn=2, slown=30)
+### `calc_kama(series, period=10, fastn=2, slown=30)`
 
 Kaufman Adaptive Moving Average
 
@@ -237,7 +237,7 @@ Args:
 
 ---
 
-### calc_keltner(prices, period=20, nbatr=2.0)
+### `calc_keltner(prices, period=20, nbatr=2.0)`
 
 Keltner Channel
 
@@ -247,7 +247,7 @@ Args:
 
 ---
 
-### calc_ker(series, period=10)
+### `calc_ker(series, period=10)`
 
 Kaufman Efficiency Ratio
 
@@ -256,7 +256,7 @@ Args:
 
 ---
 
-### calc_lag(series, period)
+### `calc_lag(series, period)`
 
 Lag Function
 
@@ -265,13 +265,13 @@ Args:
 
 ---
 
-### calc_log(series)
+### `calc_log(series)`
 
 Logarithm 
 
 ---
 
-### calc_lroc(series, period=1)
+### `calc_lroc(series, period=1)`
 
 Logarithmic Rate of Change
 
@@ -283,7 +283,7 @@ Args:
 
 ---
 
-### calc_macd(series, n1=12, n2=26, n3=9)
+### `calc_macd(series, n1=12, n2=26, n3=9)`
 
 Moving Average Convergence Divergence
 
@@ -297,7 +297,7 @@ Outputs:
 
 ---
 
-### calc_macdv(prices, n1=12, n2=26, n3=9)
+### `calc_macdv(prices, n1=12, n2=26, n3=9)`
 
 Moving Average Convergence Divergence - Volatility Normalized
 
@@ -311,13 +311,13 @@ Outputs:
 
 ---
 
-### calc_mad(series, period: 'int' = 14)
+### `calc_mad(series, period: 'int' = 14)`
 
 Rolling Mean Absolute Deviation
 
 ---
 
-### calc_mav(series, period=20, *, ma_type='SMA')
+### `calc_mav(series, period=20, *, ma_type='SMA')`
 
 Generic Moving Average
 
@@ -329,13 +329,13 @@ Args:
 
 ---
 
-### calc_max(series, period)
+### `calc_max(series, period)`
 
 Rolling Maximum 
 
 ---
 
-### calc_mdi(prices, period=14)
+### `calc_mdi(prices, period=14)`
 
 Minus Directional Index
 
@@ -344,7 +344,7 @@ Args:
 
 ---
 
-### calc_mfi(prices, period=14)
+### `calc_mfi(prices, period=14)`
 
 Money Flow Index 
 
@@ -353,7 +353,7 @@ Args:
 
 ---
 
-### calc_midprice(prices)
+### `calc_midprice(prices)`
 
 Mid Price
 
@@ -361,7 +361,7 @@ Value of (high + low) / 2
 
 ---
 
-### calc_min(series, period)
+### `calc_min(series, period)`
 
 Rolling Minimum
 
@@ -370,7 +370,7 @@ Args:
 
 ---
 
-### calc_natr(prices, period=14)
+### `calc_natr(prices, period=14)`
 
 Average True Range (normalized)
 
@@ -379,7 +379,7 @@ Args:
 
 ---
 
-### calc_pdi(prices, period=14)
+### `calc_pdi(prices, period=14)`
 
 Plus Directional Index
 
@@ -388,7 +388,7 @@ Args:
 
 ---
 
-### calc_ppo(series, n1=12, n2=26, n3=9)
+### `calc_ppo(series, n1=12, n2=26, n3=9)`
 
 Price Percentage Oscillator
 
@@ -402,7 +402,7 @@ Outputs:
 
 ---
 
-### calc_price(prices, item: 'str' = None)
+### `calc_price(prices, item: 'str' = None)`
 
 Generic Price 
 
@@ -412,7 +412,7 @@ Args:
 
 ---
 
-### calc_qsf(series, period=20, offset=0)
+### `calc_qsf(series, period=20, offset=0)`
 
 Quadratic Series Forecast (quadratic regression)
 
@@ -421,7 +421,7 @@ Args:
 
 ---
 
-### calc_rma(series, period)
+### `calc_rma(series, period)`
 
 Rolling Moving Average (RSI style)
 
@@ -431,7 +431,7 @@ number of bars is equal to `period`.
 
 ---
 
-### calc_roc(series, period=1)
+### `calc_roc(series, period=1)`
 
 Rate of Change
 
@@ -441,7 +441,7 @@ Args:
 
 ---
 
-### calc_rsi(series, period=14)
+### `calc_rsi(series, period=14)`
 
 Relative Strength Index
 
@@ -450,7 +450,7 @@ Args:
 
 ---
 
-### calc_rvalue(series, period=20)
+### `calc_rvalue(series, period=20)`
 
 R-Value (linear regression)
 
@@ -459,7 +459,7 @@ Args:
 
 ---
 
-### calc_sar(prices, afs=0.02, maxaf=0.2)
+### `calc_sar(prices, afs=0.02, maxaf=0.2)`
 
 Parabolic Stop and Reverse
 
@@ -469,7 +469,7 @@ Args:
 
 ---
 
-### calc_shift(series, period)
+### `calc_shift(series, period)`
 
 Shift Function
 
@@ -478,13 +478,13 @@ Args:
 
 ---
 
-### calc_sign(series)
+### `calc_sign(series)`
 
 Sign
 
 ---
 
-### calc_slope(series, period=20)
+### `calc_slope(series, period=20)`
 
 Slope (linear regression)
 
@@ -493,7 +493,7 @@ Args:
 
 ---
 
-### calc_sma(series, period)
+### `calc_sma(series, period)`
 
 Simple Moving Average
 
@@ -502,7 +502,7 @@ Args:
 
 ---
 
-### calc_stdev(series, period=20)
+### `calc_stdev(series, period=20)`
 
 Standard Deviation
 
@@ -511,7 +511,7 @@ Args:
 
 ---
 
-### calc_step(series, threshold: 'float' = 1.0)
+### `calc_step(series, threshold: 'float' = 1.0)`
 
 Step Function
 
@@ -522,7 +522,7 @@ Args:
 
 ---
 
-### calc_stoch(prices, period=14, fastn=3, slown=3)
+### `calc_stoch(prices, period=14, fastn=3, slown=3)`
 
 Stochastic Oscillator
 
@@ -533,13 +533,13 @@ Args:
 
 ---
 
-### calc_streak(series)
+### `calc_streak(series)`
 
 Consecutive streak of values above zero
 
 ---
 
-### calc_sum(series, period)
+### `calc_sum(series, period)`
 
 Rolling sum
 
@@ -548,7 +548,7 @@ Args:
 
 ---
 
-### calc_tema(series, period=20)
+### `calc_tema(series, period=20)`
 
 Triple Exponential Moving Average
 
@@ -557,7 +557,7 @@ Args:
 
 ---
 
-### calc_trange(prices, *, log_prices=False, percent=False)
+### `calc_trange(prices, *, log_prices=False, percent=False)`
 
 True Range
 
@@ -567,7 +567,7 @@ Args:
 
 ---
 
-### calc_tsf(series, period=20, offset=0)
+### `calc_tsf(series, period=20, offset=0)`
 
 Time Series Forecast (linear regression)
 
@@ -576,7 +576,7 @@ Args:
 
 ---
 
-### calc_typprice(prices)
+### `calc_typprice(prices)`
 
 Typical Price
 
@@ -584,7 +584,7 @@ Value of (high + low + close ) / 3
 
 ---
 
-### calc_updown(series, up_level=0.0, down_level=0.0)
+### `calc_updown(series, up_level=0.0, down_level=0.0)`
 
 Flag for value crossing up & down levels
 
@@ -594,7 +594,7 @@ Args:
 
 ---
 
-### calc_wclprice(prices)
+### `calc_wclprice(prices)`
 
 Weighted Close Price
 
@@ -602,7 +602,7 @@ Value of (high + low + 2 * close) / 4
 
 ---
 
-### calc_wma(series, period)
+### `calc_wma(series, period)`
 
 Weighted Moving Average
     
