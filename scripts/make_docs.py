@@ -8,6 +8,7 @@ import pdoc.extract
 
 MODULES = [
     "mintalib",
+    "mintalib.core",
     "mintalib.functions",
     "mintalib.indicators",
     "mintalib.expressions",
@@ -37,7 +38,23 @@ def render_module(module_name: str) -> str:
         if not m.name.startswith("_") and m.kind in ("function", "class", "variable")
     ]
 
+    # Fallback for modules with empty __all__ (e.g. mintalib.core):
+    # introspect directly and filter for calc_* functions
     if not members:
+        obj = mod.obj
+        calc_names = sorted(n for n in dir(obj) if n.startswith("calc_"))
+        for name in calc_names:
+            fn = getattr(obj, name)
+            try:
+                sig = inspect.signature(fn)
+            except (ValueError, TypeError):
+                sig = None
+            doc = inspect.getdoc(fn) or ""
+            lines.append(f"---\n" if lines[-1] != "---\n" else "")
+            lines.append(f"### {name}{sig}\n" if sig else f"### {name}\n")
+            if doc:
+                lines.append(doc)
+                lines.append("")
         return "\n".join(lines)
 
     lines.append("---\n")
@@ -64,7 +81,7 @@ def main():
     for module_name in MODULES:
         print(f"Generating {module_name} ...")
         content = render_module(module_name)
-        filename = module_name.replace(".", ".") + ".md"
+        filename = module_name + ".md"
         output_path = OUTPUT_DIR / filename
         output_path.write_text(content)
         print(f"  -> {output_path}")
