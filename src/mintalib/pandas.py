@@ -1,3 +1,13 @@
+"""
+Pandas `ts` Accessor (Experimental)
+
+Registers a `ts` accessor on pandas DataFrame and Series,
+providing access to mintalib indicators via `df.ts.SMA(20)`.
+
+This module is **experimental** — consider using `mintalib.indicators` for pandas workflows.
+Importing this module is sufficient to register the accessor.
+"""
+
 import inspect
 
 import numpy as np

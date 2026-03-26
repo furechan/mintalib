@@ -1,3 +1,13 @@
+"""
+Polars `ts` Accessor (Experimental)
+
+Registers a `ts` accessor on polars DataFrame, Series, and Expr,
+providing access to mintalib indicators via `df.ts.SMA(20)`.
+
+This module is **experimental** — consider using `mintalib.expressions` for polars-native workflows.
+Importing this module is sufficient to register the accessor.
+"""
+
 import inspect
 
 import polars as pl
