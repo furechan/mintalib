@@ -1,7 +1,6 @@
 ---
 name: synthesize
 description: Regenerate .claude/output/mintalib-synthesis.md from the current state of the project
-disable-model-invocation: true
 argument-hint: "[output-file]"
 allowed-tools: Read, Glob, Grep, Bash, Write
 ---
