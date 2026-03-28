@@ -66,6 +66,8 @@ def make(ctx):
     """Compile extension with build_ext --inplace"""
     ctx.run("python setup.py build_ext --inplace")
 
+    ctx.run("python scripts/make-stubs.py")
+
     with ctx.cd("scripts"):
         ctx.run("ipython make-functions.ipynb")
         ctx.run("ipython make-indicators.ipynb")
@@ -95,7 +97,7 @@ def docs(ctx):
 def publish(ctx, testpypi=False):
     """Publish to PyPI with twine"""
     repoarg = "--repository testpypi" if testpypi else ""
-    ctx.run(f"twine upload {repoarg} dist/*.tar.gz")
+    ctx.run(f"twine upload {repoarg} --skip-existing dist/*.tar.gz")
 
 
 @task

@@ -8,7 +8,7 @@ def get_metadata(func, name: str, default=None):
     return getattr(func, 'metadata', {}).get(name, default)
 
 
-def format_partial(func, data, *, name: str = None):
+def format_partial(func, data, *, name: str | None = None):
     """format a partial function call"""
 
     if name is None:

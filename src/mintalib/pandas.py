@@ -16,7 +16,7 @@ import pandas as pd
 NAMESPACE = "ts"
 
 
-def wrap_pandas(result, source, name: str = None):
+def wrap_pandas(result, source, name: str | None = None):
     """ wrap result to pandas """
 
     if isinstance(result, tuple) and hasattr(result, '_asdict'):

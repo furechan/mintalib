@@ -54,7 +54,7 @@ def render_module(module_name: str) -> str:
             except (ValueError, TypeError):
                 sig = None
             doc = inspect.getdoc(fn) or ""
-            lines.append(f"---\n" if lines[-1] != "---\n" else "")
+            lines.append("---\n" if lines[-1] != "---\n" else "")
             lines.append(f"### `{clean_type(name + str(sig))}`\n" if sig else f"### `{name}`\n")
             if doc:
                 lines.append(doc)

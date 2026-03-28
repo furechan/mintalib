@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mintalib"
-version = "0.0.29"
+version = "0.0.30"
 readme = "output/pypi-readme.md"
 license = { text = "MIT License" }
 requires-python = ">=3.10"
@@ -53,6 +53,36 @@ testpaths = ["tests"]
 "*.ipynb" = ["F401", "F811"]
 "__init__.py" = ["F401"]
 "functions.py" = ["F401"]
+# Names like `core`, `wrap_*`, `IntoExpr` are introduced via exec(PRELUDE) — not visible to ruff
+"scripts/make-functions.ipynb" = ["F821"]
+"scripts/make-indicators.ipynb" = ["F821"]
+"scripts/make-expressions.ipynb" = ["F821"]
+
+# Generated files use decorator-replaces-body pattern (e.g. @wrap_expression): empty stubs are intentional
+[[tool.ty.overrides]]
+include = [
+    "src/mintalib/functions.py",
+    "src/mintalib/indicators.py",
+    "src/mintalib/expressions.py",
+]
+rules.empty-body = "ignore"
+
+# Codegen notebooks exec a PRELUDE string that defines names like `core`, `wrap_*`, `IntoExpr`
+# ty cannot see names introduced via exec(), so unresolved-reference is a false positive here
+[[tool.ty.overrides]]
+include = [
+    "scripts/make-functions.ipynb",
+    "scripts/make-indicators.ipynb",
+    "scripts/make-expressions.ipynb",
+]
+rules.unresolved-reference = "ignore"
+rules.empty-body = "ignore"
+
+# `ts` is a dynamic polars namespace registered via @pl.api.register_expr_namespace
+# ty cannot resolve dynamically registered accessors on pl.Expr
+[[tool.ty.overrides]]
+include = ["examples/experimental/polars-accessor.ipynb"]
+rules.unresolved-attribute = "ignore"
 
 [tool.pydev]
 allow-publish = true 

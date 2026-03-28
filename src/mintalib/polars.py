@@ -79,7 +79,7 @@ def expression_method(func):
     wrapper.__qualname__ = f"ExpressionCalc.{name}"
     wrapper.__module__ = __name__
     wrapper.__doc__ = func.__doc__
-    wrapper.__signature__ = newsig
+    setattr(wrapper, "__signature__", newsig)
 
     return wrapper
 
@@ -101,7 +101,7 @@ def accessor_method(func):
     wrapper.__name__ = name
     wrapper.__module__ = __name__
     wrapper.__doc__ = func.__doc__
-    wrapper.__signature__ = newsig
+    setattr(wrapper, "__signature__", newsig)
 
     return wrapper
 

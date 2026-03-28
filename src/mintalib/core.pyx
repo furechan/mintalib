@@ -1,4 +1,4 @@
-# cython: language_level=3, binding=True
+# cython: language_level=3, binding=True, embedsignature=True
 
 """
 Calculation routines implemented in cython.

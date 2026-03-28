@@ -17518,7 +17518,7 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *__
 
 /* Python wrapper */
 static PyObject *__pyx_pw_8mintalib_4core_1check_size(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_check_size, "check all series have the same size and return the size");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_check_size, "check_size(*args)\n\ncheck all series have the same size and return the size");
 static PyMethodDef __pyx_mdef_8mintalib_4core_1check_size = {"check_size", (PyCFunction)(void(*)(void))(PyCFunctionWithKeywords)__pyx_pw_8mintalib_4core_1check_size, METH_VARARGS|METH_KEYWORDS, __pyx_doc_8mintalib_4core_check_size};
 static PyObject *__pyx_pw_8mintalib_4core_1check_size(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_args = 0;
@@ -17750,7 +17750,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_2column_accessor, "column accessor if applicable");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_2column_accessor, "column_accessor(data)\n\ncolumn accessor if applicable");
 static PyMethodDef __pyx_mdef_8mintalib_4core_3column_accessor = {"column_accessor", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_3column_accessor, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_2column_accessor};
 static PyObject *__pyx_pw_8mintalib_4core_3column_accessor(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -18072,7 +18072,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_4get_series, "get series from prices or series data");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_4get_series, "get_series(data, str item: str = None, *, str default_item: str = 'close')\n\nget series from prices or series data");
 static PyMethodDef __pyx_mdef_8mintalib_4core_5get_series = {"get_series", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_5get_series, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_4get_series};
 static PyObject *__pyx_pw_8mintalib_4core_5get_series(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -18402,7 +18402,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_6add_metadata, "update function with metadata");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_6add_metadata, "add_metadata(*, bool same_scale: bool = None, output_names: list | tuple = None)\n\nupdate function with metadata");
 static PyMethodDef __pyx_mdef_8mintalib_4core_7add_metadata = {"add_metadata", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_7add_metadata, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_6add_metadata};
 static PyObject *__pyx_pw_8mintalib_4core_7add_metadata(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -18893,7 +18893,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_8wrap_result, "wrap result to match source data type");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_8wrap_result, "wrap_result(result, source, str name: str = None)\n\nwrap result to match source data type");
 static PyMethodDef __pyx_mdef_8mintalib_4core_9wrap_result = {"wrap_result", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_9wrap_result, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_8wrap_result};
 static PyObject *__pyx_pw_8mintalib_4core_9wrap_result(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -19451,7 +19451,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_10calc_price, "\n    Generic Price\n\n    Args:\n        item (str) : price type, one of:\n            'open', 'high', 'low', 'close' (default),\n            'avg' or 'ohlc4'  \342\200\224 average price (open + high + low + close) / 4,\n            'mid' or 'hl2'    \342\200\224 mid price (high + low) / 2,\n            'typ' or 'hlc3'   \342\200\224 typical price (high + low + close) / 3,\n            'wcl' or 'hlcc4'  \342\200\224 weighted close (high + low + 2 * close) / 4\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_10calc_price, "calc_price(prices, str item: str = None)\n\nGeneric Price\n\nArgs:\n    item (str) : price type, one of:\n        'open', 'high', 'low', 'close' (default),\n        'avg' or 'ohlc4'  \342\200\224 average price (open + high + low + close) / 4,\n        'mid' or 'hl2'    \342\200\224 mid price (high + low) / 2,\n        'typ' or 'hlc3'   \342\200\224 typical price (high + low + close) / 3,\n        'wcl' or 'hlcc4'  \342\200\224 weighted close (high + low + 2 * close) / 4");
 static PyMethodDef __pyx_mdef_8mintalib_4core_11calc_price = {"calc_price", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_11calc_price, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_10calc_price};
 static PyObject *__pyx_pw_8mintalib_4core_11calc_price(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -20042,7 +20042,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_12calc_avgprice, "\n    Average Price\n    \n    Value of (open + high + low + close) / 4\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_12calc_avgprice, "calc_avgprice(prices)\n\nAverage Price\n\nValue of (open + high + low + close) / 4");
 static PyMethodDef __pyx_mdef_8mintalib_4core_13calc_avgprice = {"calc_avgprice", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_13calc_avgprice, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_12calc_avgprice};
 static PyObject *__pyx_pw_8mintalib_4core_13calc_avgprice(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -20402,7 +20402,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_14calc_typprice, "\n    Typical Price\n\n    Value of (high + low + close ) / 3\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_14calc_typprice, "calc_typprice(prices)\n\nTypical Price\n\nValue of (high + low + close ) / 3");
 static PyMethodDef __pyx_mdef_8mintalib_4core_15calc_typprice = {"calc_typprice", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_15calc_typprice, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_14calc_typprice};
 static PyObject *__pyx_pw_8mintalib_4core_15calc_typprice(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -20718,7 +20718,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_16calc_wclprice, "\n    Weighted Close Price\n    \n    Value of (high + low + 2 * close) / 4\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_16calc_wclprice, "calc_wclprice(prices)\n\nWeighted Close Price\n\nValue of (high + low + 2 * close) / 4");
 static PyMethodDef __pyx_mdef_8mintalib_4core_17calc_wclprice = {"calc_wclprice", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_17calc_wclprice, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_16calc_wclprice};
 static PyObject *__pyx_pw_8mintalib_4core_17calc_wclprice(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -21037,7 +21037,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_18calc_midprice, "\n    Mid Price\n    \n    Value of (high + low) / 2\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_18calc_midprice, "calc_midprice(prices)\n\nMid Price\n\nValue of (high + low) / 2");
 static PyMethodDef __pyx_mdef_8mintalib_4core_19calc_midprice = {"calc_midprice", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_19calc_midprice, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_18calc_midprice};
 static PyObject *__pyx_pw_8mintalib_4core_19calc_midprice(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -21309,7 +21309,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_20calc_crossover, "\n    Cross Over\n    \n    Yields a value of 1 at the point where series crosses over level\n\n    Args:\n        level (float) : level to cross, default 0.0\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_20calc_crossover, "calc_crossover(series, double level=0.0)\n\nCross Over\n\nYields a value of 1 at the point where series crosses over level\n\nArgs:\n    level (float) : level to cross, default 0.0");
 static PyMethodDef __pyx_mdef_8mintalib_4core_21calc_crossover = {"calc_crossover", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_21calc_crossover, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_20calc_crossover};
 static PyObject *__pyx_pw_8mintalib_4core_21calc_crossover(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -21719,7 +21719,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_22calc_crossunder, "\n    Cross Under\n\n    Yields a value of 1 at the point where series crosses under level\n\n    Args:\n        level (float) : level to cross, default 0.0\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_22calc_crossunder, "calc_crossunder(series, double level=0.0)\n\nCross Under\n\nYields a value of 1 at the point where series crosses under level\n\nArgs:\n    level (float) : level to cross, default 0.0");
 static PyMethodDef __pyx_mdef_8mintalib_4core_23calc_crossunder = {"calc_crossunder", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_23calc_crossunder, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_22calc_crossunder};
 static PyObject *__pyx_pw_8mintalib_4core_23calc_crossunder(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -22128,7 +22128,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_24calc_flag, "\n    Flag Value\n\n    Flag value of 1 for positive, 0 for zero or negative, and NaN otherwize\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_24calc_flag, "calc_flag(series)\n\nFlag Value\n\nFlag value of 1 for positive, 0 for zero or negative, and NaN otherwize");
 static PyMethodDef __pyx_mdef_8mintalib_4core_25calc_flag = {"calc_flag", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_25calc_flag, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_24calc_flag};
 static PyObject *__pyx_pw_8mintalib_4core_25calc_flag(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -22532,7 +22532,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_26calc_updown, "\n    Flag for value crossing up & down levels\n    \n    Args:\n        up_level (float) : flag set at 1 above that level\n        down_level (float) : flag set at 0 below that level\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_26calc_updown, "calc_updown(series, double up_level=0.0, double down_level=0.0)\n\nFlag for value crossing up & down levels\n\nArgs:\n    up_level (float) : flag set at 1 above that level\n    down_level (float) : flag set at 0 below that level");
 static PyMethodDef __pyx_mdef_8mintalib_4core_27calc_updown = {"calc_updown", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_27calc_updown, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_26calc_updown};
 static PyObject *__pyx_pw_8mintalib_4core_27calc_updown(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -23055,7 +23055,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_28where_flag, "Value according to flag, selecting between x, y or z");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_28where_flag, "where_flag(flag, x, y, z=NAN)\n\nValue according to flag, selecting between x, y or z");
 static PyMethodDef __pyx_mdef_8mintalib_4core_29where_flag = {"where_flag", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_29where_flag, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_28where_flag};
 static PyObject *__pyx_pw_8mintalib_4core_29where_flag(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -23761,7 +23761,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_30calc_sign, "Sign");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_30calc_sign, "calc_sign(series)\n\nSign");
 static PyMethodDef __pyx_mdef_8mintalib_4core_31calc_sign = {"calc_sign", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_31calc_sign, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_30calc_sign};
 static PyObject *__pyx_pw_8mintalib_4core_31calc_sign(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -24198,7 +24198,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_32calc_step, "\n    Step Function\n\n    Limit value changes to threshold (in absolute value)\n\n    Args:\n        threshold (float) : threshold value, default 1.0\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_32calc_step, "calc_step(series, double threshold: float = 1.0)\n\nStep Function\n\nLimit value changes to threshold (in absolute value)\n\nArgs:\n    threshold (float) : threshold value, default 1.0");
 static PyMethodDef __pyx_mdef_8mintalib_4core_33calc_step = {"calc_step", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_33calc_step, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_32calc_step};
 static PyObject *__pyx_pw_8mintalib_4core_33calc_step(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -24682,7 +24682,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_34calc_clag, "\n    Confirmation Lag\n\n    Changes value only after a confirmation period \n\n    Args:\n        period (int) : time period, default 1\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_34calc_clag, "calc_clag(series, long period=1)\n\nConfirmation Lag\n\nChanges value only after a confirmation period \n\nArgs:\n    period (int) : time period, default 1");
 static PyMethodDef __pyx_mdef_8mintalib_4core_35calc_clag = {"calc_clag", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_35calc_clag, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_34calc_clag};
 static PyObject *__pyx_pw_8mintalib_4core_35calc_clag(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -25197,7 +25197,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_36calc_abs, "Absolute Value");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_36calc_abs, "calc_abs(series)\n\nAbsolute Value");
 static PyMethodDef __pyx_mdef_8mintalib_4core_37calc_abs = {"calc_abs", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_37calc_abs, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_36calc_abs};
 static PyObject *__pyx_pw_8mintalib_4core_37calc_abs(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -25421,7 +25421,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_38calc_log, " Logarithm ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_38calc_log, "calc_log(series)\n\nLogarithm ");
 static PyMethodDef __pyx_mdef_8mintalib_4core_39calc_log = {"calc_log", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_39calc_log, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_38calc_log};
 static PyObject *__pyx_pw_8mintalib_4core_39calc_log(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -25811,7 +25811,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_40calc_exp, "Exponential");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_40calc_exp, "calc_exp(series)\n\nExponential");
 static PyMethodDef __pyx_mdef_8mintalib_4core_41calc_exp = {"calc_exp", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_41calc_exp, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_40calc_exp};
 static PyObject *__pyx_pw_8mintalib_4core_41calc_exp(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -26201,7 +26201,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_42calc_diff, "Difference\n\n    Difference between current value and the one offset by period\n\n    Args:\n        period (int) : time period, default 1\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_42calc_diff, "calc_diff(series, long period=1)\n\nDifference\n\nDifference between current value and the one offset by period\n\nArgs:\n    period (int) : time period, default 1");
 static PyMethodDef __pyx_mdef_8mintalib_4core_43calc_diff = {"calc_diff", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_43calc_diff, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_42calc_diff};
 static PyObject *__pyx_pw_8mintalib_4core_43calc_diff(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -26649,7 +26649,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_44calc_lag, "\n    Lag Function\n\n    Args:\n        period (int) : time period, required\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_44calc_lag, "calc_lag(series, long period)\n\nLag Function\n\nArgs:\n    period (int) : time period, required");
 static PyMethodDef __pyx_mdef_8mintalib_4core_45calc_lag = {"calc_lag", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_45calc_lag, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_44calc_lag};
 static PyObject *__pyx_pw_8mintalib_4core_45calc_lag(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -27049,7 +27049,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_46calc_min, "\n    Rolling Minimum\n    \n    Args:\n        period (int) : time period, required\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_46calc_min, "calc_min(series, long period)\n\nRolling Minimum\n\nArgs:\n    period (int) : time period, required");
 static PyMethodDef __pyx_mdef_8mintalib_4core_47calc_min = {"calc_min", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_47calc_min, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_46calc_min};
 static PyObject *__pyx_pw_8mintalib_4core_47calc_min(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -27537,7 +27537,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_48calc_max, " Rolling Maximum ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_48calc_max, "calc_max(series, long period)\n\nRolling Maximum ");
 static PyMethodDef __pyx_mdef_8mintalib_4core_49calc_max = {"calc_max", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_49calc_max, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_48calc_max};
 static PyObject *__pyx_pw_8mintalib_4core_49calc_max(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -28024,7 +28024,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_50calc_sum, "\n    Rolling sum\n    \n    Args:\n        period (int) : time period, required\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_50calc_sum, "calc_sum(series, long period)\n\nRolling sum\n\nArgs:\n    period (int) : time period, required");
 static PyMethodDef __pyx_mdef_8mintalib_4core_51calc_sum = {"calc_sum", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_51calc_sum, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_50calc_sum};
 static PyObject *__pyx_pw_8mintalib_4core_51calc_sum(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -28587,7 +28587,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_52calc_roc, "\n    Rate of Change\n    \n    Args:\n        period (int) : time period, default 1\n        when negative the calculation is shifted back\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_52calc_roc, "calc_roc(series, long period=1)\n\nRate of Change\n\nArgs:\n    period (int) : time period, default 1\n    when negative the calculation is shifted back");
 static PyMethodDef __pyx_mdef_8mintalib_4core_53calc_roc = {"calc_roc", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_53calc_roc, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_52calc_roc};
 static PyObject *__pyx_pw_8mintalib_4core_53calc_roc(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -29048,7 +29048,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_54calc_lroc, "\n    Logarithmic Rate of Change\n\n    Equivalent to the difference of log values\n\n    Args:\n        period (int) : time period, default 1\n        when negative the calculation is shifted back\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_54calc_lroc, "calc_lroc(series, long period=1)\n\nLogarithmic Rate of Change\n\nEquivalent to the difference of log values\n\nArgs:\n    period (int) : time period, default 1\n    when negative the calculation is shifted back");
 static PyMethodDef __pyx_mdef_8mintalib_4core_55calc_lroc = {"calc_lroc", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_55calc_lroc, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_54calc_lroc};
 static PyObject *__pyx_pw_8mintalib_4core_55calc_lroc(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -29509,7 +29509,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_56calc_mad, "Rolling Mean Absolute Deviation");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_56calc_mad, "calc_mad(series, int period: int = 14)\n\nRolling Mean Absolute Deviation");
 static PyMethodDef __pyx_mdef_8mintalib_4core_57calc_mad = {"calc_mad", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_57calc_mad, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_56calc_mad};
 static PyObject *__pyx_pw_8mintalib_4core_57calc_mad(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -29877,7 +29877,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_58calc_stdev, "\n    Standard Deviation\n    \n    Args:\n        period (int) : time period, default 20\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_58calc_stdev, "calc_stdev(series, long period=20)\n\nStandard Deviation\n\nArgs:\n    period (int) : time period, default 20");
 static PyMethodDef __pyx_mdef_8mintalib_4core_59calc_stdev = {"calc_stdev", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_59calc_stdev, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_58calc_stdev};
 static PyObject *__pyx_pw_8mintalib_4core_59calc_stdev(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -30521,7 +30521,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_60calc_mav, "\n    Generic Moving Average\n\n    Moving average computed according to ma_type\n\n    Args:\n        ma_type (str) : one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'\n                defaults to 'SMA'\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_60calc_mav, "calc_mav(series, long period=20, *, str ma_type='SMA')\n\nGeneric Moving Average\n\nMoving average computed according to ma_type\n\nArgs:\n    ma_type (str) : one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'\n            defaults to 'SMA'");
 static PyMethodDef __pyx_mdef_8mintalib_4core_61calc_mav = {"calc_mav", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_61calc_mav, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_60calc_mav};
 static PyObject *__pyx_pw_8mintalib_4core_61calc_mav(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -31060,7 +31060,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_62calc_sma, "\n    Simple Moving Average\n    \n    Args:\n        period (int) : time period, required\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_62calc_sma, "calc_sma(series, long period)\n\nSimple Moving Average\n\nArgs:\n    period (int) : time period, required");
 static PyMethodDef __pyx_mdef_8mintalib_4core_63calc_sma = {"calc_sma", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_63calc_sma, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_62calc_sma};
 static PyObject *__pyx_pw_8mintalib_4core_63calc_sma(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -31627,7 +31627,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_64calc_ema, "\n    Exponential Moving Average\n\n    Args:\n        period (int) : time period, required\n        adjust (bool) : whether to adjust weights, default False\n            when true update ratio increases gradually (see formula)\n\n    Formula:\n        EMA is calculated as a recursive formula\n        The standard formula is ema += alpha * (value - ema)\n            with alpha = 2.0 / (period + 1.0)\n        The adjusted formula is ema = num/div\n            where num = value + rho * num, div = 1.0 + rho * div\n            with rho = 1.0 - alpha\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_64calc_ema, "calc_ema(series, long period, *, bool adjust=False)\n\nExponential Moving Average\n\nArgs:\n    period (int) : time period, required\n    adjust (bool) : whether to adjust weights, default False\n        when true update ratio increases gradually (see formula)\n\nFormula:\n    EMA is calculated as a recursive formula\n    The standard formula is ema += alpha * (value - ema)\n        with alpha = 2.0 / (period + 1.0)\n    The adjusted formula is ema = num/div\n        where num = value + rho * num, div = 1.0 + rho * div\n        with rho = 1.0 - alpha");
 static PyMethodDef __pyx_mdef_8mintalib_4core_65calc_ema = {"calc_ema", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_65calc_ema, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_64calc_ema};
 static PyObject *__pyx_pw_8mintalib_4core_65calc_ema(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -32248,7 +32248,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_66calc_rma, "\n    Rolling Moving Average (RSI style)\n\n    Exponential moving average with `alpha = 2 / period`,\n    that starts as a simple moving average until\n    number of bars is equal to `period`.\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_66calc_rma, "calc_rma(series, long period)\n\nRolling Moving Average (RSI style)\n\nExponential moving average with `alpha = 2 / period`,\nthat starts as a simple moving average until\nnumber of bars is equal to `period`.");
 static PyMethodDef __pyx_mdef_8mintalib_4core_67calc_rma = {"calc_rma", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_67calc_rma, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_66calc_rma};
 static PyObject *__pyx_pw_8mintalib_4core_67calc_rma(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -32777,7 +32777,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_68calc_wma, "\n    Weighted Moving Average\n        \n    Args:\n        period (int) : time period, required\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_68calc_wma, "calc_wma(series, long period)\n\nWeighted Moving Average\n    \nArgs:\n    period (int) : time period, required");
 static PyMethodDef __pyx_mdef_8mintalib_4core_69calc_wma = {"calc_wma", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_69calc_wma, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_68calc_wma};
 static PyObject *__pyx_pw_8mintalib_4core_69calc_wma(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -33375,7 +33375,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_70calc_hma, "\n    Hull Moving Average\n\n    Args:\n        period (int) : time period, required    \n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_70calc_hma, "calc_hma(series, long period)\n\nHull Moving Average\n\nArgs:\n    period (int) : time period, required    ");
 static PyMethodDef __pyx_mdef_8mintalib_4core_71calc_hma = {"calc_hma", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_71calc_hma, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_70calc_hma};
 static PyObject *__pyx_pw_8mintalib_4core_71calc_hma(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -33718,7 +33718,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_72calc_dema, "\n    Double Exponential Moving Average\n \n    Args:\n        period (int) : time period, required    \n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_72calc_dema, "calc_dema(series, long period)\n\nDouble Exponential Moving Average\n\nArgs:\n    period (int) : time period, required    ");
 static PyMethodDef __pyx_mdef_8mintalib_4core_73calc_dema = {"calc_dema", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_73calc_dema, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_72calc_dema};
 static PyObject *__pyx_pw_8mintalib_4core_73calc_dema(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -33959,7 +33959,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_74calc_tema, "\n    Triple Exponential Moving Average\n    \n    Args:\n        period (int) : time period, default 20\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_74calc_tema, "calc_tema(series, long period=20)\n\nTriple Exponential Moving Average\n\nArgs:\n    period (int) : time period, default 20");
 static PyMethodDef __pyx_mdef_8mintalib_4core_75calc_tema = {"calc_tema", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_75calc_tema, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_74calc_tema};
 static PyObject *__pyx_pw_8mintalib_4core_75calc_tema(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -34253,7 +34253,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_76calc_alma, "Arnaud Legoux Moving Average");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_76calc_alma, "calc_alma(series, long period=9, double offset=0.85, double sigma=6.0)\n\nArnaud Legoux Moving Average");
 static PyMethodDef __pyx_mdef_8mintalib_4core_77calc_alma = {"calc_alma", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_77calc_alma, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_76calc_alma};
 static PyObject *__pyx_pw_8mintalib_4core_77calc_alma(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -34783,7 +34783,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_78calc_rsi, "\n    Relative Strength Index\n    \n    Args:\n        period (int) : time period, default 14\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_78calc_rsi, "calc_rsi(series, long period=14)\n\nRelative Strength Index\n\nArgs:\n    period (int) : time period, default 14");
 static PyMethodDef __pyx_mdef_8mintalib_4core_79calc_rsi = {"calc_rsi", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_79calc_rsi, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_78calc_rsi};
 static PyObject *__pyx_pw_8mintalib_4core_79calc_rsi(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -35405,7 +35405,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_80calc_dmi, "\n    Directional Movement Indicator\n\n    Args:\n        period (int) : time period, default 14\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_80calc_dmi, "calc_dmi(prices, long period=14)\n\nDirectional Movement Indicator\n\nArgs:\n    period (int) : time period, default 14");
 static PyMethodDef __pyx_mdef_8mintalib_4core_81calc_dmi = {"calc_dmi", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_81calc_dmi, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_80calc_dmi};
 static PyObject *__pyx_pw_8mintalib_4core_81calc_dmi(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -36229,7 +36229,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_82calc_adx, "\n    Average Directional Index\n\n    Args:\n        period (int) : time period, default 14\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_82calc_adx, "calc_adx(prices, long period=14)\n\nAverage Directional Index\n\nArgs:\n    period (int) : time period, default 14");
 static PyMethodDef __pyx_mdef_8mintalib_4core_83calc_adx = {"calc_adx", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_83calc_adx, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_82calc_adx};
 static PyObject *__pyx_pw_8mintalib_4core_83calc_adx(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -36434,7 +36434,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_84calc_pdi, "\n    Plus Directional Index\n\n    Args:\n        period (int) : time period, default 14\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_84calc_pdi, "calc_pdi(prices, long period=14)\n\nPlus Directional Index\n\nArgs:\n    period (int) : time period, default 14");
 static PyMethodDef __pyx_mdef_8mintalib_4core_85calc_pdi = {"calc_pdi", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_85calc_pdi, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_84calc_pdi};
 static PyObject *__pyx_pw_8mintalib_4core_85calc_pdi(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -36639,7 +36639,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_86calc_mdi, "\n    Minus Directional Index\n\n    Args:\n        period (int) : time period, default 14\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_86calc_mdi, "calc_mdi(prices, long period=14)\n\nMinus Directional Index\n\nArgs:\n    period (int) : time period, default 14");
 static PyMethodDef __pyx_mdef_8mintalib_4core_87calc_mdi = {"calc_mdi", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_87calc_mdi, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_86calc_mdi};
 static PyObject *__pyx_pw_8mintalib_4core_87calc_mdi(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -36843,7 +36843,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_88calc_trange, "\n    True Range\n    \n    Args:\n        log_prices (bool) : whether to apply log to prices before calculation\n        percent (bool) : result as percentage of price\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_88calc_trange, "calc_trange(prices, *, bool log_prices=False, bool percent=False)\n\nTrue Range\n\nArgs:\n    log_prices (bool) : whether to apply log to prices before calculation\n    percent (bool) : result as percentage of price");
 static PyMethodDef __pyx_mdef_8mintalib_4core_89calc_trange = {"calc_trange", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_89calc_trange, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_88calc_trange};
 static PyObject *__pyx_pw_8mintalib_4core_89calc_trange(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -37582,7 +37582,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_90calc_atr, "\n    Average True Range\n    \n    Args:\n        period (int) : time period, default 14    \n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_90calc_atr, "calc_atr(prices, long period=14)\n\nAverage True Range\n\nArgs:\n    period (int) : time period, default 14    ");
 static PyMethodDef __pyx_mdef_8mintalib_4core_91calc_atr = {"calc_atr", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_91calc_atr, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_90calc_atr};
 static PyObject *__pyx_pw_8mintalib_4core_91calc_atr(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -37813,7 +37813,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_92calc_natr, "\n    Average True Range (normalized)\n    \n    Args:\n        period (int) : time period, default 14    \n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_92calc_natr, "calc_natr(prices, long period=14)\n\nAverage True Range (normalized)\n\nArgs:\n    period (int) : time period, default 14    ");
 static PyMethodDef __pyx_mdef_8mintalib_4core_93calc_natr = {"calc_natr", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_93calc_natr, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_92calc_natr};
 static PyObject *__pyx_pw_8mintalib_4core_93calc_natr(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -38048,7 +38048,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_94calc_sar, "\n    Parabolic Stop and Reverse\n    \n    Args:\n        afs (float) : starting acceleration factor, default 0.02\n        maxaf (float) : maximum acceleration factor, default 0.2\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_94calc_sar, "calc_sar(prices, double afs=0.02, double maxaf=0.2)\n\nParabolic Stop and Reverse\n\nArgs:\n    afs (float) : starting acceleration factor, default 0.02\n    maxaf (float) : maximum acceleration factor, default 0.2");
 static PyMethodDef __pyx_mdef_8mintalib_4core_95calc_sar = {"calc_sar", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_95calc_sar, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_94calc_sar};
 static PyObject *__pyx_pw_8mintalib_4core_95calc_sar(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -39019,7 +39019,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_96calc_cci, "\n    Commodity Channel Index\n    \n    Args:\n        period (int) : time period, default 20\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_96calc_cci, "calc_cci(prices, long period=20)\n\nCommodity Channel Index\n\nArgs:\n    period (int) : time period, default 20");
 static PyMethodDef __pyx_mdef_8mintalib_4core_97calc_cci = {"calc_cci", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_97calc_cci, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_96calc_cci};
 static PyObject *__pyx_pw_8mintalib_4core_97calc_cci(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -39471,7 +39471,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_98calc_cmf, "\n    Chaikin Money Flow\n    \n    Args:\n        period (int) : time period, default 20\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_98calc_cmf, "calc_cmf(prices, long period=20)\n\nChaikin Money Flow\n\nArgs:\n    period (int) : time period, default 20");
 static PyMethodDef __pyx_mdef_8mintalib_4core_99calc_cmf = {"calc_cmf", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_99calc_cmf, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_98calc_cmf};
 static PyObject *__pyx_pw_8mintalib_4core_99calc_cmf(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -40112,7 +40112,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_100calc_mfi, "\n    Money Flow Index \n    \n    Args:\n        period (int) : time period, default 14\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_100calc_mfi, "calc_mfi(prices, long period=14)\n\nMoney Flow Index \n\nArgs:\n    period (int) : time period, default 14");
 static PyMethodDef __pyx_mdef_8mintalib_4core_101calc_mfi = {"calc_mfi", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_101calc_mfi, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_100calc_mfi};
 static PyObject *__pyx_pw_8mintalib_4core_101calc_mfi(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -40758,7 +40758,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_102calc_bop, "\n    Balance of Power\n    \n    Args:\n        period (int) : time period, default 20\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_102calc_bop, "calc_bop(prices, long period=20)\n\nBalance of Power\n\nArgs:\n    period (int) : time period, default 20");
 static PyMethodDef __pyx_mdef_8mintalib_4core_103calc_bop = {"calc_bop", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_103calc_bop, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_102calc_bop};
 static PyObject *__pyx_pw_8mintalib_4core_103calc_bop(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -41336,7 +41336,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_104calc_bbands, "\n    Bollinger Bands\n    \n    Args:\n        period (int) : time period, default 20\n        nbdev (float) : bands width in number of standard deviations\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_104calc_bbands, "calc_bbands(prices, long period=20, double nbdev=2.0)\n\nBollinger Bands\n\nArgs:\n    period (int) : time period, default 20\n    nbdev (float) : bands width in number of standard deviations");
 static PyMethodDef __pyx_mdef_8mintalib_4core_105calc_bbands = {"calc_bbands", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_105calc_bbands, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_104calc_bbands};
 static PyObject *__pyx_pw_8mintalib_4core_105calc_bbands(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -41694,7 +41694,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_106calc_bbp, "\n    Bollinger Bands Percent (%B)\n    \n    Args:\n        period (int) : time period, default 20\n        nbdev (float) : bands width in number of standard deviations\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_106calc_bbp, "calc_bbp(prices, long period=20, double nbdev=2.0)\n\nBollinger Bands Percent (%B)\n\nArgs:\n    period (int) : time period, default 20\n    nbdev (float) : bands width in number of standard deviations");
 static PyMethodDef __pyx_mdef_8mintalib_4core_107calc_bbp = {"calc_bbp", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_107calc_bbp, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_106calc_bbp};
 static PyObject *__pyx_pw_8mintalib_4core_107calc_bbp(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -42205,7 +42205,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_108calc_bbw, "\n    Bollinger Bands Width\n    \n    Args:\n        period (int) : time period, default 20\n        nbdev (float) : bands width in number of standard deviations\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_108calc_bbw, "calc_bbw(prices, long period=20, double nbdev=2.0)\n\nBollinger Bands Width\n\nArgs:\n    period (int) : time period, default 20\n    nbdev (float) : bands width in number of standard deviations");
 static PyMethodDef __pyx_mdef_8mintalib_4core_109calc_bbw = {"calc_bbw", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_109calc_bbw, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_108calc_bbw};
 static PyObject *__pyx_pw_8mintalib_4core_109calc_bbw(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -42711,7 +42711,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_110calc_keltner, "\n    Keltner Channel\n    \n    Args:\n        period (int) : time period, default 20\n        nbatr (float) : channel width in number of atrs, default 2.0\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_110calc_keltner, "calc_keltner(prices, long period=20, double nbatr=2.0)\n\nKeltner Channel\n\nArgs:\n    period (int) : time period, default 20\n    nbatr (float) : channel width in number of atrs, default 2.0");
 static PyMethodDef __pyx_mdef_8mintalib_4core_111calc_keltner = {"calc_keltner", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_111calc_keltner, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_110calc_keltner};
 static PyObject *__pyx_pw_8mintalib_4core_111calc_keltner(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -43067,7 +43067,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_112calc_ker, "\n    Kaufman Efficiency Ratio\n    \n    Args:\n        period (int) : time period, default 10\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_112calc_ker, "calc_ker(series, int period=10)\n\nKaufman Efficiency Ratio\n\nArgs:\n    period (int) : time period, default 10");
 static PyMethodDef __pyx_mdef_8mintalib_4core_113calc_ker = {"calc_ker", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_113calc_ker, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_112calc_ker};
 static PyObject *__pyx_pw_8mintalib_4core_113calc_ker(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -43703,7 +43703,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_114calc_kama, "\n    Kaufman Adaptive Moving Average\n    \n    Args:\n        period (int) : time period for efficiency ratio, default 10\n        fastn (int) : time period for fast moving average, default, 2\n        slown (int) : time period for slow moving average, default 30\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_114calc_kama, "calc_kama(series, int period=10, int fastn=2, int slown=30)\n\nKaufman Adaptive Moving Average\n\nArgs:\n    period (int) : time period for efficiency ratio, default 10\n    fastn (int) : time period for fast moving average, default, 2\n    slown (int) : time period for slow moving average, default 30");
 static PyMethodDef __pyx_mdef_8mintalib_4core_115calc_kama = {"calc_kama", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_115calc_kama, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_114calc_kama};
 static PyObject *__pyx_pw_8mintalib_4core_115calc_kama(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -44324,7 +44324,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_116calc_ppo, "\n    Price Percentage Oscillator\n    \n    Args:\n        n1 (int) : short time period, default 12\n        n2 (int) : long time period, default 26\n        n3 (int) : signal time period, default 9\n\n    Outputs:\n        ppo, pposignal, ppohist\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_116calc_ppo, "calc_ppo(series, long n1=12, long n2=26, long n3=9)\n\nPrice Percentage Oscillator\n\nArgs:\n    n1 (int) : short time period, default 12\n    n2 (int) : long time period, default 26\n    n3 (int) : signal time period, default 9\n\nOutputs:\n    ppo, pposignal, ppohist");
 static PyMethodDef __pyx_mdef_8mintalib_4core_117calc_ppo = {"calc_ppo", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_117calc_ppo, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_116calc_ppo};
 static PyObject *__pyx_pw_8mintalib_4core_117calc_ppo(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -44859,7 +44859,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_118calc_macd, "\n    Moving Average Convergence Divergence\n    \n    Args:\n        n1 (int) : short time period, default 12\n        n2 (int) : long time period, default 26\n        n3 (int) : signal time period, default 9  \n    \n    Outputs:\n        macd, macdsignal, macdhist\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_118calc_macd, "calc_macd(series, long n1=12, long n2=26, long n3=9)\n\nMoving Average Convergence Divergence\n\nArgs:\n    n1 (int) : short time period, default 12\n    n2 (int) : long time period, default 26\n    n3 (int) : signal time period, default 9  \n\nOutputs:\n    macd, macdsignal, macdhist");
 static PyMethodDef __pyx_mdef_8mintalib_4core_119calc_macd = {"calc_macd", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_119calc_macd, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_118calc_macd};
 static PyObject *__pyx_pw_8mintalib_4core_119calc_macd(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -45221,7 +45221,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_120calc_macdv, "\n    Moving Average Convergence Divergence - Volatility Normalized\n    \n    Args:\n        n1 (int) : short time period, default 12\n        n2 (int) : long time period, default 26\n        n3 (int) : signal time period, default 9  \n    \n    Outputs:\n        macdv, macdvsignal, macdvhist\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_120calc_macdv, "calc_macdv(prices, long n1=12, long n2=26, long n3=9)\n\nMoving Average Convergence Divergence - Volatility Normalized\n\nArgs:\n    n1 (int) : short time period, default 12\n    n2 (int) : long time period, default 26\n    n3 (int) : signal time period, default 9  \n\nOutputs:\n    macdv, macdvsignal, macdvhist");
 static PyMethodDef __pyx_mdef_8mintalib_4core_121calc_macdv = {"calc_macdv", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_121calc_macdv, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_120calc_macdv};
 static PyObject *__pyx_pw_8mintalib_4core_121calc_macdv(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -45647,7 +45647,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_122linear_regression, "\n    Linear Regression\n    \n    Args:\n        period (int) : time period, default 20\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_122linear_regression, "linear_regression(series, long period=20, *, int option=0, int offset=0)\n\nLinear Regression\n\nArgs:\n    period (int) : time period, default 20");
 static PyMethodDef __pyx_mdef_8mintalib_4core_123linear_regression = {"linear_regression", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_123linear_regression, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_122linear_regression};
 static PyObject *__pyx_pw_8mintalib_4core_123linear_regression(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -46735,7 +46735,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_124calc_slope, "\n    Slope (linear regression)\n    \n    Args:\n        period (int) : time period, default 20\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_124calc_slope, "calc_slope(series, long period=20)\n\nSlope (linear regression)\n\nArgs:\n    period (int) : time period, default 20");
 static PyMethodDef __pyx_mdef_8mintalib_4core_125calc_slope = {"calc_slope", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_125calc_slope, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_124calc_slope};
 static PyObject *__pyx_pw_8mintalib_4core_125calc_slope(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -46931,7 +46931,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_126calc_rvalue, "\n    R-Value (linear regression)\n    \n    Args:\n        period (int) : time period, default 20\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_126calc_rvalue, "calc_rvalue(series, long period=20)\n\nR-Value (linear regression)\n\nArgs:\n    period (int) : time period, default 20");
 static PyMethodDef __pyx_mdef_8mintalib_4core_127calc_rvalue = {"calc_rvalue", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_127calc_rvalue, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_126calc_rvalue};
 static PyObject *__pyx_pw_8mintalib_4core_127calc_rvalue(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -47127,7 +47127,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_128calc_tsf, "\n    Time Series Forecast (linear regression)\n    \n    Args:\n        period (int) : time period, default 20\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_128calc_tsf, "calc_tsf(series, long period=20, long offset=0)\n\nTime Series Forecast (linear regression)\n\nArgs:\n    period (int) : time period, default 20");
 static PyMethodDef __pyx_mdef_8mintalib_4core_129calc_tsf = {"calc_tsf", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_129calc_tsf, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_128calc_tsf};
 static PyObject *__pyx_pw_8mintalib_4core_129calc_tsf(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -47343,7 +47343,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_130quadratic_regression, "\n    Quadratic Regression\n    \n    Args:\n        period (int) : time period, default 20\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_130quadratic_regression, "quadratic_regression(series, long period=20, *, int option=0, int offset=0)\n\nQuadratic Regression\n\nArgs:\n    period (int) : time period, default 20");
 static PyMethodDef __pyx_mdef_8mintalib_4core_131quadratic_regression = {"quadratic_regression", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_131quadratic_regression, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_130quadratic_regression};
 static PyObject *__pyx_pw_8mintalib_4core_131quadratic_regression(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -48498,7 +48498,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_132calc_curve, " Curve (quadratic regression) ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_132calc_curve, "calc_curve(series, long period=20)\n\nCurve (quadratic regression) ");
 static PyMethodDef __pyx_mdef_8mintalib_4core_133calc_curve = {"calc_curve", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_133calc_curve, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_132calc_curve};
 static PyObject *__pyx_pw_8mintalib_4core_133calc_curve(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -48694,7 +48694,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_134calc_qsf, "\n    Quadratic Series Forecast (quadratic regression)\n    \n    Args:\n        period (int) : time period, default 20\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_134calc_qsf, "calc_qsf(series, long period=20, long offset=0)\n\nQuadratic Series Forecast (quadratic regression)\n\nArgs:\n    period (int) : time period, default 20");
 static PyMethodDef __pyx_mdef_8mintalib_4core_135calc_qsf = {"calc_qsf", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_135calc_qsf, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_134calc_qsf};
 static PyObject *__pyx_pw_8mintalib_4core_135calc_qsf(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -48908,7 +48908,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_136calc_stoch, "\n    Stochastic Oscillator\n    \n    Args:\n        period (int) :  time period of window, default, 14\n        fastn (int) : time period of fast average, default 3\n        slown (int) : time period of slow average, default 3\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_136calc_stoch, "calc_stoch(prices, long period=14, long fastn=3, long slown=3)\n\nStochastic Oscillator\n\nArgs:\n    period (int) :  time period of window, default, 14\n    fastn (int) : time period of fast average, default 3\n    slown (int) : time period of slow average, default 3");
 static PyMethodDef __pyx_mdef_8mintalib_4core_137calc_stoch = {"calc_stoch", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_137calc_stoch, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_136calc_stoch};
 static PyObject *__pyx_pw_8mintalib_4core_137calc_stoch(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -49671,7 +49671,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_138calc_streak, "\n    Consecutive streak of values above zero\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_138calc_streak, "calc_streak(series)\n\nConsecutive streak of values above zero");
 static PyMethodDef __pyx_mdef_8mintalib_4core_139calc_streak = {"calc_streak", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_139calc_streak, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_138calc_streak};
 static PyObject *__pyx_pw_8mintalib_4core_139calc_streak(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -50066,7 +50066,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_140calc_eval, "\n    Expression Eval\n\n    Evaluates an expression against the prices dataframe.\n    Uses `DataFrame.eval` for pandas and `DataFrame.sql` for polars.\n\n    Args:\n        expr (str) : expression to eval\n        as_flag (bool) : whether to return result as a flag value\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_140calc_eval, "calc_eval(prices, str expr, *, bool as_flag=False)\n\nExpression Eval\n\nEvaluates an expression against the prices dataframe.\nUses `DataFrame.eval` for pandas and `DataFrame.sql` for polars.\n\nArgs:\n    expr (str) : expression to eval\n    as_flag (bool) : whether to return result as a flag value");
 static PyMethodDef __pyx_mdef_8mintalib_4core_141calc_eval = {"calc_eval", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_141calc_eval, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_140calc_eval};
 static PyObject *__pyx_pw_8mintalib_4core_141calc_eval(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -55329,7 +55329,7 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_all_2, __pyx_mstate_global->__pyx_empty_tuple) < (0)) __PYX_ERR(0, 17, __pyx_L1_error)
 
   /* "mintalib/core.pyx":1
- * # cython: language_level=3, binding=True             # <<<<<<<<<<<<<<
+ * # cython: language_level=3, binding=True, embedsignature=True             # <<<<<<<<<<<<<<
  * 
  * """
 */

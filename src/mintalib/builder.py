@@ -10,7 +10,8 @@ def annotate_parameter(param):
         return param.replace(annotation=bool)
 
     if param.annotation == "str":
-        return param.replace(annotation=str)
+        annotation = str | None if param.default is None else str
+        return param.replace(annotation=annotation)
 
     if param.annotation is inspect._empty:
         if type(param.default) in (int, float, bool):
