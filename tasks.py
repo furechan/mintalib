@@ -1,4 +1,38 @@
 # noinspection PyUnresolvedReferences
+"""
+Invoke tasks for mintalib development.
+
+Setup:
+    uv sync                 # install deps and compile Cython extension
+
+Common tasks:
+    inv info                # show working version
+    inv make                # recompile Cython + regenerate all derived files
+    inv docs                # generate Markdown documentation
+    inv build               # clean → build sdist
+    inv dump                # list contents of built sdist
+    inv publish             # upload dist/*.tar.gz to PyPI via twine
+    inv publish --testpypi  # upload to TestPyPI instead
+    inv bump                # bump patch version in pyproject.toml
+    inv depcheck            # upgrade packages flagged by Dependabot alerts, then sync
+
+After editing any .pxi file, run `inv make` to recompile and regenerate all derived files.
+This runs cythonize, build_ext, and all codegen notebooks (make-functions, make-indicators,
+make-expressions, update-readme).
+
+Publishing workflow (order matters — tox must pass before publishing, bump runs after):
+    inv make
+    inv build
+    inv dump
+    tox
+    inv publish
+    inv bump
+    git add pyproject.toml && git commit -m "Bump version"
+
+Security updates:
+    inv depcheck            # fetches open Dependabot alerts, upgrades flagged packages
+                            # in uv.lock, and syncs the environment; then commit uv.lock
+"""
 
 import re
 import json
