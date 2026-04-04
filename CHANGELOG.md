@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.30
+- Added `QuickStudy` and `Trail` studies
+
 ## 0.0.29
 - Expressions are now uppercase `SMA`, `EMA`, ...
 
