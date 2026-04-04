@@ -2,6 +2,10 @@
 
 from inspect import Signature, Parameter
 
+def detect_backend(data) -> str:
+    """Detect the backend of a data object ('pandas', 'polars', or '')."""
+    return (getattr(data, '__module__', None) or '').partition('.')[0]
+
 
 def get_metadata(func, name: str, default=None):
     """get metadata for a function"""
