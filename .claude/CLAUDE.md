@@ -1,5 +1,9 @@
 # mintalib
 
+## Local Memory
+
+If present use local memory @.claude/memory/MEMORY.md instead of global memory
+
 ## Build & Test
 
 Install in editable mode (compiles the Cython extension):
