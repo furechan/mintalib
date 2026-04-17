@@ -67,6 +67,9 @@ def DIFF(period: int = 1, *, item: str | None = None): ...
 @wrap_indicator(core.calc_dmi)
 def DMI(period: int = 14): ...
 
+@wrap_indicator(core.calc_donchian)
+def DONCHIAN(period: int = 20): ...
+
 @wrap_indicator(core.calc_ema)
 def EMA(period: int, *, adjust: bool = False, item: str | None = None): ...
 
@@ -205,10 +208,10 @@ def WMA(period: int, *, item: str | None = None): ...
 __all__ = [
     'ABS', 'ADX', 'ALMA', 'ATR', 'AVGPRICE', 'BBANDS', 'BBP', 'BBW', 'BOP',
     'CCI', 'CLAG', 'CMF', 'CROSSOVER', 'CROSSUNDER', 'CURVE', 'DEMA',
-    'DIFF', 'DMI', 'EMA', 'EVAL', 'EXP', 'FLAG', 'HMA', 'KAMA', 'KELTNER',
-    'KER', 'LAG', 'LOG', 'LROC', 'MACD', 'MACDV', 'MAD', 'MAV', 'MAX',
-    'MDI', 'MFI', 'MIDPRICE', 'MIN', 'NATR', 'PDI', 'PPO', 'PRICE', 'QSF',
-    'RMA', 'ROC', 'RSI', 'RVALUE', 'SAR', 'SIGN', 'SLOPE', 'SMA', 'STDEV',
-    'STEP', 'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TSF', 'TYPPRICE',
-    'UPDOWN', 'WCLPRICE', 'WMA'
+    'DIFF', 'DMI', 'DONCHIAN', 'EMA', 'EVAL', 'EXP', 'FLAG', 'HMA', 'KAMA',
+    'KELTNER', 'KER', 'LAG', 'LOG', 'LROC', 'MACD', 'MACDV', 'MAD', 'MAV',
+    'MAX', 'MDI', 'MFI', 'MIDPRICE', 'MIN', 'NATR', 'PDI', 'PPO', 'PRICE',
+    'QSF', 'RMA', 'ROC', 'RSI', 'RVALUE', 'SAR', 'SIGN', 'SLOPE', 'SMA',
+    'STDEV', 'STEP', 'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TSF',
+    'TYPPRICE', 'UPDOWN', 'WCLPRICE', 'WMA'
 ]

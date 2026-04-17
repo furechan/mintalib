@@ -1,6 +1,9 @@
 # Change Log
 
 ## 0.0.30
+- Added `DONCHIAN` indicator (Donchian Channel)
+
+## 0.0.30
 - Added `QuickStudy` and `Trail` studies
 
 ## 0.0.29

@@ -116,6 +116,7 @@ result = prices.assign(
 | DEMA       | calc_dema(series, long period)                                         |
 | DIFF       | calc_diff(series, long period=1)                                       |
 | DMI        | calc_dmi(prices, long period=14)                                       |
+| DONCHIAN   | calc_donchian(prices, long period=20)                                  |
 | EMA        | calc_ema(series, long period, *, bool adjust=False)                    |
 | EVAL       | calc_eval(prices, str expr, *, bool as_flag=False)                     |
 | EXP        | calc_exp(series)                                                       |

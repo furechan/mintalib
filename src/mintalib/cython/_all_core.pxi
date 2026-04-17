@@ -48,6 +48,7 @@ include "bop.pxi"
 
 include "bbands.pxi"
 include "keltner.pxi"
+include "donchian.pxi"
 
 include "kama.pxi"
 
