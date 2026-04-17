@@ -7,6 +7,7 @@ name = "mintalib"
 version = "0.0.31"
 readme = "output/pypi-readme.md"
 license = "MIT"
+license-files = ["LICENSE.txt"]
 requires-python = ">=3.10"
 description = "Minimal Technical Analysis Library for Python"
 urls.homepage = "https://github.com/furechan/mintalib"
