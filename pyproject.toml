@@ -44,6 +44,7 @@ dev = [
     "tabulate",
     "pdoc>=15.0.1",
     "pytest-sugar>=1.0.0",
+    "ta-lib>=0.6.8",
 ]
 
 [tool.pytest.ini_options]

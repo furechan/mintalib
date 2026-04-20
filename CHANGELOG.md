@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.31
+- Fixed `calc_mad` bug: deviations now use the window mean, first valid index is `period-1`
+- Added `ta-lib` as a dev dependency for validation
+
 ## 0.0.30
 - Added `DONCHIAN` indicator (Donchian Channel)
 
