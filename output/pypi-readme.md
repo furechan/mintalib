@@ -130,7 +130,7 @@ result = prices.assign(
 | LROC       | calc_lroc(series, long period=1)                                       |
 | MACD       | calc_macd(series, long n1=12, long n2=26, long n3=9)                   |
 | MACDV      | calc_macdv(prices, long n1=12, long n2=26, long n3=9)                  |
-| MAD        | calc_mad(series, int period: int = 14)                                 |
+| MAD        | calc_mad(series, long period=14)                                       |
 | MAV        | calc_mav(series, long period=20, *, str ma_type='SMA')                 |
 | MAX        | calc_max(series, long period)                                          |
 | MDI        | calc_mdi(prices, long period=14)                                       |
