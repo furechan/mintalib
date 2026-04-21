@@ -4,10 +4,11 @@
 
 work_dir = ".venv/tox"
 requires = ["tox>=4.19"]
-env_list = ["3.10", "3.11", "3.12", "3.13", "ruff"]
+env_list = ["3.10", "3.11", "3.12", "3.13", "3.14", "ruff", "ty", "pandas", "polars"]
 
 [env_run_base]
-deps = ["pytest", "polars", "pyarrow"]
+deps = ["pytest"]
+extras = ["pandas", "polars"]
 commands = [["python", "-m", "pytest"]]
 set_env = { PYTHONDONTWRITEBYTECODE="1" }
 
@@ -16,3 +17,18 @@ deps = ["ruff"]
 commands = [["python", "-m", "ruff", "check", "src", "tests"]]
 set_env = { RUFF_CACHE_DIR=".venv/ruff_cache" }
 skip_install = true
+
+[env.ty]
+deps = ["ty"]
+extras = ["pandas", "polars"]
+commands = [["python", "-m", "ty", "check", "src/mintalib"]]
+
+# pandas-only install — polars tests skip via importorskip
+[env.pandas]
+deps = ["pytest"]
+extras = ["pandas"]
+
+# polars-only install — pandas tests skip via skipif
+[env.polars]
+deps = ["pytest"]
+extras = ["polars"]

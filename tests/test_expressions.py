@@ -13,8 +13,7 @@ def list_expressions():
 
 @pytest.fixture(scope="module")
 def prices():
-    data = sample_prices()
-    return pl.from_pandas(data, include_index=True, nan_to_null=True)
+    return sample_prices(backend="polars")
 
 
 @pytest.mark.parametrize("name", list_expressions())

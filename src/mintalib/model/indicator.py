@@ -74,7 +74,7 @@ class AliasedIndicator(Indicator):
 class FuncIndicator(Indicator):
     """Function Based Indicator"""
 
-    output_name: str = None
+    output_name: str | None = None
 
     @staticmethod
     def indicator_name(func):
@@ -101,17 +101,17 @@ class FuncIndicator(Indicator):
     def __repr__(self):
         return format_partial(self.func, self.params, name=self.name)
 
-    def __call__(self, prices):
+    def __call__(self, data):
         output_name = getattr(self, "output_name", None)
 
         if self.input_type == "series":
-            series = get_series(prices, self.item)
+            series = get_series(data, self.item)
             result = self.func(series, **self.params)
         else:
-            prices = column_accessor(prices)
-            result = self.func(prices, **self.params)
+            data = column_accessor(data)
+            result = self.func(data, **self.params)
 
-        return wrap_result(result, prices, name=output_name)
+        return wrap_result(result, data, name=output_name)
 
 
 class ComposedIndicator(Indicator):
@@ -157,7 +157,7 @@ def wrap_indicator(calc_func):
         wrapper.__qualname__ = func.__qualname__
         wrapper.__module__ = func.__module__
         wrapper.__doc__ = calc_func.__doc__
-        wrapper.__signature__ = sig
+        wrapper.__signature__ = sig  # ty: ignore[unresolved-attribute]
 
         return wrapper
 

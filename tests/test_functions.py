@@ -4,11 +4,9 @@ from mintalib import functions
 from mintalib.samples import sample_prices
 from mintalib.testing import first_param, sample_params
 
-pandas = None
-try:
-    import pandas
-except ImportError:
-    pass
+from importlib.util import find_spec
+
+has_pandas = find_spec("pandas") is not None
 
 
 def list_functions():
@@ -21,7 +19,7 @@ def list_functions():
     ]
 
 
-@pytest.mark.skipif(pandas is None, reason="requires pandas")
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
 @pytest.mark.parametrize("name", list_functions())
 def test_function(name):
     func = getattr(functions, name)

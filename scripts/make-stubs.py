@@ -20,11 +20,12 @@ class Literal(str):
         return self
 
 
-def make_stub(func) -> str:
+def make_stub(func, return_type=None) -> str:
     name = func.__name__
     sig = inspect.signature(func)
     output_names = get_metadata(func, "output_names")
-    return_type = Literal("Any") if output_names else Literal("np.ndarray")
+    if return_type is None:
+        return_type = Literal("Any") if output_names else Literal("np.ndarray")
 
     new_params = []
     for param in sig.parameters.values():
@@ -40,13 +41,19 @@ def make_stub(func) -> str:
     return f"def {name}{new_sig}: ..."
 
 
+HELPERS = ["column_accessor", "get_series", "wrap_result"]
+
+
 def make_stubs() -> str:
     lines = [IMPORTS]
     for name in sorted(dir(core)):
-        if not name.startswith("calc_"):
+        if not name.startswith("calc_") and name not in HELPERS:
             continue
         func = getattr(core, name)
-        lines.append(make_stub(func))
+        if name in HELPERS:
+            lines.append(make_stub(func, return_type=Literal("Any")))
+        else:
+            lines.append(make_stub(func))
     return "\n".join(lines) + "\n"
 
 

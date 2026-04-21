@@ -1414,11 +1414,13 @@ source = { editable = "." }
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "numpy", version = "2.4.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
-    { name = "pandas", version = "2.3.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "pandas", version = "3.0.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
 ]
 
 [package.optional-dependencies]
+pandas = [
+    { name = "pandas", version = "2.3.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "pandas", version = "3.0.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+]
 polars = [
     { name = "polars" },
 ]
@@ -1435,6 +1437,8 @@ dev = [
     { name = "nbfixme" },
     { name = "nbmake" },
     { name = "nbmask" },
+    { name = "pandas", version = "2.3.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "pandas", version = "3.0.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "pdoc" },
     { name = "polars" },
     { name = "pyarrow" },
@@ -1453,10 +1457,10 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "numpy" },
-    { name = "pandas" },
+    { name = "pandas", marker = "extra == 'pandas'" },
     { name = "polars", marker = "extra == 'polars'" },
 ]
-provides-extras = ["polars"]
+provides-extras = ["polars", "pandas"]
 
 [package.metadata.requires-dev]
 dev = [
@@ -1470,6 +1474,7 @@ dev = [
     { name = "nbfixme" },
     { name = "nbmake" },
     { name = "nbmask" },
+    { name = "pandas" },
     { name = "pdoc", specifier = ">=15.0.1" },
     { name = "polars" },
     { name = "pyarrow" },

@@ -17,8 +17,8 @@ import pytest
 
 talib = pytest.importorskip("talib")
 
-from mintalib import core
-from mintalib.samples import sample_prices
+from mintalib import core  # noqa: E402
+from mintalib.samples import sample_prices  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -29,10 +29,10 @@ def prices():
 @pytest.fixture(scope="module")
 def hlcv(prices):
     h = prices.high.values.astype(float)
-    l = prices.low.values.astype(float)
+    lo = prices.low.values.astype(float)
     c = prices.close.values.astype(float)
     v = prices.volume.values.astype(float)
-    return h, l, c, v
+    return h, lo, c, v
 
 
 def check(ta, our, rtol=1e-5, atol=1e-8):
@@ -68,13 +68,13 @@ def test_mad(prices):
 
 
 def test_cci(prices, hlcv):
-    h, l, c, _ = hlcv
-    check(talib.CCI(h, l, c, 20), core.calc_cci(prices, 20))
+    h, lo, c, _ = hlcv
+    check(talib.CCI(h, lo, c, 20), core.calc_cci(prices, 20))
 
 
 def test_mfi(prices, hlcv):
-    h, l, c, v = hlcv
-    check(talib.MFI(h, l, c, v, 14), core.calc_mfi(prices, 14))
+    h, lo, c, v = hlcv
+    check(talib.MFI(h, lo, c, v, 14), core.calc_mfi(prices, 14))
 
 
 def test_max(prices):
@@ -93,24 +93,24 @@ def test_sum(prices):
 
 
 def test_typprice(prices, hlcv):
-    h, l, c, _ = hlcv
-    check(talib.TYPPRICE(h, l, c), core.calc_typprice(prices))
+    h, lo, c, _ = hlcv
+    check(talib.TYPPRICE(h, lo, c), core.calc_typprice(prices))
 
 
 def test_wclprice(prices, hlcv):
-    h, l, c, _ = hlcv
-    check(talib.WCLPRICE(h, l, c), core.calc_wclprice(prices))
+    h, lo, c, _ = hlcv
+    check(talib.WCLPRICE(h, lo, c), core.calc_wclprice(prices))
 
 
 def test_avgprice(prices, hlcv):
-    h, l, c, _ = hlcv
+    h, lo, c, _ = hlcv
     o = prices.open.values.astype(float)
-    check(talib.AVGPRICE(o, h, l, c), core.calc_avgprice(prices))
+    check(talib.AVGPRICE(o, h, lo, c), core.calc_avgprice(prices))
 
 
 def test_trange(prices, hlcv):
-    h, l, c, _ = hlcv
-    check(talib.TRANGE(h, l, c), core.calc_trange(prices))
+    h, lo, c, _ = hlcv
+    check(talib.TRANGE(h, lo, c), core.calc_trange(prices))
 
 
 def test_slope(prices):

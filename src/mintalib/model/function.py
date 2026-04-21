@@ -29,7 +29,7 @@ def wrap_function(calc_func):
         wrapper.__qualname__ = func.__qualname__
         wrapper.__module__ = func.__module__
         wrapper.__doc__ = calc_func.__doc__
-        wrapper.__signature__ = sig
+        wrapper.__signature__ = sig  # ty: ignore[unresolved-attribute]
 
         return wrapper
     return decorator

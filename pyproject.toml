@@ -12,8 +12,9 @@ requires-python = ">=3.10"
 description = "Minimal Technical Analysis Library for Python"
 urls.homepage = "https://github.com/furechan/mintalib"
 authors = [{ name = "Furechan", email = "furechan@xsmail.com" }]
-dependencies = ["numpy", "pandas"]
+dependencies = ["numpy"]
 optional-dependencies.polars = ["polars"]
+optional-dependencies.pandas = ["pandas"]
 keywords = ["cython", "technical-analysis", "indicators"]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -31,6 +32,7 @@ dev = [
     "pyright",
     "mypy",
     "ruff",
+    "pandas",
     "polars",
     "yfinance",
     "matplotlib",
