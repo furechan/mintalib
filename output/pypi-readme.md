@@ -5,20 +5,29 @@ This package offers a curated list of technical analysis indicators implemented 
 > [!WARNING]
 > This project is experimental and the interface is likely to change.
 
+> [!NOTE]
+> **pandas is no longer installed by default**. Choose the backend you want
+> via extras: `pip install mintalib[pandas]` or `pip install mintalib[polars]`
+> (or both). See the [Installation](#installation) section for details.
+
 
 ## Installation
 
-You can install this package with pip
+Pick the backend you want to use — pandas and polars are both optional extras:
 
 ```console
-pip install mintalib
+pip install mintalib[pandas]          # pandas DataFrames
+pip install mintalib[polars]          # polars DataFrames
+pip install mintalib[pandas,polars]   # both
 ```
+
+A bare `pip install mintalib` installs only numpy (the core computation layer).
 
 ## Dependencies
 
 - python >= 3.10
 - numpy
-- pandas
+- pandas [optional]
 - polars [optional]
 
 
