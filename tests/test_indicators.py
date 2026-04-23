@@ -1,6 +1,8 @@
 import pytest
 
 from mintalib import indicators
+from mintalib.indicators import EMA, ROC, SMA
+from mintalib.model.indicator import IndicatorChain
 from mintalib.samples import sample_prices
 from mintalib.testing import sample_params
 
@@ -22,3 +24,36 @@ def test_indicator(name):
     prices = sample_prices()
     result = indicator(prices)
     assert result is not None
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_indicator_pipe_composition():
+    chain = EMA(20) | ROC(1)
+    assert isinstance(chain, IndicatorChain)
+    assert repr(chain) == "EMA(20) | ROC(1)"
+    prices = sample_prices()
+    result = chain(prices)
+    assert result is not None
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_prices_pipe_indicator():
+    prices = sample_prices()
+    result = prices | SMA(20)
+    assert result is not None
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_prices_pipe_chain():
+    prices = sample_prices()
+    result = prices | EMA(20) | ROC(1)
+    assert result is not None
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_matmul_deprecation():
+    prices = sample_prices()
+    with pytest.warns(DeprecationWarning):
+        SMA(20) @ prices
+    with pytest.warns(DeprecationWarning):
+        ROC(1) @ EMA(20)

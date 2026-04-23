@@ -36,9 +36,32 @@ class Indicator(metaclass=ABCMeta):
     def __call__(self, data): ...
 
     def __matmul__(self, other):
+        import warnings
         if callable(other):
+            warnings.warn(
+                "indicator @ indicator is deprecated, use | instead",
+                DeprecationWarning,
+                stacklevel=2,
+            )
             return ComposedIndicator(self, other)
 
+        warnings.warn(
+            "indicator @ data is deprecated, use data | indicator instead",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return self(other)
+
+    __pandas_priority__ = 5000
+
+    def __or__(self, other):
+        if isinstance(other, Indicator):
+            return IndicatorChain(self, other)
+        return NotImplemented
+
+    def __ror__(self, other):
+        if isinstance(other, Indicator):
+            return IndicatorChain(other, self)
         return self(other)
 
     def get_series(self, data):
@@ -133,6 +156,32 @@ class ComposedIndicator(Indicator):
         for fn in reversed(self.chain):
             data = fn(data)
         return data
+
+
+class IndicatorChain(Indicator):
+    """Chain of Indicators applied left-to-right (created by the | operator)"""
+
+    def __init__(self, *chain):
+        items = []
+        for item in chain:
+            if isinstance(item, IndicatorChain):
+                items.extend(item.chain)
+            else:
+                items.append(item)
+        self.chain = tuple(items)
+
+    def __repr__(self):
+        return " | ".join(repr(fn) for fn in self.chain)
+
+    def __call__(self, data):
+        for fn in self.chain:
+            data = fn(data)
+        return data
+
+    def __ror__(self, other):
+        if isinstance(other, Indicator):
+            return IndicatorChain(other, *self.chain)
+        return self(other)
 
 
 def wrap_indicator(calc_func):

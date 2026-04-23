@@ -5,11 +5,6 @@ This package offers a curated list of technical analysis indicators implemented 
 > [!WARNING]
 > This project is experimental and the interface is likely to change.
 
-> [!NOTE]
-> **pandas is no longer installed by default**. Choose the backend you want
-> via extras: `pip install mintalib[pandas]` or `pip install mintalib[polars]`
-> (or both). See the [Installation](#installation) section for details.
-
 
 ## Installation
 
@@ -84,11 +79,9 @@ prices.with_columns(
 
 Indicators offer a composable interface where a calculation function is bound with its parameters into a callable object. Indicators are accessible from the `mintalib.indicators` module with names in upper case like `EMA`, `SMA`, `ATR`, `MACD`, etc ...
 
-An indicator instance can be invoked as a function or via the `@` operator as syntactic sugar.
+An indicator instance can be invoked as a function or applied to data using the `|` operator as syntactic sugar.
 
-So for example `SMA(50) @ prices` can be used to compute the 50 period simple moving average on `prices`, in place of `SMA(50)(prices)`.
-
-The `@` operator can also be used to chain indicators, where for example `ROC(1) @ EMA(20)` means `ROC(1)` applied to `EMA(20)`.
+Indicators can also be chained with `|`, where for example `EMA(20) | ROC(1)` means `ROC(1)` applied to `EMA(20)`.
 
 ```python
 from mintalib.indicators import SMA, EMA, ROC, RSI, MACD
@@ -99,78 +92,78 @@ result = prices.assign(
     sma50 = SMA(50),
     sma200 = SMA(200),
     rsi = RSI(14),
-    trend = ROC(1) @ EMA(20)
+    trend = EMA(20) | ROC(1)
 )
 ```
 
 ## List of Indicators
 
-| Name       | Description                                                            |
-|:-----------|:-----------------------------------------------------------------------|
-| ABS        | calc_abs(series)                                                       |
-| ADX        | calc_adx(prices, long period=14)                                       |
-| ALMA       | calc_alma(series, long period=9, double offset=0.85, double sigma=6.0) |
-| ATR        | calc_atr(prices, long period=14)                                       |
-| AVGPRICE   | calc_avgprice(prices)                                                  |
-| BBANDS     | calc_bbands(prices, long period=20, double nbdev=2.0)                  |
-| BBP        | calc_bbp(prices, long period=20, double nbdev=2.0)                     |
-| BBW        | calc_bbw(prices, long period=20, double nbdev=2.0)                     |
-| BOP        | calc_bop(prices, long period=20)                                       |
-| CCI        | calc_cci(prices, long period=20)                                       |
-| CLAG       | calc_clag(series, long period=1)                                       |
-| CMF        | calc_cmf(prices, long period=20)                                       |
-| CROSSOVER  | calc_crossover(series, double level=0.0)                               |
-| CROSSUNDER | calc_crossunder(series, double level=0.0)                              |
-| CURVE      | calc_curve(series, long period=20)                                     |
-| DEMA       | calc_dema(series, long period)                                         |
-| DIFF       | calc_diff(series, long period=1)                                       |
-| DMI        | calc_dmi(prices, long period=14)                                       |
-| DONCHIAN   | calc_donchian(prices, long period=20)                                  |
-| EMA        | calc_ema(series, long period, *, bool adjust=False)                    |
-| EVAL       | calc_eval(prices, str expr, *, bool as_flag=False)                     |
-| EXP        | calc_exp(series)                                                       |
-| FLAG       | calc_flag(series)                                                      |
-| HMA        | calc_hma(series, long period)                                          |
-| KAMA       | calc_kama(series, int period=10, int fastn=2, int slown=30)            |
-| KELTNER    | calc_keltner(prices, long period=20, double nbatr=2.0)                 |
-| KER        | calc_ker(series, int period=10)                                        |
-| LAG        | calc_lag(series, long period)                                          |
-| LOG        | calc_log(series)                                                       |
-| LROC       | calc_lroc(series, long period=1)                                       |
-| MACD       | calc_macd(series, long n1=12, long n2=26, long n3=9)                   |
-| MACDV      | calc_macdv(prices, long n1=12, long n2=26, long n3=9)                  |
-| MAD        | calc_mad(series, long period=14)                                       |
-| MAV        | calc_mav(series, long period=20, *, str ma_type='SMA')                 |
-| MAX        | calc_max(series, long period)                                          |
-| MDI        | calc_mdi(prices, long period=14)                                       |
-| MFI        | calc_mfi(prices, long period=14)                                       |
-| MIDPRICE   | calc_midprice(prices)                                                  |
-| MIN        | calc_min(series, long period)                                          |
-| NATR       | calc_natr(prices, long period=14)                                      |
-| PDI        | calc_pdi(prices, long period=14)                                       |
-| PPO        | calc_ppo(series, long n1=12, long n2=26, long n3=9)                    |
-| PRICE      | calc_price(prices, str item: str = None)                               |
-| QSF        | calc_qsf(series, long period=20, long offset=0)                        |
-| RMA        | calc_rma(series, long period)                                          |
-| ROC        | calc_roc(series, long period=1)                                        |
-| RSI        | calc_rsi(series, long period=14)                                       |
-| RVALUE     | calc_rvalue(series, long period=20)                                    |
-| SAR        | calc_sar(prices, double afs=0.02, double maxaf=0.2)                    |
-| SIGN       | calc_sign(series)                                                      |
-| SLOPE      | calc_slope(series, long period=20)                                     |
-| SMA        | calc_sma(series, long period)                                          |
-| STDEV      | calc_stdev(series, long period=20)                                     |
-| STEP       | calc_step(series, double threshold: float = 1.0)                       |
-| STOCH      | calc_stoch(prices, long period=14, long fastn=3, long slown=3)         |
-| STREAK     | calc_streak(series)                                                    |
-| SUM        | calc_sum(series, long period)                                          |
-| TEMA       | calc_tema(series, long period=20)                                      |
-| TRANGE     | calc_trange(prices, *, bool log_prices=False, bool percent=False)      |
-| TSF        | calc_tsf(series, long period=20, long offset=0)                        |
-| TYPPRICE   | calc_typprice(prices)                                                  |
-| UPDOWN     | calc_updown(series, double up_level=0.0, double down_level=0.0)        |
-| WCLPRICE   | calc_wclprice(prices)                                                  |
-| WMA        | calc_wma(series, long period)                                          |
+| Name       | Description                                                   |
+|:-----------|:--------------------------------------------------------------|
+| ABS        | Absolute Value                                                |
+| ADX        | Average Directional Index                                     |
+| ALMA       | Arnaud Legoux Moving Average                                  |
+| ATR        | Average True Range                                            |
+| AVGPRICE   | Average Price                                                 |
+| BBANDS     | Bollinger Bands                                               |
+| BBP        | Bollinger Bands Percent (%B)                                  |
+| BBW        | Bollinger Bands Width                                         |
+| BOP        | Balance of Power                                              |
+| CCI        | Commodity Channel Index                                       |
+| CLAG       | Confirmation Lag                                              |
+| CMF        | Chaikin Money Flow                                            |
+| CROSSOVER  | Cross Over                                                    |
+| CROSSUNDER | Cross Under                                                   |
+| CURVE      | Curve (quadratic regression)                                  |
+| DEMA       | Double Exponential Moving Average                             |
+| DIFF       | Difference                                                    |
+| DMI        | Directional Movement Indicator                                |
+| DONCHIAN   | Donchian Channel                                              |
+| EMA        | Exponential Moving Average                                    |
+| EVAL       | Expression Eval                                               |
+| EXP        | Exponential                                                   |
+| FLAG       | Flag Value                                                    |
+| HMA        | Hull Moving Average                                           |
+| KAMA       | Kaufman Adaptive Moving Average                               |
+| KELTNER    | Keltner Channel                                               |
+| KER        | Kaufman Efficiency Ratio                                      |
+| LAG        | Lag Function                                                  |
+| LOG        | Logarithm                                                     |
+| LROC       | Logarithmic Rate of Change                                    |
+| MACD       | Moving Average Convergence Divergence                         |
+| MACDV      | Moving Average Convergence Divergence - Volatility Normalized |
+| MAD        | Rolling Mean Absolute Deviation                               |
+| MAV        | Generic Moving Average                                        |
+| MAX        | Rolling Maximum                                               |
+| MDI        | Minus Directional Index                                       |
+| MFI        | Money Flow Index                                              |
+| MIDPRICE   | Mid Price                                                     |
+| MIN        | Rolling Minimum                                               |
+| NATR       | Average True Range (normalized)                               |
+| PDI        | Plus Directional Index                                        |
+| PPO        | Price Percentage Oscillator                                   |
+| PRICE      | Generic Price                                                 |
+| QSF        | Quadratic Series Forecast (quadratic regression)              |
+| RMA        | Rolling Moving Average (RSI style)                            |
+| ROC        | Rate of Change                                                |
+| RSI        | Relative Strength Index                                       |
+| RVALUE     | R-Value (linear regression)                                   |
+| SAR        | Parabolic Stop and Reverse                                    |
+| SIGN       | Sign                                                          |
+| SLOPE      | Slope (linear regression)                                     |
+| SMA        | Simple Moving Average                                         |
+| STDEV      | Standard Deviation                                            |
+| STEP       | Step Function                                                 |
+| STOCH      | Stochastic Oscillator                                         |
+| STREAK     | Consecutive streak of values above zero                       |
+| SUM        | Rolling sum                                                   |
+| TEMA       | Triple Exponential Moving Average                             |
+| TRANGE     | True Range                                                    |
+| TSF        | Time Series Forecast (linear regression)                      |
+| TYPPRICE   | Typical Price                                                 |
+| UPDOWN     | Flag for value crossing up & down levels                      |
+| WCLPRICE   | Weighted Close Price                                          |
+| WMA        | Weighted Moving Average                                       |
 
 
 ## Example Notebooks
