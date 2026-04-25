@@ -11,7 +11,9 @@ Importing this module is sufficient to register the accessor.
 import warnings
 import inspect
 
+import numpy as np
 import polars as pl
+from polars.datatypes import Struct, Float64
 
 warnings.warn(
     "mintalib.polars is deprecated and will be removed in a future version. "
@@ -19,9 +21,6 @@ warnings.warn(
     DeprecationWarning,
     stacklevel=2,
 )
-from polars.datatypes import Struct, Float64
-
-import numpy as np
 
 NAMESPACE = "ts"
 

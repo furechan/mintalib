@@ -14,7 +14,7 @@ MODULES = [
     "mintalib.expressions",
 ]
 
-OUTPUT_DIR = Path(__file__).parent.parent / "docs"
+OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "api"
 
 
 def clean_type(text: str) -> str:
