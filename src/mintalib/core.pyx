@@ -1,4 +1,5 @@
 # cython: language_level=3, binding=True, embedsignature=True
+# cython: boundscheck=False, wraparound=False, cdivision=True, nonecheck=False
 
 """
 Calculation routines implemented in cython.

@@ -20,7 +20,7 @@ def calc_sma(series, long period):
     cdef double[:] output = result
 
     cdef double v = NAN, rsum = 0.0
-    cdef long i = 0, j = 0, count = 0
+    cdef long i = 0, count = 0
 
     for i in range(size):
         v = xs[i]
@@ -32,11 +32,9 @@ def calc_sma(series, long period):
             rsum = 0.0
             count = 0
 
-        while count > period and j < i:
-            v, j = xs[j], j + 1
-            if v == v:
-                rsum -= v
-                count -= 1
+        if count > period:
+            rsum -= xs[i - period]
+            count -= 1
 
         if count == period:
             output[i] = rsum / count

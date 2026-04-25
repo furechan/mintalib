@@ -3,7 +3,10 @@
 Covers indicators that produce bit-for-bit identical results.
 
 Known non-matches (excluded):
-  EMA/DEMA/TEMA/MACD/ATR/NATR/ADX - different EMA initialization (converge after ~150 bars)
+  EMA/DEMA/TEMA/MACD/NATR/ADX - different EMA initialization (converge after ~150 bars)
+
+Convergence tests (checked from bar 200 onward):
+  ATR - same algorithm as talib, values converge after EMA warm-up (~150 bars)
   KAMA, SAR                        - different algorithm
   STOCH                            - different default parameters
   TSF                              - off-by-one in regression projection
@@ -116,3 +119,8 @@ def test_trange(prices, hlcv):
 def test_slope(prices):
     c = prices.close.values.astype(float)
     check(talib.LINEARREG_SLOPE(c, 20), core.calc_slope(c, 20))
+
+
+def test_atr(prices, hlcv):
+    h, lo, c, _ = hlcv
+    check(talib.ATR(h, lo, c, 14)[200:], core.calc_atr(prices, 14)[200:])

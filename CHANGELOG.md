@@ -1,6 +1,13 @@
 # Change Log
 
 ## 0.0.32
+- Optimized rolling-window Cython kernels (SMA, SUM, STDEV, MAD, WMA): eliminated pointer tracking with direct `xs[i - period]` indexing
+- Optimized MIN/MAX: compare-to-prior-extremum with rescan-on-expiry, roughly halving the mintalib/talib ratio
+- Refactored RSI to use `calc_rma` internally
+- Added Cython compiler directives (`boundscheck=False`, `wraparound=False`, `cdivision=True`, `nonecheck=False`)
+- Converted codegen and tooling notebooks to plain Python scripts (`make-functions.py`, `make-indicators.py`, `make-expressions.py`, `update-readme.py`, `update-samples.py`)
+- Added `test_atr` to `test_vs_talib.py` with convergence check
+- Updated bundled sample prices
 - Deprecated `mintalib.polars` and `mintalib.pandas` accessor modules (emit `DeprecationWarning` on import)
 - Removed `reflib` module (unused pandas/numpy reference implementations)
 

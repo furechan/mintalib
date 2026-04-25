@@ -15,7 +15,7 @@ def calc_mad(series, long period=14):
 
     cdef double x, mean, mad
     cdef double sx = 0.0
-    cdef long i = 0, j = 0, k = 0, count = 0
+    cdef long i = 0, k = 0, count = 0
 
     for i in range(size):
         x = xs[i]
@@ -27,12 +27,9 @@ def calc_mad(series, long period=14):
             count = 0
             sx = 0.0
 
-        while count > period and j < i:
-            x = xs[j]
-            j += 1
-            if x == x:
-                count -= 1
-                sx -= x
+        if count > period:
+            sx -= xs[i - period]
+            count -= 1
 
         if count == period:
             mean = sx / period

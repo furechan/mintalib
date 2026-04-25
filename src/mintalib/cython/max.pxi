@@ -13,22 +13,25 @@ def calc_max(series, long period):
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double v = NAN, res = NAN
+    cdef double v = NAN, cur_max = NAN
+    cdef long i = 0, j = 0, max_idx = -1
 
-    cdef long maxlen = size - period + 1
-    cdef long i = 0, j = 0
+    for i in range(period - 1, size):
+        v = xs[i]
 
-    for i in range(maxlen):
-        res = NAN
+        if max_idx >= i - period + 1:
+            if not v <= cur_max:
+                cur_max = v
+                max_idx = i
+        else:
+            cur_max = NAN
+            max_idx = -1
+            for j in range(i - period + 1, i + 1):
+                v = xs[j]
+                if not isnan(v) and not v <= cur_max:
+                    cur_max = v
+                    max_idx = j
 
-        for j in range(period):
-            v = xs[i + j]
-            if isnan(v):
-                continue
-            if not v <= res:
-                res = v
-
-        output[i + j] = res
+        output[i] = cur_max
 
     return result
-

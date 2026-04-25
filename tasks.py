@@ -90,12 +90,10 @@ def make(ctx):
     ctx.run("python setup.py build_ext --inplace")
 
     ctx.run("python scripts/make-stubs.py")
-
-    with ctx.cd("scripts"):
-        ctx.run("ipython make-functions.ipynb")
-        ctx.run("ipython make-indicators.ipynb")
-        ctx.run("ipython make-expressions.ipynb")
-        ctx.run("ipython update-readme.ipynb")
+    ctx.run("python scripts/make-functions.py")
+    ctx.run("python scripts/make-indicators.py")
+    ctx.run("python scripts/make-expressions.py")
+    ctx.run("python scripts/update-readme.py")
 
 
 @task(clean)

@@ -20,7 +20,7 @@ def calc_wma(series, long period):
 
     cdef double wdiv = period * (period + 1) / 2
     cdef double v = NAN, rsum = 0, wsum = 0
-    cdef long i = 0, j = 0, count = 0
+    cdef long i = 0, count = 0
 
     for i in range(size):
         v = xs[i]
@@ -33,12 +33,10 @@ def calc_wma(series, long period):
             rsum = wsum = 0
             count = 0
 
-        while count > period and j < i:
-            v, j = xs[j], j + 1
-            if v == v:
-                wsum -= rsum
-                rsum -= v
-                count -= 1
+        if count > period:
+            wsum -= rsum
+            rsum -= xs[i - period]
+            count -= 1
 
         if count == period:
             output[i] = wsum / wdiv

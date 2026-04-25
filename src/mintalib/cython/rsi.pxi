@@ -1,10 +1,10 @@
-""" Relative Strencgth Index """
+""" Relative Strength Index """
 
 
 def calc_rsi(series, long period=14):
     """
     Relative Strength Index
-    
+
     Args:
         period (int) : time period, default 14
     """
@@ -15,39 +15,32 @@ def calc_rsi(series, long period=14):
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double alpha = 1.0 / period
-    cdef double v = NAN, pv = NAN, dv = NAN
-    cdef double up = NAN, down = NAN, rsi = NAN
+    cdef object ups_arr = np.full(size, np.nan)
+    cdef object dns_arr = np.full(size, np.nan)
+    cdef double[:] ups = ups_arr
+    cdef double[:] dns = dns_arr
 
-    cdef double ups=0.0, downs=0.0
-    cdef long i = 0, count = 0
+    cdef double v = NAN, pv = NAN, dv = NAN
+    cdef long i = 0
 
     for i in range(size):
         v = xs[i]
+        if v == v and pv == pv:
+            dv = v - pv
+            ups[i] = dv if dv > 0.0 else 0.0
+            dns[i] = -dv if dv < 0.0 else 0.0
+        pv = v
 
-        if isnan(v):
-            pass
+    cdef const double[:] rma_ups = calc_rma(ups_arr, period)
+    cdef const double[:] rma_dns = calc_rma(dns_arr, period)
 
-        elif isnan(pv):
-            pv = v
-
-        else:
-            count += 1
-            dv, pv = v - pv, v
-            up, down= (dv, 0.0) if dv >= 0.0 else (0.0, -dv)
-
-            if count <= period:
-                ups += up * alpha
-                downs += down * alpha
-            else:
-                ups += (up - ups) * alpha
-                downs += (down - downs) * alpha
-
-            if downs > 0 and count >= period:
-                rsi = 100.0 - (100.0 / (1.0 + ups / downs))
-
-        if not isnan(rsi):
-            output[i] = rsi
+    cdef double u = NAN, d = NAN
+    for i in range(size):
+        u = rma_ups[i]
+        d = rma_dns[i]
+        if u == u and d == d and d > 0:
+            output[i] = 100.0 - (100.0 / (1.0 + u / d))
+        elif u == u and d == d:
+            output[i] = 100.0
 
     return result
-

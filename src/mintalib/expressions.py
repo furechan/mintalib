@@ -31,7 +31,6 @@ OHLC = pl.struct(['open', 'high', 'low', 'close'])
 """Expression for open, high, low, close columns as a struct."""
 
 
-
 @wrap_expression(core.calc_abs)
 def ABS(*, src: IntoExpr | None = None) -> pl.Expr: ...
 

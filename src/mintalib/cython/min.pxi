@@ -4,7 +4,7 @@
 def calc_min(series, long period):
     """
     Rolling Minimum
-    
+
     Args:
         period (int) : time period, required
     """
@@ -18,23 +18,25 @@ def calc_min(series, long period):
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double v = NAN, res = NAN
+    cdef double v = NAN, cur_min = NAN
+    cdef long i = 0, j = 0, min_idx = -1
 
-    cdef long maxlen = size - period + 1
-    cdef long i = 0, j = 0
+    for i in range(period - 1, size):
+        v = xs[i]
 
-    for i in range(maxlen):
-        res = NAN
+        if min_idx >= i - period + 1:
+            if not v >= cur_min:
+                cur_min = v
+                min_idx = i
+        else:
+            cur_min = NAN
+            min_idx = -1
+            for j in range(i - period + 1, i + 1):
+                v = xs[j]
+                if not isnan(v) and not v >= cur_min:
+                    cur_min = v
+                    min_idx = j
 
-        for j in range(period):
-            v = xs[i + j]
-            if isnan(v):
-                continue
-            if not v >= res:
-                res = v
-
-        output[i + j] = res
+        output[i] = cur_min
 
     return result
-
-
