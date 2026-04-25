@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.32
+- Deprecated `mintalib.polars` and `mintalib.pandas` accessor modules (emit `DeprecationWarning` on import)
+- Removed `reflib` module (unused pandas/numpy reference implementations)
+
 ## 0.0.31
 - Fixed `calc_mad` bug: deviations now use the window mean, first valid index is `period-1`
 - Added `ta-lib` as a dev dependency for validation

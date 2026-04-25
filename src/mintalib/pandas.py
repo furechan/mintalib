@@ -8,10 +8,18 @@ This module is **experimental** — consider using `mintalib.indicators` for pan
 Importing this module is sufficient to register the accessor.
 """
 
+import warnings
 import inspect
 
 import numpy as np
 import pandas as pd
+
+warnings.warn(
+    "mintalib.pandas is deprecated and will be removed in a future version. "
+    "Use mintalib.indicators instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 NAMESPACE = "ts"
 

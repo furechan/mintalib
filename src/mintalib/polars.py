@@ -8,9 +8,17 @@ This module is **experimental** — consider using `mintalib.expressions` for po
 Importing this module is sufficient to register the accessor.
 """
 
+import warnings
 import inspect
 
 import polars as pl
+
+warnings.warn(
+    "mintalib.polars is deprecated and will be removed in a future version. "
+    "Use mintalib.expressions instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 from polars.datatypes import Struct, Float64
 
 import numpy as np
