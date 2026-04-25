@@ -44,8 +44,8 @@ BENCHMARKS = [
                                                                 lambda _, p: core.calc_cci(p, 20)),
     ("MFI(14)",   lambda ta, _, p: ta.MFI(p['high'], p['low'], p['close'], p['volume'], 14),
                                                                 lambda _, p: core.calc_mfi(p, 14)),
-    ("TRANGE",    lambda ta, _, p: ta.TRANGE(p['high'], p['low'], p['close']),
-                                                                lambda _, p: core.calc_trange(p)),
+    ("SLOPE(20)", lambda ta, c, _: ta.LINEARREG_SLOPE(c, 20),  lambda c, _: core.calc_slope(c, 20)),
+    ("TSF(20)",   lambda ta, c, _: ta.TSF(c, 20),              lambda c, _: core.calc_tsf(c, 20)),
 ]
 
 
