@@ -3,13 +3,13 @@
 Covers indicators that produce bit-for-bit identical results.
 
 Known non-matches (excluded):
-  EMA/DEMA/TEMA/MACD/NATR/ADX - different EMA initialization (converge after ~150 bars)
+  DEMA/TEMA/MACD/NATR/ADX - different EMA initialization (converge after ~150 bars)
 
 Convergence tests (checked from bar 200 onward):
   ATR - same algorithm as talib, values converge after EMA warm-up (~150 bars)
   KAMA, SAR                        - different algorithm
   STOCH                            - different default parameters
-  TSF                              - off-by-one in regression projection
+  TSF                              - talib projects one bar ahead (use offset=1 to match)
   ROC                              - talib multiplies by 100; mintalib returns fraction
   BBANDS                           - talib uses close; mintalib uses typical price
   BOP                              - talib has no period smoothing
@@ -44,6 +44,10 @@ def check(ta, our, rtol=1e-5, atol=1e-8):
     assert mask.any()
     assert np.allclose(ta[mask], our[mask], rtol=rtol, atol=atol)
 
+
+def test_ema(prices):
+    c = prices.close.values.astype(float)
+    check(talib.EMA(c, 20)[200:], core.calc_ema(c, 20)[200:])
 
 def test_sma(prices):
     c = prices.close.values.astype(float)
@@ -116,11 +120,19 @@ def test_trange(prices, hlcv):
     check(talib.TRANGE(h, lo, c), core.calc_trange(prices))
 
 
+def test_atr(prices, hlcv):
+    h, lo, c, _ = hlcv
+    check(talib.ATR(h, lo, c, 14)[200:], core.calc_atr(prices, 14)[200:])
+
+
 def test_slope(prices):
     c = prices.close.values.astype(float)
     check(talib.LINEARREG_SLOPE(c, 20), core.calc_slope(c, 20))
 
 
-def test_atr(prices, hlcv):
-    h, lo, c, _ = hlcv
-    check(talib.ATR(h, lo, c, 14)[200:], core.calc_atr(prices, 14)[200:])
+def test_tsf(prices):
+    c = prices.close.values.astype(float)
+    # talib TSF projects one bar ahead; match with offset=1
+    check(talib.TSF(c, 20), core.calc_tsf(c, 20, offset=1))
+
+
