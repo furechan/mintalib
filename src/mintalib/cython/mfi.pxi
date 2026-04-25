@@ -1,25 +1,63 @@
 """ Money Flow Index """
 
 
-def calc_mfi(prices, long period = 14):
+def calc_mfi(prices, long period=14):
     """
-    Money Flow Index 
-    
+    Money Flow Index
+
     Args:
         period (int) : time period, default 14
     """
 
-    prc = calc_typprice(prices)
+    if period <= 0:
+        raise ValueError("period must be greater than zero")
+
+    high = np.asarray(prices['high'], float)
+    low = np.asarray(prices['low'], float)
+    close = np.asarray(prices['close'], float)
     volume = np.asarray(prices['volume'], float)
-    roc = calc_roc(prc, 1)
 
-    flow = prc * volume * np.sign(roc)
-    pflow = np.clip(flow, 0.0, None)
-    nflow = -np.clip(flow, None, 0.0)
+    typ = (high + low + close) / 3.0
+    flow_arr = typ * volume * np.sign(np.diff(typ, prepend=np.nan))
 
-    with np.errstate(divide='ignore'):
-        ratio = calc_sum(pflow, period) / calc_sum(nflow, period)
-        result = 100 - 100 / (1 + ratio)
+    cdef const double[:] flow = flow_arr
+    cdef long size = flow.shape[0]
+
+    cdef object result = np.full(size, NAN)
+    cdef double[:] output = result
+
+    cdef double v = NAN, old = NAN
+    cdef double psum = 0.0, nsum = 0.0
+    cdef long i = 0, count = 0
+
+    for i in range(size):
+        v = flow[i]
+
+        if isnan(v):
+            psum = 0.0
+            nsum = 0.0
+            count = 0
+            continue
+
+        if v > 0.0:
+            psum += v
+        elif v < 0.0:
+            nsum -= v
+
+        count += 1
+
+        if count > period:
+            old = flow[i - period]
+            if old > 0.0:
+                psum -= old
+            elif old < 0.0:
+                nsum += old
+            count -= 1
+
+        if count == period:
+            if nsum > 0.0:
+                output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
+            elif psum > 0.0:
+                output[i] = 100.0
 
     return result
-
