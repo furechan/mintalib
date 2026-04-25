@@ -111,7 +111,7 @@ def dump(ctx):
 @task
 def docs(ctx):
     """Generate Markdown documentation"""
-    ctx.run("python scripts/make-docs.py")
+    ctx.run("python scripts/make-api-docs.py")
 
 
 @task
