@@ -32,12 +32,12 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
     if period >= size:
         return result
 
-    cdef double x, y
+    cdef double x, y, xd, yd, xd2
     cdef double s, sx, sx2, sx3, sx4, sy, sy2, sxy, sx2y
     cdef double vxy, vxx, vyy, vxx2, vx2y, vx2x2
     cdef double denom, slope, curve, intercept, forecast
 
-    cdef long i = 0, j = 0
+    cdef long i = 0
 
     s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
 
@@ -47,9 +47,6 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
         if y != y:
             s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
             continue
-
-        if s == 0:
-            j = i
 
         s += 1
         sx += x
@@ -64,17 +61,19 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
         if s < period:
             continue
 
-        while s > period and j < size:
-            x, y, j = j, ys[j], j+1
+        if s > period:
+            xd = i - period
+            yd = ys[i - period]
+            xd2 = xd * xd
             s -= 1
-            sx -= x
-            sx2 -= x * x
-            sx3 -= x * x * x
-            sx4 -= x * x * x * x
-            sy -= y
-            sy2 -= y * y
-            sxy -= x * y
-            sx2y -= x * x * y
+            sx -= xd
+            sx2 -= xd2
+            sx3 -= xd2 * xd
+            sx4 -= xd2 * xd2
+            sy -= yd
+            sy2 -= yd * yd
+            sxy -= xd * yd
+            sx2y -= xd2 * yd
 
         vxy = (sxy / s - sx * sy / s / s)
         vxx = (sx2 / s - sx * sx / s / s)

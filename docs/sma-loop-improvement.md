@@ -60,6 +60,26 @@ if count > period:
     count -= 1
 ```
 
+For `curve.pxi` (quadratic regression), the dropped bar needs both its x-coordinate
+(`xd = i - period`) and y-value (`yd = ys[i - period]`), with intermediate `xd2 = xd * xd`
+to avoid recomputing powers:
+
+```cython
+if s > period:
+    xd = i - period
+    yd = ys[i - period]
+    xd2 = xd * xd
+    s -= 1
+    sx -= xd
+    sx2 -= xd2
+    sx3 -= xd2 * xd
+    sx4 -= xd2 * xd2
+    sy -= yd
+    sy2 -= yd * yd
+    sxy -= xd * yd
+    sx2y -= xd2 * yd
+```
+
 ## Kernels fixed in mintalib
 
 | File | Accumulators dropped |
@@ -69,6 +89,7 @@ if count > period:
 | `stdev.pxi` | `sx`, `sxx` |
 | `mad.pxi` | `sx` |
 | `wma.pxi` | `wsum` (weight shift), `rsum` |
+| `curve.pxi` | `sx`, `sx2`, `sx3`, `sx4`, `sy`, `sy2`, `sxy`, `sx2y` |
 
 ## Applicability
 
