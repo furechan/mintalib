@@ -5,14 +5,17 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "mintalib"
 version = "0.0.33"
+requires-python = ">=3.10"
 readme = "output/pypi-readme.md"
 license = "MIT"
 license-files = ["LICENSE.txt"]
-requires-python = ">=3.10"
 description = "Minimal Technical Analysis Library for Python"
 urls.homepage = "https://github.com/furechan/mintalib"
 authors = [{ name = "Furechan", email = "furechan@xsmail.com" }]
-dependencies = ["numpy"]
+dependencies = [
+    "numpy",
+    "pandas>=2.3.3",
+]
 optional-dependencies.polars = ["polars"]
 optional-dependencies.pandas = ["pandas"]
 keywords = ["cython", "technical-analysis", "indicators"]
