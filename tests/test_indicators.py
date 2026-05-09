@@ -38,26 +38,41 @@ def test_indicator_pipe_composition():
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
-def test_prices_pipe_indicator():
+def test_pipe_rejects_data():
     prices = sample_prices()
-    result = prices | SMA(20)
-    assert result is not None
+    with pytest.raises(TypeError):
+        prices | SMA(20)
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
-def test_prices_pipe_chain():
-    prices = sample_prices()
-    result = prices | EMA(20) | ROC(1)
-    assert result is not None
+def test_indicator_output_names():
+    from mintalib.indicators import MACD
+
+    assert SMA(20).output_names is None
+    assert MACD().output_names == ("macd", "macdsignal", "macdhist")
+    assert (EMA(20) | ROC(1)).output_names is None
+    assert (EMA(20) | MACD()).output_names == ("macd", "macdsignal", "macdhist")
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
-def test_matmul_deprecation():
+def test_as_expr_single_output():
+    from pandas.api.typing import Expression
+
+    expr = SMA(20).as_expr()
+    assert isinstance(expr, Expression)
+
     prices = sample_prices()
-    with pytest.warns(DeprecationWarning):
-        SMA(20) @ prices
-    with pytest.warns(DeprecationWarning):
-        ROC(1) @ EMA(20)
+    result = prices.assign(sma=expr)
+    assert "sma" in result.columns
+    assert result["sma"].notna().any()
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_as_expr_rejects_multi_output():
+    from mintalib.indicators import MACD
+
+    with pytest.raises(TypeError, match="multiple outputs"):
+        MACD().as_expr()
 
 
 @pytest.mark.skipif(not has_polars, reason="requires polars")

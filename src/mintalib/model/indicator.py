@@ -39,37 +39,28 @@ class Indicator(metaclass=ABCMeta):
 
     __repr__ = lazy_repr
 
-    @abstractmethod
-    def __call__(self, data): ...
-
-    def __matmul__(self, other):
-        import warnings
-        if callable(other):
-            warnings.warn(
-                "indicator @ indicator is deprecated, use | instead",
-                DeprecationWarning,
-                stacklevel=2,
-            )
-            return ComposedIndicator(self, other)
-
-        warnings.warn(
-            "indicator @ data is deprecated, use data | indicator instead",
-            DeprecationWarning,
-            stacklevel=2,
-        )
-        return self(other)
+    output_names: tuple[str, ...] | None = None
 
     __pandas_priority__ = 5000
+
+    @abstractmethod
+    def __call__(self, data): ...
 
     def __or__(self, other):
         if isinstance(other, Indicator):
             return IndicatorChain(self, other)
-        return NotImplemented
+        raise TypeError(
+            f"| chains indicators only; "
+            f"to apply {self!r} to data, call {self!r}(data)."
+        )
 
     def __ror__(self, other):
         if isinstance(other, Indicator):
             return IndicatorChain(other, self)
-        return self(other)
+        raise TypeError(
+            f"| chains indicators only; "
+            f"to apply {self!r} to data, call {self!r}(data)."
+        )
 
     def get_series(self, data):
         """Series data accessor"""
@@ -78,6 +69,22 @@ class Indicator(metaclass=ABCMeta):
 
     def alias(self, name: str):
         return AliasedIndicator(self, name)
+
+    def as_expr(self):
+        if self.output_names:
+            names = ", ".join(self.output_names)
+            raise TypeError(
+                f"as_expr() requires a single-output indicator; "
+                f"{self!r} produces multiple outputs ({names})."
+            )
+        try:
+            from pandas.api.typing import Expression
+        except ImportError as exc:
+            raise RuntimeError(
+                f"as_expr() requires pandas >= 3.0 (got {pd.__version__}); "
+                "the Expression API was introduced in pandas 3.0."
+            ) from exc
+        return Expression(self, repr(self))
 
 
 class AliasedIndicator(Indicator):
@@ -127,6 +134,12 @@ class FuncIndicator(Indicator):
     def input_type(self):
         signature = inspect.signature(self.func)
         return next(iter(signature.parameters), None)
+
+    @cached_property
+    def output_names(self):
+        metadata = getattr(self, "metadata", None)
+        names = metadata.get("output_names") if metadata else None
+        return tuple(names) if names else None
 
     def __repr__(self):
         return format_partial(self.func, self.params, name=self.name)
@@ -182,27 +195,6 @@ class EVAL(Indicator):
         return pd.Series(result, index=data.index)
 
 
-class ComposedIndicator(Indicator):
-    """Composition of Indicators"""
-
-    def __init__(self, *chain):
-        items = []
-        for item in chain:
-            if isinstance(item, ComposedIndicator):
-                items.extend(item.chain)
-            else:
-                items.append(item)
-        self.chain = tuple(items)
-
-    def __repr__(self):
-        return " @ ".join(repr(fn) for fn in self.chain)
-
-    def __call__(self, data):
-        for fn in reversed(self.chain):
-            data = fn(data)
-        return data
-
-
 class IndicatorChain(Indicator):
     """Chain of Indicators applied left-to-right (created by the | operator)"""
 
@@ -215,6 +207,10 @@ class IndicatorChain(Indicator):
                 items.append(item)
         self.chain = tuple(items)
 
+    @property
+    def output_names(self):
+        return self.chain[-1].output_names if self.chain else None
+
     def __repr__(self):
         return " | ".join(repr(fn) for fn in self.chain)
 
@@ -226,7 +222,10 @@ class IndicatorChain(Indicator):
     def __ror__(self, other):
         if isinstance(other, Indicator):
             return IndicatorChain(other, *self.chain)
-        return self(other)
+        raise TypeError(
+            f"| chains indicators only; "
+            f"to apply {self!r} to data, call {self!r}(data)."
+        )
 
 
 def wrap_indicator(calc_func):

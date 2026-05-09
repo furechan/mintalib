@@ -14,9 +14,9 @@ from mintalib.builder import annotate_parameter
 PRELUDE = '''"""
 Indicators offer a composable interface where a calculation routine is bound with its parameters.
 
-An indicator instance is a callable and can be applied to prices or series data as if it were a function e.g. `SMA(50)(prices)`.
+An indicator instance is a callable applied to prices or series data: `SMA(50)(prices)`.
 
-Indicators support the `|` operator to apply them to data e.g. `prices | SMA(50)` or to chain them together e.g. `EMA(20) | ROC(1)`.
+Indicators chain via the `|` operator: `EMA(20) | ROC(1)` produces a new indicator that applies EMA then ROC.
 
 Inputs must be a pandas DataFrame, pandas Series, or numpy array. For polars, use `mintalib.expressions`.
 """
