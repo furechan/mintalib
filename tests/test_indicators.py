@@ -38,6 +38,19 @@ def test_indicator_pipe_composition():
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_then_chains_indicators():
+    chain = EMA(20).then(ROC(1))
+    assert isinstance(chain, IndicatorChain)
+    assert repr(chain) == repr(EMA(20) | ROC(1))
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_then_rejects_non_indicator():
+    with pytest.raises(TypeError, match=r"\.then\(\)"):
+        EMA(20).then("not an indicator")
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
 def test_prices_pipe_indicator():
     prices = sample_prices()
     result = prices | SMA(20)
@@ -78,6 +91,14 @@ def test_as_expr_single_output():
     result = prices.assign(sma=expr)
     assert "sma" in result.columns
     assert result["sma"].notna().any()
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_then_fluent_with_as_expr():
+    from pandas.api.typing import Expression
+
+    expr = EMA(20).then(ROC(1)).as_expr()
+    assert isinstance(expr, Expression)
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")

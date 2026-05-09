@@ -3,7 +3,8 @@ Indicators offer a composable interface where a calculation routine is bound wit
 
 An indicator instance is a callable applied to prices or series data: `SMA(50)(prices)`.
 
-Indicators chain via the `|` operator: `EMA(20) | ROC(1)` produces a new indicator that applies EMA then ROC.
+Indicators chain via the `|` operator or the equivalent `.then()` method:
+`EMA(20) | ROC(1)` is the same as `EMA(20).then(ROC(1))`. The fluent form is handy in longer chains: `EMA(20).then(ROC(1)).as_expr()`.
 
 Inputs must be a pandas DataFrame, pandas Series, or numpy array. For polars, use `mintalib.expressions`.
 """

@@ -70,6 +70,14 @@ class Indicator(metaclass=ABCMeta):
     def alias(self, name: str):
         return AliasedIndicator(self, name)
 
+    def then(self, other):
+        """Chain another indicator after this one (fluent equivalent of `|`)."""
+        if not isinstance(other, Indicator):
+            raise TypeError(
+                f".then() chains indicators; got {type(other).__name__}."
+            )
+        return IndicatorChain(self, other)
+
     def as_expr(self):
         if self.output_names:
             names = ", ".join(self.output_names)
