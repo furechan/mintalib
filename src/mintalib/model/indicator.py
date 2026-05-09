@@ -78,13 +78,25 @@ class Indicator(metaclass=ABCMeta):
             )
         return IndicatorChain(self, other)
 
-    def as_expr(self):
+    def as_expr(self, item: str | None = None):
         if self.output_names:
-            names = ", ".join(self.output_names)
-            raise TypeError(
-                f"as_expr() requires a single-output indicator; "
-                f"{self!r} produces multiple outputs ({names})."
+            if item is None:
+                names = ", ".join(self.output_names)
+                raise TypeError(
+                    f"as_expr() requires a single-output indicator or an item; "
+                    f"{self!r} produces multiple outputs ({names})."
+                )
+            if item not in self.output_names:
+                names = ", ".join(self.output_names)
+                raise ValueError(
+                    f"as_expr({item!r}): unknown output column. Valid: {names}."
+                )
+        elif item is not None:
+            raise ValueError(
+                f"as_expr({item!r}): {self!r} is a single-output indicator; "
+                f"do not pass an item."
             )
+
         try:
             from pandas.api.typing import Expression
         except ImportError as exc:
@@ -92,7 +104,14 @@ class Indicator(metaclass=ABCMeta):
                 f"as_expr() requires pandas >= 3.0 (got {pd.__version__}); "
                 "the Expression API was introduced in pandas 3.0."
             ) from exc
-        return Expression(self, repr(self))
+
+        if item is None:
+            return Expression(self, repr(self))
+
+        def picker(data):
+            return self(data)[item]
+
+        return Expression(picker, f"{self!r}[{item!r}]")
 
 
 class AliasedIndicator(Indicator):

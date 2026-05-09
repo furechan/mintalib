@@ -11,6 +11,12 @@ from importlib.util import find_spec
 has_pandas = find_spec("pandas") is not None
 has_polars = find_spec("polars") is not None
 
+try:
+    from pandas.api.typing import Expression  # noqa: F401
+    has_pd_expression = True
+except ImportError:
+    has_pd_expression = False
+
 
 def list_indicators():
     return [k for k, v in vars(indicators).items() if k.isupper() and callable(v)]
@@ -80,7 +86,7 @@ def test_indicator_output_names():
     assert (EMA(20) | MACD()).output_names == ("macd", "macdsignal", "macdhist")
 
 
-@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+@pytest.mark.skipif(not has_pd_expression, reason="requires pandas >= 3.0")
 def test_as_expr_single_output():
     from pandas.api.typing import Expression
 
@@ -93,7 +99,7 @@ def test_as_expr_single_output():
     assert result["sma"].notna().any()
 
 
-@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+@pytest.mark.skipif(not has_pd_expression, reason="requires pandas >= 3.0")
 def test_then_fluent_with_as_expr():
     from pandas.api.typing import Expression
 
@@ -107,6 +113,34 @@ def test_as_expr_rejects_multi_output():
 
     with pytest.raises(TypeError, match="multiple outputs"):
         MACD().as_expr()
+
+
+@pytest.mark.skipif(not has_pd_expression, reason="requires pandas >= 3.0")
+def test_as_expr_multi_with_item():
+    from pandas.api.typing import Expression
+    from mintalib.indicators import MACD
+
+    expr = MACD().as_expr("macdhist")
+    assert isinstance(expr, Expression)
+
+    prices = sample_prices()
+    flag = prices.assign(bullish=expr > 0)
+    assert "bullish" in flag.columns
+    assert flag["bullish"].dtype == bool
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_as_expr_rejects_unknown_item():
+    from mintalib.indicators import MACD
+
+    with pytest.raises(ValueError, match="unknown output column"):
+        MACD().as_expr("nope")
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_as_expr_rejects_item_on_single_output():
+    with pytest.raises(ValueError, match="single-output"):
+        SMA(20).as_expr("foo")
 
 
 @pytest.mark.skipif(not has_polars, reason="requires polars")
