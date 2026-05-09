@@ -57,23 +57,12 @@ def test_then_rejects_non_indicator():
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
-def test_prices_pipe_indicator():
+def test_prices_pipe_method():
     prices = sample_prices()
-    result = prices | SMA(20)
+    result = prices.pipe(SMA(20))
     assert result is not None
-
-
-@pytest.mark.skipif(not has_pandas, reason="requires pandas")
-def test_prices_pipe_chain():
-    prices = sample_prices()
-    result = prices | EMA(20) | ROC(1)
-    assert result is not None
-
-
-@pytest.mark.skipif(not has_pandas, reason="requires pandas")
-def test_pipe_rejects_invalid_left():
-    with pytest.raises(TypeError, match="DataFrame or Series"):
-        "not data" | SMA(20)
+    chained = prices.pipe(EMA(20) | ROC(1))
+    assert chained is not None
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")

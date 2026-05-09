@@ -30,14 +30,16 @@ A bare `pip install mintalib` installs only numpy (the core computation layer).
 
 Mintalib provides three interfaces for different workflows:
 
-- **Functions** (`mintalib.functions`) — plain functions, useful for scripting or building custom pipelines
+- **Functions** (`mintalib.functions`) — plain functions, useful for scripting or building custom pipelines (work with both pandas and polars)
 - **Polars Expressions** (`mintalib.expressions`) — composable polars expressions, best for polars-native workflows
-- **Indicators** (`mintalib.indicators`) — callable objects that bind a calculation with its parameters, work with both pandas and polars
+- **Indicators** (`mintalib.indicators`) — callable objects that bind a calculation with its parameters; **pandas only**
 
 
 ## Functions
 
 Calculation functions are available from the `mintalib.functions` module with names in lower case like `sma`, `atr`, `macd`, etc.
+
+Functions are polyvalent. They can be applied equaly to pandas or polars dataframes and series.
 
 The first parameter of a function is either `prices` or `series` depending on whether
 the function expects a dataframe of prices or a single series.
@@ -68,10 +70,9 @@ from mintalib.expressions import EMA, SMA, ATR, ROC, MACD
 prices = ... # polars DataFrame
 
 prices.with_columns(
-    MACD(),                      # uses 'close' by default
-    sma=SMA(50),
+    ema=EMA(20),
     atr=ATR(14),
-    trend=EMA(50).pipe(ROC, 1)   # ROC(1) applied to EMA(50)
+    trend=EMA(20).pipe(ROC, 1)   # ROC(1) applied to EMA(50)
 )
 ```
 
@@ -79,9 +80,11 @@ prices.with_columns(
 
 Indicators offer a composable interface where a calculation function is bound with its parameters into a callable object. Indicators are accessible from the `mintalib.indicators` module with names in upper case like `EMA`, `SMA`, `ATR`, `MACD`, etc ...
 
-An indicator instance can be invoked as a function or applied to data using the `|` operator as syntactic sugar.
+Indicators work only on pandas DataFrames and Series.
 
-Indicators can also be chained with `|`, where for example `EMA(20) | ROC(1)` means `ROC(1)` applied to `EMA(20)`.
+An indicator instance is callable: `SMA(50)(prices)` applies it to data. The pandas idiom `prices.pipe(SMA(50))` works equivalently.
+
+Indicators chain with `|`, where for example `EMA(20) | ROC(1)` means `ROC(1)` applied after `EMA(20)`. The `.then()` method is the fluent equivalent.
 
 ```python
 from mintalib.indicators import SMA, EMA, ROC, RSI, MACD
@@ -89,8 +92,7 @@ from mintalib.indicators import SMA, EMA, ROC, RSI, MACD
 prices = ... # pandas DataFrame
 
 result = prices.assign(
-    sma50 = SMA(50),
-    sma200 = SMA(200),
+    ema20 = EMA(20),
     rsi = RSI(14),
     trend = EMA(20) | ROC(1)
 )

@@ -41,8 +41,6 @@ class Indicator(metaclass=ABCMeta):
 
     output_names: tuple[str, ...] | None = None
 
-    __pandas_priority__ = 5000
-
     @abstractmethod
     def __call__(self, data): ...
 
@@ -50,16 +48,7 @@ class Indicator(metaclass=ABCMeta):
         if isinstance(other, Indicator):
             return IndicatorChain(self, other)
         raise TypeError(
-            f"| chains indicators only; "
-            f"to apply {self!r} to data, use data | {self!r}."
-        )
-
-    def __ror__(self, other):
-        if isinstance(other, (pd.DataFrame, pd.Series)):
-            return self(other)
-        raise TypeError(
-            f"| applies an indicator to a pandas DataFrame or Series; "
-            f"got {type(other).__name__} on the left."
+            f"| chains indicators only; got {type(other).__name__}."
         )
 
     def get_series(self, data):
