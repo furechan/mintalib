@@ -51,15 +51,15 @@ class Indicator(metaclass=ABCMeta):
             return IndicatorChain(self, other)
         raise TypeError(
             f"| chains indicators only; "
-            f"to apply {self!r} to data, call {self!r}(data)."
+            f"to apply {self!r} to data, use data | {self!r}."
         )
 
     def __ror__(self, other):
-        if isinstance(other, Indicator):
-            return IndicatorChain(other, self)
+        if isinstance(other, (pd.DataFrame, pd.Series)):
+            return self(other)
         raise TypeError(
-            f"| chains indicators only; "
-            f"to apply {self!r} to data, call {self!r}(data)."
+            f"| applies an indicator to a pandas DataFrame or Series; "
+            f"got {type(other).__name__} on the left."
         )
 
     def get_series(self, data):
@@ -167,33 +167,6 @@ class FuncIndicator(Indicator):
         return _wrap_result(result, data, name=output_name)
 
 
-class EVAL(Indicator):
-    """Evaluate a pandas expression against a DataFrame's columns."""
-
-    def __init__(self, expr: str, *, as_flag: bool = False):
-        self.expr = expr
-        self.as_flag = as_flag
-
-    def __repr__(self):
-        if self.as_flag:
-            return f"EVAL({self.expr!r}, as_flag=True)"
-        return f"EVAL({self.expr!r})"
-
-    def __call__(self, data):
-        if not isinstance(data, pd.DataFrame):
-            raise TypeError(
-                f"EVAL only accepts pandas DataFrames, got {type(data).__name__}. "
-                "For polars, use mintalib.expressions."
-            )
-
-        result = np.asarray(data.eval(self.expr), dtype=float)
-
-        if self.as_flag:
-            from mintalib.core import calc_flag
-            result = calc_flag(result)
-
-        return pd.Series(result, index=data.index)
-
 
 class IndicatorChain(Indicator):
     """Chain of Indicators applied left-to-right (created by the | operator)"""
@@ -218,14 +191,6 @@ class IndicatorChain(Indicator):
         for fn in self.chain:
             data = fn(data)
         return data
-
-    def __ror__(self, other):
-        if isinstance(other, Indicator):
-            return IndicatorChain(other, *self.chain)
-        raise TypeError(
-            f"| chains indicators only; "
-            f"to apply {self!r} to data, call {self!r}(data)."
-        )
 
 
 def wrap_indicator(calc_func):
@@ -255,4 +220,32 @@ def wrap_indicator(calc_func):
         return wrapper
 
     return decorator
+
+
+class EVAL(Indicator):
+    """Evaluate a pandas expression against a DataFrame's columns."""
+
+    def __init__(self, expr: str, *, as_flag: bool = False):
+        self.expr = expr
+        self.as_flag = as_flag
+
+    def __repr__(self):
+        if self.as_flag:
+            return f"EVAL({self.expr!r}, as_flag=True)"
+        return f"EVAL({self.expr!r})"
+
+    def __call__(self, data):
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError(
+                f"EVAL only accepts pandas DataFrames, got {type(data).__name__}. "
+                "For polars, use mintalib.expressions."
+            )
+
+        result = np.asarray(data.eval(self.expr), dtype=float)
+
+        if self.as_flag:
+            from mintalib.core import calc_flag
+            result = calc_flag(result)
+
+        return pd.Series(result, index=data.index)
 
