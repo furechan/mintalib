@@ -84,11 +84,8 @@ def make_expression(calc_func):
     return buffer
 
 
-def core_functions(exclude=("calc_eval",)):
-    names = sorted(k for k, v in vars(core).items() if k.startswith("calc_") and callable(v))
-    if exclude:
-        names = [n for n in names if n not in exclude]
-    return names
+def core_functions():
+    return sorted(k for k, v in vars(core).items() if k.startswith("calc_") and callable(v))
 
 
 def make_expressions(cnames=None):

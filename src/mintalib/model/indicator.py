@@ -2,29 +2,36 @@
 
 import inspect
 
+import numpy as np
+import pandas as pd
+
 from typing import Callable
 from types import MappingProxyType
 from functools import cached_property
-
 from abc import ABCMeta, abstractmethod
-from typing import Protocol, Sequence, Any
 
-from ..core import get_series, wrap_result, column_accessor
 from ..utils import format_partial, lazy_repr
 
 
-class DataFrameLike(Protocol):
-    """Basic DataFrame Protocol for typing"""
-    @property
-    def columns(self) -> Sequence[Any]: ...
-    def __getitem__(self, key: Any) -> Any: ...
+def _get_series(data, item: str | None = None):
+    if isinstance(data, pd.DataFrame):
+        return data[item or "close"]
+    return data
 
 
-class SeriesLike(Protocol):
-    """Basic Series Protocol for typing"""
-    @property
-    def name(self) -> str | None: ...
-    def to_numpy(self) -> Any: ...
+def _wrap_result(result, source, name: str | None = None):
+    if isinstance(result, tuple) and hasattr(result, "_asdict"):
+        result = result._asdict()
+
+    index = source.index if isinstance(source, (pd.DataFrame, pd.Series)) else None
+
+    if isinstance(result, dict):
+        return pd.DataFrame(result, index=index)
+
+    if isinstance(result, np.ndarray):
+        return pd.Series(result, index=index, name=name)
+
+    return result
 
 
 class Indicator(metaclass=ABCMeta):
@@ -67,7 +74,7 @@ class Indicator(metaclass=ABCMeta):
     def get_series(self, data):
         """Series data accessor"""
         item = getattr(self, "item", None)
-        return get_series(data, item=item)
+        return _get_series(data, item)
 
     def alias(self, name: str):
         return AliasedIndicator(self, name)
@@ -125,16 +132,54 @@ class FuncIndicator(Indicator):
         return format_partial(self.func, self.params, name=self.name)
 
     def __call__(self, data):
+        if not isinstance(data, (pd.DataFrame, pd.Series, np.ndarray)):
+            raise TypeError(
+                f"{self.name} indicator only accepts pandas DataFrames, Series, or numpy arrays, "
+                f"got {type(data).__name__}. For polars, use mintalib.expressions."
+            )
+
         output_name = getattr(self, "output_name", None)
 
         if self.input_type == "series":
-            series = get_series(data, self.item)
+            series = _get_series(data, self.item)
             result = self.func(series, **self.params)
         else:
-            data = column_accessor(data)
+            if not isinstance(data, pd.DataFrame):
+                raise TypeError(
+                    f"{self.name} indicator requires a pandas DataFrame with OHLCV columns, "
+                    f"got {type(data).__name__}."
+                )
             result = self.func(data, **self.params)
 
-        return wrap_result(result, data, name=output_name)
+        return _wrap_result(result, data, name=output_name)
+
+
+class EVAL(Indicator):
+    """Evaluate a pandas expression against a DataFrame's columns."""
+
+    def __init__(self, expr: str, *, as_flag: bool = False):
+        self.expr = expr
+        self.as_flag = as_flag
+
+    def __repr__(self):
+        if self.as_flag:
+            return f"EVAL({self.expr!r}, as_flag=True)"
+        return f"EVAL({self.expr!r})"
+
+    def __call__(self, data):
+        if not isinstance(data, pd.DataFrame):
+            raise TypeError(
+                f"EVAL only accepts pandas DataFrames, got {type(data).__name__}. "
+                "For polars, use mintalib.expressions."
+            )
+
+        result = np.asarray(data.eval(self.expr), dtype=float)
+
+        if self.as_flag:
+            from mintalib.core import calc_flag
+            result = calc_flag(result)
+
+        return pd.Series(result, index=data.index)
 
 
 class ComposedIndicator(Indicator):

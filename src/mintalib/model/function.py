@@ -1,8 +1,70 @@
 """Function Model"""
 
+import sys
 import inspect
 
-from ..core import get_series, wrap_result, column_accessor
+import numpy as np
+
+
+def _column_accessor(data):
+    if isinstance(data, dict):
+        return data
+
+    if isinstance(data, np.ndarray):
+        if data.dtype.names is not None:
+            return data
+        return None
+
+    if hasattr(data, 'columns'):
+        return data
+
+    if hasattr(data, 'dtype') and data.dtype.__class__.__name__ == 'Struct':
+        return data.struct
+
+    return None
+
+
+def _get_series(data, item: str | None = None, *, default_item: str = 'close'):
+    columns = _column_accessor(data)
+
+    if columns is not None:
+        if item is None:
+            item = default_item
+        return columns[item]
+
+    if item is not None:
+        tname = type(data).__name__
+        raise ValueError(f"Cannot get series from {tname}")
+
+    return data
+
+
+def _wrap_result(result, source, name: str | None = None):
+    pname = getattr(source, '__module__', '').partition('.')[0]
+
+    if isinstance(result, tuple) and hasattr(result, '_asdict'):
+        result = result._asdict()
+
+    if pname == 'pandas':
+        pandas = sys.modules['pandas']
+        index = getattr(source, 'index', None)
+
+        if isinstance(result, dict):
+            return pandas.DataFrame(result, index=index)
+
+        if isinstance(result, np.ndarray):
+            return pandas.Series(result, index=index, name=name)
+
+    if pname == 'polars':
+        polars = sys.modules['polars']
+
+        if isinstance(result, dict):
+            return polars.DataFrame(result).fill_nan(None)
+
+        if isinstance(result, np.ndarray):
+            return polars.Series(name=name, values=result).fill_nan(None)
+
+    return result
 
 
 def wrap_function(calc_func):
@@ -18,12 +80,12 @@ def wrap_function(calc_func):
             item = kwargs.pop('item', None)
 
             if first_param == 'series':
-                data = get_series(srcdata, item=item)
+                data = _get_series(srcdata, item=item)
             else:
-                data = column_accessor(srcdata)
+                data = _column_accessor(srcdata)
 
             result = calc_func(data, *args, **kwargs)
-            return wrap_result(result, srcdata)
+            return _wrap_result(result, srcdata)
 
         wrapper.__name__ = func.__name__
         wrapper.__qualname__ = func.__qualname__

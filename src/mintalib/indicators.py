@@ -4,12 +4,14 @@ Indicators offer a composable interface where a calculation routine is bound wit
 An indicator instance is a callable and can be applied to prices or series data as if it were a function e.g. `SMA(50)(prices)`.
 
 Indicators support the `|` operator to apply them to data e.g. `prices | SMA(50)` or to chain them together e.g. `EMA(20) | ROC(1)`.
+
+Inputs must be a pandas DataFrame, pandas Series, or numpy array. For polars, use `mintalib.expressions`.
 """
 
 # Do not edit! This file was generated.
 
 from mintalib import core
-from mintalib.model.indicator import wrap_indicator
+from mintalib.model.indicator import wrap_indicator, EVAL
 
 
 
@@ -72,9 +74,6 @@ def DONCHIAN(period: int = 20): ...
 
 @wrap_indicator(core.calc_ema)
 def EMA(period: int, *, adjust: bool = False, item: str | None = None): ...
-
-@wrap_indicator(core.calc_eval)
-def EVAL(expr: str, *, as_flag: bool = False): ...
 
 @wrap_indicator(core.calc_exp)
 def EXP(*, item: str | None = None): ...

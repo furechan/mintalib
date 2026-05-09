@@ -41,19 +41,13 @@ def make_stub(func, return_type=None) -> str:
     return f"def {name}{new_sig}: ..."
 
 
-HELPERS = ["column_accessor", "get_series", "wrap_result"]
-
-
 def make_stubs() -> str:
     lines = [IMPORTS]
     for name in sorted(dir(core)):
-        if not name.startswith("calc_") and name not in HELPERS:
+        if not name.startswith("calc_"):
             continue
         func = getattr(core, name)
-        if name in HELPERS:
-            lines.append(make_stub(func, return_type=Literal("Any")))
-        else:
-            lines.append(make_stub(func))
+        lines.append(make_stub(func))
     return "\n".join(lines) + "\n"
 
 

@@ -120,7 +120,7 @@ result = prices.assign(
 | DMI        | Directional Movement Indicator                                |
 | DONCHIAN   | Donchian Channel                                              |
 | EMA        | Exponential Moving Average                                    |
-| EVAL       | Expression Eval                                               |
+| EVAL       | Evaluate a pandas expression against a DataFrame's columns.   |
 | EXP        | Exponential                                                   |
 | FLAG       | Flag Value                                                    |
 | HMA        | Hull Moving Average                                           |

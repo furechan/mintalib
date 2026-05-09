@@ -64,6 +64,4 @@ include "stoch.pxi"
 
 include "streak.pxi"
 
-include "eval.pxi"
-
 

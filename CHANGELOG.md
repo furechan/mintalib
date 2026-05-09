@@ -10,6 +10,9 @@
 - Updated bundled sample prices
 - Deprecated `mintalib.polars` and `mintalib.pandas` accessor modules (emit `DeprecationWarning` on import)
 - Removed `reflib` module (unused pandas/numpy reference implementations)
+- Narrowed `mintalib.indicators` to pandas/numpy only — passing a polars DataFrame now raises `TypeError` pointing to `mintalib.expressions`
+- Removed undocumented `column_accessor`, `get_series`, `wrap_result` from `mintalib.core` (relocated to `mintalib.model.function` as private helpers backing `wrap_function`)
+- Removed `calc_eval` from `mintalib.core` and `eval` from `mintalib.functions`. `mintalib.indicators.EVAL` is preserved as a hand-coded pandas-only `Indicator` class in `mintalib.model.indicator` using `DataFrame.eval`. For polars expression evaluation, use `mintalib.expressions` natively.
 
 ## 0.0.31
 - Fixed `calc_mad` bug: deviations now use the window mean, first valid index is `period-1`
