@@ -68,14 +68,14 @@ This runs cythonize, build_ext, and all codegen notebooks (`make-functions`, `ma
 - `prices` — pandas or polars DataFrame with columns `open`, `high`, `low`, `close`, `volume` (all lower case)
 - `series` — pandas/polars series or numpy array
 
-**Multi-column outputs** (e.g. `MACD`, `BBANDS`) return named tuples from core functions, tuples of expressions in `mintalib.expressions`, and polars structs in the polars accessor.
+**Multi-column outputs** (e.g. `MACD`, `BBANDS`) return named tuples from core functions and polars struct expressions in `mintalib.expressions` (and the polars accessor).
 
 ## Architecture
 
 - `src/mintalib/cython/` — one `.pxi` file per indicator; compiled into `core.pyx` via `_all_core.pxi`
 - `src/mintalib/core.pyx` — Cython extension, exposes `calc_*` functions
 - `src/mintalib/functions.py` — thin Python wrappers around `core`, primary stable interface
-- `src/mintalib/indicators.py` — callable indicator objects, work with pandas and numpy
+- `src/mintalib/indicators.py` — callable indicator objects, pandas only
 - `src/mintalib/expressions.py` — polars expression factory functions, polars-native interface
 - `src/mintalib/model/expression.py` — `wrap_expression` decorator that bridges core functions to polars
 - `src/mintalib/polars.py`, `src/mintalib/pandas.py` — experimental `ts` accessors

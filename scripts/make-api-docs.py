@@ -1,5 +1,6 @@
 """Generate Markdown API documentation using pdoc introspection."""
 
+import ast
 import inspect
 from pathlib import Path
 
@@ -43,19 +44,51 @@ def render_module(module_name: str) -> str:
     ]
 
     # Fallback for modules with empty __all__ (e.g. mintalib.core):
-    # introspect directly and filter for calc_* functions
+    # read signatures from the adjacent .pyi stub (it has full type hints,
+    # unlike inspect.signature on a compiled Cython function), and pair
+    # them with docstrings from the live module.
     if not members:
         obj = mod.obj
-        calc_names = sorted(n for n in dir(obj) if n.startswith("calc_"))
-        for name in calc_names:
-            fn = getattr(obj, name)
-            try:
-                sig = inspect.signature(fn)
-            except (ValueError, TypeError):
-                sig = None
-            doc = inspect.getdoc(fn) or ""
+        obj_file = getattr(obj, "__file__", None)
+        # Compiled extensions are named e.g. "core.cpython-311-darwin.so" —
+        # strip the ABI tags by taking the basename up to the first dot.
+        if obj_file:
+            obj_path = Path(obj_file)
+            stem = obj_path.name.split(".", 1)[0]
+            pyi_path = obj_path.parent / f"{stem}.pyi"
+        else:
+            pyi_path = None
+        tree = ast.parse(pyi_path.read_text()) if pyi_path and pyi_path.exists() else None
+        stub_funcs = {
+            node.name: node for node in (tree.body if tree else [])
+            if isinstance(node, ast.FunctionDef) and not node.name.startswith("_")
+        }
+        names = sorted(stub_funcs) if stub_funcs else sorted(
+            n for n in dir(obj) if n.startswith("calc_")
+        )
+        for name in names:
+            node = stub_funcs.get(name)
+            if node is not None:
+                args_str = ast.unparse(node.args)
+                ret_str = f" -> {ast.unparse(node.returns)}" if node.returns else ""
+                sig_str = f"({args_str}){ret_str}"
+            else:
+                fn = getattr(obj, name, None)
+                try:
+                    sig_str = str(inspect.signature(fn)) if fn else ""
+                except (ValueError, TypeError):
+                    sig_str = ""
+            fn = getattr(obj, name, None)
+            doc = inspect.getdoc(fn) or "" if fn else ""
+            # Cython prepends a "name(sig)" line to docstrings — strip it.
+            doc_lines = doc.splitlines()
+            if doc_lines and doc_lines[0].lstrip().startswith(name + "("):
+                doc_lines = doc_lines[1:]
+                while doc_lines and not doc_lines[0].strip():
+                    doc_lines = doc_lines[1:]
+            doc = "\n".join(doc_lines)
             lines.append("---\n" if lines[-1] != "---\n" else "")
-            lines.append(f"### `{clean_type(name + str(sig))}`\n" if sig else f"### `{name}`\n")
+            lines.append(f"### `{clean_type(name + sig_str)}`\n" if sig_str else f"### `{name}`\n")
             if doc:
                 lines.append(doc)
                 lines.append("")

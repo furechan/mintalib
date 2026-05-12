@@ -64,7 +64,7 @@ Average Price
 
 Value of (open + high + low + close) / 4
 
-### `BBANDS(period: int = 20, nbdev: float = 2.0, *, src: polars.Expr | str | None = None) -> tuple`
+### `BBANDS(period: int = 20, nbdev: float = 2.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 calc_bbands(prices, long period=20, double nbdev=2.0)
 
@@ -180,7 +180,7 @@ Difference between current value and the one offset by period
 Args:
     period (int) : time period, default 1
 
-### `DMI(period: int = 14, *, src: polars.Expr | str | None = None) -> tuple`
+### `DMI(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 calc_dmi(prices, long period=14)
 
@@ -189,7 +189,7 @@ Directional Movement Indicator
 Args:
     period (int) : time period, default 14
 
-### `DONCHIAN(period: int = 20, *, src: polars.Expr | str | None = None) -> tuple`
+### `DONCHIAN(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 calc_donchian(prices, long period=20)
 
@@ -251,7 +251,7 @@ Args:
     fastn (int) : time period for fast moving average, default, 2
     slown (int) : time period for slow moving average, default 30
 
-### `KELTNER(period: int = 20, nbatr: float = 2.0, *, src: polars.Expr | str | None = None) -> tuple`
+### `KELTNER(period: int = 20, nbatr: float = 2.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 calc_keltner(prices, long period=20, double nbatr=2.0)
 
@@ -297,7 +297,7 @@ Args:
     period (int) : time period, default 1
     when negative the calculation is shifted back
 
-### `MACD(n1: int = 12, n2: int = 26, n3: int = 9, *, src: polars.Expr | str | None = None) -> tuple`
+### `MACD(n1: int = 12, n2: int = 26, n3: int = 9, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 calc_macd(series, long n1=12, long n2=26, long n3=9)
 
@@ -311,7 +311,7 @@ Args:
 Outputs:
     macd, macdsignal, macdhist
 
-### `MACDV(n1: int = 12, n2: int = 26, n3: int = 9, *, src: polars.Expr | str | None = None) -> tuple`
+### `MACDV(n1: int = 12, n2: int = 26, n3: int = 9, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 calc_macdv(prices, long n1=12, long n2=26, long n3=9)
 
@@ -388,7 +388,7 @@ Args:
 
 calc_natr(prices, long period=14)
 
-Average True Range (normalized)
+Normalized Average True Range
 
 Args:
     period (int) : time period, default 14
@@ -402,7 +402,7 @@ Plus Directional Index
 Args:
     period (int) : time period, default 14
 
-### `PPO(n1: int = 12, n2: int = 26, n3: int = 9, *, src: polars.Expr | str | None = None) -> tuple`
+### `PPO(n1: int = 12, n2: int = 26, n3: int = 9, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 calc_ppo(series, long n1=12, long n2=26, long n3=9)
 
@@ -531,7 +531,7 @@ Limit value changes to threshold (in absolute value)
 Args:
     threshold (float) : threshold value, default 1.0
 
-### `STOCH(period: int = 14, fastn: int = 3, slown: int = 3, *, src: polars.Expr | str | None = None) -> tuple`
+### `STOCH(period: int = 14, fastn: int = 3, slown: int = 3, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 calc_stoch(prices, long period=14, long fastn=3, long slown=3)
 

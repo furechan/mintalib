@@ -9,7 +9,6 @@ from mintalib.utils import get_metadata
 OUTPUT = Path(__file__).parent.parent / "src/mintalib/core.pyi"
 
 IMPORTS = """\
-from typing import Any
 import numpy as np
 """
 
@@ -25,7 +24,7 @@ def make_stub(func, return_type=None) -> str:
     sig = inspect.signature(func)
     output_names = get_metadata(func, "output_names")
     if return_type is None:
-        return_type = Literal("Any") if output_names else Literal("np.ndarray")
+        return_type = Literal("tuple") if output_names else Literal("np.ndarray")
 
     new_params = []
     for param in sig.parameters.values():

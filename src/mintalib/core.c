@@ -36236,7 +36236,7 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_atr(CYTHON_UNUSED PyObject *__p
  * 
  * def calc_natr(prices, long period=14):             # <<<<<<<<<<<<<<
  *     """
- *     Average True Range (normalized)
+ *     Normalized Average True Range
 */
 
 /* Python wrapper */
@@ -36247,7 +36247,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_86calc_natr, "calc_natr(prices, long period=14)\n\nAverage True Range (normalized)\n\nArgs:\n    period (int) : time period, default 14    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_86calc_natr, "calc_natr(prices, long period=14)\n\nNormalized Average True Range\n\nArgs:\n    period (int) : time period, default 14    ");
 static PyMethodDef __pyx_mdef_8mintalib_4core_87calc_natr = {"calc_natr", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_87calc_natr, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_86calc_natr};
 static PyObject *__pyx_pw_8mintalib_4core_87calc_natr(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -36447,7 +36447,7 @@ static PyObject *__pyx_pf_8mintalib_4core_86calc_natr(CYTHON_UNUSED PyObject *__
  * 
  * def calc_natr(prices, long period=14):             # <<<<<<<<<<<<<<
  *     """
- *     Average True Range (normalized)
+ *     Normalized Average True Range
 */
 
   /* function exit code */
@@ -52328,7 +52328,7 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
  * 
  * def calc_natr(prices, long period=14):             # <<<<<<<<<<<<<<
  *     """
- *     Average True Range (normalized)
+ *     Normalized Average True Range
 */
   __pyx_t_14 = __Pyx_PyLong_From_long(((long)14)); if (unlikely(!__pyx_t_14)) __PYX_ERR(32, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);

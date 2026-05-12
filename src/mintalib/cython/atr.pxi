@@ -68,7 +68,7 @@ def calc_atr(prices, long period=14):
 
 def calc_natr(prices, long period=14):
     """
-    Average True Range (normalized)
+    Normalized Average True Range
     
     Args:
         period (int) : time period, default 14    

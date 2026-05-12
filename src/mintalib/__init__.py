@@ -1,5 +1,3 @@
-__pdoc__ = {"builder": False, "testing": False}
-
 """
 Minimal technical analysis library for Python.
 
@@ -7,7 +5,7 @@ Minimal technical analysis library for Python.
 
 - [mintalib.core](mintalib.core.md) — core calculation routines implemented in Cython, named `calc_sma`, `calc_ema`, etc.
 - [mintalib.functions](mintalib.functions.md) — plain functions wrapping core routines, named `sma`, `ema`, etc. Primary stable interface.
-- [mintalib.indicators](mintalib.indicators.md) — composable indicator objects for pandas and numpy, named `SMA`, `EMA`, etc.
+- [mintalib.indicators](mintalib.indicators.md) — composable indicator objects for pandas, named `SMA`, `EMA`, etc.
 - [mintalib.expressions](mintalib.expressions.md) — polars expression factories, named `SMA`, `EMA`, etc.
 
 ## Experimental Modules
@@ -34,4 +32,6 @@ Indicators with multiple outputs (e.g. `MACD`, `BBANDS`) return:
 - polars struct expressions in `mintalib.expressions` (unpack with `.struct.unnest()` or pick a field with `.struct.field(name)`)
 - polars structs in the polars accessor
 """
+
+__pdoc__ = {"builder": False, "testing": False}
 

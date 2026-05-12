@@ -1,6 +1,11 @@
 # Change Log
 
 ## 0.0.32
+- Type stubs (`core.pyi`): multi-output `calc_*` functions now annotated as `-> tuple` (was `-> Any`)
+- Added module docstring to `mintalib` for the package overview, visible in `mintalib.__doc__` and in generated docs
+- API doc generator now emits type-annotated signatures for `mintalib.core` by reading `core.pyi`
+- README cleanup: typo fixes, heading renames (`Polars Expressions` → `Expressions`, `Using Indicators` → `Indicators`), updated multi-output expression note (struct, not tuple), added default-source behavior note for polars expressions
+- Renamed `NATR` docstring to "Normalized Average True Range"
 - Multi-output `mintalib.expressions` factories (`MACD`, `BBANDS`, `DMI`, `DONCHIAN`, `KELTNER`, `MACDV`, `PPO`, `STOCH`) now return a single polars struct expression aliased to the lowercase indicator name, replacing the previous tuple of field expressions. Use `.struct.unnest()` to flatten or `.struct.field(name)` to pick a field. Breaking change for callers using `*MACD()`-style splatting.
 - Optimized rolling-window Cython kernels (SMA, SUM, STDEV, MAD, WMA): eliminated pointer tracking with direct `xs[i - period]` indexing
 - Optimized MIN/MAX: compare-to-prior-extremum with rescan-on-expiry, roughly halving the mintalib/talib ratio

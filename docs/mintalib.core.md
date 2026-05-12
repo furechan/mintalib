@@ -12,17 +12,13 @@ The `wrap` parameter dictates whether to wrap the calculation result to match th
 
 ---
 
-### `calc_abs(series)`
-
-calc_abs(series)
+### `calc_abs(series) -> np.ndarray`
 
 Absolute Value
 
 ---
 
-### `calc_adx(prices, period=14)`
-
-calc_adx(prices, long period=14)
+### `calc_adx(prices, period=14) -> np.ndarray`
 
 Average Directional Index
 
@@ -31,17 +27,13 @@ Args:
 
 ---
 
-### `calc_alma(series, period=9, offset=0.85, sigma=6.0)`
-
-calc_alma(series, long period=9, double offset=0.85, double sigma=6.0)
+### `calc_alma(series, period=9, offset=0.85, sigma=6.0) -> np.ndarray`
 
 Arnaud Legoux Moving Average
 
 ---
 
-### `calc_atr(prices, period=14)`
-
-calc_atr(prices, long period=14)
+### `calc_atr(prices, period=14) -> np.ndarray`
 
 Average True Range
 
@@ -50,9 +42,7 @@ Args:
 
 ---
 
-### `calc_avgprice(prices)`
-
-calc_avgprice(prices)
+### `calc_avgprice(prices) -> np.ndarray`
 
 Average Price
 
@@ -60,9 +50,7 @@ Value of (open + high + low + close) / 4
 
 ---
 
-### `calc_bbands(prices, period=20, nbdev=2.0)`
-
-calc_bbands(prices, long period=20, double nbdev=2.0)
+### `calc_bbands(prices, period=20, nbdev=2.0) -> tuple`
 
 Bollinger Bands
 
@@ -72,9 +60,7 @@ Args:
 
 ---
 
-### `calc_bbp(prices, period=20, nbdev=2.0)`
-
-calc_bbp(prices, long period=20, double nbdev=2.0)
+### `calc_bbp(prices, period=20, nbdev=2.0) -> np.ndarray`
 
 Bollinger Bands Percent (%B)
 
@@ -84,9 +70,7 @@ Args:
 
 ---
 
-### `calc_bbw(prices, period=20, nbdev=2.0)`
-
-calc_bbw(prices, long period=20, double nbdev=2.0)
+### `calc_bbw(prices, period=20, nbdev=2.0) -> np.ndarray`
 
 Bollinger Bands Width
 
@@ -96,9 +80,7 @@ Args:
 
 ---
 
-### `calc_bop(prices, period=20)`
-
-calc_bop(prices, long period=20)
+### `calc_bop(prices, period=20) -> np.ndarray`
 
 Balance of Power
 
@@ -107,9 +89,7 @@ Args:
 
 ---
 
-### `calc_cci(prices, period=20)`
-
-calc_cci(prices, long period=20)
+### `calc_cci(prices, period=20) -> np.ndarray`
 
 Commodity Channel Index
 
@@ -118,9 +98,7 @@ Args:
 
 ---
 
-### `calc_clag(series, period=1)`
-
-calc_clag(series, long period=1)
+### `calc_clag(series, period=1) -> np.ndarray`
 
 Confirmation Lag
 
@@ -131,9 +109,7 @@ Args:
 
 ---
 
-### `calc_cmf(prices, period=20)`
-
-calc_cmf(prices, long period=20)
+### `calc_cmf(prices, period=20) -> np.ndarray`
 
 Chaikin Money Flow
 
@@ -142,9 +118,7 @@ Args:
 
 ---
 
-### `calc_crossover(series, level=0.0)`
-
-calc_crossover(series, double level=0.0)
+### `calc_crossover(series, level=0.0) -> np.ndarray`
 
 Cross Over
 
@@ -155,9 +129,7 @@ Args:
 
 ---
 
-### `calc_crossunder(series, level=0.0)`
-
-calc_crossunder(series, double level=0.0)
+### `calc_crossunder(series, level=0.0) -> np.ndarray`
 
 Cross Under
 
@@ -168,17 +140,13 @@ Args:
 
 ---
 
-### `calc_curve(series, period=20)`
-
-calc_curve(series, long period=20)
+### `calc_curve(series, period=20) -> np.ndarray`
 
 Curve (quadratic regression) 
 
 ---
 
-### `calc_dema(series, period)`
-
-calc_dema(series, long period)
+### `calc_dema(series, period) -> np.ndarray`
 
 Double Exponential Moving Average
 
@@ -187,9 +155,7 @@ Args:
 
 ---
 
-### `calc_diff(series, period=1)`
-
-calc_diff(series, long period=1)
+### `calc_diff(series, period=1) -> np.ndarray`
 
 Difference
 
@@ -200,9 +166,7 @@ Args:
 
 ---
 
-### `calc_dmi(prices, period=14)`
-
-calc_dmi(prices, long period=14)
+### `calc_dmi(prices, period=14) -> tuple`
 
 Directional Movement Indicator
 
@@ -211,9 +175,7 @@ Args:
 
 ---
 
-### `calc_donchian(prices, period=20)`
-
-calc_donchian(prices, long period=20)
+### `calc_donchian(prices, period=20) -> tuple`
 
 Donchian Channel
 
@@ -222,9 +184,7 @@ Args:
 
 ---
 
-### `calc_ema(series, period, *, adjust=False)`
-
-calc_ema(series, long period, *, bool adjust=False)
+### `calc_ema(series, period, *, adjust=False) -> np.ndarray`
 
 Exponential Moving Average
 
@@ -243,17 +203,13 @@ Formula:
 
 ---
 
-### `calc_exp(series)`
-
-calc_exp(series)
+### `calc_exp(series) -> np.ndarray`
 
 Exponential
 
 ---
 
-### `calc_flag(series)`
-
-calc_flag(series)
+### `calc_flag(series) -> np.ndarray`
 
 Flag Value
 
@@ -261,9 +217,7 @@ Flag value of 1 for positive, 0 for zero or negative, and NaN otherwize
 
 ---
 
-### `calc_hma(series, period)`
-
-calc_hma(series, long period)
+### `calc_hma(series, period) -> np.ndarray`
 
 Hull Moving Average
 
@@ -272,9 +226,7 @@ Args:
 
 ---
 
-### `calc_kama(series, period=10, fastn=2, slown=30)`
-
-calc_kama(series, int period=10, int fastn=2, int slown=30)
+### `calc_kama(series, period=10, fastn=2, slown=30) -> np.ndarray`
 
 Kaufman Adaptive Moving Average
 
@@ -285,9 +237,7 @@ Args:
 
 ---
 
-### `calc_keltner(prices, period=20, nbatr=2.0)`
-
-calc_keltner(prices, long period=20, double nbatr=2.0)
+### `calc_keltner(prices, period=20, nbatr=2.0) -> tuple`
 
 Keltner Channel
 
@@ -297,9 +247,7 @@ Args:
 
 ---
 
-### `calc_ker(series, period=10)`
-
-calc_ker(series, int period=10)
+### `calc_ker(series, period=10) -> np.ndarray`
 
 Kaufman Efficiency Ratio
 
@@ -308,9 +256,7 @@ Args:
 
 ---
 
-### `calc_lag(series, period)`
-
-calc_lag(series, long period)
+### `calc_lag(series, period) -> np.ndarray`
 
 Lag Function
 
@@ -319,17 +265,13 @@ Args:
 
 ---
 
-### `calc_log(series)`
-
-calc_log(series)
+### `calc_log(series) -> np.ndarray`
 
 Logarithm 
 
 ---
 
-### `calc_lroc(series, period=1)`
-
-calc_lroc(series, long period=1)
+### `calc_lroc(series, period=1) -> np.ndarray`
 
 Logarithmic Rate of Change
 
@@ -341,9 +283,7 @@ Args:
 
 ---
 
-### `calc_macd(series, n1=12, n2=26, n3=9)`
-
-calc_macd(series, long n1=12, long n2=26, long n3=9)
+### `calc_macd(series, n1=12, n2=26, n3=9) -> tuple`
 
 Moving Average Convergence Divergence
 
@@ -357,9 +297,7 @@ Outputs:
 
 ---
 
-### `calc_macdv(prices, n1=12, n2=26, n3=9)`
-
-calc_macdv(prices, long n1=12, long n2=26, long n3=9)
+### `calc_macdv(prices, n1=12, n2=26, n3=9) -> tuple`
 
 Moving Average Convergence Divergence - Volatility Normalized
 
@@ -373,17 +311,13 @@ Outputs:
 
 ---
 
-### `calc_mad(series, period=14)`
-
-calc_mad(series, long period=14)
+### `calc_mad(series, period=14) -> np.ndarray`
 
 Rolling Mean Absolute Deviation
 
 ---
 
-### `calc_mav(series, period=20, *, ma_type='SMA')`
-
-calc_mav(series, long period=20, *, str ma_type='SMA')
+### `calc_mav(series, period=20, *, ma_type='SMA') -> np.ndarray`
 
 Generic Moving Average
 
@@ -395,17 +329,13 @@ Args:
 
 ---
 
-### `calc_max(series, period)`
-
-calc_max(series, long period)
+### `calc_max(series, period) -> np.ndarray`
 
 Rolling Maximum 
 
 ---
 
-### `calc_mdi(prices, period=14)`
-
-calc_mdi(prices, long period=14)
+### `calc_mdi(prices, period=14) -> np.ndarray`
 
 Minus Directional Index
 
@@ -414,9 +344,7 @@ Args:
 
 ---
 
-### `calc_mfi(prices, period=14)`
-
-calc_mfi(prices, long period=14)
+### `calc_mfi(prices, period=14) -> np.ndarray`
 
 Money Flow Index
 
@@ -425,9 +353,7 @@ Args:
 
 ---
 
-### `calc_midprice(prices)`
-
-calc_midprice(prices)
+### `calc_midprice(prices) -> np.ndarray`
 
 Mid Price
 
@@ -435,9 +361,7 @@ Value of (high + low) / 2
 
 ---
 
-### `calc_min(series, period)`
-
-calc_min(series, long period)
+### `calc_min(series, period) -> np.ndarray`
 
 Rolling Minimum
 
@@ -446,20 +370,16 @@ Args:
 
 ---
 
-### `calc_natr(prices, period=14)`
+### `calc_natr(prices, period=14) -> np.ndarray`
 
-calc_natr(prices, long period=14)
-
-Average True Range (normalized)
+Normalized Average True Range
 
 Args:
     period (int) : time period, default 14    
 
 ---
 
-### `calc_pdi(prices, period=14)`
-
-calc_pdi(prices, long period=14)
+### `calc_pdi(prices, period=14) -> np.ndarray`
 
 Plus Directional Index
 
@@ -468,9 +388,7 @@ Args:
 
 ---
 
-### `calc_ppo(series, n1=12, n2=26, n3=9)`
-
-calc_ppo(series, long n1=12, long n2=26, long n3=9)
+### `calc_ppo(series, n1=12, n2=26, n3=9) -> tuple`
 
 Price Percentage Oscillator
 
@@ -484,9 +402,7 @@ Outputs:
 
 ---
 
-### `calc_price(prices, item: 'str' = None)`
-
-calc_price(prices, str item: str = None)
+### `calc_price(prices, item: str | None=None) -> np.ndarray`
 
 Generic Price
 
@@ -500,9 +416,7 @@ Args:
 
 ---
 
-### `calc_qsf(series, period=20, offset=0)`
-
-calc_qsf(series, long period=20, long offset=0)
+### `calc_qsf(series, period=20, offset=0) -> np.ndarray`
 
 Quadratic Series Forecast (quadratic regression)
 
@@ -511,9 +425,7 @@ Args:
 
 ---
 
-### `calc_rma(series, period)`
-
-calc_rma(series, long period)
+### `calc_rma(series, period) -> np.ndarray`
 
 Rolling Moving Average (RSI style)
 
@@ -523,9 +435,7 @@ number of bars is equal to `period`.
 
 ---
 
-### `calc_roc(series, period=1)`
-
-calc_roc(series, long period=1)
+### `calc_roc(series, period=1) -> np.ndarray`
 
 Rate of Change
 
@@ -535,9 +445,7 @@ Args:
 
 ---
 
-### `calc_rsi(series, period=14)`
-
-calc_rsi(series, long period=14)
+### `calc_rsi(series, period=14) -> np.ndarray`
 
 Relative Strength Index
 
@@ -546,9 +454,7 @@ Args:
 
 ---
 
-### `calc_rvalue(series, period=20)`
-
-calc_rvalue(series, long period=20)
+### `calc_rvalue(series, period=20) -> np.ndarray`
 
 R-Value (linear regression)
 
@@ -557,9 +463,7 @@ Args:
 
 ---
 
-### `calc_sar(prices, afs=0.02, maxaf=0.2)`
-
-calc_sar(prices, double afs=0.02, double maxaf=0.2)
+### `calc_sar(prices, afs=0.02, maxaf=0.2) -> np.ndarray`
 
 Parabolic Stop and Reverse
 
@@ -569,17 +473,13 @@ Args:
 
 ---
 
-### `calc_sign(series)`
-
-calc_sign(series)
+### `calc_sign(series) -> np.ndarray`
 
 Sign
 
 ---
 
-### `calc_slope(series, period=20)`
-
-calc_slope(series, long period=20)
+### `calc_slope(series, period=20) -> np.ndarray`
 
 Slope (linear regression)
 
@@ -588,9 +488,7 @@ Args:
 
 ---
 
-### `calc_sma(series, period)`
-
-calc_sma(series, long period)
+### `calc_sma(series, period) -> np.ndarray`
 
 Simple Moving Average
 
@@ -599,9 +497,7 @@ Args:
 
 ---
 
-### `calc_stdev(series, period=20)`
-
-calc_stdev(series, long period=20)
+### `calc_stdev(series, period=20) -> np.ndarray`
 
 Standard Deviation
 
@@ -610,9 +506,7 @@ Args:
 
 ---
 
-### `calc_step(series, threshold: 'float' = 1.0)`
-
-calc_step(series, double threshold: float = 1.0)
+### `calc_step(series, threshold: float=1.0) -> np.ndarray`
 
 Step Function
 
@@ -623,9 +517,7 @@ Args:
 
 ---
 
-### `calc_stoch(prices, period=14, fastn=3, slown=3)`
-
-calc_stoch(prices, long period=14, long fastn=3, long slown=3)
+### `calc_stoch(prices, period=14, fastn=3, slown=3) -> tuple`
 
 Stochastic Oscillator
 
@@ -636,17 +528,13 @@ Args:
 
 ---
 
-### `calc_streak(series)`
-
-calc_streak(series)
+### `calc_streak(series) -> np.ndarray`
 
 Consecutive streak of values above zero
 
 ---
 
-### `calc_sum(series, period)`
-
-calc_sum(series, long period)
+### `calc_sum(series, period) -> np.ndarray`
 
 Rolling sum
 
@@ -655,9 +543,7 @@ Args:
 
 ---
 
-### `calc_tema(series, period=20)`
-
-calc_tema(series, long period=20)
+### `calc_tema(series, period=20) -> np.ndarray`
 
 Triple Exponential Moving Average
 
@@ -666,9 +552,7 @@ Args:
 
 ---
 
-### `calc_trange(prices, *, log_prices=False, percent=False)`
-
-calc_trange(prices, *, bool log_prices=False, bool percent=False)
+### `calc_trange(prices, *, log_prices=False, percent=False) -> np.ndarray`
 
 True Range
 
@@ -678,9 +562,7 @@ Args:
 
 ---
 
-### `calc_tsf(series, period=20, offset=0)`
-
-calc_tsf(series, long period=20, long offset=0)
+### `calc_tsf(series, period=20, offset=0) -> np.ndarray`
 
 Time Series Forecast (linear regression)
 
@@ -689,9 +571,7 @@ Args:
 
 ---
 
-### `calc_typprice(prices)`
-
-calc_typprice(prices)
+### `calc_typprice(prices) -> np.ndarray`
 
 Typical Price
 
@@ -699,9 +579,7 @@ Value of (high + low + close ) / 3
 
 ---
 
-### `calc_updown(series, up_level=0.0, down_level=0.0)`
-
-calc_updown(series, double up_level=0.0, double down_level=0.0)
+### `calc_updown(series, up_level=0.0, down_level=0.0) -> np.ndarray`
 
 Flag for value crossing up & down levels
 
@@ -711,9 +589,7 @@ Args:
 
 ---
 
-### `calc_wclprice(prices)`
-
-calc_wclprice(prices)
+### `calc_wclprice(prices) -> np.ndarray`
 
 Weighted Close Price
 
@@ -721,9 +597,7 @@ Value of (high + low + 2 * close) / 4
 
 ---
 
-### `calc_wma(series, period)`
-
-calc_wma(series, long period)
+### `calc_wma(series, period) -> np.ndarray`
 
 Weighted Moving Average
     
