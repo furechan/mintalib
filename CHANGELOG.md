@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.0.32
+## 0.0.33
 - Type stubs (`core.pyi`): multi-output `calc_*` functions now annotated as `-> tuple` (was `-> Any`)
 - Added module docstring to `mintalib` for the package overview, visible in `mintalib.__doc__` and in generated docs
 - API doc generator now emits type-annotated signatures for `mintalib.core` by reading `core.pyi`
