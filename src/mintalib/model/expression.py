@@ -81,12 +81,7 @@ def wrap_expression(calc_func):
                 else:
                     return pl.Series(output).fill_nan(None)
             
-            expr = source.map_batches(batch_func, return_dtype=output_type).alias(name)
-
-            if output_names:
-                return tuple(expr.struct.field(n) for n in output_names)
-            
-            return expr
+            return source.map_batches(batch_func, return_dtype=output_type).alias(name)
         
         wrapper.__name__ = func.__name__
         wrapper.__qualname__ = func.__qualname__

@@ -9,7 +9,6 @@ PKGDIR = ROOTDIR.joinpath(f"src/{PACKAGE}").resolve(strict=True)
 
 from mintalib import core
 from mintalib.builder import annotate_parameter
-from mintalib.utils import get_metadata
 
 PRELUDE = '''"""
 Polars Expression Factory Methods
@@ -54,7 +53,6 @@ class Symbol(str):
 
 def make_signature(calc_func):
     sig = inspect.signature(calc_func)
-    output_names = get_metadata(calc_func, "output_names")
 
     new_params = []
     for param in sig.parameters.values():
@@ -71,8 +69,7 @@ def make_signature(calc_func):
     )
     new_params.append(src)
 
-    return_annotation = tuple if output_names else Symbol("pl.Expr")
-    return sig.replace(parameters=new_params, return_annotation=return_annotation)
+    return sig.replace(parameters=new_params, return_annotation=Symbol("pl.Expr"))
 
 
 def make_expression(calc_func):

@@ -1,6 +1,7 @@
 # Change Log
 
 ## 0.0.32
+- Multi-output `mintalib.expressions` factories (`MACD`, `BBANDS`, `DMI`, `DONCHIAN`, `KELTNER`, `MACDV`, `PPO`, `STOCH`) now return a single polars struct expression aliased to the lowercase indicator name, replacing the previous tuple of field expressions. Use `.struct.unnest()` to flatten or `.struct.field(name)` to pick a field. Breaking change for callers using `*MACD()`-style splatting.
 - Optimized rolling-window Cython kernels (SMA, SUM, STDEV, MAD, WMA): eliminated pointer tracking with direct `xs[i - period]` indexing
 - Optimized MIN/MAX: compare-to-prior-extremum with rescan-on-expiry, roughly halving the mintalib/talib ratio
 - Refactored RSI to use `calc_rma` internally

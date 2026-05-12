@@ -31,7 +31,7 @@ Minimal technical analysis library for Python.
 Indicators with multiple outputs (e.g. `MACD`, `BBANDS`) return:
 
 - named tuples from `mintalib.core` and `mintalib.functions`
-- tuples of expressions in `mintalib.expressions`
+- polars struct expressions in `mintalib.expressions` (unpack with `.struct.unnest()` or pick a field with `.struct.field(name)`)
 - polars structs in the polars accessor
 """
 

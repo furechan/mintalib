@@ -21,9 +21,6 @@ def test_expression(name, prices):
     func = getattr(expressions, name)
     kwds = sample_params(func)
     expr = func(**kwds)
-    if isinstance(expr, tuple):
-        result = prices.select(*expr)
-    else:
-        result = prices.select(expr)
+    result = prices.select(expr)
     assert result is not None
     assert len(result) > 0
