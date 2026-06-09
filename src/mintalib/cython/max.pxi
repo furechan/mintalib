@@ -16,22 +16,23 @@ def calc_max(series, long period):
     cdef double v = NAN, cur_max = NAN
     cdef long i = 0, j = 0, max_idx = -1
 
-    for i in range(period - 1, size):
-        v = xs[i]
+    with nogil:
+        for i in range(period - 1, size):
+            v = xs[i]
 
-        if max_idx >= i - period + 1:
-            if not v <= cur_max:
-                cur_max = v
-                max_idx = i
-        else:
-            cur_max = NAN
-            max_idx = -1
-            for j in range(i - period + 1, i + 1):
-                v = xs[j]
-                if not isnan(v) and not v <= cur_max:
+            if max_idx >= i - period + 1:
+                if not v <= cur_max:
                     cur_max = v
-                    max_idx = j
+                    max_idx = i
+            else:
+                cur_max = NAN
+                max_idx = -1
+                for j in range(i - period + 1, i + 1):
+                    v = xs[j]
+                    if not isnan(v) and not v <= cur_max:
+                        cur_max = v
+                        max_idx = j
 
-        output[i] = cur_max
+            output[i] = cur_max
 
     return result

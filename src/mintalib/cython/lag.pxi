@@ -19,12 +19,13 @@ def calc_lag(series, long period):
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double v = np.nan
+    cdef double v = NAN
     cdef long i = 0
 
-    for i in range(period, size):
-        v = xs[i - period]
-        output[i] = v
+    with nogil:
+        for i in range(period, size):
+            v = xs[i - period]
+            output[i] = v
 
     return result
 

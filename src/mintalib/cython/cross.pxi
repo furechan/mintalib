@@ -20,14 +20,15 @@ def calc_crossover(series, double level=0.0):
 
     cdef long i = 0
 
-    for i in range(size):
-        value = xs[i]
+    with nogil:
+        for i in range(size):
+            value = xs[i]
 
-        if value > level >= prev:
-            output[i] = 1
+            if value > level >= prev:
+                output[i] = 1
 
-        if not isnan(value):
-            prev = value
+            if not isnan(value):
+                prev = value
 
     return result
 
@@ -51,14 +52,15 @@ def calc_crossunder(series, double level=0.0):
     cdef double prev = NAN, value = NAN
     cdef long i = 0
 
-    for i in range(size):
-        value = xs[i]
+    with nogil:
+        for i in range(size):
+            value = xs[i]
 
-        if value < level <= prev:
-            output[i] = 1
+            if value < level <= prev:
+                output[i] = 1
 
-        if not isnan(value):
-            prev = value
+            if not isnan(value):
+                prev = value
 
     return result
 

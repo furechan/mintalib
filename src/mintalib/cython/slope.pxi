@@ -42,60 +42,61 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
 
     s = sx = sy = sxy = sx2 = sy2 = 0.0
 
-    for i in range(size):
-        x, y = i, ys[i]
+    with nogil:
+        for i in range(size):
+            x, y = i, ys[i]
 
-        if y != y:
-            s = sx = sy = sxy = sx2 = sy2 = 0.0
-            continue
+            if y != y:
+                s = sx = sy = sxy = sx2 = sy2 = 0.0
+                continue
 
-        if s == 0:
-            j = i
+            if s == 0:
+                j = i
 
-        s += 1
-        sx += x
-        sy += y
-        sxy += x * y
-        sx2 += x * x
-        sy2 += y * y
+            s += 1
+            sx += x
+            sy += y
+            sxy += x * y
+            sx2 += x * x
+            sy2 += y * y
 
-        if s < period:
-            continue
+            if s < period:
+                continue
 
-        while s > period and j < size:
-            x, y, j = j, ys[j], j+1
-            s -= 1
-            sx -= x
-            sy -= y
-            sxy -= x * y
-            sx2 -= x * x
-            sy2 -= y * y
+            while s > period and j < size:
+                x, y, j = j, ys[j], j+1
+                s -= 1
+                sx -= x
+                sy -= y
+                sxy -= x * y
+                sx2 -= x * x
+                sy2 -= y * y
 
-        vxy = (sxy / s - sx * sy / s / s)
-        vxx = (sx2 / s - sx * sx / s / s)
-        vyy = (sy2 / s - sy * sy / s / s)
+            vxy = (sxy / s - sx * sy / s / s)
+            vxx = (sx2 / s - sx * sx / s / s)
+            vyy = (sy2 / s - sy * sy / s / s)
 
-        slope = vxy / vxx if vxx > 0  else NAN
-        intercept = (sy - slope * sx) / s
-        corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN
+            slope = vxy / vxx if vxx > 0  else NAN
+            intercept = (sy - slope * sx) / s
+            corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN
 
 
-        if option == LINREG_SLOPE:
-            output[i] = slope
-            continue
+            if option == LINREG_SLOPE:
+                output[i] = slope
+                continue
 
-        if option == LINREG_INTERCEPT:
-            output[i] = intercept
-            continue
+            if option == LINREG_INTERCEPT:
+                output[i] = intercept
+                continue
 
-        if option == LINREG_RVALUE:
-            output[i] = corr
-            continue
+            if option == LINREG_RVALUE:
+                output[i] = corr
+                continue
 
-        if option == LINREG_FORECAST:
-            forecast = intercept + slope * (i + offset)
-            output[i] = forecast
-            continue
+            if option == LINREG_FORECAST:
+                forecast = intercept + slope * (i + offset)
+                output[i] = forecast
+                continue
 
     return result
 

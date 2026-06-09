@@ -21,22 +21,23 @@ def calc_sum(series, long period):
     cdef double v = NAN, rsum = 0.0
     cdef long i = 0, count = 0
 
-    for i in range(size):
-        v = xs[i]
+    with nogil:
+        for i in range(size):
+            v = xs[i]
 
-        if v == v:
-            rsum += v
-            count += 1
-        else:
-            rsum = 0.0
-            count = 0
+            if v == v:
+                rsum += v
+                count += 1
+            else:
+                rsum = 0.0
+                count = 0
 
-        if count > period:
-            rsum -= xs[i - period]
-            count -= 1
+            if count > period:
+                rsum -= xs[i - period]
+                count -= 1
 
-        if count == period:
-            output[i] = rsum
+            if count == period:
+                output[i] = rsum
 
     return result
 

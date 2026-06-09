@@ -25,22 +25,23 @@ def calc_clag(series, long period=1):
 
     cdef long i = 0, count = 0
 
-    for i in range(size):
-        value = xs[i]
+    with nogil:
+        for i in range(size):
+            value = xs[i]
 
-        if isnan(value):
-            continue
+            if isnan(value):
+                continue
 
-        if prev != value:
-            prev = value
-            count = 0
-        else:
-            count += 1
+            if prev != value:
+                prev = value
+                count = 0
+            else:
+                count += 1
 
-        if count >= period:
-            clag = value
+            if count >= period:
+                clag = value
 
-        output[i] = clag
+            output[i] = clag
 
     return result
 

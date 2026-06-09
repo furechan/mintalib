@@ -23,10 +23,11 @@ def calc_diff(series, long period=1):
     if period < 0 or period >= size:
         raise ValueError(f"Period {period} out of range!")
 
-    for i in range(period, size):
-        v, pv = xs[i], xs[i - period]
-        diff = v  - pv
-        output[i] = diff
+    with nogil:
+        for i in range(period, size):
+            v, pv = xs[i], xs[i - period]
+            diff = v  - pv
+            output[i] = diff
 
     return result
 

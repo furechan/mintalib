@@ -24,11 +24,12 @@ def calc_lroc(series, long period=1):
         period = abs(period)
         shift = -period
 
-    for i in range(period, size):
-        v, pv = xs[i], xs[i - period]
-        if v > 0 and pv > 0:
-            roc = math.log(v / pv)
-            output[i + shift] = roc
+    with nogil:
+        for i in range(period, size):
+            v, pv = xs[i], xs[i - period]
+            if v > 0 and pv > 0:
+                roc = math.log(v / pv)
+                output[i + shift] = roc
 
     return result
 

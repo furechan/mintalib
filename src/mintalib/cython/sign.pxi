@@ -14,17 +14,18 @@ def calc_sign(series):
     cdef double sign = NAN
     cdef long i = 0
 
-    for i in range(size):
-        value = xs[i]
+    with nogil:
+        for i in range(size):
+            value = xs[i]
 
-        if value > 0:
-            sign = 1.0
-        elif value < 0:
-            sign = -1.0
-        elif value == 0:
-            sign = 0.0
+            if value > 0:
+                sign = 1.0
+            elif value < 0:
+                sign = -1.0
+            elif value == 0:
+                sign = 0.0
 
-        output[i] = sign
+            output[i] = sign
 
     return result
 

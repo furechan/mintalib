@@ -6,7 +6,7 @@
         "depends": [],
         "name": "mintalib.core",
         "sources": [
-            "/Users/frederic/Projects/mintalib/src/mintalib/core.pyx"
+            "/home/frederic/Projects/mintalib/src/mintalib/core.pyx"
         ]
     },
     "module_name": "mintalib.core"
@@ -1149,7 +1149,7 @@ static int __Pyx_init_co_variables(void) {
 #define __Pyx_FREETHREADING_COMPATIBLE Py_MOD_GIL_USED
 #endif
 #else
-#define __Pyx_FREETHREADING_COMPATIBLE Py_MOD_GIL_USED
+#define __Pyx_FREETHREADING_COMPATIBLE Py_MOD_GIL_NOT_USED
 #endif
 #define __PYX_DEFAULT_STRING_ENCODING_IS_ASCII 0
 #define __PYX_DEFAULT_STRING_ENCODING_IS_UTF8 0
@@ -1688,7 +1688,7 @@ enum  {
   __pyx_e_8mintalib_4core_QUADREG_BADOPTION = 2
 };
 
-/* "src/mintalib/cython/flags.pxi":68
+/* "src/mintalib/cython/flags.pxi":70
  * 
  * 
  * def where_flag(flag, x, y, z=NAN):             # <<<<<<<<<<<<<<
@@ -4015,7 +4015,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_ys __pyx_string_tab[492]
 #define __pyx_n_u_z __pyx_string_tab[493]
 #define __pyx_n_u_zs __pyx_string_tab[494]
-#define __pyx_kp_b_iso88591_1_b_Rq_5_s_A_A_U_1_1_6_9A_5_4uA __pyx_string_tab[495]
+#define __pyx_kp_b_iso88591_1_b_Rq_5_s_A_A_E_aq_Baq_vRy_auA __pyx_string_tab[495]
 #define __pyx_kp_b_iso88591_1_q_81_XQe1_G2V2Q_G2V2Q_1G81_1 __pyx_string_tab[496]
 #define __pyx_kp_b_iso88591_1_q_wb_j_1_wb_WBa_j_1_b_Rq_5_r __pyx_string_tab[497]
 #define __pyx_kp_b_iso88591_2XQfAYa_2XQfAYa_HAV1HA_BhavQj_a __pyx_string_tab[498]
@@ -4029,7 +4029,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_b_iso88591_81HA_81F_Rr_b_1 __pyx_string_tab[506]
 #define __pyx_kp_b_iso88591_AXWHG1 __pyx_string_tab[507]
 #define __pyx_kp_b_iso88591_A_L_q __pyx_string_tab[508]
-#define __pyx_kp_b_iso88591_A_b_Rq_5_s_A_A_U_1_1_6_9A_5_4uA __pyx_string_tab[509]
+#define __pyx_kp_b_iso88591_A_b_Rq_5_s_A_A_E_aq_Baq_vRy_auA __pyx_string_tab[509]
 #define __pyx_kp_b_iso88591_HAV1IQ_HAV1HA_fBgRq__AWHA_1 __pyx_string_tab[510]
 #define __pyx_kp_b_iso88591_L_1_T_G1_uAQ_1K_r_Bd_U_3b_q_1 __pyx_string_tab[511]
 #define __pyx_kp_b_iso88591_Q_2XQfAYa_2XQfAYa_HAV1HA_BhavQj __pyx_string_tab[512]
@@ -4039,46 +4039,46 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_b_iso88591_Q_AXWHG87 __pyx_string_tab[516]
 #define __pyx_kp_b_iso88591_Q_XQha_1 __pyx_string_tab[517]
 #define __pyx_kp_b_iso88591_Q_XQhgWA_1 __pyx_string_tab[518]
-#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_E_E_Jj_U_1_Baq_2S __pyx_string_tab[519]
-#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jj_Jj_a_U_1_Baq_5 __pyx_string_tab[520]
-#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jk_Q_wb_AQ_U_81_5 __pyx_string_tab[521]
-#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_oQ_A_U_1_1_6_q_1_3 __pyx_string_tab[522]
+#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_E_E_Jj_E_aq_1_r_Bd __pyx_string_tab[519]
+#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jj_Jj_a_E_aq_1_uAQ __pyx_string_tab[520]
+#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jk_Q_wb_AQ_E_axq_u __pyx_string_tab[521]
+#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_oQ_A_E_aq_Baq_vR_1 __pyx_string_tab[522]
 #define __pyx_kp_b_iso88591_Q_b_q_Rq_b_Qb_q_A_b_Qb_q_A_b_Qb __pyx_string_tab[523]
 #define __pyx_kp_b_iso88591_Q_q_5_5_9AWA_b_Rq_1 __pyx_string_tab[524]
 #define __pyx_kp_b_iso88591_Q_q_AU_XQe1_G2V2Q_G2V2Q_9AWJha __pyx_string_tab[525]
 #define __pyx_kp_b_iso88591_Q_q_AU_XQe1_G2V2Q_G2V2Q_9AWJha_2 __pyx_string_tab[526]
 #define __pyx_kp_b_iso88591_Q_q_xwhgQ __pyx_string_tab[527]
 #define __pyx_kp_b_iso88591_Q_uCq_q_uD_q_HAV1G1_d_aq_d_aq_d __pyx_string_tab[528]
-#define __pyx_kp_b_iso88591_Q_wc_j_0_b_Rq_5_r_A_Q_A_U_1_Baq __pyx_string_tab[529]
+#define __pyx_kp_b_iso88591_Q_wc_j_0_b_Rq_5_r_A_Q_A_E_aq_1 __pyx_string_tab[529]
 #define __pyx_kp_b_iso88591_Q_wc_j_2XQfAYa_HAV1HA_BhavQj_Rx __pyx_string_tab[530]
 #define __pyx_kp_b_iso88591_Q_wc_j_vS_j_s_1_r_D_Bb_3c_Bb_4t __pyx_string_tab[531]
 #define __pyx_kp_b_iso88591_Rq_Q_1F_Q_Zq_1 __pyx_string_tab[532]
-#define __pyx_kp_b_iso88591_a_6_1_r_Zq_a_5_r_A_Zz_k_Q_U_1_3 __pyx_string_tab[533]
+#define __pyx_kp_b_iso88591_a_6_1_r_Zq_a_5_r_A_Zz_k_Q_E_aq __pyx_string_tab[533]
 #define __pyx_kp_b_iso88591_a_81HA_81HA_5_XQfA_5_xq_1 __pyx_string_tab[534]
 #define __pyx_kp_b_iso88591_a_XQha_1 __pyx_string_tab[535]
-#define __pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jk_Q_wb_AQ_U_81_5 __pyx_string_tab[536]
-#define __pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jl_wb_WCq_j_1_U_81 __pyx_string_tab[537]
+#define __pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jk_Q_wb_AQ_E_axq_u __pyx_string_tab[536]
+#define __pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jl_wb_WCq_j_1_E_ax __pyx_string_tab[537]
 #define __pyx_kp_b_iso88591_b_9AXQ_4q_1 __pyx_string_tab[538]
-#define __pyx_kp_b_iso88591_b_Rq_5_q_A_q_U_1_1_6_1_1_2Q_1_3 __pyx_string_tab[539]
-#define __pyx_kp_b_iso88591_b_Rq_5_r_A_U_1_1_6_1_5_3a_5_1 __pyx_string_tab[540]
-#define __pyx_kp_b_iso88591_b_Rq_5_r_A_U_1_1_6_1_a_Q_auA_1 __pyx_string_tab[541]
+#define __pyx_kp_b_iso88591_b_Rq_5_q_A_q_E_aq_Baq_vRq_q_r_q __pyx_string_tab[539]
+#define __pyx_kp_b_iso88591_b_Rq_5_r_A_E_aq_Baq_vRq_5_1 __pyx_string_tab[540]
+#define __pyx_kp_b_iso88591_b_Rq_5_r_A_E_aq_Baq_vRq_auA_s_a __pyx_string_tab[541]
 #define __pyx_kp_b_iso88591_b_Rt1A_1 __pyx_string_tab[542]
-#define __pyx_kp_b_iso88591_b_xq_A_Rq_5_r_A_CvRq_CvRq_q_Q_U __pyx_string_tab[543]
-#define __pyx_kp_b_iso88591_l_b_Rq_5_q_A_A_XQ_U_1_wb_Q_5_5 __pyx_string_tab[544]
+#define __pyx_kp_b_iso88591_b_xq_A_Rq_5_r_A_CvRq_CvRq_q_Q_E __pyx_string_tab[543]
+#define __pyx_kp_b_iso88591_l_b_Rq_5_q_A_A_XQ_E_aq_7_AT_uAW __pyx_string_tab[544]
 #define __pyx_kp_b_iso88591_q_AU_XQe1_G2V2Q_G2V2Q_7_1 __pyx_string_tab[545]
 #define __pyx_kp_b_iso88591_q_AXWHG1 __pyx_string_tab[546]
 #define __pyx_kp_b_iso88591_q_F_1_81G1_81G1_87_U_F_D_XQgQ_6 __pyx_string_tab[547]
 #define __pyx_kp_b_iso88591_q_q_xwa __pyx_string_tab[548]
-#define __pyx_kp_b_iso88591_q_wc_j_0_b_Rq_5_r_A_K_Q_U_1_Baq __pyx_string_tab[549]
-#define __pyx_kp_b_iso88591_wb_j_b_Rq_5_r_A_Ba_U_81_Bar_1_a __pyx_string_tab[550]
-#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_Ba_a_Q_U_1_1 __pyx_string_tab[551]
+#define __pyx_kp_b_iso88591_q_wc_j_0_b_Rq_5_r_A_K_Q_E_aq_1 __pyx_string_tab[549]
+#define __pyx_kp_b_iso88591_wb_j_b_Rq_5_r_A_A_E_axq_2Rq_5_1 __pyx_string_tab[550]
+#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_Ba_a_Q_E_aq_B __pyx_string_tab[551]
 #define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_Cwb_t2Q_iq_a __pyx_string_tab[552]
-#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_L_Q_U_1_1_5_5 __pyx_string_tab[553]
-#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_U_1_Baq_2 __pyx_string_tab[554]
-#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_U_1_Baq_2_2 __pyx_string_tab[555]
-#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_wc_Rq_L_Q_U_1 __pyx_string_tab[556]
-#define __pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_U_7_Cq_Baq __pyx_string_tab[557]
-#define __pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_U_7_Cq_Baq_2 __pyx_string_tab[558]
+#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_L_Q_E_aq_Baq __pyx_string_tab[553]
+#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_E_aq_1_r __pyx_string_tab[554]
+#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_E_aq_1_r_2 __pyx_string_tab[555]
+#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_wc_Rq_L_Q_E_a __pyx_string_tab[556]
+#define __pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_E_awb_1_1 __pyx_string_tab[557]
+#define __pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_E_awb_1_1_2 __pyx_string_tab[558]
 #define __pyx_kp_b_iso88591_wc_j_q_aq_Ct2Q_XQd_uE_1 __pyx_string_tab[559]
 #define __pyx_kp_b_iso88591_xs_A_A_A_A_81_A_81_j_1A_1 __pyx_string_tab[560]
 #define __pyx_n_b_O __pyx_string_tab[561]
@@ -20282,95 +20282,126 @@ static PyObject *__pyx_pf_8mintalib_4core_14calc_crossover(CYTHON_UNUSED PyObjec
  * 
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
   /* "src/mintalib/cython/cross.pxi":23
  *     cdef long i = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         value = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/cross.pxi":24
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             value = xs[i]
  * 
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_10 = __pyx_t_7;
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_10 = __pyx_t_7;
+        for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
+          __pyx_v_i = __pyx_t_11;
 
-    /* "src/mintalib/cython/cross.pxi":24
+          /* "src/mintalib/cython/cross.pxi":25
+ *     with nogil:
+ *         for i in range(size):
+ *             value = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         value = xs[i]             # <<<<<<<<<<<<<<
- * 
- *         if value > level >= prev:
+ *             if value > level >= prev:
 */
-    __pyx_t_12 = __pyx_v_i;
-    __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_12 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_12 = __pyx_v_i;
+          __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_12 * __pyx_v_xs.strides[0]) )));
 
-    /* "src/mintalib/cython/cross.pxi":26
- *         value = xs[i]
+          /* "src/mintalib/cython/cross.pxi":27
+ *             value = xs[i]
  * 
- *         if value > level >= prev:             # <<<<<<<<<<<<<<
- *             output[i] = 1
- * 
-*/
-    __pyx_t_13 = (__pyx_v_value > __pyx_v_level);
-    if (__pyx_t_13) {
-      __pyx_t_13 = (__pyx_v_level >= __pyx_v_prev);
-    }
-    if (__pyx_t_13) {
-
-      /* "src/mintalib/cython/cross.pxi":27
- * 
- *         if value > level >= prev:
- *             output[i] = 1             # <<<<<<<<<<<<<<
- * 
- *         if not isnan(value):
-*/
-      __pyx_t_12 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_12 * __pyx_v_output.strides[0]) )) = 1.0;
-
-      /* "src/mintalib/cython/cross.pxi":26
- *         value = xs[i]
- * 
- *         if value > level >= prev:             # <<<<<<<<<<<<<<
- *             output[i] = 1
+ *             if value > level >= prev:             # <<<<<<<<<<<<<<
+ *                 output[i] = 1
  * 
 */
-    }
+          __pyx_t_13 = (__pyx_v_value > __pyx_v_level);
+          if (__pyx_t_13) {
+            __pyx_t_13 = (__pyx_v_level >= __pyx_v_prev);
+          }
+          if (__pyx_t_13) {
 
-    /* "src/mintalib/cython/cross.pxi":29
- *             output[i] = 1
+            /* "src/mintalib/cython/cross.pxi":28
  * 
- *         if not isnan(value):             # <<<<<<<<<<<<<<
- *             prev = value
+ *             if value > level >= prev:
+ *                 output[i] = 1             # <<<<<<<<<<<<<<
+ * 
+ *             if not isnan(value):
+*/
+            __pyx_t_12 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_12 * __pyx_v_output.strides[0]) )) = 1.0;
+
+            /* "src/mintalib/cython/cross.pxi":27
+ *             value = xs[i]
+ * 
+ *             if value > level >= prev:             # <<<<<<<<<<<<<<
+ *                 output[i] = 1
  * 
 */
-    __pyx_t_13 = (!isnan(__pyx_v_value));
-    if (__pyx_t_13) {
+          }
 
-      /* "src/mintalib/cython/cross.pxi":30
+          /* "src/mintalib/cython/cross.pxi":30
+ *                 output[i] = 1
  * 
- *         if not isnan(value):
- *             prev = value             # <<<<<<<<<<<<<<
+ *             if not isnan(value):             # <<<<<<<<<<<<<<
+ *                 prev = value
+ * 
+*/
+          __pyx_t_13 = (!isnan(__pyx_v_value));
+          if (__pyx_t_13) {
+
+            /* "src/mintalib/cython/cross.pxi":31
+ * 
+ *             if not isnan(value):
+ *                 prev = value             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_v_prev = __pyx_v_value;
+            __pyx_v_prev = __pyx_v_value;
 
-      /* "src/mintalib/cython/cross.pxi":29
- *             output[i] = 1
+            /* "src/mintalib/cython/cross.pxi":30
+ *                 output[i] = 1
  * 
- *         if not isnan(value):             # <<<<<<<<<<<<<<
- *             prev = value
+ *             if not isnan(value):             # <<<<<<<<<<<<<<
+ *                 prev = value
  * 
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/cross.pxi":23
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/cross.pxi":32
- *             prev = value
+  /* "src/mintalib/cython/cross.pxi":33
+ *                 prev = value
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -20409,7 +20440,7 @@ static PyObject *__pyx_pf_8mintalib_4core_14calc_crossover(CYTHON_UNUSED PyObjec
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/cross.pxi":35
+/* "src/mintalib/cython/cross.pxi":36
  * 
  * 
  * def calc_crossunder(series, double level=0.0):             # <<<<<<<<<<<<<<
@@ -20458,48 +20489,48 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_level,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(5, 35, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(5, 36, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(5, 35, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(5, 36, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(5, 35, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(5, 36, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_crossunder", 0) < (0)) __PYX_ERR(5, 35, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_crossunder", 0) < (0)) __PYX_ERR(5, 36, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_crossunder", 0, 1, 2, i); __PYX_ERR(5, 35, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_crossunder", 0, 1, 2, i); __PYX_ERR(5, 36, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(5, 35, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(5, 36, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(5, 35, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(5, 36, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_level = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_level == (double)-1) && PyErr_Occurred())) __PYX_ERR(5, 35, __pyx_L3_error)
+      __pyx_v_level = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_level == (double)-1) && PyErr_Occurred())) __PYX_ERR(5, 36, __pyx_L3_error)
     } else {
       __pyx_v_level = ((double)((double)0.0));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_crossunder", 0, 1, 2, __pyx_nargs); __PYX_ERR(5, 35, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_crossunder", 0, 1, 2, __pyx_nargs); __PYX_ERR(5, 36, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -20548,7 +20579,7 @@ static PyObject *__pyx_pf_8mintalib_4core_16calc_crossunder(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calc_crossunder", 0);
 
-  /* "src/mintalib/cython/cross.pxi":45
+  /* "src/mintalib/cython/cross.pxi":46
  *     """
  * 
  *     cdef const double[:] xs = np.asarray(series, float)             # <<<<<<<<<<<<<<
@@ -20556,9 +20587,9 @@ static PyObject *__pyx_pf_8mintalib_4core_16calc_crossunder(CYTHON_UNUSED PyObje
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(5, 45, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(5, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(5, 45, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(5, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_5 = 1;
@@ -20578,32 +20609,32 @@ static PyObject *__pyx_pf_8mintalib_4core_16calc_crossunder(CYTHON_UNUSED PyObje
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(5, 45, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(5, 46, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_1, 0); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(5, 45, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_1, 0); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(5, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_xs = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "src/mintalib/cython/cross.pxi":46
+  /* "src/mintalib/cython/cross.pxi":47
  * 
  *     cdef const double[:] xs = np.asarray(series, float)
  *     cdef long size = xs.size             # <<<<<<<<<<<<<<
  * 
  *     cdef object result = np.full(size, 0, dtype=float)
 */
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_xs, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(5, 46, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_xs, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(5, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(5, 46, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(5, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = __Pyx_PyLong_As_long(__pyx_t_4); if (unlikely((__pyx_t_7 == (long)-1) && PyErr_Occurred())) __PYX_ERR(5, 46, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyLong_As_long(__pyx_t_4); if (unlikely((__pyx_t_7 == (long)-1) && PyErr_Occurred())) __PYX_ERR(5, 47, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_size = __pyx_t_7;
 
-  /* "src/mintalib/cython/cross.pxi":48
+  /* "src/mintalib/cython/cross.pxi":49
  *     cdef long size = xs.size
  * 
  *     cdef object result = np.full(size, 0, dtype=float)             # <<<<<<<<<<<<<<
@@ -20611,12 +20642,12 @@ static PyObject *__pyx_pf_8mintalib_4core_16calc_crossunder(CYTHON_UNUSED PyObje
  * 
 */
   __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(5, 48, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(5, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_3)) __PYX_ERR(5, 48, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_3)) __PYX_ERR(5, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(5, 48, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(5, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -20632,33 +20663,33 @@ static PyObject *__pyx_pf_8mintalib_4core_16calc_crossunder(CYTHON_UNUSED PyObje
   #endif
   {
     PyObject *__pyx_callargs[3 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_1, __pyx_t_2, __pyx_mstate_global->__pyx_int_0};
-    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(5, 48, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(5, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_8, __pyx_callargs+3, 0) < (0)) __PYX_ERR(5, 48, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, ((PyObject *)(&PyFloat_Type)), __pyx_t_8, __pyx_callargs+3, 0) < (0)) __PYX_ERR(5, 49, __pyx_L1_error)
     __pyx_t_4 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_8);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(5, 48, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(5, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_v_result = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/cross.pxi":49
+  /* "src/mintalib/cython/cross.pxi":50
  * 
  *     cdef object result = np.full(size, 0, dtype=float)
  *     cdef double[:] output = result             # <<<<<<<<<<<<<<
  * 
  *     cdef double prev = NAN, value = NAN
 */
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(5, 49, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(5, 50, __pyx_L1_error)
   __pyx_v_output = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "src/mintalib/cython/cross.pxi":51
+  /* "src/mintalib/cython/cross.pxi":52
  *     cdef double[:] output = result
  * 
  *     cdef double prev = NAN, value = NAN             # <<<<<<<<<<<<<<
@@ -20668,100 +20699,131 @@ static PyObject *__pyx_pf_8mintalib_4core_16calc_crossunder(CYTHON_UNUSED PyObje
   __pyx_v_prev = __pyx_v_8mintalib_4core_NAN;
   __pyx_v_value = __pyx_v_8mintalib_4core_NAN;
 
-  /* "src/mintalib/cython/cross.pxi":52
+  /* "src/mintalib/cython/cross.pxi":53
  * 
  *     cdef double prev = NAN, value = NAN
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
-  /* "src/mintalib/cython/cross.pxi":54
+  /* "src/mintalib/cython/cross.pxi":55
  *     cdef long i = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         value = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/cross.pxi":56
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             value = xs[i]
  * 
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_10 = __pyx_t_7;
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_10 = __pyx_t_7;
+        for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
+          __pyx_v_i = __pyx_t_11;
 
-    /* "src/mintalib/cython/cross.pxi":55
+          /* "src/mintalib/cython/cross.pxi":57
+ *     with nogil:
+ *         for i in range(size):
+ *             value = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         value = xs[i]             # <<<<<<<<<<<<<<
- * 
- *         if value < level <= prev:
+ *             if value < level <= prev:
 */
-    __pyx_t_12 = __pyx_v_i;
-    __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_12 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_12 = __pyx_v_i;
+          __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_12 * __pyx_v_xs.strides[0]) )));
 
-    /* "src/mintalib/cython/cross.pxi":57
- *         value = xs[i]
+          /* "src/mintalib/cython/cross.pxi":59
+ *             value = xs[i]
  * 
- *         if value < level <= prev:             # <<<<<<<<<<<<<<
- *             output[i] = 1
- * 
-*/
-    __pyx_t_13 = (__pyx_v_value < __pyx_v_level);
-    if (__pyx_t_13) {
-      __pyx_t_13 = (__pyx_v_level <= __pyx_v_prev);
-    }
-    if (__pyx_t_13) {
-
-      /* "src/mintalib/cython/cross.pxi":58
- * 
- *         if value < level <= prev:
- *             output[i] = 1             # <<<<<<<<<<<<<<
- * 
- *         if not isnan(value):
-*/
-      __pyx_t_12 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_12 * __pyx_v_output.strides[0]) )) = 1.0;
-
-      /* "src/mintalib/cython/cross.pxi":57
- *         value = xs[i]
- * 
- *         if value < level <= prev:             # <<<<<<<<<<<<<<
- *             output[i] = 1
+ *             if value < level <= prev:             # <<<<<<<<<<<<<<
+ *                 output[i] = 1
  * 
 */
-    }
+          __pyx_t_13 = (__pyx_v_value < __pyx_v_level);
+          if (__pyx_t_13) {
+            __pyx_t_13 = (__pyx_v_level <= __pyx_v_prev);
+          }
+          if (__pyx_t_13) {
 
-    /* "src/mintalib/cython/cross.pxi":60
- *             output[i] = 1
+            /* "src/mintalib/cython/cross.pxi":60
  * 
- *         if not isnan(value):             # <<<<<<<<<<<<<<
- *             prev = value
+ *             if value < level <= prev:
+ *                 output[i] = 1             # <<<<<<<<<<<<<<
+ * 
+ *             if not isnan(value):
+*/
+            __pyx_t_12 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_12 * __pyx_v_output.strides[0]) )) = 1.0;
+
+            /* "src/mintalib/cython/cross.pxi":59
+ *             value = xs[i]
+ * 
+ *             if value < level <= prev:             # <<<<<<<<<<<<<<
+ *                 output[i] = 1
  * 
 */
-    __pyx_t_13 = (!isnan(__pyx_v_value));
-    if (__pyx_t_13) {
+          }
 
-      /* "src/mintalib/cython/cross.pxi":61
+          /* "src/mintalib/cython/cross.pxi":62
+ *                 output[i] = 1
  * 
- *         if not isnan(value):
- *             prev = value             # <<<<<<<<<<<<<<
+ *             if not isnan(value):             # <<<<<<<<<<<<<<
+ *                 prev = value
+ * 
+*/
+          __pyx_t_13 = (!isnan(__pyx_v_value));
+          if (__pyx_t_13) {
+
+            /* "src/mintalib/cython/cross.pxi":63
+ * 
+ *             if not isnan(value):
+ *                 prev = value             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_v_prev = __pyx_v_value;
+            __pyx_v_prev = __pyx_v_value;
 
-      /* "src/mintalib/cython/cross.pxi":60
- *             output[i] = 1
+            /* "src/mintalib/cython/cross.pxi":62
+ *                 output[i] = 1
  * 
- *         if not isnan(value):             # <<<<<<<<<<<<<<
- *             prev = value
+ *             if not isnan(value):             # <<<<<<<<<<<<<<
+ *                 prev = value
  * 
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/cross.pxi":55
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/cross.pxi":63
- *             prev = value
+  /* "src/mintalib/cython/cross.pxi":65
+ *                 prev = value
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -20771,7 +20833,7 @@ static PyObject *__pyx_pf_8mintalib_4core_16calc_crossunder(CYTHON_UNUSED PyObje
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/cross.pxi":35
+  /* "src/mintalib/cython/cross.pxi":36
  * 
  * 
  * def calc_crossunder(series, double level=0.0):             # <<<<<<<<<<<<<<
@@ -21047,95 +21109,126 @@ static PyObject *__pyx_pf_8mintalib_4core_18calc_flag(CYTHON_UNUSED PyObject *__
  *     cdef double value = NAN
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
   /* "src/mintalib/cython/flags.pxi":21
  *     cdef long i = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         value = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/flags.pxi":22
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             value = xs[i]
  * 
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_11 = __pyx_t_7;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_11 = __pyx_t_7;
+        for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+          __pyx_v_i = __pyx_t_12;
 
-    /* "src/mintalib/cython/flags.pxi":22
+          /* "src/mintalib/cython/flags.pxi":23
+ *     with nogil:
+ *         for i in range(size):
+ *             value = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         value = xs[i]             # <<<<<<<<<<<<<<
- * 
- *         if value > 0.0:
+ *             if value > 0.0:
 */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_13 = __pyx_v_i;
+          __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
 
-    /* "src/mintalib/cython/flags.pxi":24
- *         value = xs[i]
+          /* "src/mintalib/cython/flags.pxi":25
+ *             value = xs[i]
  * 
- *         if value > 0.0:             # <<<<<<<<<<<<<<
- *             output[i] = 1.0
- *         elif value <= 0:
+ *             if value > 0.0:             # <<<<<<<<<<<<<<
+ *                 output[i] = 1.0
+ *             elif value <= 0:
 */
-    __pyx_t_14 = (__pyx_v_value > 0.0);
-    if (__pyx_t_14) {
+          __pyx_t_14 = (__pyx_v_value > 0.0);
+          if (__pyx_t_14) {
 
-      /* "src/mintalib/cython/flags.pxi":25
+            /* "src/mintalib/cython/flags.pxi":26
  * 
- *         if value > 0.0:
- *             output[i] = 1.0             # <<<<<<<<<<<<<<
- *         elif value <= 0:
- *             output[i] = 0.0
+ *             if value > 0.0:
+ *                 output[i] = 1.0             # <<<<<<<<<<<<<<
+ *             elif value <= 0:
+ *                 output[i] = 0.0
 */
-      __pyx_t_13 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = 1.0;
+            __pyx_t_13 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = 1.0;
 
-      /* "src/mintalib/cython/flags.pxi":24
- *         value = xs[i]
+            /* "src/mintalib/cython/flags.pxi":25
+ *             value = xs[i]
  * 
- *         if value > 0.0:             # <<<<<<<<<<<<<<
- *             output[i] = 1.0
- *         elif value <= 0:
+ *             if value > 0.0:             # <<<<<<<<<<<<<<
+ *                 output[i] = 1.0
+ *             elif value <= 0:
 */
-      goto __pyx_L5;
-    }
+            goto __pyx_L8;
+          }
 
-    /* "src/mintalib/cython/flags.pxi":26
- *         if value > 0.0:
- *             output[i] = 1.0
- *         elif value <= 0:             # <<<<<<<<<<<<<<
- *             output[i] = 0.0
+          /* "src/mintalib/cython/flags.pxi":27
+ *             if value > 0.0:
+ *                 output[i] = 1.0
+ *             elif value <= 0:             # <<<<<<<<<<<<<<
+ *                 output[i] = 0.0
  * 
 */
-    __pyx_t_14 = (__pyx_v_value <= 0.0);
-    if (__pyx_t_14) {
+          __pyx_t_14 = (__pyx_v_value <= 0.0);
+          if (__pyx_t_14) {
 
-      /* "src/mintalib/cython/flags.pxi":27
- *             output[i] = 1.0
- *         elif value <= 0:
- *             output[i] = 0.0             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/flags.pxi":28
+ *                 output[i] = 1.0
+ *             elif value <= 0:
+ *                 output[i] = 0.0             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_t_13 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = 0.0;
+            __pyx_t_13 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = 0.0;
 
-      /* "src/mintalib/cython/flags.pxi":26
- *         if value > 0.0:
- *             output[i] = 1.0
- *         elif value <= 0:             # <<<<<<<<<<<<<<
- *             output[i] = 0.0
+            /* "src/mintalib/cython/flags.pxi":27
+ *             if value > 0.0:
+ *                 output[i] = 1.0
+ *             elif value <= 0:             # <<<<<<<<<<<<<<
+ *                 output[i] = 0.0
  * 
 */
-    }
-    __pyx_L5:;
+          }
+          __pyx_L8:;
+        }
+      }
+
+      /* "src/mintalib/cython/flags.pxi":21
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/flags.pxi":29
- *             output[i] = 0.0
+  /* "src/mintalib/cython/flags.pxi":30
+ *                 output[i] = 0.0
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -21175,7 +21268,7 @@ static PyObject *__pyx_pf_8mintalib_4core_18calc_flag(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/flags.pxi":32
+/* "src/mintalib/cython/flags.pxi":33
  * 
  * 
  * def calc_updown(series, double up_level=0.0, double down_level=0.0):             # <<<<<<<<<<<<<<
@@ -21225,61 +21318,61 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_up_level,&__pyx_mstate_global->__pyx_n_u_down_level,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(6, 32, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(6, 33, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(6, 32, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(6, 33, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(6, 32, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(6, 33, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(6, 32, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(6, 33, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_updown", 0) < (0)) __PYX_ERR(6, 32, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_updown", 0) < (0)) __PYX_ERR(6, 33, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_updown", 0, 1, 3, i); __PYX_ERR(6, 32, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_updown", 0, 1, 3, i); __PYX_ERR(6, 33, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(6, 32, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(6, 33, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(6, 32, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(6, 33, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(6, 32, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(6, 33, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_up_level = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_up_level == (double)-1) && PyErr_Occurred())) __PYX_ERR(6, 32, __pyx_L3_error)
+      __pyx_v_up_level = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_up_level == (double)-1) && PyErr_Occurred())) __PYX_ERR(6, 33, __pyx_L3_error)
     } else {
       __pyx_v_up_level = ((double)((double)0.0));
     }
     if (values[2]) {
-      __pyx_v_down_level = __Pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_down_level == (double)-1) && PyErr_Occurred())) __PYX_ERR(6, 32, __pyx_L3_error)
+      __pyx_v_down_level = __Pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_down_level == (double)-1) && PyErr_Occurred())) __PYX_ERR(6, 33, __pyx_L3_error)
     } else {
       __pyx_v_down_level = ((double)((double)0.0));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_updown", 0, 1, 3, __pyx_nargs); __PYX_ERR(6, 32, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_updown", 0, 1, 3, __pyx_nargs); __PYX_ERR(6, 33, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21332,7 +21425,7 @@ static PyObject *__pyx_pf_8mintalib_4core_20calc_updown(CYTHON_UNUSED PyObject *
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calc_updown", 0);
 
-  /* "src/mintalib/cython/flags.pxi":41
+  /* "src/mintalib/cython/flags.pxi":42
  *     """
  * 
  *     cdef const double[:] xs = np.asarray(series, float)             # <<<<<<<<<<<<<<
@@ -21340,9 +21433,9 @@ static PyObject *__pyx_pf_8mintalib_4core_20calc_updown(CYTHON_UNUSED PyObject *
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(6, 41, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(6, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 41, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_5 = 1;
@@ -21362,32 +21455,32 @@ static PyObject *__pyx_pf_8mintalib_4core_20calc_updown(CYTHON_UNUSED PyObject *
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 41, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_1, 0); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(6, 41, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_1, 0); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(6, 42, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_xs = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "src/mintalib/cython/flags.pxi":42
+  /* "src/mintalib/cython/flags.pxi":43
  * 
  *     cdef const double[:] xs = np.asarray(series, float)
  *     cdef long size = xs.size             # <<<<<<<<<<<<<<
  * 
  *     cdef object result = np.full(size, np.nan)
 */
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_xs, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 42, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_xs, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 42, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = __Pyx_PyLong_As_long(__pyx_t_4); if (unlikely((__pyx_t_7 == (long)-1) && PyErr_Occurred())) __PYX_ERR(6, 42, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyLong_As_long(__pyx_t_4); if (unlikely((__pyx_t_7 == (long)-1) && PyErr_Occurred())) __PYX_ERR(6, 43, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_size = __pyx_t_7;
 
-  /* "src/mintalib/cython/flags.pxi":44
+  /* "src/mintalib/cython/flags.pxi":45
  *     cdef long size = xs.size
  * 
  *     cdef object result = np.full(size, np.nan)             # <<<<<<<<<<<<<<
@@ -21395,16 +21488,16 @@ static PyObject *__pyx_pf_8mintalib_4core_20calc_updown(CYTHON_UNUSED PyObject *
  * 
 */
   __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 44, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_3)) __PYX_ERR(6, 44, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_3)) __PYX_ERR(6, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 44, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 44, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 44, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_5 = 1;
@@ -21426,25 +21519,25 @@ static PyObject *__pyx_pf_8mintalib_4core_20calc_updown(CYTHON_UNUSED PyObject *
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 44, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_v_result = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/flags.pxi":45
+  /* "src/mintalib/cython/flags.pxi":46
  * 
  *     cdef object result = np.full(size, np.nan)
  *     cdef double[:] output = result             # <<<<<<<<<<<<<<
  * 
  *     cdef double flag = NAN, up_flag = 1.0, down_flag=0.0
 */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(6, 45, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(6, 46, __pyx_L1_error)
   __pyx_v_output = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "src/mintalib/cython/flags.pxi":47
+  /* "src/mintalib/cython/flags.pxi":48
  *     cdef double[:] output = result
  * 
  *     cdef double flag = NAN, up_flag = 1.0, down_flag=0.0             # <<<<<<<<<<<<<<
@@ -21455,7 +21548,7 @@ static PyObject *__pyx_pf_8mintalib_4core_20calc_updown(CYTHON_UNUSED PyObject *
   __pyx_v_up_flag = 1.0;
   __pyx_v_down_flag = 0.0;
 
-  /* "src/mintalib/cython/flags.pxi":48
+  /* "src/mintalib/cython/flags.pxi":49
  * 
  *     cdef double flag = NAN, up_flag = 1.0, down_flag=0.0
  *     cdef double value = NAN, prev = NAN             # <<<<<<<<<<<<<<
@@ -21465,142 +21558,173 @@ static PyObject *__pyx_pf_8mintalib_4core_20calc_updown(CYTHON_UNUSED PyObject *
   __pyx_v_value = __pyx_v_8mintalib_4core_NAN;
   __pyx_v_prev = __pyx_v_8mintalib_4core_NAN;
 
-  /* "src/mintalib/cython/flags.pxi":49
+  /* "src/mintalib/cython/flags.pxi":50
  *     cdef double flag = NAN, up_flag = 1.0, down_flag=0.0
  *     cdef double value = NAN, prev = NAN
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
-  /* "src/mintalib/cython/flags.pxi":51
+  /* "src/mintalib/cython/flags.pxi":52
  *     cdef long i = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         value = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/flags.pxi":53
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             value = xs[i]
  * 
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_11 = __pyx_t_7;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_11 = __pyx_t_7;
+        for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+          __pyx_v_i = __pyx_t_12;
 
-    /* "src/mintalib/cython/flags.pxi":52
+          /* "src/mintalib/cython/flags.pxi":54
+ *     with nogil:
+ *         for i in range(size):
+ *             value = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         value = xs[i]             # <<<<<<<<<<<<<<
- * 
- *         if value > up_level >= prev:
+ *             if value > up_level >= prev:
 */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_13 = __pyx_v_i;
+          __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
 
-    /* "src/mintalib/cython/flags.pxi":54
- *         value = xs[i]
+          /* "src/mintalib/cython/flags.pxi":56
+ *             value = xs[i]
  * 
- *         if value > up_level >= prev:             # <<<<<<<<<<<<<<
- *             flag = up_flag
- *         elif value <= down_level < prev:
+ *             if value > up_level >= prev:             # <<<<<<<<<<<<<<
+ *                 flag = up_flag
+ *             elif value <= down_level < prev:
 */
-    __pyx_t_14 = (__pyx_v_value > __pyx_v_up_level);
-    if (__pyx_t_14) {
-      __pyx_t_14 = (__pyx_v_up_level >= __pyx_v_prev);
-    }
-    if (__pyx_t_14) {
+          __pyx_t_14 = (__pyx_v_value > __pyx_v_up_level);
+          if (__pyx_t_14) {
+            __pyx_t_14 = (__pyx_v_up_level >= __pyx_v_prev);
+          }
+          if (__pyx_t_14) {
 
-      /* "src/mintalib/cython/flags.pxi":55
+            /* "src/mintalib/cython/flags.pxi":57
  * 
- *         if value > up_level >= prev:
- *             flag = up_flag             # <<<<<<<<<<<<<<
- *         elif value <= down_level < prev:
- *             flag = down_flag
+ *             if value > up_level >= prev:
+ *                 flag = up_flag             # <<<<<<<<<<<<<<
+ *             elif value <= down_level < prev:
+ *                 flag = down_flag
 */
-      __pyx_v_flag = __pyx_v_up_flag;
+            __pyx_v_flag = __pyx_v_up_flag;
 
-      /* "src/mintalib/cython/flags.pxi":54
- *         value = xs[i]
+            /* "src/mintalib/cython/flags.pxi":56
+ *             value = xs[i]
  * 
- *         if value > up_level >= prev:             # <<<<<<<<<<<<<<
- *             flag = up_flag
- *         elif value <= down_level < prev:
+ *             if value > up_level >= prev:             # <<<<<<<<<<<<<<
+ *                 flag = up_flag
+ *             elif value <= down_level < prev:
 */
-      goto __pyx_L5;
-    }
+            goto __pyx_L8;
+          }
 
-    /* "src/mintalib/cython/flags.pxi":56
- *         if value > up_level >= prev:
- *             flag = up_flag
- *         elif value <= down_level < prev:             # <<<<<<<<<<<<<<
- *             flag = down_flag
- * 
-*/
-    __pyx_t_14 = (__pyx_v_value <= __pyx_v_down_level);
-    if (__pyx_t_14) {
-      __pyx_t_14 = (__pyx_v_down_level < __pyx_v_prev);
-    }
-    if (__pyx_t_14) {
-
-      /* "src/mintalib/cython/flags.pxi":57
- *             flag = up_flag
- *         elif value <= down_level < prev:
- *             flag = down_flag             # <<<<<<<<<<<<<<
- * 
- *         output[i] = flag
-*/
-      __pyx_v_flag = __pyx_v_down_flag;
-
-      /* "src/mintalib/cython/flags.pxi":56
- *         if value > up_level >= prev:
- *             flag = up_flag
- *         elif value <= down_level < prev:             # <<<<<<<<<<<<<<
- *             flag = down_flag
+          /* "src/mintalib/cython/flags.pxi":58
+ *             if value > up_level >= prev:
+ *                 flag = up_flag
+ *             elif value <= down_level < prev:             # <<<<<<<<<<<<<<
+ *                 flag = down_flag
  * 
 */
-    }
-    __pyx_L5:;
+          __pyx_t_14 = (__pyx_v_value <= __pyx_v_down_level);
+          if (__pyx_t_14) {
+            __pyx_t_14 = (__pyx_v_down_level < __pyx_v_prev);
+          }
+          if (__pyx_t_14) {
 
-    /* "src/mintalib/cython/flags.pxi":59
- *             flag = down_flag
+            /* "src/mintalib/cython/flags.pxi":59
+ *                 flag = up_flag
+ *             elif value <= down_level < prev:
+ *                 flag = down_flag             # <<<<<<<<<<<<<<
  * 
- *         output[i] = flag             # <<<<<<<<<<<<<<
- * 
- *         if value == value:
+ *             output[i] = flag
 */
-    __pyx_t_13 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_flag;
+            __pyx_v_flag = __pyx_v_down_flag;
 
-    /* "src/mintalib/cython/flags.pxi":61
- *         output[i] = flag
- * 
- *         if value == value:             # <<<<<<<<<<<<<<
- *             prev = value
+            /* "src/mintalib/cython/flags.pxi":58
+ *             if value > up_level >= prev:
+ *                 flag = up_flag
+ *             elif value <= down_level < prev:             # <<<<<<<<<<<<<<
+ *                 flag = down_flag
  * 
 */
-    __pyx_t_14 = (__pyx_v_value == __pyx_v_value);
-    if (__pyx_t_14) {
+          }
+          __pyx_L8:;
 
-      /* "src/mintalib/cython/flags.pxi":62
+          /* "src/mintalib/cython/flags.pxi":61
+ *                 flag = down_flag
  * 
- *         if value == value:
- *             prev = value             # <<<<<<<<<<<<<<
+ *             output[i] = flag             # <<<<<<<<<<<<<<
+ * 
+ *             if value == value:
+*/
+          __pyx_t_13 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_flag;
+
+          /* "src/mintalib/cython/flags.pxi":63
+ *             output[i] = flag
+ * 
+ *             if value == value:             # <<<<<<<<<<<<<<
+ *                 prev = value
+ * 
+*/
+          __pyx_t_14 = (__pyx_v_value == __pyx_v_value);
+          if (__pyx_t_14) {
+
+            /* "src/mintalib/cython/flags.pxi":64
+ * 
+ *             if value == value:
+ *                 prev = value             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_v_prev = __pyx_v_value;
+            __pyx_v_prev = __pyx_v_value;
 
-      /* "src/mintalib/cython/flags.pxi":61
- *         output[i] = flag
+            /* "src/mintalib/cython/flags.pxi":63
+ *             output[i] = flag
  * 
- *         if value == value:             # <<<<<<<<<<<<<<
- *             prev = value
+ *             if value == value:             # <<<<<<<<<<<<<<
+ *                 prev = value
  * 
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/flags.pxi":52
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/flags.pxi":64
- *             prev = value
+  /* "src/mintalib/cython/flags.pxi":66
+ *                 prev = value
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -21611,7 +21735,7 @@ static PyObject *__pyx_pf_8mintalib_4core_20calc_updown(CYTHON_UNUSED PyObject *
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/flags.pxi":32
+  /* "src/mintalib/cython/flags.pxi":33
  * 
  * 
  * def calc_updown(series, double up_level=0.0, double down_level=0.0):             # <<<<<<<<<<<<<<
@@ -21640,7 +21764,7 @@ static PyObject *__pyx_pf_8mintalib_4core_20calc_updown(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/flags.pxi":68
+/* "src/mintalib/cython/flags.pxi":70
  * 
  * 
  * def where_flag(flag, x, y, z=NAN):             # <<<<<<<<<<<<<<
@@ -21658,18 +21782,18 @@ static PyObject *__pyx_pf_8mintalib_4core_136__defaults__(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__defaults__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 68, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__Pyx_CyFunction_Defaults(struct __pyx_defaults, __pyx_self)->arg0);
   __Pyx_GIVEREF(__Pyx_CyFunction_Defaults(struct __pyx_defaults, __pyx_self)->arg0);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __Pyx_CyFunction_Defaults(struct __pyx_defaults, __pyx_self)->arg0) != (0)) __PYX_ERR(6, 68, __pyx_L1_error);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 68, __pyx_L1_error)
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __Pyx_CyFunction_Defaults(struct __pyx_defaults, __pyx_self)->arg0) != (0)) __PYX_ERR(6, 70, __pyx_L1_error);
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(6, 68, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(6, 70, __pyx_L1_error);
   __Pyx_INCREF(Py_None);
   __Pyx_GIVEREF(Py_None);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, Py_None) != (0)) __PYX_ERR(6, 68, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, Py_None) != (0)) __PYX_ERR(6, 70, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -21731,47 +21855,47 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_flag,&__pyx_mstate_global->__pyx_n_u_x,&__pyx_mstate_global->__pyx_n_u_y,&__pyx_mstate_global->__pyx_n_u_z,0};
     struct __pyx_defaults *__pyx_dynamic_args = __Pyx_CyFunction_Defaults(struct __pyx_defaults, __pyx_self);
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(6, 68, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(6, 70, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(6, 68, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(6, 70, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(6, 68, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(6, 70, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(6, 68, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(6, 70, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(6, 68, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(6, 70, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "where_flag", 0) < (0)) __PYX_ERR(6, 68, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "where_flag", 0) < (0)) __PYX_ERR(6, 70, __pyx_L3_error)
       if (!values[3]) values[3] = __Pyx_NewRef(__pyx_dynamic_args->arg0);
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("where_flag", 0, 3, 4, i); __PYX_ERR(6, 68, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("where_flag", 0, 3, 4, i); __PYX_ERR(6, 70, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(6, 68, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(6, 70, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(6, 68, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(6, 70, __pyx_L3_error)
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(6, 68, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(6, 70, __pyx_L3_error)
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(6, 68, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(6, 70, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -21784,7 +21908,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("where_flag", 0, 3, 4, __pyx_nargs); __PYX_ERR(6, 68, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("where_flag", 0, 3, 4, __pyx_nargs); __PYX_ERR(6, 70, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -21841,7 +21965,7 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("where_flag", 0);
 
-  /* "src/mintalib/cython/flags.pxi":71
+  /* "src/mintalib/cython/flags.pxi":73
  *     """Value according to flag, selecting between x, y or z"""
  * 
  *     cdef const double[:] fs = np.asarray(flag, float)             # <<<<<<<<<<<<<<
@@ -21849,9 +21973,9 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
  *     cdef long size = fs.size
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(6, 71, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(6, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 71, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_5 = 1;
@@ -21871,32 +21995,32 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 71, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 73, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_1, 0); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(6, 71, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_1, 0); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(6, 73, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_fs = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "src/mintalib/cython/flags.pxi":73
+  /* "src/mintalib/cython/flags.pxi":75
  *     cdef const double[:] fs = np.asarray(flag, float)
  * 
  *     cdef long size = fs.size             # <<<<<<<<<<<<<<
  * 
  *     cdef const double[:] xs = np.broadcast_to(np.float_(x), size)
 */
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_fs, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 73, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_fs, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 73, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = __Pyx_PyLong_As_long(__pyx_t_4); if (unlikely((__pyx_t_7 == (long)-1) && PyErr_Occurred())) __PYX_ERR(6, 73, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyLong_As_long(__pyx_t_4); if (unlikely((__pyx_t_7 == (long)-1) && PyErr_Occurred())) __PYX_ERR(6, 75, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_size = __pyx_t_7;
 
-  /* "src/mintalib/cython/flags.pxi":75
+  /* "src/mintalib/cython/flags.pxi":77
  *     cdef long size = fs.size
  * 
  *     cdef const double[:] xs = np.broadcast_to(np.float_(x), size)             # <<<<<<<<<<<<<<
@@ -21904,15 +22028,15 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
  *     cdef const double[:] zs = np.broadcast_to(np.float_(z), size)
 */
   __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 75, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_broadcast_to); if (unlikely(!__pyx_t_3)) __PYX_ERR(6, 75, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_broadcast_to); if (unlikely(!__pyx_t_3)) __PYX_ERR(6, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_8 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 75, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_float); if (unlikely(!__pyx_t_10)) __PYX_ERR(6, 75, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_float); if (unlikely(!__pyx_t_10)) __PYX_ERR(6, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_5 = 1;
@@ -21932,10 +22056,10 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_10, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 75, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_10 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_10)) __PYX_ERR(6, 75, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_10)) __PYX_ERR(6, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -21956,16 +22080,16 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 75, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
-  __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_4, 0); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(6, 75, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_4, 0); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(6, 77, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_xs = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "src/mintalib/cython/flags.pxi":76
+  /* "src/mintalib/cython/flags.pxi":78
  * 
  *     cdef const double[:] xs = np.broadcast_to(np.float_(x), size)
  *     cdef const double[:] ys = np.broadcast_to(np.float_(y), size)             # <<<<<<<<<<<<<<
@@ -21973,15 +22097,15 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
  * 
 */
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(6, 76, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(6, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_broadcast_to); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 76, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_broadcast_to); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 76, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_float); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 76, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_float); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_5 = 1;
@@ -22001,10 +22125,10 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
     __pyx_t_10 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_9, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_10)) __PYX_ERR(6, 76, __pyx_L1_error)
+    if (unlikely(!__pyx_t_10)) __PYX_ERR(6, 78, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
   }
-  __pyx_t_9 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 76, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -22025,16 +22149,16 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 76, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 78, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
-  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_4, 0); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(6, 76, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_4, 0); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(6, 78, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_ys = __pyx_t_12;
   __pyx_t_12.memview = NULL;
   __pyx_t_12.data = NULL;
 
-  /* "src/mintalib/cython/flags.pxi":77
+  /* "src/mintalib/cython/flags.pxi":79
  *     cdef const double[:] xs = np.broadcast_to(np.float_(x), size)
  *     cdef const double[:] ys = np.broadcast_to(np.float_(y), size)
  *     cdef const double[:] zs = np.broadcast_to(np.float_(z), size)             # <<<<<<<<<<<<<<
@@ -22042,15 +22166,15 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
  *     cdef object result = np.full(size, np.nan)
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 77, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_broadcast_to); if (unlikely(!__pyx_t_10)) __PYX_ERR(6, 77, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_broadcast_to); if (unlikely(!__pyx_t_10)) __PYX_ERR(6, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 77, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(6, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_float); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 77, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_float); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_5 = 1;
@@ -22070,10 +22194,10 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
     __pyx_t_9 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_8, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 77, __pyx_L1_error)
+    if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 79, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
   }
-  __pyx_t_8 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 77, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -22094,16 +22218,16 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 77, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 79, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_4, 0); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(6, 77, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_4, 0); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(6, 79, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_zs = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "src/mintalib/cython/flags.pxi":79
+  /* "src/mintalib/cython/flags.pxi":81
  *     cdef const double[:] zs = np.broadcast_to(np.float_(z), size)
  * 
  *     cdef object result = np.full(size, np.nan)             # <<<<<<<<<<<<<<
@@ -22111,16 +22235,16 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
  * 
 */
   __pyx_t_10 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 79, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 79, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_9)) __PYX_ERR(6, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 79, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_8)) __PYX_ERR(6, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 79, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(6, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(6, 79, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(6, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_5 = 1;
@@ -22142,25 +22266,25 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 79, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 81, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_v_result = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/flags.pxi":80
+  /* "src/mintalib/cython/flags.pxi":82
  * 
  *     cdef object result = np.full(size, np.nan)
  *     cdef double[:] output = result             # <<<<<<<<<<<<<<
  * 
  *     cdef double value = NAN
 */
-  __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(6, 80, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(6, 82, __pyx_L1_error)
   __pyx_v_output = __pyx_t_14;
   __pyx_t_14.memview = NULL;
   __pyx_t_14.data = NULL;
 
-  /* "src/mintalib/cython/flags.pxi":82
+  /* "src/mintalib/cython/flags.pxi":84
  *     cdef double[:] output = result
  * 
  *     cdef double value = NAN             # <<<<<<<<<<<<<<
@@ -22169,7 +22293,7 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
 */
   __pyx_v_value = __pyx_v_8mintalib_4core_NAN;
 
-  /* "src/mintalib/cython/flags.pxi":83
+  /* "src/mintalib/cython/flags.pxi":85
  * 
  *     cdef double value = NAN
  *     cdef double fval = NAN             # <<<<<<<<<<<<<<
@@ -22178,123 +22302,154 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
 */
   __pyx_v_fval = __pyx_v_8mintalib_4core_NAN;
 
-  /* "src/mintalib/cython/flags.pxi":84
+  /* "src/mintalib/cython/flags.pxi":86
  *     cdef double value = NAN
  *     cdef double fval = NAN
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
-  /* "src/mintalib/cython/flags.pxi":86
+  /* "src/mintalib/cython/flags.pxi":88
  *     cdef long i = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         fval = fs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             fval = fs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/flags.pxi":89
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             fval = fs[i]
  * 
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_15 = __pyx_t_7;
-  for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
-    __pyx_v_i = __pyx_t_16;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_15 = __pyx_t_7;
+        for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
+          __pyx_v_i = __pyx_t_16;
 
-    /* "src/mintalib/cython/flags.pxi":87
+          /* "src/mintalib/cython/flags.pxi":90
+ *     with nogil:
+ *         for i in range(size):
+ *             fval = fs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         fval = fs[i]             # <<<<<<<<<<<<<<
+ *             if fval > 0:
+*/
+          __pyx_t_17 = __pyx_v_i;
+          __pyx_v_fval = (*((double const  *) ( /* dim=0 */ (__pyx_v_fs.data + __pyx_t_17 * __pyx_v_fs.strides[0]) )));
+
+          /* "src/mintalib/cython/flags.pxi":92
+ *             fval = fs[i]
  * 
- *         if fval > 0:
+ *             if fval > 0:             # <<<<<<<<<<<<<<
+ *                 value = xs[i]
+ *             elif fval <= 0:
 */
-    __pyx_t_17 = __pyx_v_i;
-    __pyx_v_fval = (*((double const  *) ( /* dim=0 */ (__pyx_v_fs.data + __pyx_t_17 * __pyx_v_fs.strides[0]) )));
+          __pyx_t_18 = (__pyx_v_fval > 0.0);
+          if (__pyx_t_18) {
 
-    /* "src/mintalib/cython/flags.pxi":89
- *         fval = fs[i]
+            /* "src/mintalib/cython/flags.pxi":93
  * 
- *         if fval > 0:             # <<<<<<<<<<<<<<
- *             value = xs[i]
- *         elif fval <= 0:
+ *             if fval > 0:
+ *                 value = xs[i]             # <<<<<<<<<<<<<<
+ *             elif fval <= 0:
+ *                 value = ys[i]
 */
-    __pyx_t_18 = (__pyx_v_fval > 0.0);
-    if (__pyx_t_18) {
+            __pyx_t_17 = __pyx_v_i;
+            __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_17 * __pyx_v_xs.strides[0]) )));
 
-      /* "src/mintalib/cython/flags.pxi":90
+            /* "src/mintalib/cython/flags.pxi":92
+ *             fval = fs[i]
  * 
- *         if fval > 0:
- *             value = xs[i]             # <<<<<<<<<<<<<<
- *         elif fval <= 0:
- *             value = ys[i]
+ *             if fval > 0:             # <<<<<<<<<<<<<<
+ *                 value = xs[i]
+ *             elif fval <= 0:
 */
-      __pyx_t_17 = __pyx_v_i;
-      __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_17 * __pyx_v_xs.strides[0]) )));
+            goto __pyx_L8;
+          }
 
-      /* "src/mintalib/cython/flags.pxi":89
- *         fval = fs[i]
+          /* "src/mintalib/cython/flags.pxi":94
+ *             if fval > 0:
+ *                 value = xs[i]
+ *             elif fval <= 0:             # <<<<<<<<<<<<<<
+ *                 value = ys[i]
+ *             else:
+*/
+          __pyx_t_18 = (__pyx_v_fval <= 0.0);
+          if (__pyx_t_18) {
+
+            /* "src/mintalib/cython/flags.pxi":95
+ *                 value = xs[i]
+ *             elif fval <= 0:
+ *                 value = ys[i]             # <<<<<<<<<<<<<<
+ *             else:
+ *                 value = zs[i]
+*/
+            __pyx_t_17 = __pyx_v_i;
+            __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_ys.data + __pyx_t_17 * __pyx_v_ys.strides[0]) )));
+
+            /* "src/mintalib/cython/flags.pxi":94
+ *             if fval > 0:
+ *                 value = xs[i]
+ *             elif fval <= 0:             # <<<<<<<<<<<<<<
+ *                 value = ys[i]
+ *             else:
+*/
+            goto __pyx_L8;
+          }
+
+          /* "src/mintalib/cython/flags.pxi":97
+ *                 value = ys[i]
+ *             else:
+ *                 value = zs[i]             # <<<<<<<<<<<<<<
  * 
- *         if fval > 0:             # <<<<<<<<<<<<<<
- *             value = xs[i]
- *         elif fval <= 0:
+ *             output[i] = value
 */
-      goto __pyx_L5;
-    }
+          /*else*/ {
+            __pyx_t_17 = __pyx_v_i;
+            __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_zs.data + __pyx_t_17 * __pyx_v_zs.strides[0]) )));
+          }
+          __pyx_L8:;
 
-    /* "src/mintalib/cython/flags.pxi":91
- *         if fval > 0:
- *             value = xs[i]
- *         elif fval <= 0:             # <<<<<<<<<<<<<<
- *             value = ys[i]
- *         else:
-*/
-    __pyx_t_18 = (__pyx_v_fval <= 0.0);
-    if (__pyx_t_18) {
-
-      /* "src/mintalib/cython/flags.pxi":92
- *             value = xs[i]
- *         elif fval <= 0:
- *             value = ys[i]             # <<<<<<<<<<<<<<
- *         else:
- *             value = zs[i]
-*/
-      __pyx_t_17 = __pyx_v_i;
-      __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_ys.data + __pyx_t_17 * __pyx_v_ys.strides[0]) )));
-
-      /* "src/mintalib/cython/flags.pxi":91
- *         if fval > 0:
- *             value = xs[i]
- *         elif fval <= 0:             # <<<<<<<<<<<<<<
- *             value = ys[i]
- *         else:
-*/
-      goto __pyx_L5;
-    }
-
-    /* "src/mintalib/cython/flags.pxi":94
- *             value = ys[i]
- *         else:
- *             value = zs[i]             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/flags.pxi":99
+ *                 value = zs[i]
  * 
- *         output[i] = value
-*/
-    /*else*/ {
-      __pyx_t_17 = __pyx_v_i;
-      __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_zs.data + __pyx_t_17 * __pyx_v_zs.strides[0]) )));
-    }
-    __pyx_L5:;
-
-    /* "src/mintalib/cython/flags.pxi":96
- *             value = zs[i]
- * 
- *         output[i] = value             # <<<<<<<<<<<<<<
+ *             output[i] = value             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_17 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_value;
+          __pyx_t_17 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_value;
+        }
+      }
+
+      /* "src/mintalib/cython/flags.pxi":88
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             fval = fs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/flags.pxi":98
- *         output[i] = value
+  /* "src/mintalib/cython/flags.pxi":101
+ *             output[i] = value
  * 
  *     return result             # <<<<<<<<<<<<<<
 */
@@ -22303,7 +22458,7 @@ static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *_
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/flags.pxi":68
+  /* "src/mintalib/cython/flags.pxi":70
  * 
  * 
  * def where_flag(flag, x, y, z=NAN):             # <<<<<<<<<<<<<<
@@ -22593,132 +22748,163 @@ static PyObject *__pyx_pf_8mintalib_4core_24calc_sign(CYTHON_UNUSED PyObject *__
  *     cdef double sign = NAN
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
   /* "src/mintalib/cython/sign.pxi":17
  *     cdef long i = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         value = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/sign.pxi":18
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             value = xs[i]
  * 
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_10 = __pyx_t_7;
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_10 = __pyx_t_7;
+        for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
+          __pyx_v_i = __pyx_t_11;
 
-    /* "src/mintalib/cython/sign.pxi":18
+          /* "src/mintalib/cython/sign.pxi":19
+ *     with nogil:
+ *         for i in range(size):
+ *             value = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         value = xs[i]             # <<<<<<<<<<<<<<
+ *             if value > 0:
+*/
+          __pyx_t_12 = __pyx_v_i;
+          __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_12 * __pyx_v_xs.strides[0]) )));
+
+          /* "src/mintalib/cython/sign.pxi":21
+ *             value = xs[i]
  * 
- *         if value > 0:
+ *             if value > 0:             # <<<<<<<<<<<<<<
+ *                 sign = 1.0
+ *             elif value < 0:
 */
-    __pyx_t_12 = __pyx_v_i;
-    __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_12 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_13 = (__pyx_v_value > 0.0);
+          if (__pyx_t_13) {
 
-    /* "src/mintalib/cython/sign.pxi":20
- *         value = xs[i]
+            /* "src/mintalib/cython/sign.pxi":22
  * 
- *         if value > 0:             # <<<<<<<<<<<<<<
- *             sign = 1.0
- *         elif value < 0:
+ *             if value > 0:
+ *                 sign = 1.0             # <<<<<<<<<<<<<<
+ *             elif value < 0:
+ *                 sign = -1.0
 */
-    __pyx_t_13 = (__pyx_v_value > 0.0);
-    if (__pyx_t_13) {
+            __pyx_v_sign = 1.0;
 
-      /* "src/mintalib/cython/sign.pxi":21
+            /* "src/mintalib/cython/sign.pxi":21
+ *             value = xs[i]
  * 
- *         if value > 0:
- *             sign = 1.0             # <<<<<<<<<<<<<<
- *         elif value < 0:
- *             sign = -1.0
+ *             if value > 0:             # <<<<<<<<<<<<<<
+ *                 sign = 1.0
+ *             elif value < 0:
 */
-      __pyx_v_sign = 1.0;
+            goto __pyx_L8;
+          }
 
-      /* "src/mintalib/cython/sign.pxi":20
- *         value = xs[i]
- * 
- *         if value > 0:             # <<<<<<<<<<<<<<
- *             sign = 1.0
- *         elif value < 0:
+          /* "src/mintalib/cython/sign.pxi":23
+ *             if value > 0:
+ *                 sign = 1.0
+ *             elif value < 0:             # <<<<<<<<<<<<<<
+ *                 sign = -1.0
+ *             elif value == 0:
 */
-      goto __pyx_L5;
-    }
+          __pyx_t_13 = (__pyx_v_value < 0.0);
+          if (__pyx_t_13) {
 
-    /* "src/mintalib/cython/sign.pxi":22
- *         if value > 0:
- *             sign = 1.0
- *         elif value < 0:             # <<<<<<<<<<<<<<
- *             sign = -1.0
- *         elif value == 0:
+            /* "src/mintalib/cython/sign.pxi":24
+ *                 sign = 1.0
+ *             elif value < 0:
+ *                 sign = -1.0             # <<<<<<<<<<<<<<
+ *             elif value == 0:
+ *                 sign = 0.0
 */
-    __pyx_t_13 = (__pyx_v_value < 0.0);
-    if (__pyx_t_13) {
+            __pyx_v_sign = -1.0;
 
-      /* "src/mintalib/cython/sign.pxi":23
- *             sign = 1.0
- *         elif value < 0:
- *             sign = -1.0             # <<<<<<<<<<<<<<
- *         elif value == 0:
- *             sign = 0.0
+            /* "src/mintalib/cython/sign.pxi":23
+ *             if value > 0:
+ *                 sign = 1.0
+ *             elif value < 0:             # <<<<<<<<<<<<<<
+ *                 sign = -1.0
+ *             elif value == 0:
 */
-      __pyx_v_sign = -1.0;
+            goto __pyx_L8;
+          }
 
-      /* "src/mintalib/cython/sign.pxi":22
- *         if value > 0:
- *             sign = 1.0
- *         elif value < 0:             # <<<<<<<<<<<<<<
- *             sign = -1.0
- *         elif value == 0:
-*/
-      goto __pyx_L5;
-    }
-
-    /* "src/mintalib/cython/sign.pxi":24
- *         elif value < 0:
- *             sign = -1.0
- *         elif value == 0:             # <<<<<<<<<<<<<<
- *             sign = 0.0
- * 
-*/
-    __pyx_t_13 = (__pyx_v_value == 0.0);
-    if (__pyx_t_13) {
-
-      /* "src/mintalib/cython/sign.pxi":25
- *             sign = -1.0
- *         elif value == 0:
- *             sign = 0.0             # <<<<<<<<<<<<<<
- * 
- *         output[i] = sign
-*/
-      __pyx_v_sign = 0.0;
-
-      /* "src/mintalib/cython/sign.pxi":24
- *         elif value < 0:
- *             sign = -1.0
- *         elif value == 0:             # <<<<<<<<<<<<<<
- *             sign = 0.0
+          /* "src/mintalib/cython/sign.pxi":25
+ *             elif value < 0:
+ *                 sign = -1.0
+ *             elif value == 0:             # <<<<<<<<<<<<<<
+ *                 sign = 0.0
  * 
 */
-    }
-    __pyx_L5:;
+          __pyx_t_13 = (__pyx_v_value == 0.0);
+          if (__pyx_t_13) {
 
-    /* "src/mintalib/cython/sign.pxi":27
- *             sign = 0.0
+            /* "src/mintalib/cython/sign.pxi":26
+ *                 sign = -1.0
+ *             elif value == 0:
+ *                 sign = 0.0             # <<<<<<<<<<<<<<
  * 
- *         output[i] = sign             # <<<<<<<<<<<<<<
+ *             output[i] = sign
+*/
+            __pyx_v_sign = 0.0;
+
+            /* "src/mintalib/cython/sign.pxi":25
+ *             elif value < 0:
+ *                 sign = -1.0
+ *             elif value == 0:             # <<<<<<<<<<<<<<
+ *                 sign = 0.0
+ * 
+*/
+          }
+          __pyx_L8:;
+
+          /* "src/mintalib/cython/sign.pxi":28
+ *                 sign = 0.0
+ * 
+ *             output[i] = sign             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_12 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_12 * __pyx_v_output.strides[0]) )) = __pyx_v_sign;
+          __pyx_t_12 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_12 * __pyx_v_output.strides[0]) )) = __pyx_v_sign;
+        }
+      }
+
+      /* "src/mintalib/cython/sign.pxi":17
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/sign.pxi":29
- *         output[i] = sign
+  /* "src/mintalib/cython/sign.pxi":30
+ *             output[i] = sign
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -23035,155 +23221,186 @@ static PyObject *__pyx_pf_8mintalib_4core_26calc_step(CYTHON_UNUSED PyObject *__
  * 
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
   /* "src/mintalib/cython/step.pxi":25
  *     cdef long i = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         value, prev = xs[i], value
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value, prev = xs[i], value
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/step.pxi":26
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             value, prev = xs[i], value
  * 
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_10 = __pyx_t_7;
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_10 = __pyx_t_7;
+        for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
+          __pyx_v_i = __pyx_t_11;
 
-    /* "src/mintalib/cython/step.pxi":26
+          /* "src/mintalib/cython/step.pxi":27
+ *     with nogil:
+ *         for i in range(size):
+ *             value, prev = xs[i], value             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         value, prev = xs[i], value             # <<<<<<<<<<<<<<
- * 
- *         if isnan(value) or isnan(prev):
+ *             if isnan(value) or isnan(prev):
 */
-    __pyx_t_12 = __pyx_v_i;
-    __pyx_t_13 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_12 * __pyx_v_xs.strides[0]) )));
-    __pyx_t_14 = __pyx_v_value;
-    __pyx_v_value = __pyx_t_13;
-    __pyx_v_prev = __pyx_t_14;
+          __pyx_t_12 = __pyx_v_i;
+          __pyx_t_13 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_12 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_14 = __pyx_v_value;
+          __pyx_v_value = __pyx_t_13;
+          __pyx_v_prev = __pyx_t_14;
 
-    /* "src/mintalib/cython/step.pxi":28
- *         value, prev = xs[i], value
+          /* "src/mintalib/cython/step.pxi":29
+ *             value, prev = xs[i], value
  * 
- *         if isnan(value) or isnan(prev):             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-    __pyx_t_16 = isnan(__pyx_v_value);
-    if (!__pyx_t_16) {
-    } else {
-      __pyx_t_15 = __pyx_t_16;
-      goto __pyx_L6_bool_binop_done;
-    }
-    __pyx_t_16 = isnan(__pyx_v_prev);
-    __pyx_t_15 = __pyx_t_16;
-    __pyx_L6_bool_binop_done:;
-    if (__pyx_t_15) {
-
-      /* "src/mintalib/cython/step.pxi":29
- * 
- *         if isnan(value) or isnan(prev):
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         ul, ll = prev + threshold, prev - threshold
-*/
-      goto __pyx_L3_continue;
-
-      /* "src/mintalib/cython/step.pxi":28
- *         value, prev = xs[i], value
- * 
- *         if isnan(value) or isnan(prev):             # <<<<<<<<<<<<<<
- *             continue
+ *             if isnan(value) or isnan(prev):             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    }
+          __pyx_t_16 = isnan(__pyx_v_value);
+          if (!__pyx_t_16) {
+          } else {
+            __pyx_t_15 = __pyx_t_16;
+            goto __pyx_L9_bool_binop_done;
+          }
+          __pyx_t_16 = isnan(__pyx_v_prev);
+          __pyx_t_15 = __pyx_t_16;
+          __pyx_L9_bool_binop_done:;
+          if (__pyx_t_15) {
 
-    /* "src/mintalib/cython/step.pxi":31
- *             continue
+            /* "src/mintalib/cython/step.pxi":30
  * 
- *         ul, ll = prev + threshold, prev - threshold             # <<<<<<<<<<<<<<
+ *             if isnan(value) or isnan(prev):
+ *                 continue             # <<<<<<<<<<<<<<
  * 
- *         if value > ul:
+ *             ul, ll = prev + threshold, prev - threshold
 */
-    __pyx_t_14 = (__pyx_v_prev + __pyx_v_threshold);
-    __pyx_t_13 = (__pyx_v_prev - __pyx_v_threshold);
-    __pyx_v_ul = __pyx_t_14;
-    __pyx_v_ll = __pyx_t_13;
+            goto __pyx_L6_continue;
 
-    /* "src/mintalib/cython/step.pxi":33
- *         ul, ll = prev + threshold, prev - threshold
+            /* "src/mintalib/cython/step.pxi":29
+ *             value, prev = xs[i], value
  * 
- *         if value > ul:             # <<<<<<<<<<<<<<
- *             value = ul
- *         elif value < ll:
-*/
-    __pyx_t_15 = (__pyx_v_value > __pyx_v_ul);
-    if (__pyx_t_15) {
-
-      /* "src/mintalib/cython/step.pxi":34
- * 
- *         if value > ul:
- *             value = ul             # <<<<<<<<<<<<<<
- *         elif value < ll:
- *             value = ll
-*/
-      __pyx_v_value = __pyx_v_ul;
-
-      /* "src/mintalib/cython/step.pxi":33
- *         ul, ll = prev + threshold, prev - threshold
- * 
- *         if value > ul:             # <<<<<<<<<<<<<<
- *             value = ul
- *         elif value < ll:
-*/
-      goto __pyx_L8;
-    }
-
-    /* "src/mintalib/cython/step.pxi":35
- *         if value > ul:
- *             value = ul
- *         elif value < ll:             # <<<<<<<<<<<<<<
- *             value = ll
+ *             if isnan(value) or isnan(prev):             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_t_15 = (__pyx_v_value < __pyx_v_ll);
-    if (__pyx_t_15) {
+          }
 
-      /* "src/mintalib/cython/step.pxi":36
- *             value = ul
- *         elif value < ll:
- *             value = ll             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/step.pxi":32
+ *                 continue
  * 
- *         output[i] = value
+ *             ul, ll = prev + threshold, prev - threshold             # <<<<<<<<<<<<<<
+ * 
+ *             if value > ul:
 */
-      __pyx_v_value = __pyx_v_ll;
+          __pyx_t_14 = (__pyx_v_prev + __pyx_v_threshold);
+          __pyx_t_13 = (__pyx_v_prev - __pyx_v_threshold);
+          __pyx_v_ul = __pyx_t_14;
+          __pyx_v_ll = __pyx_t_13;
 
-      /* "src/mintalib/cython/step.pxi":35
- *         if value > ul:
- *             value = ul
- *         elif value < ll:             # <<<<<<<<<<<<<<
- *             value = ll
+          /* "src/mintalib/cython/step.pxi":34
+ *             ul, ll = prev + threshold, prev - threshold
+ * 
+ *             if value > ul:             # <<<<<<<<<<<<<<
+ *                 value = ul
+ *             elif value < ll:
+*/
+          __pyx_t_15 = (__pyx_v_value > __pyx_v_ul);
+          if (__pyx_t_15) {
+
+            /* "src/mintalib/cython/step.pxi":35
+ * 
+ *             if value > ul:
+ *                 value = ul             # <<<<<<<<<<<<<<
+ *             elif value < ll:
+ *                 value = ll
+*/
+            __pyx_v_value = __pyx_v_ul;
+
+            /* "src/mintalib/cython/step.pxi":34
+ *             ul, ll = prev + threshold, prev - threshold
+ * 
+ *             if value > ul:             # <<<<<<<<<<<<<<
+ *                 value = ul
+ *             elif value < ll:
+*/
+            goto __pyx_L11;
+          }
+
+          /* "src/mintalib/cython/step.pxi":36
+ *             if value > ul:
+ *                 value = ul
+ *             elif value < ll:             # <<<<<<<<<<<<<<
+ *                 value = ll
  * 
 */
-    }
-    __pyx_L8:;
+          __pyx_t_15 = (__pyx_v_value < __pyx_v_ll);
+          if (__pyx_t_15) {
 
-    /* "src/mintalib/cython/step.pxi":38
- *             value = ll
+            /* "src/mintalib/cython/step.pxi":37
+ *                 value = ul
+ *             elif value < ll:
+ *                 value = ll             # <<<<<<<<<<<<<<
  * 
- *         output[i] = value             # <<<<<<<<<<<<<<
+ *             output[i] = value
+*/
+            __pyx_v_value = __pyx_v_ll;
+
+            /* "src/mintalib/cython/step.pxi":36
+ *             if value > ul:
+ *                 value = ul
+ *             elif value < ll:             # <<<<<<<<<<<<<<
+ *                 value = ll
+ * 
+*/
+          }
+          __pyx_L11:;
+
+          /* "src/mintalib/cython/step.pxi":39
+ *                 value = ll
+ * 
+ *             output[i] = value             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_12 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_12 * __pyx_v_output.strides[0]) )) = __pyx_v_value;
-    __pyx_L3_continue:;
+          __pyx_t_12 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_12 * __pyx_v_output.strides[0]) )) = __pyx_v_value;
+          __pyx_L6_continue:;
+        }
+      }
+
+      /* "src/mintalib/cython/step.pxi":25
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value, prev = xs[i], value
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/step.pxi":40
- *         output[i] = value
+  /* "src/mintalib/cython/step.pxi":41
+ *             output[i] = value
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -23533,7 +23750,7 @@ static PyObject *__pyx_pf_8mintalib_4core_28calc_clag(CYTHON_UNUSED PyObject *__
  * 
  *     cdef long i = 0, count = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_count = 0;
@@ -23541,145 +23758,176 @@ static PyObject *__pyx_pf_8mintalib_4core_28calc_clag(CYTHON_UNUSED PyObject *__
   /* "src/mintalib/cython/clag.pxi":28
  *     cdef long i = 0, count = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         value = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/clag.pxi":29
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             value = xs[i]
  * 
 */
-  __pyx_t_8 = __pyx_v_size;
-  __pyx_t_11 = __pyx_t_8;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+        __pyx_t_8 = __pyx_v_size;
+        __pyx_t_11 = __pyx_t_8;
+        for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+          __pyx_v_i = __pyx_t_12;
 
-    /* "src/mintalib/cython/clag.pxi":29
+          /* "src/mintalib/cython/clag.pxi":30
+ *     with nogil:
+ *         for i in range(size):
+ *             value = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         value = xs[i]             # <<<<<<<<<<<<<<
- * 
- *         if isnan(value):
+ *             if isnan(value):
 */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_13 = __pyx_v_i;
+          __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
 
-    /* "src/mintalib/cython/clag.pxi":31
- *         value = xs[i]
+          /* "src/mintalib/cython/clag.pxi":32
+ *             value = xs[i]
  * 
- *         if isnan(value):             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-    __pyx_t_1 = isnan(__pyx_v_value);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/clag.pxi":32
- * 
- *         if isnan(value):
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         if prev != value:
-*/
-      goto __pyx_L4_continue;
-
-      /* "src/mintalib/cython/clag.pxi":31
- *         value = xs[i]
- * 
- *         if isnan(value):             # <<<<<<<<<<<<<<
- *             continue
+ *             if isnan(value):             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    }
+          __pyx_t_1 = isnan(__pyx_v_value);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/clag.pxi":34
- *             continue
+            /* "src/mintalib/cython/clag.pxi":33
  * 
- *         if prev != value:             # <<<<<<<<<<<<<<
- *             prev = value
- *             count = 0
-*/
-    __pyx_t_1 = (__pyx_v_prev != __pyx_v_value);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/clag.pxi":35
+ *             if isnan(value):
+ *                 continue             # <<<<<<<<<<<<<<
  * 
- *         if prev != value:
- *             prev = value             # <<<<<<<<<<<<<<
- *             count = 0
- *         else:
+ *             if prev != value:
 */
-      __pyx_v_prev = __pyx_v_value;
+            goto __pyx_L7_continue;
 
-      /* "src/mintalib/cython/clag.pxi":36
- *         if prev != value:
- *             prev = value
- *             count = 0             # <<<<<<<<<<<<<<
- *         else:
- *             count += 1
-*/
-      __pyx_v_count = 0;
-
-      /* "src/mintalib/cython/clag.pxi":34
- *             continue
+            /* "src/mintalib/cython/clag.pxi":32
+ *             value = xs[i]
  * 
- *         if prev != value:             # <<<<<<<<<<<<<<
- *             prev = value
- *             count = 0
-*/
-      goto __pyx_L7;
-    }
-
-    /* "src/mintalib/cython/clag.pxi":38
- *             count = 0
- *         else:
- *             count += 1             # <<<<<<<<<<<<<<
- * 
- *         if count >= period:
-*/
-    /*else*/ {
-      __pyx_v_count = (__pyx_v_count + 1);
-    }
-    __pyx_L7:;
-
-    /* "src/mintalib/cython/clag.pxi":40
- *             count += 1
- * 
- *         if count >= period:             # <<<<<<<<<<<<<<
- *             clag = value
+ *             if isnan(value):             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_t_1 = (__pyx_v_count >= __pyx_v_period);
-    if (__pyx_t_1) {
+          }
 
-      /* "src/mintalib/cython/clag.pxi":41
+          /* "src/mintalib/cython/clag.pxi":35
+ *                 continue
  * 
- *         if count >= period:
- *             clag = value             # <<<<<<<<<<<<<<
- * 
- *         output[i] = clag
+ *             if prev != value:             # <<<<<<<<<<<<<<
+ *                 prev = value
+ *                 count = 0
 */
-      __pyx_v_clag = __pyx_v_value;
+          __pyx_t_1 = (__pyx_v_prev != __pyx_v_value);
+          if (__pyx_t_1) {
 
-      /* "src/mintalib/cython/clag.pxi":40
- *             count += 1
+            /* "src/mintalib/cython/clag.pxi":36
  * 
- *         if count >= period:             # <<<<<<<<<<<<<<
- *             clag = value
+ *             if prev != value:
+ *                 prev = value             # <<<<<<<<<<<<<<
+ *                 count = 0
+ *             else:
+*/
+            __pyx_v_prev = __pyx_v_value;
+
+            /* "src/mintalib/cython/clag.pxi":37
+ *             if prev != value:
+ *                 prev = value
+ *                 count = 0             # <<<<<<<<<<<<<<
+ *             else:
+ *                 count += 1
+*/
+            __pyx_v_count = 0;
+
+            /* "src/mintalib/cython/clag.pxi":35
+ *                 continue
+ * 
+ *             if prev != value:             # <<<<<<<<<<<<<<
+ *                 prev = value
+ *                 count = 0
+*/
+            goto __pyx_L10;
+          }
+
+          /* "src/mintalib/cython/clag.pxi":39
+ *                 count = 0
+ *             else:
+ *                 count += 1             # <<<<<<<<<<<<<<
+ * 
+ *             if count >= period:
+*/
+          /*else*/ {
+            __pyx_v_count = (__pyx_v_count + 1);
+          }
+          __pyx_L10:;
+
+          /* "src/mintalib/cython/clag.pxi":41
+ *                 count += 1
+ * 
+ *             if count >= period:             # <<<<<<<<<<<<<<
+ *                 clag = value
  * 
 */
-    }
+          __pyx_t_1 = (__pyx_v_count >= __pyx_v_period);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/clag.pxi":43
- *             clag = value
+            /* "src/mintalib/cython/clag.pxi":42
  * 
- *         output[i] = clag             # <<<<<<<<<<<<<<
+ *             if count >= period:
+ *                 clag = value             # <<<<<<<<<<<<<<
+ * 
+ *             output[i] = clag
+*/
+            __pyx_v_clag = __pyx_v_value;
+
+            /* "src/mintalib/cython/clag.pxi":41
+ *                 count += 1
+ * 
+ *             if count >= period:             # <<<<<<<<<<<<<<
+ *                 clag = value
+ * 
+*/
+          }
+
+          /* "src/mintalib/cython/clag.pxi":44
+ *                 clag = value
+ * 
+ *             output[i] = clag             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_13 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_clag;
-    __pyx_L4_continue:;
+          __pyx_t_13 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_clag;
+          __pyx_L7_continue:;
+        }
+      }
+
+      /* "src/mintalib/cython/clag.pxi":28
+ *     cdef long i = 0, count = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/clag.pxi":45
- *         output[i] = clag
+  /* "src/mintalib/cython/clag.pxi":46
+ *             output[i] = clag
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -25022,7 +25270,7 @@ static PyObject *__pyx_pf_8mintalib_4core_36calc_diff(CYTHON_UNUSED PyObject *__
  *     if period < 0 or period >= size:
  *         raise ValueError(f"Period {period} out of range!")             # <<<<<<<<<<<<<<
  * 
- *     for i in range(period, size):
+ *     with nogil:
 */
     __pyx_t_3 = NULL;
     __pyx_t_9 = __Pyx_PyUnicode_From_long(__pyx_v_period, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(13, 24, __pyx_L1_error)
@@ -25059,51 +25307,82 @@ static PyObject *__pyx_pf_8mintalib_4core_36calc_diff(CYTHON_UNUSED PyObject *__
   /* "src/mintalib/cython/diff.pxi":26
  *         raise ValueError(f"Period {period} out of range!")
  * 
- *     for i in range(period, size):             # <<<<<<<<<<<<<<
- *         v, pv = xs[i], xs[i - period]
- *         diff = v  - pv
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_14 = __pyx_t_7;
-  for (__pyx_t_15 = __pyx_v_period; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
-    __pyx_v_i = __pyx_t_15;
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
 
-    /* "src/mintalib/cython/diff.pxi":27
+        /* "src/mintalib/cython/diff.pxi":27
  * 
- *     for i in range(period, size):
- *         v, pv = xs[i], xs[i - period]             # <<<<<<<<<<<<<<
- *         diff = v  - pv
- *         output[i] = diff
+ *     with nogil:
+ *         for i in range(period, size):             # <<<<<<<<<<<<<<
+ *             v, pv = xs[i], xs[i - period]
+ *             diff = v  - pv
 */
-    __pyx_t_16 = __pyx_v_i;
-    __pyx_t_17 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_16 * __pyx_v_xs.strides[0]) )));
-    __pyx_t_16 = (__pyx_v_i - __pyx_v_period);
-    __pyx_t_18 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_16 * __pyx_v_xs.strides[0]) )));
-    __pyx_v_v = __pyx_t_17;
-    __pyx_v_pv = __pyx_t_18;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_14 = __pyx_t_7;
+        for (__pyx_t_15 = __pyx_v_period; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
+          __pyx_v_i = __pyx_t_15;
 
-    /* "src/mintalib/cython/diff.pxi":28
- *     for i in range(period, size):
- *         v, pv = xs[i], xs[i - period]
- *         diff = v  - pv             # <<<<<<<<<<<<<<
- *         output[i] = diff
+          /* "src/mintalib/cython/diff.pxi":28
+ *     with nogil:
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]             # <<<<<<<<<<<<<<
+ *             diff = v  - pv
+ *             output[i] = diff
+*/
+          __pyx_t_16 = __pyx_v_i;
+          __pyx_t_17 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_16 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_16 = (__pyx_v_i - __pyx_v_period);
+          __pyx_t_18 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_16 * __pyx_v_xs.strides[0]) )));
+          __pyx_v_v = __pyx_t_17;
+          __pyx_v_pv = __pyx_t_18;
+
+          /* "src/mintalib/cython/diff.pxi":29
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]
+ *             diff = v  - pv             # <<<<<<<<<<<<<<
+ *             output[i] = diff
  * 
 */
-    __pyx_v_diff = (__pyx_v_v - __pyx_v_pv);
+          __pyx_v_diff = (__pyx_v_v - __pyx_v_pv);
 
-    /* "src/mintalib/cython/diff.pxi":29
- *         v, pv = xs[i], xs[i - period]
- *         diff = v  - pv
- *         output[i] = diff             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/diff.pxi":30
+ *             v, pv = xs[i], xs[i - period]
+ *             diff = v  - pv
+ *             output[i] = diff             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_16 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_16 * __pyx_v_output.strides[0]) )) = __pyx_v_diff;
+          __pyx_t_16 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_16 * __pyx_v_output.strides[0]) )) = __pyx_v_diff;
+        }
+      }
+
+      /* "src/mintalib/cython/diff.pxi":26
+ *         raise ValueError(f"Period {period} out of range!")
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L8;
+        }
+        __pyx_L8:;
+      }
   }
 
-  /* "src/mintalib/cython/diff.pxi":31
- *         output[i] = diff
+  /* "src/mintalib/cython/diff.pxi":32
+ *             output[i] = diff
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -25264,10 +25543,9 @@ static PyObject *__pyx_pf_8mintalib_4core_38calc_lag(CYTHON_UNUSED PyObject *__p
   PyObject *__pyx_t_9 = NULL;
   PyObject *__pyx_t_10 = NULL;
   __Pyx_memviewslice __pyx_t_11 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  double __pyx_t_12;
+  long __pyx_t_12;
   long __pyx_t_13;
-  long __pyx_t_14;
-  Py_ssize_t __pyx_t_15;
+  Py_ssize_t __pyx_t_14;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -25417,7 +25695,7 @@ static PyObject *__pyx_pf_8mintalib_4core_38calc_lag(CYTHON_UNUSED PyObject *__p
  *     cdef object result = np.full(size, np.nan)
  *     cdef double[:] output = result             # <<<<<<<<<<<<<<
  * 
- *     cdef double v = np.nan
+ *     cdef double v = NAN
 */
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(14, 20, __pyx_L1_error)
   __pyx_v_output = __pyx_t_11;
@@ -25427,63 +25705,87 @@ static PyObject *__pyx_pf_8mintalib_4core_38calc_lag(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/lag.pxi":22
  *     cdef double[:] output = result
  * 
- *     cdef double v = np.nan             # <<<<<<<<<<<<<<
+ *     cdef double v = NAN             # <<<<<<<<<<<<<<
  *     cdef long i = 0
  * 
 */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(14, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_5)) __PYX_ERR(14, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_12 = __Pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(14, 22, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_v_v = __pyx_t_12;
+  __pyx_v_v = __pyx_v_8mintalib_4core_NAN;
 
   /* "src/mintalib/cython/lag.pxi":23
  * 
- *     cdef double v = np.nan
+ *     cdef double v = NAN
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(period, size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
   /* "src/mintalib/cython/lag.pxi":25
  *     cdef long i = 0
  * 
- *     for i in range(period, size):             # <<<<<<<<<<<<<<
- *         v = xs[i - period]
- *         output[i] = v
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period, size):
+ *             v = xs[i - period]
 */
-  __pyx_t_8 = __pyx_v_size;
-  __pyx_t_13 = __pyx_t_8;
-  for (__pyx_t_14 = __pyx_v_period; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
-    __pyx_v_i = __pyx_t_14;
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
 
-    /* "src/mintalib/cython/lag.pxi":26
+        /* "src/mintalib/cython/lag.pxi":26
  * 
- *     for i in range(period, size):
- *         v = xs[i - period]             # <<<<<<<<<<<<<<
- *         output[i] = v
+ *     with nogil:
+ *         for i in range(period, size):             # <<<<<<<<<<<<<<
+ *             v = xs[i - period]
+ *             output[i] = v
+*/
+        __pyx_t_8 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_8;
+        for (__pyx_t_13 = __pyx_v_period; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
+
+          /* "src/mintalib/cython/lag.pxi":27
+ *     with nogil:
+ *         for i in range(period, size):
+ *             v = xs[i - period]             # <<<<<<<<<<<<<<
+ *             output[i] = v
  * 
 */
-    __pyx_t_15 = (__pyx_v_i - __pyx_v_period);
-    __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_15 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
+          __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
 
-    /* "src/mintalib/cython/lag.pxi":27
- *     for i in range(period, size):
- *         v = xs[i - period]
- *         output[i] = v             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/lag.pxi":28
+ *         for i in range(period, size):
+ *             v = xs[i - period]
+ *             output[i] = v             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_15 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_15 * __pyx_v_output.strides[0]) )) = __pyx_v_v;
+          __pyx_t_14 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_v;
+        }
+      }
+
+      /* "src/mintalib/cython/lag.pxi":25
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period, size):
+ *             v = xs[i - period]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/lag.pxi":29
- *         output[i] = v
+  /* "src/mintalib/cython/lag.pxi":30
+ *             output[i] = v
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -25826,7 +26128,7 @@ static PyObject *__pyx_pf_8mintalib_4core_40calc_min(CYTHON_UNUSED PyObject *__p
  *     cdef double v = NAN, cur_min = NAN
  *     cdef long i = 0, j = 0, min_idx = -1             # <<<<<<<<<<<<<<
  * 
- *     for i in range(period - 1, size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_j = 0;
@@ -25835,184 +26137,215 @@ static PyObject *__pyx_pf_8mintalib_4core_40calc_min(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/min.pxi":24
  *     cdef long i = 0, j = 0, min_idx = -1
  * 
- *     for i in range(period - 1, size):             # <<<<<<<<<<<<<<
- *         v = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period - 1, size):
+ *             v = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/min.pxi":25
+ * 
+ *     with nogil:
+ *         for i in range(period - 1, size):             # <<<<<<<<<<<<<<
+ *             v = xs[i]
  * 
 */
-  __pyx_t_8 = __pyx_v_size;
-  __pyx_t_12 = __pyx_t_8;
-  for (__pyx_t_13 = (__pyx_v_period - 1); __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+        __pyx_t_8 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_8;
+        for (__pyx_t_13 = (__pyx_v_period - 1); __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
 
-    /* "src/mintalib/cython/min.pxi":25
+          /* "src/mintalib/cython/min.pxi":26
+ *     with nogil:
+ *         for i in range(period - 1, size):
+ *             v = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(period - 1, size):
- *         v = xs[i]             # <<<<<<<<<<<<<<
+ *             if min_idx >= i - period + 1:
+*/
+          __pyx_t_14 = __pyx_v_i;
+          __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+
+          /* "src/mintalib/cython/min.pxi":28
+ *             v = xs[i]
  * 
- *         if min_idx >= i - period + 1:
-*/
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
-
-    /* "src/mintalib/cython/min.pxi":27
- *         v = xs[i]
- * 
- *         if min_idx >= i - period + 1:             # <<<<<<<<<<<<<<
- *             if not v >= cur_min:
- *                 cur_min = v
-*/
-    __pyx_t_1 = (__pyx_v_min_idx >= ((__pyx_v_i - __pyx_v_period) + 1));
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/min.pxi":28
- * 
- *         if min_idx >= i - period + 1:
- *             if not v >= cur_min:             # <<<<<<<<<<<<<<
- *                 cur_min = v
- *                 min_idx = i
-*/
-      __pyx_t_1 = (!(__pyx_v_v >= __pyx_v_cur_min));
-      if (__pyx_t_1) {
-
-        /* "src/mintalib/cython/min.pxi":29
- *         if min_idx >= i - period + 1:
- *             if not v >= cur_min:
- *                 cur_min = v             # <<<<<<<<<<<<<<
- *                 min_idx = i
- *         else:
-*/
-        __pyx_v_cur_min = __pyx_v_v;
-
-        /* "src/mintalib/cython/min.pxi":30
- *             if not v >= cur_min:
- *                 cur_min = v
- *                 min_idx = i             # <<<<<<<<<<<<<<
- *         else:
- *             cur_min = NAN
-*/
-        __pyx_v_min_idx = __pyx_v_i;
-
-        /* "src/mintalib/cython/min.pxi":28
- * 
- *         if min_idx >= i - period + 1:
- *             if not v >= cur_min:             # <<<<<<<<<<<<<<
- *                 cur_min = v
- *                 min_idx = i
-*/
-      }
-
-      /* "src/mintalib/cython/min.pxi":27
- *         v = xs[i]
- * 
- *         if min_idx >= i - period + 1:             # <<<<<<<<<<<<<<
- *             if not v >= cur_min:
- *                 cur_min = v
-*/
-      goto __pyx_L6;
-    }
-
-    /* "src/mintalib/cython/min.pxi":32
- *                 min_idx = i
- *         else:
- *             cur_min = NAN             # <<<<<<<<<<<<<<
- *             min_idx = -1
- *             for j in range(i - period + 1, i + 1):
-*/
-    /*else*/ {
-      __pyx_v_cur_min = __pyx_v_8mintalib_4core_NAN;
-
-      /* "src/mintalib/cython/min.pxi":33
- *         else:
- *             cur_min = NAN
- *             min_idx = -1             # <<<<<<<<<<<<<<
- *             for j in range(i - period + 1, i + 1):
- *                 v = xs[j]
-*/
-      __pyx_v_min_idx = -1L;
-
-      /* "src/mintalib/cython/min.pxi":34
- *             cur_min = NAN
- *             min_idx = -1
- *             for j in range(i - period + 1, i + 1):             # <<<<<<<<<<<<<<
- *                 v = xs[j]
- *                 if not isnan(v) and not v >= cur_min:
-*/
-      __pyx_t_15 = (__pyx_v_i + 1);
-      __pyx_t_16 = __pyx_t_15;
-      for (__pyx_t_17 = ((__pyx_v_i - __pyx_v_period) + 1); __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
-        __pyx_v_j = __pyx_t_17;
-
-        /* "src/mintalib/cython/min.pxi":35
- *             min_idx = -1
- *             for j in range(i - period + 1, i + 1):
- *                 v = xs[j]             # <<<<<<<<<<<<<<
- *                 if not isnan(v) and not v >= cur_min:
+ *             if min_idx >= i - period + 1:             # <<<<<<<<<<<<<<
+ *                 if not v >= cur_min:
  *                     cur_min = v
 */
-        __pyx_t_14 = __pyx_v_j;
-        __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_1 = (__pyx_v_min_idx >= ((__pyx_v_i - __pyx_v_period) + 1));
+          if (__pyx_t_1) {
 
-        /* "src/mintalib/cython/min.pxi":36
- *             for j in range(i - period + 1, i + 1):
- *                 v = xs[j]
- *                 if not isnan(v) and not v >= cur_min:             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/min.pxi":29
+ * 
+ *             if min_idx >= i - period + 1:
+ *                 if not v >= cur_min:             # <<<<<<<<<<<<<<
  *                     cur_min = v
- *                     min_idx = j
+ *                     min_idx = i
 */
-        __pyx_t_18 = (!isnan(__pyx_v_v));
-        if (__pyx_t_18) {
-        } else {
-          __pyx_t_1 = __pyx_t_18;
-          goto __pyx_L11_bool_binop_done;
-        }
-        __pyx_t_18 = (!(__pyx_v_v >= __pyx_v_cur_min));
-        __pyx_t_1 = __pyx_t_18;
-        __pyx_L11_bool_binop_done:;
-        if (__pyx_t_1) {
+            __pyx_t_1 = (!(__pyx_v_v >= __pyx_v_cur_min));
+            if (__pyx_t_1) {
 
-          /* "src/mintalib/cython/min.pxi":37
- *                 v = xs[j]
- *                 if not isnan(v) and not v >= cur_min:
+              /* "src/mintalib/cython/min.pxi":30
+ *             if min_idx >= i - period + 1:
+ *                 if not v >= cur_min:
  *                     cur_min = v             # <<<<<<<<<<<<<<
- *                     min_idx = j
- * 
+ *                     min_idx = i
+ *             else:
 */
-          __pyx_v_cur_min = __pyx_v_v;
+              __pyx_v_cur_min = __pyx_v_v;
 
-          /* "src/mintalib/cython/min.pxi":38
- *                 if not isnan(v) and not v >= cur_min:
+              /* "src/mintalib/cython/min.pxi":31
+ *                 if not v >= cur_min:
  *                     cur_min = v
- *                     min_idx = j             # <<<<<<<<<<<<<<
- * 
- *         output[i] = cur_min
+ *                     min_idx = i             # <<<<<<<<<<<<<<
+ *             else:
+ *                 cur_min = NAN
 */
-          __pyx_v_min_idx = __pyx_v_j;
+              __pyx_v_min_idx = __pyx_v_i;
 
-          /* "src/mintalib/cython/min.pxi":36
- *             for j in range(i - period + 1, i + 1):
- *                 v = xs[j]
- *                 if not isnan(v) and not v >= cur_min:             # <<<<<<<<<<<<<<
+              /* "src/mintalib/cython/min.pxi":29
+ * 
+ *             if min_idx >= i - period + 1:
+ *                 if not v >= cur_min:             # <<<<<<<<<<<<<<
  *                     cur_min = v
- *                     min_idx = j
+ *                     min_idx = i
 */
-        }
-      }
-    }
-    __pyx_L6:;
+            }
 
-    /* "src/mintalib/cython/min.pxi":40
- *                     min_idx = j
+            /* "src/mintalib/cython/min.pxi":28
+ *             v = xs[i]
  * 
- *         output[i] = cur_min             # <<<<<<<<<<<<<<
+ *             if min_idx >= i - period + 1:             # <<<<<<<<<<<<<<
+ *                 if not v >= cur_min:
+ *                     cur_min = v
+*/
+            goto __pyx_L9;
+          }
+
+          /* "src/mintalib/cython/min.pxi":33
+ *                     min_idx = i
+ *             else:
+ *                 cur_min = NAN             # <<<<<<<<<<<<<<
+ *                 min_idx = -1
+ *                 for j in range(i - period + 1, i + 1):
+*/
+          /*else*/ {
+            __pyx_v_cur_min = __pyx_v_8mintalib_4core_NAN;
+
+            /* "src/mintalib/cython/min.pxi":34
+ *             else:
+ *                 cur_min = NAN
+ *                 min_idx = -1             # <<<<<<<<<<<<<<
+ *                 for j in range(i - period + 1, i + 1):
+ *                     v = xs[j]
+*/
+            __pyx_v_min_idx = -1L;
+
+            /* "src/mintalib/cython/min.pxi":35
+ *                 cur_min = NAN
+ *                 min_idx = -1
+ *                 for j in range(i - period + 1, i + 1):             # <<<<<<<<<<<<<<
+ *                     v = xs[j]
+ *                     if not isnan(v) and not v >= cur_min:
+*/
+            __pyx_t_15 = (__pyx_v_i + 1);
+            __pyx_t_16 = __pyx_t_15;
+            for (__pyx_t_17 = ((__pyx_v_i - __pyx_v_period) + 1); __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
+              __pyx_v_j = __pyx_t_17;
+
+              /* "src/mintalib/cython/min.pxi":36
+ *                 min_idx = -1
+ *                 for j in range(i - period + 1, i + 1):
+ *                     v = xs[j]             # <<<<<<<<<<<<<<
+ *                     if not isnan(v) and not v >= cur_min:
+ *                         cur_min = v
+*/
+              __pyx_t_14 = __pyx_v_j;
+              __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+
+              /* "src/mintalib/cython/min.pxi":37
+ *                 for j in range(i - period + 1, i + 1):
+ *                     v = xs[j]
+ *                     if not isnan(v) and not v >= cur_min:             # <<<<<<<<<<<<<<
+ *                         cur_min = v
+ *                         min_idx = j
+*/
+              __pyx_t_18 = (!isnan(__pyx_v_v));
+              if (__pyx_t_18) {
+              } else {
+                __pyx_t_1 = __pyx_t_18;
+                goto __pyx_L14_bool_binop_done;
+              }
+              __pyx_t_18 = (!(__pyx_v_v >= __pyx_v_cur_min));
+              __pyx_t_1 = __pyx_t_18;
+              __pyx_L14_bool_binop_done:;
+              if (__pyx_t_1) {
+
+                /* "src/mintalib/cython/min.pxi":38
+ *                     v = xs[j]
+ *                     if not isnan(v) and not v >= cur_min:
+ *                         cur_min = v             # <<<<<<<<<<<<<<
+ *                         min_idx = j
+ * 
+*/
+                __pyx_v_cur_min = __pyx_v_v;
+
+                /* "src/mintalib/cython/min.pxi":39
+ *                     if not isnan(v) and not v >= cur_min:
+ *                         cur_min = v
+ *                         min_idx = j             # <<<<<<<<<<<<<<
+ * 
+ *             output[i] = cur_min
+*/
+                __pyx_v_min_idx = __pyx_v_j;
+
+                /* "src/mintalib/cython/min.pxi":37
+ *                 for j in range(i - period + 1, i + 1):
+ *                     v = xs[j]
+ *                     if not isnan(v) and not v >= cur_min:             # <<<<<<<<<<<<<<
+ *                         cur_min = v
+ *                         min_idx = j
+*/
+              }
+            }
+          }
+          __pyx_L9:;
+
+          /* "src/mintalib/cython/min.pxi":41
+ *                         min_idx = j
+ * 
+ *             output[i] = cur_min             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_14 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_cur_min;
+          __pyx_t_14 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_cur_min;
+        }
+      }
+
+      /* "src/mintalib/cython/min.pxi":24
+ *     cdef long i = 0, j = 0, min_idx = -1
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period - 1, size):
+ *             v = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/min.pxi":42
- *         output[i] = cur_min
+  /* "src/mintalib/cython/min.pxi":43
+ *             output[i] = cur_min
  * 
  *     return result             # <<<<<<<<<<<<<<
 */
@@ -26353,7 +26686,7 @@ static PyObject *__pyx_pf_8mintalib_4core_42calc_max(CYTHON_UNUSED PyObject *__p
  *     cdef double v = NAN, cur_max = NAN
  *     cdef long i = 0, j = 0, max_idx = -1             # <<<<<<<<<<<<<<
  * 
- *     for i in range(period - 1, size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_j = 0;
@@ -26362,184 +26695,215 @@ static PyObject *__pyx_pf_8mintalib_4core_42calc_max(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/max.pxi":19
  *     cdef long i = 0, j = 0, max_idx = -1
  * 
- *     for i in range(period - 1, size):             # <<<<<<<<<<<<<<
- *         v = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period - 1, size):
+ *             v = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/max.pxi":20
+ * 
+ *     with nogil:
+ *         for i in range(period - 1, size):             # <<<<<<<<<<<<<<
+ *             v = xs[i]
  * 
 */
-  __pyx_t_8 = __pyx_v_size;
-  __pyx_t_12 = __pyx_t_8;
-  for (__pyx_t_13 = (__pyx_v_period - 1); __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+        __pyx_t_8 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_8;
+        for (__pyx_t_13 = (__pyx_v_period - 1); __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
 
-    /* "src/mintalib/cython/max.pxi":20
+          /* "src/mintalib/cython/max.pxi":21
+ *     with nogil:
+ *         for i in range(period - 1, size):
+ *             v = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(period - 1, size):
- *         v = xs[i]             # <<<<<<<<<<<<<<
+ *             if max_idx >= i - period + 1:
+*/
+          __pyx_t_14 = __pyx_v_i;
+          __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+
+          /* "src/mintalib/cython/max.pxi":23
+ *             v = xs[i]
  * 
- *         if max_idx >= i - period + 1:
-*/
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
-
-    /* "src/mintalib/cython/max.pxi":22
- *         v = xs[i]
- * 
- *         if max_idx >= i - period + 1:             # <<<<<<<<<<<<<<
- *             if not v <= cur_max:
- *                 cur_max = v
-*/
-    __pyx_t_1 = (__pyx_v_max_idx >= ((__pyx_v_i - __pyx_v_period) + 1));
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/max.pxi":23
- * 
- *         if max_idx >= i - period + 1:
- *             if not v <= cur_max:             # <<<<<<<<<<<<<<
- *                 cur_max = v
- *                 max_idx = i
-*/
-      __pyx_t_1 = (!(__pyx_v_v <= __pyx_v_cur_max));
-      if (__pyx_t_1) {
-
-        /* "src/mintalib/cython/max.pxi":24
- *         if max_idx >= i - period + 1:
- *             if not v <= cur_max:
- *                 cur_max = v             # <<<<<<<<<<<<<<
- *                 max_idx = i
- *         else:
-*/
-        __pyx_v_cur_max = __pyx_v_v;
-
-        /* "src/mintalib/cython/max.pxi":25
- *             if not v <= cur_max:
- *                 cur_max = v
- *                 max_idx = i             # <<<<<<<<<<<<<<
- *         else:
- *             cur_max = NAN
-*/
-        __pyx_v_max_idx = __pyx_v_i;
-
-        /* "src/mintalib/cython/max.pxi":23
- * 
- *         if max_idx >= i - period + 1:
- *             if not v <= cur_max:             # <<<<<<<<<<<<<<
- *                 cur_max = v
- *                 max_idx = i
-*/
-      }
-
-      /* "src/mintalib/cython/max.pxi":22
- *         v = xs[i]
- * 
- *         if max_idx >= i - period + 1:             # <<<<<<<<<<<<<<
- *             if not v <= cur_max:
- *                 cur_max = v
-*/
-      goto __pyx_L6;
-    }
-
-    /* "src/mintalib/cython/max.pxi":27
- *                 max_idx = i
- *         else:
- *             cur_max = NAN             # <<<<<<<<<<<<<<
- *             max_idx = -1
- *             for j in range(i - period + 1, i + 1):
-*/
-    /*else*/ {
-      __pyx_v_cur_max = __pyx_v_8mintalib_4core_NAN;
-
-      /* "src/mintalib/cython/max.pxi":28
- *         else:
- *             cur_max = NAN
- *             max_idx = -1             # <<<<<<<<<<<<<<
- *             for j in range(i - period + 1, i + 1):
- *                 v = xs[j]
-*/
-      __pyx_v_max_idx = -1L;
-
-      /* "src/mintalib/cython/max.pxi":29
- *             cur_max = NAN
- *             max_idx = -1
- *             for j in range(i - period + 1, i + 1):             # <<<<<<<<<<<<<<
- *                 v = xs[j]
- *                 if not isnan(v) and not v <= cur_max:
-*/
-      __pyx_t_15 = (__pyx_v_i + 1);
-      __pyx_t_16 = __pyx_t_15;
-      for (__pyx_t_17 = ((__pyx_v_i - __pyx_v_period) + 1); __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
-        __pyx_v_j = __pyx_t_17;
-
-        /* "src/mintalib/cython/max.pxi":30
- *             max_idx = -1
- *             for j in range(i - period + 1, i + 1):
- *                 v = xs[j]             # <<<<<<<<<<<<<<
- *                 if not isnan(v) and not v <= cur_max:
+ *             if max_idx >= i - period + 1:             # <<<<<<<<<<<<<<
+ *                 if not v <= cur_max:
  *                     cur_max = v
 */
-        __pyx_t_14 = __pyx_v_j;
-        __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_1 = (__pyx_v_max_idx >= ((__pyx_v_i - __pyx_v_period) + 1));
+          if (__pyx_t_1) {
 
-        /* "src/mintalib/cython/max.pxi":31
- *             for j in range(i - period + 1, i + 1):
- *                 v = xs[j]
- *                 if not isnan(v) and not v <= cur_max:             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/max.pxi":24
+ * 
+ *             if max_idx >= i - period + 1:
+ *                 if not v <= cur_max:             # <<<<<<<<<<<<<<
  *                     cur_max = v
- *                     max_idx = j
+ *                     max_idx = i
 */
-        __pyx_t_18 = (!isnan(__pyx_v_v));
-        if (__pyx_t_18) {
-        } else {
-          __pyx_t_1 = __pyx_t_18;
-          goto __pyx_L11_bool_binop_done;
-        }
-        __pyx_t_18 = (!(__pyx_v_v <= __pyx_v_cur_max));
-        __pyx_t_1 = __pyx_t_18;
-        __pyx_L11_bool_binop_done:;
-        if (__pyx_t_1) {
+            __pyx_t_1 = (!(__pyx_v_v <= __pyx_v_cur_max));
+            if (__pyx_t_1) {
 
-          /* "src/mintalib/cython/max.pxi":32
- *                 v = xs[j]
- *                 if not isnan(v) and not v <= cur_max:
+              /* "src/mintalib/cython/max.pxi":25
+ *             if max_idx >= i - period + 1:
+ *                 if not v <= cur_max:
  *                     cur_max = v             # <<<<<<<<<<<<<<
- *                     max_idx = j
- * 
+ *                     max_idx = i
+ *             else:
 */
-          __pyx_v_cur_max = __pyx_v_v;
+              __pyx_v_cur_max = __pyx_v_v;
 
-          /* "src/mintalib/cython/max.pxi":33
- *                 if not isnan(v) and not v <= cur_max:
+              /* "src/mintalib/cython/max.pxi":26
+ *                 if not v <= cur_max:
  *                     cur_max = v
- *                     max_idx = j             # <<<<<<<<<<<<<<
- * 
- *         output[i] = cur_max
+ *                     max_idx = i             # <<<<<<<<<<<<<<
+ *             else:
+ *                 cur_max = NAN
 */
-          __pyx_v_max_idx = __pyx_v_j;
+              __pyx_v_max_idx = __pyx_v_i;
 
-          /* "src/mintalib/cython/max.pxi":31
- *             for j in range(i - period + 1, i + 1):
- *                 v = xs[j]
- *                 if not isnan(v) and not v <= cur_max:             # <<<<<<<<<<<<<<
+              /* "src/mintalib/cython/max.pxi":24
+ * 
+ *             if max_idx >= i - period + 1:
+ *                 if not v <= cur_max:             # <<<<<<<<<<<<<<
  *                     cur_max = v
- *                     max_idx = j
+ *                     max_idx = i
 */
-        }
-      }
-    }
-    __pyx_L6:;
+            }
 
-    /* "src/mintalib/cython/max.pxi":35
- *                     max_idx = j
+            /* "src/mintalib/cython/max.pxi":23
+ *             v = xs[i]
  * 
- *         output[i] = cur_max             # <<<<<<<<<<<<<<
+ *             if max_idx >= i - period + 1:             # <<<<<<<<<<<<<<
+ *                 if not v <= cur_max:
+ *                     cur_max = v
+*/
+            goto __pyx_L9;
+          }
+
+          /* "src/mintalib/cython/max.pxi":28
+ *                     max_idx = i
+ *             else:
+ *                 cur_max = NAN             # <<<<<<<<<<<<<<
+ *                 max_idx = -1
+ *                 for j in range(i - period + 1, i + 1):
+*/
+          /*else*/ {
+            __pyx_v_cur_max = __pyx_v_8mintalib_4core_NAN;
+
+            /* "src/mintalib/cython/max.pxi":29
+ *             else:
+ *                 cur_max = NAN
+ *                 max_idx = -1             # <<<<<<<<<<<<<<
+ *                 for j in range(i - period + 1, i + 1):
+ *                     v = xs[j]
+*/
+            __pyx_v_max_idx = -1L;
+
+            /* "src/mintalib/cython/max.pxi":30
+ *                 cur_max = NAN
+ *                 max_idx = -1
+ *                 for j in range(i - period + 1, i + 1):             # <<<<<<<<<<<<<<
+ *                     v = xs[j]
+ *                     if not isnan(v) and not v <= cur_max:
+*/
+            __pyx_t_15 = (__pyx_v_i + 1);
+            __pyx_t_16 = __pyx_t_15;
+            for (__pyx_t_17 = ((__pyx_v_i - __pyx_v_period) + 1); __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
+              __pyx_v_j = __pyx_t_17;
+
+              /* "src/mintalib/cython/max.pxi":31
+ *                 max_idx = -1
+ *                 for j in range(i - period + 1, i + 1):
+ *                     v = xs[j]             # <<<<<<<<<<<<<<
+ *                     if not isnan(v) and not v <= cur_max:
+ *                         cur_max = v
+*/
+              __pyx_t_14 = __pyx_v_j;
+              __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+
+              /* "src/mintalib/cython/max.pxi":32
+ *                 for j in range(i - period + 1, i + 1):
+ *                     v = xs[j]
+ *                     if not isnan(v) and not v <= cur_max:             # <<<<<<<<<<<<<<
+ *                         cur_max = v
+ *                         max_idx = j
+*/
+              __pyx_t_18 = (!isnan(__pyx_v_v));
+              if (__pyx_t_18) {
+              } else {
+                __pyx_t_1 = __pyx_t_18;
+                goto __pyx_L14_bool_binop_done;
+              }
+              __pyx_t_18 = (!(__pyx_v_v <= __pyx_v_cur_max));
+              __pyx_t_1 = __pyx_t_18;
+              __pyx_L14_bool_binop_done:;
+              if (__pyx_t_1) {
+
+                /* "src/mintalib/cython/max.pxi":33
+ *                     v = xs[j]
+ *                     if not isnan(v) and not v <= cur_max:
+ *                         cur_max = v             # <<<<<<<<<<<<<<
+ *                         max_idx = j
+ * 
+*/
+                __pyx_v_cur_max = __pyx_v_v;
+
+                /* "src/mintalib/cython/max.pxi":34
+ *                     if not isnan(v) and not v <= cur_max:
+ *                         cur_max = v
+ *                         max_idx = j             # <<<<<<<<<<<<<<
+ * 
+ *             output[i] = cur_max
+*/
+                __pyx_v_max_idx = __pyx_v_j;
+
+                /* "src/mintalib/cython/max.pxi":32
+ *                 for j in range(i - period + 1, i + 1):
+ *                     v = xs[j]
+ *                     if not isnan(v) and not v <= cur_max:             # <<<<<<<<<<<<<<
+ *                         cur_max = v
+ *                         max_idx = j
+*/
+              }
+            }
+          }
+          __pyx_L9:;
+
+          /* "src/mintalib/cython/max.pxi":36
+ *                         max_idx = j
+ * 
+ *             output[i] = cur_max             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_14 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_cur_max;
+          __pyx_t_14 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_cur_max;
+        }
+      }
+
+      /* "src/mintalib/cython/max.pxi":19
+ *     cdef long i = 0, j = 0, max_idx = -1
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period - 1, size):
+ *             v = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/max.pxi":37
- *         output[i] = cur_max
+  /* "src/mintalib/cython/max.pxi":38
+ *             output[i] = cur_max
  * 
  *     return result             # <<<<<<<<<<<<<<
 */
@@ -26881,7 +27245,7 @@ static PyObject *__pyx_pf_8mintalib_4core_44calc_sum(CYTHON_UNUSED PyObject *__p
  *     cdef double v = NAN, rsum = 0.0
  *     cdef long i = 0, count = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_count = 0;
@@ -26889,154 +27253,185 @@ static PyObject *__pyx_pf_8mintalib_4core_44calc_sum(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/sum.pxi":24
  *     cdef long i = 0, count = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         v = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             v = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/sum.pxi":25
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             v = xs[i]
  * 
 */
-  __pyx_t_8 = __pyx_v_size;
-  __pyx_t_12 = __pyx_t_8;
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+        __pyx_t_8 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_8;
+        for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
 
-    /* "src/mintalib/cython/sum.pxi":25
+          /* "src/mintalib/cython/sum.pxi":26
+ *     with nogil:
+ *         for i in range(size):
+ *             v = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         v = xs[i]             # <<<<<<<<<<<<<<
- * 
- *         if v == v:
+ *             if v == v:
 */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_14 = __pyx_v_i;
+          __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
 
-    /* "src/mintalib/cython/sum.pxi":27
- *         v = xs[i]
+          /* "src/mintalib/cython/sum.pxi":28
+ *             v = xs[i]
  * 
- *         if v == v:             # <<<<<<<<<<<<<<
- *             rsum += v
- *             count += 1
+ *             if v == v:             # <<<<<<<<<<<<<<
+ *                 rsum += v
+ *                 count += 1
 */
-    __pyx_t_1 = (__pyx_v_v == __pyx_v_v);
-    if (__pyx_t_1) {
+          __pyx_t_1 = (__pyx_v_v == __pyx_v_v);
+          if (__pyx_t_1) {
 
-      /* "src/mintalib/cython/sum.pxi":28
+            /* "src/mintalib/cython/sum.pxi":29
  * 
- *         if v == v:
- *             rsum += v             # <<<<<<<<<<<<<<
- *             count += 1
- *         else:
+ *             if v == v:
+ *                 rsum += v             # <<<<<<<<<<<<<<
+ *                 count += 1
+ *             else:
 */
-      __pyx_v_rsum = (__pyx_v_rsum + __pyx_v_v);
+            __pyx_v_rsum = (__pyx_v_rsum + __pyx_v_v);
 
-      /* "src/mintalib/cython/sum.pxi":29
- *         if v == v:
- *             rsum += v
- *             count += 1             # <<<<<<<<<<<<<<
- *         else:
- *             rsum = 0.0
+            /* "src/mintalib/cython/sum.pxi":30
+ *             if v == v:
+ *                 rsum += v
+ *                 count += 1             # <<<<<<<<<<<<<<
+ *             else:
+ *                 rsum = 0.0
 */
-      __pyx_v_count = (__pyx_v_count + 1);
+            __pyx_v_count = (__pyx_v_count + 1);
 
-      /* "src/mintalib/cython/sum.pxi":27
- *         v = xs[i]
+            /* "src/mintalib/cython/sum.pxi":28
+ *             v = xs[i]
  * 
- *         if v == v:             # <<<<<<<<<<<<<<
- *             rsum += v
- *             count += 1
+ *             if v == v:             # <<<<<<<<<<<<<<
+ *                 rsum += v
+ *                 count += 1
 */
-      goto __pyx_L6;
-    }
+            goto __pyx_L9;
+          }
 
-    /* "src/mintalib/cython/sum.pxi":31
- *             count += 1
- *         else:
- *             rsum = 0.0             # <<<<<<<<<<<<<<
- *             count = 0
- * 
-*/
-    /*else*/ {
-      __pyx_v_rsum = 0.0;
-
-      /* "src/mintalib/cython/sum.pxi":32
- *         else:
- *             rsum = 0.0
- *             count = 0             # <<<<<<<<<<<<<<
- * 
- *         if count > period:
-*/
-      __pyx_v_count = 0;
-    }
-    __pyx_L6:;
-
-    /* "src/mintalib/cython/sum.pxi":34
- *             count = 0
- * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             rsum -= xs[i - period]
- *             count -= 1
-*/
-    __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/sum.pxi":35
- * 
- *         if count > period:
- *             rsum -= xs[i - period]             # <<<<<<<<<<<<<<
- *             count -= 1
+          /* "src/mintalib/cython/sum.pxi":32
+ *                 count += 1
+ *             else:
+ *                 rsum = 0.0             # <<<<<<<<<<<<<<
+ *                 count = 0
  * 
 */
-      __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
-      __pyx_v_rsum = (__pyx_v_rsum - (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) ))));
+          /*else*/ {
+            __pyx_v_rsum = 0.0;
 
-      /* "src/mintalib/cython/sum.pxi":36
- *         if count > period:
- *             rsum -= xs[i - period]
- *             count -= 1             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/sum.pxi":33
+ *             else:
+ *                 rsum = 0.0
+ *                 count = 0             # <<<<<<<<<<<<<<
  * 
- *         if count == period:
+ *             if count > period:
 */
-      __pyx_v_count = (__pyx_v_count - 1);
+            __pyx_v_count = 0;
+          }
+          __pyx_L9:;
 
-      /* "src/mintalib/cython/sum.pxi":34
- *             count = 0
+          /* "src/mintalib/cython/sum.pxi":35
+ *                 count = 0
  * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             rsum -= xs[i - period]
- *             count -= 1
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 rsum -= xs[i - period]
+ *                 count -= 1
 */
-    }
+          __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/sum.pxi":38
- *             count -= 1
+            /* "src/mintalib/cython/sum.pxi":36
  * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             output[i] = rsum
+ *             if count > period:
+ *                 rsum -= xs[i - period]             # <<<<<<<<<<<<<<
+ *                 count -= 1
  * 
 */
-    __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
-    if (__pyx_t_1) {
+            __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
+            __pyx_v_rsum = (__pyx_v_rsum - (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) ))));
 
-      /* "src/mintalib/cython/sum.pxi":39
+            /* "src/mintalib/cython/sum.pxi":37
+ *             if count > period:
+ *                 rsum -= xs[i - period]
+ *                 count -= 1             # <<<<<<<<<<<<<<
  * 
- *         if count == period:
- *             output[i] = rsum             # <<<<<<<<<<<<<<
+ *             if count == period:
+*/
+            __pyx_v_count = (__pyx_v_count - 1);
+
+            /* "src/mintalib/cython/sum.pxi":35
+ *                 count = 0
+ * 
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 rsum -= xs[i - period]
+ *                 count -= 1
+*/
+          }
+
+          /* "src/mintalib/cython/sum.pxi":39
+ *                 count -= 1
+ * 
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 output[i] = rsum
+ * 
+*/
+          __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/sum.pxi":40
+ * 
+ *             if count == period:
+ *                 output[i] = rsum             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_t_14 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_rsum;
+            __pyx_t_14 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_rsum;
 
-      /* "src/mintalib/cython/sum.pxi":38
- *             count -= 1
+            /* "src/mintalib/cython/sum.pxi":39
+ *                 count -= 1
  * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             output[i] = rsum
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 output[i] = rsum
  * 
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/sum.pxi":24
+ *     cdef long i = 0, count = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             v = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/sum.pxi":41
- *             output[i] = rsum
+  /* "src/mintalib/cython/sum.pxi":42
+ *                 output[i] = rsum
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -27378,7 +27773,7 @@ static PyObject *__pyx_pf_8mintalib_4core_46calc_roc(CYTHON_UNUSED PyObject *__p
  *         period = abs(period)
  *         shift = -period             # <<<<<<<<<<<<<<
  * 
- *     for i in range(period, size):
+ *     with nogil:
 */
     __pyx_v_shift = (-__pyx_v_period);
 
@@ -27394,78 +27789,109 @@ static PyObject *__pyx_pf_8mintalib_4core_46calc_roc(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/roc.pxi":25
  *         shift = -period
  * 
- *     for i in range(period, size):             # <<<<<<<<<<<<<<
- *         v, pv = xs[i], xs[i - period]
- *         if v > 0  and pv > 0:
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_12 = __pyx_t_7;
-  for (__pyx_t_13 = __pyx_v_period; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
 
-    /* "src/mintalib/cython/roc.pxi":26
+        /* "src/mintalib/cython/roc.pxi":26
  * 
- *     for i in range(period, size):
- *         v, pv = xs[i], xs[i - period]             # <<<<<<<<<<<<<<
- *         if v > 0  and pv > 0:
- *             roc = v / pv - 1
+ *     with nogil:
+ *         for i in range(period, size):             # <<<<<<<<<<<<<<
+ *             v, pv = xs[i], xs[i - period]
+ *             if v > 0  and pv > 0:
 */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_t_15 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
-    __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
-    __pyx_t_16 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
-    __pyx_v_v = __pyx_t_15;
-    __pyx_v_pv = __pyx_t_16;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_7;
+        for (__pyx_t_13 = __pyx_v_period; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
 
-    /* "src/mintalib/cython/roc.pxi":27
- *     for i in range(period, size):
- *         v, pv = xs[i], xs[i - period]
- *         if v > 0  and pv > 0:             # <<<<<<<<<<<<<<
- *             roc = v / pv - 1
- *             output[i + shift] = roc
+          /* "src/mintalib/cython/roc.pxi":27
+ *     with nogil:
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]             # <<<<<<<<<<<<<<
+ *             if v > 0  and pv > 0:
+ *                 roc = v / pv - 1
 */
-    __pyx_t_17 = (__pyx_v_v > 0.0);
-    if (__pyx_t_17) {
-    } else {
-      __pyx_t_11 = __pyx_t_17;
-      goto __pyx_L7_bool_binop_done;
-    }
-    __pyx_t_17 = (__pyx_v_pv > 0.0);
-    __pyx_t_11 = __pyx_t_17;
-    __pyx_L7_bool_binop_done:;
-    if (__pyx_t_11) {
+          __pyx_t_14 = __pyx_v_i;
+          __pyx_t_15 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
+          __pyx_t_16 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+          __pyx_v_v = __pyx_t_15;
+          __pyx_v_pv = __pyx_t_16;
 
-      /* "src/mintalib/cython/roc.pxi":28
- *         v, pv = xs[i], xs[i - period]
- *         if v > 0  and pv > 0:
- *             roc = v / pv - 1             # <<<<<<<<<<<<<<
- *             output[i + shift] = roc
+          /* "src/mintalib/cython/roc.pxi":28
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]
+ *             if v > 0  and pv > 0:             # <<<<<<<<<<<<<<
+ *                 roc = v / pv - 1
+ *                 output[i + shift] = roc
+*/
+          __pyx_t_17 = (__pyx_v_v > 0.0);
+          if (__pyx_t_17) {
+          } else {
+            __pyx_t_11 = __pyx_t_17;
+            goto __pyx_L10_bool_binop_done;
+          }
+          __pyx_t_17 = (__pyx_v_pv > 0.0);
+          __pyx_t_11 = __pyx_t_17;
+          __pyx_L10_bool_binop_done:;
+          if (__pyx_t_11) {
+
+            /* "src/mintalib/cython/roc.pxi":29
+ *             v, pv = xs[i], xs[i - period]
+ *             if v > 0  and pv > 0:
+ *                 roc = v / pv - 1             # <<<<<<<<<<<<<<
+ *                 output[i + shift] = roc
  * 
 */
-      __pyx_v_roc = ((__pyx_v_v / __pyx_v_pv) - 1.0);
+            __pyx_v_roc = ((__pyx_v_v / __pyx_v_pv) - 1.0);
 
-      /* "src/mintalib/cython/roc.pxi":29
- *         if v > 0  and pv > 0:
- *             roc = v / pv - 1
- *             output[i + shift] = roc             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/roc.pxi":30
+ *             if v > 0  and pv > 0:
+ *                 roc = v / pv - 1
+ *                 output[i + shift] = roc             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_t_14 = (__pyx_v_i + __pyx_v_shift);
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_roc;
+            __pyx_t_14 = (__pyx_v_i + __pyx_v_shift);
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_roc;
 
-      /* "src/mintalib/cython/roc.pxi":27
- *     for i in range(period, size):
- *         v, pv = xs[i], xs[i - period]
- *         if v > 0  and pv > 0:             # <<<<<<<<<<<<<<
- *             roc = v / pv - 1
- *             output[i + shift] = roc
+            /* "src/mintalib/cython/roc.pxi":28
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]
+ *             if v > 0  and pv > 0:             # <<<<<<<<<<<<<<
+ *                 roc = v / pv - 1
+ *                 output[i + shift] = roc
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/roc.pxi":25
+ *         shift = -period
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/roc.pxi":31
- *             output[i + shift] = roc
+  /* "src/mintalib/cython/roc.pxi":32
+ *                 output[i + shift] = roc
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -27807,7 +28233,7 @@ static PyObject *__pyx_pf_8mintalib_4core_48calc_lroc(CYTHON_UNUSED PyObject *__
  *         period = abs(period)
  *         shift = -period             # <<<<<<<<<<<<<<
  * 
- *     for i in range(period, size):
+ *     with nogil:
 */
     __pyx_v_shift = (-__pyx_v_period);
 
@@ -27823,78 +28249,109 @@ static PyObject *__pyx_pf_8mintalib_4core_48calc_lroc(CYTHON_UNUSED PyObject *__
   /* "src/mintalib/cython/lroc.pxi":27
  *         shift = -period
  * 
- *     for i in range(period, size):             # <<<<<<<<<<<<<<
- *         v, pv = xs[i], xs[i - period]
- *         if v > 0 and pv > 0:
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_12 = __pyx_t_7;
-  for (__pyx_t_13 = __pyx_v_period; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
 
-    /* "src/mintalib/cython/lroc.pxi":28
+        /* "src/mintalib/cython/lroc.pxi":28
  * 
- *     for i in range(period, size):
- *         v, pv = xs[i], xs[i - period]             # <<<<<<<<<<<<<<
- *         if v > 0 and pv > 0:
- *             roc = math.log(v / pv)
+ *     with nogil:
+ *         for i in range(period, size):             # <<<<<<<<<<<<<<
+ *             v, pv = xs[i], xs[i - period]
+ *             if v > 0 and pv > 0:
 */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_t_15 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
-    __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
-    __pyx_t_16 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
-    __pyx_v_v = __pyx_t_15;
-    __pyx_v_pv = __pyx_t_16;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_7;
+        for (__pyx_t_13 = __pyx_v_period; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
 
-    /* "src/mintalib/cython/lroc.pxi":29
- *     for i in range(period, size):
- *         v, pv = xs[i], xs[i - period]
- *         if v > 0 and pv > 0:             # <<<<<<<<<<<<<<
- *             roc = math.log(v / pv)
- *             output[i + shift] = roc
+          /* "src/mintalib/cython/lroc.pxi":29
+ *     with nogil:
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]             # <<<<<<<<<<<<<<
+ *             if v > 0 and pv > 0:
+ *                 roc = math.log(v / pv)
 */
-    __pyx_t_17 = (__pyx_v_v > 0.0);
-    if (__pyx_t_17) {
-    } else {
-      __pyx_t_11 = __pyx_t_17;
-      goto __pyx_L7_bool_binop_done;
-    }
-    __pyx_t_17 = (__pyx_v_pv > 0.0);
-    __pyx_t_11 = __pyx_t_17;
-    __pyx_L7_bool_binop_done:;
-    if (__pyx_t_11) {
+          __pyx_t_14 = __pyx_v_i;
+          __pyx_t_15 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
+          __pyx_t_16 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+          __pyx_v_v = __pyx_t_15;
+          __pyx_v_pv = __pyx_t_16;
 
-      /* "src/mintalib/cython/lroc.pxi":30
- *         v, pv = xs[i], xs[i - period]
- *         if v > 0 and pv > 0:
- *             roc = math.log(v / pv)             # <<<<<<<<<<<<<<
- *             output[i + shift] = roc
+          /* "src/mintalib/cython/lroc.pxi":30
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]
+ *             if v > 0 and pv > 0:             # <<<<<<<<<<<<<<
+ *                 roc = math.log(v / pv)
+ *                 output[i + shift] = roc
+*/
+          __pyx_t_17 = (__pyx_v_v > 0.0);
+          if (__pyx_t_17) {
+          } else {
+            __pyx_t_11 = __pyx_t_17;
+            goto __pyx_L10_bool_binop_done;
+          }
+          __pyx_t_17 = (__pyx_v_pv > 0.0);
+          __pyx_t_11 = __pyx_t_17;
+          __pyx_L10_bool_binop_done:;
+          if (__pyx_t_11) {
+
+            /* "src/mintalib/cython/lroc.pxi":31
+ *             v, pv = xs[i], xs[i - period]
+ *             if v > 0 and pv > 0:
+ *                 roc = math.log(v / pv)             # <<<<<<<<<<<<<<
+ *                 output[i + shift] = roc
  * 
 */
-      __pyx_v_roc = log((__pyx_v_v / __pyx_v_pv));
+            __pyx_v_roc = log((__pyx_v_v / __pyx_v_pv));
 
-      /* "src/mintalib/cython/lroc.pxi":31
- *         if v > 0 and pv > 0:
- *             roc = math.log(v / pv)
- *             output[i + shift] = roc             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/lroc.pxi":32
+ *             if v > 0 and pv > 0:
+ *                 roc = math.log(v / pv)
+ *                 output[i + shift] = roc             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_t_14 = (__pyx_v_i + __pyx_v_shift);
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_roc;
+            __pyx_t_14 = (__pyx_v_i + __pyx_v_shift);
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_roc;
 
-      /* "src/mintalib/cython/lroc.pxi":29
- *     for i in range(period, size):
- *         v, pv = xs[i], xs[i - period]
- *         if v > 0 and pv > 0:             # <<<<<<<<<<<<<<
- *             roc = math.log(v / pv)
- *             output[i + shift] = roc
+            /* "src/mintalib/cython/lroc.pxi":30
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]
+ *             if v > 0 and pv > 0:             # <<<<<<<<<<<<<<
+ *                 roc = math.log(v / pv)
+ *                 output[i + shift] = roc
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/lroc.pxi":27
+ *         shift = -period
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(period, size):
+ *             v, pv = xs[i], xs[i - period]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/lroc.pxi":33
- *             output[i + shift] = roc
+  /* "src/mintalib/cython/lroc.pxi":34
+ *                 output[i + shift] = roc
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -28251,7 +28708,7 @@ static PyObject *__pyx_pf_8mintalib_4core_50calc_mad(CYTHON_UNUSED PyObject *__p
  *     cdef double sx = 0.0
  *     cdef long i = 0, k = 0, count = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_k = 0;
@@ -28260,195 +28717,226 @@ static PyObject *__pyx_pf_8mintalib_4core_50calc_mad(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/mad.pxi":20
  *     cdef long i = 0, k = 0, count = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         x = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             x = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/mad.pxi":21
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             x = xs[i]
  * 
 */
-  __pyx_t_8 = __pyx_v_size;
-  __pyx_t_12 = __pyx_t_8;
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+        __pyx_t_8 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_8;
+        for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
 
-    /* "src/mintalib/cython/mad.pxi":21
+          /* "src/mintalib/cython/mad.pxi":22
+ *     with nogil:
+ *         for i in range(size):
+ *             x = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         x = xs[i]             # <<<<<<<<<<<<<<
- * 
- *         if x == x:
+ *             if x == x:
 */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_v_x = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_14 = __pyx_v_i;
+          __pyx_v_x = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
 
-    /* "src/mintalib/cython/mad.pxi":23
- *         x = xs[i]
+          /* "src/mintalib/cython/mad.pxi":24
+ *             x = xs[i]
  * 
- *         if x == x:             # <<<<<<<<<<<<<<
- *             count += 1
- *             sx += x
+ *             if x == x:             # <<<<<<<<<<<<<<
+ *                 count += 1
+ *                 sx += x
 */
-    __pyx_t_1 = (__pyx_v_x == __pyx_v_x);
-    if (__pyx_t_1) {
+          __pyx_t_1 = (__pyx_v_x == __pyx_v_x);
+          if (__pyx_t_1) {
 
-      /* "src/mintalib/cython/mad.pxi":24
+            /* "src/mintalib/cython/mad.pxi":25
  * 
- *         if x == x:
- *             count += 1             # <<<<<<<<<<<<<<
- *             sx += x
- *         else:
+ *             if x == x:
+ *                 count += 1             # <<<<<<<<<<<<<<
+ *                 sx += x
+ *             else:
 */
-      __pyx_v_count = (__pyx_v_count + 1);
+            __pyx_v_count = (__pyx_v_count + 1);
 
-      /* "src/mintalib/cython/mad.pxi":25
- *         if x == x:
- *             count += 1
- *             sx += x             # <<<<<<<<<<<<<<
- *         else:
- *             count = 0
+            /* "src/mintalib/cython/mad.pxi":26
+ *             if x == x:
+ *                 count += 1
+ *                 sx += x             # <<<<<<<<<<<<<<
+ *             else:
+ *                 count = 0
 */
-      __pyx_v_sx = (__pyx_v_sx + __pyx_v_x);
+            __pyx_v_sx = (__pyx_v_sx + __pyx_v_x);
 
-      /* "src/mintalib/cython/mad.pxi":23
- *         x = xs[i]
+            /* "src/mintalib/cython/mad.pxi":24
+ *             x = xs[i]
  * 
- *         if x == x:             # <<<<<<<<<<<<<<
- *             count += 1
- *             sx += x
+ *             if x == x:             # <<<<<<<<<<<<<<
+ *                 count += 1
+ *                 sx += x
 */
-      goto __pyx_L6;
-    }
+            goto __pyx_L9;
+          }
 
-    /* "src/mintalib/cython/mad.pxi":27
- *             sx += x
- *         else:
- *             count = 0             # <<<<<<<<<<<<<<
- *             sx = 0.0
- * 
-*/
-    /*else*/ {
-      __pyx_v_count = 0;
-
-      /* "src/mintalib/cython/mad.pxi":28
- *         else:
- *             count = 0
- *             sx = 0.0             # <<<<<<<<<<<<<<
- * 
- *         if count > period:
-*/
-      __pyx_v_sx = 0.0;
-    }
-    __pyx_L6:;
-
-    /* "src/mintalib/cython/mad.pxi":30
- *             sx = 0.0
- * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             sx -= xs[i - period]
- *             count -= 1
-*/
-    __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/mad.pxi":31
- * 
- *         if count > period:
- *             sx -= xs[i - period]             # <<<<<<<<<<<<<<
- *             count -= 1
+          /* "src/mintalib/cython/mad.pxi":28
+ *                 sx += x
+ *             else:
+ *                 count = 0             # <<<<<<<<<<<<<<
+ *                 sx = 0.0
  * 
 */
-      __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
-      __pyx_v_sx = (__pyx_v_sx - (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) ))));
+          /*else*/ {
+            __pyx_v_count = 0;
 
-      /* "src/mintalib/cython/mad.pxi":32
- *         if count > period:
- *             sx -= xs[i - period]
- *             count -= 1             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/mad.pxi":29
+ *             else:
+ *                 count = 0
+ *                 sx = 0.0             # <<<<<<<<<<<<<<
  * 
- *         if count == period:
+ *             if count > period:
 */
-      __pyx_v_count = (__pyx_v_count - 1);
+            __pyx_v_sx = 0.0;
+          }
+          __pyx_L9:;
 
-      /* "src/mintalib/cython/mad.pxi":30
- *             sx = 0.0
+          /* "src/mintalib/cython/mad.pxi":31
+ *                 sx = 0.0
  * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             sx -= xs[i - period]
- *             count -= 1
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 sx -= xs[i - period]
+ *                 count -= 1
 */
-    }
+          __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/mad.pxi":34
- *             count -= 1
+            /* "src/mintalib/cython/mad.pxi":32
  * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             mean = sx / period
- *             mad = 0.0
-*/
-    __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/mad.pxi":35
- * 
- *         if count == period:
- *             mean = sx / period             # <<<<<<<<<<<<<<
- *             mad = 0.0
- *             for k in range(i - period + 1, i + 1):
-*/
-      __pyx_v_mean = (__pyx_v_sx / ((double)__pyx_v_period));
-
-      /* "src/mintalib/cython/mad.pxi":36
- *         if count == period:
- *             mean = sx / period
- *             mad = 0.0             # <<<<<<<<<<<<<<
- *             for k in range(i - period + 1, i + 1):
- *                 mad += math.fabs(xs[k] - mean)
-*/
-      __pyx_v_mad = 0.0;
-
-      /* "src/mintalib/cython/mad.pxi":37
- *             mean = sx / period
- *             mad = 0.0
- *             for k in range(i - period + 1, i + 1):             # <<<<<<<<<<<<<<
- *                 mad += math.fabs(xs[k] - mean)
- *             output[i] = mad / period
-*/
-      __pyx_t_15 = (__pyx_v_i + 1);
-      __pyx_t_16 = __pyx_t_15;
-      for (__pyx_t_17 = ((__pyx_v_i - __pyx_v_period) + 1); __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
-        __pyx_v_k = __pyx_t_17;
-
-        /* "src/mintalib/cython/mad.pxi":38
- *             mad = 0.0
- *             for k in range(i - period + 1, i + 1):
- *                 mad += math.fabs(xs[k] - mean)             # <<<<<<<<<<<<<<
- *             output[i] = mad / period
+ *             if count > period:
+ *                 sx -= xs[i - period]             # <<<<<<<<<<<<<<
+ *                 count -= 1
  * 
 */
-        __pyx_t_14 = __pyx_v_k;
-        __pyx_v_mad = (__pyx_v_mad + fabs(((*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) ))) - __pyx_v_mean)));
-      }
+            __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
+            __pyx_v_sx = (__pyx_v_sx - (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) ))));
 
-      /* "src/mintalib/cython/mad.pxi":39
- *             for k in range(i - period + 1, i + 1):
- *                 mad += math.fabs(xs[k] - mean)
- *             output[i] = mad / period             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/mad.pxi":33
+ *             if count > period:
+ *                 sx -= xs[i - period]
+ *                 count -= 1             # <<<<<<<<<<<<<<
+ * 
+ *             if count == period:
+*/
+            __pyx_v_count = (__pyx_v_count - 1);
+
+            /* "src/mintalib/cython/mad.pxi":31
+ *                 sx = 0.0
+ * 
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 sx -= xs[i - period]
+ *                 count -= 1
+*/
+          }
+
+          /* "src/mintalib/cython/mad.pxi":35
+ *                 count -= 1
+ * 
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 mean = sx / period
+ *                 mad = 0.0
+*/
+          __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/mad.pxi":36
+ * 
+ *             if count == period:
+ *                 mean = sx / period             # <<<<<<<<<<<<<<
+ *                 mad = 0.0
+ *                 for k in range(i - period + 1, i + 1):
+*/
+            __pyx_v_mean = (__pyx_v_sx / ((double)__pyx_v_period));
+
+            /* "src/mintalib/cython/mad.pxi":37
+ *             if count == period:
+ *                 mean = sx / period
+ *                 mad = 0.0             # <<<<<<<<<<<<<<
+ *                 for k in range(i - period + 1, i + 1):
+ *                     mad += math.fabs(xs[k] - mean)
+*/
+            __pyx_v_mad = 0.0;
+
+            /* "src/mintalib/cython/mad.pxi":38
+ *                 mean = sx / period
+ *                 mad = 0.0
+ *                 for k in range(i - period + 1, i + 1):             # <<<<<<<<<<<<<<
+ *                     mad += math.fabs(xs[k] - mean)
+ *                 output[i] = mad / period
+*/
+            __pyx_t_15 = (__pyx_v_i + 1);
+            __pyx_t_16 = __pyx_t_15;
+            for (__pyx_t_17 = ((__pyx_v_i - __pyx_v_period) + 1); __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
+              __pyx_v_k = __pyx_t_17;
+
+              /* "src/mintalib/cython/mad.pxi":39
+ *                 mad = 0.0
+ *                 for k in range(i - period + 1, i + 1):
+ *                     mad += math.fabs(xs[k] - mean)             # <<<<<<<<<<<<<<
+ *                 output[i] = mad / period
+ * 
+*/
+              __pyx_t_14 = __pyx_v_k;
+              __pyx_v_mad = (__pyx_v_mad + fabs(((*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) ))) - __pyx_v_mean)));
+            }
+
+            /* "src/mintalib/cython/mad.pxi":40
+ *                 for k in range(i - period + 1, i + 1):
+ *                     mad += math.fabs(xs[k] - mean)
+ *                 output[i] = mad / period             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_t_14 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = (__pyx_v_mad / ((double)__pyx_v_period));
+            __pyx_t_14 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = (__pyx_v_mad / ((double)__pyx_v_period));
 
-      /* "src/mintalib/cython/mad.pxi":34
- *             count -= 1
+            /* "src/mintalib/cython/mad.pxi":35
+ *                 count -= 1
  * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             mean = sx / period
- *             mad = 0.0
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 mean = sx / period
+ *                 mad = 0.0
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/mad.pxi":20
+ *     cdef long i = 0, k = 0, count = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             x = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/mad.pxi":41
- *             output[i] = mad / period
+  /* "src/mintalib/cython/mad.pxi":42
+ *                 output[i] = mad / period
  * 
  *     return result             # <<<<<<<<<<<<<<
 */
@@ -28814,7 +29302,7 @@ static PyObject *__pyx_pf_8mintalib_4core_52calc_stdev(CYTHON_UNUSED PyObject *_
  * 
  *     cdef long i = 0, count = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_count = 0;
@@ -28822,206 +29310,237 @@ static PyObject *__pyx_pf_8mintalib_4core_52calc_stdev(CYTHON_UNUSED PyObject *_
   /* "src/mintalib/cython/stdev.pxi":27
  *     cdef long i = 0, count = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         x = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             x = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/stdev.pxi":28
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             x = xs[i]
  * 
 */
-  __pyx_t_8 = __pyx_v_size;
-  __pyx_t_12 = __pyx_t_8;
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+        __pyx_t_8 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_8;
+        for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
 
-    /* "src/mintalib/cython/stdev.pxi":28
+          /* "src/mintalib/cython/stdev.pxi":29
+ *     with nogil:
+ *         for i in range(size):
+ *             x = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         x = xs[i]             # <<<<<<<<<<<<<<
+ *             if x == x:
+*/
+          __pyx_t_14 = __pyx_v_i;
+          __pyx_v_x = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+
+          /* "src/mintalib/cython/stdev.pxi":31
+ *             x = xs[i]
  * 
- *         if x == x:
+ *             if x == x:             # <<<<<<<<<<<<<<
+ *                 count += 1
+ *                 sx += x
 */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_v_x = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_1 = (__pyx_v_x == __pyx_v_x);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/stdev.pxi":30
- *         x = xs[i]
+            /* "src/mintalib/cython/stdev.pxi":32
  * 
- *         if x == x:             # <<<<<<<<<<<<<<
- *             count += 1
- *             sx += x
+ *             if x == x:
+ *                 count += 1             # <<<<<<<<<<<<<<
+ *                 sx += x
+ *                 sxx += x * x
 */
-    __pyx_t_1 = (__pyx_v_x == __pyx_v_x);
-    if (__pyx_t_1) {
+            __pyx_v_count = (__pyx_v_count + 1);
 
-      /* "src/mintalib/cython/stdev.pxi":31
+            /* "src/mintalib/cython/stdev.pxi":33
+ *             if x == x:
+ *                 count += 1
+ *                 sx += x             # <<<<<<<<<<<<<<
+ *                 sxx += x * x
+ *             else:
+*/
+            __pyx_v_sx = (__pyx_v_sx + __pyx_v_x);
+
+            /* "src/mintalib/cython/stdev.pxi":34
+ *                 count += 1
+ *                 sx += x
+ *                 sxx += x * x             # <<<<<<<<<<<<<<
+ *             else:
+ *                 count = 0
+*/
+            __pyx_v_sxx = (__pyx_v_sxx + (__pyx_v_x * __pyx_v_x));
+
+            /* "src/mintalib/cython/stdev.pxi":31
+ *             x = xs[i]
  * 
- *         if x == x:
- *             count += 1             # <<<<<<<<<<<<<<
- *             sx += x
- *             sxx += x * x
+ *             if x == x:             # <<<<<<<<<<<<<<
+ *                 count += 1
+ *                 sx += x
 */
-      __pyx_v_count = (__pyx_v_count + 1);
+            goto __pyx_L9;
+          }
 
-      /* "src/mintalib/cython/stdev.pxi":32
- *         if x == x:
- *             count += 1
- *             sx += x             # <<<<<<<<<<<<<<
- *             sxx += x * x
- *         else:
-*/
-      __pyx_v_sx = (__pyx_v_sx + __pyx_v_x);
-
-      /* "src/mintalib/cython/stdev.pxi":33
- *             count += 1
- *             sx += x
- *             sxx += x * x             # <<<<<<<<<<<<<<
- *         else:
- *             count = 0
-*/
-      __pyx_v_sxx = (__pyx_v_sxx + (__pyx_v_x * __pyx_v_x));
-
-      /* "src/mintalib/cython/stdev.pxi":30
- *         x = xs[i]
- * 
- *         if x == x:             # <<<<<<<<<<<<<<
- *             count += 1
- *             sx += x
-*/
-      goto __pyx_L6;
-    }
-
-    /* "src/mintalib/cython/stdev.pxi":35
- *             sxx += x * x
- *         else:
- *             count = 0             # <<<<<<<<<<<<<<
- *             sx = sxx = 0.0
- * 
-*/
-    /*else*/ {
-      __pyx_v_count = 0;
-
-      /* "src/mintalib/cython/stdev.pxi":36
- *         else:
- *             count = 0
- *             sx = sxx = 0.0             # <<<<<<<<<<<<<<
- * 
- *         if count > period:
-*/
-      __pyx_v_sx = 0.0;
-      __pyx_v_sxx = 0.0;
-    }
-    __pyx_L6:;
-
-    /* "src/mintalib/cython/stdev.pxi":38
- *             sx = sxx = 0.0
- * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             x = xs[i - period]
- *             count -= 1
-*/
-    __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/stdev.pxi":39
- * 
- *         if count > period:
- *             x = xs[i - period]             # <<<<<<<<<<<<<<
- *             count -= 1
- *             sx -= x
-*/
-      __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
-      __pyx_v_x = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
-
-      /* "src/mintalib/cython/stdev.pxi":40
- *         if count > period:
- *             x = xs[i - period]
- *             count -= 1             # <<<<<<<<<<<<<<
- *             sx -= x
- *             sxx -= x * x
-*/
-      __pyx_v_count = (__pyx_v_count - 1);
-
-      /* "src/mintalib/cython/stdev.pxi":41
- *             x = xs[i - period]
- *             count -= 1
- *             sx -= x             # <<<<<<<<<<<<<<
- *             sxx -= x * x
+          /* "src/mintalib/cython/stdev.pxi":36
+ *                 sxx += x * x
+ *             else:
+ *                 count = 0             # <<<<<<<<<<<<<<
+ *                 sx = sxx = 0.0
  * 
 */
-      __pyx_v_sx = (__pyx_v_sx - __pyx_v_x);
+          /*else*/ {
+            __pyx_v_count = 0;
 
-      /* "src/mintalib/cython/stdev.pxi":42
- *             count -= 1
- *             sx -= x
- *             sxx -= x * x             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/stdev.pxi":37
+ *             else:
+ *                 count = 0
+ *                 sx = sxx = 0.0             # <<<<<<<<<<<<<<
  * 
- *         if count == period:
+ *             if count > period:
 */
-      __pyx_v_sxx = (__pyx_v_sxx - (__pyx_v_x * __pyx_v_x));
+            __pyx_v_sx = 0.0;
+            __pyx_v_sxx = 0.0;
+          }
+          __pyx_L9:;
 
-      /* "src/mintalib/cython/stdev.pxi":38
- *             sx = sxx = 0.0
+          /* "src/mintalib/cython/stdev.pxi":39
+ *                 sx = sxx = 0.0
  * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             x = xs[i - period]
- *             count -= 1
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 x = xs[i - period]
+ *                 count -= 1
 */
-    }
+          __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/stdev.pxi":44
- *             sxx -= x * x
+            /* "src/mintalib/cython/stdev.pxi":40
  * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             vxx = (sxx / count - sx * sx / count / count)
- *             std = math.sqrt(vxx) if vxx >= 0 else NAN
+ *             if count > period:
+ *                 x = xs[i - period]             # <<<<<<<<<<<<<<
+ *                 count -= 1
+ *                 sx -= x
 */
-    __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
-    if (__pyx_t_1) {
+            __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
+            __pyx_v_x = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
 
-      /* "src/mintalib/cython/stdev.pxi":45
+            /* "src/mintalib/cython/stdev.pxi":41
+ *             if count > period:
+ *                 x = xs[i - period]
+ *                 count -= 1             # <<<<<<<<<<<<<<
+ *                 sx -= x
+ *                 sxx -= x * x
+*/
+            __pyx_v_count = (__pyx_v_count - 1);
+
+            /* "src/mintalib/cython/stdev.pxi":42
+ *                 x = xs[i - period]
+ *                 count -= 1
+ *                 sx -= x             # <<<<<<<<<<<<<<
+ *                 sxx -= x * x
  * 
- *         if count == period:
- *             vxx = (sxx / count - sx * sx / count / count)             # <<<<<<<<<<<<<<
- *             std = math.sqrt(vxx) if vxx >= 0 else NAN
- *             output[i] = std
 */
-      __pyx_v_vxx = ((__pyx_v_sxx / ((double)__pyx_v_count)) - (((__pyx_v_sx * __pyx_v_sx) / ((double)__pyx_v_count)) / ((double)__pyx_v_count)));
+            __pyx_v_sx = (__pyx_v_sx - __pyx_v_x);
 
-      /* "src/mintalib/cython/stdev.pxi":46
- *         if count == period:
- *             vxx = (sxx / count - sx * sx / count / count)
- *             std = math.sqrt(vxx) if vxx >= 0 else NAN             # <<<<<<<<<<<<<<
- *             output[i] = std
+            /* "src/mintalib/cython/stdev.pxi":43
+ *                 count -= 1
+ *                 sx -= x
+ *                 sxx -= x * x             # <<<<<<<<<<<<<<
+ * 
+ *             if count == period:
+*/
+            __pyx_v_sxx = (__pyx_v_sxx - (__pyx_v_x * __pyx_v_x));
+
+            /* "src/mintalib/cython/stdev.pxi":39
+ *                 sx = sxx = 0.0
+ * 
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 x = xs[i - period]
+ *                 count -= 1
+*/
+          }
+
+          /* "src/mintalib/cython/stdev.pxi":45
+ *                 sxx -= x * x
+ * 
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 vxx = (sxx / count - sx * sx / count / count)
+ *                 std = math.sqrt(vxx) if vxx >= 0 else NAN
+*/
+          __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/stdev.pxi":46
+ * 
+ *             if count == period:
+ *                 vxx = (sxx / count - sx * sx / count / count)             # <<<<<<<<<<<<<<
+ *                 std = math.sqrt(vxx) if vxx >= 0 else NAN
+ *                 output[i] = std
+*/
+            __pyx_v_vxx = ((__pyx_v_sxx / ((double)__pyx_v_count)) - (((__pyx_v_sx * __pyx_v_sx) / ((double)__pyx_v_count)) / ((double)__pyx_v_count)));
+
+            /* "src/mintalib/cython/stdev.pxi":47
+ *             if count == period:
+ *                 vxx = (sxx / count - sx * sx / count / count)
+ *                 std = math.sqrt(vxx) if vxx >= 0 else NAN             # <<<<<<<<<<<<<<
+ *                 output[i] = std
  * 
 */
-      __pyx_t_1 = (__pyx_v_vxx >= 0.0);
-      if (__pyx_t_1) {
-        __pyx_t_15 = sqrt(__pyx_v_vxx);
-      } else {
-        __pyx_t_15 = __pyx_v_8mintalib_4core_NAN;
-      }
-      __pyx_v_std = __pyx_t_15;
+            __pyx_t_1 = (__pyx_v_vxx >= 0.0);
+            if (__pyx_t_1) {
+              __pyx_t_15 = sqrt(__pyx_v_vxx);
+            } else {
+              __pyx_t_15 = __pyx_v_8mintalib_4core_NAN;
+            }
+            __pyx_v_std = __pyx_t_15;
 
-      /* "src/mintalib/cython/stdev.pxi":47
- *             vxx = (sxx / count - sx * sx / count / count)
- *             std = math.sqrt(vxx) if vxx >= 0 else NAN
- *             output[i] = std             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/stdev.pxi":48
+ *                 vxx = (sxx / count - sx * sx / count / count)
+ *                 std = math.sqrt(vxx) if vxx >= 0 else NAN
+ *                 output[i] = std             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_t_14 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_std;
+            __pyx_t_14 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_std;
 
-      /* "src/mintalib/cython/stdev.pxi":44
- *             sxx -= x * x
+            /* "src/mintalib/cython/stdev.pxi":45
+ *                 sxx -= x * x
  * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             vxx = (sxx / count - sx * sx / count / count)
- *             std = math.sqrt(vxx) if vxx >= 0 else NAN
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 vxx = (sxx / count - sx * sx / count / count)
+ *                 std = math.sqrt(vxx) if vxx >= 0 else NAN
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/stdev.pxi":27
+ *     cdef long i = 0, count = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             x = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/stdev.pxi":49
- *             output[i] = std
+  /* "src/mintalib/cython/stdev.pxi":50
+ *                 output[i] = std
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -29903,7 +30422,7 @@ static PyObject *__pyx_pf_8mintalib_4core_56calc_sma(CYTHON_UNUSED PyObject *__p
  *     cdef double v = NAN, rsum = 0.0
  *     cdef long i = 0, count = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_count = 0;
@@ -29911,154 +30430,185 @@ static PyObject *__pyx_pf_8mintalib_4core_56calc_sma(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/sma.pxi":25
  *     cdef long i = 0, count = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         v = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             v = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/sma.pxi":26
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             v = xs[i]
  * 
 */
-  __pyx_t_8 = __pyx_v_size;
-  __pyx_t_12 = __pyx_t_8;
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+        __pyx_t_8 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_8;
+        for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
 
-    /* "src/mintalib/cython/sma.pxi":26
+          /* "src/mintalib/cython/sma.pxi":27
+ *     with nogil:
+ *         for i in range(size):
+ *             v = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         v = xs[i]             # <<<<<<<<<<<<<<
- * 
- *         if v == v:
+ *             if v == v:
 */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_14 = __pyx_v_i;
+          __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
 
-    /* "src/mintalib/cython/sma.pxi":28
- *         v = xs[i]
+          /* "src/mintalib/cython/sma.pxi":29
+ *             v = xs[i]
  * 
- *         if v == v:             # <<<<<<<<<<<<<<
- *             rsum += v
- *             count += 1
+ *             if v == v:             # <<<<<<<<<<<<<<
+ *                 rsum += v
+ *                 count += 1
 */
-    __pyx_t_1 = (__pyx_v_v == __pyx_v_v);
-    if (__pyx_t_1) {
+          __pyx_t_1 = (__pyx_v_v == __pyx_v_v);
+          if (__pyx_t_1) {
 
-      /* "src/mintalib/cython/sma.pxi":29
+            /* "src/mintalib/cython/sma.pxi":30
  * 
- *         if v == v:
- *             rsum += v             # <<<<<<<<<<<<<<
- *             count += 1
- *         else:
+ *             if v == v:
+ *                 rsum += v             # <<<<<<<<<<<<<<
+ *                 count += 1
+ *             else:
 */
-      __pyx_v_rsum = (__pyx_v_rsum + __pyx_v_v);
+            __pyx_v_rsum = (__pyx_v_rsum + __pyx_v_v);
 
-      /* "src/mintalib/cython/sma.pxi":30
- *         if v == v:
- *             rsum += v
- *             count += 1             # <<<<<<<<<<<<<<
- *         else:
- *             rsum = 0.0
+            /* "src/mintalib/cython/sma.pxi":31
+ *             if v == v:
+ *                 rsum += v
+ *                 count += 1             # <<<<<<<<<<<<<<
+ *             else:
+ *                 rsum = 0.0
 */
-      __pyx_v_count = (__pyx_v_count + 1);
+            __pyx_v_count = (__pyx_v_count + 1);
 
-      /* "src/mintalib/cython/sma.pxi":28
- *         v = xs[i]
+            /* "src/mintalib/cython/sma.pxi":29
+ *             v = xs[i]
  * 
- *         if v == v:             # <<<<<<<<<<<<<<
- *             rsum += v
- *             count += 1
+ *             if v == v:             # <<<<<<<<<<<<<<
+ *                 rsum += v
+ *                 count += 1
 */
-      goto __pyx_L6;
-    }
+            goto __pyx_L9;
+          }
 
-    /* "src/mintalib/cython/sma.pxi":32
- *             count += 1
- *         else:
- *             rsum = 0.0             # <<<<<<<<<<<<<<
- *             count = 0
- * 
-*/
-    /*else*/ {
-      __pyx_v_rsum = 0.0;
-
-      /* "src/mintalib/cython/sma.pxi":33
- *         else:
- *             rsum = 0.0
- *             count = 0             # <<<<<<<<<<<<<<
- * 
- *         if count > period:
-*/
-      __pyx_v_count = 0;
-    }
-    __pyx_L6:;
-
-    /* "src/mintalib/cython/sma.pxi":35
- *             count = 0
- * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             rsum -= xs[i - period]
- *             count -= 1
-*/
-    __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/sma.pxi":36
- * 
- *         if count > period:
- *             rsum -= xs[i - period]             # <<<<<<<<<<<<<<
- *             count -= 1
+          /* "src/mintalib/cython/sma.pxi":33
+ *                 count += 1
+ *             else:
+ *                 rsum = 0.0             # <<<<<<<<<<<<<<
+ *                 count = 0
  * 
 */
-      __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
-      __pyx_v_rsum = (__pyx_v_rsum - (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) ))));
+          /*else*/ {
+            __pyx_v_rsum = 0.0;
 
-      /* "src/mintalib/cython/sma.pxi":37
- *         if count > period:
- *             rsum -= xs[i - period]
- *             count -= 1             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/sma.pxi":34
+ *             else:
+ *                 rsum = 0.0
+ *                 count = 0             # <<<<<<<<<<<<<<
  * 
- *         if count == period:
+ *             if count > period:
 */
-      __pyx_v_count = (__pyx_v_count - 1);
+            __pyx_v_count = 0;
+          }
+          __pyx_L9:;
 
-      /* "src/mintalib/cython/sma.pxi":35
- *             count = 0
+          /* "src/mintalib/cython/sma.pxi":36
+ *                 count = 0
  * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             rsum -= xs[i - period]
- *             count -= 1
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 rsum -= xs[i - period]
+ *                 count -= 1
 */
-    }
+          __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/sma.pxi":39
- *             count -= 1
+            /* "src/mintalib/cython/sma.pxi":37
  * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             output[i] = rsum / count
+ *             if count > period:
+ *                 rsum -= xs[i - period]             # <<<<<<<<<<<<<<
+ *                 count -= 1
  * 
 */
-    __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
-    if (__pyx_t_1) {
+            __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
+            __pyx_v_rsum = (__pyx_v_rsum - (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) ))));
 
-      /* "src/mintalib/cython/sma.pxi":40
+            /* "src/mintalib/cython/sma.pxi":38
+ *             if count > period:
+ *                 rsum -= xs[i - period]
+ *                 count -= 1             # <<<<<<<<<<<<<<
  * 
- *         if count == period:
- *             output[i] = rsum / count             # <<<<<<<<<<<<<<
+ *             if count == period:
+*/
+            __pyx_v_count = (__pyx_v_count - 1);
+
+            /* "src/mintalib/cython/sma.pxi":36
+ *                 count = 0
+ * 
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 rsum -= xs[i - period]
+ *                 count -= 1
+*/
+          }
+
+          /* "src/mintalib/cython/sma.pxi":40
+ *                 count -= 1
+ * 
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 output[i] = rsum / count
+ * 
+*/
+          __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/sma.pxi":41
+ * 
+ *             if count == period:
+ *                 output[i] = rsum / count             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_t_14 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = (__pyx_v_rsum / ((double)__pyx_v_count));
+            __pyx_t_14 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = (__pyx_v_rsum / ((double)__pyx_v_count));
 
-      /* "src/mintalib/cython/sma.pxi":39
- *             count -= 1
+            /* "src/mintalib/cython/sma.pxi":40
+ *                 count -= 1
  * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             output[i] = rsum / count
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 output[i] = rsum / count
  * 
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/sma.pxi":25
+ *     cdef long i = 0, count = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             v = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/sma.pxi":42
- *             output[i] = rsum / count
+  /* "src/mintalib/cython/sma.pxi":43
+ *                 output[i] = rsum / count
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -30459,7 +31009,7 @@ static PyObject *__pyx_pf_8mintalib_4core_58calc_ema(CYTHON_UNUSED PyObject *__p
  * 
  *     cdef long i = 0, count = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_count = 0;
@@ -30467,190 +31017,221 @@ static PyObject *__pyx_pf_8mintalib_4core_58calc_ema(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/ema.pxi":39
  *     cdef long i = 0, count = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         value = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/ema.pxi":40
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             value = xs[i]
  * 
 */
-  __pyx_t_8 = __pyx_v_size;
-  __pyx_t_11 = __pyx_t_8;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+        __pyx_t_8 = __pyx_v_size;
+        __pyx_t_11 = __pyx_t_8;
+        for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+          __pyx_v_i = __pyx_t_12;
 
-    /* "src/mintalib/cython/ema.pxi":40
+          /* "src/mintalib/cython/ema.pxi":41
+ *     with nogil:
+ *         for i in range(size):
+ *             value = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         value = xs[i]             # <<<<<<<<<<<<<<
+ *             if not isnan(value):
+*/
+          __pyx_t_13 = __pyx_v_i;
+          __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
+
+          /* "src/mintalib/cython/ema.pxi":43
+ *             value = xs[i]
  * 
- *         if not isnan(value):
-*/
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
-
-    /* "src/mintalib/cython/ema.pxi":42
- *         value = xs[i]
- * 
- *         if not isnan(value):             # <<<<<<<<<<<<<<
- *             count += 1
- * 
-*/
-    __pyx_t_1 = (!isnan(__pyx_v_value));
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/ema.pxi":43
- * 
- *         if not isnan(value):
- *             count += 1             # <<<<<<<<<<<<<<
- * 
- *             if isnan(ema):
-*/
-      __pyx_v_count = (__pyx_v_count + 1);
-
-      /* "src/mintalib/cython/ema.pxi":45
- *             count += 1
- * 
- *             if isnan(ema):             # <<<<<<<<<<<<<<
- *                 ema = value
- *                 num = value
-*/
-      __pyx_t_1 = isnan(__pyx_v_ema);
-      if (__pyx_t_1) {
-
-        /* "src/mintalib/cython/ema.pxi":46
- * 
- *             if isnan(ema):
- *                 ema = value             # <<<<<<<<<<<<<<
- *                 num = value
- *                 div = 1.0
-*/
-        __pyx_v_ema = __pyx_v_value;
-
-        /* "src/mintalib/cython/ema.pxi":47
- *             if isnan(ema):
- *                 ema = value
- *                 num = value             # <<<<<<<<<<<<<<
- *                 div = 1.0
- *             elif adjust:
-*/
-        __pyx_v_num = __pyx_v_value;
-
-        /* "src/mintalib/cython/ema.pxi":48
- *                 ema = value
- *                 num = value
- *                 div = 1.0             # <<<<<<<<<<<<<<
- *             elif adjust:
- *                 num = value + rho * num
-*/
-        __pyx_v_div = 1.0;
-
-        /* "src/mintalib/cython/ema.pxi":45
- *             count += 1
- * 
- *             if isnan(ema):             # <<<<<<<<<<<<<<
- *                 ema = value
- *                 num = value
-*/
-        goto __pyx_L7;
-      }
-
-      /* "src/mintalib/cython/ema.pxi":49
- *                 num = value
- *                 div = 1.0
- *             elif adjust:             # <<<<<<<<<<<<<<
- *                 num = value + rho * num
- *                 div = 1.0 + rho * div
-*/
-      if (__pyx_v_adjust) {
-
-        /* "src/mintalib/cython/ema.pxi":50
- *                 div = 1.0
- *             elif adjust:
- *                 num = value + rho * num             # <<<<<<<<<<<<<<
- *                 div = 1.0 + rho * div
- *                 ema = num / div
-*/
-        __pyx_v_num = (__pyx_v_value + (__pyx_v_rho * __pyx_v_num));
-
-        /* "src/mintalib/cython/ema.pxi":51
- *             elif adjust:
- *                 num = value + rho * num
- *                 div = 1.0 + rho * div             # <<<<<<<<<<<<<<
- *                 ema = num / div
- *             else:
-*/
-        __pyx_v_div = (1.0 + (__pyx_v_rho * __pyx_v_div));
-
-        /* "src/mintalib/cython/ema.pxi":52
- *                 num = value + rho * num
- *                 div = 1.0 + rho * div
- *                 ema = num / div             # <<<<<<<<<<<<<<
- *             else:
- *                 ema += alpha * (value - ema)
-*/
-        __pyx_v_ema = (__pyx_v_num / __pyx_v_div);
-
-        /* "src/mintalib/cython/ema.pxi":49
- *                 num = value
- *                 div = 1.0
- *             elif adjust:             # <<<<<<<<<<<<<<
- *                 num = value + rho * num
- *                 div = 1.0 + rho * div
-*/
-        goto __pyx_L7;
-      }
-
-      /* "src/mintalib/cython/ema.pxi":54
- *                 ema = num / div
- *             else:
- *                 ema += alpha * (value - ema)             # <<<<<<<<<<<<<<
- * 
- *         if count >= period:
-*/
-      /*else*/ {
-        __pyx_v_ema = (__pyx_v_ema + (__pyx_v_alpha * (__pyx_v_value - __pyx_v_ema)));
-      }
-      __pyx_L7:;
-
-      /* "src/mintalib/cython/ema.pxi":42
- *         value = xs[i]
- * 
- *         if not isnan(value):             # <<<<<<<<<<<<<<
- *             count += 1
+ *             if not isnan(value):             # <<<<<<<<<<<<<<
+ *                 count += 1
  * 
 */
-    }
+          __pyx_t_1 = (!isnan(__pyx_v_value));
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/ema.pxi":56
- *                 ema += alpha * (value - ema)
+            /* "src/mintalib/cython/ema.pxi":44
  * 
- *         if count >= period:             # <<<<<<<<<<<<<<
- *             output[i] = ema
+ *             if not isnan(value):
+ *                 count += 1             # <<<<<<<<<<<<<<
+ * 
+ *                 if isnan(ema):
+*/
+            __pyx_v_count = (__pyx_v_count + 1);
+
+            /* "src/mintalib/cython/ema.pxi":46
+ *                 count += 1
+ * 
+ *                 if isnan(ema):             # <<<<<<<<<<<<<<
+ *                     ema = value
+ *                     num = value
+*/
+            __pyx_t_1 = isnan(__pyx_v_ema);
+            if (__pyx_t_1) {
+
+              /* "src/mintalib/cython/ema.pxi":47
+ * 
+ *                 if isnan(ema):
+ *                     ema = value             # <<<<<<<<<<<<<<
+ *                     num = value
+ *                     div = 1.0
+*/
+              __pyx_v_ema = __pyx_v_value;
+
+              /* "src/mintalib/cython/ema.pxi":48
+ *                 if isnan(ema):
+ *                     ema = value
+ *                     num = value             # <<<<<<<<<<<<<<
+ *                     div = 1.0
+ *                 elif adjust:
+*/
+              __pyx_v_num = __pyx_v_value;
+
+              /* "src/mintalib/cython/ema.pxi":49
+ *                     ema = value
+ *                     num = value
+ *                     div = 1.0             # <<<<<<<<<<<<<<
+ *                 elif adjust:
+ *                     num = value + rho * num
+*/
+              __pyx_v_div = 1.0;
+
+              /* "src/mintalib/cython/ema.pxi":46
+ *                 count += 1
+ * 
+ *                 if isnan(ema):             # <<<<<<<<<<<<<<
+ *                     ema = value
+ *                     num = value
+*/
+              goto __pyx_L10;
+            }
+
+            /* "src/mintalib/cython/ema.pxi":50
+ *                     num = value
+ *                     div = 1.0
+ *                 elif adjust:             # <<<<<<<<<<<<<<
+ *                     num = value + rho * num
+ *                     div = 1.0 + rho * div
+*/
+            if (__pyx_v_adjust) {
+
+              /* "src/mintalib/cython/ema.pxi":51
+ *                     div = 1.0
+ *                 elif adjust:
+ *                     num = value + rho * num             # <<<<<<<<<<<<<<
+ *                     div = 1.0 + rho * div
+ *                     ema = num / div
+*/
+              __pyx_v_num = (__pyx_v_value + (__pyx_v_rho * __pyx_v_num));
+
+              /* "src/mintalib/cython/ema.pxi":52
+ *                 elif adjust:
+ *                     num = value + rho * num
+ *                     div = 1.0 + rho * div             # <<<<<<<<<<<<<<
+ *                     ema = num / div
+ *                 else:
+*/
+              __pyx_v_div = (1.0 + (__pyx_v_rho * __pyx_v_div));
+
+              /* "src/mintalib/cython/ema.pxi":53
+ *                     num = value + rho * num
+ *                     div = 1.0 + rho * div
+ *                     ema = num / div             # <<<<<<<<<<<<<<
+ *                 else:
+ *                     ema += alpha * (value - ema)
+*/
+              __pyx_v_ema = (__pyx_v_num / __pyx_v_div);
+
+              /* "src/mintalib/cython/ema.pxi":50
+ *                     num = value
+ *                     div = 1.0
+ *                 elif adjust:             # <<<<<<<<<<<<<<
+ *                     num = value + rho * num
+ *                     div = 1.0 + rho * div
+*/
+              goto __pyx_L10;
+            }
+
+            /* "src/mintalib/cython/ema.pxi":55
+ *                     ema = num / div
+ *                 else:
+ *                     ema += alpha * (value - ema)             # <<<<<<<<<<<<<<
+ * 
+ *             if count >= period:
+*/
+            /*else*/ {
+              __pyx_v_ema = (__pyx_v_ema + (__pyx_v_alpha * (__pyx_v_value - __pyx_v_ema)));
+            }
+            __pyx_L10:;
+
+            /* "src/mintalib/cython/ema.pxi":43
+ *             value = xs[i]
+ * 
+ *             if not isnan(value):             # <<<<<<<<<<<<<<
+ *                 count += 1
  * 
 */
-    __pyx_t_1 = (__pyx_v_count >= __pyx_v_period);
-    if (__pyx_t_1) {
+          }
 
-      /* "src/mintalib/cython/ema.pxi":57
+          /* "src/mintalib/cython/ema.pxi":57
+ *                     ema += alpha * (value - ema)
  * 
- *         if count >= period:
- *             output[i] = ema             # <<<<<<<<<<<<<<
+ *             if count >= period:             # <<<<<<<<<<<<<<
+ *                 output[i] = ema
+ * 
+*/
+          __pyx_t_1 = (__pyx_v_count >= __pyx_v_period);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/ema.pxi":58
+ * 
+ *             if count >= period:
+ *                 output[i] = ema             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_t_13 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_ema;
+            __pyx_t_13 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_ema;
 
-      /* "src/mintalib/cython/ema.pxi":56
- *                 ema += alpha * (value - ema)
+            /* "src/mintalib/cython/ema.pxi":57
+ *                     ema += alpha * (value - ema)
  * 
- *         if count >= period:             # <<<<<<<<<<<<<<
- *             output[i] = ema
+ *             if count >= period:             # <<<<<<<<<<<<<<
+ *                 output[i] = ema
  * 
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/ema.pxi":39
+ *     cdef long i = 0, count = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/ema.pxi":59
- *             output[i] = ema
+  /* "src/mintalib/cython/ema.pxi":60
+ *                 output[i] = ema
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -31017,7 +31598,7 @@ static PyObject *__pyx_pf_8mintalib_4core_60calc_rma(CYTHON_UNUSED PyObject *__p
  * 
  *     cdef long i = 0, count = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_count = 0;
@@ -31025,135 +31606,166 @@ static PyObject *__pyx_pf_8mintalib_4core_60calc_rma(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/rma.pxi":29
  *     cdef long i = 0, count = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         value = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/rma.pxi":30
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             value = xs[i]
  * 
 */
-  __pyx_t_8 = __pyx_v_size;
-  __pyx_t_11 = __pyx_t_8;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+        __pyx_t_8 = __pyx_v_size;
+        __pyx_t_11 = __pyx_t_8;
+        for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+          __pyx_v_i = __pyx_t_12;
 
-    /* "src/mintalib/cython/rma.pxi":30
+          /* "src/mintalib/cython/rma.pxi":31
+ *     with nogil:
+ *         for i in range(size):
+ *             value = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         value = xs[i]             # <<<<<<<<<<<<<<
+ *             if not isnan(value):
+*/
+          __pyx_t_13 = __pyx_v_i;
+          __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
+
+          /* "src/mintalib/cython/rma.pxi":33
+ *             value = xs[i]
  * 
- *         if not isnan(value):
+ *             if not isnan(value):             # <<<<<<<<<<<<<<
+ *                 count += 1
+ *                 if count <= period:
 */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_1 = (!isnan(__pyx_v_value));
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/rma.pxi":32
- *         value = xs[i]
+            /* "src/mintalib/cython/rma.pxi":34
  * 
- *         if not isnan(value):             # <<<<<<<<<<<<<<
- *             count += 1
- *             if count <= period:
+ *             if not isnan(value):
+ *                 count += 1             # <<<<<<<<<<<<<<
+ *                 if count <= period:
+ *                     total += value
 */
-    __pyx_t_1 = (!isnan(__pyx_v_value));
-    if (__pyx_t_1) {
+            __pyx_v_count = (__pyx_v_count + 1);
 
-      /* "src/mintalib/cython/rma.pxi":33
+            /* "src/mintalib/cython/rma.pxi":35
+ *             if not isnan(value):
+ *                 count += 1
+ *                 if count <= period:             # <<<<<<<<<<<<<<
+ *                     total += value
+ *                     rma = total / count
+*/
+            __pyx_t_1 = (__pyx_v_count <= __pyx_v_period);
+            if (__pyx_t_1) {
+
+              /* "src/mintalib/cython/rma.pxi":36
+ *                 count += 1
+ *                 if count <= period:
+ *                     total += value             # <<<<<<<<<<<<<<
+ *                     rma = total / count
+ *                 else:
+*/
+              __pyx_v_total = (__pyx_v_total + __pyx_v_value);
+
+              /* "src/mintalib/cython/rma.pxi":37
+ *                 if count <= period:
+ *                     total += value
+ *                     rma = total / count             # <<<<<<<<<<<<<<
+ *                 else:
+ *                     rma += alpha * (value - rma)
+*/
+              __pyx_v_rma = (__pyx_v_total / ((double)__pyx_v_count));
+
+              /* "src/mintalib/cython/rma.pxi":35
+ *             if not isnan(value):
+ *                 count += 1
+ *                 if count <= period:             # <<<<<<<<<<<<<<
+ *                     total += value
+ *                     rma = total / count
+*/
+              goto __pyx_L10;
+            }
+
+            /* "src/mintalib/cython/rma.pxi":39
+ *                     rma = total / count
+ *                 else:
+ *                     rma += alpha * (value - rma)             # <<<<<<<<<<<<<<
  * 
- *         if not isnan(value):
- *             count += 1             # <<<<<<<<<<<<<<
- *             if count <= period:
- *                 total += value
+ *             if count >= period:
 */
-      __pyx_v_count = (__pyx_v_count + 1);
+            /*else*/ {
+              __pyx_v_rma = (__pyx_v_rma + (__pyx_v_alpha * (__pyx_v_value - __pyx_v_rma)));
+            }
+            __pyx_L10:;
 
-      /* "src/mintalib/cython/rma.pxi":34
- *         if not isnan(value):
- *             count += 1
- *             if count <= period:             # <<<<<<<<<<<<<<
- *                 total += value
- *                 rma = total / count
-*/
-      __pyx_t_1 = (__pyx_v_count <= __pyx_v_period);
-      if (__pyx_t_1) {
-
-        /* "src/mintalib/cython/rma.pxi":35
- *             count += 1
- *             if count <= period:
- *                 total += value             # <<<<<<<<<<<<<<
- *                 rma = total / count
- *             else:
-*/
-        __pyx_v_total = (__pyx_v_total + __pyx_v_value);
-
-        /* "src/mintalib/cython/rma.pxi":36
- *             if count <= period:
- *                 total += value
- *                 rma = total / count             # <<<<<<<<<<<<<<
- *             else:
- *                 rma += alpha * (value - rma)
-*/
-        __pyx_v_rma = (__pyx_v_total / ((double)__pyx_v_count));
-
-        /* "src/mintalib/cython/rma.pxi":34
- *         if not isnan(value):
- *             count += 1
- *             if count <= period:             # <<<<<<<<<<<<<<
- *                 total += value
- *                 rma = total / count
-*/
-        goto __pyx_L7;
-      }
-
-      /* "src/mintalib/cython/rma.pxi":38
- *                 rma = total / count
- *             else:
- *                 rma += alpha * (value - rma)             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/rma.pxi":33
+ *             value = xs[i]
  * 
- *         if count >= period:
+ *             if not isnan(value):             # <<<<<<<<<<<<<<
+ *                 count += 1
+ *                 if count <= period:
 */
-      /*else*/ {
-        __pyx_v_rma = (__pyx_v_rma + (__pyx_v_alpha * (__pyx_v_value - __pyx_v_rma)));
-      }
-      __pyx_L7:;
+          }
 
-      /* "src/mintalib/cython/rma.pxi":32
- *         value = xs[i]
+          /* "src/mintalib/cython/rma.pxi":41
+ *                     rma += alpha * (value - rma)
  * 
- *         if not isnan(value):             # <<<<<<<<<<<<<<
- *             count += 1
- *             if count <= period:
-*/
-    }
-
-    /* "src/mintalib/cython/rma.pxi":40
- *                 rma += alpha * (value - rma)
- * 
- *         if count >= period:             # <<<<<<<<<<<<<<
- *             output[i] = rma
+ *             if count >= period:             # <<<<<<<<<<<<<<
+ *                 output[i] = rma
  * 
 */
-    __pyx_t_1 = (__pyx_v_count >= __pyx_v_period);
-    if (__pyx_t_1) {
+          __pyx_t_1 = (__pyx_v_count >= __pyx_v_period);
+          if (__pyx_t_1) {
 
-      /* "src/mintalib/cython/rma.pxi":41
+            /* "src/mintalib/cython/rma.pxi":42
  * 
- *         if count >= period:
- *             output[i] = rma             # <<<<<<<<<<<<<<
+ *             if count >= period:
+ *                 output[i] = rma             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_t_13 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_rma;
+            __pyx_t_13 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_rma;
 
-      /* "src/mintalib/cython/rma.pxi":40
- *                 rma += alpha * (value - rma)
+            /* "src/mintalib/cython/rma.pxi":41
+ *                     rma += alpha * (value - rma)
  * 
- *         if count >= period:             # <<<<<<<<<<<<<<
- *             output[i] = rma
+ *             if count >= period:             # <<<<<<<<<<<<<<
+ *                 output[i] = rma
  * 
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/rma.pxi":29
+ *     cdef long i = 0, count = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/rma.pxi":43
- *             output[i] = rma
+  /* "src/mintalib/cython/rma.pxi":44
+ *                 output[i] = rma
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -31507,7 +32119,7 @@ static PyObject *__pyx_pf_8mintalib_4core_62calc_wma(CYTHON_UNUSED PyObject *__p
  *     cdef double v = NAN, rsum = 0, wsum = 0
  *     cdef long i = 0, count = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_count = 0;
@@ -31515,173 +32127,204 @@ static PyObject *__pyx_pf_8mintalib_4core_62calc_wma(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/wma.pxi":25
  *     cdef long i = 0, count = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         v = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             v = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/wma.pxi":26
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             v = xs[i]
  * 
 */
-  __pyx_t_8 = __pyx_v_size;
-  __pyx_t_12 = __pyx_t_8;
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+        __pyx_t_8 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_8;
+        for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
 
-    /* "src/mintalib/cython/wma.pxi":26
+          /* "src/mintalib/cython/wma.pxi":27
+ *     with nogil:
+ *         for i in range(size):
+ *             v = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         v = xs[i]             # <<<<<<<<<<<<<<
+ *             if v == v:
+*/
+          __pyx_t_14 = __pyx_v_i;
+          __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+
+          /* "src/mintalib/cython/wma.pxi":29
+ *             v = xs[i]
  * 
- *         if v == v:
+ *             if v == v:             # <<<<<<<<<<<<<<
+ *                 count += 1
+ *                 rsum += v
 */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_1 = (__pyx_v_v == __pyx_v_v);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/wma.pxi":28
- *         v = xs[i]
+            /* "src/mintalib/cython/wma.pxi":30
  * 
- *         if v == v:             # <<<<<<<<<<<<<<
- *             count += 1
- *             rsum += v
+ *             if v == v:
+ *                 count += 1             # <<<<<<<<<<<<<<
+ *                 rsum += v
+ *                 wsum += count * v
 */
-    __pyx_t_1 = (__pyx_v_v == __pyx_v_v);
-    if (__pyx_t_1) {
+            __pyx_v_count = (__pyx_v_count + 1);
 
-      /* "src/mintalib/cython/wma.pxi":29
+            /* "src/mintalib/cython/wma.pxi":31
+ *             if v == v:
+ *                 count += 1
+ *                 rsum += v             # <<<<<<<<<<<<<<
+ *                 wsum += count * v
+ *             else:
+*/
+            __pyx_v_rsum = (__pyx_v_rsum + __pyx_v_v);
+
+            /* "src/mintalib/cython/wma.pxi":32
+ *                 count += 1
+ *                 rsum += v
+ *                 wsum += count * v             # <<<<<<<<<<<<<<
+ *             else:
+ *                 rsum = wsum = 0
+*/
+            __pyx_v_wsum = (__pyx_v_wsum + (__pyx_v_count * __pyx_v_v));
+
+            /* "src/mintalib/cython/wma.pxi":29
+ *             v = xs[i]
  * 
- *         if v == v:
- *             count += 1             # <<<<<<<<<<<<<<
- *             rsum += v
- *             wsum += count * v
+ *             if v == v:             # <<<<<<<<<<<<<<
+ *                 count += 1
+ *                 rsum += v
 */
-      __pyx_v_count = (__pyx_v_count + 1);
+            goto __pyx_L9;
+          }
 
-      /* "src/mintalib/cython/wma.pxi":30
- *         if v == v:
- *             count += 1
- *             rsum += v             # <<<<<<<<<<<<<<
- *             wsum += count * v
- *         else:
-*/
-      __pyx_v_rsum = (__pyx_v_rsum + __pyx_v_v);
-
-      /* "src/mintalib/cython/wma.pxi":31
- *             count += 1
- *             rsum += v
- *             wsum += count * v             # <<<<<<<<<<<<<<
- *         else:
- *             rsum = wsum = 0
-*/
-      __pyx_v_wsum = (__pyx_v_wsum + (__pyx_v_count * __pyx_v_v));
-
-      /* "src/mintalib/cython/wma.pxi":28
- *         v = xs[i]
- * 
- *         if v == v:             # <<<<<<<<<<<<<<
- *             count += 1
- *             rsum += v
-*/
-      goto __pyx_L6;
-    }
-
-    /* "src/mintalib/cython/wma.pxi":33
- *             wsum += count * v
- *         else:
- *             rsum = wsum = 0             # <<<<<<<<<<<<<<
- *             count = 0
- * 
-*/
-    /*else*/ {
-      __pyx_v_rsum = 0.0;
-      __pyx_v_wsum = 0.0;
-
-      /* "src/mintalib/cython/wma.pxi":34
- *         else:
- *             rsum = wsum = 0
- *             count = 0             # <<<<<<<<<<<<<<
- * 
- *         if count > period:
-*/
-      __pyx_v_count = 0;
-    }
-    __pyx_L6:;
-
-    /* "src/mintalib/cython/wma.pxi":36
- *             count = 0
- * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             wsum -= rsum
- *             rsum -= xs[i - period]
-*/
-    __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/wma.pxi":37
- * 
- *         if count > period:
- *             wsum -= rsum             # <<<<<<<<<<<<<<
- *             rsum -= xs[i - period]
- *             count -= 1
-*/
-      __pyx_v_wsum = (__pyx_v_wsum - __pyx_v_rsum);
-
-      /* "src/mintalib/cython/wma.pxi":38
- *         if count > period:
- *             wsum -= rsum
- *             rsum -= xs[i - period]             # <<<<<<<<<<<<<<
- *             count -= 1
+          /* "src/mintalib/cython/wma.pxi":34
+ *                 wsum += count * v
+ *             else:
+ *                 rsum = wsum = 0             # <<<<<<<<<<<<<<
+ *                 count = 0
  * 
 */
-      __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
-      __pyx_v_rsum = (__pyx_v_rsum - (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) ))));
+          /*else*/ {
+            __pyx_v_rsum = 0.0;
+            __pyx_v_wsum = 0.0;
 
-      /* "src/mintalib/cython/wma.pxi":39
- *             wsum -= rsum
- *             rsum -= xs[i - period]
- *             count -= 1             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/wma.pxi":35
+ *             else:
+ *                 rsum = wsum = 0
+ *                 count = 0             # <<<<<<<<<<<<<<
  * 
- *         if count == period:
+ *             if count > period:
 */
-      __pyx_v_count = (__pyx_v_count - 1);
+            __pyx_v_count = 0;
+          }
+          __pyx_L9:;
 
-      /* "src/mintalib/cython/wma.pxi":36
- *             count = 0
+          /* "src/mintalib/cython/wma.pxi":37
+ *                 count = 0
  * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             wsum -= rsum
- *             rsum -= xs[i - period]
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 wsum -= rsum
+ *                 rsum -= xs[i - period]
 */
-    }
+          __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/wma.pxi":41
- *             count -= 1
+            /* "src/mintalib/cython/wma.pxi":38
  * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             output[i] = wsum / wdiv
+ *             if count > period:
+ *                 wsum -= rsum             # <<<<<<<<<<<<<<
+ *                 rsum -= xs[i - period]
+ *                 count -= 1
+*/
+            __pyx_v_wsum = (__pyx_v_wsum - __pyx_v_rsum);
+
+            /* "src/mintalib/cython/wma.pxi":39
+ *             if count > period:
+ *                 wsum -= rsum
+ *                 rsum -= xs[i - period]             # <<<<<<<<<<<<<<
+ *                 count -= 1
  * 
 */
-    __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
-    if (__pyx_t_1) {
+            __pyx_t_14 = (__pyx_v_i - __pyx_v_period);
+            __pyx_v_rsum = (__pyx_v_rsum - (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) ))));
 
-      /* "src/mintalib/cython/wma.pxi":42
+            /* "src/mintalib/cython/wma.pxi":40
+ *                 wsum -= rsum
+ *                 rsum -= xs[i - period]
+ *                 count -= 1             # <<<<<<<<<<<<<<
  * 
- *         if count == period:
- *             output[i] = wsum / wdiv             # <<<<<<<<<<<<<<
+ *             if count == period:
+*/
+            __pyx_v_count = (__pyx_v_count - 1);
+
+            /* "src/mintalib/cython/wma.pxi":37
+ *                 count = 0
+ * 
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 wsum -= rsum
+ *                 rsum -= xs[i - period]
+*/
+          }
+
+          /* "src/mintalib/cython/wma.pxi":42
+ *                 count -= 1
+ * 
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 output[i] = wsum / wdiv
+ * 
+*/
+          __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/wma.pxi":43
+ * 
+ *             if count == period:
+ *                 output[i] = wsum / wdiv             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_t_14 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = (__pyx_v_wsum / __pyx_v_wdiv);
+            __pyx_t_14 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = (__pyx_v_wsum / __pyx_v_wdiv);
 
-      /* "src/mintalib/cython/wma.pxi":41
- *             count -= 1
+            /* "src/mintalib/cython/wma.pxi":42
+ *                 count -= 1
  * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             output[i] = wsum / wdiv
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 output[i] = wsum / wdiv
  * 
 */
-    }
+          }
+        }
+      }
+
+      /* "src/mintalib/cython/wma.pxi":25
+ *     cdef long i = 0, count = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             v = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/wma.pxi":44
- *             output[i] = wsum / wdiv
+  /* "src/mintalib/cython/wma.pxi":45
+ *                 output[i] = wsum / wdiv
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -33511,121 +34154,152 @@ static PyObject *__pyx_pf_8mintalib_4core_72calc_rsi(CYTHON_UNUSED PyObject *__p
  *     cdef double v = NAN, pv = NAN, dv = NAN
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
   /* "src/mintalib/cython/rsi.pxi":26
  *     cdef long i = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         v = xs[i]
- *         if v == v and pv == pv:
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             v = xs[i]
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_11 = __pyx_t_7;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
 
-    /* "src/mintalib/cython/rsi.pxi":27
+        /* "src/mintalib/cython/rsi.pxi":27
  * 
- *     for i in range(size):
- *         v = xs[i]             # <<<<<<<<<<<<<<
- *         if v == v and pv == pv:
- *             dv = v - pv
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             v = xs[i]
+ *             if v == v and pv == pv:
 */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_11 = __pyx_t_7;
+        for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+          __pyx_v_i = __pyx_t_12;
 
-    /* "src/mintalib/cython/rsi.pxi":28
- *     for i in range(size):
- *         v = xs[i]
- *         if v == v and pv == pv:             # <<<<<<<<<<<<<<
- *             dv = v - pv
- *             ups[i] = dv if dv > 0.0 else 0.0
+          /* "src/mintalib/cython/rsi.pxi":28
+ *     with nogil:
+ *         for i in range(size):
+ *             v = xs[i]             # <<<<<<<<<<<<<<
+ *             if v == v and pv == pv:
+ *                 dv = v - pv
 */
-    __pyx_t_15 = (__pyx_v_v == __pyx_v_v);
-    if (__pyx_t_15) {
-    } else {
-      __pyx_t_14 = __pyx_t_15;
-      goto __pyx_L6_bool_binop_done;
-    }
-    __pyx_t_15 = (__pyx_v_pv == __pyx_v_pv);
-    __pyx_t_14 = __pyx_t_15;
-    __pyx_L6_bool_binop_done:;
-    if (__pyx_t_14) {
+          __pyx_t_13 = __pyx_v_i;
+          __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
 
-      /* "src/mintalib/cython/rsi.pxi":29
- *         v = xs[i]
- *         if v == v and pv == pv:
- *             dv = v - pv             # <<<<<<<<<<<<<<
- *             ups[i] = dv if dv > 0.0 else 0.0
- *             dns[i] = -dv if dv < 0.0 else 0.0
+          /* "src/mintalib/cython/rsi.pxi":29
+ *         for i in range(size):
+ *             v = xs[i]
+ *             if v == v and pv == pv:             # <<<<<<<<<<<<<<
+ *                 dv = v - pv
+ *                 ups[i] = dv if dv > 0.0 else 0.0
 */
-      __pyx_v_dv = (__pyx_v_v - __pyx_v_pv);
+          __pyx_t_15 = (__pyx_v_v == __pyx_v_v);
+          if (__pyx_t_15) {
+          } else {
+            __pyx_t_14 = __pyx_t_15;
+            goto __pyx_L9_bool_binop_done;
+          }
+          __pyx_t_15 = (__pyx_v_pv == __pyx_v_pv);
+          __pyx_t_14 = __pyx_t_15;
+          __pyx_L9_bool_binop_done:;
+          if (__pyx_t_14) {
 
-      /* "src/mintalib/cython/rsi.pxi":30
- *         if v == v and pv == pv:
- *             dv = v - pv
- *             ups[i] = dv if dv > 0.0 else 0.0             # <<<<<<<<<<<<<<
- *             dns[i] = -dv if dv < 0.0 else 0.0
- *         pv = v
+            /* "src/mintalib/cython/rsi.pxi":30
+ *             v = xs[i]
+ *             if v == v and pv == pv:
+ *                 dv = v - pv             # <<<<<<<<<<<<<<
+ *                 ups[i] = dv if dv > 0.0 else 0.0
+ *                 dns[i] = -dv if dv < 0.0 else 0.0
 */
-      __pyx_t_14 = (__pyx_v_dv > 0.0);
-      if (__pyx_t_14) {
-        __pyx_t_16 = __pyx_v_dv;
-      } else {
-        __pyx_t_16 = 0.0;
-      }
-      __pyx_t_13 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_ups.data + __pyx_t_13 * __pyx_v_ups.strides[0]) )) = __pyx_t_16;
+            __pyx_v_dv = (__pyx_v_v - __pyx_v_pv);
 
-      /* "src/mintalib/cython/rsi.pxi":31
- *             dv = v - pv
- *             ups[i] = dv if dv > 0.0 else 0.0
- *             dns[i] = -dv if dv < 0.0 else 0.0             # <<<<<<<<<<<<<<
- *         pv = v
+            /* "src/mintalib/cython/rsi.pxi":31
+ *             if v == v and pv == pv:
+ *                 dv = v - pv
+ *                 ups[i] = dv if dv > 0.0 else 0.0             # <<<<<<<<<<<<<<
+ *                 dns[i] = -dv if dv < 0.0 else 0.0
+ *             pv = v
+*/
+            __pyx_t_14 = (__pyx_v_dv > 0.0);
+            if (__pyx_t_14) {
+              __pyx_t_16 = __pyx_v_dv;
+            } else {
+              __pyx_t_16 = 0.0;
+            }
+            __pyx_t_13 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_ups.data + __pyx_t_13 * __pyx_v_ups.strides[0]) )) = __pyx_t_16;
+
+            /* "src/mintalib/cython/rsi.pxi":32
+ *                 dv = v - pv
+ *                 ups[i] = dv if dv > 0.0 else 0.0
+ *                 dns[i] = -dv if dv < 0.0 else 0.0             # <<<<<<<<<<<<<<
+ *             pv = v
  * 
 */
-      __pyx_t_14 = (__pyx_v_dv < 0.0);
-      if (__pyx_t_14) {
-        __pyx_t_16 = (-__pyx_v_dv);
-      } else {
-        __pyx_t_16 = 0.0;
-      }
-      __pyx_t_13 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_dns.data + __pyx_t_13 * __pyx_v_dns.strides[0]) )) = __pyx_t_16;
+            __pyx_t_14 = (__pyx_v_dv < 0.0);
+            if (__pyx_t_14) {
+              __pyx_t_16 = (-__pyx_v_dv);
+            } else {
+              __pyx_t_16 = 0.0;
+            }
+            __pyx_t_13 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_dns.data + __pyx_t_13 * __pyx_v_dns.strides[0]) )) = __pyx_t_16;
 
-      /* "src/mintalib/cython/rsi.pxi":28
- *     for i in range(size):
- *         v = xs[i]
- *         if v == v and pv == pv:             # <<<<<<<<<<<<<<
- *             dv = v - pv
- *             ups[i] = dv if dv > 0.0 else 0.0
+            /* "src/mintalib/cython/rsi.pxi":29
+ *         for i in range(size):
+ *             v = xs[i]
+ *             if v == v and pv == pv:             # <<<<<<<<<<<<<<
+ *                 dv = v - pv
+ *                 ups[i] = dv if dv > 0.0 else 0.0
 */
-    }
+          }
 
-    /* "src/mintalib/cython/rsi.pxi":32
- *             ups[i] = dv if dv > 0.0 else 0.0
- *             dns[i] = -dv if dv < 0.0 else 0.0
- *         pv = v             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/rsi.pxi":33
+ *                 ups[i] = dv if dv > 0.0 else 0.0
+ *                 dns[i] = -dv if dv < 0.0 else 0.0
+ *             pv = v             # <<<<<<<<<<<<<<
  * 
  *     cdef const double[:] rma_ups = calc_rma(ups_arr, period)
 */
-    __pyx_v_pv = __pyx_v_v;
+          __pyx_v_pv = __pyx_v_v;
+        }
+      }
+
+      /* "src/mintalib/cython/rsi.pxi":26
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             v = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/rsi.pxi":34
- *         pv = v
+  /* "src/mintalib/cython/rsi.pxi":35
+ *             pv = v
  * 
  *     cdef const double[:] rma_ups = calc_rma(ups_arr, period)             # <<<<<<<<<<<<<<
  *     cdef const double[:] rma_dns = calc_rma(dns_arr, period)
  * 
 */
   __pyx_t_9 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_calc_rma); if (unlikely(!__pyx_t_1)) __PYX_ERR(30, 34, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_calc_rma); if (unlikely(!__pyx_t_1)) __PYX_ERR(30, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_8 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_8)) __PYX_ERR(30, 34, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_8)) __PYX_ERR(30, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -33645,16 +34319,16 @@ static PyObject *__pyx_pf_8mintalib_4core_72calc_rsi(CYTHON_UNUSED PyObject *__p
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(30, 34, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(30, 35, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
-  __pyx_t_17 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_4, 0); if (unlikely(!__pyx_t_17.memview)) __PYX_ERR(30, 34, __pyx_L1_error)
+  __pyx_t_17 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_4, 0); if (unlikely(!__pyx_t_17.memview)) __PYX_ERR(30, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_rma_ups = __pyx_t_17;
   __pyx_t_17.memview = NULL;
   __pyx_t_17.data = NULL;
 
-  /* "src/mintalib/cython/rsi.pxi":35
+  /* "src/mintalib/cython/rsi.pxi":36
  * 
  *     cdef const double[:] rma_ups = calc_rma(ups_arr, period)
  *     cdef const double[:] rma_dns = calc_rma(dns_arr, period)             # <<<<<<<<<<<<<<
@@ -33662,9 +34336,9 @@ static PyObject *__pyx_pf_8mintalib_4core_72calc_rsi(CYTHON_UNUSED PyObject *__p
  *     cdef double u = NAN, d = NAN
 */
   __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_calc_rma); if (unlikely(!__pyx_t_8)) __PYX_ERR(30, 35, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_calc_rma); if (unlikely(!__pyx_t_8)) __PYX_ERR(30, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_9)) __PYX_ERR(30, 35, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_9)) __PYX_ERR(30, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -33684,142 +34358,173 @@ static PyObject *__pyx_pf_8mintalib_4core_72calc_rsi(CYTHON_UNUSED PyObject *__p
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(30, 35, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(30, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
-  __pyx_t_18 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_4, 0); if (unlikely(!__pyx_t_18.memview)) __PYX_ERR(30, 35, __pyx_L1_error)
+  __pyx_t_18 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_4, 0); if (unlikely(!__pyx_t_18.memview)) __PYX_ERR(30, 36, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_rma_dns = __pyx_t_18;
   __pyx_t_18.memview = NULL;
   __pyx_t_18.data = NULL;
 
-  /* "src/mintalib/cython/rsi.pxi":37
+  /* "src/mintalib/cython/rsi.pxi":38
  *     cdef const double[:] rma_dns = calc_rma(dns_arr, period)
  * 
  *     cdef double u = NAN, d = NAN             # <<<<<<<<<<<<<<
- *     for i in range(size):
- *         u = rma_ups[i]
+ *     with nogil:
+ *         for i in range(size):
 */
   __pyx_v_u = __pyx_v_8mintalib_4core_NAN;
   __pyx_v_d = __pyx_v_8mintalib_4core_NAN;
 
-  /* "src/mintalib/cython/rsi.pxi":38
+  /* "src/mintalib/cython/rsi.pxi":39
  * 
  *     cdef double u = NAN, d = NAN
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         u = rma_ups[i]
- *         d = rma_dns[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             u = rma_ups[i]
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_11 = __pyx_t_7;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
 
-    /* "src/mintalib/cython/rsi.pxi":39
+        /* "src/mintalib/cython/rsi.pxi":40
  *     cdef double u = NAN, d = NAN
- *     for i in range(size):
- *         u = rma_ups[i]             # <<<<<<<<<<<<<<
- *         d = rma_dns[i]
- *         if u == u and d == d and d > 0:
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             u = rma_ups[i]
+ *             d = rma_dns[i]
 */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_v_u = (*((double const  *) ( /* dim=0 */ (__pyx_v_rma_ups.data + __pyx_t_13 * __pyx_v_rma_ups.strides[0]) )));
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_11 = __pyx_t_7;
+        for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+          __pyx_v_i = __pyx_t_12;
 
-    /* "src/mintalib/cython/rsi.pxi":40
- *     for i in range(size):
- *         u = rma_ups[i]
- *         d = rma_dns[i]             # <<<<<<<<<<<<<<
- *         if u == u and d == d and d > 0:
- *             output[i] = 100.0 - (100.0 / (1.0 + u / d))
+          /* "src/mintalib/cython/rsi.pxi":41
+ *     with nogil:
+ *         for i in range(size):
+ *             u = rma_ups[i]             # <<<<<<<<<<<<<<
+ *             d = rma_dns[i]
+ *             if u == u and d == d and d > 0:
 */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_v_d = (*((double const  *) ( /* dim=0 */ (__pyx_v_rma_dns.data + __pyx_t_13 * __pyx_v_rma_dns.strides[0]) )));
+          __pyx_t_13 = __pyx_v_i;
+          __pyx_v_u = (*((double const  *) ( /* dim=0 */ (__pyx_v_rma_ups.data + __pyx_t_13 * __pyx_v_rma_ups.strides[0]) )));
 
-    /* "src/mintalib/cython/rsi.pxi":41
- *         u = rma_ups[i]
- *         d = rma_dns[i]
- *         if u == u and d == d and d > 0:             # <<<<<<<<<<<<<<
- *             output[i] = 100.0 - (100.0 / (1.0 + u / d))
- *         elif u == u and d == d:
+          /* "src/mintalib/cython/rsi.pxi":42
+ *         for i in range(size):
+ *             u = rma_ups[i]
+ *             d = rma_dns[i]             # <<<<<<<<<<<<<<
+ *             if u == u and d == d and d > 0:
+ *                 output[i] = 100.0 - (100.0 / (1.0 + u / d))
 */
-    __pyx_t_15 = (__pyx_v_u == __pyx_v_u);
-    if (__pyx_t_15) {
-    } else {
-      __pyx_t_14 = __pyx_t_15;
-      goto __pyx_L11_bool_binop_done;
-    }
-    __pyx_t_15 = (__pyx_v_d == __pyx_v_d);
-    if (__pyx_t_15) {
-    } else {
-      __pyx_t_14 = __pyx_t_15;
-      goto __pyx_L11_bool_binop_done;
-    }
-    __pyx_t_15 = (__pyx_v_d > 0.0);
-    __pyx_t_14 = __pyx_t_15;
-    __pyx_L11_bool_binop_done:;
-    if (__pyx_t_14) {
+          __pyx_t_13 = __pyx_v_i;
+          __pyx_v_d = (*((double const  *) ( /* dim=0 */ (__pyx_v_rma_dns.data + __pyx_t_13 * __pyx_v_rma_dns.strides[0]) )));
 
-      /* "src/mintalib/cython/rsi.pxi":42
- *         d = rma_dns[i]
- *         if u == u and d == d and d > 0:
- *             output[i] = 100.0 - (100.0 / (1.0 + u / d))             # <<<<<<<<<<<<<<
- *         elif u == u and d == d:
- *             output[i] = 100.0
+          /* "src/mintalib/cython/rsi.pxi":43
+ *             u = rma_ups[i]
+ *             d = rma_dns[i]
+ *             if u == u and d == d and d > 0:             # <<<<<<<<<<<<<<
+ *                 output[i] = 100.0 - (100.0 / (1.0 + u / d))
+ *             elif u == u and d == d:
 */
-      __pyx_t_13 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = (100.0 - (100.0 / (1.0 + (__pyx_v_u / __pyx_v_d))));
+          __pyx_t_15 = (__pyx_v_u == __pyx_v_u);
+          if (__pyx_t_15) {
+          } else {
+            __pyx_t_14 = __pyx_t_15;
+            goto __pyx_L17_bool_binop_done;
+          }
+          __pyx_t_15 = (__pyx_v_d == __pyx_v_d);
+          if (__pyx_t_15) {
+          } else {
+            __pyx_t_14 = __pyx_t_15;
+            goto __pyx_L17_bool_binop_done;
+          }
+          __pyx_t_15 = (__pyx_v_d > 0.0);
+          __pyx_t_14 = __pyx_t_15;
+          __pyx_L17_bool_binop_done:;
+          if (__pyx_t_14) {
 
-      /* "src/mintalib/cython/rsi.pxi":41
- *         u = rma_ups[i]
- *         d = rma_dns[i]
- *         if u == u and d == d and d > 0:             # <<<<<<<<<<<<<<
- *             output[i] = 100.0 - (100.0 / (1.0 + u / d))
- *         elif u == u and d == d:
+            /* "src/mintalib/cython/rsi.pxi":44
+ *             d = rma_dns[i]
+ *             if u == u and d == d and d > 0:
+ *                 output[i] = 100.0 - (100.0 / (1.0 + u / d))             # <<<<<<<<<<<<<<
+ *             elif u == u and d == d:
+ *                 output[i] = 100.0
 */
-      goto __pyx_L10;
-    }
+            __pyx_t_13 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = (100.0 - (100.0 / (1.0 + (__pyx_v_u / __pyx_v_d))));
 
-    /* "src/mintalib/cython/rsi.pxi":43
- *         if u == u and d == d and d > 0:
- *             output[i] = 100.0 - (100.0 / (1.0 + u / d))
- *         elif u == u and d == d:             # <<<<<<<<<<<<<<
- *             output[i] = 100.0
+            /* "src/mintalib/cython/rsi.pxi":43
+ *             u = rma_ups[i]
+ *             d = rma_dns[i]
+ *             if u == u and d == d and d > 0:             # <<<<<<<<<<<<<<
+ *                 output[i] = 100.0 - (100.0 / (1.0 + u / d))
+ *             elif u == u and d == d:
+*/
+            goto __pyx_L16;
+          }
+
+          /* "src/mintalib/cython/rsi.pxi":45
+ *             if u == u and d == d and d > 0:
+ *                 output[i] = 100.0 - (100.0 / (1.0 + u / d))
+ *             elif u == u and d == d:             # <<<<<<<<<<<<<<
+ *                 output[i] = 100.0
  * 
 */
-    __pyx_t_15 = (__pyx_v_u == __pyx_v_u);
-    if (__pyx_t_15) {
-    } else {
-      __pyx_t_14 = __pyx_t_15;
-      goto __pyx_L14_bool_binop_done;
-    }
-    __pyx_t_15 = (__pyx_v_d == __pyx_v_d);
-    __pyx_t_14 = __pyx_t_15;
-    __pyx_L14_bool_binop_done:;
-    if (__pyx_t_14) {
+          __pyx_t_15 = (__pyx_v_u == __pyx_v_u);
+          if (__pyx_t_15) {
+          } else {
+            __pyx_t_14 = __pyx_t_15;
+            goto __pyx_L20_bool_binop_done;
+          }
+          __pyx_t_15 = (__pyx_v_d == __pyx_v_d);
+          __pyx_t_14 = __pyx_t_15;
+          __pyx_L20_bool_binop_done:;
+          if (__pyx_t_14) {
 
-      /* "src/mintalib/cython/rsi.pxi":44
- *             output[i] = 100.0 - (100.0 / (1.0 + u / d))
- *         elif u == u and d == d:
- *             output[i] = 100.0             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/rsi.pxi":46
+ *                 output[i] = 100.0 - (100.0 / (1.0 + u / d))
+ *             elif u == u and d == d:
+ *                 output[i] = 100.0             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_t_13 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = 100.0;
+            __pyx_t_13 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = 100.0;
 
-      /* "src/mintalib/cython/rsi.pxi":43
- *         if u == u and d == d and d > 0:
- *             output[i] = 100.0 - (100.0 / (1.0 + u / d))
- *         elif u == u and d == d:             # <<<<<<<<<<<<<<
- *             output[i] = 100.0
+            /* "src/mintalib/cython/rsi.pxi":45
+ *             if u == u and d == d and d > 0:
+ *                 output[i] = 100.0 - (100.0 / (1.0 + u / d))
+ *             elif u == u and d == d:             # <<<<<<<<<<<<<<
+ *                 output[i] = 100.0
  * 
 */
-    }
-    __pyx_L10:;
+          }
+          __pyx_L16:;
+        }
+      }
+
+      /* "src/mintalib/cython/rsi.pxi":39
+ * 
+ *     cdef double u = NAN, d = NAN
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             u = rma_ups[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L13;
+        }
+        __pyx_L13:;
+      }
   }
 
-  /* "src/mintalib/cython/rsi.pxi":46
- *             output[i] = 100.0
+  /* "src/mintalib/cython/rsi.pxi":48
+ *                 output[i] = 100.0
  * 
  *     return result             # <<<<<<<<<<<<<<
 */
@@ -35739,224 +36444,248 @@ static PyObject *__pyx_pf_8mintalib_4core_82calc_trange(CYTHON_UNUSED PyObject *
  * 
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
   /* "src/mintalib/cython/atr.pxi":29
  *     cdef long i = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         hi, lo, cl, pc = high[i], low[i], close[i], cl
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             hi, lo, cl, pc = high[i], low[i], close[i], cl
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/atr.pxi":30
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             hi, lo, cl, pc = high[i], low[i], close[i], cl
  * 
 */
-  __pyx_t_12 = __pyx_v_size;
-  __pyx_t_14 = __pyx_t_12;
-  for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
-    __pyx_v_i = __pyx_t_15;
+        __pyx_t_12 = __pyx_v_size;
+        __pyx_t_14 = __pyx_t_12;
+        for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
+          __pyx_v_i = __pyx_t_15;
 
-    /* "src/mintalib/cython/atr.pxi":30
+          /* "src/mintalib/cython/atr.pxi":31
+ *     with nogil:
+ *         for i in range(size):
+ *             hi, lo, cl, pc = high[i], low[i], close[i], cl             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         hi, lo, cl, pc = high[i], low[i], close[i], cl             # <<<<<<<<<<<<<<
- * 
- *         if not (hi >= lo > 0.0):
+ *             if not (hi >= lo > 0.0):
 */
-    __pyx_t_16 = __pyx_v_i;
-    __pyx_t_17 = (*((double const  *) ( /* dim=0 */ (__pyx_v_high.data + __pyx_t_16 * __pyx_v_high.strides[0]) )));
-    __pyx_t_16 = __pyx_v_i;
-    __pyx_t_18 = (*((double const  *) ( /* dim=0 */ (__pyx_v_low.data + __pyx_t_16 * __pyx_v_low.strides[0]) )));
-    __pyx_t_16 = __pyx_v_i;
-    __pyx_t_19 = (*((double const  *) ( /* dim=0 */ (__pyx_v_close.data + __pyx_t_16 * __pyx_v_close.strides[0]) )));
-    __pyx_t_20 = __pyx_v_cl;
-    __pyx_v_hi = __pyx_t_17;
-    __pyx_v_lo = __pyx_t_18;
-    __pyx_v_cl = __pyx_t_19;
-    __pyx_v_pc = __pyx_t_20;
+          __pyx_t_16 = __pyx_v_i;
+          __pyx_t_17 = (*((double const  *) ( /* dim=0 */ (__pyx_v_high.data + __pyx_t_16 * __pyx_v_high.strides[0]) )));
+          __pyx_t_16 = __pyx_v_i;
+          __pyx_t_18 = (*((double const  *) ( /* dim=0 */ (__pyx_v_low.data + __pyx_t_16 * __pyx_v_low.strides[0]) )));
+          __pyx_t_16 = __pyx_v_i;
+          __pyx_t_19 = (*((double const  *) ( /* dim=0 */ (__pyx_v_close.data + __pyx_t_16 * __pyx_v_close.strides[0]) )));
+          __pyx_t_20 = __pyx_v_cl;
+          __pyx_v_hi = __pyx_t_17;
+          __pyx_v_lo = __pyx_t_18;
+          __pyx_v_cl = __pyx_t_19;
+          __pyx_v_pc = __pyx_t_20;
 
-    /* "src/mintalib/cython/atr.pxi":32
- *         hi, lo, cl, pc = high[i], low[i], close[i], cl
+          /* "src/mintalib/cython/atr.pxi":33
+ *             hi, lo, cl, pc = high[i], low[i], close[i], cl
  * 
- *         if not (hi >= lo > 0.0):             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-    __pyx_t_1 = (__pyx_v_hi >= __pyx_v_lo);
-    if (__pyx_t_1) {
-      __pyx_t_1 = (__pyx_v_lo > 0.0);
-    }
-    __pyx_t_21 = (!__pyx_t_1);
-    if (__pyx_t_21) {
-
-      /* "src/mintalib/cython/atr.pxi":33
- * 
- *         if not (hi >= lo > 0.0):
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         if pc > hi:
-*/
-      goto __pyx_L6_continue;
-
-      /* "src/mintalib/cython/atr.pxi":32
- *         hi, lo, cl, pc = high[i], low[i], close[i], cl
- * 
- *         if not (hi >= lo > 0.0):             # <<<<<<<<<<<<<<
- *             continue
+ *             if not (hi >= lo > 0.0):             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    }
+          __pyx_t_1 = (__pyx_v_hi >= __pyx_v_lo);
+          if (__pyx_t_1) {
+            __pyx_t_1 = (__pyx_v_lo > 0.0);
+          }
+          __pyx_t_21 = (!__pyx_t_1);
+          if (__pyx_t_21) {
 
-    /* "src/mintalib/cython/atr.pxi":35
- *             continue
+            /* "src/mintalib/cython/atr.pxi":34
  * 
- *         if pc > hi:             # <<<<<<<<<<<<<<
- *             hi = pc
+ *             if not (hi >= lo > 0.0):
+ *                 continue             # <<<<<<<<<<<<<<
+ * 
+ *             if pc > hi:
+*/
+            goto __pyx_L9_continue;
+
+            /* "src/mintalib/cython/atr.pxi":33
+ *             hi, lo, cl, pc = high[i], low[i], close[i], cl
+ * 
+ *             if not (hi >= lo > 0.0):             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_t_21 = (__pyx_v_pc > __pyx_v_hi);
-    if (__pyx_t_21) {
+          }
 
-      /* "src/mintalib/cython/atr.pxi":36
+          /* "src/mintalib/cython/atr.pxi":36
+ *                 continue
  * 
- *         if pc > hi:
- *             hi = pc             # <<<<<<<<<<<<<<
- * 
- *         if pc < lo:
-*/
-      __pyx_v_hi = __pyx_v_pc;
-
-      /* "src/mintalib/cython/atr.pxi":35
- *             continue
- * 
- *         if pc > hi:             # <<<<<<<<<<<<<<
- *             hi = pc
+ *             if pc > hi:             # <<<<<<<<<<<<<<
+ *                 hi = pc
  * 
 */
-    }
+          __pyx_t_21 = (__pyx_v_pc > __pyx_v_hi);
+          if (__pyx_t_21) {
 
-    /* "src/mintalib/cython/atr.pxi":38
- *             hi = pc
+            /* "src/mintalib/cython/atr.pxi":37
  * 
- *         if pc < lo:             # <<<<<<<<<<<<<<
- *             lo = pc
+ *             if pc > hi:
+ *                 hi = pc             # <<<<<<<<<<<<<<
+ * 
+ *             if pc < lo:
+*/
+            __pyx_v_hi = __pyx_v_pc;
+
+            /* "src/mintalib/cython/atr.pxi":36
+ *                 continue
+ * 
+ *             if pc > hi:             # <<<<<<<<<<<<<<
+ *                 hi = pc
  * 
 */
-    __pyx_t_21 = (__pyx_v_pc < __pyx_v_lo);
-    if (__pyx_t_21) {
+          }
 
-      /* "src/mintalib/cython/atr.pxi":39
+          /* "src/mintalib/cython/atr.pxi":39
+ *                 hi = pc
  * 
- *         if pc < lo:
- *             lo = pc             # <<<<<<<<<<<<<<
- * 
- *         if log_prices:
-*/
-      __pyx_v_lo = __pyx_v_pc;
-
-      /* "src/mintalib/cython/atr.pxi":38
- *             hi = pc
- * 
- *         if pc < lo:             # <<<<<<<<<<<<<<
- *             lo = pc
+ *             if pc < lo:             # <<<<<<<<<<<<<<
+ *                 lo = pc
  * 
 */
-    }
+          __pyx_t_21 = (__pyx_v_pc < __pyx_v_lo);
+          if (__pyx_t_21) {
 
-    /* "src/mintalib/cython/atr.pxi":41
- *             lo = pc
+            /* "src/mintalib/cython/atr.pxi":40
  * 
- *         if log_prices:             # <<<<<<<<<<<<<<
- *             tr = math.log(hi) - math.log(lo)
- *         elif percent:
-*/
-    if (__pyx_v_log_prices) {
-
-      /* "src/mintalib/cython/atr.pxi":42
+ *             if pc < lo:
+ *                 lo = pc             # <<<<<<<<<<<<<<
  * 
- *         if log_prices:
- *             tr = math.log(hi) - math.log(lo)             # <<<<<<<<<<<<<<
- *         elif percent:
- *             tr = 100 * (hi - lo) / cl if cl > 0 else np.nan
+ *             if log_prices:
 */
-      __pyx_v_tr = (log(__pyx_v_hi) - log(__pyx_v_lo));
+            __pyx_v_lo = __pyx_v_pc;
 
-      /* "src/mintalib/cython/atr.pxi":41
- *             lo = pc
+            /* "src/mintalib/cython/atr.pxi":39
+ *                 hi = pc
  * 
- *         if log_prices:             # <<<<<<<<<<<<<<
- *             tr = math.log(hi) - math.log(lo)
- *         elif percent:
-*/
-      goto __pyx_L11;
-    }
-
-    /* "src/mintalib/cython/atr.pxi":43
- *         if log_prices:
- *             tr = math.log(hi) - math.log(lo)
- *         elif percent:             # <<<<<<<<<<<<<<
- *             tr = 100 * (hi - lo) / cl if cl > 0 else np.nan
- *         else:
-*/
-    if (__pyx_v_percent) {
-
-      /* "src/mintalib/cython/atr.pxi":44
- *             tr = math.log(hi) - math.log(lo)
- *         elif percent:
- *             tr = 100 * (hi - lo) / cl if cl > 0 else np.nan             # <<<<<<<<<<<<<<
- *         else:
- *             tr = (hi - lo)
-*/
-      __pyx_t_21 = (__pyx_v_cl > 0.0);
-      if (__pyx_t_21) {
-        __pyx_t_20 = ((100.0 * (__pyx_v_hi - __pyx_v_lo)) / __pyx_v_cl);
-      } else {
-        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(32, 44, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_10)) __PYX_ERR(32, 44, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_19 = __Pyx_PyFloat_AsDouble(__pyx_t_10); if (unlikely((__pyx_t_19 == (double)-1) && PyErr_Occurred())) __PYX_ERR(32, 44, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_20 = __pyx_t_19;
-      }
-      __pyx_v_tr = __pyx_t_20;
-
-      /* "src/mintalib/cython/atr.pxi":43
- *         if log_prices:
- *             tr = math.log(hi) - math.log(lo)
- *         elif percent:             # <<<<<<<<<<<<<<
- *             tr = 100 * (hi - lo) / cl if cl > 0 else np.nan
- *         else:
-*/
-      goto __pyx_L11;
-    }
-
-    /* "src/mintalib/cython/atr.pxi":46
- *             tr = 100 * (hi - lo) / cl if cl > 0 else np.nan
- *         else:
- *             tr = (hi - lo)             # <<<<<<<<<<<<<<
+ *             if pc < lo:             # <<<<<<<<<<<<<<
+ *                 lo = pc
  * 
- *         output[i] = tr
 */
-    /*else*/ {
-      __pyx_v_tr = (__pyx_v_hi - __pyx_v_lo);
-    }
-    __pyx_L11:;
+          }
 
-    /* "src/mintalib/cython/atr.pxi":48
- *             tr = (hi - lo)
+          /* "src/mintalib/cython/atr.pxi":42
+ *                 lo = pc
  * 
- *         output[i] = tr             # <<<<<<<<<<<<<<
+ *             if log_prices:             # <<<<<<<<<<<<<<
+ *                 tr = math.log(hi) - math.log(lo)
+ *             elif percent:
+*/
+          if (__pyx_v_log_prices) {
+
+            /* "src/mintalib/cython/atr.pxi":43
+ * 
+ *             if log_prices:
+ *                 tr = math.log(hi) - math.log(lo)             # <<<<<<<<<<<<<<
+ *             elif percent:
+ *                 tr = 100 * (hi - lo) / cl if cl > 0 else NAN
+*/
+            __pyx_v_tr = (log(__pyx_v_hi) - log(__pyx_v_lo));
+
+            /* "src/mintalib/cython/atr.pxi":42
+ *                 lo = pc
+ * 
+ *             if log_prices:             # <<<<<<<<<<<<<<
+ *                 tr = math.log(hi) - math.log(lo)
+ *             elif percent:
+*/
+            goto __pyx_L14;
+          }
+
+          /* "src/mintalib/cython/atr.pxi":44
+ *             if log_prices:
+ *                 tr = math.log(hi) - math.log(lo)
+ *             elif percent:             # <<<<<<<<<<<<<<
+ *                 tr = 100 * (hi - lo) / cl if cl > 0 else NAN
+ *             else:
+*/
+          if (__pyx_v_percent) {
+
+            /* "src/mintalib/cython/atr.pxi":45
+ *                 tr = math.log(hi) - math.log(lo)
+ *             elif percent:
+ *                 tr = 100 * (hi - lo) / cl if cl > 0 else NAN             # <<<<<<<<<<<<<<
+ *             else:
+ *                 tr = (hi - lo)
+*/
+            __pyx_t_21 = (__pyx_v_cl > 0.0);
+            if (__pyx_t_21) {
+              __pyx_t_20 = ((100.0 * (__pyx_v_hi - __pyx_v_lo)) / __pyx_v_cl);
+            } else {
+              __pyx_t_20 = __pyx_v_8mintalib_4core_NAN;
+            }
+            __pyx_v_tr = __pyx_t_20;
+
+            /* "src/mintalib/cython/atr.pxi":44
+ *             if log_prices:
+ *                 tr = math.log(hi) - math.log(lo)
+ *             elif percent:             # <<<<<<<<<<<<<<
+ *                 tr = 100 * (hi - lo) / cl if cl > 0 else NAN
+ *             else:
+*/
+            goto __pyx_L14;
+          }
+
+          /* "src/mintalib/cython/atr.pxi":47
+ *                 tr = 100 * (hi - lo) / cl if cl > 0 else NAN
+ *             else:
+ *                 tr = (hi - lo)             # <<<<<<<<<<<<<<
+ * 
+ *             output[i] = tr
+*/
+          /*else*/ {
+            __pyx_v_tr = (__pyx_v_hi - __pyx_v_lo);
+          }
+          __pyx_L14:;
+
+          /* "src/mintalib/cython/atr.pxi":49
+ *                 tr = (hi - lo)
+ * 
+ *             output[i] = tr             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_16 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_16 * __pyx_v_output.strides[0]) )) = __pyx_v_tr;
-    __pyx_L6_continue:;
+          __pyx_t_16 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_16 * __pyx_v_output.strides[0]) )) = __pyx_v_tr;
+          __pyx_L9_continue:;
+        }
+      }
+
+      /* "src/mintalib/cython/atr.pxi":29
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             hi, lo, cl, pc = high[i], low[i], close[i], cl
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L8;
+        }
+        __pyx_L8:;
+      }
   }
 
-  /* "src/mintalib/cython/atr.pxi":50
- *         output[i] = tr
+  /* "src/mintalib/cython/atr.pxi":51
+ *             output[i] = tr
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -36000,7 +36729,7 @@ static PyObject *__pyx_pf_8mintalib_4core_82calc_trange(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/atr.pxi":54
+/* "src/mintalib/cython/atr.pxi":55
  * 
  * 
  * def calc_atr(prices, long period=14):             # <<<<<<<<<<<<<<
@@ -36049,48 +36778,48 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_prices,&__pyx_mstate_global->__pyx_n_u_period,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(32, 54, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(32, 55, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(32, 54, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(32, 55, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(32, 54, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(32, 55, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_atr", 0) < (0)) __PYX_ERR(32, 54, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_atr", 0) < (0)) __PYX_ERR(32, 55, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_atr", 0, 1, 2, i); __PYX_ERR(32, 54, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_atr", 0, 1, 2, i); __PYX_ERR(32, 55, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(32, 54, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(32, 55, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(32, 54, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(32, 55, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_prices = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(32, 54, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(32, 55, __pyx_L3_error)
     } else {
       __pyx_v_period = ((long)((long)14));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_atr", 0, 1, 2, __pyx_nargs); __PYX_ERR(32, 54, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_atr", 0, 1, 2, __pyx_nargs); __PYX_ERR(32, 55, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -36126,7 +36855,7 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_atr(CYTHON_UNUSED PyObject *__p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calc_atr", 0);
 
-  /* "src/mintalib/cython/atr.pxi":62
+  /* "src/mintalib/cython/atr.pxi":63
  *     """
  * 
  *     trange = calc_trange(prices)             # <<<<<<<<<<<<<<
@@ -36134,7 +36863,7 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_atr(CYTHON_UNUSED PyObject *__p
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_calc_trange); if (unlikely(!__pyx_t_3)) __PYX_ERR(32, 62, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_calc_trange); if (unlikely(!__pyx_t_3)) __PYX_ERR(32, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -36153,13 +36882,13 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_atr(CYTHON_UNUSED PyObject *__p
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(32, 62, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(32, 63, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_trange = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/atr.pxi":63
+  /* "src/mintalib/cython/atr.pxi":64
  * 
  *     trange = calc_trange(prices)
  *     result = calc_rma(trange, period)             # <<<<<<<<<<<<<<
@@ -36167,9 +36896,9 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_atr(CYTHON_UNUSED PyObject *__p
  *     return result
 */
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_calc_rma); if (unlikely(!__pyx_t_2)) __PYX_ERR(32, 63, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_calc_rma); if (unlikely(!__pyx_t_2)) __PYX_ERR(32, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_5)) __PYX_ERR(32, 63, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_5)) __PYX_ERR(32, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_4 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -36189,13 +36918,13 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_atr(CYTHON_UNUSED PyObject *__p
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(32, 63, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(32, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_result = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/atr.pxi":65
+  /* "src/mintalib/cython/atr.pxi":66
  *     result = calc_rma(trange, period)
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -36207,7 +36936,7 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_atr(CYTHON_UNUSED PyObject *__p
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/atr.pxi":54
+  /* "src/mintalib/cython/atr.pxi":55
  * 
  * 
  * def calc_atr(prices, long period=14):             # <<<<<<<<<<<<<<
@@ -36231,7 +36960,7 @@ static PyObject *__pyx_pf_8mintalib_4core_84calc_atr(CYTHON_UNUSED PyObject *__p
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/atr.pxi":69
+/* "src/mintalib/cython/atr.pxi":70
  * 
  * 
  * def calc_natr(prices, long period=14):             # <<<<<<<<<<<<<<
@@ -36280,48 +37009,48 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_prices,&__pyx_mstate_global->__pyx_n_u_period,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(32, 69, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(32, 70, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(32, 69, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(32, 70, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(32, 69, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(32, 70, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_natr", 0) < (0)) __PYX_ERR(32, 69, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_natr", 0) < (0)) __PYX_ERR(32, 70, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_natr", 0, 1, 2, i); __PYX_ERR(32, 69, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_natr", 0, 1, 2, i); __PYX_ERR(32, 70, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(32, 69, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(32, 70, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(32, 69, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(32, 70, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_prices = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(32, 69, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(32, 70, __pyx_L3_error)
     } else {
       __pyx_v_period = ((long)((long)14));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_natr", 0, 1, 2, __pyx_nargs); __PYX_ERR(32, 69, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_natr", 0, 1, 2, __pyx_nargs); __PYX_ERR(32, 70, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -36357,7 +37086,7 @@ static PyObject *__pyx_pf_8mintalib_4core_86calc_natr(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calc_natr", 0);
 
-  /* "src/mintalib/cython/atr.pxi":77
+  /* "src/mintalib/cython/atr.pxi":78
  *     """
  * 
  *     trange = calc_trange(prices, percent=True)             # <<<<<<<<<<<<<<
@@ -36365,7 +37094,7 @@ static PyObject *__pyx_pf_8mintalib_4core_86calc_natr(CYTHON_UNUSED PyObject *__
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_calc_trange); if (unlikely(!__pyx_t_3)) __PYX_ERR(32, 77, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_calc_trange); if (unlikely(!__pyx_t_3)) __PYX_ERR(32, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -36381,20 +37110,20 @@ static PyObject *__pyx_pf_8mintalib_4core_86calc_natr(CYTHON_UNUSED PyObject *__
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_v_prices};
-    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(32, 77, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(32, 78, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_percent, Py_True, __pyx_t_5, __pyx_callargs+2, 0) < (0)) __PYX_ERR(32, 77, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_percent, Py_True, __pyx_t_5, __pyx_callargs+2, 0) < (0)) __PYX_ERR(32, 78, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(32, 77, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(32, 78, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_trange = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/atr.pxi":78
+  /* "src/mintalib/cython/atr.pxi":79
  * 
  *     trange = calc_trange(prices, percent=True)
  *     result = calc_rma(trange, period)             # <<<<<<<<<<<<<<
@@ -36402,9 +37131,9 @@ static PyObject *__pyx_pf_8mintalib_4core_86calc_natr(CYTHON_UNUSED PyObject *__
  *     return result
 */
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_calc_rma); if (unlikely(!__pyx_t_5)) __PYX_ERR(32, 78, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_calc_rma); if (unlikely(!__pyx_t_5)) __PYX_ERR(32, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_2)) __PYX_ERR(32, 78, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_2)) __PYX_ERR(32, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -36424,13 +37153,13 @@ static PyObject *__pyx_pf_8mintalib_4core_86calc_natr(CYTHON_UNUSED PyObject *__
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(32, 78, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(32, 79, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_result = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/mintalib/cython/atr.pxi":80
+  /* "src/mintalib/cython/atr.pxi":81
  *     result = calc_rma(trange, period)
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -36442,7 +37171,7 @@ static PyObject *__pyx_pf_8mintalib_4core_86calc_natr(CYTHON_UNUSED PyObject *__
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/atr.pxi":69
+  /* "src/mintalib/cython/atr.pxi":70
  * 
  * 
  * def calc_natr(prices, long period=14):             # <<<<<<<<<<<<<<
@@ -36846,7 +37575,7 @@ static PyObject *__pyx_pf_8mintalib_4core_88calc_sar(CYTHON_UNUSED PyObject *__p
  * 
  *     cdef long i = 0, trend = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_trend = 0;
@@ -36854,520 +37583,551 @@ static PyObject *__pyx_pf_8mintalib_4core_88calc_sar(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/sar.pxi":25
  *     cdef long i = 0, trend = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         if hi >= lo:
- *             ph, pl = hi, lo
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             if hi >= lo:
 */
-  __pyx_t_9 = __pyx_v_size;
-  __pyx_t_12 = __pyx_t_9;
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
 
-    /* "src/mintalib/cython/sar.pxi":26
+        /* "src/mintalib/cython/sar.pxi":26
  * 
- *     for i in range(size):
- *         if hi >= lo:             # <<<<<<<<<<<<<<
- *             ph, pl = hi, lo
- * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             if hi >= lo:
+ *                 ph, pl = hi, lo
 */
-    __pyx_t_14 = (__pyx_v_hi >= __pyx_v_lo);
-    if (__pyx_t_14) {
+        __pyx_t_9 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_9;
+        for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
 
-      /* "src/mintalib/cython/sar.pxi":27
- *     for i in range(size):
- *         if hi >= lo:
- *             ph, pl = hi, lo             # <<<<<<<<<<<<<<
- * 
- *         hi, lo = high[i], low[i]
-*/
-      __pyx_t_15 = __pyx_v_hi;
-      __pyx_t_16 = __pyx_v_lo;
-      __pyx_v_ph = __pyx_t_15;
-      __pyx_v_pl = __pyx_t_16;
-
-      /* "src/mintalib/cython/sar.pxi":26
- * 
- *     for i in range(size):
- *         if hi >= lo:             # <<<<<<<<<<<<<<
- *             ph, pl = hi, lo
+          /* "src/mintalib/cython/sar.pxi":27
+ *     with nogil:
+ *         for i in range(size):
+ *             if hi >= lo:             # <<<<<<<<<<<<<<
+ *                 ph, pl = hi, lo
  * 
 */
-    }
+          __pyx_t_14 = (__pyx_v_hi >= __pyx_v_lo);
+          if (__pyx_t_14) {
 
-    /* "src/mintalib/cython/sar.pxi":29
- *             ph, pl = hi, lo
+            /* "src/mintalib/cython/sar.pxi":28
+ *         for i in range(size):
+ *             if hi >= lo:
+ *                 ph, pl = hi, lo             # <<<<<<<<<<<<<<
  * 
- *         hi, lo = high[i], low[i]             # <<<<<<<<<<<<<<
- * 
- *         if not (hi >= lo and ph >= pl):
+ *             hi, lo = high[i], low[i]
 */
-    __pyx_t_17 = __pyx_v_i;
-    __pyx_t_16 = (*((double const  *) ( /* dim=0 */ (__pyx_v_high.data + __pyx_t_17 * __pyx_v_high.strides[0]) )));
-    __pyx_t_17 = __pyx_v_i;
-    __pyx_t_15 = (*((double const  *) ( /* dim=0 */ (__pyx_v_low.data + __pyx_t_17 * __pyx_v_low.strides[0]) )));
-    __pyx_v_hi = __pyx_t_16;
-    __pyx_v_lo = __pyx_t_15;
+            __pyx_t_15 = __pyx_v_hi;
+            __pyx_t_16 = __pyx_v_lo;
+            __pyx_v_ph = __pyx_t_15;
+            __pyx_v_pl = __pyx_t_16;
 
-    /* "src/mintalib/cython/sar.pxi":31
- *         hi, lo = high[i], low[i]
- * 
- *         if not (hi >= lo and ph >= pl):             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-    __pyx_t_18 = (__pyx_v_hi >= __pyx_v_lo);
-    if (__pyx_t_18) {
-    } else {
-      __pyx_t_14 = __pyx_t_18;
-      goto __pyx_L7_bool_binop_done;
-    }
-    __pyx_t_18 = (__pyx_v_ph >= __pyx_v_pl);
-    __pyx_t_14 = __pyx_t_18;
-    __pyx_L7_bool_binop_done:;
-    __pyx_t_18 = (!__pyx_t_14);
-    if (__pyx_t_18) {
-
-      /* "src/mintalib/cython/sar.pxi":32
- * 
- *         if not (hi >= lo and ph >= pl):
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         hi2 = ph if ph > hi else hi
-*/
-      goto __pyx_L3_continue;
-
-      /* "src/mintalib/cython/sar.pxi":31
- *         hi, lo = high[i], low[i]
- * 
- *         if not (hi >= lo and ph >= pl):             # <<<<<<<<<<<<<<
- *             continue
+            /* "src/mintalib/cython/sar.pxi":27
+ *     with nogil:
+ *         for i in range(size):
+ *             if hi >= lo:             # <<<<<<<<<<<<<<
+ *                 ph, pl = hi, lo
  * 
 */
-    }
+          }
 
-    /* "src/mintalib/cython/sar.pxi":34
- *             continue
+          /* "src/mintalib/cython/sar.pxi":30
+ *                 ph, pl = hi, lo
  * 
- *         hi2 = ph if ph > hi else hi             # <<<<<<<<<<<<<<
- *         lo2 = pl if pl < lo else lo
+ *             hi, lo = high[i], low[i]             # <<<<<<<<<<<<<<
+ * 
+ *             if not (hi >= lo and ph >= pl):
+*/
+          __pyx_t_17 = __pyx_v_i;
+          __pyx_t_16 = (*((double const  *) ( /* dim=0 */ (__pyx_v_high.data + __pyx_t_17 * __pyx_v_high.strides[0]) )));
+          __pyx_t_17 = __pyx_v_i;
+          __pyx_t_15 = (*((double const  *) ( /* dim=0 */ (__pyx_v_low.data + __pyx_t_17 * __pyx_v_low.strides[0]) )));
+          __pyx_v_hi = __pyx_t_16;
+          __pyx_v_lo = __pyx_t_15;
+
+          /* "src/mintalib/cython/sar.pxi":32
+ *             hi, lo = high[i], low[i]
+ * 
+ *             if not (hi >= lo and ph >= pl):             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_t_18 = (__pyx_v_ph > __pyx_v_hi);
-    if (__pyx_t_18) {
-      __pyx_t_15 = __pyx_v_ph;
-    } else {
-      __pyx_t_15 = __pyx_v_hi;
-    }
-    __pyx_v_hi2 = __pyx_t_15;
+          __pyx_t_18 = (__pyx_v_hi >= __pyx_v_lo);
+          if (__pyx_t_18) {
+          } else {
+            __pyx_t_14 = __pyx_t_18;
+            goto __pyx_L10_bool_binop_done;
+          }
+          __pyx_t_18 = (__pyx_v_ph >= __pyx_v_pl);
+          __pyx_t_14 = __pyx_t_18;
+          __pyx_L10_bool_binop_done:;
+          __pyx_t_18 = (!__pyx_t_14);
+          if (__pyx_t_18) {
 
-    /* "src/mintalib/cython/sar.pxi":35
+            /* "src/mintalib/cython/sar.pxi":33
  * 
- *         hi2 = ph if ph > hi else hi
- *         lo2 = pl if pl < lo else lo             # <<<<<<<<<<<<<<
+ *             if not (hi >= lo and ph >= pl):
+ *                 continue             # <<<<<<<<<<<<<<
  * 
- *         # check for reversal
+ *             hi2 = ph if ph > hi else hi
 */
-    __pyx_t_18 = (__pyx_v_pl < __pyx_v_lo);
-    if (__pyx_t_18) {
-      __pyx_t_15 = __pyx_v_pl;
-    } else {
-      __pyx_t_15 = __pyx_v_lo;
-    }
-    __pyx_v_lo2 = __pyx_t_15;
+            goto __pyx_L6_continue;
 
-    /* "src/mintalib/cython/sar.pxi":38
+            /* "src/mintalib/cython/sar.pxi":32
+ *             hi, lo = high[i], low[i]
  * 
- *         # check for reversal
- *         if trend > 0 and lo < sar:             # <<<<<<<<<<<<<<
- *             ep, sar, af, trend = lo, ep, afs, -1
+ *             if not (hi >= lo and ph >= pl):             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_t_14 = (__pyx_v_trend > 0);
-    if (__pyx_t_14) {
-    } else {
-      __pyx_t_18 = __pyx_t_14;
-      goto __pyx_L10_bool_binop_done;
-    }
-    __pyx_t_14 = (__pyx_v_lo < __pyx_v_sar);
-    __pyx_t_18 = __pyx_t_14;
-    __pyx_L10_bool_binop_done:;
-    if (__pyx_t_18) {
+          }
 
-      /* "src/mintalib/cython/sar.pxi":39
- *         # check for reversal
- *         if trend > 0 and lo < sar:
- *             ep, sar, af, trend = lo, ep, afs, -1             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/sar.pxi":35
+ *                 continue
  * 
- *         elif trend < 0 and hi > sar:
-*/
-      __pyx_t_15 = __pyx_v_lo;
-      __pyx_t_16 = __pyx_v_ep;
-      __pyx_t_19 = __pyx_v_afs;
-      __pyx_t_20 = -1L;
-      __pyx_v_ep = __pyx_t_15;
-      __pyx_v_sar = __pyx_t_16;
-      __pyx_v_af = __pyx_t_19;
-      __pyx_v_trend = __pyx_t_20;
-
-      /* "src/mintalib/cython/sar.pxi":38
- * 
- *         # check for reversal
- *         if trend > 0 and lo < sar:             # <<<<<<<<<<<<<<
- *             ep, sar, af, trend = lo, ep, afs, -1
+ *             hi2 = ph if ph > hi else hi             # <<<<<<<<<<<<<<
+ *             lo2 = pl if pl < lo else lo
  * 
 */
-      goto __pyx_L9;
-    }
+          __pyx_t_18 = (__pyx_v_ph > __pyx_v_hi);
+          if (__pyx_t_18) {
+            __pyx_t_15 = __pyx_v_ph;
+          } else {
+            __pyx_t_15 = __pyx_v_hi;
+          }
+          __pyx_v_hi2 = __pyx_t_15;
 
-    /* "src/mintalib/cython/sar.pxi":41
- *             ep, sar, af, trend = lo, ep, afs, -1
+          /* "src/mintalib/cython/sar.pxi":36
  * 
- *         elif trend < 0 and hi > sar:             # <<<<<<<<<<<<<<
- *             ep, sar, af, trend = hi, ep, afs, +1
+ *             hi2 = ph if ph > hi else hi
+ *             lo2 = pl if pl < lo else lo             # <<<<<<<<<<<<<<
+ * 
+ *             # check for reversal
+*/
+          __pyx_t_18 = (__pyx_v_pl < __pyx_v_lo);
+          if (__pyx_t_18) {
+            __pyx_t_15 = __pyx_v_pl;
+          } else {
+            __pyx_t_15 = __pyx_v_lo;
+          }
+          __pyx_v_lo2 = __pyx_t_15;
+
+          /* "src/mintalib/cython/sar.pxi":39
+ * 
+ *             # check for reversal
+ *             if trend > 0 and lo < sar:             # <<<<<<<<<<<<<<
+ *                 ep, sar, af, trend = lo, ep, afs, -1
  * 
 */
-    __pyx_t_14 = (__pyx_v_trend < 0);
-    if (__pyx_t_14) {
-    } else {
-      __pyx_t_18 = __pyx_t_14;
-      goto __pyx_L12_bool_binop_done;
-    }
-    __pyx_t_14 = (__pyx_v_hi > __pyx_v_sar);
-    __pyx_t_18 = __pyx_t_14;
-    __pyx_L12_bool_binop_done:;
-    if (__pyx_t_18) {
+          __pyx_t_14 = (__pyx_v_trend > 0);
+          if (__pyx_t_14) {
+          } else {
+            __pyx_t_18 = __pyx_t_14;
+            goto __pyx_L13_bool_binop_done;
+          }
+          __pyx_t_14 = (__pyx_v_lo < __pyx_v_sar);
+          __pyx_t_18 = __pyx_t_14;
+          __pyx_L13_bool_binop_done:;
+          if (__pyx_t_18) {
 
-      /* "src/mintalib/cython/sar.pxi":42
+            /* "src/mintalib/cython/sar.pxi":40
+ *             # check for reversal
+ *             if trend > 0 and lo < sar:
+ *                 ep, sar, af, trend = lo, ep, afs, -1             # <<<<<<<<<<<<<<
  * 
- *         elif trend < 0 and hi > sar:
- *             ep, sar, af, trend = hi, ep, afs, +1             # <<<<<<<<<<<<<<
- * 
- *         output[i] = sar
+ *             elif trend < 0 and hi > sar:
 */
-      __pyx_t_19 = __pyx_v_hi;
-      __pyx_t_16 = __pyx_v_ep;
-      __pyx_t_15 = __pyx_v_afs;
-      __pyx_t_20 = 1;
-      __pyx_v_ep = __pyx_t_19;
-      __pyx_v_sar = __pyx_t_16;
-      __pyx_v_af = __pyx_t_15;
-      __pyx_v_trend = __pyx_t_20;
+            __pyx_t_15 = __pyx_v_lo;
+            __pyx_t_16 = __pyx_v_ep;
+            __pyx_t_19 = __pyx_v_afs;
+            __pyx_t_20 = -1L;
+            __pyx_v_ep = __pyx_t_15;
+            __pyx_v_sar = __pyx_t_16;
+            __pyx_v_af = __pyx_t_19;
+            __pyx_v_trend = __pyx_t_20;
 
-      /* "src/mintalib/cython/sar.pxi":41
- *             ep, sar, af, trend = lo, ep, afs, -1
+            /* "src/mintalib/cython/sar.pxi":39
  * 
- *         elif trend < 0 and hi > sar:             # <<<<<<<<<<<<<<
- *             ep, sar, af, trend = hi, ep, afs, +1
+ *             # check for reversal
+ *             if trend > 0 and lo < sar:             # <<<<<<<<<<<<<<
+ *                 ep, sar, af, trend = lo, ep, afs, -1
  * 
 */
-    }
-    __pyx_L9:;
+            goto __pyx_L12;
+          }
 
-    /* "src/mintalib/cython/sar.pxi":44
- *             ep, sar, af, trend = hi, ep, afs, +1
+          /* "src/mintalib/cython/sar.pxi":42
+ *                 ep, sar, af, trend = lo, ep, afs, -1
  * 
- *         output[i] = sar             # <<<<<<<<<<<<<<
+ *             elif trend < 0 and hi > sar:             # <<<<<<<<<<<<<<
+ *                 ep, sar, af, trend = hi, ep, afs, +1
  * 
- *         # calculate next sar
 */
-    __pyx_t_17 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_sar;
+          __pyx_t_14 = (__pyx_v_trend < 0);
+          if (__pyx_t_14) {
+          } else {
+            __pyx_t_18 = __pyx_t_14;
+            goto __pyx_L15_bool_binop_done;
+          }
+          __pyx_t_14 = (__pyx_v_hi > __pyx_v_sar);
+          __pyx_t_18 = __pyx_t_14;
+          __pyx_L15_bool_binop_done:;
+          if (__pyx_t_18) {
 
-    /* "src/mintalib/cython/sar.pxi":48
- *         # calculate next sar
+            /* "src/mintalib/cython/sar.pxi":43
  * 
- *         if trend == 0:             # <<<<<<<<<<<<<<
- *             # initialize sar
- *             if hi > ph:
+ *             elif trend < 0 and hi > sar:
+ *                 ep, sar, af, trend = hi, ep, afs, +1             # <<<<<<<<<<<<<<
+ * 
+ *             output[i] = sar
 */
-    __pyx_t_18 = (__pyx_v_trend == 0);
-    if (__pyx_t_18) {
+            __pyx_t_19 = __pyx_v_hi;
+            __pyx_t_16 = __pyx_v_ep;
+            __pyx_t_15 = __pyx_v_afs;
+            __pyx_t_20 = 1;
+            __pyx_v_ep = __pyx_t_19;
+            __pyx_v_sar = __pyx_t_16;
+            __pyx_v_af = __pyx_t_15;
+            __pyx_v_trend = __pyx_t_20;
 
-      /* "src/mintalib/cython/sar.pxi":50
- *         if trend == 0:
- *             # initialize sar
- *             if hi > ph:             # <<<<<<<<<<<<<<
- *                 ep, sar, af, trend = hi2, lo2, afs, +1
+            /* "src/mintalib/cython/sar.pxi":42
+ *                 ep, sar, af, trend = lo, ep, afs, -1
+ * 
+ *             elif trend < 0 and hi > sar:             # <<<<<<<<<<<<<<
+ *                 ep, sar, af, trend = hi, ep, afs, +1
+ * 
+*/
+          }
+          __pyx_L12:;
+
+          /* "src/mintalib/cython/sar.pxi":45
+ *                 ep, sar, af, trend = hi, ep, afs, +1
+ * 
+ *             output[i] = sar             # <<<<<<<<<<<<<<
+ * 
+ *             # calculate next sar
+*/
+          __pyx_t_17 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_sar;
+
+          /* "src/mintalib/cython/sar.pxi":49
+ *             # calculate next sar
+ * 
+ *             if trend == 0:             # <<<<<<<<<<<<<<
+ *                 # initialize sar
+ *                 if hi > ph:
+*/
+          __pyx_t_18 = (__pyx_v_trend == 0);
+          if (__pyx_t_18) {
+
+            /* "src/mintalib/cython/sar.pxi":51
+ *             if trend == 0:
+ *                 # initialize sar
+ *                 if hi > ph:             # <<<<<<<<<<<<<<
+ *                     ep, sar, af, trend = hi2, lo2, afs, +1
+ *                 else:
+*/
+            __pyx_t_18 = (__pyx_v_hi > __pyx_v_ph);
+            if (__pyx_t_18) {
+
+              /* "src/mintalib/cython/sar.pxi":52
+ *                 # initialize sar
+ *                 if hi > ph:
+ *                     ep, sar, af, trend = hi2, lo2, afs, +1             # <<<<<<<<<<<<<<
+ *                 else:
+ *                     ep, sar, af, trend = lo2, hi2, afs, -1
+*/
+              __pyx_t_15 = __pyx_v_hi2;
+              __pyx_t_16 = __pyx_v_lo2;
+              __pyx_t_19 = __pyx_v_afs;
+              __pyx_t_20 = 1;
+              __pyx_v_ep = __pyx_t_15;
+              __pyx_v_sar = __pyx_t_16;
+              __pyx_v_af = __pyx_t_19;
+              __pyx_v_trend = __pyx_t_20;
+
+              /* "src/mintalib/cython/sar.pxi":51
+ *             if trend == 0:
+ *                 # initialize sar
+ *                 if hi > ph:             # <<<<<<<<<<<<<<
+ *                     ep, sar, af, trend = hi2, lo2, afs, +1
+ *                 else:
+*/
+              goto __pyx_L18;
+            }
+
+            /* "src/mintalib/cython/sar.pxi":54
+ *                     ep, sar, af, trend = hi2, lo2, afs, +1
+ *                 else:
+ *                     ep, sar, af, trend = lo2, hi2, afs, -1             # <<<<<<<<<<<<<<
  *             else:
+ *                 # update sar
 */
-      __pyx_t_18 = (__pyx_v_hi > __pyx_v_ph);
-      if (__pyx_t_18) {
+            /*else*/ {
+              __pyx_t_19 = __pyx_v_lo2;
+              __pyx_t_16 = __pyx_v_hi2;
+              __pyx_t_15 = __pyx_v_afs;
+              __pyx_t_20 = -1L;
+              __pyx_v_ep = __pyx_t_19;
+              __pyx_v_sar = __pyx_t_16;
+              __pyx_v_af = __pyx_t_15;
+              __pyx_v_trend = __pyx_t_20;
+            }
+            __pyx_L18:;
 
-        /* "src/mintalib/cython/sar.pxi":51
- *             # initialize sar
- *             if hi > ph:
- *                 ep, sar, af, trend = hi2, lo2, afs, +1             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/sar.pxi":49
+ *             # calculate next sar
+ * 
+ *             if trend == 0:             # <<<<<<<<<<<<<<
+ *                 # initialize sar
+ *                 if hi > ph:
+*/
+            goto __pyx_L17;
+          }
+
+          /* "src/mintalib/cython/sar.pxi":57
  *             else:
- *                 ep, sar, af, trend = lo2, hi2, afs, -1
-*/
-        __pyx_t_15 = __pyx_v_hi2;
-        __pyx_t_16 = __pyx_v_lo2;
-        __pyx_t_19 = __pyx_v_afs;
-        __pyx_t_20 = 1;
-        __pyx_v_ep = __pyx_t_15;
-        __pyx_v_sar = __pyx_t_16;
-        __pyx_v_af = __pyx_t_19;
-        __pyx_v_trend = __pyx_t_20;
-
-        /* "src/mintalib/cython/sar.pxi":50
- *         if trend == 0:
- *             # initialize sar
- *             if hi > ph:             # <<<<<<<<<<<<<<
- *                 ep, sar, af, trend = hi2, lo2, afs, +1
- *             else:
-*/
-        goto __pyx_L15;
-      }
-
-      /* "src/mintalib/cython/sar.pxi":53
- *                 ep, sar, af, trend = hi2, lo2, afs, +1
- *             else:
- *                 ep, sar, af, trend = lo2, hi2, afs, -1             # <<<<<<<<<<<<<<
- *         else:
- *             # update sar
-*/
-      /*else*/ {
-        __pyx_t_19 = __pyx_v_lo2;
-        __pyx_t_16 = __pyx_v_hi2;
-        __pyx_t_15 = __pyx_v_afs;
-        __pyx_t_20 = -1L;
-        __pyx_v_ep = __pyx_t_19;
-        __pyx_v_sar = __pyx_t_16;
-        __pyx_v_af = __pyx_t_15;
-        __pyx_v_trend = __pyx_t_20;
-      }
-      __pyx_L15:;
-
-      /* "src/mintalib/cython/sar.pxi":48
- *         # calculate next sar
+ *                 # update sar
+ *                 sar += af * (ep - sar)             # <<<<<<<<<<<<<<
  * 
- *         if trend == 0:             # <<<<<<<<<<<<<<
- *             # initialize sar
- *             if hi > ph:
+ *                 # adjust sar, ep, af if needed
 */
-      goto __pyx_L14;
-    }
+          /*else*/ {
+            __pyx_v_sar = (__pyx_v_sar + (__pyx_v_af * (__pyx_v_ep - __pyx_v_sar)));
 
-    /* "src/mintalib/cython/sar.pxi":56
- *         else:
- *             # update sar
- *             sar += af * (ep - sar)             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/sar.pxi":60
  * 
- *             # adjust sar, ep, af if needed
+ *                 # adjust sar, ep, af if needed
+ *                 if trend > 0:             # <<<<<<<<<<<<<<
+ *                     if lo2 < sar:
+ *                         sar = lo2
 */
-    /*else*/ {
-      __pyx_v_sar = (__pyx_v_sar + (__pyx_v_af * (__pyx_v_ep - __pyx_v_sar)));
+            __pyx_t_18 = (__pyx_v_trend > 0);
+            if (__pyx_t_18) {
 
-      /* "src/mintalib/cython/sar.pxi":59
+              /* "src/mintalib/cython/sar.pxi":61
+ *                 # adjust sar, ep, af if needed
+ *                 if trend > 0:
+ *                     if lo2 < sar:             # <<<<<<<<<<<<<<
+ *                         sar = lo2
+ *                     if hi > ep:
+*/
+              __pyx_t_18 = (__pyx_v_lo2 < __pyx_v_sar);
+              if (__pyx_t_18) {
+
+                /* "src/mintalib/cython/sar.pxi":62
+ *                 if trend > 0:
+ *                     if lo2 < sar:
+ *                         sar = lo2             # <<<<<<<<<<<<<<
+ *                     if hi > ep:
+ *                         ep = hi
+*/
+                __pyx_v_sar = __pyx_v_lo2;
+
+                /* "src/mintalib/cython/sar.pxi":61
+ *                 # adjust sar, ep, af if needed
+ *                 if trend > 0:
+ *                     if lo2 < sar:             # <<<<<<<<<<<<<<
+ *                         sar = lo2
+ *                     if hi > ep:
+*/
+              }
+
+              /* "src/mintalib/cython/sar.pxi":63
+ *                     if lo2 < sar:
+ *                         sar = lo2
+ *                     if hi > ep:             # <<<<<<<<<<<<<<
+ *                         ep = hi
+ *                         af += afs
+*/
+              __pyx_t_18 = (__pyx_v_hi > __pyx_v_ep);
+              if (__pyx_t_18) {
+
+                /* "src/mintalib/cython/sar.pxi":64
+ *                         sar = lo2
+ *                     if hi > ep:
+ *                         ep = hi             # <<<<<<<<<<<<<<
+ *                         af += afs
+ *                 if trend < 0:
+*/
+                __pyx_v_ep = __pyx_v_hi;
+
+                /* "src/mintalib/cython/sar.pxi":65
+ *                     if hi > ep:
+ *                         ep = hi
+ *                         af += afs             # <<<<<<<<<<<<<<
+ *                 if trend < 0:
+ *                     if hi2 > sar:
+*/
+                __pyx_v_af = (__pyx_v_af + __pyx_v_afs);
+
+                /* "src/mintalib/cython/sar.pxi":63
+ *                     if lo2 < sar:
+ *                         sar = lo2
+ *                     if hi > ep:             # <<<<<<<<<<<<<<
+ *                         ep = hi
+ *                         af += afs
+*/
+              }
+
+              /* "src/mintalib/cython/sar.pxi":60
  * 
- *             # adjust sar, ep, af if needed
- *             if trend > 0:             # <<<<<<<<<<<<<<
- *                 if lo2 < sar:
- *                     sar = lo2
+ *                 # adjust sar, ep, af if needed
+ *                 if trend > 0:             # <<<<<<<<<<<<<<
+ *                     if lo2 < sar:
+ *                         sar = lo2
 */
-      __pyx_t_18 = (__pyx_v_trend > 0);
-      if (__pyx_t_18) {
+            }
 
-        /* "src/mintalib/cython/sar.pxi":60
- *             # adjust sar, ep, af if needed
- *             if trend > 0:
- *                 if lo2 < sar:             # <<<<<<<<<<<<<<
- *                     sar = lo2
- *                 if hi > ep:
+            /* "src/mintalib/cython/sar.pxi":66
+ *                         ep = hi
+ *                         af += afs
+ *                 if trend < 0:             # <<<<<<<<<<<<<<
+ *                     if hi2 > sar:
+ *                         sar = hi2
 */
-        __pyx_t_18 = (__pyx_v_lo2 < __pyx_v_sar);
-        if (__pyx_t_18) {
+            __pyx_t_18 = (__pyx_v_trend < 0);
+            if (__pyx_t_18) {
 
-          /* "src/mintalib/cython/sar.pxi":61
- *             if trend > 0:
- *                 if lo2 < sar:
- *                     sar = lo2             # <<<<<<<<<<<<<<
- *                 if hi > ep:
- *                     ep = hi
+              /* "src/mintalib/cython/sar.pxi":67
+ *                         af += afs
+ *                 if trend < 0:
+ *                     if hi2 > sar:             # <<<<<<<<<<<<<<
+ *                         sar = hi2
+ *                     if lo < ep:
 */
-          __pyx_v_sar = __pyx_v_lo2;
+              __pyx_t_18 = (__pyx_v_hi2 > __pyx_v_sar);
+              if (__pyx_t_18) {
 
-          /* "src/mintalib/cython/sar.pxi":60
- *             # adjust sar, ep, af if needed
- *             if trend > 0:
- *                 if lo2 < sar:             # <<<<<<<<<<<<<<
- *                     sar = lo2
- *                 if hi > ep:
+                /* "src/mintalib/cython/sar.pxi":68
+ *                 if trend < 0:
+ *                     if hi2 > sar:
+ *                         sar = hi2             # <<<<<<<<<<<<<<
+ *                     if lo < ep:
+ *                         ep = lo
 */
-        }
+                __pyx_v_sar = __pyx_v_hi2;
 
-        /* "src/mintalib/cython/sar.pxi":62
- *                 if lo2 < sar:
- *                     sar = lo2
- *                 if hi > ep:             # <<<<<<<<<<<<<<
- *                     ep = hi
- *                     af += afs
+                /* "src/mintalib/cython/sar.pxi":67
+ *                         af += afs
+ *                 if trend < 0:
+ *                     if hi2 > sar:             # <<<<<<<<<<<<<<
+ *                         sar = hi2
+ *                     if lo < ep:
 */
-        __pyx_t_18 = (__pyx_v_hi > __pyx_v_ep);
-        if (__pyx_t_18) {
+              }
 
-          /* "src/mintalib/cython/sar.pxi":63
- *                     sar = lo2
- *                 if hi > ep:
- *                     ep = hi             # <<<<<<<<<<<<<<
- *                     af += afs
- *             if trend < 0:
+              /* "src/mintalib/cython/sar.pxi":69
+ *                     if hi2 > sar:
+ *                         sar = hi2
+ *                     if lo < ep:             # <<<<<<<<<<<<<<
+ *                         ep = lo
+ *                         af += afs
 */
-          __pyx_v_ep = __pyx_v_hi;
+              __pyx_t_18 = (__pyx_v_lo < __pyx_v_ep);
+              if (__pyx_t_18) {
 
-          /* "src/mintalib/cython/sar.pxi":64
- *                 if hi > ep:
- *                     ep = hi
- *                     af += afs             # <<<<<<<<<<<<<<
- *             if trend < 0:
- *                 if hi2 > sar:
-*/
-          __pyx_v_af = (__pyx_v_af + __pyx_v_afs);
-
-          /* "src/mintalib/cython/sar.pxi":62
- *                 if lo2 < sar:
- *                     sar = lo2
- *                 if hi > ep:             # <<<<<<<<<<<<<<
- *                     ep = hi
- *                     af += afs
-*/
-        }
-
-        /* "src/mintalib/cython/sar.pxi":59
- * 
- *             # adjust sar, ep, af if needed
- *             if trend > 0:             # <<<<<<<<<<<<<<
- *                 if lo2 < sar:
- *                     sar = lo2
-*/
-      }
-
-      /* "src/mintalib/cython/sar.pxi":65
- *                     ep = hi
- *                     af += afs
- *             if trend < 0:             # <<<<<<<<<<<<<<
- *                 if hi2 > sar:
- *                     sar = hi2
-*/
-      __pyx_t_18 = (__pyx_v_trend < 0);
-      if (__pyx_t_18) {
-
-        /* "src/mintalib/cython/sar.pxi":66
- *                     af += afs
- *             if trend < 0:
- *                 if hi2 > sar:             # <<<<<<<<<<<<<<
- *                     sar = hi2
- *                 if lo < ep:
-*/
-        __pyx_t_18 = (__pyx_v_hi2 > __pyx_v_sar);
-        if (__pyx_t_18) {
-
-          /* "src/mintalib/cython/sar.pxi":67
- *             if trend < 0:
- *                 if hi2 > sar:
- *                     sar = hi2             # <<<<<<<<<<<<<<
- *                 if lo < ep:
- *                     ep = lo
-*/
-          __pyx_v_sar = __pyx_v_hi2;
-
-          /* "src/mintalib/cython/sar.pxi":66
- *                     af += afs
- *             if trend < 0:
- *                 if hi2 > sar:             # <<<<<<<<<<<<<<
- *                     sar = hi2
- *                 if lo < ep:
-*/
-        }
-
-        /* "src/mintalib/cython/sar.pxi":68
- *                 if hi2 > sar:
- *                     sar = hi2
- *                 if lo < ep:             # <<<<<<<<<<<<<<
- *                     ep = lo
- *                     af += afs
-*/
-        __pyx_t_18 = (__pyx_v_lo < __pyx_v_ep);
-        if (__pyx_t_18) {
-
-          /* "src/mintalib/cython/sar.pxi":69
- *                     sar = hi2
- *                 if lo < ep:
- *                     ep = lo             # <<<<<<<<<<<<<<
- *                     af += afs
+                /* "src/mintalib/cython/sar.pxi":70
+ *                         sar = hi2
+ *                     if lo < ep:
+ *                         ep = lo             # <<<<<<<<<<<<<<
+ *                         af += afs
  * 
 */
-          __pyx_v_ep = __pyx_v_lo;
+                __pyx_v_ep = __pyx_v_lo;
 
-          /* "src/mintalib/cython/sar.pxi":70
- *                 if lo < ep:
- *                     ep = lo
- *                     af += afs             # <<<<<<<<<<<<<<
+                /* "src/mintalib/cython/sar.pxi":71
+ *                     if lo < ep:
+ *                         ep = lo
+ *                         af += afs             # <<<<<<<<<<<<<<
  * 
- *         if maxaf and af > maxaf:
+ *             if maxaf and af > maxaf:
 */
-          __pyx_v_af = (__pyx_v_af + __pyx_v_afs);
+                __pyx_v_af = (__pyx_v_af + __pyx_v_afs);
 
-          /* "src/mintalib/cython/sar.pxi":68
- *                 if hi2 > sar:
- *                     sar = hi2
- *                 if lo < ep:             # <<<<<<<<<<<<<<
- *                     ep = lo
- *                     af += afs
+                /* "src/mintalib/cython/sar.pxi":69
+ *                     if hi2 > sar:
+ *                         sar = hi2
+ *                     if lo < ep:             # <<<<<<<<<<<<<<
+ *                         ep = lo
+ *                         af += afs
 */
-        }
+              }
 
-        /* "src/mintalib/cython/sar.pxi":65
- *                     ep = hi
- *                     af += afs
- *             if trend < 0:             # <<<<<<<<<<<<<<
- *                 if hi2 > sar:
- *                     sar = hi2
+              /* "src/mintalib/cython/sar.pxi":66
+ *                         ep = hi
+ *                         af += afs
+ *                 if trend < 0:             # <<<<<<<<<<<<<<
+ *                     if hi2 > sar:
+ *                         sar = hi2
 */
-      }
-    }
-    __pyx_L14:;
+            }
+          }
+          __pyx_L17:;
 
-    /* "src/mintalib/cython/sar.pxi":72
- *                     af += afs
+          /* "src/mintalib/cython/sar.pxi":73
+ *                         af += afs
  * 
- *         if maxaf and af > maxaf:             # <<<<<<<<<<<<<<
- *             af = maxaf
+ *             if maxaf and af > maxaf:             # <<<<<<<<<<<<<<
+ *                 af = maxaf
  * 
 */
-    __pyx_t_14 = (__pyx_v_maxaf != 0);
-    if (__pyx_t_14) {
-    } else {
-      __pyx_t_18 = __pyx_t_14;
-      goto __pyx_L23_bool_binop_done;
-    }
-    __pyx_t_14 = (__pyx_v_af > __pyx_v_maxaf);
-    __pyx_t_18 = __pyx_t_14;
-    __pyx_L23_bool_binop_done:;
-    if (__pyx_t_18) {
+          __pyx_t_14 = (__pyx_v_maxaf != 0);
+          if (__pyx_t_14) {
+          } else {
+            __pyx_t_18 = __pyx_t_14;
+            goto __pyx_L26_bool_binop_done;
+          }
+          __pyx_t_14 = (__pyx_v_af > __pyx_v_maxaf);
+          __pyx_t_18 = __pyx_t_14;
+          __pyx_L26_bool_binop_done:;
+          if (__pyx_t_18) {
 
-      /* "src/mintalib/cython/sar.pxi":73
+            /* "src/mintalib/cython/sar.pxi":74
  * 
- *         if maxaf and af > maxaf:
- *             af = maxaf             # <<<<<<<<<<<<<<
+ *             if maxaf and af > maxaf:
+ *                 af = maxaf             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      __pyx_v_af = __pyx_v_maxaf;
+            __pyx_v_af = __pyx_v_maxaf;
 
-      /* "src/mintalib/cython/sar.pxi":72
- *                     af += afs
+            /* "src/mintalib/cython/sar.pxi":73
+ *                         af += afs
  * 
- *         if maxaf and af > maxaf:             # <<<<<<<<<<<<<<
- *             af = maxaf
+ *             if maxaf and af > maxaf:             # <<<<<<<<<<<<<<
+ *                 af = maxaf
  * 
 */
-    }
-    __pyx_L3_continue:;
+          }
+          __pyx_L6_continue:;
+        }
+      }
+
+      /* "src/mintalib/cython/sar.pxi":25
+ *     cdef long i = 0, trend = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             if hi >= lo:
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/sar.pxi":75
- *             af = maxaf
+  /* "src/mintalib/cython/sar.pxi":76
+ *                 af = maxaf
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -39046,7 +39806,7 @@ static PyObject *__pyx_pf_8mintalib_4core_94calc_mfi(CYTHON_UNUSED PyObject *__p
  *     cdef double psum = 0.0, nsum = 0.0
  *     cdef long i = 0, count = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_count = 0;
@@ -39054,326 +39814,357 @@ static PyObject *__pyx_pf_8mintalib_4core_94calc_mfi(CYTHON_UNUSED PyObject *__p
   /* "src/mintalib/cython/mfi.pxi":33
  *     cdef long i = 0, count = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         v = flow[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             v = flow[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/mfi.pxi":34
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             v = flow[i]
  * 
 */
-  __pyx_t_14 = __pyx_v_size;
-  __pyx_t_15 = __pyx_t_14;
-  for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
-    __pyx_v_i = __pyx_t_16;
+        __pyx_t_14 = __pyx_v_size;
+        __pyx_t_15 = __pyx_t_14;
+        for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
+          __pyx_v_i = __pyx_t_16;
 
-    /* "src/mintalib/cython/mfi.pxi":34
+          /* "src/mintalib/cython/mfi.pxi":35
+ *     with nogil:
+ *         for i in range(size):
+ *             v = flow[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         v = flow[i]             # <<<<<<<<<<<<<<
+ *             if isnan(v):
+*/
+          __pyx_t_17 = __pyx_v_i;
+          __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_flow.data + __pyx_t_17 * __pyx_v_flow.strides[0]) )));
+
+          /* "src/mintalib/cython/mfi.pxi":37
+ *             v = flow[i]
  * 
- *         if isnan(v):
+ *             if isnan(v):             # <<<<<<<<<<<<<<
+ *                 psum = 0.0
+ *                 nsum = 0.0
 */
-    __pyx_t_17 = __pyx_v_i;
-    __pyx_v_v = (*((double const  *) ( /* dim=0 */ (__pyx_v_flow.data + __pyx_t_17 * __pyx_v_flow.strides[0]) )));
+          __pyx_t_1 = isnan(__pyx_v_v);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/mfi.pxi":36
- *         v = flow[i]
+            /* "src/mintalib/cython/mfi.pxi":38
  * 
- *         if isnan(v):             # <<<<<<<<<<<<<<
- *             psum = 0.0
- *             nsum = 0.0
+ *             if isnan(v):
+ *                 psum = 0.0             # <<<<<<<<<<<<<<
+ *                 nsum = 0.0
+ *                 count = 0
 */
-    __pyx_t_1 = isnan(__pyx_v_v);
-    if (__pyx_t_1) {
+            __pyx_v_psum = 0.0;
 
-      /* "src/mintalib/cython/mfi.pxi":37
- * 
- *         if isnan(v):
- *             psum = 0.0             # <<<<<<<<<<<<<<
- *             nsum = 0.0
- *             count = 0
+            /* "src/mintalib/cython/mfi.pxi":39
+ *             if isnan(v):
+ *                 psum = 0.0
+ *                 nsum = 0.0             # <<<<<<<<<<<<<<
+ *                 count = 0
+ *                 continue
 */
-      __pyx_v_psum = 0.0;
+            __pyx_v_nsum = 0.0;
 
-      /* "src/mintalib/cython/mfi.pxi":38
- *         if isnan(v):
- *             psum = 0.0
- *             nsum = 0.0             # <<<<<<<<<<<<<<
- *             count = 0
- *             continue
-*/
-      __pyx_v_nsum = 0.0;
-
-      /* "src/mintalib/cython/mfi.pxi":39
- *             psum = 0.0
- *             nsum = 0.0
- *             count = 0             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-      __pyx_v_count = 0;
-
-      /* "src/mintalib/cython/mfi.pxi":40
- *             nsum = 0.0
- *             count = 0
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         if v > 0.0:
-*/
-      goto __pyx_L4_continue;
-
-      /* "src/mintalib/cython/mfi.pxi":36
- *         v = flow[i]
- * 
- *         if isnan(v):             # <<<<<<<<<<<<<<
- *             psum = 0.0
- *             nsum = 0.0
-*/
-    }
-
-    /* "src/mintalib/cython/mfi.pxi":42
- *             continue
- * 
- *         if v > 0.0:             # <<<<<<<<<<<<<<
- *             psum += v
- *         elif v < 0.0:
-*/
-    __pyx_t_1 = (__pyx_v_v > 0.0);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/mfi.pxi":43
- * 
- *         if v > 0.0:
- *             psum += v             # <<<<<<<<<<<<<<
- *         elif v < 0.0:
- *             nsum -= v
-*/
-      __pyx_v_psum = (__pyx_v_psum + __pyx_v_v);
-
-      /* "src/mintalib/cython/mfi.pxi":42
- *             continue
- * 
- *         if v > 0.0:             # <<<<<<<<<<<<<<
- *             psum += v
- *         elif v < 0.0:
-*/
-      goto __pyx_L7;
-    }
-
-    /* "src/mintalib/cython/mfi.pxi":44
- *         if v > 0.0:
- *             psum += v
- *         elif v < 0.0:             # <<<<<<<<<<<<<<
- *             nsum -= v
+            /* "src/mintalib/cython/mfi.pxi":40
+ *                 psum = 0.0
+ *                 nsum = 0.0
+ *                 count = 0             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_t_1 = (__pyx_v_v < 0.0);
-    if (__pyx_t_1) {
+            __pyx_v_count = 0;
 
-      /* "src/mintalib/cython/mfi.pxi":45
- *             psum += v
- *         elif v < 0.0:
- *             nsum -= v             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/mfi.pxi":41
+ *                 nsum = 0.0
+ *                 count = 0
+ *                 continue             # <<<<<<<<<<<<<<
  * 
- *         count += 1
+ *             if v > 0.0:
 */
-      __pyx_v_nsum = (__pyx_v_nsum - __pyx_v_v);
+            goto __pyx_L7_continue;
 
-      /* "src/mintalib/cython/mfi.pxi":44
- *         if v > 0.0:
- *             psum += v
- *         elif v < 0.0:             # <<<<<<<<<<<<<<
- *             nsum -= v
+            /* "src/mintalib/cython/mfi.pxi":37
+ *             v = flow[i]
  * 
+ *             if isnan(v):             # <<<<<<<<<<<<<<
+ *                 psum = 0.0
+ *                 nsum = 0.0
 */
-    }
-    __pyx_L7:;
+          }
 
-    /* "src/mintalib/cython/mfi.pxi":47
- *             nsum -= v
+          /* "src/mintalib/cython/mfi.pxi":43
+ *                 continue
  * 
- *         count += 1             # <<<<<<<<<<<<<<
+ *             if v > 0.0:             # <<<<<<<<<<<<<<
+ *                 psum += v
+ *             elif v < 0.0:
+*/
+          __pyx_t_1 = (__pyx_v_v > 0.0);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/mfi.pxi":44
  * 
- *         if count > period:
+ *             if v > 0.0:
+ *                 psum += v             # <<<<<<<<<<<<<<
+ *             elif v < 0.0:
+ *                 nsum -= v
 */
-    __pyx_v_count = (__pyx_v_count + 1);
+            __pyx_v_psum = (__pyx_v_psum + __pyx_v_v);
 
-    /* "src/mintalib/cython/mfi.pxi":49
- *         count += 1
+            /* "src/mintalib/cython/mfi.pxi":43
+ *                 continue
  * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             old = flow[i - period]
- *             if old > 0.0:
+ *             if v > 0.0:             # <<<<<<<<<<<<<<
+ *                 psum += v
+ *             elif v < 0.0:
 */
-    __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
-    if (__pyx_t_1) {
+            goto __pyx_L10;
+          }
 
-      /* "src/mintalib/cython/mfi.pxi":50
- * 
- *         if count > period:
- *             old = flow[i - period]             # <<<<<<<<<<<<<<
- *             if old > 0.0:
- *                 psum -= old
-*/
-      __pyx_t_17 = (__pyx_v_i - __pyx_v_period);
-      __pyx_v_old = (*((double const  *) ( /* dim=0 */ (__pyx_v_flow.data + __pyx_t_17 * __pyx_v_flow.strides[0]) )));
-
-      /* "src/mintalib/cython/mfi.pxi":51
- *         if count > period:
- *             old = flow[i - period]
- *             if old > 0.0:             # <<<<<<<<<<<<<<
- *                 psum -= old
- *             elif old < 0.0:
-*/
-      __pyx_t_1 = (__pyx_v_old > 0.0);
-      if (__pyx_t_1) {
-
-        /* "src/mintalib/cython/mfi.pxi":52
- *             old = flow[i - period]
- *             if old > 0.0:
- *                 psum -= old             # <<<<<<<<<<<<<<
- *             elif old < 0.0:
- *                 nsum += old
-*/
-        __pyx_v_psum = (__pyx_v_psum - __pyx_v_old);
-
-        /* "src/mintalib/cython/mfi.pxi":51
- *         if count > period:
- *             old = flow[i - period]
- *             if old > 0.0:             # <<<<<<<<<<<<<<
- *                 psum -= old
- *             elif old < 0.0:
-*/
-        goto __pyx_L9;
-      }
-
-      /* "src/mintalib/cython/mfi.pxi":53
- *             if old > 0.0:
- *                 psum -= old
- *             elif old < 0.0:             # <<<<<<<<<<<<<<
- *                 nsum += old
- *             count -= 1
-*/
-      __pyx_t_1 = (__pyx_v_old < 0.0);
-      if (__pyx_t_1) {
-
-        /* "src/mintalib/cython/mfi.pxi":54
- *                 psum -= old
- *             elif old < 0.0:
- *                 nsum += old             # <<<<<<<<<<<<<<
- *             count -= 1
+          /* "src/mintalib/cython/mfi.pxi":45
+ *             if v > 0.0:
+ *                 psum += v
+ *             elif v < 0.0:             # <<<<<<<<<<<<<<
+ *                 nsum -= v
  * 
 */
-        __pyx_v_nsum = (__pyx_v_nsum + __pyx_v_old);
+          __pyx_t_1 = (__pyx_v_v < 0.0);
+          if (__pyx_t_1) {
 
-        /* "src/mintalib/cython/mfi.pxi":53
- *             if old > 0.0:
- *                 psum -= old
- *             elif old < 0.0:             # <<<<<<<<<<<<<<
- *                 nsum += old
- *             count -= 1
-*/
-      }
-      __pyx_L9:;
-
-      /* "src/mintalib/cython/mfi.pxi":55
- *             elif old < 0.0:
- *                 nsum += old
- *             count -= 1             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/mfi.pxi":46
+ *                 psum += v
+ *             elif v < 0.0:
+ *                 nsum -= v             # <<<<<<<<<<<<<<
  * 
- *         if count == period:
+ *             count += 1
 */
-      __pyx_v_count = (__pyx_v_count - 1);
+            __pyx_v_nsum = (__pyx_v_nsum - __pyx_v_v);
 
-      /* "src/mintalib/cython/mfi.pxi":49
- *         count += 1
- * 
- *         if count > period:             # <<<<<<<<<<<<<<
- *             old = flow[i - period]
- *             if old > 0.0:
-*/
-    }
-
-    /* "src/mintalib/cython/mfi.pxi":57
- *             count -= 1
- * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             if nsum > 0.0:
- *                 output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
-*/
-    __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/mfi.pxi":58
- * 
- *         if count == period:
- *             if nsum > 0.0:             # <<<<<<<<<<<<<<
- *                 output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
- *             elif psum > 0.0:
-*/
-      __pyx_t_1 = (__pyx_v_nsum > 0.0);
-      if (__pyx_t_1) {
-
-        /* "src/mintalib/cython/mfi.pxi":59
- *         if count == period:
- *             if nsum > 0.0:
- *                 output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)             # <<<<<<<<<<<<<<
- *             elif psum > 0.0:
- *                 output[i] = 100.0
-*/
-        __pyx_t_17 = __pyx_v_i;
-        *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = (100.0 - (100.0 / (1.0 + (__pyx_v_psum / __pyx_v_nsum))));
-
-        /* "src/mintalib/cython/mfi.pxi":58
- * 
- *         if count == period:
- *             if nsum > 0.0:             # <<<<<<<<<<<<<<
- *                 output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
- *             elif psum > 0.0:
-*/
-        goto __pyx_L11;
-      }
-
-      /* "src/mintalib/cython/mfi.pxi":60
- *             if nsum > 0.0:
- *                 output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
- *             elif psum > 0.0:             # <<<<<<<<<<<<<<
- *                 output[i] = 100.0
+            /* "src/mintalib/cython/mfi.pxi":45
+ *             if v > 0.0:
+ *                 psum += v
+ *             elif v < 0.0:             # <<<<<<<<<<<<<<
+ *                 nsum -= v
  * 
 */
-      __pyx_t_1 = (__pyx_v_psum > 0.0);
-      if (__pyx_t_1) {
+          }
+          __pyx_L10:;
 
-        /* "src/mintalib/cython/mfi.pxi":61
- *                 output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
- *             elif psum > 0.0:
- *                 output[i] = 100.0             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/mfi.pxi":48
+ *                 nsum -= v
+ * 
+ *             count += 1             # <<<<<<<<<<<<<<
+ * 
+ *             if count > period:
+*/
+          __pyx_v_count = (__pyx_v_count + 1);
+
+          /* "src/mintalib/cython/mfi.pxi":50
+ *             count += 1
+ * 
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 old = flow[i - period]
+ *                 if old > 0.0:
+*/
+          __pyx_t_1 = (__pyx_v_count > __pyx_v_period);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/mfi.pxi":51
+ * 
+ *             if count > period:
+ *                 old = flow[i - period]             # <<<<<<<<<<<<<<
+ *                 if old > 0.0:
+ *                     psum -= old
+*/
+            __pyx_t_17 = (__pyx_v_i - __pyx_v_period);
+            __pyx_v_old = (*((double const  *) ( /* dim=0 */ (__pyx_v_flow.data + __pyx_t_17 * __pyx_v_flow.strides[0]) )));
+
+            /* "src/mintalib/cython/mfi.pxi":52
+ *             if count > period:
+ *                 old = flow[i - period]
+ *                 if old > 0.0:             # <<<<<<<<<<<<<<
+ *                     psum -= old
+ *                 elif old < 0.0:
+*/
+            __pyx_t_1 = (__pyx_v_old > 0.0);
+            if (__pyx_t_1) {
+
+              /* "src/mintalib/cython/mfi.pxi":53
+ *                 old = flow[i - period]
+ *                 if old > 0.0:
+ *                     psum -= old             # <<<<<<<<<<<<<<
+ *                 elif old < 0.0:
+ *                     nsum += old
+*/
+              __pyx_v_psum = (__pyx_v_psum - __pyx_v_old);
+
+              /* "src/mintalib/cython/mfi.pxi":52
+ *             if count > period:
+ *                 old = flow[i - period]
+ *                 if old > 0.0:             # <<<<<<<<<<<<<<
+ *                     psum -= old
+ *                 elif old < 0.0:
+*/
+              goto __pyx_L12;
+            }
+
+            /* "src/mintalib/cython/mfi.pxi":54
+ *                 if old > 0.0:
+ *                     psum -= old
+ *                 elif old < 0.0:             # <<<<<<<<<<<<<<
+ *                     nsum += old
+ *                 count -= 1
+*/
+            __pyx_t_1 = (__pyx_v_old < 0.0);
+            if (__pyx_t_1) {
+
+              /* "src/mintalib/cython/mfi.pxi":55
+ *                     psum -= old
+ *                 elif old < 0.0:
+ *                     nsum += old             # <<<<<<<<<<<<<<
+ *                 count -= 1
+ * 
+*/
+              __pyx_v_nsum = (__pyx_v_nsum + __pyx_v_old);
+
+              /* "src/mintalib/cython/mfi.pxi":54
+ *                 if old > 0.0:
+ *                     psum -= old
+ *                 elif old < 0.0:             # <<<<<<<<<<<<<<
+ *                     nsum += old
+ *                 count -= 1
+*/
+            }
+            __pyx_L12:;
+
+            /* "src/mintalib/cython/mfi.pxi":56
+ *                 elif old < 0.0:
+ *                     nsum += old
+ *                 count -= 1             # <<<<<<<<<<<<<<
+ * 
+ *             if count == period:
+*/
+            __pyx_v_count = (__pyx_v_count - 1);
+
+            /* "src/mintalib/cython/mfi.pxi":50
+ *             count += 1
+ * 
+ *             if count > period:             # <<<<<<<<<<<<<<
+ *                 old = flow[i - period]
+ *                 if old > 0.0:
+*/
+          }
+
+          /* "src/mintalib/cython/mfi.pxi":58
+ *                 count -= 1
+ * 
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 if nsum > 0.0:
+ *                     output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
+*/
+          __pyx_t_1 = (__pyx_v_count == __pyx_v_period);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/mfi.pxi":59
+ * 
+ *             if count == period:
+ *                 if nsum > 0.0:             # <<<<<<<<<<<<<<
+ *                     output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
+ *                 elif psum > 0.0:
+*/
+            __pyx_t_1 = (__pyx_v_nsum > 0.0);
+            if (__pyx_t_1) {
+
+              /* "src/mintalib/cython/mfi.pxi":60
+ *             if count == period:
+ *                 if nsum > 0.0:
+ *                     output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)             # <<<<<<<<<<<<<<
+ *                 elif psum > 0.0:
+ *                     output[i] = 100.0
+*/
+              __pyx_t_17 = __pyx_v_i;
+              *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = (100.0 - (100.0 / (1.0 + (__pyx_v_psum / __pyx_v_nsum))));
+
+              /* "src/mintalib/cython/mfi.pxi":59
+ * 
+ *             if count == period:
+ *                 if nsum > 0.0:             # <<<<<<<<<<<<<<
+ *                     output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
+ *                 elif psum > 0.0:
+*/
+              goto __pyx_L14;
+            }
+
+            /* "src/mintalib/cython/mfi.pxi":61
+ *                 if nsum > 0.0:
+ *                     output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
+ *                 elif psum > 0.0:             # <<<<<<<<<<<<<<
+ *                     output[i] = 100.0
+ * 
+*/
+            __pyx_t_1 = (__pyx_v_psum > 0.0);
+            if (__pyx_t_1) {
+
+              /* "src/mintalib/cython/mfi.pxi":62
+ *                     output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
+ *                 elif psum > 0.0:
+ *                     output[i] = 100.0             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-        __pyx_t_17 = __pyx_v_i;
-        *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = 100.0;
+              __pyx_t_17 = __pyx_v_i;
+              *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = 100.0;
 
-        /* "src/mintalib/cython/mfi.pxi":60
- *             if nsum > 0.0:
- *                 output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
- *             elif psum > 0.0:             # <<<<<<<<<<<<<<
- *                 output[i] = 100.0
+              /* "src/mintalib/cython/mfi.pxi":61
+ *                 if nsum > 0.0:
+ *                     output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
+ *                 elif psum > 0.0:             # <<<<<<<<<<<<<<
+ *                     output[i] = 100.0
  * 
 */
+            }
+            __pyx_L14:;
+
+            /* "src/mintalib/cython/mfi.pxi":58
+ *                 count -= 1
+ * 
+ *             if count == period:             # <<<<<<<<<<<<<<
+ *                 if nsum > 0.0:
+ *                     output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
+*/
+          }
+          __pyx_L7_continue:;
+        }
       }
-      __pyx_L11:;
 
-      /* "src/mintalib/cython/mfi.pxi":57
- *             count -= 1
+      /* "src/mintalib/cython/mfi.pxi":33
+ *     cdef long i = 0, count = 0
  * 
- *         if count == period:             # <<<<<<<<<<<<<<
- *             if nsum > 0.0:
- *                 output[i] = 100.0 - 100.0 / (1.0 + psum / nsum)
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             v = flow[i]
 */
-    }
-    __pyx_L4_continue:;
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L6;
+        }
+        __pyx_L6:;
+      }
   }
 
-  /* "src/mintalib/cython/mfi.pxi":63
- *                 output[i] = 100.0
+  /* "src/mintalib/cython/mfi.pxi":64
+ *                     output[i] = 100.0
  * 
  *     return result             # <<<<<<<<<<<<<<
 */
@@ -42332,7 +43123,7 @@ static PyObject *__pyx_pf_8mintalib_4core_108calc_ker(CYTHON_UNUSED PyObject *__
  *     cdef long ercnt = 0
  *     cdef long i = 0, j = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
   __pyx_v_j = 0;
@@ -42340,252 +43131,283 @@ static PyObject *__pyx_pf_8mintalib_4core_108calc_ker(CYTHON_UNUSED PyObject *__
   /* "src/mintalib/cython/kama.pxi":25
  *     cdef long i = 0, j = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         x = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             x = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/kama.pxi":26
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             x = xs[i]
  * 
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_11 = __pyx_t_7;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_11 = __pyx_t_7;
+        for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+          __pyx_v_i = __pyx_t_12;
 
-    /* "src/mintalib/cython/kama.pxi":26
+          /* "src/mintalib/cython/kama.pxi":27
+ *     with nogil:
+ *         for i in range(size):
+ *             x = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         x = xs[i]             # <<<<<<<<<<<<<<
- * 
- *         if isnan(x):
+ *             if isnan(x):
 */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_v_x = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_13 = __pyx_v_i;
+          __pyx_v_x = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
 
-    /* "src/mintalib/cython/kama.pxi":28
- *         x = xs[i]
+          /* "src/mintalib/cython/kama.pxi":29
+ *             x = xs[i]
  * 
- *         if isnan(x):             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-    __pyx_t_14 = isnan(__pyx_v_x);
-    if (__pyx_t_14) {
-
-      /* "src/mintalib/cython/kama.pxi":29
- * 
- *         if isnan(x):
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         dx, px = x - px, x
-*/
-      goto __pyx_L3_continue;
-
-      /* "src/mintalib/cython/kama.pxi":28
- *         x = xs[i]
- * 
- *         if isnan(x):             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-    }
-
-    /* "src/mintalib/cython/kama.pxi":31
- *             continue
- * 
- *         dx, px = x - px, x             # <<<<<<<<<<<<<<
- * 
- *         if isnan(dx):
-*/
-    __pyx_t_15 = (__pyx_v_x - __pyx_v_px);
-    __pyx_t_16 = __pyx_v_x;
-    __pyx_v_dx = __pyx_t_15;
-    __pyx_v_px = __pyx_t_16;
-
-    /* "src/mintalib/cython/kama.pxi":33
- *         dx, px = x - px, x
- * 
- *         if isnan(dx):             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-    __pyx_t_14 = isnan(__pyx_v_dx);
-    if (__pyx_t_14) {
-
-      /* "src/mintalib/cython/kama.pxi":34
- * 
- *         if isnan(dx):
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         erdiv += math.fabs(dx)
-*/
-      goto __pyx_L3_continue;
-
-      /* "src/mintalib/cython/kama.pxi":33
- *         dx, px = x - px, x
- * 
- *         if isnan(dx):             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-    }
-
-    /* "src/mintalib/cython/kama.pxi":36
- *             continue
- * 
- *         erdiv += math.fabs(dx)             # <<<<<<<<<<<<<<
- *         ercnt += 1
- * 
-*/
-    __pyx_v_erdiv = (__pyx_v_erdiv + fabs(__pyx_v_dx));
-
-    /* "src/mintalib/cython/kama.pxi":37
- * 
- *         erdiv += math.fabs(dx)
- *         ercnt += 1             # <<<<<<<<<<<<<<
- * 
- *         while ercnt >= period:
-*/
-    __pyx_v_ercnt = (__pyx_v_ercnt + 1);
-
-    /* "src/mintalib/cython/kama.pxi":39
- *         ercnt += 1
- * 
- *         while ercnt >= period:             # <<<<<<<<<<<<<<
- *             y, j = xs[j], j+1
- * 
-*/
-    while (1) {
-      __pyx_t_14 = (__pyx_v_ercnt >= __pyx_v_period);
-      if (!__pyx_t_14) break;
-
-      /* "src/mintalib/cython/kama.pxi":40
- * 
- *         while ercnt >= period:
- *             y, j = xs[j], j+1             # <<<<<<<<<<<<<<
- * 
- *             if isnan(y):
-*/
-      __pyx_t_13 = __pyx_v_j;
-      __pyx_t_16 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
-      __pyx_t_17 = (__pyx_v_j + 1);
-      __pyx_v_y = __pyx_t_16;
-      __pyx_v_j = __pyx_t_17;
-
-      /* "src/mintalib/cython/kama.pxi":42
- *             y, j = xs[j], j+1
- * 
- *             if isnan(y):             # <<<<<<<<<<<<<<
+ *             if isnan(x):             # <<<<<<<<<<<<<<
  *                 continue
  * 
 */
-      __pyx_t_14 = isnan(__pyx_v_y);
-      if (__pyx_t_14) {
+          __pyx_t_14 = isnan(__pyx_v_x);
+          if (__pyx_t_14) {
 
-        /* "src/mintalib/cython/kama.pxi":43
+            /* "src/mintalib/cython/kama.pxi":30
  * 
- *             if isnan(y):
+ *             if isnan(x):
  *                 continue             # <<<<<<<<<<<<<<
  * 
- *             dy, py = y - py, y
+ *             dx, px = x - px, x
 */
-        goto __pyx_L7_continue;
+            goto __pyx_L6_continue;
 
-        /* "src/mintalib/cython/kama.pxi":42
- *             y, j = xs[j], j+1
+            /* "src/mintalib/cython/kama.pxi":29
+ *             x = xs[i]
  * 
- *             if isnan(y):             # <<<<<<<<<<<<<<
+ *             if isnan(x):             # <<<<<<<<<<<<<<
  *                 continue
  * 
 */
-      }
+          }
 
-      /* "src/mintalib/cython/kama.pxi":45
+          /* "src/mintalib/cython/kama.pxi":32
  *                 continue
  * 
- *             dy, py = y - py, y             # <<<<<<<<<<<<<<
+ *             dx, px = x - px, x             # <<<<<<<<<<<<<<
  * 
- *             ernum = math.fabs(x-y)
+ *             if isnan(dx):
 */
-      __pyx_t_16 = (__pyx_v_y - __pyx_v_py);
-      __pyx_t_15 = __pyx_v_y;
-      __pyx_v_dy = __pyx_t_16;
-      __pyx_v_py = __pyx_t_15;
+          __pyx_t_15 = (__pyx_v_x - __pyx_v_px);
+          __pyx_t_16 = __pyx_v_x;
+          __pyx_v_dx = __pyx_t_15;
+          __pyx_v_px = __pyx_t_16;
 
-      /* "src/mintalib/cython/kama.pxi":47
- *             dy, py = y - py, y
+          /* "src/mintalib/cython/kama.pxi":34
+ *             dx, px = x - px, x
  * 
- *             ernum = math.fabs(x-y)             # <<<<<<<<<<<<<<
- *             erval = ernum / erdiv if erdiv else 1.0
- * 
-*/
-      __pyx_v_ernum = fabs((__pyx_v_x - __pyx_v_y));
-
-      /* "src/mintalib/cython/kama.pxi":48
- * 
- *             ernum = math.fabs(x-y)
- *             erval = ernum / erdiv if erdiv else 1.0             # <<<<<<<<<<<<<<
- * 
- *             if not isnan(dy):
-*/
-      __pyx_t_14 = (__pyx_v_erdiv != 0);
-      if (__pyx_t_14) {
-        __pyx_t_15 = (__pyx_v_ernum / __pyx_v_erdiv);
-      } else {
-        __pyx_t_15 = 1.0;
-      }
-      __pyx_v_erval = __pyx_t_15;
-
-      /* "src/mintalib/cython/kama.pxi":50
- *             erval = ernum / erdiv if erdiv else 1.0
- * 
- *             if not isnan(dy):             # <<<<<<<<<<<<<<
- *                 erdiv -= math.fabs(dy)
- *                 ercnt -= 1
-*/
-      __pyx_t_14 = (!isnan(__pyx_v_dy));
-      if (__pyx_t_14) {
-
-        /* "src/mintalib/cython/kama.pxi":51
- * 
- *             if not isnan(dy):
- *                 erdiv -= math.fabs(dy)             # <<<<<<<<<<<<<<
- *                 ercnt -= 1
+ *             if isnan(dx):             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-        __pyx_v_erdiv = (__pyx_v_erdiv - fabs(__pyx_v_dy));
+          __pyx_t_14 = isnan(__pyx_v_dx);
+          if (__pyx_t_14) {
 
-        /* "src/mintalib/cython/kama.pxi":52
- *             if not isnan(dy):
- *                 erdiv -= math.fabs(dy)
- *                 ercnt -= 1             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/kama.pxi":35
  * 
- *         output[i] = erval
+ *             if isnan(dx):
+ *                 continue             # <<<<<<<<<<<<<<
+ * 
+ *             erdiv += math.fabs(dx)
 */
-        __pyx_v_ercnt = (__pyx_v_ercnt - 1);
+            goto __pyx_L6_continue;
 
-        /* "src/mintalib/cython/kama.pxi":50
- *             erval = ernum / erdiv if erdiv else 1.0
+            /* "src/mintalib/cython/kama.pxi":34
+ *             dx, px = x - px, x
  * 
- *             if not isnan(dy):             # <<<<<<<<<<<<<<
- *                 erdiv -= math.fabs(dy)
- *                 ercnt -= 1
+ *             if isnan(dx):             # <<<<<<<<<<<<<<
+ *                 continue
+ * 
 */
-      }
-      __pyx_L7_continue:;
-    }
+          }
 
-    /* "src/mintalib/cython/kama.pxi":54
- *                 ercnt -= 1
+          /* "src/mintalib/cython/kama.pxi":37
+ *                 continue
  * 
- *         output[i] = erval             # <<<<<<<<<<<<<<
+ *             erdiv += math.fabs(dx)             # <<<<<<<<<<<<<<
+ *             ercnt += 1
+ * 
+*/
+          __pyx_v_erdiv = (__pyx_v_erdiv + fabs(__pyx_v_dx));
+
+          /* "src/mintalib/cython/kama.pxi":38
+ * 
+ *             erdiv += math.fabs(dx)
+ *             ercnt += 1             # <<<<<<<<<<<<<<
+ * 
+ *             while ercnt >= period:
+*/
+          __pyx_v_ercnt = (__pyx_v_ercnt + 1);
+
+          /* "src/mintalib/cython/kama.pxi":40
+ *             ercnt += 1
+ * 
+ *             while ercnt >= period:             # <<<<<<<<<<<<<<
+ *                 y, j = xs[j], j+1
+ * 
+*/
+          while (1) {
+            __pyx_t_14 = (__pyx_v_ercnt >= __pyx_v_period);
+            if (!__pyx_t_14) break;
+
+            /* "src/mintalib/cython/kama.pxi":41
+ * 
+ *             while ercnt >= period:
+ *                 y, j = xs[j], j+1             # <<<<<<<<<<<<<<
+ * 
+ *                 if isnan(y):
+*/
+            __pyx_t_13 = __pyx_v_j;
+            __pyx_t_16 = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
+            __pyx_t_17 = (__pyx_v_j + 1);
+            __pyx_v_y = __pyx_t_16;
+            __pyx_v_j = __pyx_t_17;
+
+            /* "src/mintalib/cython/kama.pxi":43
+ *                 y, j = xs[j], j+1
+ * 
+ *                 if isnan(y):             # <<<<<<<<<<<<<<
+ *                     continue
+ * 
+*/
+            __pyx_t_14 = isnan(__pyx_v_y);
+            if (__pyx_t_14) {
+
+              /* "src/mintalib/cython/kama.pxi":44
+ * 
+ *                 if isnan(y):
+ *                     continue             # <<<<<<<<<<<<<<
+ * 
+ *                 dy, py = y - py, y
+*/
+              goto __pyx_L10_continue;
+
+              /* "src/mintalib/cython/kama.pxi":43
+ *                 y, j = xs[j], j+1
+ * 
+ *                 if isnan(y):             # <<<<<<<<<<<<<<
+ *                     continue
+ * 
+*/
+            }
+
+            /* "src/mintalib/cython/kama.pxi":46
+ *                     continue
+ * 
+ *                 dy, py = y - py, y             # <<<<<<<<<<<<<<
+ * 
+ *                 ernum = math.fabs(x-y)
+*/
+            __pyx_t_16 = (__pyx_v_y - __pyx_v_py);
+            __pyx_t_15 = __pyx_v_y;
+            __pyx_v_dy = __pyx_t_16;
+            __pyx_v_py = __pyx_t_15;
+
+            /* "src/mintalib/cython/kama.pxi":48
+ *                 dy, py = y - py, y
+ * 
+ *                 ernum = math.fabs(x-y)             # <<<<<<<<<<<<<<
+ *                 erval = ernum / erdiv if erdiv else 1.0
+ * 
+*/
+            __pyx_v_ernum = fabs((__pyx_v_x - __pyx_v_y));
+
+            /* "src/mintalib/cython/kama.pxi":49
+ * 
+ *                 ernum = math.fabs(x-y)
+ *                 erval = ernum / erdiv if erdiv else 1.0             # <<<<<<<<<<<<<<
+ * 
+ *                 if not isnan(dy):
+*/
+            __pyx_t_14 = (__pyx_v_erdiv != 0);
+            if (__pyx_t_14) {
+              __pyx_t_15 = (__pyx_v_ernum / __pyx_v_erdiv);
+            } else {
+              __pyx_t_15 = 1.0;
+            }
+            __pyx_v_erval = __pyx_t_15;
+
+            /* "src/mintalib/cython/kama.pxi":51
+ *                 erval = ernum / erdiv if erdiv else 1.0
+ * 
+ *                 if not isnan(dy):             # <<<<<<<<<<<<<<
+ *                     erdiv -= math.fabs(dy)
+ *                     ercnt -= 1
+*/
+            __pyx_t_14 = (!isnan(__pyx_v_dy));
+            if (__pyx_t_14) {
+
+              /* "src/mintalib/cython/kama.pxi":52
+ * 
+ *                 if not isnan(dy):
+ *                     erdiv -= math.fabs(dy)             # <<<<<<<<<<<<<<
+ *                     ercnt -= 1
+ * 
+*/
+              __pyx_v_erdiv = (__pyx_v_erdiv - fabs(__pyx_v_dy));
+
+              /* "src/mintalib/cython/kama.pxi":53
+ *                 if not isnan(dy):
+ *                     erdiv -= math.fabs(dy)
+ *                     ercnt -= 1             # <<<<<<<<<<<<<<
+ * 
+ *             output[i] = erval
+*/
+              __pyx_v_ercnt = (__pyx_v_ercnt - 1);
+
+              /* "src/mintalib/cython/kama.pxi":51
+ *                 erval = ernum / erdiv if erdiv else 1.0
+ * 
+ *                 if not isnan(dy):             # <<<<<<<<<<<<<<
+ *                     erdiv -= math.fabs(dy)
+ *                     ercnt -= 1
+*/
+            }
+            __pyx_L10_continue:;
+          }
+
+          /* "src/mintalib/cython/kama.pxi":55
+ *                     ercnt -= 1
+ * 
+ *             output[i] = erval             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_13 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_erval;
-    __pyx_L3_continue:;
+          __pyx_t_13 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_erval;
+          __pyx_L6_continue:;
+        }
+      }
+
+      /* "src/mintalib/cython/kama.pxi":25
+ *     cdef long i = 0, j = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             x = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/kama.pxi":56
- *         output[i] = erval
+  /* "src/mintalib/cython/kama.pxi":57
+ *             output[i] = erval
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -42625,7 +43447,7 @@ static PyObject *__pyx_pf_8mintalib_4core_108calc_ker(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/kama.pxi":59
+/* "src/mintalib/cython/kama.pxi":60
  * 
  * 
  * @add_metadata(same_scale=True)             # <<<<<<<<<<<<<<
@@ -42676,74 +43498,74 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,&__pyx_mstate_global->__pyx_n_u_fastn,&__pyx_mstate_global->__pyx_n_u_slown,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(41, 59, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(41, 60, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(41, 59, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(41, 60, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(41, 59, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(41, 60, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(41, 59, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(41, 60, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(41, 59, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(41, 60, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_kama", 0) < (0)) __PYX_ERR(41, 59, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_kama", 0) < (0)) __PYX_ERR(41, 60, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_kama", 0, 1, 4, i); __PYX_ERR(41, 59, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_kama", 0, 1, 4, i); __PYX_ERR(41, 60, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(41, 59, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(41, 60, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(41, 59, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(41, 60, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(41, 59, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(41, 60, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(41, 59, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(41, 60, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_period == (int)-1) && PyErr_Occurred())) __PYX_ERR(41, 60, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_period == (int)-1) && PyErr_Occurred())) __PYX_ERR(41, 61, __pyx_L3_error)
     } else {
       __pyx_v_period = ((int)((int)10));
     }
     if (values[2]) {
-      __pyx_v_fastn = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_fastn == (int)-1) && PyErr_Occurred())) __PYX_ERR(41, 60, __pyx_L3_error)
+      __pyx_v_fastn = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_fastn == (int)-1) && PyErr_Occurred())) __PYX_ERR(41, 61, __pyx_L3_error)
     } else {
       __pyx_v_fastn = ((int)((int)2));
     }
     if (values[3]) {
-      __pyx_v_slown = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_slown == (int)-1) && PyErr_Occurred())) __PYX_ERR(41, 60, __pyx_L3_error)
+      __pyx_v_slown = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_slown == (int)-1) && PyErr_Occurred())) __PYX_ERR(41, 61, __pyx_L3_error)
     } else {
       __pyx_v_slown = ((int)((int)30));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_kama", 0, 1, 4, __pyx_nargs); __PYX_ERR(41, 59, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_kama", 0, 1, 4, __pyx_nargs); __PYX_ERR(41, 60, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -42800,7 +43622,7 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calc_kama", 0);
 
-  /* "src/mintalib/cython/kama.pxi":70
+  /* "src/mintalib/cython/kama.pxi":71
  *     """
  * 
  *     cdef const double[:] xs = np.asarray(series, float)             # <<<<<<<<<<<<<<
@@ -42808,9 +43630,9 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(41, 70, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(41, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(41, 70, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(41, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_5 = 1;
@@ -42830,16 +43652,16 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(41, 70, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(41, 71, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_1, 0); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(41, 70, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_1, 0); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(41, 71, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_xs = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "src/mintalib/cython/kama.pxi":71
+  /* "src/mintalib/cython/kama.pxi":72
  * 
  *     cdef const double[:] xs = np.asarray(series, float)
  *     cdef const double[:] ers = calc_ker(xs, period)             # <<<<<<<<<<<<<<
@@ -42847,11 +43669,11 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
  *     cdef long size = xs.size
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_calc_ker); if (unlikely(!__pyx_t_2)) __PYX_ERR(41, 71, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_calc_ker); if (unlikely(!__pyx_t_2)) __PYX_ERR(41, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_xs, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(41, 71, __pyx_L1_error)
+  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_xs, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(41, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyLong_From_int(__pyx_v_period); if (unlikely(!__pyx_t_7)) __PYX_ERR(41, 71, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyLong_From_int(__pyx_v_period); if (unlikely(!__pyx_t_7)) __PYX_ERR(41, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -42872,32 +43694,32 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(41, 71, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(41, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_1, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(41, 71, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_1, 0); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(41, 72, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_ers = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "src/mintalib/cython/kama.pxi":73
+  /* "src/mintalib/cython/kama.pxi":74
  *     cdef const double[:] ers = calc_ker(xs, period)
  * 
  *     cdef long size = xs.size             # <<<<<<<<<<<<<<
  * 
  *     cdef object result = np.full(size, np.nan)
 */
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_xs, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(41, 73, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_xs, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(41, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(41, 73, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(41, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_9 = __Pyx_PyLong_As_long(__pyx_t_2); if (unlikely((__pyx_t_9 == (long)-1) && PyErr_Occurred())) __PYX_ERR(41, 73, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyLong_As_long(__pyx_t_2); if (unlikely((__pyx_t_9 == (long)-1) && PyErr_Occurred())) __PYX_ERR(41, 74, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_size = __pyx_t_9;
 
-  /* "src/mintalib/cython/kama.pxi":75
+  /* "src/mintalib/cython/kama.pxi":76
  *     cdef long size = xs.size
  * 
  *     cdef object result = np.full(size, np.nan)             # <<<<<<<<<<<<<<
@@ -42905,16 +43727,16 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
  * 
 */
   __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(41, 75, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(41, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_3)) __PYX_ERR(41, 75, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_3)) __PYX_ERR(41, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(41, 75, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_7)) __PYX_ERR(41, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(41, 75, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(41, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_10)) __PYX_ERR(41, 75, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_10)) __PYX_ERR(41, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_5 = 1;
@@ -42936,25 +43758,25 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(41, 75, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(41, 76, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __pyx_v_result = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "src/mintalib/cython/kama.pxi":76
+  /* "src/mintalib/cython/kama.pxi":77
  * 
  *     cdef object result = np.full(size, np.nan)
  *     cdef double[:] output = result             # <<<<<<<<<<<<<<
  * 
  *     cdef double fastf = 2.0 / (fastn + 1.0)
 */
-  __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(41, 76, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(41, 77, __pyx_L1_error)
   __pyx_v_output = __pyx_t_11;
   __pyx_t_11.memview = NULL;
   __pyx_t_11.data = NULL;
 
-  /* "src/mintalib/cython/kama.pxi":78
+  /* "src/mintalib/cython/kama.pxi":79
  *     cdef double[:] output = result
  * 
  *     cdef double fastf = 2.0 / (fastn + 1.0)             # <<<<<<<<<<<<<<
@@ -42963,7 +43785,7 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
 */
   __pyx_v_fastf = (2.0 / (__pyx_v_fastn + 1.0));
 
-  /* "src/mintalib/cython/kama.pxi":79
+  /* "src/mintalib/cython/kama.pxi":80
  * 
  *     cdef double fastf = 2.0 / (fastn + 1.0)
  *     cdef double slowf = 2.0 / (slown + 1.0)             # <<<<<<<<<<<<<<
@@ -42972,7 +43794,7 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
 */
   __pyx_v_slowf = (2.0 / (__pyx_v_slown + 1.0));
 
-  /* "src/mintalib/cython/kama.pxi":80
+  /* "src/mintalib/cython/kama.pxi":81
  *     cdef double fastf = 2.0 / (fastn + 1.0)
  *     cdef double slowf = 2.0 / (slown + 1.0)
  *     cdef double alpha = NAN             # <<<<<<<<<<<<<<
@@ -42981,7 +43803,7 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
 */
   __pyx_v_alpha = __pyx_v_8mintalib_4core_NAN;
 
-  /* "src/mintalib/cython/kama.pxi":81
+  /* "src/mintalib/cython/kama.pxi":82
  *     cdef double slowf = 2.0 / (slown + 1.0)
  *     cdef double alpha = NAN
  *     cdef double value = NAN             # <<<<<<<<<<<<<<
@@ -42990,7 +43812,7 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
 */
   __pyx_v_value = __pyx_v_8mintalib_4core_NAN;
 
-  /* "src/mintalib/cython/kama.pxi":82
+  /* "src/mintalib/cython/kama.pxi":83
  *     cdef double alpha = NAN
  *     cdef double value = NAN
  *     cdef double kama = NAN             # <<<<<<<<<<<<<<
@@ -42999,7 +43821,7 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
 */
   __pyx_v_kama = __pyx_v_8mintalib_4core_NAN;
 
-  /* "src/mintalib/cython/kama.pxi":83
+  /* "src/mintalib/cython/kama.pxi":84
  *     cdef double value = NAN
  *     cdef double kama = NAN
  *     cdef double er = NAN             # <<<<<<<<<<<<<<
@@ -43008,164 +43830,195 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
 */
   __pyx_v_er = __pyx_v_8mintalib_4core_NAN;
 
-  /* "src/mintalib/cython/kama.pxi":85
+  /* "src/mintalib/cython/kama.pxi":86
  *     cdef double er = NAN
  * 
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
-  /* "src/mintalib/cython/kama.pxi":87
+  /* "src/mintalib/cython/kama.pxi":88
  *     cdef long i = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         value = xs[i]
- *         er = ers[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
 */
-  __pyx_t_9 = __pyx_v_size;
-  __pyx_t_12 = __pyx_t_9;
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
 
-    /* "src/mintalib/cython/kama.pxi":88
+        /* "src/mintalib/cython/kama.pxi":89
  * 
- *     for i in range(size):
- *         value = xs[i]             # <<<<<<<<<<<<<<
- *         er = ers[i]
- * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             value = xs[i]
+ *             er = ers[i]
 */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
+        __pyx_t_9 = __pyx_v_size;
+        __pyx_t_12 = __pyx_t_9;
+        for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
+          __pyx_v_i = __pyx_t_13;
 
-    /* "src/mintalib/cython/kama.pxi":89
- *     for i in range(size):
- *         value = xs[i]
- *         er = ers[i]             # <<<<<<<<<<<<<<
- * 
- *         if isnan(value) or isnan(er):
-*/
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_v_er = (*((double const  *) ( /* dim=0 */ (__pyx_v_ers.data + __pyx_t_14 * __pyx_v_ers.strides[0]) )));
-
-    /* "src/mintalib/cython/kama.pxi":91
- *         er = ers[i]
- * 
- *         if isnan(value) or isnan(er):             # <<<<<<<<<<<<<<
- *             continue
+          /* "src/mintalib/cython/kama.pxi":90
+ *     with nogil:
+ *         for i in range(size):
+ *             value = xs[i]             # <<<<<<<<<<<<<<
+ *             er = ers[i]
  * 
 */
-    __pyx_t_16 = isnan(__pyx_v_value);
-    if (!__pyx_t_16) {
-    } else {
-      __pyx_t_15 = __pyx_t_16;
-      goto __pyx_L6_bool_binop_done;
-    }
-    __pyx_t_16 = isnan(__pyx_v_er);
-    __pyx_t_15 = __pyx_t_16;
-    __pyx_L6_bool_binop_done:;
-    if (__pyx_t_15) {
+          __pyx_t_14 = __pyx_v_i;
+          __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_14 * __pyx_v_xs.strides[0]) )));
 
-      /* "src/mintalib/cython/kama.pxi":92
+          /* "src/mintalib/cython/kama.pxi":91
+ *         for i in range(size):
+ *             value = xs[i]
+ *             er = ers[i]             # <<<<<<<<<<<<<<
  * 
- *         if isnan(value) or isnan(er):
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         alpha = (slowf + er * (fastf - slowf)) ** 2.0
+ *             if isnan(value) or isnan(er):
 */
-      goto __pyx_L3_continue;
+          __pyx_t_14 = __pyx_v_i;
+          __pyx_v_er = (*((double const  *) ( /* dim=0 */ (__pyx_v_ers.data + __pyx_t_14 * __pyx_v_ers.strides[0]) )));
 
-      /* "src/mintalib/cython/kama.pxi":91
- *         er = ers[i]
+          /* "src/mintalib/cython/kama.pxi":93
+ *             er = ers[i]
  * 
- *         if isnan(value) or isnan(er):             # <<<<<<<<<<<<<<
- *             continue
+ *             if isnan(value) or isnan(er):             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    }
+          __pyx_t_16 = isnan(__pyx_v_value);
+          if (!__pyx_t_16) {
+          } else {
+            __pyx_t_15 = __pyx_t_16;
+            goto __pyx_L9_bool_binop_done;
+          }
+          __pyx_t_16 = isnan(__pyx_v_er);
+          __pyx_t_15 = __pyx_t_16;
+          __pyx_L9_bool_binop_done:;
+          if (__pyx_t_15) {
 
-    /* "src/mintalib/cython/kama.pxi":94
- *             continue
+            /* "src/mintalib/cython/kama.pxi":94
  * 
- *         alpha = (slowf + er * (fastf - slowf)) ** 2.0             # <<<<<<<<<<<<<<
+ *             if isnan(value) or isnan(er):
+ *                 continue             # <<<<<<<<<<<<<<
  * 
- *         if isnan(kama):
+ *             alpha = (slowf + er * (fastf - slowf)) ** 2.0
 */
-    __pyx_v_alpha = pow((__pyx_v_slowf + (__pyx_v_er * (__pyx_v_fastf - __pyx_v_slowf))), 2.0);
+            goto __pyx_L6_continue;
 
-    /* "src/mintalib/cython/kama.pxi":96
- *         alpha = (slowf + er * (fastf - slowf)) ** 2.0
+            /* "src/mintalib/cython/kama.pxi":93
+ *             er = ers[i]
  * 
- *         if isnan(kama):             # <<<<<<<<<<<<<<
- *             kama = value
- *         elif not isnan(alpha):
-*/
-    __pyx_t_15 = isnan(__pyx_v_kama);
-    if (__pyx_t_15) {
-
-      /* "src/mintalib/cython/kama.pxi":97
- * 
- *         if isnan(kama):
- *             kama = value             # <<<<<<<<<<<<<<
- *         elif not isnan(alpha):
- *             kama += alpha * (value - kama)
-*/
-      __pyx_v_kama = __pyx_v_value;
-
-      /* "src/mintalib/cython/kama.pxi":96
- *         alpha = (slowf + er * (fastf - slowf)) ** 2.0
- * 
- *         if isnan(kama):             # <<<<<<<<<<<<<<
- *             kama = value
- *         elif not isnan(alpha):
-*/
-      goto __pyx_L8;
-    }
-
-    /* "src/mintalib/cython/kama.pxi":98
- *         if isnan(kama):
- *             kama = value
- *         elif not isnan(alpha):             # <<<<<<<<<<<<<<
- *             kama += alpha * (value - kama)
+ *             if isnan(value) or isnan(er):             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_t_15 = (!isnan(__pyx_v_alpha));
-    if (__pyx_t_15) {
+          }
 
-      /* "src/mintalib/cython/kama.pxi":99
- *             kama = value
- *         elif not isnan(alpha):
- *             kama += alpha * (value - kama)             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/kama.pxi":96
+ *                 continue
  * 
- *         output[i] = kama
+ *             alpha = (slowf + er * (fastf - slowf)) ** 2.0             # <<<<<<<<<<<<<<
+ * 
+ *             if isnan(kama):
 */
-      __pyx_v_kama = (__pyx_v_kama + (__pyx_v_alpha * (__pyx_v_value - __pyx_v_kama)));
+          __pyx_v_alpha = pow((__pyx_v_slowf + (__pyx_v_er * (__pyx_v_fastf - __pyx_v_slowf))), 2.0);
 
-      /* "src/mintalib/cython/kama.pxi":98
- *         if isnan(kama):
- *             kama = value
- *         elif not isnan(alpha):             # <<<<<<<<<<<<<<
- *             kama += alpha * (value - kama)
+          /* "src/mintalib/cython/kama.pxi":98
+ *             alpha = (slowf + er * (fastf - slowf)) ** 2.0
+ * 
+ *             if isnan(kama):             # <<<<<<<<<<<<<<
+ *                 kama = value
+ *             elif not isnan(alpha):
+*/
+          __pyx_t_15 = isnan(__pyx_v_kama);
+          if (__pyx_t_15) {
+
+            /* "src/mintalib/cython/kama.pxi":99
+ * 
+ *             if isnan(kama):
+ *                 kama = value             # <<<<<<<<<<<<<<
+ *             elif not isnan(alpha):
+ *                 kama += alpha * (value - kama)
+*/
+            __pyx_v_kama = __pyx_v_value;
+
+            /* "src/mintalib/cython/kama.pxi":98
+ *             alpha = (slowf + er * (fastf - slowf)) ** 2.0
+ * 
+ *             if isnan(kama):             # <<<<<<<<<<<<<<
+ *                 kama = value
+ *             elif not isnan(alpha):
+*/
+            goto __pyx_L11;
+          }
+
+          /* "src/mintalib/cython/kama.pxi":100
+ *             if isnan(kama):
+ *                 kama = value
+ *             elif not isnan(alpha):             # <<<<<<<<<<<<<<
+ *                 kama += alpha * (value - kama)
  * 
 */
-    }
-    __pyx_L8:;
+          __pyx_t_15 = (!isnan(__pyx_v_alpha));
+          if (__pyx_t_15) {
 
-    /* "src/mintalib/cython/kama.pxi":101
- *             kama += alpha * (value - kama)
+            /* "src/mintalib/cython/kama.pxi":101
+ *                 kama = value
+ *             elif not isnan(alpha):
+ *                 kama += alpha * (value - kama)             # <<<<<<<<<<<<<<
  * 
- *         output[i] = kama             # <<<<<<<<<<<<<<
+ *             output[i] = kama
+*/
+            __pyx_v_kama = (__pyx_v_kama + (__pyx_v_alpha * (__pyx_v_value - __pyx_v_kama)));
+
+            /* "src/mintalib/cython/kama.pxi":100
+ *             if isnan(kama):
+ *                 kama = value
+ *             elif not isnan(alpha):             # <<<<<<<<<<<<<<
+ *                 kama += alpha * (value - kama)
+ * 
+*/
+          }
+          __pyx_L11:;
+
+          /* "src/mintalib/cython/kama.pxi":103
+ *                 kama += alpha * (value - kama)
+ * 
+ *             output[i] = kama             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_14 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_kama;
-    __pyx_L3_continue:;
+          __pyx_t_14 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_14 * __pyx_v_output.strides[0]) )) = __pyx_v_kama;
+          __pyx_L6_continue:;
+        }
+      }
+
+      /* "src/mintalib/cython/kama.pxi":88
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/kama.pxi":103
- *         output[i] = kama
+  /* "src/mintalib/cython/kama.pxi":105
+ *             output[i] = kama
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -43176,7 +44029,7 @@ static PyObject *__pyx_pf_8mintalib_4core_110calc_kama(CYTHON_UNUSED PyObject *_
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/kama.pxi":59
+  /* "src/mintalib/cython/kama.pxi":60
  * 
  * 
  * @add_metadata(same_scale=True)             # <<<<<<<<<<<<<<
@@ -44961,7 +45814,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
  * 
  *     s = sx = sy = sxy = sx2 = sy2 = 0.0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_s = 0.0;
   __pyx_v_sx = 0.0;
@@ -44973,500 +45826,531 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
   /* "src/mintalib/cython/slope.pxi":45
  *     s = sx = sy = sxy = sx2 = sy2 = 0.0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         x, y = i, ys[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             x, y = i, ys[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/slope.pxi":46
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             x, y = i, ys[i]
  * 
 */
-  __pyx_t_10 = __pyx_v_size;
-  __pyx_t_14 = __pyx_t_10;
-  for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
-    __pyx_v_i = __pyx_t_15;
+        __pyx_t_10 = __pyx_v_size;
+        __pyx_t_14 = __pyx_t_10;
+        for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
+          __pyx_v_i = __pyx_t_15;
 
-    /* "src/mintalib/cython/slope.pxi":46
+          /* "src/mintalib/cython/slope.pxi":47
+ *     with nogil:
+ *         for i in range(size):
+ *             x, y = i, ys[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         x, y = i, ys[i]             # <<<<<<<<<<<<<<
- * 
- *         if y != y:
+ *             if y != y:
 */
-    __pyx_t_16 = __pyx_v_i;
-    __pyx_t_17 = __pyx_v_i;
-    __pyx_t_18 = (*((double const  *) ( /* dim=0 */ (__pyx_v_ys.data + __pyx_t_17 * __pyx_v_ys.strides[0]) )));
-    __pyx_v_x = __pyx_t_16;
-    __pyx_v_y = __pyx_t_18;
+          __pyx_t_16 = __pyx_v_i;
+          __pyx_t_17 = __pyx_v_i;
+          __pyx_t_18 = (*((double const  *) ( /* dim=0 */ (__pyx_v_ys.data + __pyx_t_17 * __pyx_v_ys.strides[0]) )));
+          __pyx_v_x = __pyx_t_16;
+          __pyx_v_y = __pyx_t_18;
 
-    /* "src/mintalib/cython/slope.pxi":48
- *         x, y = i, ys[i]
+          /* "src/mintalib/cython/slope.pxi":49
+ *             x, y = i, ys[i]
  * 
- *         if y != y:             # <<<<<<<<<<<<<<
- *             s = sx = sy = sxy = sx2 = sy2 = 0.0
- *             continue
+ *             if y != y:             # <<<<<<<<<<<<<<
+ *                 s = sx = sy = sxy = sx2 = sy2 = 0.0
+ *                 continue
 */
-    __pyx_t_1 = (__pyx_v_y != __pyx_v_y);
-    if (__pyx_t_1) {
+          __pyx_t_1 = (__pyx_v_y != __pyx_v_y);
+          if (__pyx_t_1) {
 
-      /* "src/mintalib/cython/slope.pxi":49
+            /* "src/mintalib/cython/slope.pxi":50
  * 
- *         if y != y:
- *             s = sx = sy = sxy = sx2 = sy2 = 0.0             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-      __pyx_v_s = 0.0;
-      __pyx_v_sx = 0.0;
-      __pyx_v_sy = 0.0;
-      __pyx_v_sxy = 0.0;
-      __pyx_v_sx2 = 0.0;
-      __pyx_v_sy2 = 0.0;
-
-      /* "src/mintalib/cython/slope.pxi":50
- *         if y != y:
- *             s = sx = sy = sxy = sx2 = sy2 = 0.0
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         if s == 0:
-*/
-      goto __pyx_L8_continue;
-
-      /* "src/mintalib/cython/slope.pxi":48
- *         x, y = i, ys[i]
- * 
- *         if y != y:             # <<<<<<<<<<<<<<
- *             s = sx = sy = sxy = sx2 = sy2 = 0.0
- *             continue
-*/
-    }
-
-    /* "src/mintalib/cython/slope.pxi":52
- *             continue
- * 
- *         if s == 0:             # <<<<<<<<<<<<<<
- *             j = i
+ *             if y != y:
+ *                 s = sx = sy = sxy = sx2 = sy2 = 0.0             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_t_1 = (__pyx_v_s == 0.0);
-    if (__pyx_t_1) {
+            __pyx_v_s = 0.0;
+            __pyx_v_sx = 0.0;
+            __pyx_v_sy = 0.0;
+            __pyx_v_sxy = 0.0;
+            __pyx_v_sx2 = 0.0;
+            __pyx_v_sy2 = 0.0;
 
-      /* "src/mintalib/cython/slope.pxi":53
+            /* "src/mintalib/cython/slope.pxi":51
+ *             if y != y:
+ *                 s = sx = sy = sxy = sx2 = sy2 = 0.0
+ *                 continue             # <<<<<<<<<<<<<<
  * 
- *         if s == 0:
- *             j = i             # <<<<<<<<<<<<<<
+ *             if s == 0:
+*/
+            goto __pyx_L11_continue;
+
+            /* "src/mintalib/cython/slope.pxi":49
+ *             x, y = i, ys[i]
  * 
- *         s += 1
+ *             if y != y:             # <<<<<<<<<<<<<<
+ *                 s = sx = sy = sxy = sx2 = sy2 = 0.0
+ *                 continue
 */
-      __pyx_v_j = __pyx_v_i;
+          }
 
-      /* "src/mintalib/cython/slope.pxi":52
- *             continue
+          /* "src/mintalib/cython/slope.pxi":53
+ *                 continue
  * 
- *         if s == 0:             # <<<<<<<<<<<<<<
- *             j = i
- * 
-*/
-    }
-
-    /* "src/mintalib/cython/slope.pxi":55
- *             j = i
- * 
- *         s += 1             # <<<<<<<<<<<<<<
- *         sx += x
- *         sy += y
-*/
-    __pyx_v_s = (__pyx_v_s + 1.0);
-
-    /* "src/mintalib/cython/slope.pxi":56
- * 
- *         s += 1
- *         sx += x             # <<<<<<<<<<<<<<
- *         sy += y
- *         sxy += x * y
-*/
-    __pyx_v_sx = (__pyx_v_sx + __pyx_v_x);
-
-    /* "src/mintalib/cython/slope.pxi":57
- *         s += 1
- *         sx += x
- *         sy += y             # <<<<<<<<<<<<<<
- *         sxy += x * y
- *         sx2 += x * x
-*/
-    __pyx_v_sy = (__pyx_v_sy + __pyx_v_y);
-
-    /* "src/mintalib/cython/slope.pxi":58
- *         sx += x
- *         sy += y
- *         sxy += x * y             # <<<<<<<<<<<<<<
- *         sx2 += x * x
- *         sy2 += y * y
-*/
-    __pyx_v_sxy = (__pyx_v_sxy + (__pyx_v_x * __pyx_v_y));
-
-    /* "src/mintalib/cython/slope.pxi":59
- *         sy += y
- *         sxy += x * y
- *         sx2 += x * x             # <<<<<<<<<<<<<<
- *         sy2 += y * y
+ *             if s == 0:             # <<<<<<<<<<<<<<
+ *                 j = i
  * 
 */
-    __pyx_v_sx2 = (__pyx_v_sx2 + (__pyx_v_x * __pyx_v_x));
+          __pyx_t_1 = (__pyx_v_s == 0.0);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/slope.pxi":60
- *         sxy += x * y
- *         sx2 += x * x
- *         sy2 += y * y             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/slope.pxi":54
  * 
- *         if s < period:
+ *             if s == 0:
+ *                 j = i             # <<<<<<<<<<<<<<
+ * 
+ *             s += 1
 */
-    __pyx_v_sy2 = (__pyx_v_sy2 + (__pyx_v_y * __pyx_v_y));
+            __pyx_v_j = __pyx_v_i;
 
-    /* "src/mintalib/cython/slope.pxi":62
- *         sy2 += y * y
+            /* "src/mintalib/cython/slope.pxi":53
+ *                 continue
  * 
- *         if s < period:             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-    __pyx_t_1 = (__pyx_v_s < __pyx_v_period);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/slope.pxi":63
- * 
- *         if s < period:
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         while s > period and j < size:
-*/
-      goto __pyx_L8_continue;
-
-      /* "src/mintalib/cython/slope.pxi":62
- *         sy2 += y * y
- * 
- *         if s < period:             # <<<<<<<<<<<<<<
- *             continue
+ *             if s == 0:             # <<<<<<<<<<<<<<
+ *                 j = i
  * 
 */
-    }
+          }
 
-    /* "src/mintalib/cython/slope.pxi":65
- *             continue
+          /* "src/mintalib/cython/slope.pxi":56
+ *                 j = i
  * 
- *         while s > period and j < size:             # <<<<<<<<<<<<<<
- *             x, y, j = j, ys[j], j+1
- *             s -= 1
+ *             s += 1             # <<<<<<<<<<<<<<
+ *             sx += x
+ *             sy += y
 */
-    while (1) {
-      __pyx_t_8 = (__pyx_v_s > __pyx_v_period);
-      if (__pyx_t_8) {
-      } else {
-        __pyx_t_1 = __pyx_t_8;
-        goto __pyx_L15_bool_binop_done;
-      }
-      __pyx_t_8 = (__pyx_v_j < __pyx_v_size);
-      __pyx_t_1 = __pyx_t_8;
-      __pyx_L15_bool_binop_done:;
-      if (!__pyx_t_1) break;
+          __pyx_v_s = (__pyx_v_s + 1.0);
 
-      /* "src/mintalib/cython/slope.pxi":66
+          /* "src/mintalib/cython/slope.pxi":57
  * 
- *         while s > period and j < size:
- *             x, y, j = j, ys[j], j+1             # <<<<<<<<<<<<<<
- *             s -= 1
- *             sx -= x
+ *             s += 1
+ *             sx += x             # <<<<<<<<<<<<<<
+ *             sy += y
+ *             sxy += x * y
 */
-      __pyx_t_16 = __pyx_v_j;
-      __pyx_t_17 = __pyx_v_j;
-      __pyx_t_18 = (*((double const  *) ( /* dim=0 */ (__pyx_v_ys.data + __pyx_t_17 * __pyx_v_ys.strides[0]) )));
-      __pyx_t_19 = (__pyx_v_j + 1);
-      __pyx_v_x = __pyx_t_16;
-      __pyx_v_y = __pyx_t_18;
-      __pyx_v_j = __pyx_t_19;
+          __pyx_v_sx = (__pyx_v_sx + __pyx_v_x);
 
-      /* "src/mintalib/cython/slope.pxi":67
- *         while s > period and j < size:
- *             x, y, j = j, ys[j], j+1
- *             s -= 1             # <<<<<<<<<<<<<<
- *             sx -= x
- *             sy -= y
+          /* "src/mintalib/cython/slope.pxi":58
+ *             s += 1
+ *             sx += x
+ *             sy += y             # <<<<<<<<<<<<<<
+ *             sxy += x * y
+ *             sx2 += x * x
 */
-      __pyx_v_s = (__pyx_v_s - 1.0);
+          __pyx_v_sy = (__pyx_v_sy + __pyx_v_y);
 
-      /* "src/mintalib/cython/slope.pxi":68
- *             x, y, j = j, ys[j], j+1
- *             s -= 1
- *             sx -= x             # <<<<<<<<<<<<<<
- *             sy -= y
- *             sxy -= x * y
+          /* "src/mintalib/cython/slope.pxi":59
+ *             sx += x
+ *             sy += y
+ *             sxy += x * y             # <<<<<<<<<<<<<<
+ *             sx2 += x * x
+ *             sy2 += y * y
 */
-      __pyx_v_sx = (__pyx_v_sx - __pyx_v_x);
+          __pyx_v_sxy = (__pyx_v_sxy + (__pyx_v_x * __pyx_v_y));
 
-      /* "src/mintalib/cython/slope.pxi":69
- *             s -= 1
- *             sx -= x
- *             sy -= y             # <<<<<<<<<<<<<<
- *             sxy -= x * y
- *             sx2 -= x * x
-*/
-      __pyx_v_sy = (__pyx_v_sy - __pyx_v_y);
-
-      /* "src/mintalib/cython/slope.pxi":70
- *             sx -= x
- *             sy -= y
- *             sxy -= x * y             # <<<<<<<<<<<<<<
- *             sx2 -= x * x
- *             sy2 -= y * y
-*/
-      __pyx_v_sxy = (__pyx_v_sxy - (__pyx_v_x * __pyx_v_y));
-
-      /* "src/mintalib/cython/slope.pxi":71
- *             sy -= y
- *             sxy -= x * y
- *             sx2 -= x * x             # <<<<<<<<<<<<<<
- *             sy2 -= y * y
+          /* "src/mintalib/cython/slope.pxi":60
+ *             sy += y
+ *             sxy += x * y
+ *             sx2 += x * x             # <<<<<<<<<<<<<<
+ *             sy2 += y * y
  * 
 */
-      __pyx_v_sx2 = (__pyx_v_sx2 - (__pyx_v_x * __pyx_v_x));
+          __pyx_v_sx2 = (__pyx_v_sx2 + (__pyx_v_x * __pyx_v_x));
 
-      /* "src/mintalib/cython/slope.pxi":72
- *             sxy -= x * y
- *             sx2 -= x * x
- *             sy2 -= y * y             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/slope.pxi":61
+ *             sxy += x * y
+ *             sx2 += x * x
+ *             sy2 += y * y             # <<<<<<<<<<<<<<
  * 
- *         vxy = (sxy / s - sx * sy / s / s)
+ *             if s < period:
 */
-      __pyx_v_sy2 = (__pyx_v_sy2 - (__pyx_v_y * __pyx_v_y));
-    }
+          __pyx_v_sy2 = (__pyx_v_sy2 + (__pyx_v_y * __pyx_v_y));
 
-    /* "src/mintalib/cython/slope.pxi":74
- *             sy2 -= y * y
+          /* "src/mintalib/cython/slope.pxi":63
+ *             sy2 += y * y
  * 
- *         vxy = (sxy / s - sx * sy / s / s)             # <<<<<<<<<<<<<<
- *         vxx = (sx2 / s - sx * sx / s / s)
- *         vyy = (sy2 / s - sy * sy / s / s)
-*/
-    __pyx_v_vxy = ((__pyx_v_sxy / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
-
-    /* "src/mintalib/cython/slope.pxi":75
- * 
- *         vxy = (sxy / s - sx * sy / s / s)
- *         vxx = (sx2 / s - sx * sx / s / s)             # <<<<<<<<<<<<<<
- *         vyy = (sy2 / s - sy * sy / s / s)
+ *             if s < period:             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_v_vxx = ((__pyx_v_sx2 / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sx) / __pyx_v_s) / __pyx_v_s));
+          __pyx_t_1 = (__pyx_v_s < __pyx_v_period);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/slope.pxi":76
- *         vxy = (sxy / s - sx * sy / s / s)
- *         vxx = (sx2 / s - sx * sx / s / s)
- *         vyy = (sy2 / s - sy * sy / s / s)             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/slope.pxi":64
  * 
- *         slope = vxy / vxx if vxx > 0  else NAN
+ *             if s < period:
+ *                 continue             # <<<<<<<<<<<<<<
+ * 
+ *             while s > period and j < size:
 */
-    __pyx_v_vyy = ((__pyx_v_sy2 / __pyx_v_s) - (((__pyx_v_sy * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
+            goto __pyx_L11_continue;
 
-    /* "src/mintalib/cython/slope.pxi":78
- *         vyy = (sy2 / s - sy * sy / s / s)
+            /* "src/mintalib/cython/slope.pxi":63
+ *             sy2 += y * y
  * 
- *         slope = vxy / vxx if vxx > 0  else NAN             # <<<<<<<<<<<<<<
- *         intercept = (sy - slope * sx) / s
- *         corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN
-*/
-    __pyx_t_1 = (__pyx_v_vxx > 0.0);
-    if (__pyx_t_1) {
-      __pyx_t_18 = (__pyx_v_vxy / __pyx_v_vxx);
-    } else {
-      __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
-    }
-    __pyx_v_slope = __pyx_t_18;
-
-    /* "src/mintalib/cython/slope.pxi":79
- * 
- *         slope = vxy / vxx if vxx > 0  else NAN
- *         intercept = (sy - slope * sx) / s             # <<<<<<<<<<<<<<
- *         corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN
+ *             if s < period:             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_v_intercept = ((__pyx_v_sy - (__pyx_v_slope * __pyx_v_sx)) / __pyx_v_s);
+          }
 
-    /* "src/mintalib/cython/slope.pxi":80
- *         slope = vxy / vxx if vxx > 0  else NAN
- *         intercept = (sy - slope * sx) / s
- *         corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/slope.pxi":66
+ *                 continue
+ * 
+ *             while s > period and j < size:             # <<<<<<<<<<<<<<
+ *                 x, y, j = j, ys[j], j+1
+ *                 s -= 1
+*/
+          while (1) {
+            __pyx_t_8 = (__pyx_v_s > __pyx_v_period);
+            if (__pyx_t_8) {
+            } else {
+              __pyx_t_1 = __pyx_t_8;
+              goto __pyx_L18_bool_binop_done;
+            }
+            __pyx_t_8 = (__pyx_v_j < __pyx_v_size);
+            __pyx_t_1 = __pyx_t_8;
+            __pyx_L18_bool_binop_done:;
+            if (!__pyx_t_1) break;
+
+            /* "src/mintalib/cython/slope.pxi":67
+ * 
+ *             while s > period and j < size:
+ *                 x, y, j = j, ys[j], j+1             # <<<<<<<<<<<<<<
+ *                 s -= 1
+ *                 sx -= x
+*/
+            __pyx_t_16 = __pyx_v_j;
+            __pyx_t_17 = __pyx_v_j;
+            __pyx_t_18 = (*((double const  *) ( /* dim=0 */ (__pyx_v_ys.data + __pyx_t_17 * __pyx_v_ys.strides[0]) )));
+            __pyx_t_19 = (__pyx_v_j + 1);
+            __pyx_v_x = __pyx_t_16;
+            __pyx_v_y = __pyx_t_18;
+            __pyx_v_j = __pyx_t_19;
+
+            /* "src/mintalib/cython/slope.pxi":68
+ *             while s > period and j < size:
+ *                 x, y, j = j, ys[j], j+1
+ *                 s -= 1             # <<<<<<<<<<<<<<
+ *                 sx -= x
+ *                 sy -= y
+*/
+            __pyx_v_s = (__pyx_v_s - 1.0);
+
+            /* "src/mintalib/cython/slope.pxi":69
+ *                 x, y, j = j, ys[j], j+1
+ *                 s -= 1
+ *                 sx -= x             # <<<<<<<<<<<<<<
+ *                 sy -= y
+ *                 sxy -= x * y
+*/
+            __pyx_v_sx = (__pyx_v_sx - __pyx_v_x);
+
+            /* "src/mintalib/cython/slope.pxi":70
+ *                 s -= 1
+ *                 sx -= x
+ *                 sy -= y             # <<<<<<<<<<<<<<
+ *                 sxy -= x * y
+ *                 sx2 -= x * x
+*/
+            __pyx_v_sy = (__pyx_v_sy - __pyx_v_y);
+
+            /* "src/mintalib/cython/slope.pxi":71
+ *                 sx -= x
+ *                 sy -= y
+ *                 sxy -= x * y             # <<<<<<<<<<<<<<
+ *                 sx2 -= x * x
+ *                 sy2 -= y * y
+*/
+            __pyx_v_sxy = (__pyx_v_sxy - (__pyx_v_x * __pyx_v_y));
+
+            /* "src/mintalib/cython/slope.pxi":72
+ *                 sy -= y
+ *                 sxy -= x * y
+ *                 sx2 -= x * x             # <<<<<<<<<<<<<<
+ *                 sy2 -= y * y
+ * 
+*/
+            __pyx_v_sx2 = (__pyx_v_sx2 - (__pyx_v_x * __pyx_v_x));
+
+            /* "src/mintalib/cython/slope.pxi":73
+ *                 sxy -= x * y
+ *                 sx2 -= x * x
+ *                 sy2 -= y * y             # <<<<<<<<<<<<<<
+ * 
+ *             vxy = (sxy / s - sx * sy / s / s)
+*/
+            __pyx_v_sy2 = (__pyx_v_sy2 - (__pyx_v_y * __pyx_v_y));
+          }
+
+          /* "src/mintalib/cython/slope.pxi":75
+ *                 sy2 -= y * y
+ * 
+ *             vxy = (sxy / s - sx * sy / s / s)             # <<<<<<<<<<<<<<
+ *             vxx = (sx2 / s - sx * sx / s / s)
+ *             vyy = (sy2 / s - sy * sy / s / s)
+*/
+          __pyx_v_vxy = ((__pyx_v_sxy / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
+
+          /* "src/mintalib/cython/slope.pxi":76
+ * 
+ *             vxy = (sxy / s - sx * sy / s / s)
+ *             vxx = (sx2 / s - sx * sx / s / s)             # <<<<<<<<<<<<<<
+ *             vyy = (sy2 / s - sy * sy / s / s)
+ * 
+*/
+          __pyx_v_vxx = ((__pyx_v_sx2 / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sx) / __pyx_v_s) / __pyx_v_s));
+
+          /* "src/mintalib/cython/slope.pxi":77
+ *             vxy = (sxy / s - sx * sy / s / s)
+ *             vxx = (sx2 / s - sx * sx / s / s)
+ *             vyy = (sy2 / s - sy * sy / s / s)             # <<<<<<<<<<<<<<
+ * 
+ *             slope = vxy / vxx if vxx > 0  else NAN
+*/
+          __pyx_v_vyy = ((__pyx_v_sy2 / __pyx_v_s) - (((__pyx_v_sy * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
+
+          /* "src/mintalib/cython/slope.pxi":79
+ *             vyy = (sy2 / s - sy * sy / s / s)
+ * 
+ *             slope = vxy / vxx if vxx > 0  else NAN             # <<<<<<<<<<<<<<
+ *             intercept = (sy - slope * sx) / s
+ *             corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN
+*/
+          __pyx_t_1 = (__pyx_v_vxx > 0.0);
+          if (__pyx_t_1) {
+            __pyx_t_18 = (__pyx_v_vxy / __pyx_v_vxx);
+          } else {
+            __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
+          }
+          __pyx_v_slope = __pyx_t_18;
+
+          /* "src/mintalib/cython/slope.pxi":80
+ * 
+ *             slope = vxy / vxx if vxx > 0  else NAN
+ *             intercept = (sy - slope * sx) / s             # <<<<<<<<<<<<<<
+ *             corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN
+ * 
+*/
+          __pyx_v_intercept = ((__pyx_v_sy - (__pyx_v_slope * __pyx_v_sx)) / __pyx_v_s);
+
+          /* "src/mintalib/cython/slope.pxi":81
+ *             slope = vxy / vxx if vxx > 0  else NAN
+ *             intercept = (sy - slope * sx) / s
+ *             corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN             # <<<<<<<<<<<<<<
  * 
  * 
 */
-    __pyx_t_1 = (__pyx_v_vyy > 0.0);
-    if (__pyx_t_1) {
-      __pyx_t_18 = (__pyx_v_vxy / sqrt((__pyx_v_vxx * __pyx_v_vyy)));
-    } else {
-      __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
-    }
-    __pyx_v_corr = __pyx_t_18;
+          __pyx_t_1 = (__pyx_v_vyy > 0.0);
+          if (__pyx_t_1) {
+            __pyx_t_18 = (__pyx_v_vxy / sqrt((__pyx_v_vxx * __pyx_v_vyy)));
+          } else {
+            __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
+          }
+          __pyx_v_corr = __pyx_t_18;
 
-    /* "src/mintalib/cython/slope.pxi":83
+          /* "src/mintalib/cython/slope.pxi":84
  * 
  * 
- *         if option == LINREG_SLOPE:             # <<<<<<<<<<<<<<
- *             output[i] = slope
- *             continue
+ *             if option == LINREG_SLOPE:             # <<<<<<<<<<<<<<
+ *                 output[i] = slope
+ *                 continue
 */
-    __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_SLOPE);
-    if (__pyx_t_1) {
+          __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_SLOPE);
+          if (__pyx_t_1) {
 
-      /* "src/mintalib/cython/slope.pxi":84
+            /* "src/mintalib/cython/slope.pxi":85
  * 
- *         if option == LINREG_SLOPE:
- *             output[i] = slope             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-      __pyx_t_17 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_slope;
-
-      /* "src/mintalib/cython/slope.pxi":85
- *         if option == LINREG_SLOPE:
- *             output[i] = slope
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         if option == LINREG_INTERCEPT:
-*/
-      goto __pyx_L8_continue;
-
-      /* "src/mintalib/cython/slope.pxi":83
- * 
- * 
- *         if option == LINREG_SLOPE:             # <<<<<<<<<<<<<<
- *             output[i] = slope
- *             continue
-*/
-    }
-
-    /* "src/mintalib/cython/slope.pxi":87
- *             continue
- * 
- *         if option == LINREG_INTERCEPT:             # <<<<<<<<<<<<<<
- *             output[i] = intercept
- *             continue
-*/
-    __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_INTERCEPT);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/slope.pxi":88
- * 
- *         if option == LINREG_INTERCEPT:
- *             output[i] = intercept             # <<<<<<<<<<<<<<
- *             continue
+ *             if option == LINREG_SLOPE:
+ *                 output[i] = slope             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-      __pyx_t_17 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_intercept;
+            __pyx_t_17 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_slope;
 
-      /* "src/mintalib/cython/slope.pxi":89
- *         if option == LINREG_INTERCEPT:
- *             output[i] = intercept
- *             continue             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/slope.pxi":86
+ *             if option == LINREG_SLOPE:
+ *                 output[i] = slope
+ *                 continue             # <<<<<<<<<<<<<<
  * 
- *         if option == LINREG_RVALUE:
+ *             if option == LINREG_INTERCEPT:
 */
-      goto __pyx_L8_continue;
+            goto __pyx_L11_continue;
 
-      /* "src/mintalib/cython/slope.pxi":87
- *             continue
+            /* "src/mintalib/cython/slope.pxi":84
  * 
- *         if option == LINREG_INTERCEPT:             # <<<<<<<<<<<<<<
- *             output[i] = intercept
- *             continue
+ * 
+ *             if option == LINREG_SLOPE:             # <<<<<<<<<<<<<<
+ *                 output[i] = slope
+ *                 continue
 */
-    }
+          }
 
-    /* "src/mintalib/cython/slope.pxi":91
- *             continue
+          /* "src/mintalib/cython/slope.pxi":88
+ *                 continue
  * 
- *         if option == LINREG_RVALUE:             # <<<<<<<<<<<<<<
- *             output[i] = corr
- *             continue
+ *             if option == LINREG_INTERCEPT:             # <<<<<<<<<<<<<<
+ *                 output[i] = intercept
+ *                 continue
 */
-    __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_RVALUE);
-    if (__pyx_t_1) {
+          __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_INTERCEPT);
+          if (__pyx_t_1) {
 
-      /* "src/mintalib/cython/slope.pxi":92
+            /* "src/mintalib/cython/slope.pxi":89
  * 
- *         if option == LINREG_RVALUE:
- *             output[i] = corr             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-      __pyx_t_17 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_corr;
-
-      /* "src/mintalib/cython/slope.pxi":93
- *         if option == LINREG_RVALUE:
- *             output[i] = corr
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         if option == LINREG_FORECAST:
-*/
-      goto __pyx_L8_continue;
-
-      /* "src/mintalib/cython/slope.pxi":91
- *             continue
- * 
- *         if option == LINREG_RVALUE:             # <<<<<<<<<<<<<<
- *             output[i] = corr
- *             continue
-*/
-    }
-
-    /* "src/mintalib/cython/slope.pxi":95
- *             continue
- * 
- *         if option == LINREG_FORECAST:             # <<<<<<<<<<<<<<
- *             forecast = intercept + slope * (i + offset)
- *             output[i] = forecast
-*/
-    __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_FORECAST);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/slope.pxi":96
- * 
- *         if option == LINREG_FORECAST:
- *             forecast = intercept + slope * (i + offset)             # <<<<<<<<<<<<<<
- *             output[i] = forecast
- *             continue
-*/
-      __pyx_v_forecast = (__pyx_v_intercept + (__pyx_v_slope * (__pyx_v_i + __pyx_v_offset)));
-
-      /* "src/mintalib/cython/slope.pxi":97
- *         if option == LINREG_FORECAST:
- *             forecast = intercept + slope * (i + offset)
- *             output[i] = forecast             # <<<<<<<<<<<<<<
- *             continue
+ *             if option == LINREG_INTERCEPT:
+ *                 output[i] = intercept             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-      __pyx_t_17 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_forecast;
+            __pyx_t_17 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_intercept;
 
-      /* "src/mintalib/cython/slope.pxi":98
- *             forecast = intercept + slope * (i + offset)
- *             output[i] = forecast
- *             continue             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/slope.pxi":90
+ *             if option == LINREG_INTERCEPT:
+ *                 output[i] = intercept
+ *                 continue             # <<<<<<<<<<<<<<
+ * 
+ *             if option == LINREG_RVALUE:
+*/
+            goto __pyx_L11_continue;
+
+            /* "src/mintalib/cython/slope.pxi":88
+ *                 continue
+ * 
+ *             if option == LINREG_INTERCEPT:             # <<<<<<<<<<<<<<
+ *                 output[i] = intercept
+ *                 continue
+*/
+          }
+
+          /* "src/mintalib/cython/slope.pxi":92
+ *                 continue
+ * 
+ *             if option == LINREG_RVALUE:             # <<<<<<<<<<<<<<
+ *                 output[i] = corr
+ *                 continue
+*/
+          __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_RVALUE);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/slope.pxi":93
+ * 
+ *             if option == LINREG_RVALUE:
+ *                 output[i] = corr             # <<<<<<<<<<<<<<
+ *                 continue
+ * 
+*/
+            __pyx_t_17 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_corr;
+
+            /* "src/mintalib/cython/slope.pxi":94
+ *             if option == LINREG_RVALUE:
+ *                 output[i] = corr
+ *                 continue             # <<<<<<<<<<<<<<
+ * 
+ *             if option == LINREG_FORECAST:
+*/
+            goto __pyx_L11_continue;
+
+            /* "src/mintalib/cython/slope.pxi":92
+ *                 continue
+ * 
+ *             if option == LINREG_RVALUE:             # <<<<<<<<<<<<<<
+ *                 output[i] = corr
+ *                 continue
+*/
+          }
+
+          /* "src/mintalib/cython/slope.pxi":96
+ *                 continue
+ * 
+ *             if option == LINREG_FORECAST:             # <<<<<<<<<<<<<<
+ *                 forecast = intercept + slope * (i + offset)
+ *                 output[i] = forecast
+*/
+          __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_FORECAST);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/slope.pxi":97
+ * 
+ *             if option == LINREG_FORECAST:
+ *                 forecast = intercept + slope * (i + offset)             # <<<<<<<<<<<<<<
+ *                 output[i] = forecast
+ *                 continue
+*/
+            __pyx_v_forecast = (__pyx_v_intercept + (__pyx_v_slope * (__pyx_v_i + __pyx_v_offset)));
+
+            /* "src/mintalib/cython/slope.pxi":98
+ *             if option == LINREG_FORECAST:
+ *                 forecast = intercept + slope * (i + offset)
+ *                 output[i] = forecast             # <<<<<<<<<<<<<<
+ *                 continue
+ * 
+*/
+            __pyx_t_17 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_forecast;
+
+            /* "src/mintalib/cython/slope.pxi":99
+ *                 forecast = intercept + slope * (i + offset)
+ *                 output[i] = forecast
+ *                 continue             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      goto __pyx_L8_continue;
+            goto __pyx_L11_continue;
 
-      /* "src/mintalib/cython/slope.pxi":95
- *             continue
+            /* "src/mintalib/cython/slope.pxi":96
+ *                 continue
  * 
- *         if option == LINREG_FORECAST:             # <<<<<<<<<<<<<<
- *             forecast = intercept + slope * (i + offset)
- *             output[i] = forecast
+ *             if option == LINREG_FORECAST:             # <<<<<<<<<<<<<<
+ *                 forecast = intercept + slope * (i + offset)
+ *                 output[i] = forecast
 */
-    }
-    __pyx_L8_continue:;
+          }
+          __pyx_L11_continue:;
+        }
+      }
+
+      /* "src/mintalib/cython/slope.pxi":45
+ *     s = sx = sy = sxy = sx2 = sy2 = 0.0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             x, y = i, ys[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L10;
+        }
+        __pyx_L10:;
+      }
   }
 
-  /* "src/mintalib/cython/slope.pxi":100
- *             continue
+  /* "src/mintalib/cython/slope.pxi":101
+ *                 continue
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -45506,7 +46390,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/slope.pxi":105
+/* "src/mintalib/cython/slope.pxi":106
  * 
  * 
  * def calc_slope(series, long period=20):             # <<<<<<<<<<<<<<
@@ -45555,48 +46439,48 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 105, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 106, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 105, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 106, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 105, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 106, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_slope", 0) < (0)) __PYX_ERR(45, 105, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_slope", 0) < (0)) __PYX_ERR(45, 106, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_slope", 0, 1, 2, i); __PYX_ERR(45, 105, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_slope", 0, 1, 2, i); __PYX_ERR(45, 106, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 105, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 106, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 105, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 106, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 105, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 106, __pyx_L3_error)
     } else {
       __pyx_v_period = ((long)((long)20));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_slope", 0, 1, 2, __pyx_nargs); __PYX_ERR(45, 105, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_slope", 0, 1, 2, __pyx_nargs); __PYX_ERR(45, 106, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -45632,7 +46516,7 @@ static PyObject *__pyx_pf_8mintalib_4core_120calc_slope(CYTHON_UNUSED PyObject *
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calc_slope", 0);
 
-  /* "src/mintalib/cython/slope.pxi":113
+  /* "src/mintalib/cython/slope.pxi":114
  *     """
  * 
  *     return linear_regression(series, period=period, option=LINREG_SLOPE)             # <<<<<<<<<<<<<<
@@ -45641,11 +46525,11 @@ static PyObject *__pyx_pf_8mintalib_4core_120calc_slope(CYTHON_UNUSED PyObject *
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 113, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 113, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_SLOPE); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 113, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_SLOPE); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -45661,24 +46545,24 @@ static PyObject *__pyx_pf_8mintalib_4core_120calc_slope(CYTHON_UNUSED PyObject *
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
-    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(45, 113, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(45, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 113, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 113, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 114, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 114, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 113, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/slope.pxi":105
+  /* "src/mintalib/cython/slope.pxi":106
  * 
  * 
  * def calc_slope(series, long period=20):             # <<<<<<<<<<<<<<
@@ -45702,7 +46586,7 @@ static PyObject *__pyx_pf_8mintalib_4core_120calc_slope(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/slope.pxi":116
+/* "src/mintalib/cython/slope.pxi":117
  * 
  * 
  * def calc_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
@@ -45751,48 +46635,48 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 116, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 117, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 116, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 116, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_rvalue", 0) < (0)) __PYX_ERR(45, 116, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_rvalue", 0) < (0)) __PYX_ERR(45, 117, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_rvalue", 0, 1, 2, i); __PYX_ERR(45, 116, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_rvalue", 0, 1, 2, i); __PYX_ERR(45, 117, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 116, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 116, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 117, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 116, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 117, __pyx_L3_error)
     } else {
       __pyx_v_period = ((long)((long)20));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_rvalue", 0, 1, 2, __pyx_nargs); __PYX_ERR(45, 116, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_rvalue", 0, 1, 2, __pyx_nargs); __PYX_ERR(45, 117, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -45828,7 +46712,7 @@ static PyObject *__pyx_pf_8mintalib_4core_122calc_rvalue(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calc_rvalue", 0);
 
-  /* "src/mintalib/cython/slope.pxi":124
+  /* "src/mintalib/cython/slope.pxi":125
  *     """
  * 
  *     return linear_regression(series, period=period, option=LINREG_RVALUE)             # <<<<<<<<<<<<<<
@@ -45837,11 +46721,11 @@ static PyObject *__pyx_pf_8mintalib_4core_122calc_rvalue(CYTHON_UNUSED PyObject 
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 124, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 124, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_RVALUE); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 124, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_RVALUE); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -45857,24 +46741,24 @@ static PyObject *__pyx_pf_8mintalib_4core_122calc_rvalue(CYTHON_UNUSED PyObject 
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
-    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(45, 124, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(45, 125, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 124, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 124, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 125, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 125, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 124, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 125, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/slope.pxi":116
+  /* "src/mintalib/cython/slope.pxi":117
  * 
  * 
  * def calc_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
@@ -45898,7 +46782,7 @@ static PyObject *__pyx_pf_8mintalib_4core_122calc_rvalue(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/slope.pxi":127
+/* "src/mintalib/cython/slope.pxi":128
  * 
  * 
  * def calc_tsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
@@ -45948,61 +46832,61 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,&__pyx_mstate_global->__pyx_n_u_offset,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 127, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 128, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(45, 127, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(45, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 127, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 127, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_tsf", 0) < (0)) __PYX_ERR(45, 127, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_tsf", 0) < (0)) __PYX_ERR(45, 128, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_tsf", 0, 1, 3, i); __PYX_ERR(45, 127, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_tsf", 0, 1, 3, i); __PYX_ERR(45, 128, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(45, 127, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(45, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 127, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 127, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 128, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 127, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 128, __pyx_L3_error)
     } else {
       __pyx_v_period = ((long)((long)20));
     }
     if (values[2]) {
-      __pyx_v_offset = __Pyx_PyLong_As_long(values[2]); if (unlikely((__pyx_v_offset == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 127, __pyx_L3_error)
+      __pyx_v_offset = __Pyx_PyLong_As_long(values[2]); if (unlikely((__pyx_v_offset == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 128, __pyx_L3_error)
     } else {
       __pyx_v_offset = ((long)((long)0));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_tsf", 0, 1, 3, __pyx_nargs); __PYX_ERR(45, 127, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_tsf", 0, 1, 3, __pyx_nargs); __PYX_ERR(45, 128, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -46039,7 +46923,7 @@ static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calc_tsf", 0);
 
-  /* "src/mintalib/cython/slope.pxi":135
+  /* "src/mintalib/cython/slope.pxi":136
  *     """
  * 
  *     return linear_regression(series, period=period, offset=offset, option=LINREG_FORECAST)             # <<<<<<<<<<<<<<
@@ -46048,13 +46932,13 @@ static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 135, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 135, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From_long(__pyx_v_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 135, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_long(__pyx_v_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_FORECAST); if (unlikely(!__pyx_t_6)) __PYX_ERR(45, 135, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_FORECAST); if (unlikely(!__pyx_t_6)) __PYX_ERR(45, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -46070,11 +46954,11 @@ static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 3 : 0)] = {__pyx_t_2, __pyx_v_series};
-    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(45, 135, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(45, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_8, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 135, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_offset, __pyx_t_5, __pyx_t_8, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 135, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_6, __pyx_t_8, __pyx_callargs+2, 2) < (0)) __PYX_ERR(45, 135, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_8, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 136, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_offset, __pyx_t_5, __pyx_t_8, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 136, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_6, __pyx_t_8, __pyx_callargs+2, 2) < (0)) __PYX_ERR(45, 136, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_8);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -46082,14 +46966,14 @@ static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 135, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/slope.pxi":127
+  /* "src/mintalib/cython/slope.pxi":128
  * 
  * 
  * def calc_tsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
@@ -46552,7 +47436,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
  * 
  *     s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_s = 0.0;
   __pyx_v_sx = 0.0;
@@ -46567,516 +47451,547 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
   /* "src/mintalib/cython/curve.pxi":44
  *     s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         x, y = i, ys[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             x, y = i, ys[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/curve.pxi":45
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             x, y = i, ys[i]
  * 
 */
-  __pyx_t_10 = __pyx_v_size;
-  __pyx_t_14 = __pyx_t_10;
-  for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
-    __pyx_v_i = __pyx_t_15;
+        __pyx_t_10 = __pyx_v_size;
+        __pyx_t_14 = __pyx_t_10;
+        for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
+          __pyx_v_i = __pyx_t_15;
 
-    /* "src/mintalib/cython/curve.pxi":45
+          /* "src/mintalib/cython/curve.pxi":46
+ *     with nogil:
+ *         for i in range(size):
+ *             x, y = i, ys[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         x, y = i, ys[i]             # <<<<<<<<<<<<<<
+ *             if y != y:
+*/
+          __pyx_t_16 = __pyx_v_i;
+          __pyx_t_17 = __pyx_v_i;
+          __pyx_t_18 = (*((double const  *) ( /* dim=0 */ (__pyx_v_ys.data + __pyx_t_17 * __pyx_v_ys.strides[0]) )));
+          __pyx_v_x = __pyx_t_16;
+          __pyx_v_y = __pyx_t_18;
+
+          /* "src/mintalib/cython/curve.pxi":48
+ *             x, y = i, ys[i]
  * 
- *         if y != y:
+ *             if y != y:             # <<<<<<<<<<<<<<
+ *                 s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
+ *                 continue
 */
-    __pyx_t_16 = __pyx_v_i;
-    __pyx_t_17 = __pyx_v_i;
-    __pyx_t_18 = (*((double const  *) ( /* dim=0 */ (__pyx_v_ys.data + __pyx_t_17 * __pyx_v_ys.strides[0]) )));
-    __pyx_v_x = __pyx_t_16;
-    __pyx_v_y = __pyx_t_18;
+          __pyx_t_1 = (__pyx_v_y != __pyx_v_y);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/curve.pxi":47
- *         x, y = i, ys[i]
+            /* "src/mintalib/cython/curve.pxi":49
  * 
- *         if y != y:             # <<<<<<<<<<<<<<
- *             s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
- *             continue
-*/
-    __pyx_t_1 = (__pyx_v_y != __pyx_v_y);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/curve.pxi":48
- * 
- *         if y != y:
- *             s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-      __pyx_v_s = 0.0;
-      __pyx_v_sx = 0.0;
-      __pyx_v_sx2 = 0.0;
-      __pyx_v_sx3 = 0.0;
-      __pyx_v_sx4 = 0.0;
-      __pyx_v_sy = 0.0;
-      __pyx_v_sy2 = 0.0;
-      __pyx_v_sxy = 0.0;
-      __pyx_v_sx2y = 0.0;
-
-      /* "src/mintalib/cython/curve.pxi":49
- *         if y != y:
- *             s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         s += 1
-*/
-      goto __pyx_L8_continue;
-
-      /* "src/mintalib/cython/curve.pxi":47
- *         x, y = i, ys[i]
- * 
- *         if y != y:             # <<<<<<<<<<<<<<
- *             s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
- *             continue
-*/
-    }
-
-    /* "src/mintalib/cython/curve.pxi":51
- *             continue
- * 
- *         s += 1             # <<<<<<<<<<<<<<
- *         sx += x
- *         sx2 += x * x
-*/
-    __pyx_v_s = (__pyx_v_s + 1.0);
-
-    /* "src/mintalib/cython/curve.pxi":52
- * 
- *         s += 1
- *         sx += x             # <<<<<<<<<<<<<<
- *         sx2 += x * x
- *         sx3 += x * x * x
-*/
-    __pyx_v_sx = (__pyx_v_sx + __pyx_v_x);
-
-    /* "src/mintalib/cython/curve.pxi":53
- *         s += 1
- *         sx += x
- *         sx2 += x * x             # <<<<<<<<<<<<<<
- *         sx3 += x * x * x
- *         sx4 += x * x * x * x
-*/
-    __pyx_v_sx2 = (__pyx_v_sx2 + (__pyx_v_x * __pyx_v_x));
-
-    /* "src/mintalib/cython/curve.pxi":54
- *         sx += x
- *         sx2 += x * x
- *         sx3 += x * x * x             # <<<<<<<<<<<<<<
- *         sx4 += x * x * x * x
- *         sy += y
-*/
-    __pyx_v_sx3 = (__pyx_v_sx3 + ((__pyx_v_x * __pyx_v_x) * __pyx_v_x));
-
-    /* "src/mintalib/cython/curve.pxi":55
- *         sx2 += x * x
- *         sx3 += x * x * x
- *         sx4 += x * x * x * x             # <<<<<<<<<<<<<<
- *         sy += y
- *         sy2 += y * y
-*/
-    __pyx_v_sx4 = (__pyx_v_sx4 + (((__pyx_v_x * __pyx_v_x) * __pyx_v_x) * __pyx_v_x));
-
-    /* "src/mintalib/cython/curve.pxi":56
- *         sx3 += x * x * x
- *         sx4 += x * x * x * x
- *         sy += y             # <<<<<<<<<<<<<<
- *         sy2 += y * y
- *         sxy += x * y
-*/
-    __pyx_v_sy = (__pyx_v_sy + __pyx_v_y);
-
-    /* "src/mintalib/cython/curve.pxi":57
- *         sx4 += x * x * x * x
- *         sy += y
- *         sy2 += y * y             # <<<<<<<<<<<<<<
- *         sxy += x * y
- *         sx2y += x * x * y
-*/
-    __pyx_v_sy2 = (__pyx_v_sy2 + (__pyx_v_y * __pyx_v_y));
-
-    /* "src/mintalib/cython/curve.pxi":58
- *         sy += y
- *         sy2 += y * y
- *         sxy += x * y             # <<<<<<<<<<<<<<
- *         sx2y += x * x * y
+ *             if y != y:
+ *                 s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_v_sxy = (__pyx_v_sxy + (__pyx_v_x * __pyx_v_y));
+            __pyx_v_s = 0.0;
+            __pyx_v_sx = 0.0;
+            __pyx_v_sx2 = 0.0;
+            __pyx_v_sx3 = 0.0;
+            __pyx_v_sx4 = 0.0;
+            __pyx_v_sy = 0.0;
+            __pyx_v_sy2 = 0.0;
+            __pyx_v_sxy = 0.0;
+            __pyx_v_sx2y = 0.0;
 
-    /* "src/mintalib/cython/curve.pxi":59
- *         sy2 += y * y
- *         sxy += x * y
- *         sx2y += x * x * y             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/curve.pxi":50
+ *             if y != y:
+ *                 s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
+ *                 continue             # <<<<<<<<<<<<<<
  * 
- *         if s < period:
+ *             s += 1
 */
-    __pyx_v_sx2y = (__pyx_v_sx2y + ((__pyx_v_x * __pyx_v_x) * __pyx_v_y));
+            goto __pyx_L11_continue;
 
-    /* "src/mintalib/cython/curve.pxi":61
- *         sx2y += x * x * y
+            /* "src/mintalib/cython/curve.pxi":48
+ *             x, y = i, ys[i]
  * 
- *         if s < period:             # <<<<<<<<<<<<<<
- *             continue
+ *             if y != y:             # <<<<<<<<<<<<<<
+ *                 s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
+ *                 continue
+*/
+          }
+
+          /* "src/mintalib/cython/curve.pxi":52
+ *                 continue
  * 
+ *             s += 1             # <<<<<<<<<<<<<<
+ *             sx += x
+ *             sx2 += x * x
 */
-    __pyx_t_1 = (__pyx_v_s < __pyx_v_period);
-    if (__pyx_t_1) {
+          __pyx_v_s = (__pyx_v_s + 1.0);
 
-      /* "src/mintalib/cython/curve.pxi":62
+          /* "src/mintalib/cython/curve.pxi":53
  * 
- *         if s < period:
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         if s > period:
+ *             s += 1
+ *             sx += x             # <<<<<<<<<<<<<<
+ *             sx2 += x * x
+ *             sx3 += x * x * x
 */
-      goto __pyx_L8_continue;
+          __pyx_v_sx = (__pyx_v_sx + __pyx_v_x);
 
-      /* "src/mintalib/cython/curve.pxi":61
- *         sx2y += x * x * y
- * 
- *         if s < period:             # <<<<<<<<<<<<<<
- *             continue
- * 
+          /* "src/mintalib/cython/curve.pxi":54
+ *             s += 1
+ *             sx += x
+ *             sx2 += x * x             # <<<<<<<<<<<<<<
+ *             sx3 += x * x * x
+ *             sx4 += x * x * x * x
 */
-    }
+          __pyx_v_sx2 = (__pyx_v_sx2 + (__pyx_v_x * __pyx_v_x));
 
-    /* "src/mintalib/cython/curve.pxi":64
- *             continue
- * 
- *         if s > period:             # <<<<<<<<<<<<<<
- *             xd = i - period
- *             yd = ys[i - period]
+          /* "src/mintalib/cython/curve.pxi":55
+ *             sx += x
+ *             sx2 += x * x
+ *             sx3 += x * x * x             # <<<<<<<<<<<<<<
+ *             sx4 += x * x * x * x
+ *             sy += y
 */
-    __pyx_t_1 = (__pyx_v_s > __pyx_v_period);
-    if (__pyx_t_1) {
+          __pyx_v_sx3 = (__pyx_v_sx3 + ((__pyx_v_x * __pyx_v_x) * __pyx_v_x));
 
-      /* "src/mintalib/cython/curve.pxi":65
- * 
- *         if s > period:
- *             xd = i - period             # <<<<<<<<<<<<<<
- *             yd = ys[i - period]
- *             xd2 = xd * xd
+          /* "src/mintalib/cython/curve.pxi":56
+ *             sx2 += x * x
+ *             sx3 += x * x * x
+ *             sx4 += x * x * x * x             # <<<<<<<<<<<<<<
+ *             sy += y
+ *             sy2 += y * y
 */
-      __pyx_v_xd = (__pyx_v_i - __pyx_v_period);
+          __pyx_v_sx4 = (__pyx_v_sx4 + (((__pyx_v_x * __pyx_v_x) * __pyx_v_x) * __pyx_v_x));
 
-      /* "src/mintalib/cython/curve.pxi":66
- *         if s > period:
- *             xd = i - period
- *             yd = ys[i - period]             # <<<<<<<<<<<<<<
- *             xd2 = xd * xd
- *             s -= 1
+          /* "src/mintalib/cython/curve.pxi":57
+ *             sx3 += x * x * x
+ *             sx4 += x * x * x * x
+ *             sy += y             # <<<<<<<<<<<<<<
+ *             sy2 += y * y
+ *             sxy += x * y
 */
-      __pyx_t_17 = (__pyx_v_i - __pyx_v_period);
-      __pyx_v_yd = (*((double const  *) ( /* dim=0 */ (__pyx_v_ys.data + __pyx_t_17 * __pyx_v_ys.strides[0]) )));
+          __pyx_v_sy = (__pyx_v_sy + __pyx_v_y);
 
-      /* "src/mintalib/cython/curve.pxi":67
- *             xd = i - period
- *             yd = ys[i - period]
- *             xd2 = xd * xd             # <<<<<<<<<<<<<<
- *             s -= 1
- *             sx -= xd
+          /* "src/mintalib/cython/curve.pxi":58
+ *             sx4 += x * x * x * x
+ *             sy += y
+ *             sy2 += y * y             # <<<<<<<<<<<<<<
+ *             sxy += x * y
+ *             sx2y += x * x * y
 */
-      __pyx_v_xd2 = (__pyx_v_xd * __pyx_v_xd);
+          __pyx_v_sy2 = (__pyx_v_sy2 + (__pyx_v_y * __pyx_v_y));
 
-      /* "src/mintalib/cython/curve.pxi":68
- *             yd = ys[i - period]
- *             xd2 = xd * xd
- *             s -= 1             # <<<<<<<<<<<<<<
- *             sx -= xd
- *             sx2 -= xd2
-*/
-      __pyx_v_s = (__pyx_v_s - 1.0);
-
-      /* "src/mintalib/cython/curve.pxi":69
- *             xd2 = xd * xd
- *             s -= 1
- *             sx -= xd             # <<<<<<<<<<<<<<
- *             sx2 -= xd2
- *             sx3 -= xd2 * xd
-*/
-      __pyx_v_sx = (__pyx_v_sx - __pyx_v_xd);
-
-      /* "src/mintalib/cython/curve.pxi":70
- *             s -= 1
- *             sx -= xd
- *             sx2 -= xd2             # <<<<<<<<<<<<<<
- *             sx3 -= xd2 * xd
- *             sx4 -= xd2 * xd2
-*/
-      __pyx_v_sx2 = (__pyx_v_sx2 - __pyx_v_xd2);
-
-      /* "src/mintalib/cython/curve.pxi":71
- *             sx -= xd
- *             sx2 -= xd2
- *             sx3 -= xd2 * xd             # <<<<<<<<<<<<<<
- *             sx4 -= xd2 * xd2
- *             sy -= yd
-*/
-      __pyx_v_sx3 = (__pyx_v_sx3 - (__pyx_v_xd2 * __pyx_v_xd));
-
-      /* "src/mintalib/cython/curve.pxi":72
- *             sx2 -= xd2
- *             sx3 -= xd2 * xd
- *             sx4 -= xd2 * xd2             # <<<<<<<<<<<<<<
- *             sy -= yd
- *             sy2 -= yd * yd
-*/
-      __pyx_v_sx4 = (__pyx_v_sx4 - (__pyx_v_xd2 * __pyx_v_xd2));
-
-      /* "src/mintalib/cython/curve.pxi":73
- *             sx3 -= xd2 * xd
- *             sx4 -= xd2 * xd2
- *             sy -= yd             # <<<<<<<<<<<<<<
- *             sy2 -= yd * yd
- *             sxy -= xd * yd
-*/
-      __pyx_v_sy = (__pyx_v_sy - __pyx_v_yd);
-
-      /* "src/mintalib/cython/curve.pxi":74
- *             sx4 -= xd2 * xd2
- *             sy -= yd
- *             sy2 -= yd * yd             # <<<<<<<<<<<<<<
- *             sxy -= xd * yd
- *             sx2y -= xd2 * yd
-*/
-      __pyx_v_sy2 = (__pyx_v_sy2 - (__pyx_v_yd * __pyx_v_yd));
-
-      /* "src/mintalib/cython/curve.pxi":75
- *             sy -= yd
- *             sy2 -= yd * yd
- *             sxy -= xd * yd             # <<<<<<<<<<<<<<
- *             sx2y -= xd2 * yd
+          /* "src/mintalib/cython/curve.pxi":59
+ *             sy += y
+ *             sy2 += y * y
+ *             sxy += x * y             # <<<<<<<<<<<<<<
+ *             sx2y += x * x * y
  * 
 */
-      __pyx_v_sxy = (__pyx_v_sxy - (__pyx_v_xd * __pyx_v_yd));
+          __pyx_v_sxy = (__pyx_v_sxy + (__pyx_v_x * __pyx_v_y));
 
-      /* "src/mintalib/cython/curve.pxi":76
- *             sy2 -= yd * yd
- *             sxy -= xd * yd
- *             sx2y -= xd2 * yd             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/curve.pxi":60
+ *             sy2 += y * y
+ *             sxy += x * y
+ *             sx2y += x * x * y             # <<<<<<<<<<<<<<
  * 
- *         vxy = (sxy / s - sx * sy / s / s)
+ *             if s < period:
 */
-      __pyx_v_sx2y = (__pyx_v_sx2y - (__pyx_v_xd2 * __pyx_v_yd));
+          __pyx_v_sx2y = (__pyx_v_sx2y + ((__pyx_v_x * __pyx_v_x) * __pyx_v_y));
 
-      /* "src/mintalib/cython/curve.pxi":64
- *             continue
+          /* "src/mintalib/cython/curve.pxi":62
+ *             sx2y += x * x * y
  * 
- *         if s > period:             # <<<<<<<<<<<<<<
- *             xd = i - period
- *             yd = ys[i - period]
-*/
-    }
-
-    /* "src/mintalib/cython/curve.pxi":78
- *             sx2y -= xd2 * yd
- * 
- *         vxy = (sxy / s - sx * sy / s / s)             # <<<<<<<<<<<<<<
- *         vxx = (sx2 / s - sx * sx / s / s)
- *         vyy = (sy2 / s - sy * sy / s / s)
-*/
-    __pyx_v_vxy = ((__pyx_v_sxy / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
-
-    /* "src/mintalib/cython/curve.pxi":79
- * 
- *         vxy = (sxy / s - sx * sy / s / s)
- *         vxx = (sx2 / s - sx * sx / s / s)             # <<<<<<<<<<<<<<
- *         vyy = (sy2 / s - sy * sy / s / s)
- *         vxx2 = (sx3 / s - sx * sx2 / s / s)
-*/
-    __pyx_v_vxx = ((__pyx_v_sx2 / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sx) / __pyx_v_s) / __pyx_v_s));
-
-    /* "src/mintalib/cython/curve.pxi":80
- *         vxy = (sxy / s - sx * sy / s / s)
- *         vxx = (sx2 / s - sx * sx / s / s)
- *         vyy = (sy2 / s - sy * sy / s / s)             # <<<<<<<<<<<<<<
- *         vxx2 = (sx3 / s - sx * sx2 / s / s)
- *         vx2y = (sx2y / s - sx2 * sy / s / s)
-*/
-    __pyx_v_vyy = ((__pyx_v_sy2 / __pyx_v_s) - (((__pyx_v_sy * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
-
-    /* "src/mintalib/cython/curve.pxi":81
- *         vxx = (sx2 / s - sx * sx / s / s)
- *         vyy = (sy2 / s - sy * sy / s / s)
- *         vxx2 = (sx3 / s - sx * sx2 / s / s)             # <<<<<<<<<<<<<<
- *         vx2y = (sx2y / s - sx2 * sy / s / s)
- *         vx2x2 = (sx4 / s - sx2 * sx2 / s / s)
-*/
-    __pyx_v_vxx2 = ((__pyx_v_sx3 / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sx2) / __pyx_v_s) / __pyx_v_s));
-
-    /* "src/mintalib/cython/curve.pxi":82
- *         vyy = (sy2 / s - sy * sy / s / s)
- *         vxx2 = (sx3 / s - sx * sx2 / s / s)
- *         vx2y = (sx2y / s - sx2 * sy / s / s)             # <<<<<<<<<<<<<<
- *         vx2x2 = (sx4 / s - sx2 * sx2 / s / s)
+ *             if s < period:             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_v_vx2y = ((__pyx_v_sx2y / __pyx_v_s) - (((__pyx_v_sx2 * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
+          __pyx_t_1 = (__pyx_v_s < __pyx_v_period);
+          if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/curve.pxi":83
- *         vxx2 = (sx3 / s - sx * sx2 / s / s)
- *         vx2y = (sx2y / s - sx2 * sy / s / s)
- *         vx2x2 = (sx4 / s - sx2 * sx2 / s / s)             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/curve.pxi":63
  * 
- *         denom = vx2x2 * vxx - vxx2 * vxx2
-*/
-    __pyx_v_vx2x2 = ((__pyx_v_sx4 / __pyx_v_s) - (((__pyx_v_sx2 * __pyx_v_sx2) / __pyx_v_s) / __pyx_v_s));
-
-    /* "src/mintalib/cython/curve.pxi":85
- *         vx2x2 = (sx4 / s - sx2 * sx2 / s / s)
+ *             if s < period:
+ *                 continue             # <<<<<<<<<<<<<<
  * 
- *         denom = vx2x2 * vxx - vxx2 * vxx2             # <<<<<<<<<<<<<<
- *         curve = (vx2y * vxx - vxy * vxx2) / denom if denom > 0 else NAN
- *         slope = (vxy * vx2x2 - vxx2 * vx2y) / denom if denom > 0 else NAN
+ *             if s > period:
 */
-    __pyx_v_denom = ((__pyx_v_vx2x2 * __pyx_v_vxx) - (__pyx_v_vxx2 * __pyx_v_vxx2));
+            goto __pyx_L11_continue;
 
-    /* "src/mintalib/cython/curve.pxi":86
+            /* "src/mintalib/cython/curve.pxi":62
+ *             sx2y += x * x * y
  * 
- *         denom = vx2x2 * vxx - vxx2 * vxx2
- *         curve = (vx2y * vxx - vxy * vxx2) / denom if denom > 0 else NAN             # <<<<<<<<<<<<<<
- *         slope = (vxy * vx2x2 - vxx2 * vx2y) / denom if denom > 0 else NAN
- *         intercept = (sy - slope * sx - curve * sx2) / s if s > 0 else NAN
-*/
-    __pyx_t_1 = (__pyx_v_denom > 0.0);
-    if (__pyx_t_1) {
-      __pyx_t_18 = (((__pyx_v_vx2y * __pyx_v_vxx) - (__pyx_v_vxy * __pyx_v_vxx2)) / __pyx_v_denom);
-    } else {
-      __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
-    }
-    __pyx_v_curve = __pyx_t_18;
-
-    /* "src/mintalib/cython/curve.pxi":87
- *         denom = vx2x2 * vxx - vxx2 * vxx2
- *         curve = (vx2y * vxx - vxy * vxx2) / denom if denom > 0 else NAN
- *         slope = (vxy * vx2x2 - vxx2 * vx2y) / denom if denom > 0 else NAN             # <<<<<<<<<<<<<<
- *         intercept = (sy - slope * sx - curve * sx2) / s if s > 0 else NAN
+ *             if s < period:             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-    __pyx_t_1 = (__pyx_v_denom > 0.0);
-    if (__pyx_t_1) {
-      __pyx_t_18 = (((__pyx_v_vxy * __pyx_v_vx2x2) - (__pyx_v_vxx2 * __pyx_v_vx2y)) / __pyx_v_denom);
-    } else {
-      __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
-    }
-    __pyx_v_slope = __pyx_t_18;
+          }
 
-    /* "src/mintalib/cython/curve.pxi":88
- *         curve = (vx2y * vxx - vxy * vxx2) / denom if denom > 0 else NAN
- *         slope = (vxy * vx2x2 - vxx2 * vx2y) / denom if denom > 0 else NAN
- *         intercept = (sy - slope * sx - curve * sx2) / s if s > 0 else NAN             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/curve.pxi":65
+ *                 continue
+ * 
+ *             if s > period:             # <<<<<<<<<<<<<<
+ *                 xd = i - period
+ *                 yd = ys[i - period]
+*/
+          __pyx_t_1 = (__pyx_v_s > __pyx_v_period);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/curve.pxi":66
+ * 
+ *             if s > period:
+ *                 xd = i - period             # <<<<<<<<<<<<<<
+ *                 yd = ys[i - period]
+ *                 xd2 = xd * xd
+*/
+            __pyx_v_xd = (__pyx_v_i - __pyx_v_period);
+
+            /* "src/mintalib/cython/curve.pxi":67
+ *             if s > period:
+ *                 xd = i - period
+ *                 yd = ys[i - period]             # <<<<<<<<<<<<<<
+ *                 xd2 = xd * xd
+ *                 s -= 1
+*/
+            __pyx_t_17 = (__pyx_v_i - __pyx_v_period);
+            __pyx_v_yd = (*((double const  *) ( /* dim=0 */ (__pyx_v_ys.data + __pyx_t_17 * __pyx_v_ys.strides[0]) )));
+
+            /* "src/mintalib/cython/curve.pxi":68
+ *                 xd = i - period
+ *                 yd = ys[i - period]
+ *                 xd2 = xd * xd             # <<<<<<<<<<<<<<
+ *                 s -= 1
+ *                 sx -= xd
+*/
+            __pyx_v_xd2 = (__pyx_v_xd * __pyx_v_xd);
+
+            /* "src/mintalib/cython/curve.pxi":69
+ *                 yd = ys[i - period]
+ *                 xd2 = xd * xd
+ *                 s -= 1             # <<<<<<<<<<<<<<
+ *                 sx -= xd
+ *                 sx2 -= xd2
+*/
+            __pyx_v_s = (__pyx_v_s - 1.0);
+
+            /* "src/mintalib/cython/curve.pxi":70
+ *                 xd2 = xd * xd
+ *                 s -= 1
+ *                 sx -= xd             # <<<<<<<<<<<<<<
+ *                 sx2 -= xd2
+ *                 sx3 -= xd2 * xd
+*/
+            __pyx_v_sx = (__pyx_v_sx - __pyx_v_xd);
+
+            /* "src/mintalib/cython/curve.pxi":71
+ *                 s -= 1
+ *                 sx -= xd
+ *                 sx2 -= xd2             # <<<<<<<<<<<<<<
+ *                 sx3 -= xd2 * xd
+ *                 sx4 -= xd2 * xd2
+*/
+            __pyx_v_sx2 = (__pyx_v_sx2 - __pyx_v_xd2);
+
+            /* "src/mintalib/cython/curve.pxi":72
+ *                 sx -= xd
+ *                 sx2 -= xd2
+ *                 sx3 -= xd2 * xd             # <<<<<<<<<<<<<<
+ *                 sx4 -= xd2 * xd2
+ *                 sy -= yd
+*/
+            __pyx_v_sx3 = (__pyx_v_sx3 - (__pyx_v_xd2 * __pyx_v_xd));
+
+            /* "src/mintalib/cython/curve.pxi":73
+ *                 sx2 -= xd2
+ *                 sx3 -= xd2 * xd
+ *                 sx4 -= xd2 * xd2             # <<<<<<<<<<<<<<
+ *                 sy -= yd
+ *                 sy2 -= yd * yd
+*/
+            __pyx_v_sx4 = (__pyx_v_sx4 - (__pyx_v_xd2 * __pyx_v_xd2));
+
+            /* "src/mintalib/cython/curve.pxi":74
+ *                 sx3 -= xd2 * xd
+ *                 sx4 -= xd2 * xd2
+ *                 sy -= yd             # <<<<<<<<<<<<<<
+ *                 sy2 -= yd * yd
+ *                 sxy -= xd * yd
+*/
+            __pyx_v_sy = (__pyx_v_sy - __pyx_v_yd);
+
+            /* "src/mintalib/cython/curve.pxi":75
+ *                 sx4 -= xd2 * xd2
+ *                 sy -= yd
+ *                 sy2 -= yd * yd             # <<<<<<<<<<<<<<
+ *                 sxy -= xd * yd
+ *                 sx2y -= xd2 * yd
+*/
+            __pyx_v_sy2 = (__pyx_v_sy2 - (__pyx_v_yd * __pyx_v_yd));
+
+            /* "src/mintalib/cython/curve.pxi":76
+ *                 sy -= yd
+ *                 sy2 -= yd * yd
+ *                 sxy -= xd * yd             # <<<<<<<<<<<<<<
+ *                 sx2y -= xd2 * yd
+ * 
+*/
+            __pyx_v_sxy = (__pyx_v_sxy - (__pyx_v_xd * __pyx_v_yd));
+
+            /* "src/mintalib/cython/curve.pxi":77
+ *                 sy2 -= yd * yd
+ *                 sxy -= xd * yd
+ *                 sx2y -= xd2 * yd             # <<<<<<<<<<<<<<
+ * 
+ *             vxy = (sxy / s - sx * sy / s / s)
+*/
+            __pyx_v_sx2y = (__pyx_v_sx2y - (__pyx_v_xd2 * __pyx_v_yd));
+
+            /* "src/mintalib/cython/curve.pxi":65
+ *                 continue
+ * 
+ *             if s > period:             # <<<<<<<<<<<<<<
+ *                 xd = i - period
+ *                 yd = ys[i - period]
+*/
+          }
+
+          /* "src/mintalib/cython/curve.pxi":79
+ *                 sx2y -= xd2 * yd
+ * 
+ *             vxy = (sxy / s - sx * sy / s / s)             # <<<<<<<<<<<<<<
+ *             vxx = (sx2 / s - sx * sx / s / s)
+ *             vyy = (sy2 / s - sy * sy / s / s)
+*/
+          __pyx_v_vxy = ((__pyx_v_sxy / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
+
+          /* "src/mintalib/cython/curve.pxi":80
+ * 
+ *             vxy = (sxy / s - sx * sy / s / s)
+ *             vxx = (sx2 / s - sx * sx / s / s)             # <<<<<<<<<<<<<<
+ *             vyy = (sy2 / s - sy * sy / s / s)
+ *             vxx2 = (sx3 / s - sx * sx2 / s / s)
+*/
+          __pyx_v_vxx = ((__pyx_v_sx2 / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sx) / __pyx_v_s) / __pyx_v_s));
+
+          /* "src/mintalib/cython/curve.pxi":81
+ *             vxy = (sxy / s - sx * sy / s / s)
+ *             vxx = (sx2 / s - sx * sx / s / s)
+ *             vyy = (sy2 / s - sy * sy / s / s)             # <<<<<<<<<<<<<<
+ *             vxx2 = (sx3 / s - sx * sx2 / s / s)
+ *             vx2y = (sx2y / s - sx2 * sy / s / s)
+*/
+          __pyx_v_vyy = ((__pyx_v_sy2 / __pyx_v_s) - (((__pyx_v_sy * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
+
+          /* "src/mintalib/cython/curve.pxi":82
+ *             vxx = (sx2 / s - sx * sx / s / s)
+ *             vyy = (sy2 / s - sy * sy / s / s)
+ *             vxx2 = (sx3 / s - sx * sx2 / s / s)             # <<<<<<<<<<<<<<
+ *             vx2y = (sx2y / s - sx2 * sy / s / s)
+ *             vx2x2 = (sx4 / s - sx2 * sx2 / s / s)
+*/
+          __pyx_v_vxx2 = ((__pyx_v_sx3 / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sx2) / __pyx_v_s) / __pyx_v_s));
+
+          /* "src/mintalib/cython/curve.pxi":83
+ *             vyy = (sy2 / s - sy * sy / s / s)
+ *             vxx2 = (sx3 / s - sx * sx2 / s / s)
+ *             vx2y = (sx2y / s - sx2 * sy / s / s)             # <<<<<<<<<<<<<<
+ *             vx2x2 = (sx4 / s - sx2 * sx2 / s / s)
+ * 
+*/
+          __pyx_v_vx2y = ((__pyx_v_sx2y / __pyx_v_s) - (((__pyx_v_sx2 * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
+
+          /* "src/mintalib/cython/curve.pxi":84
+ *             vxx2 = (sx3 / s - sx * sx2 / s / s)
+ *             vx2y = (sx2y / s - sx2 * sy / s / s)
+ *             vx2x2 = (sx4 / s - sx2 * sx2 / s / s)             # <<<<<<<<<<<<<<
+ * 
+ *             denom = vx2x2 * vxx - vxx2 * vxx2
+*/
+          __pyx_v_vx2x2 = ((__pyx_v_sx4 / __pyx_v_s) - (((__pyx_v_sx2 * __pyx_v_sx2) / __pyx_v_s) / __pyx_v_s));
+
+          /* "src/mintalib/cython/curve.pxi":86
+ *             vx2x2 = (sx4 / s - sx2 * sx2 / s / s)
+ * 
+ *             denom = vx2x2 * vxx - vxx2 * vxx2             # <<<<<<<<<<<<<<
+ *             curve = (vx2y * vxx - vxy * vxx2) / denom if denom > 0 else NAN
+ *             slope = (vxy * vx2x2 - vxx2 * vx2y) / denom if denom > 0 else NAN
+*/
+          __pyx_v_denom = ((__pyx_v_vx2x2 * __pyx_v_vxx) - (__pyx_v_vxx2 * __pyx_v_vxx2));
+
+          /* "src/mintalib/cython/curve.pxi":87
+ * 
+ *             denom = vx2x2 * vxx - vxx2 * vxx2
+ *             curve = (vx2y * vxx - vxy * vxx2) / denom if denom > 0 else NAN             # <<<<<<<<<<<<<<
+ *             slope = (vxy * vx2x2 - vxx2 * vx2y) / denom if denom > 0 else NAN
+ *             intercept = (sy - slope * sx - curve * sx2) / s if s > 0 else NAN
+*/
+          __pyx_t_1 = (__pyx_v_denom > 0.0);
+          if (__pyx_t_1) {
+            __pyx_t_18 = (((__pyx_v_vx2y * __pyx_v_vxx) - (__pyx_v_vxy * __pyx_v_vxx2)) / __pyx_v_denom);
+          } else {
+            __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
+          }
+          __pyx_v_curve = __pyx_t_18;
+
+          /* "src/mintalib/cython/curve.pxi":88
+ *             denom = vx2x2 * vxx - vxx2 * vxx2
+ *             curve = (vx2y * vxx - vxy * vxx2) / denom if denom > 0 else NAN
+ *             slope = (vxy * vx2x2 - vxx2 * vx2y) / denom if denom > 0 else NAN             # <<<<<<<<<<<<<<
+ *             intercept = (sy - slope * sx - curve * sx2) / s if s > 0 else NAN
+ * 
+*/
+          __pyx_t_1 = (__pyx_v_denom > 0.0);
+          if (__pyx_t_1) {
+            __pyx_t_18 = (((__pyx_v_vxy * __pyx_v_vx2x2) - (__pyx_v_vxx2 * __pyx_v_vx2y)) / __pyx_v_denom);
+          } else {
+            __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
+          }
+          __pyx_v_slope = __pyx_t_18;
+
+          /* "src/mintalib/cython/curve.pxi":89
+ *             curve = (vx2y * vxx - vxy * vxx2) / denom if denom > 0 else NAN
+ *             slope = (vxy * vx2x2 - vxx2 * vx2y) / denom if denom > 0 else NAN
+ *             intercept = (sy - slope * sx - curve * sx2) / s if s > 0 else NAN             # <<<<<<<<<<<<<<
  * 
  * 
 */
-    __pyx_t_1 = (__pyx_v_s > 0.0);
-    if (__pyx_t_1) {
-      __pyx_t_18 = (((__pyx_v_sy - (__pyx_v_slope * __pyx_v_sx)) - (__pyx_v_curve * __pyx_v_sx2)) / __pyx_v_s);
-    } else {
-      __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
-    }
-    __pyx_v_intercept = __pyx_t_18;
+          __pyx_t_1 = (__pyx_v_s > 0.0);
+          if (__pyx_t_1) {
+            __pyx_t_18 = (((__pyx_v_sy - (__pyx_v_slope * __pyx_v_sx)) - (__pyx_v_curve * __pyx_v_sx2)) / __pyx_v_s);
+          } else {
+            __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
+          }
+          __pyx_v_intercept = __pyx_t_18;
 
-    /* "src/mintalib/cython/curve.pxi":91
+          /* "src/mintalib/cython/curve.pxi":92
  * 
  * 
- *         if option == QUADREG_CURVE:             # <<<<<<<<<<<<<<
- *             output[i] = curve
- *             continue
+ *             if option == QUADREG_CURVE:             # <<<<<<<<<<<<<<
+ *                 output[i] = curve
+ *                 continue
 */
-    __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_QUADREG_CURVE);
-    if (__pyx_t_1) {
+          __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_QUADREG_CURVE);
+          if (__pyx_t_1) {
 
-      /* "src/mintalib/cython/curve.pxi":92
+            /* "src/mintalib/cython/curve.pxi":93
  * 
- *         if option == QUADREG_CURVE:
- *             output[i] = curve             # <<<<<<<<<<<<<<
- *             continue
- * 
-*/
-      __pyx_t_17 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_curve;
-
-      /* "src/mintalib/cython/curve.pxi":93
- *         if option == QUADREG_CURVE:
- *             output[i] = curve
- *             continue             # <<<<<<<<<<<<<<
- * 
- *         if option == QUADREG_FORECAST:
-*/
-      goto __pyx_L8_continue;
-
-      /* "src/mintalib/cython/curve.pxi":91
- * 
- * 
- *         if option == QUADREG_CURVE:             # <<<<<<<<<<<<<<
- *             output[i] = curve
- *             continue
-*/
-    }
-
-    /* "src/mintalib/cython/curve.pxi":95
- *             continue
- * 
- *         if option == QUADREG_FORECAST:             # <<<<<<<<<<<<<<
- *             x = (i + offset)
- *             forecast = intercept + slope * x + curve * x * x
-*/
-    __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_QUADREG_FORECAST);
-    if (__pyx_t_1) {
-
-      /* "src/mintalib/cython/curve.pxi":96
- * 
- *         if option == QUADREG_FORECAST:
- *             x = (i + offset)             # <<<<<<<<<<<<<<
- *             forecast = intercept + slope * x + curve * x * x
- *             output[i] = forecast
-*/
-      __pyx_v_x = (__pyx_v_i + __pyx_v_offset);
-
-      /* "src/mintalib/cython/curve.pxi":97
- *         if option == QUADREG_FORECAST:
- *             x = (i + offset)
- *             forecast = intercept + slope * x + curve * x * x             # <<<<<<<<<<<<<<
- *             output[i] = forecast
- *             continue
-*/
-      __pyx_v_forecast = ((__pyx_v_intercept + (__pyx_v_slope * __pyx_v_x)) + ((__pyx_v_curve * __pyx_v_x) * __pyx_v_x));
-
-      /* "src/mintalib/cython/curve.pxi":98
- *             x = (i + offset)
- *             forecast = intercept + slope * x + curve * x * x
- *             output[i] = forecast             # <<<<<<<<<<<<<<
- *             continue
+ *             if option == QUADREG_CURVE:
+ *                 output[i] = curve             # <<<<<<<<<<<<<<
+ *                 continue
  * 
 */
-      __pyx_t_17 = __pyx_v_i;
-      *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_forecast;
+            __pyx_t_17 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_curve;
 
-      /* "src/mintalib/cython/curve.pxi":99
- *             forecast = intercept + slope * x + curve * x * x
- *             output[i] = forecast
- *             continue             # <<<<<<<<<<<<<<
+            /* "src/mintalib/cython/curve.pxi":94
+ *             if option == QUADREG_CURVE:
+ *                 output[i] = curve
+ *                 continue             # <<<<<<<<<<<<<<
+ * 
+ *             if option == QUADREG_FORECAST:
+*/
+            goto __pyx_L11_continue;
+
+            /* "src/mintalib/cython/curve.pxi":92
+ * 
+ * 
+ *             if option == QUADREG_CURVE:             # <<<<<<<<<<<<<<
+ *                 output[i] = curve
+ *                 continue
+*/
+          }
+
+          /* "src/mintalib/cython/curve.pxi":96
+ *                 continue
+ * 
+ *             if option == QUADREG_FORECAST:             # <<<<<<<<<<<<<<
+ *                 x = (i + offset)
+ *                 forecast = intercept + slope * x + curve * x * x
+*/
+          __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_QUADREG_FORECAST);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/curve.pxi":97
+ * 
+ *             if option == QUADREG_FORECAST:
+ *                 x = (i + offset)             # <<<<<<<<<<<<<<
+ *                 forecast = intercept + slope * x + curve * x * x
+ *                 output[i] = forecast
+*/
+            __pyx_v_x = (__pyx_v_i + __pyx_v_offset);
+
+            /* "src/mintalib/cython/curve.pxi":98
+ *             if option == QUADREG_FORECAST:
+ *                 x = (i + offset)
+ *                 forecast = intercept + slope * x + curve * x * x             # <<<<<<<<<<<<<<
+ *                 output[i] = forecast
+ *                 continue
+*/
+            __pyx_v_forecast = ((__pyx_v_intercept + (__pyx_v_slope * __pyx_v_x)) + ((__pyx_v_curve * __pyx_v_x) * __pyx_v_x));
+
+            /* "src/mintalib/cython/curve.pxi":99
+ *                 x = (i + offset)
+ *                 forecast = intercept + slope * x + curve * x * x
+ *                 output[i] = forecast             # <<<<<<<<<<<<<<
+ *                 continue
+ * 
+*/
+            __pyx_t_17 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_forecast;
+
+            /* "src/mintalib/cython/curve.pxi":100
+ *                 forecast = intercept + slope * x + curve * x * x
+ *                 output[i] = forecast
+ *                 continue             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-      goto __pyx_L8_continue;
+            goto __pyx_L11_continue;
 
-      /* "src/mintalib/cython/curve.pxi":95
- *             continue
+            /* "src/mintalib/cython/curve.pxi":96
+ *                 continue
  * 
- *         if option == QUADREG_FORECAST:             # <<<<<<<<<<<<<<
- *             x = (i + offset)
- *             forecast = intercept + slope * x + curve * x * x
+ *             if option == QUADREG_FORECAST:             # <<<<<<<<<<<<<<
+ *                 x = (i + offset)
+ *                 forecast = intercept + slope * x + curve * x * x
 */
-    }
-    __pyx_L8_continue:;
+          }
+          __pyx_L11_continue:;
+        }
+      }
+
+      /* "src/mintalib/cython/curve.pxi":44
+ *     s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             x, y = i, ys[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L10;
+        }
+        __pyx_L10:;
+      }
   }
 
-  /* "src/mintalib/cython/curve.pxi":101
- *             continue
+  /* "src/mintalib/cython/curve.pxi":102
+ *                 continue
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -47116,7 +48031,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/curve.pxi":105
+/* "src/mintalib/cython/curve.pxi":106
  * 
  * 
  * def calc_curve(series, long period=20):             # <<<<<<<<<<<<<<
@@ -47165,48 +48080,48 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 105, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 106, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 105, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 106, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 105, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 106, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_curve", 0) < (0)) __PYX_ERR(46, 105, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_curve", 0) < (0)) __PYX_ERR(46, 106, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_curve", 0, 1, 2, i); __PYX_ERR(46, 105, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_curve", 0, 1, 2, i); __PYX_ERR(46, 106, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 105, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 106, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 105, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 106, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 105, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 106, __pyx_L3_error)
     } else {
       __pyx_v_period = ((long)((long)20));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_curve", 0, 1, 2, __pyx_nargs); __PYX_ERR(46, 105, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_curve", 0, 1, 2, __pyx_nargs); __PYX_ERR(46, 106, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -47242,7 +48157,7 @@ static PyObject *__pyx_pf_8mintalib_4core_128calc_curve(CYTHON_UNUSED PyObject *
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calc_curve", 0);
 
-  /* "src/mintalib/cython/curve.pxi":108
+  /* "src/mintalib/cython/curve.pxi":109
  *     """ Curve (quadratic regression) """
  * 
  *     return quadratic_regression(series, period=period, option=QUADREG_CURVE)             # <<<<<<<<<<<<<<
@@ -47251,11 +48166,11 @@ static PyObject *__pyx_pf_8mintalib_4core_128calc_curve(CYTHON_UNUSED PyObject *
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_quadratic_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 108, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_quadratic_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 108, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_QUADREG_CURVE); if (unlikely(!__pyx_t_5)) __PYX_ERR(46, 108, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_QUADREG_CURVE); if (unlikely(!__pyx_t_5)) __PYX_ERR(46, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -47271,24 +48186,24 @@ static PyObject *__pyx_pf_8mintalib_4core_128calc_curve(CYTHON_UNUSED PyObject *
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
-    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(46, 108, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(46, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(46, 108, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(46, 108, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(46, 109, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(46, 109, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(46, 108, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(46, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/curve.pxi":105
+  /* "src/mintalib/cython/curve.pxi":106
  * 
  * 
  * def calc_curve(series, long period=20):             # <<<<<<<<<<<<<<
@@ -47312,7 +48227,7 @@ static PyObject *__pyx_pf_8mintalib_4core_128calc_curve(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/curve.pxi":111
+/* "src/mintalib/cython/curve.pxi":112
  * 
  * 
  * def calc_qsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
@@ -47362,61 +48277,61 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,&__pyx_mstate_global->__pyx_n_u_offset,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 111, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 112, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(46, 111, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(46, 112, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 111, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 112, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 111, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 112, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_qsf", 0) < (0)) __PYX_ERR(46, 111, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_qsf", 0) < (0)) __PYX_ERR(46, 112, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_qsf", 0, 1, 3, i); __PYX_ERR(46, 111, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_qsf", 0, 1, 3, i); __PYX_ERR(46, 112, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(46, 111, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(46, 112, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 111, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 112, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 111, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 112, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 111, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 112, __pyx_L3_error)
     } else {
       __pyx_v_period = ((long)((long)20));
     }
     if (values[2]) {
-      __pyx_v_offset = __Pyx_PyLong_As_long(values[2]); if (unlikely((__pyx_v_offset == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 111, __pyx_L3_error)
+      __pyx_v_offset = __Pyx_PyLong_As_long(values[2]); if (unlikely((__pyx_v_offset == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 112, __pyx_L3_error)
     } else {
       __pyx_v_offset = ((long)((long)0));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_qsf", 0, 1, 3, __pyx_nargs); __PYX_ERR(46, 111, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_qsf", 0, 1, 3, __pyx_nargs); __PYX_ERR(46, 112, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -47453,20 +48368,20 @@ static PyObject *__pyx_pf_8mintalib_4core_130calc_qsf(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calc_qsf", 0);
 
-  /* "src/mintalib/cython/curve.pxi":119
+  /* "src/mintalib/cython/curve.pxi":120
  *     """
  * 
  *     return quadratic_regression(series, period=period, offset=offset, option=QUADREG_FORECAST)             # <<<<<<<<<<<<<<
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_quadratic_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 119, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_quadratic_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 119, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From_long(__pyx_v_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(46, 119, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_long(__pyx_v_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(46, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_QUADREG_FORECAST); if (unlikely(!__pyx_t_6)) __PYX_ERR(46, 119, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_QUADREG_FORECAST); if (unlikely(!__pyx_t_6)) __PYX_ERR(46, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -47482,11 +48397,11 @@ static PyObject *__pyx_pf_8mintalib_4core_130calc_qsf(CYTHON_UNUSED PyObject *__
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 3 : 0)] = {__pyx_t_2, __pyx_v_series};
-    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(46, 119, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(46, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_8, __pyx_callargs+2, 0) < (0)) __PYX_ERR(46, 119, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_offset, __pyx_t_5, __pyx_t_8, __pyx_callargs+2, 1) < (0)) __PYX_ERR(46, 119, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_6, __pyx_t_8, __pyx_callargs+2, 2) < (0)) __PYX_ERR(46, 119, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_8, __pyx_callargs+2, 0) < (0)) __PYX_ERR(46, 120, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_offset, __pyx_t_5, __pyx_t_8, __pyx_callargs+2, 1) < (0)) __PYX_ERR(46, 120, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_6, __pyx_t_8, __pyx_callargs+2, 2) < (0)) __PYX_ERR(46, 120, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_8);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -47494,14 +48409,14 @@ static PyObject *__pyx_pf_8mintalib_4core_130calc_qsf(CYTHON_UNUSED PyObject *__
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(46, 119, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(46, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/curve.pxi":111
+  /* "src/mintalib/cython/curve.pxi":112
  * 
  * 
  * def calc_qsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
@@ -48547,86 +49462,117 @@ static PyObject *__pyx_pf_8mintalib_4core_134calc_streak(CYTHON_UNUSED PyObject 
  * 
  *     cdef long i = 0             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
+ *     with nogil:
 */
   __pyx_v_i = 0;
 
   /* "src/mintalib/cython/streak.pxi":20
  *     cdef long i = 0
  * 
- *     for i in range(size):             # <<<<<<<<<<<<<<
- *         value = xs[i]
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+  {
+      PyThreadState * _save;
+      _save = PyEval_SaveThread();
+      __Pyx_FastGIL_Remember();
+      /*try:*/ {
+
+        /* "src/mintalib/cython/streak.pxi":21
+ * 
+ *     with nogil:
+ *         for i in range(size):             # <<<<<<<<<<<<<<
+ *             value = xs[i]
  * 
 */
-  __pyx_t_7 = __pyx_v_size;
-  __pyx_t_11 = __pyx_t_7;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+        __pyx_t_7 = __pyx_v_size;
+        __pyx_t_11 = __pyx_t_7;
+        for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+          __pyx_v_i = __pyx_t_12;
 
-    /* "src/mintalib/cython/streak.pxi":21
+          /* "src/mintalib/cython/streak.pxi":22
+ *     with nogil:
+ *         for i in range(size):
+ *             value = xs[i]             # <<<<<<<<<<<<<<
  * 
- *     for i in range(size):
- *         value = xs[i]             # <<<<<<<<<<<<<<
- * 
- *         if value > 0:
+ *             if value > 0:
 */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
+          __pyx_t_13 = __pyx_v_i;
+          __pyx_v_value = (*((double const  *) ( /* dim=0 */ (__pyx_v_xs.data + __pyx_t_13 * __pyx_v_xs.strides[0]) )));
 
-    /* "src/mintalib/cython/streak.pxi":23
- *         value = xs[i]
+          /* "src/mintalib/cython/streak.pxi":24
+ *             value = xs[i]
  * 
- *         if value > 0:             # <<<<<<<<<<<<<<
- *             streak += 1
- *         else:
+ *             if value > 0:             # <<<<<<<<<<<<<<
+ *                 streak += 1
+ *             else:
 */
-    __pyx_t_14 = (__pyx_v_value > 0.0);
-    if (__pyx_t_14) {
+          __pyx_t_14 = (__pyx_v_value > 0.0);
+          if (__pyx_t_14) {
 
-      /* "src/mintalib/cython/streak.pxi":24
+            /* "src/mintalib/cython/streak.pxi":25
  * 
- *         if value > 0:
- *             streak += 1             # <<<<<<<<<<<<<<
- *         else:
- *             streak = 0
+ *             if value > 0:
+ *                 streak += 1             # <<<<<<<<<<<<<<
+ *             else:
+ *                 streak = 0
 */
-      __pyx_v_streak = (__pyx_v_streak + 1.0);
+            __pyx_v_streak = (__pyx_v_streak + 1.0);
 
-      /* "src/mintalib/cython/streak.pxi":23
- *         value = xs[i]
+            /* "src/mintalib/cython/streak.pxi":24
+ *             value = xs[i]
  * 
- *         if value > 0:             # <<<<<<<<<<<<<<
- *             streak += 1
- *         else:
+ *             if value > 0:             # <<<<<<<<<<<<<<
+ *                 streak += 1
+ *             else:
 */
-      goto __pyx_L5;
-    }
+            goto __pyx_L8;
+          }
 
-    /* "src/mintalib/cython/streak.pxi":26
- *             streak += 1
- *         else:
- *             streak = 0             # <<<<<<<<<<<<<<
+          /* "src/mintalib/cython/streak.pxi":27
+ *                 streak += 1
+ *             else:
+ *                 streak = 0             # <<<<<<<<<<<<<<
  * 
- *         output[i] = streak
+ *             output[i] = streak
 */
-    /*else*/ {
-      __pyx_v_streak = 0.0;
-    }
-    __pyx_L5:;
+          /*else*/ {
+            __pyx_v_streak = 0.0;
+          }
+          __pyx_L8:;
 
-    /* "src/mintalib/cython/streak.pxi":28
- *             streak = 0
+          /* "src/mintalib/cython/streak.pxi":29
+ *                 streak = 0
  * 
- *         output[i] = streak             # <<<<<<<<<<<<<<
+ *             output[i] = streak             # <<<<<<<<<<<<<<
  * 
  *     return result
 */
-    __pyx_t_13 = __pyx_v_i;
-    *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_streak;
+          __pyx_t_13 = __pyx_v_i;
+          *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_13 * __pyx_v_output.strides[0]) )) = __pyx_v_streak;
+        }
+      }
+
+      /* "src/mintalib/cython/streak.pxi":20
+ *     cdef long i = 0
+ * 
+ *     with nogil:             # <<<<<<<<<<<<<<
+ *         for i in range(size):
+ *             value = xs[i]
+*/
+      /*finally:*/ {
+        /*normal exit:*/{
+          __Pyx_FastGIL_Forget();
+          PyEval_RestoreThread(_save);
+          goto __pyx_L5;
+        }
+        __pyx_L5:;
+      }
   }
 
-  /* "src/mintalib/cython/streak.pxi":30
- *         output[i] = streak
+  /* "src/mintalib/cython/streak.pxi":31
+ *             output[i] = streak
  * 
  *     return result             # <<<<<<<<<<<<<<
  * 
@@ -49886,15 +50832,15 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_defaults = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_defaults_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_defaults)) __PYX_ERR(6, 68, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_defaults_spec, __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_defaults) < (0)) __PYX_ERR(6, 68, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_defaults = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8mintalib_4core___pyx_defaults_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_defaults)) __PYX_ERR(6, 70, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8mintalib_4core___pyx_defaults_spec, __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_defaults) < (0)) __PYX_ERR(6, 70, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_defaults = &__pyx_type_8mintalib_4core___pyx_defaults;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_defaults) < (0)) __PYX_ERR(6, 68, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_defaults) < (0)) __PYX_ERR(6, 70, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_8mintalib_4core___pyx_defaults);
@@ -50308,7 +51254,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_core(PyObject *__pyx_pyinit_module
   __pyx_m = __pyx_t_1;
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
-  PyUnstable_Module_SetGIL(__pyx_m, Py_MOD_GIL_USED);
+  PyUnstable_Module_SetGIL(__pyx_m, Py_MOD_GIL_NOT_USED);
   #endif
   __pyx_mstate = __pyx_mstate_global;
   CYTHON_UNUSED_VAR(__pyx_t_1);
@@ -51137,26 +52083,26 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_crossover, __pyx_t_11) < (0)) __PYX_ERR(5, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-  /* "src/mintalib/cython/cross.pxi":35
+  /* "src/mintalib/cython/cross.pxi":36
  * 
  * 
  * def calc_crossunder(series, double level=0.0):             # <<<<<<<<<<<<<<
  *     """
  *     Cross Under
 */
-  __pyx_t_11 = PyFloat_FromDouble(((double)0.0)); if (unlikely(!__pyx_t_11)) __PYX_ERR(5, 35, __pyx_L1_error)
+  __pyx_t_11 = PyFloat_FromDouble(((double)0.0)); if (unlikely(!__pyx_t_11)) __PYX_ERR(5, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_4 = PyTuple_Pack(1, __pyx_t_11); if (unlikely(!__pyx_t_4)) __PYX_ERR(5, 35, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_Pack(1, __pyx_t_11); if (unlikely(!__pyx_t_4)) __PYX_ERR(5, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  __pyx_t_11 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_17calc_crossunder, 0, __pyx_mstate_global->__pyx_n_u_calc_crossunder, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_11)) __PYX_ERR(5, 35, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_17calc_crossunder, 0, __pyx_mstate_global->__pyx_n_u_calc_crossunder, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_11)) __PYX_ERR(5, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_11);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_11, __pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_crossunder, __pyx_t_11) < (0)) __PYX_ERR(5, 35, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_crossunder, __pyx_t_11) < (0)) __PYX_ERR(5, 36, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
   /* "src/mintalib/cython/flags.pxi":5
@@ -51174,51 +52120,51 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_flag, __pyx_t_11) < (0)) __PYX_ERR(6, 5, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-  /* "src/mintalib/cython/flags.pxi":32
+  /* "src/mintalib/cython/flags.pxi":33
  * 
  * 
  * def calc_updown(series, double up_level=0.0, double down_level=0.0):             # <<<<<<<<<<<<<<
  *     """
  *     Flag for value crossing up & down levels
 */
-  __pyx_t_11 = PyFloat_FromDouble(((double)0.0)); if (unlikely(!__pyx_t_11)) __PYX_ERR(6, 32, __pyx_L1_error)
+  __pyx_t_11 = PyFloat_FromDouble(((double)0.0)); if (unlikely(!__pyx_t_11)) __PYX_ERR(6, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_4 = PyFloat_FromDouble(((double)0.0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 32, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(((double)0.0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_14 = PyTuple_Pack(2, __pyx_t_11, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(6, 32, __pyx_L1_error)
+  __pyx_t_14 = PyTuple_Pack(2, __pyx_t_11, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(6, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_21calc_updown, 0, __pyx_mstate_global->__pyx_n_u_calc_updown, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 32, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_21calc_updown, 0, __pyx_mstate_global->__pyx_n_u_calc_updown, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_t_14);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_updown, __pyx_t_4) < (0)) __PYX_ERR(6, 32, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_updown, __pyx_t_4) < (0)) __PYX_ERR(6, 33, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/flags.pxi":68
+  /* "src/mintalib/cython/flags.pxi":70
  * 
  * 
  * def where_flag(flag, x, y, z=NAN):             # <<<<<<<<<<<<<<
  *     """Value according to flag, selecting between x, y or z"""
  * 
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_23where_flag, 0, __pyx_mstate_global->__pyx_n_u_where_flag, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 68, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_23where_flag, 0, __pyx_mstate_global->__pyx_n_u_where_flag, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_4)) __PYX_ERR(6, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_8mintalib_4core___pyx_defaults)) __PYX_ERR(6, 68, __pyx_L1_error)
-  __pyx_t_14 = PyFloat_FromDouble(__pyx_v_8mintalib_4core_NAN); if (unlikely(!__pyx_t_14)) __PYX_ERR(6, 68, __pyx_L1_error)
+  if (!__Pyx_CyFunction_InitDefaults(__pyx_t_4, __pyx_mstate_global->__pyx_ptype_8mintalib_4core___pyx_defaults)) __PYX_ERR(6, 70, __pyx_L1_error)
+  __pyx_t_14 = PyFloat_FromDouble(__pyx_v_8mintalib_4core_NAN); if (unlikely(!__pyx_t_14)) __PYX_ERR(6, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_CyFunction_Defaults(struct __pyx_defaults, __pyx_t_4)->arg0 = __pyx_t_14;
   __Pyx_GIVEREF(__pyx_t_14);
   __pyx_t_14 = 0;
   __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_4, __pyx_pf_8mintalib_4core_136__defaults__);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_where_flag, __pyx_t_4) < (0)) __PYX_ERR(6, 68, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_where_flag, __pyx_t_4) < (0)) __PYX_ERR(6, 70, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "src/mintalib/cython/sign.pxi":4
@@ -52301,48 +53247,48 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_trange, __pyx_t_14) < (0)) __PYX_ERR(32, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-  /* "src/mintalib/cython/atr.pxi":54
+  /* "src/mintalib/cython/atr.pxi":55
  * 
  * 
  * def calc_atr(prices, long period=14):             # <<<<<<<<<<<<<<
  *     """
  *     Average True Range
 */
-  __pyx_t_14 = __Pyx_PyLong_From_long(((long)14)); if (unlikely(!__pyx_t_14)) __PYX_ERR(32, 54, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)14)); if (unlikely(!__pyx_t_14)) __PYX_ERR(32, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(32, 54, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(32, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_85calc_atr, 0, __pyx_mstate_global->__pyx_n_u_calc_atr, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[43])); if (unlikely(!__pyx_t_14)) __PYX_ERR(32, 54, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_85calc_atr, 0, __pyx_mstate_global->__pyx_n_u_calc_atr, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[43])); if (unlikely(!__pyx_t_14)) __PYX_ERR(32, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_14);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_14, __pyx_t_12);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_atr, __pyx_t_14) < (0)) __PYX_ERR(32, 54, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_atr, __pyx_t_14) < (0)) __PYX_ERR(32, 55, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-  /* "src/mintalib/cython/atr.pxi":69
+  /* "src/mintalib/cython/atr.pxi":70
  * 
  * 
  * def calc_natr(prices, long period=14):             # <<<<<<<<<<<<<<
  *     """
  *     Normalized Average True Range
 */
-  __pyx_t_14 = __Pyx_PyLong_From_long(((long)14)); if (unlikely(!__pyx_t_14)) __PYX_ERR(32, 69, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)14)); if (unlikely(!__pyx_t_14)) __PYX_ERR(32, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(32, 69, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(32, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_87calc_natr, 0, __pyx_mstate_global->__pyx_n_u_calc_natr, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[44])); if (unlikely(!__pyx_t_14)) __PYX_ERR(32, 69, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_87calc_natr, 0, __pyx_mstate_global->__pyx_n_u_calc_natr, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[44])); if (unlikely(!__pyx_t_14)) __PYX_ERR(32, 70, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_14);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_14, __pyx_t_12);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_natr, __pyx_t_14) < (0)) __PYX_ERR(32, 69, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_natr, __pyx_t_14) < (0)) __PYX_ERR(32, 70, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
   /* "src/mintalib/cython/sar.pxi":3
@@ -52908,7 +53854,7 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_ker, __pyx_t_12) < (0)) __PYX_ERR(41, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "src/mintalib/cython/kama.pxi":59
+  /* "src/mintalib/cython/kama.pxi":60
  * 
  * 
  * @add_metadata(same_scale=True)             # <<<<<<<<<<<<<<
@@ -52917,49 +53863,49 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
 */
   __pyx_t_14 = NULL;
   __pyx_t_11 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_add_metadata); if (unlikely(!__pyx_t_5)) __PYX_ERR(41, 59, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_add_metadata); if (unlikely(!__pyx_t_5)) __PYX_ERR(41, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = 1;
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_11, NULL};
-    __pyx_t_15 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_15)) __PYX_ERR(41, 59, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_15)) __PYX_ERR(41, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_same_scale, Py_True, __pyx_t_15, __pyx_callargs+1, 0) < (0)) __PYX_ERR(41, 59, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_same_scale, Py_True, __pyx_t_15, __pyx_callargs+1, 0) < (0)) __PYX_ERR(41, 60, __pyx_L1_error)
     __pyx_t_4 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_5, __pyx_callargs+__pyx_t_6, (1-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_15);
     __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(41, 59, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(41, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
 
-  /* "src/mintalib/cython/kama.pxi":60
+  /* "src/mintalib/cython/kama.pxi":61
  * 
  * @add_metadata(same_scale=True)
  * def calc_kama(series, int period=10, int fastn=2, int slown=30):             # <<<<<<<<<<<<<<
  *     """
  *     Kaufman Adaptive Moving Average
 */
-  __pyx_t_5 = __Pyx_PyLong_From_int(((int)10)); if (unlikely(!__pyx_t_5)) __PYX_ERR(41, 60, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_int(((int)10)); if (unlikely(!__pyx_t_5)) __PYX_ERR(41, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_15 = __Pyx_PyLong_From_int(((int)2)); if (unlikely(!__pyx_t_15)) __PYX_ERR(41, 60, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyLong_From_int(((int)2)); if (unlikely(!__pyx_t_15)) __PYX_ERR(41, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_11 = __Pyx_PyLong_From_int(((int)30)); if (unlikely(!__pyx_t_11)) __PYX_ERR(41, 60, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyLong_From_int(((int)30)); if (unlikely(!__pyx_t_11)) __PYX_ERR(41, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
 
-  /* "src/mintalib/cython/kama.pxi":59
+  /* "src/mintalib/cython/kama.pxi":60
  * 
  * 
  * @add_metadata(same_scale=True)             # <<<<<<<<<<<<<<
  * def calc_kama(series, int period=10, int fastn=2, int slown=30):
  *     """
 */
-  __pyx_t_13 = PyTuple_Pack(3, __pyx_t_5, __pyx_t_15, __pyx_t_11); if (unlikely(!__pyx_t_13)) __PYX_ERR(41, 59, __pyx_L1_error)
+  __pyx_t_13 = PyTuple_Pack(3, __pyx_t_5, __pyx_t_15, __pyx_t_11); if (unlikely(!__pyx_t_13)) __PYX_ERR(41, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  __pyx_t_11 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_111calc_kama, 0, __pyx_mstate_global->__pyx_n_u_calc_kama, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[56])); if (unlikely(!__pyx_t_11)) __PYX_ERR(41, 59, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_111calc_kama, 0, __pyx_mstate_global->__pyx_n_u_calc_kama, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[56])); if (unlikely(!__pyx_t_11)) __PYX_ERR(41, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_11);
@@ -52973,10 +53919,10 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
     __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_12)) __PYX_ERR(41, 59, __pyx_L1_error)
+    if (unlikely(!__pyx_t_12)) __PYX_ERR(41, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
   }
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_kama, __pyx_t_12) < (0)) __PYX_ERR(41, 59, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_kama, __pyx_t_12) < (0)) __PYX_ERR(41, 60, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
   /* "src/mintalib/cython/ppo.pxi":3
@@ -53271,73 +54217,73 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_linear_regression, __pyx_t_4) < (0)) __PYX_ERR(45, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/slope.pxi":105
+  /* "src/mintalib/cython/slope.pxi":106
  * 
  * 
  * def calc_slope(series, long period=20):             # <<<<<<<<<<<<<<
  *     """
  *     Slope (linear regression)
 */
-  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 105, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_14 = PyTuple_Pack(1, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 105, __pyx_L1_error)
+  __pyx_t_14 = PyTuple_Pack(1, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_121calc_slope, 0, __pyx_mstate_global->__pyx_n_u_calc_slope, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[61])); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 105, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_121calc_slope, 0, __pyx_mstate_global->__pyx_n_u_calc_slope, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[61])); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_t_14);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_slope, __pyx_t_4) < (0)) __PYX_ERR(45, 105, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_slope, __pyx_t_4) < (0)) __PYX_ERR(45, 106, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/slope.pxi":116
+  /* "src/mintalib/cython/slope.pxi":117
  * 
  * 
  * def calc_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
  *     """
  *     R-Value (linear regression)
 */
-  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 116, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_14 = PyTuple_Pack(1, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 116, __pyx_L1_error)
+  __pyx_t_14 = PyTuple_Pack(1, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_123calc_rvalue, 0, __pyx_mstate_global->__pyx_n_u_calc_rvalue, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[62])); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 116, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_123calc_rvalue, 0, __pyx_mstate_global->__pyx_n_u_calc_rvalue, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[62])); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_t_14);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_rvalue, __pyx_t_4) < (0)) __PYX_ERR(45, 116, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_rvalue, __pyx_t_4) < (0)) __PYX_ERR(45, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/slope.pxi":127
+  /* "src/mintalib/cython/slope.pxi":128
  * 
  * 
  * def calc_tsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
  *     """
  *     Time Series Forecast (linear regression)
 */
-  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 127, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_14 = __Pyx_PyLong_From_long(((long)0)); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 127, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)0)); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_12 = PyTuple_Pack(2, __pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(45, 127, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_Pack(2, __pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(45, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_125calc_tsf, 0, __pyx_mstate_global->__pyx_n_u_calc_tsf, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[63])); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 127, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_125calc_tsf, 0, __pyx_mstate_global->__pyx_n_u_calc_tsf, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[63])); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_14);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_14, __pyx_t_12);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_tsf, __pyx_t_14) < (0)) __PYX_ERR(45, 127, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_tsf, __pyx_t_14) < (0)) __PYX_ERR(45, 128, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
   /* "src/mintalib/cython/curve.pxi":11
@@ -53374,51 +54320,51 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_quadratic_regression, __pyx_t_4) < (0)) __PYX_ERR(46, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/curve.pxi":105
+  /* "src/mintalib/cython/curve.pxi":106
  * 
  * 
  * def calc_curve(series, long period=20):             # <<<<<<<<<<<<<<
  *     """ Curve (quadratic regression) """
  * 
 */
-  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 105, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_14 = PyTuple_Pack(1, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 105, __pyx_L1_error)
+  __pyx_t_14 = PyTuple_Pack(1, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_129calc_curve, 0, __pyx_mstate_global->__pyx_n_u_calc_curve, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[65])); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 105, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_129calc_curve, 0, __pyx_mstate_global->__pyx_n_u_calc_curve, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[65])); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_t_14);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_curve, __pyx_t_4) < (0)) __PYX_ERR(46, 105, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_curve, __pyx_t_4) < (0)) __PYX_ERR(46, 106, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/curve.pxi":111
+  /* "src/mintalib/cython/curve.pxi":112
  * 
  * 
  * def calc_qsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
  *     """
  *     Quadratic Series Forecast (quadratic regression)
 */
-  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 111, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_14 = __Pyx_PyLong_From_long(((long)0)); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 111, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)0)); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_12 = PyTuple_Pack(2, __pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 111, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_Pack(2, __pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_131calc_qsf, 0, __pyx_mstate_global->__pyx_n_u_calc_qsf, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[66])); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 111, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_131calc_qsf, 0, __pyx_mstate_global->__pyx_n_u_calc_qsf, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[66])); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_14);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_14, __pyx_t_12);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_qsf, __pyx_t_14) < (0)) __PYX_ERR(46, 111, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_qsf, __pyx_t_14) < (0)) __PYX_ERR(46, 112, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
   /* "src/mintalib/cython/stoch.pxi":4
@@ -53522,18 +54468,18 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_streak, __pyx_t_12) < (0)) __PYX_ERR(48, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "mintalib/core.pyx":18
+  /* "mintalib/core.pyx":19
  * include "cython/_all_core.pxi"
  * 
  * __all__ = ()             # <<<<<<<<<<<<<<
  * 
 */
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_all_2, __pyx_mstate_global->__pyx_empty_tuple) < (0)) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_all_2, __pyx_mstate_global->__pyx_empty_tuple) < (0)) __PYX_ERR(0, 19, __pyx_L1_error)
 
   /* "mintalib/core.pyx":1
  * # cython: language_level=3, binding=True, embedsignature=True             # <<<<<<<<<<<<<<
  * # cython: boundscheck=False, wraparound=False, cdivision=True, nonecheck=False
- * 
+ * # cython: freethreading_compatible=True
 */
   __pyx_t_12 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
@@ -53855,25 +54801,25 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 10; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{16},{26},{34},{29},{33},{16},{45},{15},{15},{21},{22},{15},{4},{179},{46},{37},{7},{25},{23},{30},{32},{19},{1},{1},{1},{1},{1},{8},{13},{5},{6},{15},{23},{25},{7},{6},{2},{6},{35},{9},{30},{12},{26},{29},{50},{8},{14},{32},{23},{23},{26},{22},{12},{31},{27},{28},{27},{30},{27},{27},{28},{27},{29},{29},{28},{28},{27},{32},{27},{27},{29},{27},{28},{31},{27},{27},{28},{28},{29},{27},{27},{27},{27},{27},{27},{29},{27},{27},{27},{27},{28},{29},{27},{29},{28},{29},{30},{27},{28},{27},{20},{32},{22},{30},{37},{32},{5},{4},{3},{8},{3},{7},{16},{20},{3},{8},{4},{15},{3},{3},{3},{12},{29},{6},{3},{2},{3},{3},{7},{15},{5},{4},{5},{7},{18},{3},{3},{4},{13},{4},{3},{12},{1},{8},{8},{9},{8},{13},{11},{8},{8},{8},{8},{9},{8},{14},{15},{10},{9},{9},{8},{13},{8},{8},{9},{8},{9},{12},{8},{8},{8},{9},{9},{10},{8},{8},{8},{8},{8},{13},{8},{9},{8},{8},{10},{8},{8},{8},{8},{11},{8},{9},{10},{8},{10},{9},{10},{11},{8},{9},{11},{8},{13},{11},{13},{8},{10},{2},{4},{9},{17},{18},{5},{11},{4},{9},{5},{7},{7},{5},{1},{5},{8},{4},{3},{6},{10},{3},{7},{15},{9},{10},{5},{15},{2},{2},{2},{3},{4},{4},{4},{6},{9},{4},{9},{2},{2},{5},{5},{5},{5},{8},{3},{5},{8},{3},{5},{5},{5},{4},{5},{6},{5},{4},{8},{8},{6},{7},{2},{4},{4},{8},{4},{12},{2},{3},{4},{4},{3},{4},{5},{2},{1},{2},{6},{10},{5},{6},{9},{7},{13},{4},{5},{8},{1},{1},{4},{14},{5},{17},{2},{2},{2},{3},{3},{10},{3},{5},{9},{1},{2},{2},{2},{7},{4},{11},{8},{10},{5},{12},{9},{11},{3},{8},{7},{5},{3},{3},{4},{7},{8},{3},{6},{10},{7},{13},{4},{10},{4},{2},{2},{2},{4},{8},{10},{3},{5},{5},{4},{7},{2},{4},{3},{5},{3},{6},{5},{3},{4},{6},{6},{6},{12},{4},{7},{2},{3},{3},{7},{6},{2},{2},{3},{3},{10},{7},{9},{3},{7},{4},{6},{4},{2},{2},{2},{14},{11},{10},{19},{14},{20},{12},{10},{17},{13},{8},{6},{3},{3},{7},{7},{3},{5},{4},{1},{10},{3},{6},{12},{10},{12},{19},{5},{5},{5},{4},{6},{4},{5},{5},{5},{5},{5},{3},{5},{3},{4},{12},{4},{3},{6},{6},{3},{2},{3},{4},{3},{3},{3},{3},{2},{3},{8},{9},{5},{2},{6},{5},{3},{5},{1},{2},{6},{7},{8},{6},{5},{9},{3},{7},{1},{5},{5},{6},{6},{5},{4},{3},{4},{3},{3},{1},{3},{4},{5},{10},{7},{4},{1},{2},{3},{2},{1},{2},{2},{1},{2},{122},{84},{585},{111},{235},{92},{88},{65},{289},{754},{66},{44},{25},{19},{122},{68},{101},{134},{170},{167},{99},{32},{32},{27},{325},{273},{170},{149},{196},{71},{107},{103},{32},{146},{245},{391},{188},{50},{458},{80},{36},{170},{148},{44},{129},{113},{112},{33},{233},{167},{84},{25},{110},{25},{261},{114},{191},{248},{170},{180},{184},{219},{231},{231},{89},{138},{1}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (5272 bytes) */
-const char* const cstring = "BZh91AY&SY\363v\252V\000\010\333\177\377\377\377\377\377\377\377\377\377\277\377\377\377\277\377\377\377\300@@@@@@@@@@@@\000@\000`\027\277}\3602QT\217K\350\335o\231\327F\262\321\263jD(P\353m\215`\252\210\346\322\035ekm_zA\365\320\001\203om\206\217'z\202\224C\024\023)\241O\023\021\221\250\306I\262MCz\210\006\217PzM=\243L\230\231(\r\036\221\3526\240\311\240\001\220\032d\323A\220@ L\202`\202SyA\017@\322h\304\r\000\001\240\000\000\000\032\000\032\006\232h\003M2\022\244\200\000\000\000\000\000\000hm=\"\000\000\000\000\000\320h\304\001\240\022j\021\"J\032h\000\006\203F\203M\017H\320\310\332\217\322&\232i\350\215\032\000\001\240\033Q\246\201\220\006@\010\224\220\240\000\000\000\000\000\364\232\0322\032i\210\000\000\006C\324b\000\003@\000\000H\210 \200\232\t\265=I\350\324\364jM\241\032hf\246\232\003FC# h\000\320\001\240\000\000\000\033\367\034X\304<\371:\251F\353N\304\311H\013G\030\333np!U\303\n\022\257*\306Xk\345\253Xl\025\351Ll\017\330/e>\202\375@>\302\007\335W\360\022\341\013\263\320n\312j\024\230h-,\216!\227(n\245@\363\310\010i\230\264\tZ\273\271F\234\320Lah\372\006\210L\220\334\014\201\263\215M\006\203P\327\375\220\377\261\010\241\005EQ`(\260`\244\204`\260Q\022*0V0@F\000\305TD`(\242\002\310\242\260\202\202\306,dT\021\021U\0261$\212\211&\204\304\3067`\262V,Z\353\224H\014D\005\320\256+\253\377\316\317\376\000\265\202\311PE\311&\346A\221\202\317B\030\300c\032d\030\220\004#\030\214E\005\"\013\021\000D\220D\010\242\250*\300\027\330\204:\t\003\250t\035\022Id\032B\341\010\260\251\206\022\010\223b%\022\0108\232Hh\007\030\260\0060\212@dOg\002\216\216a\016l\030\301B\021`\211 \250\302,\001T\021#\2604\010l\206\310\310\310;\227\r\316\2048eY\251\271\021\2207\314;a\006iYXJ\300\320\332\310!\020\tt\345rQ,\n9\227(\211m \257\022\006\210u\030\010\220\336\006\222\nF\003%m\221H\301\254\020\310\253\204\215B\320\205\241m\r\252\224&\214\310\023\265\313$.\314u\t\211\252aF\r\325RZ+H\024!uw\253+\3776,DlPF\265\353j\273@\016\200\223b\023Y\350\205\003r\222\301$\261HE\322\014\303\024h\356\361\030d""\001\230\320\323ZH\202\006\307\232A\232FfkJ[Da\253\000\014F\214\234\r@-\314\315,\320f\26328\306\030\"\354F\002#SH\033\007UN\324&\304Z\263\030\n\221\216\002b\301J\254M\312\340;\324T\014\000\014\316\274\325\326&\n5dE\006\031\030\235\006\314_(X\014\007\223\014Xb\032E\2224\202\\j\371#6\2033\034\370\020C\022Y\231\347\304\030\310\310\"\t\013\205l\364^\276\343 Ik'\211+\300\245\200\221&\243\031\354 \013\n\003\351\340\216 \373\002\342.\021\340W\231\372iW\226\363n\225\356\227\336\264\370W|n\320\374\257\t \374\230\211{\232\305\201T\260_\336\254\363\257\254\367\005g\177\345E\301&S\340\377\237/\343\274\362\364\243\0109\260U\3651\260{\325\027)\272\001\375\322qMA\240F~\2544\215\342)\251\361\274<\225ei\347\017[\354W\010\232\225\025\246Q\365d\362[\247`\212\317A\014\313\"\263\0218N\016?\336\270\245p\307f\273jw\313\240\357j\257X\204\035\344\035E\217+\276x\351{#\314\361p+Tb\356\256\267d\245\226\235\345\323\t\254\020\270]\264]:*\254\300\272+\346\332\257\312\005`\013 =\275E\200Z\242UF\203\311\262\260{k\010\260\357\340\361\200\204\016@ZR6\272FFQ1&>\227\215\344\366\360\337\200\027\000n#U\327c\020(\003\001\000/\n1&\335\221\014\342\216\350\023\t\010X\222O)/\007I\266\235\263k\374\346}\360\025\250\021\235\317\273\237\261\261M\361\035\372\021k\231\262\316\235K>C\245\203_\026\302F\010\304Z\245Y*\322\313?NXW+V\270h\361\371\275\235M}\336\326I\033\222H`\215I$0\016R\200v0\306\262\221\337`&\372\020\035\"]\243\251\036\255@T\025\025\225\224\246\222\301`\016\325\305.\262\212}\2631\201su\013\330\246\254\267.\240\3414)\207h\247\205\237c\247~\255[;!\301\233\004-i\010\320\001\254\023\200\037##\216\273\357\265\215\2106\026\317\355\375J\211\314\231\200f>l\334\200\034\022( 15\327U\222\025\225\254\254\024\025\025\025)oi\340\272\025\322\271q[\n\240\251\372`\240q\232xy\257\235\341\227\333\327\343x\330w!\037G\364.\323Z\266h\004\033\201\033X\265\t\264n(zZ\341\324\345r\206\345\220\301\215\"\354\274\215R\355\013B\325[n\221\220\266I\303\255\022\224Qz\234\300%\001(E\325\321o\331\257g\220qk\314\314Y\201\237\346\352\313""\263uup\270~/c\370\370\027x\364hh\005\010\246\016\003\200\034\271\326\\\020\345\337Y\302\000\030\020 \010\204N_\242\232\270\341\271\310\255E\n\202\245\t\255\2751\372\367\257\251\342\365\362\331\177\231\267\361A\260\025\212\2373\003\317\262B\332\203i\304\0353\r\022R4\233\224IH\200\034B\003E\310]\320\373Z\247w7\2062kv\\w\273\273\240\320\202:\272G\013\241U\002T\022\262\025Eb\3477\271z\261\005\210\030\201\211M\365*\n\252\241\221\277E\220\005\220\254\213\027\305\326\250EM\036\034\241M\303M\220\212\024\025\030\211$M2a1\347\261-:;\362)\227\010\350\203\310O(m\333\304N\036t[\331\005p\335\224`%\246\305`\210\366\302\367\244?\032\3341\t\033\"\211\303\313T\217\346\325M\016+\360\222\213iz>>th\3417\317\213\333\332V\2039T4\257j\354e\\\346\267X\363\271\351\213\205 \357;\256w\307{\361;\336P\323\220G\272f\266)5g&\312\271\231s\020s\362r\335\240m'\237w\2679&\364M\265\276\200\n\240 h\236\206\341\230ab\232g\177\351\225>%)uu\216\336\220\013D\"o\334\271\315\300\001\220\002\2005\347\270|n\346\255q\217\347\214\262\r\352C6Sx\227\216\264\300\340\010\350 0\031RSC\346B\200 \363n\232o\327w'\t\254\256]\354\245\303\240\nj}\352\202O\220\345\324\006R\tqT\256j\216!\033<:\371e\253vz\205\005!\010\373\346\327Ia\334\004\273\310GX\035}g\211\337\221\025*\331h\202\023\262\254P\006KQXP\350\340\227N\330\002\3451\033\326\236\355\273\253\265v\216\242\273\220e\314\025\003\233\036|ni\355]IGN0[P\215\310A\270F\341x\272vd6\022H\307\232]\254) \215h\001\014\374\273\264\237C\354\361R\270t\310Jm\013\332RQ \242\335]\310\227\320Z\263l\236\353V\017\031,)wgwd#d\232j\277\210\311\330\353C>|\324\0205\n\365\000\314\014\363*t\241\204\346\\*\311\342\212\224\254G\303\350\021l\372\004\232\373n\223\371\0031\334\311\256q\350X\212\310i\022Fa\002 \032\373\327\312XPJI\022t\200t\213\244\016\222\371\351\030sD\243\320\326L2e\261\267Vp\334\023\200T\305\242\032\\L[$\032\331H\212D\324\240\021\3153\316\266\210\210\340\300Xs\275\022tAZJ,E\366\234\003\224(<\370t\364u\363\316\247\034g\2167\214q\343\234uS\026\333\016\311\354\265\331(8\215Bt\310$""\024\014(\3224I!\024;t\200_\023\221<\211\344yj\357'\256\235X*i\322\031\027\202\346\206\014\231@\312\022\316-\273\225)\031V\216\037'^\021\236/\263\026\251KL\315\233\2666\254\225j)\001[\031F,\313\034\344\271\200\302w9\377H\n\t\3303>\007g\013>\0138\345Z\201\224&=I\007x\025L\022\260O\010\244\313u/\0373\312\207d.\303\232\265\331\016\370B\3057n\331-\376\235\253z\320\035\317\202\334\256\245\353\243G\332\366\261A\320\251V\2476\355\tK\345\275\305/M,\353\2437\236\021\020\332\334D\360\256\253F\324D\325\332\302\257\220\355\335\233\335\025\255oA\001\202\020!\272\341\022\235\210\210\212I\357S\212\214'\200'\265\216\032\010.r\327K\272\255\201l\233v\307G\243X\037N\217:\305\272\355\326\342\r\274!:\367\240\336\002\013Dk\035\033x0\252uW\035\303\203y\010\317\215\245\205yX\336\033\3007\233\314Vf\350\2109<'*]\014[\215\025\254\tk<\253\341%\204)\250\024'\001:\307N\240\324\026\030j\000\203R\n\250U\246\270\277b\245KVE@\331d_\017\234\375\032\310\002\016\305\311\270\2006\036'\301\210\325\327\325];\357\255\217Y\000\033\347\nQ)\255+\265\257\336Vh\225\324,\331\315%7\024\251\374\233cwX=F`\241\352S\227UK4e\334W\267m\321\224!\206\222\245\264\353#o\026 \n\304\330\rD\261\266\306\335\260b.\030\252\344Rh$\212\352\340\305\323L\255\227N\234\264t\004X\360\022\203\003H\257\253\262f\004\373\004\221h\201-Z\232uu\334\3471\302\207I\365\024m\006'D\366\032\346\202\n\346\316\215\014P\033|<\013\244\222t\355P\257\0160\342\254k\027\2050d\255\332$X\000\r7(\002\347\036?\234\343\001|\375\276\331\304\224H\346<\327:\372z\362\361:\3639\325D\272\371;\221\206\324\225\326c\241\035\250\006\262\201\221\000\315ZZ\000\275\2351h\352\362\364g\205\230k\317dGN;5\270\013\267\305Y8\224\236N6s\333\316\320E\020\356\203=\221o\213\302Ikar\312\010\235\250-\222/\034\352F\324\201\033\334\031\027\220\305\270\013>\206\231,\337\\]\206\014I\"9\300m\260\254'\212\223\0349\3109A\031\022g\263\211\251\274\034C\034l\267%(T\034L\244\221\313\277|\325\230C\274NG\365\250\251:\270\342\003\246\355\363\026\265.\235\307\255a\022\014\273\354y\252\200\342\020*U$P""\343\036\344\365Ed\032f\333\007\237@+\206\017V\302[\033\031\226\035Z\t`:\021/\235\001\325t;\034e \0005e\351\251a\300 \331\304L\031E\363\003R\006u}\207X7\034\\\324+P\274\215;\245\236\247\017fB\357`\214Lt\370\335\274\313o\323\262\232\226\213\305 \324\300\024\267\251W\311\230\370$\013\000\361\003A|\343a\263\035/\250q\030\337L\310\\\203RPb\321e\331\300\033\033\014\236\266q\347mF\215\347\000\342\235\242\362Er+\016\377\r\335\313aJu],\022s\316\221\343\226\347\320\364\232\251J\250\253m5\334\353\357`\273b%H-6m\321\345y\334\354Lp]\224Qy\272\205\006>\036\032G)\315\232\030\336\372jZ\353kZJ9]\2610\277S3\014\361\310/\236I\"\2325\2009{\343\270!\356\340{\016\347\2535\254LtX\031Q\273\222\345\373\367\001\262\212d\320\271{\331\275\246\333\272\272\220\232\"\"U\326SZLtZ\t\327\203M\032\236\367\264\210\2263\235\257\020\223\261=\304Hr\244\2210\t%\001\367\252\325h\"y\016\"\022\340\010\331\350\0243\254iY\243uTL\231$b\327aA\014T\021\256#\302\256\2743-c\271\321\203\265\372\255\243\2102<\275\010\206\353\014c\313\030\276\2169\270\3317d\226\344W\233%\316\200\354\002\\\020p@\270\033\305\371\250\260\252\213\331[\274\221XE\313l\203\364CjFpf\350wI$\367>\315v\331a*B\303X\276Kv\310%\303\204\306\t\307\327\317(D\307 \264\036<\253\236\256\366J\253\215\265)\220C\257\262%\"\227\353K>!\256\\\223\2721\266\253\342\311=\200\222\033\007\307\024\030\241`\303q\022\014\354\231\213\222\353\331\225n\234B\"\024G\264\"\356\322\313\311(%\222\213\210\020l(I\031u)J\371F\266~\275\332\273/u4\305d\201\252uN\277\241\001\245\315T\202EUC\270 \020\333\314\274 4I\007%\361Q\311\022u\215iVc\036\250\027\250\000\033FE\030R\264$yYY\211\270\312\026'\016\314\006\237\006*\330=\no0\333\271\275,\351\310\010V\265\326\235\206\255\345^\203c\235+<\0066\301\232@\316\025\323\252\327I\330RW\004J1\201\244\224\037f\352\311\n]N\312\032\316\022\027`\242a\202D\301<\351.\263z\353\343\356\233\013\206\2351\021Fu\237\271\227\266\335\306\"\355\265\312\371\032H\312\306$\216\327\223\020\331L\224\331\260n':\341\216v\214\300\372:$M4H\272\317-i!\263\017@\340""\204pG\005\327\326i7\354\215\274\334\351w\273t\265\213\307L\2721\222\243bM\"\"\024H{\003\261\347\232h\303u\324\207\215\335UM\273@\033@;N\335\243\302\251\003e\232\033:n%\365\364\003M\310=\244i\352\311\237N\231$S\024\351\221H]\023\205k\032U\253\324jF\233\2730\2747\3538\273\257\007@\201$D\215\021z\343B1\355V9\"6\322\024\205!b\300\321\242\202V\226x\233u\364\0343\232*\324d\035ZSy\0203\337,v\365\311\002\320\255]\032t#\036M\307J\3263\310\257-NS\230j\363\023\0073\360$\1776!`x\210\304\210\3022\n\026\207\017\303\024\220mG\005T\265\001\005E\004\220\026\021D` \222yt\001\335\325\024\314*\214\205BPd*\243\201GB\220\220s\264\022\366\252\312\262\020j\022\007\202\022H\227\002PR\312o\210\320\212\322\212\3241\007\r\356;~\300]\200\317V\365\256\240d\355\360\260\2754m\220\300M\222/\343\251ST\3173\367\303G\211\327\242\312\357\240\304aa,\211r\355\252\2273\247.\0052\373\236\317\333\n\370\022K\217lQiU\325\242\304,\237\302A\250\231\330\314c#!\227f\263,K\313(Hx\260\235\272\023\310\242\035\223\351Tj@~\356\212A:\271&\230O.\215\362\315\ner39k\274\027\301\200NHN'\2132N\t\235\003\253\002\326\3531F\003\0208c\300\237c\334\220\345\365\t1A\220a_\266\250F1\222\350`T\335\22448%\250\221D\220I\350\215\230\0015J\347\345\300\233\340\020\225\240H~\315\334\014\224|2ws\227\362\363\247\223!@\241\361Mq\r\250\300IW\300K\212cL\006\363\262\353\310\266\304\252\333\253\262\243bQ\377.Q.\002\223\274\177\304\003\343y\205S<\256\370\337\224\3778T\253*\256\312\242\212;\374\261\204/\031\205\363d%\342i\345\252%5\272\024\2437M\267Ze\320\262\346\2147\230B\300\254l\230cA\242\035\364<\326s?\020\035k\263:\305\026\201\227ii\273Z5~mJq0\360\267\034q1$\301\014VQ\177\206\035\377\236t\235\377\354\217M\025:U\0216\310Nm\247\224\326\246\241h\330 i\331\211\253l\324\014\303%\224Q=\017\227\344\201\326\351\316\303\222O\007\300\341\016\270\024N\002\252\274\031tY\210U\264V\034\361hM\265\320kxP4p\016\354\256\212\320u\372bW\372\031\344x>\007_}\230r\227\215\rX\2371\261\r\025\341ke\014\304\302\"%\023N\"\346m\310c-M\311(H\270\361w\204\307\027t76p\367""\273\343 lcP\023\"V\325E\211N\205\244Z\006laLR\23007{\277\363\304\2006\025\275\330\311\220\025\266\204\030\177\205\201\260\201\226cp6\302\025\"\"\020\271\270\333\215\221\361\376\261\260@D\201\370\300\337o\305\014\334\245\020\"\367\030C\177\"\201\322\332\220\310\211A\206\220f\352!\235J\002\025\306\336\363f\301\034\017\227}\001o\357\370H\241>\236\022?\354FK\032<1*\024W%I[\336\245\333qr\020\275\035\007\207\363\217\016O8{\006\354\263\304O\237\376L\021\210$Aa\2250\220\304\301\004\330E\303\300\020\010\014W\360\3604\317\035\237\016#\003\213\363F)\274=v\345\234\246\231\222V\314\273\303\013\004\205\347Ac3\344|d\001\352\177\263\356\372\223\354\025\365\246\347\311\371Dyf?2t\"\274\024&\370\310Ic\324\347R\274O\030\361|{+\305\262\350\317\033\350\222\274q\256\242\031\023\021\020\t\212\031f5\345\361dpp\360\341\340\353\275\203!\355\273\206\031X\223\344\r\210\221\240I\023\267\277\207\362\035\374\216\037m \314\2033\"\201\314 \022\345i=`\275\246e\007\230\270\371Cr{\217hO\342\031\263C\210H\350\004\376)qN\342\\#2\365\300\314\030D\210e\221\315r\016\022\014\310\266<\2638<@\205\351d\306\23220\343fV8\267!\361\342\336\3020\002\201\305\230VvTH\217U\3003\316\360z_\021\tz\341\360\323C=z\234\304\372\177\037\002\325\252\2450\310\351\202\366\340\035\321x\022/\256\322c\250\267\177|!\200\310\220\004\341\035\220*\036\320\336\030\226\007|\341\270\330\306\2148\232V,x\304\302\321\007\311\307\204\213\334\003\202\373\230\320\327\340,M,f=\301\275\271\273y\333\302\371\222A~B\301&\331\275{x._\211\273\247}2\374\177N\307`\356xP\301|\n\027\227a\177y&\r\365z\362p\314P8\027\251:\275j_\326\276\251\245\323v\243t\262R\356\233\362:\233b\343\023u\247\246\344\257\273l\226co\211nM\266\326\332\233\207\271\213\3210\266\377\356\245+t\266:\260\326\\Syz\003\305r\341\267r\341\30055\272\243\270u;}k<\234\220\325=\303\320\247\315`\343\036;\003\340\260+\377to^\332\224z\336\335{~i7P#\325G\316Z\310\362\021\325\036\247?\250\t\371t&\355N\352N\247=\263\034\330?`jb\024WT\304\325\320\r\302\235\025\234\025t\360\266po\202\305\214S\201\300""\02194\231\200s\022E7Rb\031\000 bIX\2338\2256pf\265\010\214\245\342\250u\252\253\233)\341\024\326!!@\010\213@\223\nH\r\272\026f ]\272\312\274\n\356\005\2013\221\214\207\026\r\004\330\0040\2460\245\025\225n\3470Z\006L\214\302\347\200\226\205P\022\306\034r4D\332\r\t6\031\t\310\222\360\213\302\356\211(\346S#\030\265d;\224\246\315\311\266d\007\026\350!x\030\252\025\206rE\014\024\"\253(\212y\324\345\346\210\300\357M\220\203f\026@\321\230l\337!\272\325\334\267M\203\022af\256\226\210\313\tT\326\336\252\305\233\016\312\203&l\3104MH\234\231\226\206\213MkL,\005\264\\\304\302\312n\006T\267B\225\305\330\2453\t\226p\3469D4\357\n\265a4d\003\216*bG\203\004\013\342I\267\250b\240R\241P\330\325\314\336\265y`\253\"@\315\003\010\213\255\001 \341\263w\255\023\230\345\033e-\0219,\033SZc\002\030n\215U\310T\204\351\006\313r3*\232\302\r\341o\231\271\201\200\226fN\227\356fY\351S\222_4\036\245X\270\265\306\271\356\267\255\322\362\356\277\370\273\222)\302\204\207\233\265R\260";
-    PyObject *data = __Pyx_DecompressString(cstring, 5272, 2);
+    const struct { const unsigned int length: 10; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{16},{26},{34},{29},{33},{16},{45},{15},{15},{21},{22},{15},{4},{179},{46},{37},{7},{25},{23},{30},{32},{19},{1},{1},{1},{1},{1},{8},{13},{5},{6},{15},{23},{25},{7},{6},{2},{6},{35},{9},{30},{12},{26},{29},{50},{8},{14},{32},{23},{23},{26},{22},{12},{31},{27},{28},{27},{30},{27},{27},{28},{27},{29},{29},{28},{28},{27},{32},{27},{27},{29},{27},{28},{31},{27},{27},{28},{28},{29},{27},{27},{27},{27},{27},{27},{29},{27},{27},{27},{27},{28},{29},{27},{29},{28},{29},{30},{27},{28},{27},{20},{32},{22},{30},{37},{32},{5},{4},{3},{8},{3},{7},{16},{20},{3},{8},{4},{15},{3},{3},{3},{12},{29},{6},{3},{2},{3},{3},{7},{15},{5},{4},{5},{7},{18},{3},{3},{4},{13},{4},{3},{12},{1},{8},{8},{9},{8},{13},{11},{8},{8},{8},{8},{9},{8},{14},{15},{10},{9},{9},{8},{13},{8},{8},{9},{8},{9},{12},{8},{8},{8},{9},{9},{10},{8},{8},{8},{8},{8},{13},{8},{9},{8},{8},{10},{8},{8},{8},{8},{11},{8},{9},{10},{8},{10},{9},{10},{11},{8},{9},{11},{8},{13},{11},{13},{8},{10},{2},{4},{9},{17},{18},{5},{11},{4},{9},{5},{7},{7},{5},{1},{5},{8},{4},{3},{6},{10},{3},{7},{15},{9},{10},{5},{15},{2},{2},{2},{3},{4},{4},{4},{6},{9},{4},{9},{2},{2},{5},{5},{5},{5},{8},{3},{5},{8},{3},{5},{5},{5},{4},{5},{6},{5},{4},{8},{8},{6},{7},{2},{4},{4},{8},{4},{12},{2},{3},{4},{4},{3},{4},{5},{2},{1},{2},{6},{10},{5},{6},{9},{7},{13},{4},{5},{8},{1},{1},{4},{14},{5},{17},{2},{2},{2},{3},{3},{10},{3},{5},{9},{1},{2},{2},{2},{7},{4},{11},{8},{10},{5},{12},{9},{11},{3},{8},{7},{5},{3},{3},{4},{7},{8},{3},{6},{10},{7},{13},{4},{10},{4},{2},{2},{2},{4},{8},{10},{3},{5},{5},{4},{7},{2},{4},{3},{5},{3},{6},{5},{3},{4},{6},{6},{6},{12},{4},{7},{2},{3},{3},{7},{6},{2},{2},{3},{3},{10},{7},{9},{3},{7},{4},{6},{4},{2},{2},{2},{14},{11},{10},{19},{14},{20},{12},{10},{17},{13},{8},{6},{3},{3},{7},{7},{3},{5},{4},{1},{10},{3},{6},{12},{10},{12},{19},{5},{5},{5},{4},{6},{4},{5},{5},{5},{5},{5},{3},{5},{3},{4},{12},{4},{3},{6},{6},{3},{2},{3},{4},{3},{3},{3},{3},{2},{3},{8},{9},{5},{2},{6},{5},{3},{5},{1},{2},{6},{7},{8},{6},{5},{9},{3},{7},{1},{5},{5},{6},{6},{5},{4},{3},{4},{3},{3},{1},{3},{4},{5},{10},{7},{4},{1},{2},{3},{2},{1},{2},{2},{1},{2},{125},{84},{588},{111},{235},{92},{88},{65},{290},{757},{66},{44},{25},{19},{125},{68},{101},{134},{170},{167},{99},{32},{32},{27},{331},{276},{173},{152},{199},{71},{107},{103},{32},{146},{248},{394},{188},{50},{461},{80},{36},{173},{151},{44},{132},{115},{116},{33},{236},{170},{84},{25},{110},{25},{264},{115},{194},{251},{173},{183},{187},{222},{234},{234},{89},{138},{1}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (5313 bytes) */
+const char* const cstring = "BZh91AY&SY\177Lz\214\000\010\272\177\377\377\377\377\377\377\377\377\377\277\377\377\377\277\377\377\377\300@@@@@@@@@@@@\000@\000`\027\327\336\002JR\000\367\033\255SB\276\276\346<\204\210\220\007L\245@\252\222\357\263\250z\312\323U\367\306\200\003\351J\247\273\357A\240\373w\320\n>\206\"$d\251\351?B\233j\217A\250\323\364eOPm#jyOI\232\231\352G\352\236f\t)\240\017S\332\246# \032\014A\246@\032`\323B\001\000@\203ML\246j&\023\023\324\323#@\032\032h\014\200\000\0004\000\000\323C\023@\032b\tT\365@\000\000\000\006\200\000\000\3651\017SOS \r\000\000h\000\006\232\000\000\223P\211D\240\014\215\006\200\310\0004z\232=OHyG\246\246\315H\364\200\000=@mG\250\017P\003@\311\350\236\240d\2522=OD\003L\206\200\000\320\310\001\241\240\036\240\030\200\000\320\321\352d\032\r\032\031\000\000\002D\202\032\231\000\200j4\3104S\311\352'\251\243M\251\352\0004\031\017F\240\0324\003CA\240\320\320\000\311\240\347\324iESm\275\327r`\374\031\203\250\021]\200\222KL*@\251\001\303$\234\256\252\246\251\325T\244E\354=\300K\324G\367_\340\005\376@\017\364$\275\240^\336B\031\205\267e5\nL4J\236\203i\244\021\220\332o\272@\313\205\260\020\242\265v\353$\261u\ndXb>y\311\000\300\r\022\030\007\001\306L\223\014\357Hw\242**\213\001E\203\005$#\005\202\210\221Q\202\261\202\0020\006*\242#\001E\020\026E\025\204\024\0261c\"\240\210\212\250\261\211$T\2220\211\021\027\211\262l\3318\236\001 \034\263a\262no\275\340\377\340\r\023P\241\215\004^^T\255J\205\257Y\201\013\021\241\r\200uA\031\222\261b\300\005AU\244&\r\024\024\260\276\371\202&u\222KZ&\214\010\035\372H\031\0019!\312 \"1\220b@\020\214DE`\244A\214\202!\005DQ\320K\025\022I\244;)#H2iM\244\023\300,\225\024\321E\200B*\004\345}\253\020\013b\222JB\033\2200!\316`\306\n\020\213\004I\005F\021`\n\240\211\037\0104hCm\211\315faF\243U\025\023\301\020\221\241\031\002\311\032\221\245Ne\342d\t\3522\311\013\271\250KL\"U\001\252\240\r\014/\326\231y\242\275Sb\304F\324\255\356`\323DdwA\\&V\236\220\014\302\rHO05\t+ \274\022W\211Y#\004\260\332vv\231\026\3156\202P\324\t\246\320\363$\031\220fFl""\222\326#c@\306#\013\313Z\0046\r\003\200[\031\2330\031\226`\320Y\033\303\013+\332\261a\021 I\255S\211c\022\227e\245\222\000\311\031dX\343\322d\215X\241\026\032M\3253&\022\225\221d\222\266\316\202\312\345x\005\353\002\020\323X\2219\022\0334\304\221co)\200\215\215\360\205\266\336\006\010\033\026/\021\242M\250!@l\rFIjB[\312\374Q\223A\221\205\220\306#T\t,\244\3611\332\030g*4\357\274\211\006Fi\030\314\203\nO\255\332U/\022S\273L\373\203\237s@cEA\262\364\226&\273\370P\030\224U~\277\360\034Q\364\007\305|C\365W\007\363\323\256\004\346\366\235\354\177c\324\361.\370\335\320\374/\t \356X\316\377dX\"\233\005\376*\317:\373\017pVw\376\224\\\014\320\371\376\277\267\371O<\275\030\302\016\226\n\276\2466\017z\225\312n@\377\006q9\206\202\r=hk\033\304No\215\341\344\253+OH{\037j\270E*\212+L\243\353I\344\267N\300\253=\0044F*\314\202p\234\034\177\275\212\360\2352\321\\\356\353r\235\031\351\333\000:\022]\222\247c\247\272\272R\367K\301\335\300\245\002\3200tp\004\272r\342\027\013\266\213\247t\023$\307O\213\252y\3417!P\027H{\352\243\001\027\025\025R\310\362\252\005O.\241QMO\313\356\205(\203 -!o3\t\004\222J U\000\364|^\377\203\323\321\210\026D\026\003K[\034\244\006!^^\033M8%\333\353\227X\032\371\201\202C:\225\257\222\337\267\337\227b}\356\307\265\237\330\270\341\320\203]{|\235\336\037\207\262\024\036\276Sg_\025{\373{<g\254\232\023iED\346<\r9\211\346\255o\276\267\322\325\245/\307\247\207\312\241\243\263\325\262F\304\222\030#:I\014\003|\230\034W\341I$t0\023}`\016D\216\241\330G\213\257P\025\005Er\212\3352RE\373\326\301\302\212d\340]\003\222\263\001\251r\211b&8\221YK\227\036.\277&\215\032\267\007Q\232\204hHX\202\r g_CI\243{,\263Y,0\326}\357O\002\354\367\211g\300\372XQQ$Q (X\241\236\265EUj\025+J*\006\372\360^\221EB\210\276\373\352\202\207\355\202\t\206\323-\336\027\304\363z\270\367\273\327sB=?au\032\313N\304 \324\010\3101\201@\233\t=\207\237B\212\220i%i\016\372\345\r\324\251\n\312\264\264\265(\245FB\232J\256C\t\023\244\213^)\241\022\022\252\250\253w\263\237GI\253>&\"\304\000\315\230\0355L\233\250""\240\n\020\240\231\346\211\"\336J|b*I*\220U\000+4\300\006\000\315L4\223\002js\305oh\250*\240\252\n\334\265z\366\327\307\243\206h\265\255b@\271E \036\327`~\032-\334\3634\270\332\031\232\367>x\277\010M!}\233#\004\204\003\232\010\315\031\301\356\233\205\231^\220\357\252\304\315\\\241\252\252KEi\002\255\241\365\365N\356T\r&\n\010\333Z\240D\021\315ex<I\242\021M%T\005\002\252\356\017\003\317\206\t\030!`\030\024\343\251PUJ\250\343\306\205\022(\213\356\301\322\210E\013\312\365\346\222\234\302\210D\211\010%\"Bi\215@\351\245,\326\356\310R\223\204r\301\322\373\346\376\377!}<\025\227x\211\222\346\301\200\226\232\253\002^\330^\364\207\246\267\014A\215\212\204\221\234\024\203\351\301R\000\271'\276B\206*M|\327\254\004\210\215$\3218\254\000y\252\010\022s1\005\025\222\205\312&\360\222\326I\020\301\326~V\022\273\303\346xoFV\010\360\263C\024\214\371\244i\243\224\244\345\020qoo\334\3206\223\315\331\352\312\311\275\217~\331`\005\230\203c\360\360\032\311\031\223\331\257/\325v\036~\030cm\247_\252\nU\033\343\330\270\215\200\001`\005\000h\315\260{]\306}\021\207\354\213X8\324\2033'\304]\344\306\031\326q\034($\032i)\224\362\241@\010\362\356\231\346\331wK\203\261\027.\314\245\317\300\nf\374\312D\237!\323\310\014\244\r\310\246\272)q\010\331\341\334\351\313=\372f()\005A\351\214\313\261\003\254\016\324@\201\320\013\240\350\356wd\"\224c(\207\022\216\354\205\r\2512\264\202s\244Nd2\220Q\317\230\001p\026\033\322\236\335{i\255uN\311M\250-\302\024\003\207\016<.2\352\334\244M\317}\006\244-\240\221\260[\021\274l\346\322o$\221\243\250\361\332* A\260\200\201\237\247\267Y\360}\276\320\327\016\251\tM\241{JJ$\024[\227i7\320Z\263l\236\353V\017\031,)w_o\\#c3\235\375\003'd\330R|x\250@3\025\344\0030I\350\212\232\321!9\243\205Y<J\232V#\320\340\"\332p\022k\355\276O\344\r\007jOm\365\341\212\226\270\331T\215c\033\r\274\371]v|\t$\221#\235%\316\203\235\034\353\235_\216q\207\014I\036v\222P\311I\261\267IL\227#\344!\351\225IK\245\"\331\221\265\225\004LR\250@\216\247]kh\210\216\206\002\303\252\362gB+IE\220_i\300:\024#\315""\207.n\276\255*\230\343<q\274c\217N\221\316\230\266\350vOm\256\311Bb3\023\246@\301@\302\215$\241\221AD\335\254\002\370\\Q8\2008\361\343\247\200}\223\334\305N\316A\212\364.\245 \3078$\241-b\3348\322\221\225h\341\352a\305mC\322\261\200x\2634I\215#\006\020(\256\240B\"\253B+K0\220\300a;\235?\321\010D\354\031\237\004\335\321g\301g\034\253P2\204\307\251 \357\004S\201\254\017y\014\321\273\213\323\345{hvB\354:\225\256\310{PQ\220\357\337\266\\\337\252\325\275h\023{\340\267+\252=uh\371\235\254\204pSV\247\026\355\006\227\313\231\305/:\331\327Vo4\022R\326\350\023\302\271\3326\2419\366\260\253\344;w\350\367Ek[\310\200\300\240\020\337p\212\036\262I1\276\006\3443\225\340\014\307h\013\210.:\274\227\352\257\201|\213\302\360\032\000\372\274..\216\235\307\343\300E\356\004Nu\3047\200E\2424\033\266paS\306\270\355\034\033\307,\370\332XW\236\303\207\004\t\341\201\344Q,5UQ\267\250\2621qBV\350AB&#\277)\260\210\226\246HE\300\\\235\375Gp\344\205\260\031&\307\264|\026\232\247sf\316\2779\260\225\253\035\033\257\370\326\270\020\266\306\231q\201\265u\327\227\240\325\326\345\266\316\231\355\222\353 \026W\323\014\036\032\022\271\255\037\016\222\232W(V#{\007\324<\007\252I\004\311&p\026\001\024\340\215^\354\004J\n\367\022Q\344]\223!\206E\n\345\240\215Z\360\000U%P3\222cm\215\272\336\304\\\030*X\234\246$\212g\334\305\315;V\334\331[\036Q\250\2407t\022G\027u&\013\364\" \354@)\263^\255\235\256\356\2560\362a\251\234TPu6\362\233\224(\205\211\325\305\212\003W=\345\311$\234\367L\247&\320\327H\332dB\244\235\261\330\353 \002Sr\200.q\343\373\247\030\013\347\3577N(\204\307A\345\272l\343\313/\007\226\211\245TK\227K\272\0147\031]fMPwH\033\020\206$\r\025\245\250\013\334\352\213G>\376\254\360\263\r\232m\210\352\307n\307\001wxK'\022\223\311\306\336;\270\332\005D;\320g\261[\342\360\221\265\260\271e\002{\244[\"\275\032U\006\343\004\034\316\022H\362\030\2678\263\352\224\311f\373\"\3540dDA\035 7XV\023\305Q#\207\031\007B#$\014\323\027\223\"\252A\\a\261\334@\002\254\310\210\203o73@\211\251\222\265\007\253QTL\271\360\001""\316\356\023\026\266\030\337\212\353E*\205wL\226\350\200\231J(P\356&l\036\304\363\305$\r38\201\3478\002\023\231\303 \304\202A\025\237v\340\314\006\362o\235\002gt:\334e \005iGR\312G\020\315\3562\361]Y\353\rL3Q\360\272A\260\327\3012\224\004\230\0242D\266\005NU\t\3334\024\024\277\304\345a\036{\362|\022\351+\250\300\200\002\223y\325=\334\243\344\220+\303\266\030\227f\215&\2342}q\304avR\220\\A\235(0h\252\344\274\033\033\013=\014\333\232\271\314x\226rf\035\203$\213iQO#\237\177yl)NWK\0039\351H\364e\275\365N\244\252\241\252\212\266\344\256\367_:\013\272\"T\202\323n\355^W\246\367dH\340\273h\242\364\272\210F=\270k\034\2476hc{\353\232\327cZ\327A\273\035\347\237-R\224\215z4\221\360\022H\303d\263\001\177q\013\270\221\310w\327L\344\316{\242\300r\212\227\030\310\260X\003\215\251u\360(\247l\306\000qj\003\2473\026\251\204\324@\204.a\210\2114-\007\310h\301\203;\343z\210\2111\234Mv\311\0342\346D\203}$\211@;\240'\305\021h\300\252\334r\024\273\214F\367\2055}\253\205\257r\345\261zW:\326X\3371\014S\020\305W\252\030\316\3021\035|\246c.\354n\320\n\217.\344\nL\024\202\rh\262\273cH6J\346H\256\362\272UK\211\010\341\022[\204r \0160\335\270\334h\333\006B\345\030\262\267a\212\302.\215\276\017\317\016\0063\2037;\271\221\2373\357\335m\366\022\244,7\013\344\267o\201\270t\314`x\373:e\010\244r\013A\343\312\272g\331\222\252\343l\325$\nl\353\212\030\233\366\033>!\256\\\217lcl\357\213\031\355\010\210\033\007\307\0221(\301\206\364\022\014\354t\027\033\257fU\272q\004\224%\355\010\273\264\262\362P\211d\242\344\002M,d\2637#6h\314.\350jkp\374\330\303=2\272E\322\r\322.\215\233\003\211\306Y\241\"\270h^\004\010n\342\217\010\rL\203\242>*:I\235cZU\231#\312\010\365\000\004\264X$_:L\220\355UV&\342\320\2607r@e\346\340\253{\305J\351Cn\343\215,\323\336\004*\326\345\226\223?\031G\211\245\313%\232\361\215\260f@f\205s\345\315t\235\205%p&\214\220JIBx\316\254aK\251\327D\254\341!v\n&\030\025e%\304\203\211#\211tm\354\032K\203,\242\"l\355\037\305\227WV\303\001r\265\276\367\233H\314\314\222<\337>\310y\214\231\355|\336P\205\343g"";FQ\033z$Z6\310\326oIq\020l\277\3167\tnB7#\265\324\310\343\323\032\2708\222\354\362\316\265.\216i9\261\222Q\245\336\352T\202\343\235oN\375od\216\014p\247s\263h{\373\351%\276#}o\256\234\020m\354\303\304\344\350\220\341\2702xR\203 \345\327\035\272h\210\203DM\000\320g\305.\033\3729\367\360\330\305\231\\\352\302\350o\352\270\271\323\221\314 I\021!\242.\246\023#\r\324\215\350\214\363\0030\231\216\215\0076D\023\330v\213y\020\305\306\2146\354Y>\372\247\236P\r\320\254\376\017y X\252\323\034\261F\033\333\016e\240g\221M\375\363\200j\267\021(8\037\232\221\375\230\201\335\345\010P\204 \240B\210J\340\360\304BB +\241\202I!t$\005E\006A\004'r\211\317\246\244\223\265g\242\260(\212]N\315I\340uh\261'\260 \207m\025`\207\210\002\311\020\235\0020'k\303C\277\3715\000\354\036\035L\275\\!\356\322\036ZH\2652\254e\010\375\211\037\027\315D\010\375\343\205\020\241\213\320\365\375@\351\362R\\\244w\342\204\203\331\234\023@\310=\211$\242\210x_Y\201\364\317\326H\366Y\342\\;\2325a0vq\3657\3205\255\336OCT\360!\306\203\\\271\30362\035\034\373\217fA\372\272\005@\243U@_\314\024\376\340j`a\252\t`\225$S\267G\332n'\302\207n\274\315\377X\376I\013\007e\005\350\017\2100\361l&\201\271\364u\210\234\265\242\266T\005e\323G\375\251D\270\nN\177\233\000\356\017\305g\350\350\036c\037\322Q\305>5K\031%\222\310r\334\204\266'&\000]\336\256\351\306\345\313.\235\352\310k\000ud\321\215\023\t\017\216\204Hr\014d\017\303%\221\361\254\376l\232z\210vE8\306\357Sp\265\232\301+a\nVQ\331\207\310>WG\376\035\"\277d\351\022R\203 \302\272uB1\210,\335HN\333\250\030L\262\206\232-\225d\253(\263FI\263\243e\356 m\242\022\367\231\202\222\312Y\335\351\023\360\001\323\235.v\271\235I:\237\217\221\r\200\234\225\343\243\001%f$)\260S\032`9\234\251\272f\213ct`30\327.\007O\244\213\301\376\202\217/k\304\332\316\034\r\323;\330\n\025\004\233\t \214\221\260\320 2\021\n\3153\203*\323N\370(\224\350\222YF\322\215\031M\351\211H[\247A\304\352x\360\361\331\375\017C\234u\272\336A\243l\3620\345\205\371\273\332Zc\010l\271&\2056%\221@\345\301\032r\324\204(\030""\023\376m\010\033\317\027}\326V\377\317\361*u\325\021\324\337\027\214u\3150\031\211AX\014\no\202\250I&cZ7W\022\316\251\324\353\317/\375N\271\013P\376P\3316\005%\267\r\002\030\205. E9\014m\320\260\212T\301\014\244\034V\006\222\204\341\252\346\220\334\316\254\353y\004\355\\+\233\367\\\377|\315\017\234Q\254\270\003\032\025\036C\004\030\337\354\033\034M\224!\002\353N\356E\032\014\321,\331p\236O$\371\315T\363O&\177g\260\320yCI\233\354M\232\265\363\215\210\304\022 \260\335K\302\365\272\263\22190\356\210!\363\376\20777c#\351O\313\347\371ROD\t\254\225\020\225oI@\200\232<=+I\222\"3\203\002]\332\302\202\243\320\000\036\207\270~/\027\345(x\352x\221OH\364})$\344\274\302\325(R\"\350!\301\203,\271\004\261V\246b\330\352\245\205OFH\210D\264ky\"m\211+\022\010\010\306\000\030\3021Tj\3643}\271\277\334\333\003\271\033r\343\311\214\240\307\016\306yK(C#\022B\025\270\022Je\265\213\262?\252D\354\215\022&\244XR\000\361A\220>\260\255c\304h\0071|=P\363\301\267\302h\323\275+\014\206d\031\245\256[[\230\353\361k\200\241\206\330\017H\261P\252\310;\341\204\246(\312#b\303\230uf\242\216\370\"za\267Uj-\005\036\004\342\263\340\236\274L'\005US\014\261\223\2443\354\202B\221\220;\301\205n\007?\235\214\202x\000\304Q\031`<\201PuS\324\314\317\220K)By\361\201\371\212\001\"\224\035\003m\nd\2510P\252\022\247\334=o\276\033W\254|\363\305/T\227\216$z>\217\214\254&\\\0362r\254G\307\220\t\350\"\241\3624\031\303\305V\267\231@\270\366\251\3358\362N\360EQS\007*A\022\207D\356\342\303B\241\371\271h\215\014\204D\275\274\246}\303\376\251\316&\013\034\364\210\340\334\335\302\375\314e\202\234~@\014\030A\337\303\270\2344\013,\007\236\0108\002\350\022\227@\364Z/\030\300\336\370\275A\327\323[[hs\212\332\364\300\330\331\346mB)%\327\220-\217\201[\346\032\373{#\301\257\256=\336O)r\257\235U\322\361\037\222\225\376\375\374\217\274_P\337\325\277\252(\273\204}g\352\324\323\351\302>\301\366r\360\035m\005\245\244\207\363zM\252[\3526\324#\332q\253Q\227\202\266\316\276\211\203hM\302\002\026C\244\225\350w\210\310\013X8\004\371\274\231""\273\330\374,q\213\345*\354\250\024Sa\004x\211\262\222\200\034\221\016\204N\3414p\227\031x,X\306\260L\001\013\02590\016cl\271\232F& X\312U\211\263\211Sg\330\222L\205\333\264S\223\213(\270\001\230\220\353N\305\314\013\001+\017Vj0cp \203\010\331F\351+L\022b\321\003\035\332\210\023k1<\025\202f@\"CQ\205\270\254\253\233Y\202\330(\241\230es\r\350U\000\244a\311CD+bXF\304\220\345\004g\010\2743tIg2\244\214\221n\310\233M\2536\215\311@L\\\320b\360H\252\025\205b\025\202\204Ue\021S\234\376^h\214\023z\325R\201\010H\030(H\030\034\214\025`\311,\214\220\335\252sg,\220\251\243\010\252H\033$\025T\326Hx\244\314\345\251\025\216\251\226\241C\313\231\201t\246hS\270\273\024\322\207&F\034\307(\206\235\341V\254&\214\200q\305LH\360`\201|Ql9X\341\232,\003\004D\206)\271\244\362E\206,\273\272\201P%H\230\231\031I+\312\273\005\331\010\013\300a\221t\200@\331\243Y\215+\271L\246q\211\271\007\n\344L+\260\264\304\311\231\320\227\255K\262\0262.\374\010I\002bUEN\367v\031\021B\032\204\003e`K\222\262\207\031j\352\321:\336\177\342\356H\247\n\022\017\351\217Q\200";
+    PyObject *data = __Pyx_DecompressString(cstring, 5313, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (5666 bytes) */
-const char* const cstring = "x\332\345YKw\333F\226\266d\311\226c\311\026e\275lw\034\320/9\035G\t\345gg\334\351C\277\325\035'\241%?\2463\335< \000\212\210A\200\004@\212r\247g\262\344\022K,\261\304\222K-\275\314RK.\371\023\374\023\346\273\267\n$\365\240,'\356\2313g\216e\240\200*T\335\272\217\357~\267\370\225\222\265,E7\313\206\355\231\216\355)\025\327\320\014\335\264\327z/\225K\272R\256y\276R0\024\323\326\215\206\241+\252\255+\266\343+\236eb\370\335Z\261h\270J\3354\326\025\3351<\3562\032\025\3073\024\317wM\335\360\356\251\266\342\330\326\206\242\271\206\352\033\212\252\024\304G~I\365\025\323S4\307\366\315\265\232S\363\260\210R6\312\216\273\261\210\257h*\325\363\3145[\361\035\005\037\353\237\363<b\004-)\007\311\211\327]\323W\013\226!\007\010\241\212\256S\336\357[\336\226\262n\372%\305\337\250\030\312\202|\357\273\252\355\3616z\237\210a\370\302\204\252\374>\335\3357iC\206\r\255\230\257\r/}\277_\201\246P\212\370\350A\271\342o(^I\305R~\255\002a\213\216\253h\033~\311\261\027U\327U7\226Y \247\346+NQ)85[\367\224+j\003\263\\\322?]\336\275\2660F\255Rq\\\337\320\227\355\272j\231\260\232\232\347\355t\237\035\335\270J\206\301\3070\342\202\266\240`\335\005,N\033]\270\252\254a\226d\260S\361I\366\344\261b\270\246\243\357|\304C\2557\277\330\021\314\307\222\336y\302:{N:\303.\276ul\343[\007\026b\213\337\343\315\222Zt\3032\013\206\013\333\3012\344-\220\215\335\302V\276\177\360\375\347\327o_gos\215\037!\265\207M\0264\013\016\001/#\325\324L\313\307\202\264MoQY.*\033NM\261\r\354\016\336R\301\270\376\017\374\222a+\236\341SCY`\023\253\264I\322\022\\~A\232\307\254\033\364\365C\325\362\214\305\357\310a :\255f9k\371\n\004\304T$\022t\240\221\2715\210\212\330\360\335\232\361\3356\213a\203\322\313U\r\037%&\374^\350N\3364\341j\230\3006\326TZ\\v$1\007\3773\351\365\212oT`\322\rE\016\177m\270N\317)\236\331\354\365\220\033\221T7\\8\265o\224\351\331)\220\346\236\331\257lg\335VX~\341\345\213_/|\372'U\327\363\230\020\261\321\270\252Tt\363\252R\326M\336\236\0023}\331\320\034\313\"\235\300\311\026\325\202v\247/Ni\220\320\330\327;_'""\341\361\265nz$\227\301\322\255i\312\025r\2615\216\004R\014\001\215\321\360\241E\016\373\036\346\230\236\370D\247]P<)w\376\250|\271+N,\023:\372I\004QY\325tH\217+\241\205j\211v\t#\350^\027\217\365\376\276:u\332\016\\\260\250\326,_\311\347]C\257iF>\257\3505\326\245\355\330\237\303%\353\246j\241W3m\323G\247\320\350\327I|\"v\326\214te\273\325\326\030\216\244#\223\251*{[\025!\013\275\323\223\220\013M\222\352*\202\311\251Y\372\256\251\2260\260\254\356\232\306\263\234\365W\370\0107\335s\265/\312\246\355#&\013_\010m}\221\327\234r\031Z\253\300]\366\350V\013\336\300.\253\254\016\354\363\335A]\205\002\374`\340\244\005\2472\250K\323\314\201]\226\2726\260\257\\\034\330\345:\336@I\264\232[7\006u\352\306\340\275\223\003\017\354+\017\334\203\356\330Z\311T\007Zb\237\025\001\334\203\272\212\320\314\300-\226\006O\371J\335\247\317\260|\333\030h\340}l\001\234\034\330\345:\332\240>\n\311\375\372\352\203;\367\371n\237\257\032\003\273\212\003\355\207\347A]\010\335\201]\204\272\203:\335\3016\330G[\2567PFO\035h5\202\231\201}\026@j`\347`!=_7\352\203;\215\312\340>G+\r\356\004\354\275\032\330[+\017\352\362\367\t\241u\321uG\260R}[\n\333\375\216\330Q7\223m\353\357\276\255u\323\256jY\216\306\324\226\022\223\242\253\276\272\270G\257\340H4\207d\306\213`m\206Kh\211\244d\352\272e\2106\220\\\274\316\256\334[^\276\377\340I\226\376,\313\254x\246\367\370Iv\331\366\037\330\265\362\023\265B\334\345{\327il\254\"\253\347\363\337o4\360\377>xT\376[\344\326\247Fq\345Iv\305\250\326\014[3V1\t1\262\305\0369{\361$\213\304\216\014@T\240l\370*\211\336\337^\274C\262[\336\327\213\353\256J\302\252\372\217H?`\014jQ-z\330Z>\237\\x\223y\301zT\253RRUw\315c\215\250\311m\303\326LgQs\\\244O\3236<$\021\265\276VP=C\344\014$a\017\331\270\3408\026\322D\301uT]S=?\017g\201\024Z\036\222\212\273\336\020w$(\321\360]q\257\257q\274\361\203\230S6+\362\276.\356\216xF\306\021w@\232h\224\213\342N\211\303\001\231\352=\201\327%\217\2248\270EYB4\220\022D\243,fL\300\236\037\222Q\200q\276\027\223\345J\262\203\300X4\004\362\312\266\270'\203\201""\255\342\356Ju\0202v\033u\331J\336$\317BS`v\342^\224wS\357)\n\241\302w;QcE\216\006\254\211{wh\325\023\333t\245\274\211(\200$q\347\262\200\2330\272\270\003wD\203@F\264\344\327\014\037\262eTd\003\300 [\204\002\242Y+\363\335O\024\3513\361\022M)\021xmO\314ZE\007\343\345\346\272f\365\336\003\004\264\222\241\275\312\023\257\324,2{>\3175B>\2374\326\014\237\230'=\302G\363\246M\253i\010M\355\225f\241 \354\243\305\360d\227\376\033\026\\_\003\363\367\341\032\254s\272A\253\344(\272n\330\016\246\323),\331Qt\263\216?B\224\262)]^\267=\374\345\021'\211\343$\035\330\007\373\0137,\243nX:Qx\276\344M//\030\251^\327\033\372\006\324\203\277\014\376/\341\3775D=\312\276|\036\034\333p\351V+\363\177\252\270\014\0043\374\213z \213\341\362{\327\301;\027\361\215~\3273\310\230\370\254A\314\027\256[D(\026\351\362\212.6\t\305\344\243h9\252\237\347+.\353\364\2376\002\302nP\364\342^V}Yi\026\275b\315\262\2125[\313\347\345\225\027\201\322y\331|\276d\226\314\245\222\271V\".\\\262\226J\226v\r\377\265\353\245\262i\352\360%L\233\317\233e\252wq\247j\331\264!+\000\305\247\252\014\265\253\250II9]\250!\213\212zB\026\025?\276\242\230\223\341&u\315\332%\243\253\364\006\334\333\243\202\304\262\254\262\345X\316\022\342\257W\006b\223\014\323]\254.\2273\345\245\3625YxSD\322\1779s\1779\"\350>\207,_\372\206\324\273%K2H\317\303\235\340\202\344TySo\340\246\026\021\314e\254g\250v\331(\323\301D\002\327\210j\221Gz\331\004^\310\337\311lH\340k\224\331+p\255Yt\307\342v\306^\262\257\331j\031\317\275\253\316\305\225\215*\265\000d\260\013\010V$?\270\262m\254\343R\261\021\2276\377U6\340\206N\261\210\n\333\201\261\256;\226\216X\267\305A\202\203\232\333\365`\207J\315\027W\236\335\253 \242*\3106\310a\025\r\220S\321\313\262\256\026\005S\245T\261*N\245B\377\035\251%Y#u\253\246\212\253U\\\370\262\r83\352\3024\025\210U\251W\032\225\215|\276\202\214\310\021\217w\342I\272\03159\204\270U\263+\246\366\n\332\240\274*^\325\371,)\237\257\326T\035\001cj}.\301o-\241\250^\345\330m\t\306\321\367\302hPs\r\202#\274x\037n\211\242\002\177y\204=\335j""\025\017X\352\322\351\201\013Y=\217&\247\344\205,I\241h\032\200(\250W\232\007-Y\272r[n\252\257\235\310\300\244\303+\231E\237\253G\322\232\320\034\237T\021\"\213\302\221\002\227+I\272\330\000hL\343b.\235\220\231AYZ\000m<\273\002\235q\255i>\311\333\360\032K\370\333\360\032\327\274\306u\257\201\347\r\017\377\226\362@m\244\360\274_\302\367%8\206\357\300\023}W@8f\261\t\312\370\024\247V\263`\010xE\255\302\220\207\033\207$\320\034[b\262\324eL\320\027\376\010g\352\034\355\234w\370\342\325\035\013`Vo,5\226p\331\2507\032\370Cs\243\276\261\261\216t\260\016\300[\207K\032|\341\225$\273Y\307N\032\r \351R\303\333\330\3207\274\327\257\275\255Cg\303\314\333\351C\243\237\204\205h,\036\212\347[\251\366\310L\3604\250vFN\207S\341\215h(\232\215\274\370rk\250=\362\2730\333\031\231\013\376\031\3416\025\244;#c\315\321\346\263 \035d\332c\223\30105:c\307\2337\203\251\340\017a\266=\2161\301\215p\210\336]o\326\202l\220k\217\237\302\230\221\343\315\314\317C\355\323\237\305\231\267S\207F\2177?\017\252!\346\377\250y\005_\334\0161b\242\3712\310\005F\230i\217\2147\037\005K\301\363p)\314m{\240A\177\0173\341\243\350v,\346\334:tn\353\\\246un\263\372v\362\320\350\330\317\353\315B0\324\036;\321\3741\034\332:\375\3738M\343\216\362\353\341\340B\360\"\274\033\252;\273\317\355\253\0107NI5\3204Z\220j\217\235lV\337\23684z*X\010S\211F.\207G\302\"i\251OA\244\003/8OZ \205,5W \333\370d0\032<\013/GG\242b\014\215Ml\353\202\346&\2329\222P\225\227\223M\027\312\315\354n\210\357\2366\253<\307\t\336\341B8\035>\r\335(\325\036?\211\245/\006\032\366\221\t\357c'\251(\335\036OA|\262\221\274\234\202b\261\335\335\215\016\026\361\271\351\206\247\2403-\232\212\226\242\247Q\265\375\336\035\035\370\311Hp7X\013W\361\nvk\217\315\004+\341040\034]\214\n\361\220\370\364f8\023\252\241\217\217^\306\253\255\251\326\255\315\364\333#\207\216\2157o\301n\271\256gI\205\275\367\313\271\3405\226\277\031\237\212\357\306\005xv\377(\341\234d\322qh\224\274\260\030f\303\177\217\324\366\310\361\235/>j\236o>\206E\237C\255\217\243,\271\347\335f)P\203z""\230\013\177\214\207:#\260Z\263\216~\270\017=\030P\312\263\360<l0\034-\304Sq7\026ff\311e\307\337\261@\247\027\"\355\221c\315\323h\336\014S\324L5?\r2\301\003rA\372\346!\034\355\036\224?\035\256D\207\241\305\325x:\316\265\007wu\216\035o\376\001\353\274@\330\302{t\214y\014\031\236EW\342\363\361\336\257&\232\253p\274\245`5L\205\027\0214\243\321J<\002}\252\211\220\327)t&\232\177El\217\342\263\364~\232=\250\"\237\205\351D\215\253p\346%\370\367:y\315\277`\356[\321yR\370\201\347M\246\311\365\3339+q\351\354\326\331\245V\232\300n\354\347\177 \022\023\330!{)\360\205+\000\237\233\255T\353\323M\030\366\023\304\354|\234\"\314m\315o\302\274i\021+\361\303V\272\365\325&\026\230\t\376\032V\201\031\0069\320^\350D\003^\307g\304\350\235P=\336\274\217 |\000\017\310\205zt!\312Ez|)\256\266FZY\212\221\033\301\341\340\032C\257\210\231k\214\242\204\026\273\2370fFz@1\272\017\330L\265'NP\3574\242\3720\354\263\332\215\263\265\326\323V\265\203H\273 0\205\264\205\234 \025\224\336J_o}\373F\252\350\177\026\270\245v\236#\226f\303Z\364\020\212?\nQ\017\006\336\317\303\233\230\276\006\333\\\336<\272)\340\267\007\332;`Z\340j\337\203K\210<\020\333)\247\236\007Z\026D\016\355\341{\267\235\342yr\242\221\021C\333\211\216\373\021\036i\227.\327\261b\252\257!\373\256\211\357\272\215\351\340>09\375\001\201\277-\201\277\200y/ j}~MV\031#-\nM\\\207\343\237\212\356\"\240\207\343t{\214\274\250\3271\315\343\t2\361\305\021L4\202\371\rL\223\243)\206\202\031\371JG\334>\004D-\267\236o.m\276x\223\025\3354U\035\013\3270\177\021\356h\266\352\233O7\327\337@\361\3230k\222\203.`\225z\3744\256\265\356\266\014|\317C\336\235z\272vH2\313T\274\204Y\352\360yws\nA\275;\303\264g\347\004\344\337\206\341\200\254\224^\250\3710L\3675\tA\237\302\037fXs\347\303\007\230=I\032\024+{}\336\377\315\220\214\257\371p\210W\333:\216 \010_F/\342\307\255G\233\231\237\263\004\007\337l\315_\341\330\245\230\330:\204\021\277\202\022\266?\004%<s\226\244\234\350\342\352r\304\234o\033|\237h\026\231A<\r9\277\344\261\237\027\321\3438A\222\351\340\233h\"\376\373f""\006Vc\264\005/#\226A(\225\246\360\377g\360\210bn.\250\341K\300#\226\017\376\022\376\024\377q\023\373\241\330;\205\351ux)\245\272\313\255\303\255k\255\002\205vgd\364\355\030i\034\213\314\004\271=\363\365\257`\010\307\233_\361\007\017\243K\340G2\017\257\206l\214:;\355\nr+\207P*\230\307&.\321\276\217\357'\305\273\026m\263\2034\220\230\217\200e\375#N\367\244x\020\315A\250.\033\370sT\212\325\004\210\036J\377\273\021\037\216o\264\206[\227\340\333)\002/9u\322l@@\031\274\325\304\260s\013\321\177\266r\344V\351\337\230\356\2165\347\203\024\030\366P[6/\005\325m\364\205\200\346\036\307:\201\314\naIG\372\020\365\367\232\344=\377\001\205.D\251.\rKG\277\213so\317\354\021Xh\356bI\0278\311?\024L\241\257d!\347v\221!\273\364\347e\224Kl\2665s)\312\355\021\213\267\337\334\372%\335\265\351\211\346\017\304\016\332r\326R\250n\267\371\t\371z\r_g\267w}r\300Dx\206\315\231\212.3\332\356|<M\213\237&~2\035\374Y8\315n\036q\0279\274\332\226\tq\230+\214S\024\345]8\004\236p\216\274\006\231\216\305\251\344\005y\332=\230\3754\301<\262eg\344\002[|\271\205p\3576i\351e*\372\266\255\371\010\266\310\3665z\213\027\272\214\203\222\202\204\232#\310A\204V\027A\364\207[\347[\331\366\304IN\345\3679\023\365\000\375\327)\261\253\034\331\350\214\314\207\023\321\337Z\320\324,X\036t\326W\026\366kM0\255!J\320H$\343\315\007\t\231\336\3361C\264\224\340\212\t\027A\337=J\354\"\313\346\000S\350\204\034x!\300t2\325\031O\022*\370]g|\036\336\227C\224W#\316\353\024\303\313\321\017\255\241\016\317q\203\235l\362c\342\347Q\246=I\006\337\301\314H!S\357\247\220W\3644\025|F\350z4!s)\340*I\310\331\270O%T\313\360\226\207\271f\000-\201\210\314\357\004\313\351\026\256d)bC\335\2074\023\215\215\250\233\343\266\346?\217\337K\330\271\340\277\"\207|n>\034?@\006\273\023V\005\223\232 \246T\2162\"wu\025\306\303\260\313^J\333:\364q\230\243D\224H4\033W;\211D\304X'\342\034\034\023tssd\023\002\034\344\325\336[\231'@\234\203o\354\332\004\245\264\024\336%J&7\270\013\230\256\266'\246\004{\221\317\235nc\017\027\230\334uNs\243\2779\006TOo\303\307)\216""\310Q\221\246%\272\022\362m?\360\371=\206?\023\224E\242gg\360\201\317\316\264$\2268\032z\014Z\013\255\251V\346_\267\324e\340\305\002\260\345\026\225\277{\201\371'\210\261\261\370h\334h\255o\226\336\254\375\222\243\264G\346?C<\244\326\274\327dz\\\245\230\250\241\004\033\203\322\216RZ\237\222\245\365\363(\023=\2123\355c\224Z\230\265\244\202\217)t\177\335\233NR -\306j\334O\031\216\210\022\213\213 9\344K\344\336\324Ak(\232`\026~\303\340vv\3071W\037\274\311*iF\262fr\257l\267r\274\311%\016\207t\226\321*\305#\267\305\320\265\244\234I'\007e\351n\311\177\230\tv\265=y\226\245\003+\216\356\261\204\022\317\251\024\330\2213\267o:\344\244\377!\230\323\r\231}\216\362Y\333\210\300f\252Q\351P$\007YG\021\276F\3536\312\211\034\225\373C\244\333U\324\232U\202\256\236~\253]\010\375\013\354\211`\376\t\010\223\340\350\216\372}(\350O\024\262\272\313\264\205\212\373+Dz1\301\020\300\355\316\330N\375_\304\356D\031\232d\225\366$\201I\212\355/\332;,C\311\006@\321\236D\212\003\213~\310\025\327\005>\250\273\2619\274\231n\247f\331r\262?\333\255x\026\266\026\376\270\271\207\003\222-\216\376\\g\177\351\275\031k\036\005\372/\260l\374@\233@c\270y\231\266\3159|\210\313\314Bt8\272\026i\311y\036\344\270\336\3627o\274\031}\223C\201\307\237\234of\233\253\224w\350l\224\030\010\025\020\03617a\323\327\310;W\3500D<\2563\217\365z\247V\220\371#:p\223\350-HI\216\222T\246\371\220a\364\244\240\251C\355\004\202.G*A\320\273\to\302o\325A\2079?D\037\021'KNu\376m\363\325/\251\316\036\236A\3073\244U\216\026\346\022D,\246\231(\\ \032\320;\337\321\344\001`F\036\030\027\371Pp>b\223t\037D\345{Sr\223S\234\227\345\344\363\250\310W9\237M\210sb\237Y\336\320\366\376\031\306\236$\237\240~\342\351\340E\235qA\303\262\355\311i>\213z\031=\213/\241\356\316\202\370m{Uo\221\307LL\263\320,\002=Nrq\004\377L\3162\246\317\240p\236L@c\372t\362j\374\344\001G\n\007\237\346\243\000q:\336\365\333\363\321\325X\035T\025\264%\004t3Kq\307;b\362\263a#J0\030Q\321\243\370\363\344\n\273i>\215\231\375_d]nO\021\263\3142\tw\253{\261.\222\364=\371\241E\270""\3114\245\377L\357\036\346\227\301\177\232\330\350A\204M|h\033a\021\321\332'P\222\315_R\215J\265\311u\342\004{\217\335C\370\352;)\326\016\236\230\351\262\304%y\276!\030\243\272\203/\366\016\227\017\252=\026\341\335\253'\207M\311\252\375%\016\026\374\350=\027\3442\360\335\253\302\023:\"S\354o\r\006X\237\252\267n\200]\242\222i\327\241\323'\0244\361H\234\355\354/\342\010|\247\316G$;\037\206\332}V#\321\006m\203\312\320\225\376\254:\207b\222V\022eX*\230\345\023M1u#\366Z\351\035\351w\"\025\3140\251\346\"\353\002\310\034\212\320\235Dz6\260\242\364\273\317\326z\016\307U\311\0149ng\017^\277N\000\306e\336\236B\023\366\323\031\340\361\350\006\037\202\364,\305\244@z'\223\202\355\006k\323q\340oa\317\030\3647`\306-\312{r\353\260\300\236\007\220\340\310\027\242;q\225\320u\002\2314-*'\302\326G\342(\245\333L~\373\272\025\245\t0\237\311#\251\373\\zH\271\326H\024\271\317\336\371\016 \266O\214#\273\350\272\332\225\3577\021cA\335\230\025R\316\036\352\354I\336\006\361\343\336\357\255\tQ\236\r\252}F\023\236*\177\232\335\375Q?q&\214\234\225\207\351Z<\005\352\201\322H\220=\203\231\355}\360\347[\255\364.d\330\365\353K\370^\233\277+\216<\322;\240[\354Y\376\250\261\003\033\246\177\245\316\253}\321O\251@\3049\237\271\314\207{j\276\017\260\272G\3173\342\220\252\216\\7\304\247\037\304Y\213\\:L\316\361\321\353\021\376y\261\247\334\355\nk_\272\374\366\342\007\330\301=\3613&\001\225/\302In\307\244J\200\200\365\340\033\352;\014\232\225$]\\RS\311\356t\346\275\223\224\331e\374$\017\331\003\356{vn\240\345\336'\241\216G\337\264\336e\254\336a\230\340\256}\245NgW\311\270;\273N}\200\240\376&\032j\037(\2269p\331\006]\021\373Q\367n\257\326\332.\370\2160\234\374\277#s\377\001\317\007\320\365\\\260\036j\321\034\362\325\005.\357y#\\\374\034\030Jy?\342\2443K{\272\025\246w\357*\373\233\267\366~\310\370\235(\345\027\302sQ\337/\313\267 #\323\336\276\255\334\346\272D\2345ukr\206'.[\250P!\246E?5V\3679\026I\316\370\270\352\241_\272V\242\021\300>\3515\327\236>\007\304\244\313\256h\031\373\377\261\315=\255)~N\272B?\260Q1""N0\225\274J\213\243\241{\342\200$!\033:\206\326\242\007(\345\323\335sGbN\2634{\003\245I\232\200l\214\253<\024!\\\213%\277\342]\241\343\322\367zs\032\373\277\215\262h\367\233$\326>\2133\362h\362\273\377\0066\204/m";
-    PyObject *data = __Pyx_DecompressString(cstring, 5666, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (5702 bytes) */
+const char* const cstring = "x\332\345ZKw\333F\2266\035\311\226c\331\021eI\226\354\356\004\224\037r\272\023uS\226\035w&\235>\3643\356\316\213\362#\351\356\351\346\001\001PD\014\002$\000>\224\356\236\311\222K,\261\304\022K.\271\3642K-\271\344O\360O\230\357\336*\360!\221\212\234df\316\2349\221\201B\025Pu\353>\276\373\335b>Tr\226\245\350f\305\260=\323\261=\245\352\032\232\241\233\366\356\260S\271\246+\225\272\347+EC1m\335h\031\272\242\332\272b;\276\342Y&^\277[/\225\014Wi\230FS\321\035\303\343!\243Uu<C\361|\327\324\r\357\236j+\216m\355)\232k\250\276\241\250JQ|\344\227U_1=Esl\337\334\255;u\017\213(\025\243\342\270{\233\370\212\246R=\317\334\265\025\337Q\360\261\376>\317#\336\240%\345Kr\342\246k\372j\3212\344\013B\250\222\353T\216\372\226\267\2454M\277\254\370{UC\331\220\375\276\253\332\036oc\370\211x\r_\230P\225?\242\273\373&m\310\260\241\025\363[\303\313\334\037U\240)\224\">zP\251\372{\212WV\261\224_\257B\330\222\343*\332\236_v\354M\325u\325\275\307,\220S\367\025\247\244\024\235\272\255{\312\r\265\205Y\256\351\357>>\274\2660F\275Zu\\\337\320\037\333\r\3252a5\265\300\333\031<;\272\361\036\031\006\037\303\210\033\332\206\202u7\2608mt\343=e\027\263$/;U\237dO\036\253\206k:\372\301G<\324\207\363\213\035\301|,\351G\237\261\316\236\223\316\260\213\317\035\333\370\334\201\205\330\342\367x\263\244\026\335\260\314\242\341\302v\260\014y\013dc\267\260\225/\037|\371\376\366\235m\3666\327\370\006R{\330dQ\263\340\020\3602RM\335\264|,H\333\3646\225\307%e\317\251+\266\201\335\301[\252xo\364\003\277l\330\212g\370\324P6\330\304*m\222\264\004\227\337\220\3461\033\006}\375P\265<c\363\013r\030\210N\253Y\316n\241\n\0011\025\211\004\035hdn\r\242\"6|\267n|1f1lPz\271\252\341\243\304\204_\n\335\311\233&\\\r\023\330\306\256J\213\313\201$\346\340\177&u?\361\215*L\272\247\310\327\2775\\g\350\024\317l\366z\310\215Hj\030.\234\3327*\364\354\024Is\317\354\027\266\323\264\025\226_x\371\346\307\033\357\376A\325\365\002&Dl\264\336S\252\272\371\236R\321M\336\236\0023\375\266\2459\226E:\201\223m\252E\355\243\2218\245\227\204\306>>\330""\235\204\307\307\272\351\221\\\006K\267\253)7\310\305v9\022H1\0044F\313\207\0269\354\207\230cz\342\023\235vA\361\244|\364{\345\267\207\342\3042\241\243\177\212 \252\250\232\016\351q%\264P-\321.\343\r\2727\304cct\254A\203\266\003\027,\251u\313W\n\005\327\320\353\232Q((z\235ui;\366\373p\311\206\251Z\030\325L\333\3641(4\372q\022\237\210\235]#S\035\267\332.\303\221td2Uu\262U\021\262\320;=\t\271\320$\251\336C09uK?4\325\026^\254\250\207\246\361,\247\371\002\037\341\246{\256\366\233\212i\373\210\311\342o\204\266~S\320\234J\005Z\253\302]&\014\253Eo\352\220UQ\247\216\371\356\264\241b\021~0u\322\242S\2356\244i\346\324!K\335\235:V)M\035r\035o\252$Z\335m\030\323\006uc\372\336\311\201\247\216U\246\356Awl\255l\252S-q\304\212\000\356iC%hf\352\026\313\323\247|\241\0361fX\276mL5\360\021\266\000NN\035r\035m\332\030\205\344Qc\215\351\203G|w\304W\255\251C\245\251\366\303\363\264!\204\356\324!B\335i\203\356t\033\034\241-\327\233*\243\247N\265\032\301\314\3241\013 5up\272\220\236\257\033\215\351\203Fu\372\230\243\225\247\017\002\366^L\035\255W\246\r\371G\204PS\014}$X\251>\226\302\016\367\021;\032d\262\261\361Ao}\220vU\313r4\246\266\224\230\024]\365\325\315\t\243\202#\321\034\222\031o\202\265\031.\241%\222\222\251\353\226!\332@r\321\235{r\357\361\343\373\017>\313\321\237e\231U\317\364>\371,\367\330\366\037\330\365\312gj\225\270\313\227\256\323\332{\212\254^(|\271\327\302\277\373\340Q\205\317\221[w\214\322\223\317rO\214Z\335\2605\343)&!F\2669$g_}\226CbG\006 *P1|\225D\037mo~D\262[\336\307\233MW%aU\375\033\244\0370\006\265\244\226<l\255PH.\274\311\202`=\252U-\253\252\273\353\261F\324\344\266gk\246\263\2519.\322\247i\033\036\222\210\332\330-\252\236!r\006\222\260\207l\\t\034\013i\242\350:\252\256\251\236_\200\263@\n\255\000I\305]o\211;\022\224h\370\256\2707v9\336\370A\314)\233Uyo\212\273#\236\221q\304\035\220&\032\225\222\270S\342p@\246\206O\340u\311#%\016nQ\226\020\r\244\004\321\250\210\031\023\260\347\207\344-\3008\337K\311re9@`,\032\002ye[\334\223\227\201\255\342\356Ju\0202\016\032\r\331Jz""\222g\241)0;q/\311\273\251\017\025\205P\341\273\235\250\261*\337\006\254\211\373\340\325\232'\266\351Jy\023Q\000I\342\316e\0017atq\007\356\210\006\201\214h\311\257\031>d\313\250\312\006\200A\266\010\005D\263^\341\273\237(\322g\342%\232R\"\360\332\241\230\365\252\016\306\313\315\246f\r\373\001\002Z\331\320^\024\210Wj\026\231\275P\340\032\241PH\032\273\206O\314\223\036\341\243\005\323\246\3254\204\246\366B\263P\020\216\320bx\262K\377\014\013\256\257\201\371\373p\r\3269\335\240Ur\024]7l\007\323\351\024\226\354(\272\331\300\037!J\305\224.\257\333\036\376\n\210\223\304q\222\001\354\203\375\205\033\226\3210,\235(<_\n\246W\020\214To\350-}\017\352\301_\026\377\266\360\357&\242\036e_\241\000\216m\270t\253W\370\037U\\\006\202\031\376E#\220\305p\271\337u\320\347\"\2761\356z\006\031\023\237\265\210\371\302uK\010\305\022]^\320\305&\241\230|\224,G\365\013|\305\245I\377h# \354\006E/\356\025\325\227\225f\311+\325-\253T\267\265BA^y\021(\235\227-\024\312f\331\334*\233\273e\342\302ek\253li7\361O\333.WLS\207/a\332B\301\254P\275\213;U\313\246\rY\001(>Ue\250]EMJ\312\031@\rYT\324\023\262\250\370\346\005\305\234\0147\251k\326.\031]\245\036po\217\n\022\313\262*\226c9[\210\277a\031\210M2L\017\260\272R\311V\266*7e\341M\021I\377\344\314\243\345\210\240\373\034\262|\031y\2451(Y\222\227\364\002\334\t.HNU0\365\026nj\t\301\\\301z\206jW\214\n\035L$p\215\250\026yd\230M\340\205\374\235\314\206\004\276F\205\275\002\327\272Ew,ng\355-\373\246\255V\360<\274\352\\\\\331\250R\213@\006\273\210`E\362\203+\333F\023\227\252\215\270\264\371\257\272\0077tJ%T\330\016\214\265\355X:b\335\026\007\t\016jn\327\203\035\252u_\\yv\257\212\210\252\"\333 \207U5@NU\257\310\272Z\024L\325r\325\252:\325*\375s\244\226d\2154\250\232\252\256Vu\341\3136\340\314h\010\323T!V\265QmU\367\n\205*2\"G<\372\304\223t3jr\010q\253nWM\355\005\264AyUt5\370,\251P\250\325U\035\001cj#.\301\275\226P\324\260r\034\264\004\343\030\3510Z\324\334\205\340\010/\336\207[\246\250\300_\001aO\267z\325\003\226\272tz\340BV\317\243\311)y!KR(\232\006 \n\352\225""\346AK\226\256\334\226\233\032i'20\351\360\312f\311\347\352\221\264&4\307'U\204\310\242p\244\300\345J\222.6\000\032\323\270\230K'dfP\226\026@\033\317\256@g\\\353\232O\362\266\274\326\026\376\366\274\326M\257\265\355\265\360\274\347\341\277\255\002P\033)\274\340\227\361}\031\216\341;\360D\337\025\020\216Yl\2022>\305\251\327-\030\002^Q\2572\344\341\306!\t4\307\226\230,\r\030\023\364\205?\302\231\006G;\347\035\276x\r\307\002\2305Z[\255-\\\366\032\255\026\376\320\334k\354\3555\221\016\232\000\274&\\\322\340\013\257$\331M\023;i\265\200\244[-ooO\337\363\276\375\326\333?q9\314\276Z:1\373NX\214\346\342T\274\332I\367f\226\203\235\240\326\237Y\013\027\303[Q*Z\211\274\370z'\325\233\371E\230\353\317\\\014\376\025\341\266\030d\372g\336\354\315\315\267\037\004\313\201\032\324z\363K\301]j\364\347\337j70\303^\224\352-\254\240\247\216\317\320\347\007\267\302T\230\356-\\\244\311\317\266\263\337\245zk\277\216\263\257\026O\314\236m\277\037\324B,\361f\373F\220\t\356\204\331\376\314\271\366\327A>0\302lof\276\375(\330\n\236\207[a~\354\201^\372{\230\r\037Ew\342,\317\271\177\342\355\375\267\263\235\267\273\265W\013'f\347\276k\266\213A\2527w\276\375M\230\332_\373U\234\241\367Ns\367\311\340J\360Ux7T\017\016\277}\244.\3348-5A\323hA\2727\367V\273\366\352\374\211\331\013\301F\230\356\317\314\265g\333\317\202\353\341\251\260\004E\035\320\021\251\341fP$E\220N\334\340B\220\353-,\005\017\302e\274\376\220\365\2740>\004\345\245\261\312<4./\027\260\377\035\232\355`C|\267\030dy\216\305`\035\026\331\r\237F\213\321V\224\357-\\\300\322zx%\334\tk\321L\224\213\362\221\332[X\016\362l&y\271\030\270\330j\366p\243\217E\266\271\271\025>\211NFW\242\035\350b1\316\366^{\240\017W\271\037\236\0147\242%t\265bl`-\274\000S\224\242\273\221\036\257\3079\361i#|\026e\242m|\264\332Y\352\354t\232]\365\325\251\023\347\026\332\315@#G\222\316%\025\366\332\235\227\303\017\261|#~\3229\331Y\357\344\306\336\022\376IV\235oo\261#\226\302\\\370g(\014#\007:\336l\257\267?\trp\311l\370I\224#\017\275\333.c\256F\230\017\277\211S\375\231\363m""\025!\361\234<\210\036\014X\353Y\270\036\336\207R6X!2\034\226W\310k\347\177`\201\3760Jz3g\332kh\336\306~\320L\267\337\r\262\360\245t\237\277y\010\007\270\007\003,A\375o\300\005\236\306Kq\2767}\250\177\346l\373wX\347+\350\0001\241\343\235O \303\263\350\006\333dR\327\271\366S\370\333V\3604L\207W\0217\263\321\223x&\276\033\253\211\220\333\024=\347\332\177Ax\317\2229\217\322\354q\025\371,\314$j|\312\336\265\0236\243\"\215\377\354s\177\020\255\223\302\217=o2M~\324\3169\tM\227\367/ou2\204ws\337\375#\270\032$\310C\366R\340\0137\200?\267;\351\316\273]\030\366\235\320\215V\3434!Bg\265\013\363f\020\306\200\271\370a'\323\371\260\213\005\226\203\277 \220OE\0069\320$\200\242\027\276\215/\211\267'\000\366B0\2038\234\005@\244\243\253\221\206\305\256\306F'\333\271\337MQ\230\324\341!^x-\254\311\260\361`\374\034\003\306\341'\274\263\006g\312\207zt\035\016\220\203\237\245\027i\364)\002\373\036\266\2624\010\265\215n\272\217P\323\004\250@,\312\013RC\231\375\314v\347\363\227RG\377\263\340\235\021\320\375\034\301\264\022\326\031\213Owj\307\007\360\225\260\021=\217ouNuJ\335G/\005\004\017\201\373\000T\013l\035y '\256M\305wJ\255E \346\272H\245C\214\037\264\227y\236\264h\324\304\253\275D\315\243(\217\354K\027\237\223\351\260!\307<\361\335\240\261\032\316\220\226\177F\360\357I\360_\307\274\032\\z\233\273\267\3400\363\244E\241\t\037\220\364$>\t\214\001\224\364\346\227\007q\3563V\321\373;q\215\362\310C\211\243\327\330\266\350\310\r\240\365*0\341T\\\354\234\351\256t\335\227\027\277O\211a\232\3526\026\276\205\371\257\303\037\337\355\336~\271\370\362\203\357\241\370U\2305\311C\032V\271\335Y\354\334\352\236\354^\303\367\374\312\017\247\237\201\035\222\354\262\023\273\230\345vw\261\273\325\335\351\326&d\231\336\312E\001\373w\000\336@WJ1\324|\030fF\232\204\242;\260\366\262t\204\007\330B\2228(\\&}>\372M\022b\330#\257\266\177\026q\020~\035}\025\177\322y\324\315~\227#7\377t\177\365\006\202G\204\305\376\t\274\361#\310a\357g\"\207\227.\223\240\347\006\360\3728b\3667\206\342\347\333%\3468\010\036\332l\001[""\372*\372$N\020w)\3704:\027\377\275\233\205\341\030t\301\320zs\313\234\2562\004\002\377\n\036!<\346.\222\034\304'/@q\177\n\377\031\377\276\213-\211\360\276\313\234\2112\336\365\316\033\235\233\235b\367t\027\213\315\276\232#\245c\021\304\326\304\264\375#\210\302\331\366\207\374\301C\370s-I\307OC\266\007\251\255\201X\232\205[\325zs\351`\025\233\270\026\326\344V\247I\361C\213\366\330GZ\300\214S\241\032\376#\316\014\245x\020]\204P\003R\360\307\250\214`\234[\000\370\256s\334=\340(z\003\230w\262s\255\343\"I\001\214\345\324I\263\005\001!\353\222\360\032a\330\213\033\321\177t\362\344Y\231\237\230\365\316\264W\2034\270v\252'\233\327\202\332\030\213\241\024w\017\362\014!\005\373\023>D\343\303&y\317\277C\241\033\321 ,\2273\321/\342\374\253K\023b\013\315Cd\351\n\003\317CA\030F\212\227\263\355m\370Qz\310\202\276\216\362\211\315\366\227\257E\371\t\341x\207\300f`\323\363\355\277rp\310Y\313\300\3431\233\237\227\335\273\370:7>\364\3161\323\341%6g\032\311\033\032\352\035|\\\243\305\327\210\246,\005\177\024N3\221N\234D2\317\366\346G\343\346\t\005\372\000\024/0=]\t=h\351q\234O:\322\341uf\241\177&\260O\223\256\256\260\321\037w\020\361\203&\255\376\030\236uh\331\323\\;\016\033\303\365\327\007\334\203\266*\001\347!\222\321\363\370f\254\203\365\337E8\247z\351\013\234\323g8%\r\221\375\307\251r\240\"\331\350\317\254\206\347\242\277u\340x\224d\2419*\023'\353N\320\256\034%k$\225\205`\226\025\007^5>\260\206jQ%\272\300\354k\021\001\360\006%y\221q\211\210c\020\245\006:\004\252.-\367\027\222\344\n\262\327_\370\005[7\023e#\316\361\247\260\2653\361\345N\256\317s0\026\366\2262\321r\244\002j\226~\031\346\017\0225\322\311\342\353\351\344\005=-\006\277&\230=\235p\2734\361'\354\n\201\232\n\306\265\322\n\231n\3259q0K\301b'\243LO\222\236A-K\366\242\2348xP\231w\374.J\014\270\272\277\372~\374Z\362^\014\3763r\310\371V\303\371\343%\264\177FY\301\255\322\304\235\336\217j\"\225\r\324\306\257=\201w\0162\334\376\t\350\225\362R\"\324\n\030M\"\024\321\330sq\036\354\005\034\264;\323\205\014\307\351\232\274\233U\302G""\222m\322>\210c\346\003\265\237\250\232\374\341d\230\201?\245W\004\245\221\317\375Ac\202/,\034:\303\2715\332\234#\303\215!\346\"\352\237\"\300p'\034\244\005\306\302\361\303\240_1\235\313\214\340i\177\372a\320\301D%\2268\r\260!\030\333\000\013\313\376\367-u\235\3173\026\243\017\250.\236\004\357\357 $\347\342\323q\253\323\354\226_\356~\237\247DH\036p\211\230I\275}\0175\024\261.\n\216z\373~0\007\245\235\246D\277(k\356\347\210\326G\340\317g(\3310\217I\007\277d\030\370Q=\375\244p\332\214\325x\224D\234\022\245\027\027G\362\225\337\"\033\247\217[[\321\004+\010i\006\272\313\207\217\300F\240NVOk\222M\223\207\245\006%e\203K\037\216\355\024#W\236\337\034\213$/)s\324\344\020M\005\336\013+\334c\342\235\355-\275\203j.G\244\tT\205\352\014\t\357\367\331'\307\\x|\337!3\201\237\203N\335\302\226\205/\272H/3Dw\267\270|\245\003\223<\312\224Y\004\261\321\271\203\022!OG\001)R\357S\344IB\361\021\025\327\006p\372'\230\024!M\250#1uBm\237\013F\363\206,\374j=\241\345\321\342\221:\322\014\004\334\356\317\0374\201\216\270\027\025j\222dzK\220\244\267\274\306\345%\267\017\030\207r\017\340\242\267t\t\337\336\002a\243bL\343s\274z\367nW\355-_b\343\311\361\324\240\030\332\330\337\370}w\202\033\2229N\177\327h?\031\234\t\210\323\326\323m\017\216Fb\360\003\250\0265N\266\257SFA\354\334\227E]\021\024\343&\312\272\013\250)\213p\350\305\316v\307\357\336z9\3732\377R\025\237\254\267s\355\247D?\316#;\315\302\354TX\020W\311\t\263~\213\344z\003\354!/\036\233\234\245\274\341\241\026d~\223\316\343$\214\367\370@\001\311\r\243\355\207 \210\371\336[\202\276\246z\t\020]\217T\002\242\037&\302\t\357U\247\235\365\3745z\223\270Zr\350\363o\335\027\337\247\373\223\235\203NoH\032\216\031f\027D5\304\031\236F\304`x\374s\005\204\341Bt/\252\311#e\242\032[Da{\243\017\242.nH\266\362\204\323\264\234\374k>[|\016\354M\213\223\344m\251\321\261\361g\240\367\303\304\202\322\212\247\203#\365\027\0047K\365\226V\371\250j5^F\250\334\352\246\272\351\376X\327\355n\032b\244WYh\026\201\036\227\202\333\302E\223\223\216\325\267C\225\236\004t\254""\3762\351\302:\307{S\370\370S\366)q~>p\335\365\350\275X\235V0\364$\020\014RL\351@\037\221\374\225\260\025%`\014\230\032\262\377U\362\206\303\025\000\275\263\362\277\313\303\266\206\272\270\304\324\223\0008;\211\207\221\260\257I\032-\002Pb-c\347~\367 \222\204\2005b\261\307\2247\361\2441\376\"\302vD\246$\271\177MEl\032\033\334&\2120\371\335\t\362\327\216C\272\016\220\307\332\200:\272\362\014D\320\310\314\001\022)ex\363\370:d)\270r;\226\024\300\342\276\300\361\003K\236\177\315%\217\265Zr\022\226\354u\264\354:l\026\206\\\037\261\224\033\304\3335*\253\016\235P\275C1D\207\320\375\243\305\234\201\0375\3700\345\340C\2527b>\016\360\351\373\241\202\365\302h\252%\367$\302!J\265ef\214\364#\313\355x1\276\323\271\331Q\017\344\344\3642\361\3160+\n1M\010y\220c\257\004V\224\371\341\263\270\241\363q\331\262LN\334\237\314\372? T\343jp\242\334\224\020\350<\343OQ\235\177\316\031Z\215\311\202\364T&\013\343\256\322\243\023\304\237\302\255\361\322\337\240\217\017(\037\312\335CM\023\317,\301\240\257D\037\3055\202\334s\310\260D+%\340>\022G/\203f\362\223\331\007\000\002\254\360L\036aI\022(\344\332%Q\316\266o\023)\032\236\007\001wG\3048u\210\314\253\003\371~\022m\026\254\216\t#\345\362T\177\032\257\233\306\236\207\277\324&4\372y\230\035\261\233\360W\371\243\356\341\217Fi5\241\346sy^v%\336\211\033 m\222\007^\343\235\317\200]7;\352\241\220=\364\263M\370Z\373\237Pi3\232\213M\313\337B\016 \323\322\217\324{m\004\007(y\211\210\347\023\032\362\352\311\332\037\301\260\301\211\365\2328\330\272\215$\230\343\263\022\242\264\327\331\257\226.\207\267\301\236\036rM8T\360\270\322z\327\256\277\272\3723l\342\236\370\021\224PK\360\227dG&\325\nT^\275\326\236FN\217.I\032/.\313+\311\006\257\362zK\227\370\227\337\231\350.\352#\371\220:\346\326W.N\265\337\353d\332\371\350\323\3161L6<@\023\354v\244\036\352\037*-\017\247\335\305\237!\302?\215R\275\343\0066G1[b \345(\n\237\034\326d\343\262\037\210\311\205\377Sb\037\374Y\353'\212~1h\"\245^\2248V\353\361^\270Nz\035t\345-\211c\322\024m\253\031\252\2077\226\372\311\273{=""\260\374B\324\376\033\341\333\321\370\257\324M.u\263c\273iq\025s7\334e\212#\213x\006,.r\250\254!\362G?[f\2178JI\216\006\271F\"\221.D\367\371\377\367\320 \356\352:r+]\016E\316\334\377\233\235N\264\251\370i\352\006\347\316S|\244>\350\312\210\023\245{|\"\224O\210\010\245\331z\364\000\345\177fpbI\254j\205fo\241x\317P\2416\307e!\352\025&\240\311/\2027\350\240\365\265z\326\260\321;TD\035\352I\202\356\327qV\036j~\361_e\221\213~";
+    PyObject *data = __Pyx_DecompressString(cstring, 5702, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (15617 bytes) */
-const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDifferent sizes!Dimension %d is not directEmpty shape tuple for cython.arrayIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid ma_type Invalid mode, expected 'c' or 'fortran', got Invalid option Invalid period Invalid period value Invalid shape in axis <MemoryView of NoneNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Only one of log_prices and percent can be trueOut of bounds on buffer access (axis Period Period cannot be negativePeriod must be positiveStep may not be zero (axis %d)Unable to convert item to objectUnknown price type .>')?add_noteadx, pdi, mdi and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arraylist | tuplemacd, macdsignal, macdhistmacdv, macdvsignal, macdvhistno default __reduce__ due to non-trivial __cinit__ object> out of range!period must be greater than zeroperiod must be positiveppo, pposignal, ppohist, should be greater than 2sigma must be positiveslowk, slowdsrc/mintalib/cython/_common.pxisrc/mintalib/cython/abs.pxisrc/mintalib/cython/alma.pxisrc/mintalib/cython/atr.pxisrc/mintalib/cython/bbands.pxisrc/mintalib/cython/bop.pxisrc/mintalib/cython/cci.pxisrc/mintalib/cython/clag.pxisrc/mintalib/cython/cmf.pxisrc/mintalib/cython/cross.pxisrc/mintalib/cython/curve.pxisrc/mintalib/cython/dema.pxisrc/mintalib/cython/diff.pxisrc/mintalib/cython/dmi.pxisrc/mintalib/cython/donchian.pxisrc/mintalib/cython/ema.pxisrc/mintalib/cython/exp.pxisrc/mintalib/cython/flags.px""isrc/mintalib/cython/hma.pxisrc/mintalib/cython/kama.pxisrc/mintalib/cython/keltner.pxisrc/mintalib/cython/lag.pxisrc/mintalib/cython/log.pxisrc/mintalib/cython/lroc.pxisrc/mintalib/cython/macd.pxisrc/mintalib/cython/macdv.pxisrc/mintalib/cython/mad.pxisrc/mintalib/cython/mav.pxisrc/mintalib/cython/max.pxisrc/mintalib/cython/mfi.pxisrc/mintalib/cython/min.pxisrc/mintalib/cython/ppo.pxisrc/mintalib/cython/price.pxisrc/mintalib/cython/rma.pxisrc/mintalib/cython/roc.pxisrc/mintalib/cython/rsi.pxisrc/mintalib/cython/sar.pxisrc/mintalib/cython/sign.pxisrc/mintalib/cython/slope.pxisrc/mintalib/cython/sma.pxisrc/mintalib/cython/stdev.pxisrc/mintalib/cython/step.pxisrc/mintalib/cython/stoch.pxisrc/mintalib/cython/streak.pxisrc/mintalib/cython/sum.pxisrc/mintalib/cython/tema.pxisrc/mintalib/cython/wma.pxi<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.upperband, middleband, lowerbandASCIIDEMAEMAEllipsisHMAIntEnumMappingProxyType__Pyx_PyDict_NextRefSMASequenceTEMAView.MemoryViewWMAabcabsadd_metadataadd_metadata.<locals>.wrapperadjustadxafafsall__all__allocate_bufferalphaargsarrayasarrayasyncio.coroutinesatravgbasebbands_resultboolbopbroadcast_toccalc_abscalc_adxcalc_almacalc_atrcalc_avgpricecalc_bbandscalc_bbpcalc_bbwcalc_bopcalc_ccicalc_clagcalc_cmfcalc_crossovercalc_crossundercalc_curvecalc_demacalc_diffcalc_dmicalc_donchiancalc_emacalc_expcalc_flagcalc_hmacalc_kamacalc_keltnercalc_kercalc_lagcalc_logcalc_lroccalc_macdcalc_macdvcalc_madcalc_mavcalc_maxcalc_mdicalc_mficalc_midpricecalc_mincalc_natrcalc_pdicalc_ppocalc_pricecalc_qsfcalc_rmacalc_roccalc_rsicalc_rvaluecalc_sarcalc_signcalc_slopecalc_smacalc_stdevcalc_stepcalc_stochcalc_streakcalc_sumcalc_temacalc_trangecalc_tsfcalc_typpricecalc_updowncalc_wclpricecalc_wmacheck_sizeclclag__class____class_getitem__cline_in_tracebackclosecollectionscorrcorrelatecountcur_maxcur_mincurveddenom__dict__diffdivdividedmi_resultdnsdns_arrdonchian""_resultdown_flagdown_leveldtypedtype_is_objectdvdxdyemaema1ema2ema3encode__enter__enumenumerateeperercnterdivernumerrorerrstateerserval__exit__expfastffastkfastnflagflagsfloat_floatflowflow_arrforecastformatfortranfsfullfunc__func__fval__getstate__hihi2highhisthl2hlc3hlcc4hmiidignore__import__indexinsertinterceptinvalid_is_coroutineitemitemsitemsizejkkamakeltner_resultlevellinear_regressionlllmlolo2loglog_priceslowlowerlowerbandmm1m2m3ma_typemacdmacd_resultmacdhistmacdsignalmacdvmacdv_resultmacdvhistmacdvsignalmad__main__max_idxmaxafmdimdmmeanmemviewmetadatamidmiddlemiddlebandmin_idxmintalib.coremode__module__multn1n2n3name__name__namedtuplenannbatrnbdevndim__new__npnsumnumnumpyobjoffsetohlc4oldopenoptionothersoutputoutput_namespackpaddingpcpdipdmpercentperiodphplpopppoppo_resultppohistpposignalprcprependprevpricespsumpvpxpy__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable__quadratic_regression__qualname____reduce____reduce_cython____reduce_ex__registerresultrhormarma_dnsrma_upsrocroundrsumssame_scalesarseries__set_name__setdefault__setstate____setstate_cython__shapeshiftsigmasignsignalsizeslopeslowdslowfslowkslownsmastartstdstepstoch_resultstopstrstreakstructsumsxsx2sx2ysx3sx4sxxsxysysy2__test__thresholdtotaltrtrangetrendtyptypesuulunpackup_flagup_levelupdateupperupperbandupsups_arrvvalidvaluevaluesvolumevx2x2vx2yvxxvxx2vxyvyywwclwdivwherewhere_flagwrapperwsumxxdxd2xsyydyszzs\320\000\033\2301\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240s\250&\260\001\330\004\034\230A\340\004\027\220}\240A\340\004\022\220!\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2106\220\022\2209\230A\330\014\022\220!\2205\230\001\340\010\013\2104\210u\220A\220Q\330\014\023\2201\340\004\013\2101\200\001\330\031+\2501\360\022\000\005\013\210-\220q\230\001\330\004\n\210(\220!\2208\2301\340\004\r\210X\220Q\220e\2301\330\004\014\210G\2202\220V\2302\230Q\330\004\014\210G""\2202\220V\2302\230Q\340\004\r\210^\2301\230G\2408\2501\340\004\013\2101\320\000\036\320\0361\260\036\270q\360\020\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\320\031*\250!\2501\340\004\007\200w\210b\220\002\220#\220W\230B\230a\330\010\016\210j\230\001\320\031*\250!\2501\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\007\200w\210c\220\021\330\010\017\210q\360\016\000\005\023\220'\230\021\340\004\010\210\005\210U\220&\230\006\230f\240A\340\004\010\210\005\210U\220!\2201\330\010\013\2104\210s\220\"\220A\220Q\340\010\013\2102\210S\220\001\330\014\020\220\005\220U\230&\240\006\240f\250A\330\014\r\340\010\013\2102\210S\220\001\330\014\020\220\001\340\010\r\210Q\330\010\016\210a\330\010\016\210a\330\010\017\210r\220\022\2201\330\010\017\210r\220\022\2201\330\010\017\210r\220\022\2201\340\010\013\2102\210R\210q\330\014\r\340\010\016\210b\220\002\220'\230\024\230R\230r\240\021\330\014\017\210s\220$\220c\230\022\2301\230D\240\001\240\021\240!\330\014\021\220\021\330\014\022\220!\330\014\022\220!\330\014\023\2202\220R\220q\330\014\023\2202\220R\220q\330\014\023\2202\220R\220q\340\010\017\210t\2202\220R\220r\230\023\230B\230c\240\022\2402\240R\240q\330\010\017\210t\2202\220R\220r\230\023\230B\230c\240\022\2402\240R\240q\330\010\017\210t\2202\220R\220r\230\023\230B\230c\240\022\2402\240R\240q\340\010\020\220\004\220B\220g\230T\240\022\2408\2501\330\010\025\220S\230\002\230&\240\002\240$\240b\250\001\330\010\017\210t\2206\230\025\230a\230t\2402\240X\250T\260\022\2607\270!\360\006\000\t\014\2107\220#\220Q\330\014\022\220!\2205\230\001\330\014\r\340\010\013\2107\220#\220Q\330\014\022\220!\2205\230\001\330\014\r\340\010\013\2107\220#\220Q\330\014\022\220!\2205\230\001\330\014\r\340\010\013\2107\220#\220Q\330\014\027\220z\240\022\2406\250\023\250B\250b\260\001\330\014\022\220!\2205\230\001\330\014\r\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A""\230Y\240a\330\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220V\2305\240\001\340\004\016\210e\2202\220U\230\"\230D\240\002\240'\250\022\2501\340\004\013\2101\200\001\330\025\026\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\340\004\n\210(\220!\2208\2301\330\004\t\210\031\220!\2206\230\021\330\004\t\210\021\210)\2201\220E\230\021\340\004\n\210\"\210F\220\"\220C\220r\230\024\230S\240\003\2402\240T\250\024\250Q\330\004\n\210\"\210F\220\"\220C\220r\230\024\230S\240\003\2402\240T\250\024\250Q\340\t\013\2109\220A\220W\230A\330\010\016\210d\220\"\220H\230A\230U\240(\250\"\250A\330\010\016\210d\220\"\220H\230A\230U\240(\250\"\250A\330\010\r\210T\220\022\2202\220T\230\021\230$\230b\240\005\240S\250\004\250B\250a\340\004\n\210(\220!\2204\220q\340\004\r\210Z\220q\230\005\230U\240!\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220U\230!\340\004\016\210e\2202\220T\230\022\2302\230R\230w\240b\250\001\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220U\230!\340\004\016\210e\2202\220T\230\022\2307\240\"\240A\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\340\004\016\210a\210v\220Q\340\004\016\210e\2202\220U\230\"\230A\340\004\013\2101\320\000\033\320\0332\260!\360\022\000\005\010\200{\220$\220a\330\010\016\210j\230\001\230\021\340\004 \240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004!\240\022\2408\2501\250F\260!\260:\270Q\340\004\025\220Z\230q\240\006\240e\2501\340\004\031\230""\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\025\220Z\230z\250\032\260:\270Q\340\004\022\220!\340\004\010\210\005\210U\220!\2201\330\010\014\210D\220\004\220E\230\024\230Q\230d\240#\240Q\240d\250%\250q\260\004\260A\340\010\013\2105\220\003\2203\220e\2301\330\014\r\340\010\013\2103\210b\220\001\330\014\021\220\021\340\010\013\2103\210b\220\001\330\014\021\220\021\340\010\013\2101\330\014\025\220T\230\021\230$\230f\240D\250\001\250\021\330\r\016\330\014\021\220\024\220S\230\003\2302\230T\240\022\2406\250\023\250B\250g\260R\260q\340\014\022\220#\220R\220q\340\010\016\210a\210u\220A\340\004\013\2101\320\000!\320!4\260N\300!\360\022\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\320\031*\250!\2501\340\004\007\200w\210b\220\002\220#\220W\230B\230a\330\010\016\210j\230\001\320\031*\250!\2501\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\007\200w\210c\220\021\330\010\017\210q\360\016\000\005\023\220!\340\004\010\210\005\210V\2206\230\026\230u\240F\250&\260\007\260q\340\004\010\210\005\210U\220!\2201\330\010\013\2104\210s\220\"\220A\220Q\340\010\013\2102\210S\220\001\330\014\020\220\005\220V\2306\240\026\240u\250F\260&\270\007\270q\330\014\r\340\010\r\210Q\330\010\016\210a\330\010\017\210r\220\022\2201\330\010\017\210r\220\022\2202\220R\220q\330\010\017\210r\220\022\2202\220R\220r\230\022\2301\330\010\016\210a\330\010\017\210r\220\022\2201\330\010\017\210r\220\022\2201\330\010\020\220\002\220\"\220B\220b\230\001\340\010\013\2102\210R\210q\330\014\r\340\010\013\2102\210R\210q\330\014\021\220\022\2202\220Q\330\014\021\220\022\2201\220B\220b\230\001\330\014\022\220#\220R\220q\330\014\021\220\021\330\014\022\220!\330\014\023\2201\330\014\023\2204\220r\230\021\330\014\023\2204\220r\230\021\330\014\022\220!\330\014\023\2203\220b\230\001\330\014\023\2203\220b\230\001\330\014\024\220D\230\002\230!\340\010\017\210t\2202\220R\220r\230\023\230B\230c\240""\022\2402\240R\240q\330\010\017\210t\2202\220R\220r\230\023\230B\230c\240\022\2402\240R\240q\330\010\017\210t\2202\220R\220r\230\023\230B\230c\240\022\2402\240R\240q\330\010\020\220\004\220B\220b\230\002\230#\230R\230t\2402\240R\240r\250\021\330\010\020\220\005\220R\220r\230\022\2304\230r\240\023\240B\240b\250\002\250!\330\010\021\220\024\220R\220r\230\022\2304\230r\240\024\240R\240r\250\022\2501\340\010\020\220\006\220b\230\004\230B\230e\2402\240Q\330\010\020\220\001\220\025\220b\230\004\230B\230d\240\"\240F\250\"\250I\260V\2702\270W\300A\330\010\020\220\001\220\024\220R\220v\230R\230u\240B\240f\250B\250i\260v\270R\270w\300a\330\010\024\220A\220S\230\002\230&\240\002\240#\240R\240v\250R\250u\260B\260e\2702\270R\270w\300a\360\006\000\t\014\2107\220#\220Q\330\014\022\220!\2205\230\001\330\014\r\340\010\013\2107\220#\220Q\330\014\021\220\022\2202\220Q\330\014\027\220z\240\022\2406\250\022\2502\250R\250v\260R\260r\270\022\2701\330\014\022\220!\2205\230\001\330\014\r\340\004\013\2101\200\001\330\026\027\360\020\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220F\230!\330\004\013\2108\2201\220F\230!\340\004\r\210R\210r\220\025\220b\230\002\230\"\230E\240\022\2401\340\004\013\2101\200\001\360\022\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220F\230!\340\004\r\210R\210r\220\025\220b\230\001\340\004\013\2101\320\000\030\230\001\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2701\200A\330\010\014\210L\320\030(\250\001\250\021\330\010\017\210q\320\000\034\230A\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240s\250&\260\001\330\004\034\230A\340\004\027\220}\240A\330\004\022\220!\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2106\220\022\2209\230A\330\014\022\220!\2205\230\001\340\010\013\2104\210u\220A\220Q\330\014\023\2201\340\004\013\2101\200\001\330\032\033\360\020\000\005\r\210H\220A\220V\2301\230I\240Q\330\004\014\210H\220A\220V\2301\230H""\240A\330\004\016\210f\220B\220g\230R\230q\340\004\r\210_\230A\230W\240H\250A\340\004\013\2101\320\000\024\220L\240\r\250^\2701\360\006\000\005\010\200{\220'\230\021\330\010\025\220T\230\021\230!\340\004\007\200}\220G\2301\330\010\027\220u\230A\230Q\340\004\023\2201\220K\230|\250=\270\001\330\004\017\210r\220\023\220B\220d\230#\230U\240(\250&\260\003\2603\260b\270\007\270q\340\004\005\360\010\000\005\014\2101\320\000\025\220Q\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\013\210:\220Q\220f\230F\240%\240q\340\t\013\2109\220A\220T\230\021\330\010\017\210v\220R\220v\230S\240\005\240R\240q\330\010\021\220\030\230\021\230%\230q\340\004\013\2101\320\000\025\220Q\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\330\004\r\210R\210x\220q\230\006\230a\230{\250!\340\004\013\210:\220Q\220f\230E\240\027\250\001\340\t\013\2109\220A\220W\230J\240h\250a\330\010\020\220\002\220\"\220F\230\"\230E\240\022\2405\250\003\2505\260\002\260%\260r\270\021\330\010\016\210h\220a\220v\230Q\330\010\016\210h\220a\220x\230q\340\010\021\220\024\220R\220q\340\004\013\2101\200\001\330\027'\240~\260Q\360\024\000\005!\240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004!\240\022\2408\2501\250F\260!\260:\270Q\340\004\025\220Z\230q\240\006\240e\2501\340\004\t\210\030\220\021\220&\230\001\330\004\t\210\030\220\021\220%\220q\340\t\013\2109\220A\220W\230A\330\010\020\220\004\220C\220v\230R\230t\2402\240S\250\002\250!\340\004\014\210H\220A\220W\230A\330\004\014\210H\220A\220W\230A\340\004\r\210\\\230\021\230'\240\021\340\004\013\2101\200\001\330\025!\240\034\250Q\360\032\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220H\230A\340\t\013\2109\220A\220W\230A\330\010\016\210d\220#\220U\230""\"\230F\240\"\240A\340\004\r\210X\220Q\220e\2301\330\004\013\2104\210r\220\021\340\004\r\210Z\220q\230\005\230X\240Q\340\004\013\2101\320\000\025\320\025%\240Q\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2708\3007\310!\320\000\025\220Q\360\020\000\005\016\210[\230\001\230\021\330\004\r\210X\220Q\220h\230a\340\004\013\2101\320\000\025\220Q\360\020\000\005\016\210X\220Q\220h\230g\240W\250A\340\004\013\2101\320\000\025\220Q\360\020\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\032\230\"\230E\240\021\240&\250\002\250!\330\004\032\230\"\230E\240\021\240&\250\002\250!\330\004\031\230\021\330\004\031\230\021\340\004\024\220J\230j\250\001\330\004\022\220!\340\004\010\210\005\210U\220!\2201\330\010\014\210B\210a\210q\330\010\013\2102\210S\220\002\220$\220c\230\023\230A\330\014\021\220\022\2202\220Q\330\014\017\210q\220\005\220V\2303\230b\240\t\250\021\330\014\017\210q\220\005\220Q\220f\230C\230r\240\031\250!\330\010\r\210Q\340\004#\2408\2501\250I\260Q\330\004#\2408\2501\250I\260Q\340\004\024\220I\230Q\330\004\010\210\005\210U\220!\2201\330\010\014\210G\2201\220A\330\010\014\210G\2201\220A\330\010\013\2102\210S\220\002\220$\220b\230\003\2302\230T\240\022\2402\240Q\330\014\022\220!\2205\230\006\230c\240\026\240s\250$\250b\260\002\260\"\260A\330\r\017\210s\220\"\220D\230\002\230#\230Q\330\014\022\220!\2205\230\001\340\004\013\2101\320\000\025\220Q\360\020\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230j\250\001\330\004\024\220J\230j\250\001\340\004\030\230\r\240]\260!\340\004\026\220a\330\004\022\220'\230\021\340\004\010\210\005\210U\220!\2201\330\010\014\210B\210a\210q\340\010\013\2105\220\001\220\021\330\014\r\340\010\014\210E\220\022\2202\220T\230\021\340\010\013\2105\220\001\220\021\330\014\r\340\010\025\220U\230!\2301\330\010\021\220\021\340""\010\016\210f\220C\220q\330\014\017\210t\2202\220Q\220d\230!\2301\230A\340\014\017\210u\220A\220Q\330\020\021\340\014\020\220\005\220R\220r\230\024\230Q\340\014\030\230\005\230Q\230a\230q\240\001\330\014\024\220F\230\"\230I\240[\260\001\340\014\017\210t\2205\230\001\230\021\330\020\035\230U\240!\2401\330\020\031\230\021\340\010\016\210a\210u\220A\340\004\013\2101\320\000\025\220Q\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230k\250\021\330\004\022\220+\230Q\340\004\007\200w\210b\220\001\330\010\021\220\023\220A\220Q\330\010\020\220\001\220\021\340\004\010\210\005\210U\220!\2208\2301\330\010\013\2105\220\002\220!\2204\220r\230\021\230\"\230B\230a\330\010\013\2102\210R\210s\220$\220c\230\022\2301\330\014\022\220\"\220B\220c\230\022\2301\330\014\022\220!\2202\220R\220y\240\001\340\004\013\2101\320\000\030\320\030-\250Q\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\027\220\177\240o\260Q\330\004\030\230\014\240A\330\004\022\220!\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2106\220\022\220<\230q\330\014\023\2201\330\r\023\2203\220m\2401\330\014\023\2201\340\010\016\210a\210u\220A\340\010\013\2106\220\023\220A\330\014\023\2201\340\004\013\2101\320\000\035\230Q\360\006\000\005\037\230b\240\010\250\001\250\026\250q\340\004\025\220R\220q\340\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\330\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\330\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\027\220q\330\004\022\220!\340\004\010\210\005\210U\220!\2201\330\010\017\210r\220\021\220!\340\010\013\2105\220\002\220!\330\014\024\220B\220a\220q\330\r\022\220#\220Q\330\014\024\220B\220a\220q\340\014\024""\220B\220a\220q\340\010\016\210a\210u\220A\340\004\013\2101\320\000\025\220Q\360\020\000\005\013\210-\220q\230\001\330\004\n\210(\220!\2205\230\001\330\004\n\210(\220!\2205\230\010\240\002\240!\340\t\013\2109\220A\220W\230A\330\010\022\220$\220b\230\005\230R\230q\340\004\013\2101\200\001\330\025%\240Q\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\t\013\2109\220A\220W\230J\240h\250a\330\010\022\220$\220b\230\007\230s\240&\250\002\250'\260\022\2601\340\004\013\2101\200\001\330\025%\240Q\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\t\013\2109\220A\220W\230J\240h\250a\330\010\022\220&\230\002\230'\240\022\2407\250\"\250A\340\004\013\2101\320\000\025\320\025%\240Q\360\020\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270h\300g\310Q\200\001\330\027\035\230Q\360\032\000\005\010\200u\210C\210q\330\010\017\210q\340\004\007\200u\210D\220\010\230\010\240\007\240q\330\010\022\220\"\220H\230A\230V\2401\240G\2501\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\340\010\016\210j\230\001\320\031.\250a\250q\340\004\013\2101\320\000\025\220Q\360\006\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\360\006\000\005\026\220Q\330\004\022\220'\230\033\240A\340\004\010\210\005\210U\220!\2201\330\010\014\210B\210a\210q\340\010\013\2102\210S\220\001\330\014\025\220Q\330\014\022\220!\340\014\024\220A\330\014\021\220\021\340\010\013\2106\220\022\2201\330\014\022\220\"\220A\220R""\220r\230\021\330\014\025\220Q\340\010\013\2106\220\023\220A\330\014\023\2203\220b\230\001\330\014\022\220!\330\014\020\220\005\220U\230!\2302\230R\230w\240b\250\003\2502\250R\250q\330\020\033\2305\240\001\240\022\2401\240C\240r\250\021\330\014\022\220!\2205\230\004\230B\230a\340\004\013\2101\320\000\025\220Q\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\330\004\r\210R\210x\220q\230\006\230a\230{\250!\340\004\013\2105\220\002\220$\220b\230\007\230r\240\021\330\004\017\210t\2202\220W\230B\230b\240\005\240Q\240b\250\005\250Q\250e\2608\2702\270Q\340\004 \240\001\330\004\025\220T\230\026\230q\240\001\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\024\220K\230q\330\004\027\220|\2401\330\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\014\210D\220\001\220\021\340\010\013\2105\220\001\220\021\330\014\023\2201\330\014\023\2201\330\014\024\220A\330\014\r\340\010\013\2102\210R\210q\330\014\024\220A\330\r\017\210r\220\021\330\014\024\220A\340\010\021\220\021\340\010\013\2106\220\022\2201\330\014\022\220$\220a\220r\230\022\2301\330\014\017\210t\2202\220Q\330\020\030\230\001\330\021\025\220R\220q\330\020\030\230\001\330\014\025\220Q\340\010\013\2106\220\023\220A\330\014\017\210u\220B\220a\330\020\026\220a\220u\230F\240\"\240F\250#\250T\260\022\2605\270\002\270!\330\021\026\220b\230\001\330\020\026\220a\220u\230A\340\004\013\2101\200\001\330\026'\320'=\270Q\360\006\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\007\200v\210S\220\001\330\010\016\210j\230\001\230\021\340\004\010\210\007\210s\220'\230\022\2301\330\004\010\210\007\210r\220\021\330\004\010\210\002\210&\220\001\220\021\220\"\220D\230\001\230\023\230B\230b\240\003\2403\240c\250\023\250B\250b\260\001\260\022\2604\260t\2705\300\005\300Q\300a\330\004\010\210\002\210\"\210A\210T\220\021\340\004\016""\210b\220\005\220Q\220g\230R\230s\240\"\240A\330\004\r\210R\210z\230\021\230(\240#\240Q\330\004\r\210R\210w\220a\220x\230s\240!\340\004\013\2101\200\001\360\006\000\005\n\210\031\220!\340\004\025\220R\220q\330\004\010\210\005\210Q\330\010\013\2101\210F\220#\220Q\330\017\025\220Z\230q\240\001\330\004\013\2101\200\001\330\025&\240a\360\022\000\005!\240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004\025\220Z\230q\240\006\240a\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\025\220[\240\n\250!\330\004\025\220Z\230z\250\032\260;\270k\310\021\340\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\013\2103\210c\220\021\330\014\020\220\005\220T\230\021\340\010\014\210E\220\024\220Q\220d\230#\230Q\230a\340\010\013\2105\220\003\2203\220c\230\024\230S\240\003\2401\330\014\r\340\010\016\210f\220C\220r\230\030\240\021\330\010\016\210f\220C\220r\230\030\240\021\360\006\000\t\014\2106\220\022\2202\220T\230\023\230B\230a\330\014\020\220\005\220T\230\030\240\024\240T\250\026\250q\340\r\023\2202\220R\220t\2303\230b\240\001\330\014\020\220\005\220T\230\030\240\024\240T\250\025\250a\250q\340\010\016\210a\210u\220A\360\010\000\t\014\2106\220\023\220A\340\014\017\210s\220\"\220A\330\020\024\220E\230\024\230X\240U\250%\250u\260A\260Q\340\020\024\220E\230\024\230X\240U\250%\250v\260Q\360\006\000\r\024\2203\220c\230\023\230B\230a\360\006\000\r\020\210v\220R\220q\330\020\023\2204\220r\230\021\330\024\032\230!\330\020\023\2203\220b\230\001\330\024\031\230\021\330\024\032\230!\330\014\017\210v\220R\220q\330\020\023\2204\220r\230\021\330\024\032\230!\330\020\023\2203\220b\230\001\330\024\031\230\021\330\024\032\230!\340\010\013\2106\220\024\220S\230\002\230!\330\014\021\220\021\340\004\013\2101\200\001\330\026\"\240,\250a\360\032\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220H\230A\330\004\013\2105\220\002\220!\340\004\r\210X\220Q\220f\230A\330\004\013\2105\220\002\220!\340\004\r\210[""\230\001\230\026\230x\240q\340\004\013\2101\320\000\026\220a\360\020\000\005\016\210[\230\001\230\030\240\030\250\021\330\004\r\210X\220Q\220h\230a\340\004\013\2101\320\000\026\220a\360\026\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230k\250\021\330\004\022\220+\230Q\340\004\007\200w\210b\220\001\330\010\021\220\023\220A\220Q\330\010\020\220\001\220\021\340\004\010\210\005\210U\220!\2208\2301\330\010\013\2105\220\002\220!\2204\220r\230\021\230\"\230B\230a\330\010\013\2102\210R\210r\220\024\220S\230\002\230!\330\014\026\220d\230!\2302\230R\230q\330\014\022\220!\2202\220R\220y\240\001\340\004\013\2101\320\000\026\220a\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230l\250!\340\004\022\220!\340\004\007\200w\210b\220\002\220#\220W\230C\230q\330\010\016\210j\230\001\230\031\240!\2401\340\004\010\210\005\210U\220!\2208\2301\330\010\013\2105\220\002\220!\2204\220r\230\021\230\"\230B\230a\330\010\017\210s\220\"\220A\330\010\016\210a\210u\220A\340\004\013\2101\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\340\t\013\2109\220A\220X\230Q\330\010\021\220\022\2204\220q\230\001\340\004\013\2101\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\001\330\004\027\220q\330\004\022\220!\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2106\220\022\2201\330\014\023\2201\330\r\023\2202\220Q\330\014\023\2201\330\r\023\2203\220a\330\014\023\2201\340\010\016\210a\210u\220A\340\004\013\2101\200\001\360\016\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\022\220!\340\004\010\210""\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2106\220\022\2201\330\014\022\220!\2205\230\001\330\r\023\2203\220a\330\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\n\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\031\230\021\340\004\022\220!\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2106\220\022\2201\330\014\026\220a\340\014\025\220Q\340\010\016\210a\210u\220A\340\004\013\2101\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\340\004\r\210R\210t\2201\220A\340\004\013\2101\200\001\330\026%\240]\260!\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\037\230x\240q\250\004\250A\340\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\004\230C\230v\240R\240q\330\004\030\230\004\230C\230v\240R\240q\330\004\030\230\001\330\004\030\230\001\330\004\027\220q\330\004\025\220Q\340\004\022\220!\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\330\010\r\210S\220\001\220\021\340\010\013\2105\220\001\220\027\230\003\2305\240\001\240\021\330\014\r\340\010\021\220\026\220r\230\023\230C\230v\240R\240x\250s\260!\340\010\013\2105\220\001\220\021\330\014\023\2201\330\r\021\220\025\220a\220q\330\014\024\220F\230#\230V\2402\240Q\340\010\016\210a\210u\220A\340\004\013\2101\320\000\026\220l\240!\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\014\240A\330\004\025\220X\230Q\340\004\022\220!\340\004\010\210\005\210U\220!\2201\330\010\017\210w\220b\230\001\230\024\230Q\340\010\013\2105\220\001\220\027\230\003\2305\240\001\240\021\330\014\r\340\010\014\210E\220\025\220b\230\013\2405\250\002\250!\340\010\013\2106\220\022\2201\330\014\024\220A\330\r\023\2202\220Q\330\014\024\220A\340\010\016\210a\210u\220A\340""\004\013\2101\200\001\330\030(\250\001\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\004\r\210]\230!\2307\240(\250!\340\004\013\2101\320\000\027\220q\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2701\200\001\330\027#\240<\250q\360\032\000\005\r\210F\220!\2201\340\004\013\2108\2201\220G\2301\330\004\013\2108\2201\220G\2301\330\004\n\210(\220!\2208\2307\240!\330\004\r\210U\220\"\220F\230\"\230D\240\002\240!\340\004\r\210X\220Q\220g\230Q\330\004\013\2106\220\022\2201\340\004\r\210\\\230\021\230'\240\030\250\021\340\004\013\2101\320\000\027\220q\360\006\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270a\320\000\027\220q\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220K\230{\250!\340\004\025\220[\240\001\340\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\014\210B\210a\210q\340\010\013\2102\210S\220\001\330\014\025\220Q\330\014\022\220!\330\014\023\2202\220R\220q\340\014\024\220A\330\014\021\220\026\220q\340\010\013\2106\220\022\2201\330\014\020\220\002\220!\2202\220R\220q\330\014\025\220Q\330\014\022\220!\330\014\023\2202\220R\220q\340\010\013\2106\220\023\220A\330\014\023\2204\220r\230\026\230r\240\023\240B\240c\250\022\2506\260\022\2601\330\014\022\220$\220e\2301\230H\240D\250\003\2507\260!\330\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\022\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220B\220a\330\004\022\220!\340\004\010\210\005\210U\220!\2208\2301\330\010\014\210B\210a\210r\220\022\2201\330\010\016\210a\210u\220A\340\004\013\2101""\200\001\360\024\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\004\230B\230a\330\004\030\230\001\330\004\026\220a\330\004\030\230\001\340\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2104\210u\220A\220Q\330\014\025\220Q\330\014\017\210v\220S\230\001\330\020\031\230\021\330\020\026\220f\230B\230a\340\020\027\220v\230S\240\006\240b\250\001\340\010\013\2106\220\023\220A\330\014\022\220!\2205\230\001\340\004\013\2101\200\001\330%&\360$\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\004\230C\230w\240b\250\001\330\004\027\220t\2302\230Q\330\004\030\230\001\330\004\026\220i\230q\330\004\026\220a\340\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2104\210u\220A\220Q\330\014\025\220Q\340\014\017\210u\220A\220Q\330\020\026\220a\330\020\026\220a\330\020\026\220a\330\021\022\330\020\026\220f\230B\230d\240\"\240A\330\020\026\220d\230\"\230D\240\002\240!\330\020\026\220d\230\"\230A\340\020\027\220v\230S\240\006\240b\250\001\340\010\013\2106\220\023\220A\330\014\022\220!\2205\230\001\340\004\013\2101\200\001\330\026\027\360\024\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\014\240L\260\001\340\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\020\220\002\220!\2201\340\010\013\2105\220\001\220\021\330\014\r\340\010\013\2105\220\003\2201\330\014\023\2201\330\014\024\220A\340\014\025\220Q\340\010\013\2106\220\023\220A\330\014""\023\2201\340\010\016\210a\210u\220A\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220L\240\001\330\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\014\210B\210a\210q\340\010\013\2102\210S\220\001\330\014\024\220A\330\014\025\220Q\340\014\023\2201\330\014\024\220A\340\010\013\2106\220\022\2201\330\014\024\220B\220a\220r\230\022\2301\330\014\025\220Q\340\010\013\2106\220\023\220A\330\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220L\240\001\330\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\014\210B\210a\210q\340\010\013\2102\210S\220\001\330\014\024\220A\330\014\025\220Q\340\014\023\2201\330\014\024\220A\340\010\013\2106\220\022\2201\330\014\024\220B\220a\220r\230\022\2301\330\014\025\220Q\340\010\013\2106\220\023\220A\330\014\022\220!\2205\230\005\230R\230q\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\027\220w\230c\240\027\250\002\250#\250R\250q\330\004\024\220L\240\n\250!\330\004\022\220+\230Q\340\004\010\210\005\210U\220!\2201\330\010\014\210B\210a\210q\340\010\013\2102\210S\220\001\330\014\025\220Q\330\014\024\220A\330\014\024\220F\230\"\230A\340\014\023\2207\230!\330\014\024\220A\340\010\013\2106\220\022\2201\330\014\024\220A\330\014\024\220B\220a\220r\230\022\2301\330\014\025\220Q\340\010\013\2106\220\023\220A\330\014\022\220!\2205\230\005\230R\230q\340\004""\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220O\2401\330\004\022\220'\230\036\240q\340\004\010\210\005\210U\220!\2207\230\"\230C\230q\330\010\014\210B\210a\210q\340\010\013\2108\2203\220b\230\002\230'\240\022\2401\330\014\017\210t\2202\220S\230\001\330\020\032\230!\330\020\032\230!\340\014\026\220a\330\014\027\220q\330\014\020\220\005\220U\230!\2302\230R\230w\240b\250\003\2502\250R\250q\330\020\024\220B\220a\220q\330\020\023\2204\220u\230A\230S\240\004\240D\250\002\250#\250Q\330\024\036\230a\330\024\036\230a\340\010\016\210a\210u\220A\340\004\013\2101\200\001\360\010\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220O\2401\330\004\022\220'\230\036\240q\340\004\010\210\005\210U\220!\2207\230\"\230C\230q\330\010\014\210B\210a\210q\340\010\013\2108\2203\220b\230\002\230'\240\022\2401\330\014\017\210t\2202\220S\230\001\330\020\032\230!\330\020\032\230!\340\014\026\220a\330\014\027\220q\330\014\020\220\005\220U\230!\2302\230R\230w\240b\250\003\2502\250R\250q\330\020\024\220B\220a\220q\330\020\023\2204\220u\230A\230S\240\004\240D\250\002\250#\250Q\330\024\036\230a\330\024\036\230a\340\010\016\210a\210u\220A\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\t\210\030\220\021\220(\230%\230q\240\006\240a\240q\330\004\t\210\030\220\021\220(\230!\330\004\n\210\"\210C\210t\2202\220Q\340\004\r\210X\220Q\220d\230%\230u\240E\250\021\250!\340\004\013\2101\200\001\330\025(\250\001\360\026\000\005\010\200x\210s\220!\330\010\020\220\010\230\001\230\030\240\021\340\t\021\220\023\220A\330\010\021\220\030\230\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\030\230""\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\030\230\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\031\230!\2308\2401\340\t\021\220\023\220A\330\010\021\220\031\230!\2308\2401\340\010\016\210j\230\001\320\031+\2501\250A\340\004\013\2101O";
+    #else /* compression: none (15706 bytes) */
+const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDifferent sizes!Dimension %d is not directEmpty shape tuple for cython.arrayIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid ma_type Invalid mode, expected 'c' or 'fortran', got Invalid option Invalid period Invalid period value Invalid shape in axis <MemoryView of NoneNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Only one of log_prices and percent can be trueOut of bounds on buffer access (axis Period Period cannot be negativePeriod must be positiveStep may not be zero (axis %d)Unable to convert item to objectUnknown price type .>')?add_noteadx, pdi, mdi and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arraylist | tuplemacd, macdsignal, macdhistmacdv, macdvsignal, macdvhistno default __reduce__ due to non-trivial __cinit__ object> out of range!period must be greater than zeroperiod must be positiveppo, pposignal, ppohist, should be greater than 2sigma must be positiveslowk, slowdsrc/mintalib/cython/_common.pxisrc/mintalib/cython/abs.pxisrc/mintalib/cython/alma.pxisrc/mintalib/cython/atr.pxisrc/mintalib/cython/bbands.pxisrc/mintalib/cython/bop.pxisrc/mintalib/cython/cci.pxisrc/mintalib/cython/clag.pxisrc/mintalib/cython/cmf.pxisrc/mintalib/cython/cross.pxisrc/mintalib/cython/curve.pxisrc/mintalib/cython/dema.pxisrc/mintalib/cython/diff.pxisrc/mintalib/cython/dmi.pxisrc/mintalib/cython/donchian.pxisrc/mintalib/cython/ema.pxisrc/mintalib/cython/exp.pxisrc/mintalib/cython/flags.px""isrc/mintalib/cython/hma.pxisrc/mintalib/cython/kama.pxisrc/mintalib/cython/keltner.pxisrc/mintalib/cython/lag.pxisrc/mintalib/cython/log.pxisrc/mintalib/cython/lroc.pxisrc/mintalib/cython/macd.pxisrc/mintalib/cython/macdv.pxisrc/mintalib/cython/mad.pxisrc/mintalib/cython/mav.pxisrc/mintalib/cython/max.pxisrc/mintalib/cython/mfi.pxisrc/mintalib/cython/min.pxisrc/mintalib/cython/ppo.pxisrc/mintalib/cython/price.pxisrc/mintalib/cython/rma.pxisrc/mintalib/cython/roc.pxisrc/mintalib/cython/rsi.pxisrc/mintalib/cython/sar.pxisrc/mintalib/cython/sign.pxisrc/mintalib/cython/slope.pxisrc/mintalib/cython/sma.pxisrc/mintalib/cython/stdev.pxisrc/mintalib/cython/step.pxisrc/mintalib/cython/stoch.pxisrc/mintalib/cython/streak.pxisrc/mintalib/cython/sum.pxisrc/mintalib/cython/tema.pxisrc/mintalib/cython/wma.pxi<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.upperband, middleband, lowerbandASCIIDEMAEMAEllipsisHMAIntEnumMappingProxyType__Pyx_PyDict_NextRefSMASequenceTEMAView.MemoryViewWMAabcabsadd_metadataadd_metadata.<locals>.wrapperadjustadxafafsall__all__allocate_bufferalphaargsarrayasarrayasyncio.coroutinesatravgbasebbands_resultboolbopbroadcast_toccalc_abscalc_adxcalc_almacalc_atrcalc_avgpricecalc_bbandscalc_bbpcalc_bbwcalc_bopcalc_ccicalc_clagcalc_cmfcalc_crossovercalc_crossundercalc_curvecalc_demacalc_diffcalc_dmicalc_donchiancalc_emacalc_expcalc_flagcalc_hmacalc_kamacalc_keltnercalc_kercalc_lagcalc_logcalc_lroccalc_macdcalc_macdvcalc_madcalc_mavcalc_maxcalc_mdicalc_mficalc_midpricecalc_mincalc_natrcalc_pdicalc_ppocalc_pricecalc_qsfcalc_rmacalc_roccalc_rsicalc_rvaluecalc_sarcalc_signcalc_slopecalc_smacalc_stdevcalc_stepcalc_stochcalc_streakcalc_sumcalc_temacalc_trangecalc_tsfcalc_typpricecalc_updowncalc_wclpricecalc_wmacheck_sizeclclag__class____class_getitem__cline_in_tracebackclosecollectionscorrcorrelatecountcur_maxcur_mincurveddenom__dict__diffdivdividedmi_resultdnsdns_arrdonchian""_resultdown_flagdown_leveldtypedtype_is_objectdvdxdyemaema1ema2ema3encode__enter__enumenumerateeperercnterdivernumerrorerrstateerserval__exit__expfastffastkfastnflagflagsfloat_floatflowflow_arrforecastformatfortranfsfullfunc__func__fval__getstate__hihi2highhisthl2hlc3hlcc4hmiidignore__import__indexinsertinterceptinvalid_is_coroutineitemitemsitemsizejkkamakeltner_resultlevellinear_regressionlllmlolo2loglog_priceslowlowerlowerbandmm1m2m3ma_typemacdmacd_resultmacdhistmacdsignalmacdvmacdv_resultmacdvhistmacdvsignalmad__main__max_idxmaxafmdimdmmeanmemviewmetadatamidmiddlemiddlebandmin_idxmintalib.coremode__module__multn1n2n3name__name__namedtuplenannbatrnbdevndim__new__npnsumnumnumpyobjoffsetohlc4oldopenoptionothersoutputoutput_namespackpaddingpcpdipdmpercentperiodphplpopppoppo_resultppohistpposignalprcprependprevpricespsumpvpxpy__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable__quadratic_regression__qualname____reduce____reduce_cython____reduce_ex__registerresultrhormarma_dnsrma_upsrocroundrsumssame_scalesarseries__set_name__setdefault__setstate____setstate_cython__shapeshiftsigmasignsignalsizeslopeslowdslowfslowkslownsmastartstdstepstoch_resultstopstrstreakstructsumsxsx2sx2ysx3sx4sxxsxysysy2__test__thresholdtotaltrtrangetrendtyptypesuulunpackup_flagup_levelupdateupperupperbandupsups_arrvvalidvaluevaluesvolumevx2x2vx2yvxxvxx2vxyvyywwclwdivwherewhere_flagwrapperwsumxxdxd2xsyydyszzs\320\000\033\2301\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240s\250&\260\001\330\004\034\230A\340\004\027\220}\240A\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220y\240\001\330\020\026\220a\220u\230A\340\014\017\210t\2205\230\001\230\021\330\020\027\220q\340\004\013\2101\200\001\330\031+\2501\360\022\000\005\013\210-\220q\230\001\330\004\n\210(\220!\2208\2301\340\004\r\210X\220Q\220e\2301\330\004\014\210G\2202\220V\2302\230Q\330\004""\014\210G\2202\220V\2302\230Q\340\004\r\210^\2301\230G\2408\2501\340\004\013\2101\320\000\036\320\0361\260\036\270q\360\020\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\320\031*\250!\2501\340\004\007\200w\210b\220\002\220#\220W\230B\230a\330\010\016\210j\230\001\320\031*\250!\2501\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\007\200w\210c\220\021\330\010\017\210q\360\016\000\005\023\220'\230\021\340\004\010\210\005\210U\220&\230\006\230f\240A\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\017\210t\2203\220b\230\001\230\021\340\014\017\210r\220\023\220A\330\020\024\220E\230\025\230f\240F\250&\260\001\330\020\021\340\014\017\210r\220\023\220A\330\020\024\220A\340\014\021\220\021\330\014\022\220!\330\014\022\220!\330\014\023\2202\220R\220q\330\014\023\2202\220R\220q\330\014\023\2202\220R\220q\340\014\017\210r\220\022\2201\330\020\021\340\014\022\220\"\220B\220g\230T\240\022\2402\240Q\330\020\023\2203\220d\230#\230R\230q\240\004\240A\240Q\240a\330\020\025\220Q\330\020\026\220a\330\020\026\220a\330\020\027\220r\230\022\2301\330\020\027\220r\230\022\2301\330\020\027\220r\230\022\2301\340\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\340\014\024\220D\230\002\230'\240\024\240R\240x\250q\330\014\031\230\023\230B\230f\240B\240d\250\"\250A\330\014\023\2204\220v\230U\240!\2404\240r\250\030\260\024\260R\260w\270a\360\006\000\r\020\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\033\230:\240R\240v\250S\260\002\260\"\260A\330\020\026\220a\220u\230A\330\020\021\340\004\013\2101\200\001\360\016\000\005\014""\2102\210X\220Q\220f\230A\230Y\240a\330\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220V\2305\240\001\340\004\016\210e\2202\220U\230\"\230D\240\002\240'\250\022\2501\340\004\013\2101\200\001\330\025\026\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\340\004\n\210(\220!\2208\2301\330\004\t\210\031\220!\2206\230\021\330\004\t\210\021\210)\2201\220E\230\021\340\004\n\210\"\210F\220\"\220C\220r\230\024\230S\240\003\2402\240T\250\024\250Q\330\004\n\210\"\210F\220\"\220C\220r\230\024\230S\240\003\2402\240T\250\024\250Q\340\t\013\2109\220A\220W\230A\330\010\016\210d\220\"\220H\230A\230U\240(\250\"\250A\330\010\016\210d\220\"\220H\230A\230U\240(\250\"\250A\330\010\r\210T\220\022\2202\220T\230\021\230$\230b\240\005\240S\250\004\250B\250a\340\004\n\210(\220!\2204\220q\340\004\r\210Z\220q\230\005\230U\240!\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220U\230!\340\004\016\210e\2202\220T\230\022\2302\230R\230w\240b\250\001\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220U\230!\340\004\016\210e\2202\220T\230\022\2307\240\"\240A\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\340\004\016\210a\210v\220Q\340\004\016\210e\2202\220U\230\"\230A\340\004\013\2101\320\000\033\320\0332\260!\360\022\000\005\010\200{\220$\220a\330\010\016\210j\230\001\230\021\340\004 \240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004!\240\022\2408\2501\250F\260!\260:\270Q\340\004\025\220Z\230q\240\006""\240e\2501\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\025\220Z\230z\250\032\260:\270Q\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\004\220D\230\005\230T\240\021\240$\240c\250\021\250$\250e\2601\260D\270\001\340\014\017\210u\220C\220s\230%\230q\330\020\021\340\014\017\210s\220\"\220A\330\020\025\220Q\340\014\017\210s\220\"\220A\330\020\025\220Q\340\014\017\210q\330\020\031\230\024\230Q\230d\240&\250\004\250A\250Q\330\021\022\330\020\025\220T\230\023\230C\230r\240\024\240R\240v\250S\260\002\260'\270\021\340\020\026\220c\230\022\2301\340\014\022\220!\2205\230\001\340\004\013\2101\320\000!\320!4\260N\300!\360\022\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\320\031*\250!\2501\340\004\007\200w\210b\220\002\220#\220W\230B\230a\330\010\016\210j\230\001\320\031*\250!\2501\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\007\200w\210c\220\021\330\010\017\210q\360\016\000\005\023\220!\340\004\010\210\005\210V\2206\230\026\230u\240F\250&\260\007\260q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\017\210t\2203\220b\230\001\230\021\340\014\017\210r\220\023\220A\330\020\024\220E\230\026\230v\240V\2505\260\006\260f\270G\3001\330\020\021\340\014\021\220\021\330\014\022\220!\330\014\023\2202\220R\220q\330\014\023\2202\220R\220r\230\022\2301\330\014\023\2202\220R\220r\230\022\2302\230R\230q\330\014\022\220!\330\014\023\2202\220R\220q\330\014\023\2202\220R\220q\330\014\024\220B\220b\230\002\230\"\230A\340\014\017\210r\220\022\2201\330\020\021\340\014\017\210r\220\022\2201\330\020\025\220R\220r\230\021\330\020\025\220R\220q\230\002\230\"\230A\330\020\026\220c\230\022\2301\330\020\025\220Q\330\020\026\220a\330\020\027\220q\330\020\027\220t\2302\230Q\330\020\027\220t\2302\230Q\330\020\026\220a\330\020\027\220s\230\"\230A\330\020\027\220s\230\"\230A\330\020\030\230\004\230B\230a\340\014\023\2204\220r\230\022""\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\024\220D\230\002\230\"\230B\230c\240\022\2404\240r\250\022\2502\250Q\330\014\024\220E\230\022\2302\230R\230t\2402\240S\250\002\250\"\250B\250a\330\014\025\220T\230\022\2302\230R\230t\2402\240T\250\022\2502\250R\250q\340\014\024\220F\230\"\230D\240\002\240%\240r\250\021\330\014\024\220A\220U\230\"\230D\240\002\240$\240b\250\006\250b\260\t\270\026\270r\300\027\310\001\330\014\024\220A\220T\230\022\2306\240\022\2405\250\002\250&\260\002\260)\2706\300\022\3007\310!\330\014\030\230\001\230\023\230B\230f\240B\240c\250\022\2506\260\022\2605\270\002\270%\270r\300\022\3007\310!\360\006\000\r\020\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\025\220R\220r\230\021\330\020\033\230:\240R\240v\250R\250r\260\022\2606\270\022\2702\270R\270q\330\020\026\220a\220u\230A\330\020\021\340\004\013\2101\200\001\330\026\027\360\020\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220F\230!\330\004\013\2108\2201\220F\230!\340\004\r\210R\210r\220\025\220b\230\002\230\"\230E\240\022\2401\340\004\013\2101\200\001\360\022\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220F\230!\340\004\r\210R\210r\220\025\220b\230\001\340\004\013\2101\320\000\030\230\001\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2701\200A\330\010\014\210L\320\030(\250\001\250\021\330\010\017\210q\320\000\034\230A\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240s\250&\260\001\330\004\034\230A\340\004\027\220}\240A\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220y\240\001\330\020\026\220a\220u\230A\340\014\017\210t\2205\230\001\230\021\330\020\027\220q\340\004\013\2101\200\001\330\032\033\360\020\000\005\r\210H\220A""\220V\2301\230I\240Q\330\004\014\210H\220A\220V\2301\230H\240A\330\004\016\210f\220B\220g\230R\230q\340\004\r\210_\230A\230W\240H\250A\340\004\013\2101\320\000\024\220L\240\r\250^\2701\360\006\000\005\010\200{\220'\230\021\330\010\025\220T\230\021\230!\340\004\007\200}\220G\2301\330\010\027\220u\230A\230Q\340\004\023\2201\220K\230|\250=\270\001\330\004\017\210r\220\023\220B\220d\230#\230U\240(\250&\260\003\2603\260b\270\007\270q\340\004\005\360\010\000\005\014\2101\320\000\025\220Q\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\013\210:\220Q\220f\230F\240%\240q\340\t\013\2109\220A\220T\230\021\330\010\017\210v\220R\220v\230S\240\005\240R\240q\330\010\021\220\030\230\021\230%\230q\340\004\013\2101\320\000\025\220Q\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\330\004\r\210R\210x\220q\230\006\230a\230{\250!\340\004\013\210:\220Q\220f\230E\240\027\250\001\340\t\013\2109\220A\220W\230J\240h\250a\330\010\020\220\002\220\"\220F\230\"\230E\240\022\2405\250\003\2505\260\002\260%\260r\270\021\330\010\016\210h\220a\220v\230Q\330\010\016\210h\220a\220x\230q\340\010\021\220\024\220R\220q\340\004\013\2101\200\001\330\027'\240~\260Q\360\024\000\005!\240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004!\240\022\2408\2501\250F\260!\260:\270Q\340\004\025\220Z\230q\240\006\240e\2501\340\004\t\210\030\220\021\220&\230\001\330\004\t\210\030\220\021\220%\220q\340\t\013\2109\220A\220W\230A\330\010\020\220\004\220C\220v\230R\230t\2402\240S\250\002\250!\340\004\014\210H\220A\220W\230A\330\004\014\210H\220A\220W\230A\340\004\r\210\\\230\021\230'\240\021\340\004\013\2101\200\001\330\025!\240\034\250Q\360\032\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220H\230A\340""\t\013\2109\220A\220W\230A\330\010\016\210d\220#\220U\230\"\230F\240\"\240A\340\004\r\210X\220Q\220e\2301\330\004\013\2104\210r\220\021\340\004\r\210Z\220q\230\005\230X\240Q\340\004\013\2101\320\000\025\320\025%\240Q\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2708\3007\310!\320\000\025\220Q\360\020\000\005\016\210[\230\001\230\021\330\004\r\210X\220Q\220h\230a\340\004\013\2101\320\000\025\220Q\360\020\000\005\016\210X\220Q\220h\230g\240W\250A\340\004\013\2101\320\000\025\220Q\360\020\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\032\230\"\230E\240\021\240&\250\002\250!\330\004\032\230\"\230E\240\021\240&\250\002\250!\330\004\031\230\021\330\004\031\230\021\340\004\024\220J\230j\250\001\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\330\014\017\210r\220\023\220B\220d\230#\230S\240\001\330\020\025\220R\220r\230\021\330\020\023\2201\220E\230\026\230s\240\"\240I\250Q\330\020\023\2201\220E\230\021\230&\240\003\2402\240Y\250a\330\014\021\220\021\340\004#\2408\2501\250I\260Q\330\004#\2408\2501\250I\260Q\340\004\024\220I\230Q\330\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\007\220q\230\001\330\014\020\220\007\220q\230\001\330\014\017\210r\220\023\220B\220d\230\"\230C\230r\240\024\240R\240r\250\021\330\020\026\220a\220u\230F\240#\240V\2503\250d\260\"\260B\260b\270\001\330\021\023\2203\220b\230\004\230B\230c\240\021\330\020\026\220a\220u\230A\340\004\013\2101\320\000\025\220Q\360\020\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230j\250\001\330\004\024\220J\230j\250\001\340\004\030\230\r\240]\260!\340\004\026\220a\330\004\022\220'\230\021\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210u\220A\220Q\330\020\021\340\014\020\220\005\220R\220r\230\024\230Q\340""\014\017\210u\220A\220Q\330\020\021\340\014\031\230\025\230a\230q\330\014\025\220Q\340\014\022\220&\230\003\2301\330\020\023\2204\220r\230\021\230$\230a\230q\240\001\340\020\023\2205\230\001\230\021\330\024\025\340\020\024\220E\230\022\2302\230T\240\021\340\020\034\230E\240\021\240!\2401\240A\330\020\030\230\006\230b\240\t\250\033\260A\340\020\023\2204\220u\230A\230Q\330\024!\240\025\240a\240q\330\024\035\230Q\340\014\022\220!\2205\230\001\340\004\013\2101\320\000\025\220Q\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230k\250\021\330\004\022\220+\230Q\340\004\007\200w\210b\220\001\330\010\021\220\023\220A\220Q\330\010\020\220\001\220\021\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\017\210u\220B\220a\220t\2302\230Q\230b\240\002\240!\330\014\017\210r\220\022\2203\220d\230#\230R\230q\330\020\026\220b\230\002\230#\230R\230q\330\020\026\220a\220r\230\022\2309\240A\340\004\013\2101\320\000\030\320\030-\250Q\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\027\220\177\240o\260Q\330\004\030\230\014\240A\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220|\2401\330\020\027\220q\330\021\027\220s\230-\240q\330\020\027\220q\340\014\022\220!\2205\230\001\340\014\017\210v\220S\230\001\330\020\027\220q\340\004\013\2101\320\000\035\230Q\360\006\000\005\037\230b\240\010\250\001\250\026\250q\340\004\025\220R\220q\340\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\330\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\330\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\027\220q\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\023\2202\220Q\220a\340""\014\017\210u\220B\220a\330\020\030\230\002\230!\2301\330\021\026\220c\230\021\330\020\030\230\002\230!\2301\340\020\030\230\002\230!\2301\340\014\022\220!\2205\230\001\340\004\013\2101\320\000\025\220Q\360\020\000\005\013\210-\220q\230\001\330\004\n\210(\220!\2205\230\001\330\004\n\210(\220!\2205\230\010\240\002\240!\340\t\013\2109\220A\220W\230A\330\010\022\220$\220b\230\005\230R\230q\340\004\013\2101\200\001\330\025%\240Q\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\t\013\2109\220A\220W\230J\240h\250a\330\010\022\220$\220b\230\007\230s\240&\250\002\250'\260\022\2601\340\004\013\2101\200\001\330\025%\240Q\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\t\013\2109\220A\220W\230J\240h\250a\330\010\022\220&\230\002\230'\240\022\2407\250\"\250A\340\004\013\2101\320\000\025\320\025%\240Q\360\020\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270h\300g\310Q\200\001\330\027\035\230Q\360\032\000\005\010\200u\210C\210q\330\010\017\210q\340\004\007\200u\210D\220\010\230\010\240\007\240q\330\010\022\220\"\220H\230A\230V\2401\240G\2501\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\340\010\016\210j\230\001\320\031.\250a\250q\340\004\013\2101\320\000\025\220Q\360\006\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\360\006\000\005\026\220Q\330\004\022\220'\230\033\240A\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220""\023\220A\330\020\031\230\021\330\020\026\220a\340\020\030\230\001\330\020\025\220Q\340\014\017\210v\220R\220q\330\020\026\220b\230\001\230\022\2302\230Q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\027\220s\230\"\230A\330\020\026\220a\330\020\024\220E\230\025\230a\230r\240\022\2407\250\"\250C\250r\260\022\2601\330\024\037\230u\240A\240R\240q\250\003\2502\250Q\330\020\026\220a\220u\230D\240\002\240!\340\004\013\2101\320\000\025\220Q\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\330\004\r\210R\210x\220q\230\006\230a\230{\250!\340\004\013\2105\220\002\220$\220b\230\007\230r\240\021\330\004\017\210t\2202\220W\230B\230b\240\005\240Q\240b\250\005\250Q\250e\2608\2702\270Q\340\004 \240\001\330\004\025\220T\230\026\230q\240\001\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\024\220K\230q\330\004\027\220|\2401\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\004\220A\220Q\340\014\017\210u\220A\220Q\330\020\027\220q\330\020\027\220q\330\020\030\230\001\330\020\021\340\014\017\210r\220\022\2201\330\020\030\230\001\330\021\023\2202\220Q\330\020\030\230\001\340\014\025\220Q\340\014\017\210v\220R\220q\330\020\026\220d\230!\2302\230R\230q\330\020\023\2204\220r\230\021\330\024\034\230A\330\025\031\230\022\2301\330\024\034\230A\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\023\2205\230\002\230!\330\024\032\230!\2305\240\006\240b\250\006\250c\260\024\260R\260u\270B\270a\330\025\032\230\"\230A\330\024\032\230!\2305\240\001\340\004\013\2101\200\001\330\026'\320'=\270Q\360\006\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\007\200v\210S\220\001\330\010\016\210j\230\001\230\021\340\004\010\210\007\210s\220'\230\022\2301\330\004\010\210\007\210r\220\021\330\004\010\210\002\210&\220\001\220\021\220\"\220D\230\001\230\023""\230B\230b\240\003\2403\240c\250\023\250B\250b\260\001\260\022\2604\260t\2705\300\005\300Q\300a\330\004\010\210\002\210\"\210A\210T\220\021\340\004\016\210b\220\005\220Q\220g\230R\230s\240\"\240A\330\004\r\210R\210z\230\021\230(\240#\240Q\330\004\r\210R\210w\220a\220x\230s\240!\340\004\013\2101\200\001\360\006\000\005\n\210\031\220!\340\004\025\220R\220q\330\004\010\210\005\210Q\330\010\013\2101\210F\220#\220Q\330\017\025\220Z\230q\240\001\330\004\013\2101\200\001\330\025&\240a\360\022\000\005!\240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004\025\220Z\230q\240\006\240a\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\025\220[\240\n\250!\330\004\025\220Z\230z\250\032\260;\270k\310\021\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\017\210s\220#\220Q\330\020\024\220E\230\024\230Q\340\014\020\220\005\220T\230\021\230$\230c\240\021\240!\340\014\017\210u\220C\220s\230#\230T\240\023\240C\240q\330\020\021\340\014\022\220&\230\003\2302\230X\240Q\330\014\022\220&\230\003\2302\230X\240Q\360\006\000\r\020\210v\220R\220r\230\024\230S\240\002\240!\330\020\024\220E\230\024\230X\240T\250\024\250V\2601\340\021\027\220r\230\022\2304\230s\240\"\240A\330\020\024\220E\230\024\230X\240T\250\024\250U\260!\2601\340\014\022\220!\2205\230\001\360\010\000\r\020\210v\220S\230\001\340\020\023\2203\220b\230\001\330\024\030\230\005\230T\240\030\250\025\250e\2605\270\001\270\021\340\024\030\230\005\230T\240\030\250\025\250e\2606\270\021\360\006\000\021\030\220s\230#\230S\240\002\240!\360\006\000\021\024\2206\230\022\2301\330\024\027\220t\2302\230Q\330\030\036\230a\330\024\027\220s\230\"\230A\330\030\035\230Q\330\030\036\230a\330\020\023\2206\230\022\2301\330\024\027\220t\2302\230Q\330\030\036\230a\330\024\027\220s\230\"\230A\330\030\035\230Q\330\030\036\230a\340\014\017\210v\220T\230\023\230B\230a\330\020\025\220Q\340\004\013\2101\200\001\330\026\"\240,\250a\360\032\000\005\014""\2108\2201\220H\230A\330\004\013\2108\2201\220H\230A\330\004\013\2105\220\002\220!\340\004\r\210X\220Q\220f\230A\330\004\013\2105\220\002\220!\340\004\r\210[\230\001\230\026\230x\240q\340\004\013\2101\320\000\026\220a\360\020\000\005\016\210[\230\001\230\030\240\030\250\021\330\004\r\210X\220Q\220h\230a\340\004\013\2101\320\000\026\220a\360\026\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230k\250\021\330\004\022\220+\230Q\340\004\007\200w\210b\220\001\330\010\021\220\023\220A\220Q\330\010\020\220\001\220\021\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\017\210u\220B\220a\220t\2302\230Q\230b\240\002\240!\330\014\017\210r\220\022\2202\220T\230\023\230B\230a\330\020\032\230$\230a\230r\240\022\2401\330\020\026\220a\220r\230\022\2309\240A\340\004\013\2101\320\000\026\220a\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230l\250!\340\004\022\220!\340\004\007\200w\210b\220\002\220#\220W\230C\230q\330\010\016\210j\230\001\230\031\240!\2401\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\017\210u\220B\220a\220t\2302\230Q\230b\240\002\240!\330\014\023\2203\220b\230\001\330\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\340\t\013\2109\220A\220X\230Q\330\010\021\220\022\2204\220q\230\001\340\004\013\2101\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\001\330\004\027\220q\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220q\330\020\027\220q\330\021\027\220r\230\021\330\020\027\220q\330\021\027\220s\230!\330\020\027\220q\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\n\000\005\037""\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\031\230\021\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220q\330\020\032\230!\340\020\031\230\021\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\016\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220q\330\020\026\220a\220u\230A\330\021\027\220s\230!\330\020\026\220a\220u\230A\340\004\013\2101\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\340\004\r\210R\210t\2201\220A\340\004\013\2101\200\001\330\026%\240]\260!\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\037\230x\240q\250\004\250A\340\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\004\230C\230v\240R\240q\330\004\030\230\004\230C\230v\240R\240q\330\004\030\230\001\330\004\030\230\001\330\004\027\220q\330\004\025\220Q\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\330\014\021\220\023\220A\220Q\340\014\017\210u\220A\220W\230C\230u\240A\240Q\330\020\021\340\014\025\220V\2302\230S\240\003\2406\250\022\2508\2603\260a\340\014\017\210u\220A\220Q\330\020\027\220q\330\021\025\220U\230!\2301\330\020\030\230\006\230c\240\026\240r\250\021\340\014\022\220!\2205\230\001\340\004\013\2101\320\000\026\220l\240!\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\014\240A\330\004\025\220X\230Q\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\023\2207\230\"\230A\230T\240\021\340\014\017\210u\220A\220W\230C\230u\240A\240Q\330""\020\021\340\014\020\220\005\220U\230\"\230K\240u\250B\250a\340\014\017\210v\220R\220q\330\020\030\230\001\330\021\027\220r\230\021\330\020\030\230\001\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\330\030(\250\001\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\004\r\210]\230!\2307\240(\250!\340\004\013\2101\320\000\027\220q\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2701\200\001\330\027#\240<\250q\360\032\000\005\r\210F\220!\2201\340\004\013\2108\2201\220G\2301\330\004\013\2108\2201\220G\2301\330\004\n\210(\220!\2208\2307\240!\330\004\r\210U\220\"\220F\230\"\230D\240\002\240!\340\004\r\210X\220Q\220g\230Q\330\004\013\2106\220\022\2201\340\004\r\210\\\230\021\230'\240\030\250\021\340\004\013\2101\320\000\027\220q\360\006\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270a\320\000\027\220q\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220K\230{\250!\340\004\025\220[\240\001\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220\023\220A\330\020\031\230\021\330\020\026\220a\330\020\027\220r\230\022\2301\340\020\030\230\001\330\020\025\220V\2301\340\014\017\210v\220R\220q\330\020\024\220B\220a\220r\230\022\2301\330\020\031\230\021\330\020\026\220a\330\020\027\220r\230\022\2301\340\014\017\210v\220S\230\001\330\020\027\220t\2302\230V\2402\240S\250\002\250#\250R\250v\260R\260q\330\020\026\220d\230%\230q\240\010\250\004\250C\250w\260a\330\020\026\220a\220u\230A\340\004\013\2101\200\001\360\022\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240""\026\240r\250\021\330\004\034\230A\340\004\024\220A\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\020\220\002\220!\2202\220R\220q\330\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\024\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\004\230B\230a\330\004\030\230\001\330\004\026\220a\330\004\030\230\001\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210t\2205\230\001\230\021\330\020\031\230\021\330\020\023\2206\230\023\230A\330\024\035\230Q\330\024\032\230&\240\002\240!\340\024\033\2306\240\023\240F\250\"\250A\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230A\340\004\013\2101\200\001\330%&\360$\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\004\230C\230w\240b\250\001\330\004\027\220t\2302\230Q\330\004\030\230\001\330\004\026\220i\230q\330\004\026\220a\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210t\2205\230\001\230\021\330\020\031\230\021\340\020\023\2205\230\001\230\021\330\024\032\230!\330\024\032\230!\330\024\032\230!\330\025\026\330\024\032\230&\240\002\240$\240b\250\001\330\024\032\230$\230b\240\004\240B\240a\330\024\032\230$\230b\240\001\340\024\033\2306\240\023\240F\250\"\250A\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230A\340\004\013\2101\200\001\330\026\027\360\024\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\014\240L\260\001\340\004\022\220+""\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210u\220A\220Q\330\020\021\340\014\017\210u\220C\220q\330\020\027\220q\330\020\030\230\001\340\020\031\230\021\340\014\017\210v\220S\230\001\330\020\027\220q\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220L\240\001\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220\023\220A\330\020\030\230\001\330\020\031\230\021\340\020\027\220q\330\020\030\230\001\340\014\017\210v\220R\220q\330\020\030\230\002\230!\2302\230R\230q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230A\340\004\013\2101\200\001\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220L\240\001\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220\023\220A\330\020\030\230\001\330\020\031\230\021\340\020\027\220q\330\020\030\230\001\340\014\017\210v\220R\220q\330\020\030\230\002\230!\2302\230R\230q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230E\240\022\2401\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\027\220w\230c\240\027\250\002\250#\250R\250q\330\004\024\220L\240\n\250!\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220\023""\220A\330\020\031\230\021\330\020\030\230\001\330\020\030\230\006\230b\240\001\340\020\027\220w\230a\330\020\030\230\001\340\014\017\210v\220R\220q\330\020\030\230\001\330\020\030\230\002\230!\2302\230R\230q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230E\240\022\2401\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220O\2401\330\004\022\220'\230\036\240q\340\t\n\330\010\014\210E\220\025\220a\220w\230b\240\003\2401\330\014\020\220\002\220!\2201\340\014\017\210x\220s\230\"\230B\230g\240R\240q\330\020\023\2204\220r\230\023\230A\330\024\036\230a\330\024\036\230a\340\020\032\230!\330\020\033\2301\330\020\024\220E\230\025\230a\230r\240\022\2407\250\"\250C\250r\260\022\2601\330\024\030\230\002\230!\2301\330\024\027\220t\2305\240\001\240\023\240D\250\004\250B\250c\260\021\330\030\"\240!\330\030\"\240!\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\010\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220O\2401\330\004\022\220'\230\036\240q\340\t\n\330\010\014\210E\220\025\220a\220w\230b\240\003\2401\330\014\020\220\002\220!\2201\340\014\017\210x\220s\230\"\230B\230g\240R\240q\330\020\023\2204\220r\230\023\230A\330\024\036\230a\330\024\036\230a\340\020\032\230!\330\020\033\2301\330\020\024\220E\230\025\230a\230r\240\022\2407\250\"\250C\250r\260\022\2601\330\024\030\230\002\230!\2301\330\024\027\220t\2305\240\001\240\023\240D\250\004\250B\250c\260\021\330\030\"\240!\330\030\"\240!\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\t\210\030\220\021\220(\230%\230q\240\006\240a\240q\330\004""\t\210\030\220\021\220(\230!\330\004\n\210\"\210C\210t\2202\220Q\340\004\r\210X\220Q\220d\230%\230u\240E\250\021\250!\340\004\013\2101\200\001\330\025(\250\001\360\026\000\005\010\200x\210s\220!\330\010\020\220\010\230\001\230\030\240\021\340\t\021\220\023\220A\330\010\021\220\030\230\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\030\230\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\030\230\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\031\230!\2308\2401\340\t\021\220\023\220A\330\010\021\220\031\230!\2308\2401\340\010\016\210j\230\001\320\031+\2501\250A\340\004\013\2101O";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
@@ -53973,7 +54919,7 @@ typedef struct {
     unsigned int num_kwonly_args : 2;
     unsigned int nlocals : 6;
     unsigned int flags : 10;
-    unsigned int first_line : 7;
+    unsigned int first_line : 8;
 } __Pyx_PyCode_New_function_description;
 /* NewCodeObj.proto */
 static PyObject* __Pyx_PyCode_New(
@@ -54032,42 +54978,42 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 9, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_level, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_prev, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_cross_pxi, __pyx_mstate->__pyx_n_u_calc_crossover, __pyx_mstate->__pyx_kp_b_iso88591_1_b_Rq_5_s_A_A_U_1_1_6_9A_5_4uA, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_cross_pxi, __pyx_mstate->__pyx_n_u_calc_crossover, __pyx_mstate->__pyx_kp_b_iso88591_1_b_Rq_5_s_A_A_E_aq_Baq_vRy_auA, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 9, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 35};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 9, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 36};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_level, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_prev, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_cross_pxi, __pyx_mstate->__pyx_n_u_calc_crossunder, __pyx_mstate->__pyx_kp_b_iso88591_A_b_Rq_5_s_A_A_U_1_1_6_9A_5_4uA, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_cross_pxi, __pyx_mstate->__pyx_n_u_calc_crossunder, __pyx_mstate->__pyx_kp_b_iso88591_A_b_Rq_5_s_A_A_E_aq_Baq_vRy_auA, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 7, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 5};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_flags_pxi, __pyx_mstate->__pyx_n_u_calc_flag, __pyx_mstate->__pyx_kp_b_iso88591_b_Rq_5_r_A_U_1_1_6_1_5_3a_5_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_flags_pxi, __pyx_mstate->__pyx_n_u_calc_flag, __pyx_mstate->__pyx_kp_b_iso88591_b_Rq_5_r_A_E_aq_Baq_vRq_auA_s_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 13, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 32};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 13, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 33};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_up_level, __pyx_mstate->__pyx_n_u_down_level, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_flag, __pyx_mstate->__pyx_n_u_up_flag, __pyx_mstate->__pyx_n_u_down_flag, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_prev, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_flags_pxi, __pyx_mstate->__pyx_n_u_calc_updown, __pyx_mstate->__pyx_kp_b_iso88591_Q_b_Rq_5_r_A_oQ_A_U_1_1_6_q_1_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_flags_pxi, __pyx_mstate->__pyx_n_u_calc_updown, __pyx_mstate->__pyx_kp_b_iso88591_Q_b_Rq_5_r_A_oQ_A_E_aq_Baq_vR_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 14, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 68};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 14, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 70};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_flag, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_z, __pyx_mstate->__pyx_n_u_fs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_ys, __pyx_mstate->__pyx_n_u_zs, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_fval, __pyx_mstate->__pyx_n_u_i};
     __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_flags_pxi, __pyx_mstate->__pyx_n_u_where_flag, __pyx_mstate->__pyx_kp_b_iso88591_Q_b_q_Rq_b_Qb_q_A_b_Qb_q_A_b_Qb, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_sign, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[13] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_sign_pxi, __pyx_mstate->__pyx_n_u_calc_sign, __pyx_mstate->__pyx_kp_b_iso88591_b_Rq_5_q_A_q_U_1_1_6_1_1_2Q_1_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[13])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[13] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_sign_pxi, __pyx_mstate->__pyx_n_u_calc_sign, __pyx_mstate->__pyx_kp_b_iso88591_b_Rq_5_q_A_q_E_aq_Baq_vRq_q_r_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[13])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 11, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_threshold, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_prev, __pyx_mstate->__pyx_n_u_ul, __pyx_mstate->__pyx_n_u_ll, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[14] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_step_pxi, __pyx_mstate->__pyx_n_u_calc_step, __pyx_mstate->__pyx_kp_b_iso88591_l_b_Rq_5_q_A_A_XQ_U_1_wb_Q_5_5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[14])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[14] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_step_pxi, __pyx_mstate->__pyx_n_u_calc_step, __pyx_mstate->__pyx_kp_b_iso88591_l_b_Rq_5_q_A_A_XQ_E_aq_7_AT_uAW, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[14])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 11, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_prev, __pyx_mstate->__pyx_n_u_clag, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_count};
-    __pyx_mstate_global->__pyx_codeobj_tab[15] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_clag_pxi, __pyx_mstate->__pyx_n_u_calc_clag, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_L_Q_U_1_1_5_5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[15])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[15] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_clag_pxi, __pyx_mstate->__pyx_n_u_calc_clag, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_L_Q_E_aq_Baq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[15])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
@@ -54087,47 +55033,47 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 10, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_pv, __pyx_mstate->__pyx_n_u_diff, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[19] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_diff_pxi, __pyx_mstate->__pyx_n_u_calc_diff, __pyx_mstate->__pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jl_wb_WCq_j_1_U_81, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[19])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[19] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_diff_pxi, __pyx_mstate->__pyx_n_u_calc_diff, __pyx_mstate->__pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jl_wb_WCq_j_1_E_ax, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[19])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[20] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_lag_pxi, __pyx_mstate->__pyx_n_u_calc_lag, __pyx_mstate->__pyx_kp_b_iso88591_wb_j_b_Rq_5_r_A_Ba_U_81_Bar_1_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[20])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[20] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_lag_pxi, __pyx_mstate->__pyx_n_u_calc_lag, __pyx_mstate->__pyx_kp_b_iso88591_wb_j_b_Rq_5_r_A_A_E_axq_2Rq_5_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[20])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 11, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_cur_min, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_j, __pyx_mstate->__pyx_n_u_min_idx};
-    __pyx_mstate_global->__pyx_codeobj_tab[21] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_min_pxi, __pyx_mstate->__pyx_n_u_calc_min, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_U_7_Cq_Baq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[21])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[21] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_min_pxi, __pyx_mstate->__pyx_n_u_calc_min, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_E_awb_1_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[21])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 11, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_cur_max, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_j, __pyx_mstate->__pyx_n_u_max_idx};
-    __pyx_mstate_global->__pyx_codeobj_tab[22] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_max_pxi, __pyx_mstate->__pyx_n_u_calc_max, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_U_7_Cq_Baq_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[22])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[22] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_max_pxi, __pyx_mstate->__pyx_n_u_calc_max, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_E_awb_1_1_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[22])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 10, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_rsum, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_count};
-    __pyx_mstate_global->__pyx_codeobj_tab[23] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_sum_pxi, __pyx_mstate->__pyx_n_u_calc_sum, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_U_1_Baq_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[23])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[23] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_sum_pxi, __pyx_mstate->__pyx_n_u_calc_sum, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_E_aq_1_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[23])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 11, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_pv, __pyx_mstate->__pyx_n_u_roc, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_shift};
-    __pyx_mstate_global->__pyx_codeobj_tab[24] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_roc_pxi, __pyx_mstate->__pyx_n_u_calc_roc, __pyx_mstate->__pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jk_Q_wb_AQ_U_81_5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[24])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[24] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_roc_pxi, __pyx_mstate->__pyx_n_u_calc_roc, __pyx_mstate->__pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jk_Q_wb_AQ_E_axq_u, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[24])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 11, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_pv, __pyx_mstate->__pyx_n_u_roc, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_shift};
-    __pyx_mstate_global->__pyx_codeobj_tab[25] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_lroc_pxi, __pyx_mstate->__pyx_n_u_calc_lroc, __pyx_mstate->__pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jk_Q_wb_AQ_U_81_5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[25])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[25] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_lroc_pxi, __pyx_mstate->__pyx_n_u_calc_lroc, __pyx_mstate->__pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jk_Q_wb_AQ_E_axq_u, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[25])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 13, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_mean, __pyx_mstate->__pyx_n_u_mad, __pyx_mstate->__pyx_n_u_sx, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_k, __pyx_mstate->__pyx_n_u_count};
-    __pyx_mstate_global->__pyx_codeobj_tab[26] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_mad_pxi, __pyx_mstate->__pyx_n_u_calc_mad, __pyx_mstate->__pyx_kp_b_iso88591_Q_wc_j_0_b_Rq_5_r_A_Q_A_U_1_Baq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[26])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[26] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_mad_pxi, __pyx_mstate->__pyx_n_u_calc_mad, __pyx_mstate->__pyx_kp_b_iso88591_Q_wc_j_0_b_Rq_5_r_A_Q_A_E_aq_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[26])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 13, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_vxx, __pyx_mstate->__pyx_n_u_std, __pyx_mstate->__pyx_n_u_sx, __pyx_mstate->__pyx_n_u_sxx, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_count};
-    __pyx_mstate_global->__pyx_codeobj_tab[27] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_stdev_pxi, __pyx_mstate->__pyx_n_u_calc_stdev, __pyx_mstate->__pyx_kp_b_iso88591_q_wc_j_0_b_Rq_5_r_A_K_Q_U_1_Baq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[27])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[27] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_stdev_pxi, __pyx_mstate->__pyx_n_u_calc_stdev, __pyx_mstate->__pyx_kp_b_iso88591_q_wc_j_0_b_Rq_5_r_A_K_Q_E_aq_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[27])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 1, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
@@ -54137,7 +55083,7 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 10, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 5};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_rsum, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_count};
-    __pyx_mstate_global->__pyx_codeobj_tab[29] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_sma_pxi, __pyx_mstate->__pyx_n_u_calc_sma, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_U_1_Baq_2_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[29])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[29] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_sma_pxi, __pyx_mstate->__pyx_n_u_calc_sma, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_E_aq_1_r_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[29])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 1, 15, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
@@ -54147,12 +55093,12 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 12, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_alpha, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_rma, __pyx_mstate->__pyx_n_u_total, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_count};
-    __pyx_mstate_global->__pyx_codeobj_tab[31] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_rma_pxi, __pyx_mstate->__pyx_n_u_calc_rma, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_Ba_a_Q_U_1_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[31])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[31] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_rma_pxi, __pyx_mstate->__pyx_n_u_calc_rma, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_Ba_a_Q_E_aq_B, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[31])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 12, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_wdiv, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_rsum, __pyx_mstate->__pyx_n_u_wsum, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_count};
-    __pyx_mstate_global->__pyx_codeobj_tab[32] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_wma_pxi, __pyx_mstate->__pyx_n_u_calc_wma, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_wc_Rq_L_Q_U_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[32])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[32] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_wma_pxi, __pyx_mstate->__pyx_n_u_calc_wma, __pyx_mstate->__pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_wc_Rq_L_Q_E_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[32])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
@@ -54177,7 +55123,7 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 18, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_ups_arr, __pyx_mstate->__pyx_n_u_dns_arr, __pyx_mstate->__pyx_n_u_ups, __pyx_mstate->__pyx_n_u_dns, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_pv, __pyx_mstate->__pyx_n_u_dv, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_rma_ups, __pyx_mstate->__pyx_n_u_rma_dns, __pyx_mstate->__pyx_n_u_u, __pyx_mstate->__pyx_n_u_d};
-    __pyx_mstate_global->__pyx_codeobj_tab[37] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_rsi_pxi, __pyx_mstate->__pyx_n_u_calc_rsi, __pyx_mstate->__pyx_kp_b_iso88591_Q_b_Rq_5_r_A_E_E_Jj_U_1_Baq_2S, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[37])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[37] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_rsi_pxi, __pyx_mstate->__pyx_n_u_calc_rsi, __pyx_mstate->__pyx_kp_b_iso88591_Q_b_Rq_5_r_A_E_E_Jj_E_aq_1_r_Bd, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[37])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 14, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 5};
@@ -54205,19 +55151,19 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[42] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_atr_pxi, __pyx_mstate->__pyx_n_u_calc_trange, __pyx_mstate->__pyx_kp_b_iso88591_2_a_j_6_1_r_81F_Q_Zq_e1_5_r_A_Z, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[42])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 54};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 55};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_prices, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_trange, __pyx_mstate->__pyx_n_u_result};
     __pyx_mstate_global->__pyx_codeobj_tab[43] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_atr_pxi, __pyx_mstate->__pyx_n_u_calc_atr, __pyx_mstate->__pyx_kp_b_iso88591_Q_XQha_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[43])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 69};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 70};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_prices, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_trange, __pyx_mstate->__pyx_n_u_result};
     __pyx_mstate_global->__pyx_codeobj_tab[44] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_atr_pxi, __pyx_mstate->__pyx_n_u_calc_natr, __pyx_mstate->__pyx_kp_b_iso88591_a_XQha_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[44])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 19, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_prices, __pyx_mstate->__pyx_n_u_afs, __pyx_mstate->__pyx_n_u_maxaf, __pyx_mstate->__pyx_n_u_high, __pyx_mstate->__pyx_n_u_low, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_ep, __pyx_mstate->__pyx_n_u_sar, __pyx_mstate->__pyx_n_u_af, __pyx_mstate->__pyx_n_u_hi, __pyx_mstate->__pyx_n_u_lo, __pyx_mstate->__pyx_n_u_ph, __pyx_mstate->__pyx_n_u_pl, __pyx_mstate->__pyx_n_u_hi2, __pyx_mstate->__pyx_n_u_lo2, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_trend};
-    __pyx_mstate_global->__pyx_codeobj_tab[45] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_sar_pxi, __pyx_mstate->__pyx_n_u_calc_sar, __pyx_mstate->__pyx_kp_b_iso88591_a_6_1_r_Zq_a_5_r_A_Zz_k_Q_U_1_3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[45])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[45] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_sar_pxi, __pyx_mstate->__pyx_n_u_calc_sar, __pyx_mstate->__pyx_kp_b_iso88591_a_6_1_r_Zq_a_5_r_A_Zz_k_Q_E_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[45])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
@@ -54267,12 +55213,12 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 18, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_px, __pyx_mstate->__pyx_n_u_dx, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_py, __pyx_mstate->__pyx_n_u_dy, __pyx_mstate->__pyx_n_u_erval, __pyx_mstate->__pyx_n_u_ernum, __pyx_mstate->__pyx_n_u_erdiv, __pyx_mstate->__pyx_n_u_ercnt, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_j};
-    __pyx_mstate_global->__pyx_codeobj_tab[55] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_kama_pxi, __pyx_mstate->__pyx_n_u_calc_ker, __pyx_mstate->__pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jj_Jj_a_U_1_Baq_5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[55])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[55] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_kama_pxi, __pyx_mstate->__pyx_n_u_calc_ker, __pyx_mstate->__pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jj_Jj_a_E_aq_1_uAQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[55])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 16, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 59};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 16, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 60};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_fastn, __pyx_mstate->__pyx_n_u_slown, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_ers, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_fastf, __pyx_mstate->__pyx_n_u_slowf, __pyx_mstate->__pyx_n_u_alpha, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_kama, __pyx_mstate->__pyx_n_u_er, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[56] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_kama_pxi, __pyx_mstate->__pyx_n_u_calc_kama, __pyx_mstate->__pyx_kp_b_iso88591_b_xq_A_Rq_5_r_A_CvRq_CvRq_q_Q_U, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[56])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[56] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_kama_pxi, __pyx_mstate->__pyx_n_u_calc_kama, __pyx_mstate->__pyx_kp_b_iso88591_b_xq_A_Rq_5_r_A_CvRq_CvRq_q_Q_E, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[56])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 10, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 5};
@@ -54295,17 +55241,17 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[60] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_slope_pxi, __pyx_mstate->__pyx_n_u_linear_regression, __pyx_mstate->__pyx_kp_b_iso88591_1_q_wb_j_1_wb_WBa_j_1_b_Rq_5_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[60])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 105};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 106};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period};
     __pyx_mstate_global->__pyx_codeobj_tab[61] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_slope_pxi, __pyx_mstate->__pyx_n_u_calc_slope, __pyx_mstate->__pyx_kp_b_iso88591_q_AXWHG1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[61])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 116};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 117};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period};
     __pyx_mstate_global->__pyx_codeobj_tab[62] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_slope_pxi, __pyx_mstate->__pyx_n_u_calc_rvalue, __pyx_mstate->__pyx_kp_b_iso88591_AXWHG1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[62])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 127};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 128};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_offset};
     __pyx_mstate_global->__pyx_codeobj_tab[63] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_slope_pxi, __pyx_mstate->__pyx_n_u_calc_tsf, __pyx_mstate->__pyx_kp_b_iso88591_Q_AXWHG87, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[63])) goto bad;
   }
@@ -54315,12 +55261,12 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[64] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_curve_pxi, __pyx_mstate->__pyx_n_u_quadratic_regression, __pyx_mstate->__pyx_kp_b_iso88591_4N_wb_j_1_wb_WBa_j_1_b_Rq_5_r_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[64])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 105};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 106};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period};
     __pyx_mstate_global->__pyx_codeobj_tab[65] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_curve_pxi, __pyx_mstate->__pyx_n_u_calc_curve, __pyx_mstate->__pyx_kp_b_iso88591_q_q_xwa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[65])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 111};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 112};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_offset};
     __pyx_mstate_global->__pyx_codeobj_tab[66] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_curve_pxi, __pyx_mstate->__pyx_n_u_calc_qsf, __pyx_mstate->__pyx_kp_b_iso88591_Q_q_xwhgQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[66])) goto bad;
   }
@@ -54332,7 +55278,7 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_streak, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[68] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_streak_pxi, __pyx_mstate->__pyx_n_u_calc_streak, __pyx_mstate->__pyx_kp_b_iso88591_b_Rq_5_r_A_U_1_1_6_1_a_Q_auA_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[68])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[68] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_streak_pxi, __pyx_mstate->__pyx_n_u_calc_streak, __pyx_mstate->__pyx_kp_b_iso88591_b_Rq_5_r_A_E_aq_Baq_vRq_5_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[68])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;

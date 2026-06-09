@@ -62,7 +62,9 @@ atr = ta.atr(prices, 14)
 
 Mintalib offers expression factory methods via the `mintalib.expressions` module with names in upper case like `EMA`, `SMA`, `ATR`, `MACD`, ...
 The methods accept a source expression as an optional keyword-only `src` parameter.
-The source expression can also be passed as the first parameter to facilitate the use with `pipe`, e.g. `EMA(20).pipe(ROC, 1)` applies `ROC(1)` on top of `EMA(20)`. Multi column output calculations like `MACD` return a tuple of expressions.
+The source expression can also be passed as the first parameter to facilitate the use with `pipe`, e.g. `EMA(20).pipe(ROC, 1)` applies `ROC(1)` on top of `EMA(20)`. Multi-column calculations like `MACD` return a polars struct expression.
+
+When no source is given, series-based expressions (e.g. `EMA`, `SMA`) default to the `close` column, while prices-based ones (e.g. `ATR`, `MACD`) read the full DataFrame.
 
 ```python
 from mintalib.expressions import EMA, SMA, ATR, ROC, MACD

@@ -22,24 +22,25 @@ def calc_wma(series, long period):
     cdef double v = NAN, rsum = 0, wsum = 0
     cdef long i = 0, count = 0
 
-    for i in range(size):
-        v = xs[i]
+    with nogil:
+        for i in range(size):
+            v = xs[i]
 
-        if v == v:
-            count += 1
-            rsum += v
-            wsum += count * v
-        else:
-            rsum = wsum = 0
-            count = 0
+            if v == v:
+                count += 1
+                rsum += v
+                wsum += count * v
+            else:
+                rsum = wsum = 0
+                count = 0
 
-        if count > period:
-            wsum -= rsum
-            rsum -= xs[i - period]
-            count -= 1
+            if count > period:
+                wsum -= rsum
+                rsum -= xs[i - period]
+                count -= 1
 
-        if count == period:
-            output[i] = wsum / wdiv
+            if count == period:
+                output[i] = wsum / wdiv
 
     return result
 

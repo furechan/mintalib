@@ -18,13 +18,14 @@ def calc_flag(series):
     cdef double value = NAN
     cdef long i = 0
 
-    for i in range(size):
-        value = xs[i]
+    with nogil:
+        for i in range(size):
+            value = xs[i]
 
-        if value > 0.0:
-            output[i] = 1.0
-        elif value <= 0:
-            output[i] = 0.0
+            if value > 0.0:
+                output[i] = 1.0
+            elif value <= 0:
+                output[i] = 0.0
 
     return result
 
@@ -48,18 +49,19 @@ def calc_updown(series, double up_level=0.0, double down_level=0.0):
     cdef double value = NAN, prev = NAN
     cdef long i = 0
 
-    for i in range(size):
-        value = xs[i]
+    with nogil:
+        for i in range(size):
+            value = xs[i]
 
-        if value > up_level >= prev:
-            flag = up_flag
-        elif value <= down_level < prev:
-            flag = down_flag
+            if value > up_level >= prev:
+                flag = up_flag
+            elif value <= down_level < prev:
+                flag = down_flag
 
-        output[i] = flag
+            output[i] = flag
 
-        if value == value:
-            prev = value
+            if value == value:
+                prev = value
 
     return result
 
@@ -83,16 +85,17 @@ def where_flag(flag, x, y, z=NAN):
     cdef double fval = NAN
     cdef long i = 0
 
-    for i in range(size):
-        fval = fs[i]
+    with nogil:
+        for i in range(size):
+            fval = fs[i]
 
-        if fval > 0:
-            value = xs[i]
-        elif fval <= 0:
-            value = ys[i]
-        else:
-            value = zs[i]
+            if fval > 0:
+                value = xs[i]
+            elif fval <= 0:
+                value = ys[i]
+            else:
+                value = zs[i]
 
-        output[i] = value
+            output[i] = value
 
     return result

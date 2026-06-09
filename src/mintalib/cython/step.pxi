@@ -22,20 +22,21 @@ def calc_step(series, threshold : float = 1.0):
 
     cdef long i = 0
 
-    for i in range(size):
-        value, prev = xs[i], value
+    with nogil:
+        for i in range(size):
+            value, prev = xs[i], value
 
-        if isnan(value) or isnan(prev):
-            continue
+            if isnan(value) or isnan(prev):
+                continue
 
-        ul, ll = prev + threshold, prev - threshold
+            ul, ll = prev + threshold, prev - threshold
 
-        if value > ul:
-            value = ul
-        elif value < ll:
-            value = ll
+            if value > ul:
+                value = ul
+            elif value < ll:
+                value = ll
 
-        output[i] = value
+            output[i] = value
 
     return result
 

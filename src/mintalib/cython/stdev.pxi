@@ -24,27 +24,28 @@ def calc_stdev(series, long period=20):
 
     cdef long i = 0, count = 0
 
-    for i in range(size):
-        x = xs[i]
+    with nogil:
+        for i in range(size):
+            x = xs[i]
 
-        if x == x:
-            count += 1
-            sx += x
-            sxx += x * x
-        else:
-            count = 0
-            sx = sxx = 0.0
+            if x == x:
+                count += 1
+                sx += x
+                sxx += x * x
+            else:
+                count = 0
+                sx = sxx = 0.0
 
-        if count > period:
-            x = xs[i - period]
-            count -= 1
-            sx -= x
-            sxx -= x * x
+            if count > period:
+                x = xs[i - period]
+                count -= 1
+                sx -= x
+                sxx -= x * x
 
-        if count == period:
-            vxx = (sxx / count - sx * sx / count / count)
-            std = math.sqrt(vxx) if vxx >= 0 else NAN
-            output[i] = std
+            if count == period:
+                vxx = (sxx / count - sx * sx / count / count)
+                std = math.sqrt(vxx) if vxx >= 0 else NAN
+                output[i] = std
 
     return result
 

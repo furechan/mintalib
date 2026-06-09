@@ -17,15 +17,16 @@ def calc_streak(series):
 
     cdef long i = 0
 
-    for i in range(size):
-        value = xs[i]
+    with nogil:
+        for i in range(size):
+            value = xs[i]
 
-        if value > 0:
-            streak += 1 
-        else:
-            streak = 0
+            if value > 0:
+                streak += 1 
+            else:
+                streak = 0
 
-        output[i] = streak
+            output[i] = streak
 
     return result
 

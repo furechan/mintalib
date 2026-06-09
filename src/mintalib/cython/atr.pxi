@@ -26,26 +26,27 @@ def calc_trange(prices, *, bint log_prices=False, bint percent=False):
 
     cdef long i = 0
 
-    for i in range(size):
-        hi, lo, cl, pc = high[i], low[i], close[i], cl
+    with nogil:
+        for i in range(size):
+            hi, lo, cl, pc = high[i], low[i], close[i], cl
 
-        if not (hi >= lo > 0.0):
-            continue
+            if not (hi >= lo > 0.0):
+                continue
 
-        if pc > hi:
-            hi = pc
+            if pc > hi:
+                hi = pc
 
-        if pc < lo:
-            lo = pc
+            if pc < lo:
+                lo = pc
 
-        if log_prices:
-            tr = math.log(hi) - math.log(lo)
-        elif percent:
-            tr = 100 * (hi - lo) / cl if cl > 0 else np.nan
-        else:
-            tr = (hi - lo)
+            if log_prices:
+                tr = math.log(hi) - math.log(lo)
+            elif percent:
+                tr = 100 * (hi - lo) / cl if cl > 0 else NAN
+            else:
+                tr = (hi - lo)
 
-        output[i] = tr
+            output[i] = tr
 
     return result
 

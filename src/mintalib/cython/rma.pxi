@@ -26,19 +26,20 @@ def calc_rma(series, long period):
 
     cdef long i = 0, count = 0
 
-    for i in range(size):
-        value = xs[i]
+    with nogil:
+        for i in range(size):
+            value = xs[i]
 
-        if not isnan(value):
-            count += 1
-            if count <= period:
-                total += value
-                rma = total / count
-            else:
-                rma += alpha * (value - rma)
+            if not isnan(value):
+                count += 1
+                if count <= period:
+                    total += value
+                    rma = total / count
+                else:
+                    rma += alpha * (value - rma)
 
-        if count >= period:
-            output[i] = rma
+            if count >= period:
+                output[i] = rma
 
     return result
 

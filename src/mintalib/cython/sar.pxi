@@ -22,55 +22,56 @@ def calc_sar(prices, double afs=0.02, double maxaf=0.2):
 
     cdef long i = 0, trend = 0
 
-    for i in range(size):
-        if hi >= lo:
-            ph, pl = hi, lo
+    with nogil:
+        for i in range(size):
+            if hi >= lo:
+                ph, pl = hi, lo
 
-        hi, lo = high[i], low[i]
+            hi, lo = high[i], low[i]
 
-        if not (hi >= lo and ph >= pl):
-            continue
+            if not (hi >= lo and ph >= pl):
+                continue
 
-        hi2 = ph if ph > hi else hi
-        lo2 = pl if pl < lo else lo
+            hi2 = ph if ph > hi else hi
+            lo2 = pl if pl < lo else lo
 
-        # check for reversal
-        if trend > 0 and lo < sar:
-            ep, sar, af, trend = lo, ep, afs, -1
+            # check for reversal
+            if trend > 0 and lo < sar:
+                ep, sar, af, trend = lo, ep, afs, -1
 
-        elif trend < 0 and hi > sar:
-            ep, sar, af, trend = hi, ep, afs, +1
+            elif trend < 0 and hi > sar:
+                ep, sar, af, trend = hi, ep, afs, +1
 
-        output[i] = sar
+            output[i] = sar
 
-        # calculate next sar
+            # calculate next sar
 
-        if trend == 0:
-            # initialize sar
-            if hi > ph:
-                ep, sar, af, trend = hi2, lo2, afs, +1
+            if trend == 0:
+                # initialize sar
+                if hi > ph:
+                    ep, sar, af, trend = hi2, lo2, afs, +1
+                else:
+                    ep, sar, af, trend = lo2, hi2, afs, -1
             else:
-                ep, sar, af, trend = lo2, hi2, afs, -1
-        else:
-            # update sar
-            sar += af * (ep - sar)
+                # update sar
+                sar += af * (ep - sar)
 
-            # adjust sar, ep, af if needed
-            if trend > 0:
-                if lo2 < sar:
-                    sar = lo2
-                if hi > ep:
-                    ep = hi
-                    af += afs
-            if trend < 0:
-                if hi2 > sar:
-                    sar = hi2
-                if lo < ep:
-                    ep = lo
-                    af += afs
+                # adjust sar, ep, af if needed
+                if trend > 0:
+                    if lo2 < sar:
+                        sar = lo2
+                    if hi > ep:
+                        ep = hi
+                        af += afs
+                if trend < 0:
+                    if hi2 > sar:
+                        sar = hi2
+                    if lo < ep:
+                        ep = lo
+                        af += afs
 
-        if maxaf and af > maxaf:
-            af = maxaf
+            if maxaf and af > maxaf:
+                af = maxaf
 
     return result
 

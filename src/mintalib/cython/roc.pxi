@@ -22,11 +22,12 @@ def calc_roc(series, long period=1):
         period = abs(period)
         shift = -period
 
-    for i in range(period, size):
-        v, pv = xs[i], xs[i - period]
-        if v > 0  and pv > 0:
-            roc = v / pv - 1
-            output[i + shift] = roc
+    with nogil:
+        for i in range(period, size):
+            v, pv = xs[i], xs[i - period]
+            if v > 0  and pv > 0:
+                roc = v / pv - 1
+                output[i + shift] = roc
 
     return result
 

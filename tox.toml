@@ -4,7 +4,7 @@
 
 work_dir = ".venv/tox"
 requires = ["tox>=4.19"]
-env_list = ["3.10", "3.11", "3.12", "3.13", "3.14", "ruff", "ty", "pandas", "polars"]
+env_list = ["3.10", "3.11", "3.12", "3.13", "3.13t", "3.14", "ruff", "ty", "pandas", "polars"]
 
 [env_run_base]
 deps = ["pytest"]
@@ -22,6 +22,11 @@ skip_install = true
 deps = ["ty"]
 extras = ["pandas", "polars"]
 commands = [["python", "-m", "ty", "check", "src/mintalib"]]
+
+# free-threaded build — validates GIL-free core kernels (see tests/test_concurrency.py).
+# pandas only: polars has no cp313t wheel yet and a source build OOMs.
+[env."3.13t"]
+extras = ["pandas"]
 
 # pandas-only install — polars tests skip via importorskip
 [env.pandas]

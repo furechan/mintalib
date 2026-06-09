@@ -36,25 +36,26 @@ def calc_ema(series, long period, *, bint adjust = False):
 
     cdef long i = 0, count = 0
 
-    for i in range(size):
-        value = xs[i]
+    with nogil:
+        for i in range(size):
+            value = xs[i]
 
-        if not isnan(value):
-            count += 1
+            if not isnan(value):
+                count += 1
 
-            if isnan(ema):
-                ema = value
-                num = value
-                div = 1.0
-            elif adjust:
-                num = value + rho * num
-                div = 1.0 + rho * div
-                ema = num / div
-            else:
-                ema += alpha * (value - ema)
+                if isnan(ema):
+                    ema = value
+                    num = value
+                    div = 1.0
+                elif adjust:
+                    num = value + rho * num
+                    div = 1.0 + rho * div
+                    ema = num / div
+                else:
+                    ema += alpha * (value - ema)
 
-        if count >= period:
-            output[i] = ema
+            if count >= period:
+                output[i] = ema
 
     return result
 

@@ -21,8 +21,9 @@ def calc_shift(series, long period):
     if period < 0:
         start, stop = 0, size + period
 
-    for i in range(start, stop):
-        output[i] = xs[i - period]
+    with nogil:
+        for i in range(start, stop):
+            output[i] = xs[i - period]
 
     return result
 
