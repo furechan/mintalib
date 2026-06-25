@@ -4,11 +4,13 @@ import inspect
 
 import polars as pl
 
-from typing import TypeAlias
+from typing import TypeAlias, ParamSpec, Callable, Any
 from polars.datatypes import Struct, Float64
 
 
 IntoExpr: TypeAlias = pl.Expr | str
+
+P = ParamSpec("P")
 
 
 
@@ -41,7 +43,7 @@ def get_struct_expr(src):
     raise ValueError(f"Unsupported src type: {type(src)}")
 
 
-def wrap_expression(calc_func):
+def wrap_expression(calc_func) -> Callable[[Callable[P, Any]], Callable[P, pl.Expr]]:
     calc_sig = inspect.signature(calc_func)
     first_param = next(iter(calc_sig.parameters.values()))
     force_struct = first_param.name == 'prices'

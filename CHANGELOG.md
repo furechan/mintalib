@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.35
+- Typed the public decorators (`wrap_expression`, `wrap_function`, `wrap_indicator`) with `ParamSpec` so type checkers and editors now resolve the full signatures of `mintalib.expressions`, `mintalib.functions`, and `mintalib.indicators` (parameters, defaults, and return types) instead of `Unknown`. Annotations only — no runtime change.
+
 ## 0.0.34
 - Released the GIL (`with nogil`) in numerically pure Cython kernels so they run truly in parallel across threads — notably under polars' `map_batches` workers in `mintalib.expressions` (including SMA/EMA/RMA/WMA/SUM/STDEV, MAD, MIN/MAX, CLAG, STREAK, RSI/ROC/LROC, ATR/MFI/SAR, regression, and flag/cross utilities)
 - Marked the `core` extension `freethreading_compatible` so it does not force the GIL back on under a free-threaded (`python3.x-t`) interpreter

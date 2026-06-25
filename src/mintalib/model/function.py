@@ -5,6 +5,10 @@ import inspect
 
 import numpy as np
 
+from typing import ParamSpec, Callable, Any
+
+P = ParamSpec("P")
+
 
 def _column_accessor(data):
     if isinstance(data, dict):
@@ -67,7 +71,7 @@ def _wrap_result(result, source, name: str | None = None):
     return result
 
 
-def wrap_function(calc_func):
+def wrap_function(calc_func) -> Callable[[Callable[P, Any]], Callable[P, Any]]:
     """Decorator to wrap indicators"""
 
     sig = inspect.signature(calc_func)

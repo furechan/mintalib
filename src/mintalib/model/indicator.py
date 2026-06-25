@@ -5,12 +5,14 @@ import inspect
 import numpy as np
 import pandas as pd
 
-from typing import Callable
+from typing import Callable, ParamSpec, Any
 from types import MappingProxyType
 from functools import cached_property
 from abc import ABCMeta, abstractmethod
 
 from ..utils import format_partial, lazy_repr
+
+P = ParamSpec("P")
 
 
 def _get_series(data, item: str | None = None):
@@ -209,7 +211,7 @@ class IndicatorChain(Indicator):
         return data
 
 
-def wrap_indicator(calc_func):
+def wrap_indicator(calc_func) -> Callable[[Callable[P, Any]], Callable[P, "Indicator"]]:
     """Decorator to wrap indicators"""
 
     def decorator(func):
