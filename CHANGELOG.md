@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.0.34
+- Released the GIL (`with nogil`) in numerically pure Cython kernels so they run truly in parallel across threads — notably under polars' `map_batches` workers in `mintalib.expressions` (including SMA/EMA/RMA/WMA/SUM/STDEV, MAD, MIN/MAX, CLAG, STREAK, RSI/ROC/LROC, ATR/MFI/SAR, regression, and flag/cross utilities)
+- Marked the `core` extension `freethreading_compatible` so it does not force the GIL back on under a free-threaded (`python3.x-t`) interpreter
+- Added `tests/test_concurrency.py`: runs every core kernel concurrently across threads (with shared input buffers) and asserts parity with single-threaded results — a concurrency regression guard that also validates free-threading safety when run under a free-threaded interpreter
+- Added a free-threaded `3.13t` environment to the tox matrix (pandas-only: polars has no `cp313t` wheel yet); verified the suite — including the concurrency test — passes under a no-GIL CPython build
+- Fixed `wrap_expression` to detect multi-output namedtuple results via their `_asdict` method (cleaner namedtuple handling, satisfies strict type checkers)
+- Pinned the tox matrix to uv-managed interpreters (`uv_python_preference = "only-managed"`); tox-uv otherwise defaults to `--python-preference system` and could pick a headerless system interpreter, breaking the Cython build
+
 ## 0.0.33
 - Type stubs (`core.pyi`): multi-output `calc_*` functions now annotated as `-> tuple` (was `-> Any`)
 - Added module docstring to `mintalib` for the package overview, visible in `mintalib.__doc__` and in generated docs
@@ -11,10 +19,6 @@
 - Optimized MIN/MAX: compare-to-prior-extremum with rescan-on-expiry, roughly halving the mintalib/talib ratio
 - Refactored RSI to use `calc_rma` internally
 - Added Cython compiler directives (`boundscheck=False`, `wraparound=False`, `cdivision=True`, `nonecheck=False`)
-- Released the GIL (`with nogil`) in numerically pure Cython kernels so they run truly in parallel across threads — notably under polars' `map_batches` workers in `mintalib.expressions` (including SMA/EMA/RMA/WMA/SUM/STDEV, MAD, MIN/MAX, CLAG, STREAK, RSI/ROC/LROC, ATR/MFI/SAR, regression, and flag/cross utilities)
-- Marked the `core` extension `freethreading_compatible` so it does not force the GIL back on under a free-threaded (`python3.x-t`) interpreter
-- Added `tests/test_concurrency.py`: runs every core kernel concurrently across threads (with shared input buffers) and asserts parity with single-threaded results — a concurrency regression guard that also validates free-threading safety when run under a free-threaded interpreter
-- Added a free-threaded `3.13t` environment to the tox matrix (pandas-only: polars has no `cp313t` wheel yet); verified the suite — including the concurrency test — passes under a no-GIL CPython build
 - Converted codegen and tooling notebooks to plain Python scripts (`make-functions.py`, `make-indicators.py`, `make-expressions.py`, `update-readme.py`, `update-samples.py`)
 - Added `test_atr` to `test_vs_talib.py` with convergence check
 - Updated bundled sample prices

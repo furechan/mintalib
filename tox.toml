@@ -11,6 +11,11 @@ deps = ["pytest"]
 extras = ["pandas", "polars"]
 commands = [["python", "-m", "pytest"]]
 set_env = { PYTHONDONTWRITEBYTECODE="1" }
+# tox-uv defaults --python-preference to "system", which overrides ~/.config/uv/uv.toml
+# (only-managed) and can grab a headerless system interpreter (e.g. /usr/bin/python3.14
+# without python3.14-dev), breaking the Cython build. Force uv-managed builds, which ship
+# Python.h, consistent with this project's uv-managed-everything convention.
+uv_python_preference = "only-managed"
 
 [env.ruff]
 deps = ["ruff"]
