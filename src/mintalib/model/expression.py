@@ -76,8 +76,9 @@ def wrap_expression(calc_func):
 
                 output = calc_func(prices, *args, **kwargs)
                 
-                if isinstance(output, tuple):
-                    return pl.DataFrame(output._asdict(), nan_to_null=True).to_struct()
+                asdict = getattr(output, "_asdict", None)
+                if asdict is not None:
+                    return pl.DataFrame(asdict(), nan_to_null=True).to_struct()
                 else:
                     return pl.Series(output, nan_to_null=True)
             
