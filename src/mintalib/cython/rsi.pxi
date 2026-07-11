@@ -30,7 +30,8 @@ def calc_rsi(series, long period=14):
                 dv = v - pv
                 ups[i] = dv if dv > 0.0 else 0.0
                 dns[i] = -dv if dv < 0.0 else 0.0
-            pv = v
+            if v == v:
+                pv = v
 
     cdef const double[:] rma_ups = calc_rma(ups_arr, period)
     cdef const double[:] rma_dns = calc_rma(dns_arr, period)

@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.36
+- RSI now bridges nulls like EMA/RMA: a NaN input no longer resets the previous price, so the price move across a gap is measured (delta taken from the last valid value). Bridging a null is now equivalent to removing it from the series.
+
 ## 0.0.35
 - Typed the public decorators (`wrap_expression`, `wrap_function`, `wrap_indicator`) with `ParamSpec` so type checkers and editors now resolve the full signatures of `mintalib.expressions`, `mintalib.functions`, and `mintalib.indicators` (parameters, defaults, and return types) instead of `Unknown`. Annotations only — no runtime change.
 

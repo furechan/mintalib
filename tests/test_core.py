@@ -37,3 +37,20 @@ def test_core(name, prices):
         data = data["close"]
     result = func(data, **kwds)
     assert result is not None
+
+
+def test_rsi_bridges_nulls():
+    import numpy as np
+
+    series = np.arange(1.0, 31.0)
+    series[16:] -= 5.0
+    gapped = series.copy()
+    gapped[15] = np.nan
+
+    result = core.calc_rsi(gapped, 14)
+
+    # the move across the gap must be measured
+    assert result[-1] < 100.0
+    # bridging a null is equivalent to removing it from the series
+    expected = core.calc_rsi(np.delete(series, 15), 14)
+    assert result[-1] == pytest.approx(expected[-1])
