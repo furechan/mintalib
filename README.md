@@ -181,7 +181,7 @@ Example notebooks are available in the `examples` folder.
 pip install mintalib
 ```
 
-The base install includes only the numpy requirements. Add `pandas` and/or `polars` to your environment depending on which interfaces you want to use.
+The base install includes only the numpy requirements. Add `pandas` and/or `polars` to your environment depending on which interface you want to use.
 
 
 ## Dependencies
