@@ -12,6 +12,8 @@ Each rolling statistic is recomputed per-window with an explicit polynomial fit:
   QUADREG_RMSE    - root mean square error of the quadratic fit
 """
 
+from importlib.util import find_spec
+
 import numpy as np
 import pytest
 
@@ -24,7 +26,9 @@ OFFSET = 5
 
 @pytest.fixture(scope="module")
 def series():
-    return sample_prices().close.values.astype(float)[:300]
+    backend = "pandas" if find_spec("pandas") else "polars"
+    prices = sample_prices(backend=backend)
+    return prices["close"].to_numpy().astype(float)[:300]
 
 
 def rolling_ref(series, period, stat):
