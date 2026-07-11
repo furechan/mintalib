@@ -1,10 +1,13 @@
-""" Curve (quadratic regression) """
+""" Quadratic Regression """
 
 
 cdef enum:
     QUADREG_CURVE = 0
-    QUADREG_FORECAST = 1
-    QUADREG_BADOPTION = 2
+    QUADREG_SLOPE = 1
+    QUADREG_RVALUE = 2
+    QUADREG_RMSE = 3
+    QUADREG_FORECAST = 4
+    QUADREG_BADOPTION = 5
 
 
 
@@ -35,6 +38,7 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
     cdef double x, y, xd, yd, xd2
     cdef double s, sx, sx2, sx3, sx4, sy, sy2, sxy, sx2y
     cdef double vxy, vxx, vyy, vxx2, vx2y, vx2x2
+    cdef double vzz, vuu, vzu, mse
     cdef double denom, slope, curve, intercept, forecast
 
     cdef long i = 0
@@ -93,6 +97,24 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
                 output[i] = curve
                 continue
 
+            if option == QUADREG_SLOPE:
+                x = (i + offset)
+                output[i] = slope + 2 * curve * x
+                continue
+
+            if option == QUADREG_RVALUE:
+                # partial correlation of the quadratic term, given the linear term
+                vzz = vyy - vxy * vxy / vxx if vxx > 0 else NAN
+                vuu = vx2x2 - vxx2 * vxx2 / vxx if vxx > 0 else NAN
+                vzu = vx2y - vxy * vxx2 / vxx if vxx > 0 else NAN
+                output[i] = vzu / math.sqrt(vzz * vuu) if vzz * vuu > 0 else NAN
+                continue
+
+            if option == QUADREG_RMSE:
+                mse = vyy - slope * vxy - curve * vx2y
+                output[i] = math.sqrt(mse) if mse >= 0 else NAN
+                continue
+
             if option == QUADREG_FORECAST:
                 x = (i + offset)
                 forecast = intercept + slope * x + curve * x * x
@@ -103,18 +125,67 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
 
 
 
-def calc_curve(series, long period=20):
-    """ Curve (quadratic regression) """
-
-    return quadratic_regression(series, period=period, option=QUADREG_CURVE)
-
-
-def calc_qsf(series, long period=20, long offset=0):
+def calc_quadreg(series, long period=20, long offset=0):
     """
-    Quadratic Series Forecast (quadratic regression)
-    
+    Quadratic Regression (parabolic moving average)
+
+    Value of the regression parabola at the current bar,
+    with `offset` projecting the parabola forward.
+
+    Args:
+        period (int): time period, default 20
+        offset (int): forecast offset, default 0
+    """
+
+    return quadratic_regression(series, period=period, offset=offset, option=QUADREG_FORECAST)
+
+
+def calc_quadreg_curve(series, long period=20):
+    """
+    Quadratic Regression Curve
+
     Args:
         period (int): time period, default 20
     """
 
-    return quadratic_regression(series, period=period, offset=offset, option=QUADREG_FORECAST)
+    return quadratic_regression(series, period=period, option=QUADREG_CURVE)
+
+
+def calc_quadreg_slope(series, long period=20, long offset=0):
+    """
+    Quadratic Regression Slope
+
+    Slope of the regression parabola at the current bar,
+    with `offset` projecting the slope forward.
+
+    Args:
+        period (int): time period, default 20
+        offset (int): forecast offset, default 0
+    """
+
+    return quadratic_regression(series, period=period, offset=offset, option=QUADREG_SLOPE)
+
+
+def calc_quadreg_rvalue(series, long period=20):
+    """
+    Quadratic Regression R-Value
+
+    Partial correlation of the quadratic term, given the linear term.
+
+    Args:
+        period (int): time period, default 20
+    """
+
+    return quadratic_regression(series, period=period, option=QUADREG_RVALUE)
+
+
+def calc_quadreg_rmse(series, long period=20):
+    """
+    Quadratic Regression Root Mean Square Error
+
+    Args:
+        period (int): time period, default 20
+    """
+
+    return quadratic_regression(series, period=period, option=QUADREG_RMSE)
+

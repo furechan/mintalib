@@ -173,12 +173,6 @@ Yields a value of 1 at the point where series crosses under level
 
 ---
 
-### `calc_curve(series, period=20) -> np.ndarray`
-
-Curve (quadratic regression)
-
----
-
 ### `calc_dema(series, period) -> np.ndarray`
 
 Double Exponential Moving Average
@@ -324,6 +318,58 @@ Lag Function
 
 ###### Arguments:
  - **period (int):**  time period, required
+
+
+
+---
+
+### `calc_linreg(series, period=20, offset=0) -> np.ndarray`
+
+Linear Regression (least squares moving average)
+
+Value of the regression line at the current bar,
+with `offset` projecting the line forward.
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+ - **offset (int):**  forecast offset, default 0
+
+
+
+---
+
+### `calc_linreg_rmse(series, period=20) -> np.ndarray`
+
+Linear Regression Root Mean Square Error
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+---
+
+### `calc_linreg_rvalue(series, period=20) -> np.ndarray`
+
+Linear Regression R-Value
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+---
+
+### `calc_linreg_slope(series, period=20) -> np.ndarray`
+
+Linear Regression Slope
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
 
 
 
@@ -516,13 +562,71 @@ Generic Price
 
 ---
 
-### `calc_qsf(series, period=20, offset=0) -> np.ndarray`
+### `calc_quadreg(series, period=20, offset=0) -> np.ndarray`
 
-Quadratic Series Forecast (quadratic regression)
+Quadratic Regression (parabolic moving average)
+
+Value of the regression parabola at the current bar,
+with `offset` projecting the parabola forward.
 
 
 ###### Arguments:
  - **period (int):**  time period, default 20
+ - **offset (int):**  forecast offset, default 0
+
+
+
+---
+
+### `calc_quadreg_curve(series, period=20) -> np.ndarray`
+
+Quadratic Regression Curve
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+---
+
+### `calc_quadreg_rmse(series, period=20) -> np.ndarray`
+
+Quadratic Regression Root Mean Square Error
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+---
+
+### `calc_quadreg_rvalue(series, period=20) -> np.ndarray`
+
+Quadratic Regression R-Value
+
+Partial correlation of the quadratic term, given the linear term.
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+---
+
+### `calc_quadreg_slope(series, period=20, offset=0) -> np.ndarray`
+
+Quadratic Regression Slope
+
+Slope of the regression parabola at the current bar,
+with `offset` projecting the slope forward.
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+ - **offset (int):**  forecast offset, default 0
 
 
 
@@ -563,18 +667,6 @@ Relative Strength Index
 
 ---
 
-### `calc_rvalue(series, period=20) -> np.ndarray`
-
-R-Value (linear regression)
-
-
-###### Arguments:
- - **period (int):**  time period, default 20
-
-
-
----
-
 ### `calc_sar(prices, afs=0.02, maxaf=0.2) -> np.ndarray`
 
 Parabolic Stop and Reverse
@@ -591,18 +683,6 @@ Parabolic Stop and Reverse
 ### `calc_sign(series) -> np.ndarray`
 
 Sign
-
----
-
-### `calc_slope(series, period=20) -> np.ndarray`
-
-Slope (linear regression)
-
-
-###### Arguments:
- - **period (int):**  time period, default 20
-
-
 
 ---
 
@@ -696,18 +776,6 @@ True Range
 ###### Arguments:
  - **log_prices (bool):**  whether to apply log to prices before calculation
  - **percent (bool):**  result as percentage of price
-
-
-
----
-
-### `calc_tsf(series, period=20, offset=0) -> np.ndarray`
-
-Time Series Forecast (linear regression)
-
-
-###### Arguments:
- - **period (int):**  time period, default 20
 
 
 

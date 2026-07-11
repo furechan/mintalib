@@ -1395,8 +1395,8 @@ static const char* const __pyx_f[] = {
   "src/mintalib/cython/ppo.pxi",
   "src/mintalib/cython/macd.pxi",
   "src/mintalib/cython/macdv.pxi",
-  "src/mintalib/cython/slope.pxi",
-  "src/mintalib/cython/curve.pxi",
+  "src/mintalib/cython/linreg.pxi",
+  "src/mintalib/cython/quadreg.pxi",
   "src/mintalib/cython/stoch.pxi",
   "src/mintalib/cython/streak.pxi",
 };
@@ -1660,7 +1660,7 @@ struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
 
-/* "src/mintalib/cython/slope.pxi":4
+/* "src/mintalib/cython/linreg.pxi":4
  * 
  * 
  * cdef enum:             # <<<<<<<<<<<<<<
@@ -1671,21 +1671,25 @@ enum  {
   __pyx_e_8mintalib_4core_LINREG_SLOPE = 0,
   __pyx_e_8mintalib_4core_LINREG_INTERCEPT = 1,
   __pyx_e_8mintalib_4core_LINREG_RVALUE = 2,
+  __pyx_e_8mintalib_4core_LINREG_RMSE = 3,
   __pyx_e_8mintalib_4core_LINREG_FORECAST = 4,
   __pyx_e_8mintalib_4core_LINREG_BADOPTION = 5
 };
 
-/* "src/mintalib/cython/curve.pxi":4
+/* "src/mintalib/cython/quadreg.pxi":4
  * 
  * 
  * cdef enum:             # <<<<<<<<<<<<<<
  *     QUADREG_CURVE = 0
- *     QUADREG_FORECAST = 1
+ *     QUADREG_SLOPE = 1
 */
 enum  {
   __pyx_e_8mintalib_4core_QUADREG_CURVE = 0,
-  __pyx_e_8mintalib_4core_QUADREG_FORECAST = 1,
-  __pyx_e_8mintalib_4core_QUADREG_BADOPTION = 2
+  __pyx_e_8mintalib_4core_QUADREG_SLOPE = 1,
+  __pyx_e_8mintalib_4core_QUADREG_RVALUE = 2,
+  __pyx_e_8mintalib_4core_QUADREG_RMSE = 3,
+  __pyx_e_8mintalib_4core_QUADREG_FORECAST = 4,
+  __pyx_e_8mintalib_4core_QUADREG_BADOPTION = 5
 };
 
 /* "src/mintalib/cython/flags.pxi":70
@@ -3371,7 +3375,7 @@ static PyObject *__pyx_pf_8mintalib_4core_14calc_crossover(CYTHON_UNUSED PyObjec
 static PyObject *__pyx_pf_8mintalib_4core_16calc_crossunder(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, double __pyx_v_level); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_18calc_flag(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_20calc_updown(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, double __pyx_v_up_level, double __pyx_v_down_level); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_136__defaults__(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_144__defaults__(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_22where_flag(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_flag, PyObject *__pyx_v_x, PyObject *__pyx_v_y, PyObject *__pyx_v_z); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_24calc_sign(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_26calc_step(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, double __pyx_v_threshold); /* proto */
@@ -3421,14 +3425,18 @@ static PyObject *__pyx_pf_8mintalib_4core_112calc_ppo(CYTHON_UNUSED PyObject *__
 static PyObject *__pyx_pf_8mintalib_4core_114calc_macd(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_n1, long __pyx_v_n2, long __pyx_v_n3); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_116calc_macdv(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_prices, long __pyx_v_n1, long __pyx_v_n2, long __pyx_v_n3); /* proto */
 static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, int __pyx_v_option, int __pyx_v_offset); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_120calc_slope(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_122calc_rvalue(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, long __pyx_v_offset); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, int __pyx_v_option, int __pyx_v_offset); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_128calc_curve(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_130calc_qsf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, long __pyx_v_offset); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_132calc_stoch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_prices, long __pyx_v_period, long __pyx_v_fastn, long __pyx_v_slown); /* proto */
-static PyObject *__pyx_pf_8mintalib_4core_134calc_streak(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_120calc_linreg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, long __pyx_v_offset); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_122calc_linreg_slope(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_124calc_linreg_rvalue(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_126calc_linreg_rmse(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_128quadratic_regression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, int __pyx_v_option, int __pyx_v_offset); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_130calc_quadreg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, long __pyx_v_offset); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_132calc_quadreg_curve(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_134calc_quadreg_slope(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, long __pyx_v_offset); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_136calc_quadreg_rvalue(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_138calc_quadreg_rmse(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_140calc_stoch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_prices, long __pyx_v_period, long __pyx_v_fastn, long __pyx_v_slown); /* proto */
+static PyObject *__pyx_pf_8mintalib_4core_142calc_streak(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series); /* proto */
 static PyObject *__pyx_tp_new_8mintalib_4core___pyx_defaults(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_8mintalib_4core___pyx_scope_struct__add_metadata(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -3472,8 +3480,8 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_slice[1];
   PyObject *__pyx_tuple[17];
-  PyObject *__pyx_codeobj_tab[69];
-  PyObject *__pyx_string_tab[562];
+  PyObject *__pyx_codeobj_tab[73];
+  PyObject *__pyx_string_tab[574];
   PyObject *__pyx_number_tab[12];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
@@ -3591,18 +3599,18 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_src_mintalib_cython_clag_pxi __pyx_string_tab[68]
 #define __pyx_kp_u_src_mintalib_cython_cmf_pxi __pyx_string_tab[69]
 #define __pyx_kp_u_src_mintalib_cython_cross_pxi __pyx_string_tab[70]
-#define __pyx_kp_u_src_mintalib_cython_curve_pxi __pyx_string_tab[71]
-#define __pyx_kp_u_src_mintalib_cython_dema_pxi __pyx_string_tab[72]
-#define __pyx_kp_u_src_mintalib_cython_diff_pxi __pyx_string_tab[73]
-#define __pyx_kp_u_src_mintalib_cython_dmi_pxi __pyx_string_tab[74]
-#define __pyx_kp_u_src_mintalib_cython_donchian_pxi __pyx_string_tab[75]
-#define __pyx_kp_u_src_mintalib_cython_ema_pxi __pyx_string_tab[76]
-#define __pyx_kp_u_src_mintalib_cython_exp_pxi __pyx_string_tab[77]
-#define __pyx_kp_u_src_mintalib_cython_flags_pxi __pyx_string_tab[78]
-#define __pyx_kp_u_src_mintalib_cython_hma_pxi __pyx_string_tab[79]
-#define __pyx_kp_u_src_mintalib_cython_kama_pxi __pyx_string_tab[80]
-#define __pyx_kp_u_src_mintalib_cython_keltner_pxi __pyx_string_tab[81]
-#define __pyx_kp_u_src_mintalib_cython_lag_pxi __pyx_string_tab[82]
+#define __pyx_kp_u_src_mintalib_cython_dema_pxi __pyx_string_tab[71]
+#define __pyx_kp_u_src_mintalib_cython_diff_pxi __pyx_string_tab[72]
+#define __pyx_kp_u_src_mintalib_cython_dmi_pxi __pyx_string_tab[73]
+#define __pyx_kp_u_src_mintalib_cython_donchian_pxi __pyx_string_tab[74]
+#define __pyx_kp_u_src_mintalib_cython_ema_pxi __pyx_string_tab[75]
+#define __pyx_kp_u_src_mintalib_cython_exp_pxi __pyx_string_tab[76]
+#define __pyx_kp_u_src_mintalib_cython_flags_pxi __pyx_string_tab[77]
+#define __pyx_kp_u_src_mintalib_cython_hma_pxi __pyx_string_tab[78]
+#define __pyx_kp_u_src_mintalib_cython_kama_pxi __pyx_string_tab[79]
+#define __pyx_kp_u_src_mintalib_cython_keltner_pxi __pyx_string_tab[80]
+#define __pyx_kp_u_src_mintalib_cython_lag_pxi __pyx_string_tab[81]
+#define __pyx_kp_u_src_mintalib_cython_linreg_pxi __pyx_string_tab[82]
 #define __pyx_kp_u_src_mintalib_cython_log_pxi __pyx_string_tab[83]
 #define __pyx_kp_u_src_mintalib_cython_lroc_pxi __pyx_string_tab[84]
 #define __pyx_kp_u_src_mintalib_cython_macd_pxi __pyx_string_tab[85]
@@ -3614,12 +3622,12 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_src_mintalib_cython_min_pxi __pyx_string_tab[91]
 #define __pyx_kp_u_src_mintalib_cython_ppo_pxi __pyx_string_tab[92]
 #define __pyx_kp_u_src_mintalib_cython_price_pxi __pyx_string_tab[93]
-#define __pyx_kp_u_src_mintalib_cython_rma_pxi __pyx_string_tab[94]
-#define __pyx_kp_u_src_mintalib_cython_roc_pxi __pyx_string_tab[95]
-#define __pyx_kp_u_src_mintalib_cython_rsi_pxi __pyx_string_tab[96]
-#define __pyx_kp_u_src_mintalib_cython_sar_pxi __pyx_string_tab[97]
-#define __pyx_kp_u_src_mintalib_cython_sign_pxi __pyx_string_tab[98]
-#define __pyx_kp_u_src_mintalib_cython_slope_pxi __pyx_string_tab[99]
+#define __pyx_kp_u_src_mintalib_cython_quadreg_pxi __pyx_string_tab[94]
+#define __pyx_kp_u_src_mintalib_cython_rma_pxi __pyx_string_tab[95]
+#define __pyx_kp_u_src_mintalib_cython_roc_pxi __pyx_string_tab[96]
+#define __pyx_kp_u_src_mintalib_cython_rsi_pxi __pyx_string_tab[97]
+#define __pyx_kp_u_src_mintalib_cython_sar_pxi __pyx_string_tab[98]
+#define __pyx_kp_u_src_mintalib_cython_sign_pxi __pyx_string_tab[99]
 #define __pyx_kp_u_src_mintalib_cython_sma_pxi __pyx_string_tab[100]
 #define __pyx_kp_u_src_mintalib_cython_stdev_pxi __pyx_string_tab[101]
 #define __pyx_kp_u_src_mintalib_cython_step_pxi __pyx_string_tab[102]
@@ -3685,403 +3693,415 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_calc_cmf __pyx_string_tab[162]
 #define __pyx_n_u_calc_crossover __pyx_string_tab[163]
 #define __pyx_n_u_calc_crossunder __pyx_string_tab[164]
-#define __pyx_n_u_calc_curve __pyx_string_tab[165]
-#define __pyx_n_u_calc_dema __pyx_string_tab[166]
-#define __pyx_n_u_calc_diff __pyx_string_tab[167]
-#define __pyx_n_u_calc_dmi __pyx_string_tab[168]
-#define __pyx_n_u_calc_donchian __pyx_string_tab[169]
-#define __pyx_n_u_calc_ema __pyx_string_tab[170]
-#define __pyx_n_u_calc_exp __pyx_string_tab[171]
-#define __pyx_n_u_calc_flag __pyx_string_tab[172]
-#define __pyx_n_u_calc_hma __pyx_string_tab[173]
-#define __pyx_n_u_calc_kama __pyx_string_tab[174]
-#define __pyx_n_u_calc_keltner __pyx_string_tab[175]
-#define __pyx_n_u_calc_ker __pyx_string_tab[176]
-#define __pyx_n_u_calc_lag __pyx_string_tab[177]
-#define __pyx_n_u_calc_log __pyx_string_tab[178]
-#define __pyx_n_u_calc_lroc __pyx_string_tab[179]
-#define __pyx_n_u_calc_macd __pyx_string_tab[180]
-#define __pyx_n_u_calc_macdv __pyx_string_tab[181]
-#define __pyx_n_u_calc_mad __pyx_string_tab[182]
-#define __pyx_n_u_calc_mav __pyx_string_tab[183]
-#define __pyx_n_u_calc_max __pyx_string_tab[184]
-#define __pyx_n_u_calc_mdi __pyx_string_tab[185]
-#define __pyx_n_u_calc_mfi __pyx_string_tab[186]
-#define __pyx_n_u_calc_midprice __pyx_string_tab[187]
-#define __pyx_n_u_calc_min __pyx_string_tab[188]
-#define __pyx_n_u_calc_natr __pyx_string_tab[189]
-#define __pyx_n_u_calc_pdi __pyx_string_tab[190]
-#define __pyx_n_u_calc_ppo __pyx_string_tab[191]
-#define __pyx_n_u_calc_price __pyx_string_tab[192]
-#define __pyx_n_u_calc_qsf __pyx_string_tab[193]
-#define __pyx_n_u_calc_rma __pyx_string_tab[194]
-#define __pyx_n_u_calc_roc __pyx_string_tab[195]
-#define __pyx_n_u_calc_rsi __pyx_string_tab[196]
-#define __pyx_n_u_calc_rvalue __pyx_string_tab[197]
-#define __pyx_n_u_calc_sar __pyx_string_tab[198]
-#define __pyx_n_u_calc_sign __pyx_string_tab[199]
-#define __pyx_n_u_calc_slope __pyx_string_tab[200]
-#define __pyx_n_u_calc_sma __pyx_string_tab[201]
-#define __pyx_n_u_calc_stdev __pyx_string_tab[202]
-#define __pyx_n_u_calc_step __pyx_string_tab[203]
-#define __pyx_n_u_calc_stoch __pyx_string_tab[204]
-#define __pyx_n_u_calc_streak __pyx_string_tab[205]
-#define __pyx_n_u_calc_sum __pyx_string_tab[206]
-#define __pyx_n_u_calc_tema __pyx_string_tab[207]
-#define __pyx_n_u_calc_trange __pyx_string_tab[208]
-#define __pyx_n_u_calc_tsf __pyx_string_tab[209]
-#define __pyx_n_u_calc_typprice __pyx_string_tab[210]
-#define __pyx_n_u_calc_updown __pyx_string_tab[211]
-#define __pyx_n_u_calc_wclprice __pyx_string_tab[212]
-#define __pyx_n_u_calc_wma __pyx_string_tab[213]
-#define __pyx_n_u_check_size __pyx_string_tab[214]
-#define __pyx_n_u_cl __pyx_string_tab[215]
-#define __pyx_n_u_clag __pyx_string_tab[216]
-#define __pyx_n_u_class __pyx_string_tab[217]
-#define __pyx_n_u_class_getitem __pyx_string_tab[218]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[219]
-#define __pyx_n_u_close __pyx_string_tab[220]
-#define __pyx_n_u_collections __pyx_string_tab[221]
-#define __pyx_n_u_corr __pyx_string_tab[222]
-#define __pyx_n_u_correlate __pyx_string_tab[223]
-#define __pyx_n_u_count __pyx_string_tab[224]
-#define __pyx_n_u_cur_max __pyx_string_tab[225]
-#define __pyx_n_u_cur_min __pyx_string_tab[226]
-#define __pyx_n_u_curve __pyx_string_tab[227]
-#define __pyx_n_u_d __pyx_string_tab[228]
-#define __pyx_n_u_denom __pyx_string_tab[229]
-#define __pyx_n_u_dict __pyx_string_tab[230]
-#define __pyx_n_u_diff __pyx_string_tab[231]
-#define __pyx_n_u_div __pyx_string_tab[232]
-#define __pyx_n_u_divide __pyx_string_tab[233]
-#define __pyx_n_u_dmi_result __pyx_string_tab[234]
-#define __pyx_n_u_dns __pyx_string_tab[235]
-#define __pyx_n_u_dns_arr __pyx_string_tab[236]
-#define __pyx_n_u_donchian_result __pyx_string_tab[237]
-#define __pyx_n_u_down_flag __pyx_string_tab[238]
-#define __pyx_n_u_down_level __pyx_string_tab[239]
-#define __pyx_n_u_dtype __pyx_string_tab[240]
-#define __pyx_n_u_dtype_is_object __pyx_string_tab[241]
-#define __pyx_n_u_dv __pyx_string_tab[242]
-#define __pyx_n_u_dx __pyx_string_tab[243]
-#define __pyx_n_u_dy __pyx_string_tab[244]
-#define __pyx_n_u_ema __pyx_string_tab[245]
-#define __pyx_n_u_ema1 __pyx_string_tab[246]
-#define __pyx_n_u_ema2 __pyx_string_tab[247]
-#define __pyx_n_u_ema3 __pyx_string_tab[248]
-#define __pyx_n_u_encode __pyx_string_tab[249]
-#define __pyx_n_u_enter __pyx_string_tab[250]
-#define __pyx_n_u_enum __pyx_string_tab[251]
-#define __pyx_n_u_enumerate __pyx_string_tab[252]
-#define __pyx_n_u_ep __pyx_string_tab[253]
-#define __pyx_n_u_er __pyx_string_tab[254]
-#define __pyx_n_u_ercnt __pyx_string_tab[255]
-#define __pyx_n_u_erdiv __pyx_string_tab[256]
-#define __pyx_n_u_ernum __pyx_string_tab[257]
-#define __pyx_n_u_error __pyx_string_tab[258]
-#define __pyx_n_u_errstate __pyx_string_tab[259]
-#define __pyx_n_u_ers __pyx_string_tab[260]
-#define __pyx_n_u_erval __pyx_string_tab[261]
-#define __pyx_n_u_exit __pyx_string_tab[262]
-#define __pyx_n_u_exp __pyx_string_tab[263]
-#define __pyx_n_u_fastf __pyx_string_tab[264]
-#define __pyx_n_u_fastk __pyx_string_tab[265]
-#define __pyx_n_u_fastn __pyx_string_tab[266]
-#define __pyx_n_u_flag __pyx_string_tab[267]
-#define __pyx_n_u_flags __pyx_string_tab[268]
-#define __pyx_n_u_float __pyx_string_tab[269]
-#define __pyx_n_u_float_2 __pyx_string_tab[270]
-#define __pyx_n_u_flow __pyx_string_tab[271]
-#define __pyx_n_u_flow_arr __pyx_string_tab[272]
-#define __pyx_n_u_forecast __pyx_string_tab[273]
-#define __pyx_n_u_format __pyx_string_tab[274]
-#define __pyx_n_u_fortran __pyx_string_tab[275]
-#define __pyx_n_u_fs __pyx_string_tab[276]
-#define __pyx_n_u_full __pyx_string_tab[277]
-#define __pyx_n_u_func __pyx_string_tab[278]
-#define __pyx_n_u_func_2 __pyx_string_tab[279]
-#define __pyx_n_u_fval __pyx_string_tab[280]
-#define __pyx_n_u_getstate __pyx_string_tab[281]
-#define __pyx_n_u_hi __pyx_string_tab[282]
-#define __pyx_n_u_hi2 __pyx_string_tab[283]
-#define __pyx_n_u_high __pyx_string_tab[284]
-#define __pyx_n_u_hist __pyx_string_tab[285]
-#define __pyx_n_u_hl2 __pyx_string_tab[286]
-#define __pyx_n_u_hlc3 __pyx_string_tab[287]
-#define __pyx_n_u_hlcc4 __pyx_string_tab[288]
-#define __pyx_n_u_hm __pyx_string_tab[289]
-#define __pyx_n_u_i __pyx_string_tab[290]
-#define __pyx_n_u_id __pyx_string_tab[291]
-#define __pyx_n_u_ignore __pyx_string_tab[292]
-#define __pyx_n_u_import __pyx_string_tab[293]
-#define __pyx_n_u_index __pyx_string_tab[294]
-#define __pyx_n_u_insert __pyx_string_tab[295]
-#define __pyx_n_u_intercept __pyx_string_tab[296]
-#define __pyx_n_u_invalid __pyx_string_tab[297]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[298]
-#define __pyx_n_u_item __pyx_string_tab[299]
-#define __pyx_n_u_items __pyx_string_tab[300]
-#define __pyx_n_u_itemsize __pyx_string_tab[301]
-#define __pyx_n_u_j __pyx_string_tab[302]
-#define __pyx_n_u_k __pyx_string_tab[303]
-#define __pyx_n_u_kama __pyx_string_tab[304]
-#define __pyx_n_u_keltner_result __pyx_string_tab[305]
-#define __pyx_n_u_level __pyx_string_tab[306]
-#define __pyx_n_u_linear_regression __pyx_string_tab[307]
-#define __pyx_n_u_ll __pyx_string_tab[308]
-#define __pyx_n_u_lm __pyx_string_tab[309]
-#define __pyx_n_u_lo __pyx_string_tab[310]
-#define __pyx_n_u_lo2 __pyx_string_tab[311]
-#define __pyx_n_u_log __pyx_string_tab[312]
-#define __pyx_n_u_log_prices __pyx_string_tab[313]
-#define __pyx_n_u_low __pyx_string_tab[314]
-#define __pyx_n_u_lower __pyx_string_tab[315]
-#define __pyx_n_u_lowerband __pyx_string_tab[316]
-#define __pyx_n_u_m __pyx_string_tab[317]
-#define __pyx_n_u_m1 __pyx_string_tab[318]
-#define __pyx_n_u_m2 __pyx_string_tab[319]
-#define __pyx_n_u_m3 __pyx_string_tab[320]
-#define __pyx_n_u_ma_type __pyx_string_tab[321]
-#define __pyx_n_u_macd __pyx_string_tab[322]
-#define __pyx_n_u_macd_result __pyx_string_tab[323]
-#define __pyx_n_u_macdhist __pyx_string_tab[324]
-#define __pyx_n_u_macdsignal __pyx_string_tab[325]
-#define __pyx_n_u_macdv __pyx_string_tab[326]
-#define __pyx_n_u_macdv_result __pyx_string_tab[327]
-#define __pyx_n_u_macdvhist __pyx_string_tab[328]
-#define __pyx_n_u_macdvsignal __pyx_string_tab[329]
-#define __pyx_n_u_mad __pyx_string_tab[330]
-#define __pyx_n_u_main __pyx_string_tab[331]
-#define __pyx_n_u_max_idx __pyx_string_tab[332]
-#define __pyx_n_u_maxaf __pyx_string_tab[333]
-#define __pyx_n_u_mdi __pyx_string_tab[334]
-#define __pyx_n_u_mdm __pyx_string_tab[335]
-#define __pyx_n_u_mean __pyx_string_tab[336]
-#define __pyx_n_u_memview __pyx_string_tab[337]
-#define __pyx_n_u_metadata __pyx_string_tab[338]
-#define __pyx_n_u_mid __pyx_string_tab[339]
-#define __pyx_n_u_middle __pyx_string_tab[340]
-#define __pyx_n_u_middleband __pyx_string_tab[341]
-#define __pyx_n_u_min_idx __pyx_string_tab[342]
-#define __pyx_n_u_mintalib_core __pyx_string_tab[343]
-#define __pyx_n_u_mode __pyx_string_tab[344]
-#define __pyx_n_u_module __pyx_string_tab[345]
-#define __pyx_n_u_mult __pyx_string_tab[346]
-#define __pyx_n_u_n1 __pyx_string_tab[347]
-#define __pyx_n_u_n2 __pyx_string_tab[348]
-#define __pyx_n_u_n3 __pyx_string_tab[349]
-#define __pyx_n_u_name __pyx_string_tab[350]
-#define __pyx_n_u_name_2 __pyx_string_tab[351]
-#define __pyx_n_u_namedtuple __pyx_string_tab[352]
-#define __pyx_n_u_nan __pyx_string_tab[353]
-#define __pyx_n_u_nbatr __pyx_string_tab[354]
-#define __pyx_n_u_nbdev __pyx_string_tab[355]
-#define __pyx_n_u_ndim __pyx_string_tab[356]
-#define __pyx_n_u_new __pyx_string_tab[357]
-#define __pyx_n_u_np __pyx_string_tab[358]
-#define __pyx_n_u_nsum __pyx_string_tab[359]
-#define __pyx_n_u_num __pyx_string_tab[360]
-#define __pyx_n_u_numpy __pyx_string_tab[361]
-#define __pyx_n_u_obj __pyx_string_tab[362]
-#define __pyx_n_u_offset __pyx_string_tab[363]
-#define __pyx_n_u_ohlc4 __pyx_string_tab[364]
-#define __pyx_n_u_old __pyx_string_tab[365]
-#define __pyx_n_u_open __pyx_string_tab[366]
-#define __pyx_n_u_option __pyx_string_tab[367]
-#define __pyx_n_u_others __pyx_string_tab[368]
-#define __pyx_n_u_output __pyx_string_tab[369]
-#define __pyx_n_u_output_names __pyx_string_tab[370]
-#define __pyx_n_u_pack __pyx_string_tab[371]
-#define __pyx_n_u_padding __pyx_string_tab[372]
-#define __pyx_n_u_pc __pyx_string_tab[373]
-#define __pyx_n_u_pdi __pyx_string_tab[374]
-#define __pyx_n_u_pdm __pyx_string_tab[375]
-#define __pyx_n_u_percent __pyx_string_tab[376]
-#define __pyx_n_u_period __pyx_string_tab[377]
-#define __pyx_n_u_ph __pyx_string_tab[378]
-#define __pyx_n_u_pl __pyx_string_tab[379]
-#define __pyx_n_u_pop __pyx_string_tab[380]
-#define __pyx_n_u_ppo __pyx_string_tab[381]
-#define __pyx_n_u_ppo_result __pyx_string_tab[382]
-#define __pyx_n_u_ppohist __pyx_string_tab[383]
-#define __pyx_n_u_pposignal __pyx_string_tab[384]
-#define __pyx_n_u_prc __pyx_string_tab[385]
-#define __pyx_n_u_prepend __pyx_string_tab[386]
-#define __pyx_n_u_prev __pyx_string_tab[387]
-#define __pyx_n_u_prices __pyx_string_tab[388]
-#define __pyx_n_u_psum __pyx_string_tab[389]
-#define __pyx_n_u_pv __pyx_string_tab[390]
-#define __pyx_n_u_px __pyx_string_tab[391]
-#define __pyx_n_u_py __pyx_string_tab[392]
-#define __pyx_n_u_pyx_checksum __pyx_string_tab[393]
-#define __pyx_n_u_pyx_state __pyx_string_tab[394]
-#define __pyx_n_u_pyx_type __pyx_string_tab[395]
-#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[396]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[397]
-#define __pyx_n_u_quadratic_regression __pyx_string_tab[398]
-#define __pyx_n_u_qualname __pyx_string_tab[399]
-#define __pyx_n_u_reduce __pyx_string_tab[400]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[401]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[402]
-#define __pyx_n_u_register __pyx_string_tab[403]
-#define __pyx_n_u_result __pyx_string_tab[404]
-#define __pyx_n_u_rho __pyx_string_tab[405]
-#define __pyx_n_u_rma __pyx_string_tab[406]
-#define __pyx_n_u_rma_dns __pyx_string_tab[407]
-#define __pyx_n_u_rma_ups __pyx_string_tab[408]
-#define __pyx_n_u_roc __pyx_string_tab[409]
-#define __pyx_n_u_round __pyx_string_tab[410]
-#define __pyx_n_u_rsum __pyx_string_tab[411]
-#define __pyx_n_u_s __pyx_string_tab[412]
-#define __pyx_n_u_same_scale __pyx_string_tab[413]
-#define __pyx_n_u_sar __pyx_string_tab[414]
-#define __pyx_n_u_series __pyx_string_tab[415]
-#define __pyx_n_u_set_name __pyx_string_tab[416]
-#define __pyx_n_u_setdefault __pyx_string_tab[417]
-#define __pyx_n_u_setstate __pyx_string_tab[418]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[419]
-#define __pyx_n_u_shape __pyx_string_tab[420]
-#define __pyx_n_u_shift __pyx_string_tab[421]
-#define __pyx_n_u_sigma __pyx_string_tab[422]
-#define __pyx_n_u_sign __pyx_string_tab[423]
-#define __pyx_n_u_signal __pyx_string_tab[424]
-#define __pyx_n_u_size __pyx_string_tab[425]
-#define __pyx_n_u_slope __pyx_string_tab[426]
-#define __pyx_n_u_slowd __pyx_string_tab[427]
-#define __pyx_n_u_slowf __pyx_string_tab[428]
-#define __pyx_n_u_slowk __pyx_string_tab[429]
-#define __pyx_n_u_slown __pyx_string_tab[430]
-#define __pyx_n_u_sma __pyx_string_tab[431]
-#define __pyx_n_u_start __pyx_string_tab[432]
-#define __pyx_n_u_std __pyx_string_tab[433]
-#define __pyx_n_u_step __pyx_string_tab[434]
-#define __pyx_n_u_stoch_result __pyx_string_tab[435]
-#define __pyx_n_u_stop __pyx_string_tab[436]
-#define __pyx_n_u_str __pyx_string_tab[437]
-#define __pyx_n_u_streak __pyx_string_tab[438]
-#define __pyx_n_u_struct __pyx_string_tab[439]
-#define __pyx_n_u_sum __pyx_string_tab[440]
-#define __pyx_n_u_sx __pyx_string_tab[441]
-#define __pyx_n_u_sx2 __pyx_string_tab[442]
-#define __pyx_n_u_sx2y __pyx_string_tab[443]
-#define __pyx_n_u_sx3 __pyx_string_tab[444]
-#define __pyx_n_u_sx4 __pyx_string_tab[445]
-#define __pyx_n_u_sxx __pyx_string_tab[446]
-#define __pyx_n_u_sxy __pyx_string_tab[447]
-#define __pyx_n_u_sy __pyx_string_tab[448]
-#define __pyx_n_u_sy2 __pyx_string_tab[449]
-#define __pyx_n_u_test __pyx_string_tab[450]
-#define __pyx_n_u_threshold __pyx_string_tab[451]
-#define __pyx_n_u_total __pyx_string_tab[452]
-#define __pyx_n_u_tr __pyx_string_tab[453]
-#define __pyx_n_u_trange __pyx_string_tab[454]
-#define __pyx_n_u_trend __pyx_string_tab[455]
-#define __pyx_n_u_typ __pyx_string_tab[456]
-#define __pyx_n_u_types __pyx_string_tab[457]
-#define __pyx_n_u_u __pyx_string_tab[458]
-#define __pyx_n_u_ul __pyx_string_tab[459]
-#define __pyx_n_u_unpack __pyx_string_tab[460]
-#define __pyx_n_u_up_flag __pyx_string_tab[461]
-#define __pyx_n_u_up_level __pyx_string_tab[462]
-#define __pyx_n_u_update __pyx_string_tab[463]
-#define __pyx_n_u_upper __pyx_string_tab[464]
-#define __pyx_n_u_upperband __pyx_string_tab[465]
-#define __pyx_n_u_ups __pyx_string_tab[466]
-#define __pyx_n_u_ups_arr __pyx_string_tab[467]
-#define __pyx_n_u_v __pyx_string_tab[468]
-#define __pyx_n_u_valid __pyx_string_tab[469]
-#define __pyx_n_u_value __pyx_string_tab[470]
-#define __pyx_n_u_values __pyx_string_tab[471]
-#define __pyx_n_u_volume __pyx_string_tab[472]
-#define __pyx_n_u_vx2x2 __pyx_string_tab[473]
-#define __pyx_n_u_vx2y __pyx_string_tab[474]
-#define __pyx_n_u_vxx __pyx_string_tab[475]
-#define __pyx_n_u_vxx2 __pyx_string_tab[476]
-#define __pyx_n_u_vxy __pyx_string_tab[477]
-#define __pyx_n_u_vyy __pyx_string_tab[478]
-#define __pyx_n_u_w __pyx_string_tab[479]
-#define __pyx_n_u_wcl __pyx_string_tab[480]
-#define __pyx_n_u_wdiv __pyx_string_tab[481]
-#define __pyx_n_u_where __pyx_string_tab[482]
-#define __pyx_n_u_where_flag __pyx_string_tab[483]
-#define __pyx_n_u_wrapper __pyx_string_tab[484]
-#define __pyx_n_u_wsum __pyx_string_tab[485]
-#define __pyx_n_u_x __pyx_string_tab[486]
-#define __pyx_n_u_xd __pyx_string_tab[487]
-#define __pyx_n_u_xd2 __pyx_string_tab[488]
-#define __pyx_n_u_xs __pyx_string_tab[489]
-#define __pyx_n_u_y __pyx_string_tab[490]
-#define __pyx_n_u_yd __pyx_string_tab[491]
-#define __pyx_n_u_ys __pyx_string_tab[492]
-#define __pyx_n_u_z __pyx_string_tab[493]
-#define __pyx_n_u_zs __pyx_string_tab[494]
-#define __pyx_kp_b_iso88591_1_b_Rq_5_s_A_A_E_aq_Baq_vRy_auA __pyx_string_tab[495]
-#define __pyx_kp_b_iso88591_1_q_81_XQe1_G2V2Q_G2V2Q_1G81_1 __pyx_string_tab[496]
-#define __pyx_kp_b_iso88591_1_q_wb_j_1_wb_WBa_j_1_b_Rq_5_r __pyx_string_tab[497]
-#define __pyx_kp_b_iso88591_2XQfAYa_2XQfAYa_HAV1HA_BhavQj_a __pyx_string_tab[498]
-#define __pyx_kp_b_iso88591_2XQfAYa_HAV1HA_81_6_1E_F_Cr_S_2 __pyx_string_tab[499]
-#define __pyx_kp_b_iso88591_2XQfAYa_HAV1HA_BhavQj_avU_e2T_2 __pyx_string_tab[500]
-#define __pyx_kp_b_iso88591_2XQfAYa_HAV1HA_BhavQj_avU_e2T_7 __pyx_string_tab[501]
-#define __pyx_kp_b_iso88591_2XQfAYa_HAV1HA_avQ_e2U_A_1 __pyx_string_tab[502]
-#define __pyx_kp_b_iso88591_2_a_j_6_1_r_81F_Q_Zq_e1_5_r_A_Z __pyx_string_tab[503]
-#define __pyx_kp_b_iso88591_4N_wb_j_1_wb_WBa_j_1_b_Rq_5_r_A __pyx_string_tab[504]
-#define __pyx_kp_b_iso88591_81HA_81F_81F_Rr_b_E_1_1 __pyx_string_tab[505]
-#define __pyx_kp_b_iso88591_81HA_81F_Rr_b_1 __pyx_string_tab[506]
-#define __pyx_kp_b_iso88591_AXWHG1 __pyx_string_tab[507]
-#define __pyx_kp_b_iso88591_A_L_q __pyx_string_tab[508]
-#define __pyx_kp_b_iso88591_A_b_Rq_5_s_A_A_E_aq_Baq_vRy_auA __pyx_string_tab[509]
-#define __pyx_kp_b_iso88591_HAV1IQ_HAV1HA_fBgRq__AWHA_1 __pyx_string_tab[510]
-#define __pyx_kp_b_iso88591_L_1_T_G1_uAQ_1K_r_Bd_U_3b_q_1 __pyx_string_tab[511]
-#define __pyx_kp_b_iso88591_Q_2XQfAYa_2XQfAYa_HAV1HA_BhavQj __pyx_string_tab[512]
-#define __pyx_kp_b_iso88591_Q_2XQfAYa_HAV1HA_BhavQj_Rxq_a_Q __pyx_string_tab[513]
-#define __pyx_kp_b_iso88591_Q_6_1_r_81F_Q_Zq_e1_q_9AWA_CvRt __pyx_string_tab[514]
-#define __pyx_kp_b_iso88591_Q_81HA_81HA_9AWA_d_U_F_A_XQe1_4 __pyx_string_tab[515]
-#define __pyx_kp_b_iso88591_Q_AXWHG87 __pyx_string_tab[516]
-#define __pyx_kp_b_iso88591_Q_XQha_1 __pyx_string_tab[517]
-#define __pyx_kp_b_iso88591_Q_XQhgWA_1 __pyx_string_tab[518]
-#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_E_E_Jj_E_aq_1_r_Bd __pyx_string_tab[519]
-#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jj_Jj_a_E_aq_1_uAQ __pyx_string_tab[520]
-#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jk_Q_wb_AQ_E_axq_u __pyx_string_tab[521]
-#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_oQ_A_E_aq_Baq_vR_1 __pyx_string_tab[522]
-#define __pyx_kp_b_iso88591_Q_b_q_Rq_b_Qb_q_A_b_Qb_q_A_b_Qb __pyx_string_tab[523]
-#define __pyx_kp_b_iso88591_Q_q_5_5_9AWA_b_Rq_1 __pyx_string_tab[524]
-#define __pyx_kp_b_iso88591_Q_q_AU_XQe1_G2V2Q_G2V2Q_9AWJha __pyx_string_tab[525]
-#define __pyx_kp_b_iso88591_Q_q_AU_XQe1_G2V2Q_G2V2Q_9AWJha_2 __pyx_string_tab[526]
-#define __pyx_kp_b_iso88591_Q_q_xwhgQ __pyx_string_tab[527]
-#define __pyx_kp_b_iso88591_Q_uCq_q_uD_q_HAV1G1_d_aq_d_aq_d __pyx_string_tab[528]
-#define __pyx_kp_b_iso88591_Q_wc_j_0_b_Rq_5_r_A_Q_A_E_aq_1 __pyx_string_tab[529]
-#define __pyx_kp_b_iso88591_Q_wc_j_2XQfAYa_HAV1HA_BhavQj_Rx __pyx_string_tab[530]
-#define __pyx_kp_b_iso88591_Q_wc_j_vS_j_s_1_r_D_Bb_3c_Bb_4t __pyx_string_tab[531]
-#define __pyx_kp_b_iso88591_Rq_Q_1F_Q_Zq_1 __pyx_string_tab[532]
-#define __pyx_kp_b_iso88591_a_6_1_r_Zq_a_5_r_A_Zz_k_Q_E_aq __pyx_string_tab[533]
-#define __pyx_kp_b_iso88591_a_81HA_81HA_5_XQfA_5_xq_1 __pyx_string_tab[534]
-#define __pyx_kp_b_iso88591_a_XQha_1 __pyx_string_tab[535]
-#define __pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jk_Q_wb_AQ_E_axq_u __pyx_string_tab[536]
-#define __pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jl_wb_WCq_j_1_E_ax __pyx_string_tab[537]
-#define __pyx_kp_b_iso88591_b_9AXQ_4q_1 __pyx_string_tab[538]
-#define __pyx_kp_b_iso88591_b_Rq_5_q_A_q_E_aq_Baq_vRq_q_r_q __pyx_string_tab[539]
-#define __pyx_kp_b_iso88591_b_Rq_5_r_A_E_aq_Baq_vRq_5_1 __pyx_string_tab[540]
-#define __pyx_kp_b_iso88591_b_Rq_5_r_A_E_aq_Baq_vRq_auA_s_a __pyx_string_tab[541]
-#define __pyx_kp_b_iso88591_b_Rt1A_1 __pyx_string_tab[542]
-#define __pyx_kp_b_iso88591_b_xq_A_Rq_5_r_A_CvRq_CvRq_q_Q_E __pyx_string_tab[543]
-#define __pyx_kp_b_iso88591_l_b_Rq_5_q_A_A_XQ_E_aq_7_AT_uAW __pyx_string_tab[544]
-#define __pyx_kp_b_iso88591_q_AU_XQe1_G2V2Q_G2V2Q_7_1 __pyx_string_tab[545]
-#define __pyx_kp_b_iso88591_q_AXWHG1 __pyx_string_tab[546]
-#define __pyx_kp_b_iso88591_q_F_1_81G1_81G1_87_U_F_D_XQgQ_6 __pyx_string_tab[547]
-#define __pyx_kp_b_iso88591_q_q_xwa __pyx_string_tab[548]
-#define __pyx_kp_b_iso88591_q_wc_j_0_b_Rq_5_r_A_K_Q_E_aq_1 __pyx_string_tab[549]
-#define __pyx_kp_b_iso88591_wb_j_b_Rq_5_r_A_A_E_axq_2Rq_5_1 __pyx_string_tab[550]
-#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_Ba_a_Q_E_aq_B __pyx_string_tab[551]
-#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_Cwb_t2Q_iq_a __pyx_string_tab[552]
-#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_L_Q_E_aq_Baq __pyx_string_tab[553]
-#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_E_aq_1_r __pyx_string_tab[554]
-#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_E_aq_1_r_2 __pyx_string_tab[555]
-#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_wc_Rq_L_Q_E_a __pyx_string_tab[556]
-#define __pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_E_awb_1_1 __pyx_string_tab[557]
-#define __pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_E_awb_1_1_2 __pyx_string_tab[558]
-#define __pyx_kp_b_iso88591_wc_j_q_aq_Ct2Q_XQd_uE_1 __pyx_string_tab[559]
-#define __pyx_kp_b_iso88591_xs_A_A_A_A_81_A_81_j_1A_1 __pyx_string_tab[560]
-#define __pyx_n_b_O __pyx_string_tab[561]
+#define __pyx_n_u_calc_dema __pyx_string_tab[165]
+#define __pyx_n_u_calc_diff __pyx_string_tab[166]
+#define __pyx_n_u_calc_dmi __pyx_string_tab[167]
+#define __pyx_n_u_calc_donchian __pyx_string_tab[168]
+#define __pyx_n_u_calc_ema __pyx_string_tab[169]
+#define __pyx_n_u_calc_exp __pyx_string_tab[170]
+#define __pyx_n_u_calc_flag __pyx_string_tab[171]
+#define __pyx_n_u_calc_hma __pyx_string_tab[172]
+#define __pyx_n_u_calc_kama __pyx_string_tab[173]
+#define __pyx_n_u_calc_keltner __pyx_string_tab[174]
+#define __pyx_n_u_calc_ker __pyx_string_tab[175]
+#define __pyx_n_u_calc_lag __pyx_string_tab[176]
+#define __pyx_n_u_calc_linreg __pyx_string_tab[177]
+#define __pyx_n_u_calc_linreg_rmse __pyx_string_tab[178]
+#define __pyx_n_u_calc_linreg_rvalue __pyx_string_tab[179]
+#define __pyx_n_u_calc_linreg_slope __pyx_string_tab[180]
+#define __pyx_n_u_calc_log __pyx_string_tab[181]
+#define __pyx_n_u_calc_lroc __pyx_string_tab[182]
+#define __pyx_n_u_calc_macd __pyx_string_tab[183]
+#define __pyx_n_u_calc_macdv __pyx_string_tab[184]
+#define __pyx_n_u_calc_mad __pyx_string_tab[185]
+#define __pyx_n_u_calc_mav __pyx_string_tab[186]
+#define __pyx_n_u_calc_max __pyx_string_tab[187]
+#define __pyx_n_u_calc_mdi __pyx_string_tab[188]
+#define __pyx_n_u_calc_mfi __pyx_string_tab[189]
+#define __pyx_n_u_calc_midprice __pyx_string_tab[190]
+#define __pyx_n_u_calc_min __pyx_string_tab[191]
+#define __pyx_n_u_calc_natr __pyx_string_tab[192]
+#define __pyx_n_u_calc_pdi __pyx_string_tab[193]
+#define __pyx_n_u_calc_ppo __pyx_string_tab[194]
+#define __pyx_n_u_calc_price __pyx_string_tab[195]
+#define __pyx_n_u_calc_quadreg __pyx_string_tab[196]
+#define __pyx_n_u_calc_quadreg_curve __pyx_string_tab[197]
+#define __pyx_n_u_calc_quadreg_rmse __pyx_string_tab[198]
+#define __pyx_n_u_calc_quadreg_rvalue __pyx_string_tab[199]
+#define __pyx_n_u_calc_quadreg_slope __pyx_string_tab[200]
+#define __pyx_n_u_calc_rma __pyx_string_tab[201]
+#define __pyx_n_u_calc_roc __pyx_string_tab[202]
+#define __pyx_n_u_calc_rsi __pyx_string_tab[203]
+#define __pyx_n_u_calc_sar __pyx_string_tab[204]
+#define __pyx_n_u_calc_sign __pyx_string_tab[205]
+#define __pyx_n_u_calc_sma __pyx_string_tab[206]
+#define __pyx_n_u_calc_stdev __pyx_string_tab[207]
+#define __pyx_n_u_calc_step __pyx_string_tab[208]
+#define __pyx_n_u_calc_stoch __pyx_string_tab[209]
+#define __pyx_n_u_calc_streak __pyx_string_tab[210]
+#define __pyx_n_u_calc_sum __pyx_string_tab[211]
+#define __pyx_n_u_calc_tema __pyx_string_tab[212]
+#define __pyx_n_u_calc_trange __pyx_string_tab[213]
+#define __pyx_n_u_calc_typprice __pyx_string_tab[214]
+#define __pyx_n_u_calc_updown __pyx_string_tab[215]
+#define __pyx_n_u_calc_wclprice __pyx_string_tab[216]
+#define __pyx_n_u_calc_wma __pyx_string_tab[217]
+#define __pyx_n_u_check_size __pyx_string_tab[218]
+#define __pyx_n_u_cl __pyx_string_tab[219]
+#define __pyx_n_u_clag __pyx_string_tab[220]
+#define __pyx_n_u_class __pyx_string_tab[221]
+#define __pyx_n_u_class_getitem __pyx_string_tab[222]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[223]
+#define __pyx_n_u_close __pyx_string_tab[224]
+#define __pyx_n_u_collections __pyx_string_tab[225]
+#define __pyx_n_u_corr __pyx_string_tab[226]
+#define __pyx_n_u_correlate __pyx_string_tab[227]
+#define __pyx_n_u_count __pyx_string_tab[228]
+#define __pyx_n_u_cur_max __pyx_string_tab[229]
+#define __pyx_n_u_cur_min __pyx_string_tab[230]
+#define __pyx_n_u_curve __pyx_string_tab[231]
+#define __pyx_n_u_d __pyx_string_tab[232]
+#define __pyx_n_u_denom __pyx_string_tab[233]
+#define __pyx_n_u_dict __pyx_string_tab[234]
+#define __pyx_n_u_diff __pyx_string_tab[235]
+#define __pyx_n_u_div __pyx_string_tab[236]
+#define __pyx_n_u_divide __pyx_string_tab[237]
+#define __pyx_n_u_dmi_result __pyx_string_tab[238]
+#define __pyx_n_u_dns __pyx_string_tab[239]
+#define __pyx_n_u_dns_arr __pyx_string_tab[240]
+#define __pyx_n_u_donchian_result __pyx_string_tab[241]
+#define __pyx_n_u_down_flag __pyx_string_tab[242]
+#define __pyx_n_u_down_level __pyx_string_tab[243]
+#define __pyx_n_u_dtype __pyx_string_tab[244]
+#define __pyx_n_u_dtype_is_object __pyx_string_tab[245]
+#define __pyx_n_u_dv __pyx_string_tab[246]
+#define __pyx_n_u_dx __pyx_string_tab[247]
+#define __pyx_n_u_dy __pyx_string_tab[248]
+#define __pyx_n_u_ema __pyx_string_tab[249]
+#define __pyx_n_u_ema1 __pyx_string_tab[250]
+#define __pyx_n_u_ema2 __pyx_string_tab[251]
+#define __pyx_n_u_ema3 __pyx_string_tab[252]
+#define __pyx_n_u_encode __pyx_string_tab[253]
+#define __pyx_n_u_enter __pyx_string_tab[254]
+#define __pyx_n_u_enum __pyx_string_tab[255]
+#define __pyx_n_u_enumerate __pyx_string_tab[256]
+#define __pyx_n_u_ep __pyx_string_tab[257]
+#define __pyx_n_u_er __pyx_string_tab[258]
+#define __pyx_n_u_ercnt __pyx_string_tab[259]
+#define __pyx_n_u_erdiv __pyx_string_tab[260]
+#define __pyx_n_u_ernum __pyx_string_tab[261]
+#define __pyx_n_u_error __pyx_string_tab[262]
+#define __pyx_n_u_errstate __pyx_string_tab[263]
+#define __pyx_n_u_ers __pyx_string_tab[264]
+#define __pyx_n_u_erval __pyx_string_tab[265]
+#define __pyx_n_u_exit __pyx_string_tab[266]
+#define __pyx_n_u_exp __pyx_string_tab[267]
+#define __pyx_n_u_fastf __pyx_string_tab[268]
+#define __pyx_n_u_fastk __pyx_string_tab[269]
+#define __pyx_n_u_fastn __pyx_string_tab[270]
+#define __pyx_n_u_flag __pyx_string_tab[271]
+#define __pyx_n_u_flags __pyx_string_tab[272]
+#define __pyx_n_u_float __pyx_string_tab[273]
+#define __pyx_n_u_float_2 __pyx_string_tab[274]
+#define __pyx_n_u_flow __pyx_string_tab[275]
+#define __pyx_n_u_flow_arr __pyx_string_tab[276]
+#define __pyx_n_u_forecast __pyx_string_tab[277]
+#define __pyx_n_u_format __pyx_string_tab[278]
+#define __pyx_n_u_fortran __pyx_string_tab[279]
+#define __pyx_n_u_fs __pyx_string_tab[280]
+#define __pyx_n_u_full __pyx_string_tab[281]
+#define __pyx_n_u_func __pyx_string_tab[282]
+#define __pyx_n_u_func_2 __pyx_string_tab[283]
+#define __pyx_n_u_fval __pyx_string_tab[284]
+#define __pyx_n_u_getstate __pyx_string_tab[285]
+#define __pyx_n_u_hi __pyx_string_tab[286]
+#define __pyx_n_u_hi2 __pyx_string_tab[287]
+#define __pyx_n_u_high __pyx_string_tab[288]
+#define __pyx_n_u_hist __pyx_string_tab[289]
+#define __pyx_n_u_hl2 __pyx_string_tab[290]
+#define __pyx_n_u_hlc3 __pyx_string_tab[291]
+#define __pyx_n_u_hlcc4 __pyx_string_tab[292]
+#define __pyx_n_u_hm __pyx_string_tab[293]
+#define __pyx_n_u_i __pyx_string_tab[294]
+#define __pyx_n_u_id __pyx_string_tab[295]
+#define __pyx_n_u_ignore __pyx_string_tab[296]
+#define __pyx_n_u_import __pyx_string_tab[297]
+#define __pyx_n_u_index __pyx_string_tab[298]
+#define __pyx_n_u_insert __pyx_string_tab[299]
+#define __pyx_n_u_intercept __pyx_string_tab[300]
+#define __pyx_n_u_invalid __pyx_string_tab[301]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[302]
+#define __pyx_n_u_item __pyx_string_tab[303]
+#define __pyx_n_u_items __pyx_string_tab[304]
+#define __pyx_n_u_itemsize __pyx_string_tab[305]
+#define __pyx_n_u_j __pyx_string_tab[306]
+#define __pyx_n_u_k __pyx_string_tab[307]
+#define __pyx_n_u_kama __pyx_string_tab[308]
+#define __pyx_n_u_keltner_result __pyx_string_tab[309]
+#define __pyx_n_u_level __pyx_string_tab[310]
+#define __pyx_n_u_linear_regression __pyx_string_tab[311]
+#define __pyx_n_u_ll __pyx_string_tab[312]
+#define __pyx_n_u_lm __pyx_string_tab[313]
+#define __pyx_n_u_lo __pyx_string_tab[314]
+#define __pyx_n_u_lo2 __pyx_string_tab[315]
+#define __pyx_n_u_log __pyx_string_tab[316]
+#define __pyx_n_u_log_prices __pyx_string_tab[317]
+#define __pyx_n_u_low __pyx_string_tab[318]
+#define __pyx_n_u_lower __pyx_string_tab[319]
+#define __pyx_n_u_lowerband __pyx_string_tab[320]
+#define __pyx_n_u_m __pyx_string_tab[321]
+#define __pyx_n_u_m1 __pyx_string_tab[322]
+#define __pyx_n_u_m2 __pyx_string_tab[323]
+#define __pyx_n_u_m3 __pyx_string_tab[324]
+#define __pyx_n_u_ma_type __pyx_string_tab[325]
+#define __pyx_n_u_macd __pyx_string_tab[326]
+#define __pyx_n_u_macd_result __pyx_string_tab[327]
+#define __pyx_n_u_macdhist __pyx_string_tab[328]
+#define __pyx_n_u_macdsignal __pyx_string_tab[329]
+#define __pyx_n_u_macdv __pyx_string_tab[330]
+#define __pyx_n_u_macdv_result __pyx_string_tab[331]
+#define __pyx_n_u_macdvhist __pyx_string_tab[332]
+#define __pyx_n_u_macdvsignal __pyx_string_tab[333]
+#define __pyx_n_u_mad __pyx_string_tab[334]
+#define __pyx_n_u_main __pyx_string_tab[335]
+#define __pyx_n_u_max_idx __pyx_string_tab[336]
+#define __pyx_n_u_maxaf __pyx_string_tab[337]
+#define __pyx_n_u_mdi __pyx_string_tab[338]
+#define __pyx_n_u_mdm __pyx_string_tab[339]
+#define __pyx_n_u_mean __pyx_string_tab[340]
+#define __pyx_n_u_memview __pyx_string_tab[341]
+#define __pyx_n_u_metadata __pyx_string_tab[342]
+#define __pyx_n_u_mid __pyx_string_tab[343]
+#define __pyx_n_u_middle __pyx_string_tab[344]
+#define __pyx_n_u_middleband __pyx_string_tab[345]
+#define __pyx_n_u_min_idx __pyx_string_tab[346]
+#define __pyx_n_u_mintalib_core __pyx_string_tab[347]
+#define __pyx_n_u_mode __pyx_string_tab[348]
+#define __pyx_n_u_module __pyx_string_tab[349]
+#define __pyx_n_u_mse __pyx_string_tab[350]
+#define __pyx_n_u_mult __pyx_string_tab[351]
+#define __pyx_n_u_n1 __pyx_string_tab[352]
+#define __pyx_n_u_n2 __pyx_string_tab[353]
+#define __pyx_n_u_n3 __pyx_string_tab[354]
+#define __pyx_n_u_name __pyx_string_tab[355]
+#define __pyx_n_u_name_2 __pyx_string_tab[356]
+#define __pyx_n_u_namedtuple __pyx_string_tab[357]
+#define __pyx_n_u_nan __pyx_string_tab[358]
+#define __pyx_n_u_nbatr __pyx_string_tab[359]
+#define __pyx_n_u_nbdev __pyx_string_tab[360]
+#define __pyx_n_u_ndim __pyx_string_tab[361]
+#define __pyx_n_u_new __pyx_string_tab[362]
+#define __pyx_n_u_np __pyx_string_tab[363]
+#define __pyx_n_u_nsum __pyx_string_tab[364]
+#define __pyx_n_u_num __pyx_string_tab[365]
+#define __pyx_n_u_numpy __pyx_string_tab[366]
+#define __pyx_n_u_obj __pyx_string_tab[367]
+#define __pyx_n_u_offset __pyx_string_tab[368]
+#define __pyx_n_u_ohlc4 __pyx_string_tab[369]
+#define __pyx_n_u_old __pyx_string_tab[370]
+#define __pyx_n_u_open __pyx_string_tab[371]
+#define __pyx_n_u_option __pyx_string_tab[372]
+#define __pyx_n_u_others __pyx_string_tab[373]
+#define __pyx_n_u_output __pyx_string_tab[374]
+#define __pyx_n_u_output_names __pyx_string_tab[375]
+#define __pyx_n_u_pack __pyx_string_tab[376]
+#define __pyx_n_u_padding __pyx_string_tab[377]
+#define __pyx_n_u_pc __pyx_string_tab[378]
+#define __pyx_n_u_pdi __pyx_string_tab[379]
+#define __pyx_n_u_pdm __pyx_string_tab[380]
+#define __pyx_n_u_percent __pyx_string_tab[381]
+#define __pyx_n_u_period __pyx_string_tab[382]
+#define __pyx_n_u_ph __pyx_string_tab[383]
+#define __pyx_n_u_pl __pyx_string_tab[384]
+#define __pyx_n_u_pop __pyx_string_tab[385]
+#define __pyx_n_u_ppo __pyx_string_tab[386]
+#define __pyx_n_u_ppo_result __pyx_string_tab[387]
+#define __pyx_n_u_ppohist __pyx_string_tab[388]
+#define __pyx_n_u_pposignal __pyx_string_tab[389]
+#define __pyx_n_u_prc __pyx_string_tab[390]
+#define __pyx_n_u_prepend __pyx_string_tab[391]
+#define __pyx_n_u_prev __pyx_string_tab[392]
+#define __pyx_n_u_prices __pyx_string_tab[393]
+#define __pyx_n_u_psum __pyx_string_tab[394]
+#define __pyx_n_u_pv __pyx_string_tab[395]
+#define __pyx_n_u_px __pyx_string_tab[396]
+#define __pyx_n_u_py __pyx_string_tab[397]
+#define __pyx_n_u_pyx_checksum __pyx_string_tab[398]
+#define __pyx_n_u_pyx_state __pyx_string_tab[399]
+#define __pyx_n_u_pyx_type __pyx_string_tab[400]
+#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[401]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[402]
+#define __pyx_n_u_quadratic_regression __pyx_string_tab[403]
+#define __pyx_n_u_qualname __pyx_string_tab[404]
+#define __pyx_n_u_reduce __pyx_string_tab[405]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[406]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[407]
+#define __pyx_n_u_register __pyx_string_tab[408]
+#define __pyx_n_u_result __pyx_string_tab[409]
+#define __pyx_n_u_rho __pyx_string_tab[410]
+#define __pyx_n_u_rma __pyx_string_tab[411]
+#define __pyx_n_u_rma_dns __pyx_string_tab[412]
+#define __pyx_n_u_rma_ups __pyx_string_tab[413]
+#define __pyx_n_u_roc __pyx_string_tab[414]
+#define __pyx_n_u_round __pyx_string_tab[415]
+#define __pyx_n_u_rsum __pyx_string_tab[416]
+#define __pyx_n_u_s __pyx_string_tab[417]
+#define __pyx_n_u_same_scale __pyx_string_tab[418]
+#define __pyx_n_u_sar __pyx_string_tab[419]
+#define __pyx_n_u_series __pyx_string_tab[420]
+#define __pyx_n_u_set_name __pyx_string_tab[421]
+#define __pyx_n_u_setdefault __pyx_string_tab[422]
+#define __pyx_n_u_setstate __pyx_string_tab[423]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[424]
+#define __pyx_n_u_shape __pyx_string_tab[425]
+#define __pyx_n_u_shift __pyx_string_tab[426]
+#define __pyx_n_u_sigma __pyx_string_tab[427]
+#define __pyx_n_u_sign __pyx_string_tab[428]
+#define __pyx_n_u_signal __pyx_string_tab[429]
+#define __pyx_n_u_size __pyx_string_tab[430]
+#define __pyx_n_u_slope __pyx_string_tab[431]
+#define __pyx_n_u_slowd __pyx_string_tab[432]
+#define __pyx_n_u_slowf __pyx_string_tab[433]
+#define __pyx_n_u_slowk __pyx_string_tab[434]
+#define __pyx_n_u_slown __pyx_string_tab[435]
+#define __pyx_n_u_sma __pyx_string_tab[436]
+#define __pyx_n_u_start __pyx_string_tab[437]
+#define __pyx_n_u_std __pyx_string_tab[438]
+#define __pyx_n_u_step __pyx_string_tab[439]
+#define __pyx_n_u_stoch_result __pyx_string_tab[440]
+#define __pyx_n_u_stop __pyx_string_tab[441]
+#define __pyx_n_u_str __pyx_string_tab[442]
+#define __pyx_n_u_streak __pyx_string_tab[443]
+#define __pyx_n_u_struct __pyx_string_tab[444]
+#define __pyx_n_u_sum __pyx_string_tab[445]
+#define __pyx_n_u_sx __pyx_string_tab[446]
+#define __pyx_n_u_sx2 __pyx_string_tab[447]
+#define __pyx_n_u_sx2y __pyx_string_tab[448]
+#define __pyx_n_u_sx3 __pyx_string_tab[449]
+#define __pyx_n_u_sx4 __pyx_string_tab[450]
+#define __pyx_n_u_sxx __pyx_string_tab[451]
+#define __pyx_n_u_sxy __pyx_string_tab[452]
+#define __pyx_n_u_sy __pyx_string_tab[453]
+#define __pyx_n_u_sy2 __pyx_string_tab[454]
+#define __pyx_n_u_test __pyx_string_tab[455]
+#define __pyx_n_u_threshold __pyx_string_tab[456]
+#define __pyx_n_u_total __pyx_string_tab[457]
+#define __pyx_n_u_tr __pyx_string_tab[458]
+#define __pyx_n_u_trange __pyx_string_tab[459]
+#define __pyx_n_u_trend __pyx_string_tab[460]
+#define __pyx_n_u_typ __pyx_string_tab[461]
+#define __pyx_n_u_types __pyx_string_tab[462]
+#define __pyx_n_u_u __pyx_string_tab[463]
+#define __pyx_n_u_ul __pyx_string_tab[464]
+#define __pyx_n_u_unpack __pyx_string_tab[465]
+#define __pyx_n_u_up_flag __pyx_string_tab[466]
+#define __pyx_n_u_up_level __pyx_string_tab[467]
+#define __pyx_n_u_update __pyx_string_tab[468]
+#define __pyx_n_u_upper __pyx_string_tab[469]
+#define __pyx_n_u_upperband __pyx_string_tab[470]
+#define __pyx_n_u_ups __pyx_string_tab[471]
+#define __pyx_n_u_ups_arr __pyx_string_tab[472]
+#define __pyx_n_u_v __pyx_string_tab[473]
+#define __pyx_n_u_valid __pyx_string_tab[474]
+#define __pyx_n_u_value __pyx_string_tab[475]
+#define __pyx_n_u_values __pyx_string_tab[476]
+#define __pyx_n_u_volume __pyx_string_tab[477]
+#define __pyx_n_u_vuu __pyx_string_tab[478]
+#define __pyx_n_u_vx2x2 __pyx_string_tab[479]
+#define __pyx_n_u_vx2y __pyx_string_tab[480]
+#define __pyx_n_u_vxx __pyx_string_tab[481]
+#define __pyx_n_u_vxx2 __pyx_string_tab[482]
+#define __pyx_n_u_vxy __pyx_string_tab[483]
+#define __pyx_n_u_vyy __pyx_string_tab[484]
+#define __pyx_n_u_vzu __pyx_string_tab[485]
+#define __pyx_n_u_vzz __pyx_string_tab[486]
+#define __pyx_n_u_w __pyx_string_tab[487]
+#define __pyx_n_u_wcl __pyx_string_tab[488]
+#define __pyx_n_u_wdiv __pyx_string_tab[489]
+#define __pyx_n_u_where __pyx_string_tab[490]
+#define __pyx_n_u_where_flag __pyx_string_tab[491]
+#define __pyx_n_u_wrapper __pyx_string_tab[492]
+#define __pyx_n_u_wsum __pyx_string_tab[493]
+#define __pyx_n_u_x __pyx_string_tab[494]
+#define __pyx_n_u_xd __pyx_string_tab[495]
+#define __pyx_n_u_xd2 __pyx_string_tab[496]
+#define __pyx_n_u_xs __pyx_string_tab[497]
+#define __pyx_n_u_y __pyx_string_tab[498]
+#define __pyx_n_u_yd __pyx_string_tab[499]
+#define __pyx_n_u_ys __pyx_string_tab[500]
+#define __pyx_n_u_z __pyx_string_tab[501]
+#define __pyx_n_u_zs __pyx_string_tab[502]
+#define __pyx_kp_b_iso88591_1_b_Rq_5_s_A_A_E_aq_Baq_vRy_auA __pyx_string_tab[503]
+#define __pyx_kp_b_iso88591_1_q_81_XQe1_G2V2Q_G2V2Q_1G81_1 __pyx_string_tab[504]
+#define __pyx_kp_b_iso88591_1_q_wb_j_1_wb_WBa_j_1_b_Rq_5_r __pyx_string_tab[505]
+#define __pyx_kp_b_iso88591_2XQfAYa_2XQfAYa_HAV1HA_BhavQj_a __pyx_string_tab[506]
+#define __pyx_kp_b_iso88591_2XQfAYa_HAV1HA_81_6_1E_F_Cr_S_2 __pyx_string_tab[507]
+#define __pyx_kp_b_iso88591_2XQfAYa_HAV1HA_BhavQj_avU_e2T_2 __pyx_string_tab[508]
+#define __pyx_kp_b_iso88591_2XQfAYa_HAV1HA_BhavQj_avU_e2T_7 __pyx_string_tab[509]
+#define __pyx_kp_b_iso88591_2XQfAYa_HAV1HA_avQ_e2U_A_1 __pyx_string_tab[510]
+#define __pyx_kp_b_iso88591_2_a_j_6_1_r_81F_Q_Zq_e1_5_r_A_Z __pyx_string_tab[511]
+#define __pyx_kp_b_iso88591_4N_wb_j_1_wb_WBa_j_1_b_Rq_5_r_A __pyx_string_tab[512]
+#define __pyx_kp_b_iso88591_81HA_81F_81F_Rr_b_E_1_1 __pyx_string_tab[513]
+#define __pyx_kp_b_iso88591_81HA_81F_Rr_b_1 __pyx_string_tab[514]
+#define __pyx_kp_b_iso88591_AXWHG87 __pyx_string_tab[515]
+#define __pyx_kp_b_iso88591_A_L_q __pyx_string_tab[516]
+#define __pyx_kp_b_iso88591_A_b_Rq_5_s_A_A_E_aq_Baq_vRy_auA __pyx_string_tab[517]
+#define __pyx_kp_b_iso88591_HAV1IQ_HAV1HA_fBgRq__AWHA_1 __pyx_string_tab[518]
+#define __pyx_kp_b_iso88591_L_1_T_G1_uAQ_1K_r_Bd_U_3b_q_1 __pyx_string_tab[519]
+#define __pyx_kp_b_iso88591_Q_2XQfAYa_2XQfAYa_HAV1HA_BhavQj __pyx_string_tab[520]
+#define __pyx_kp_b_iso88591_Q_2XQfAYa_HAV1HA_BhavQj_Rxq_a_Q __pyx_string_tab[521]
+#define __pyx_kp_b_iso88591_Q_6_1_r_81F_Q_Zq_e1_q_9AWA_CvRt __pyx_string_tab[522]
+#define __pyx_kp_b_iso88591_Q_81HA_81HA_9AWA_d_U_F_A_XQe1_4 __pyx_string_tab[523]
+#define __pyx_kp_b_iso88591_Q_AXWHG1 __pyx_string_tab[524]
+#define __pyx_kp_b_iso88591_Q_XQha_1 __pyx_string_tab[525]
+#define __pyx_kp_b_iso88591_Q_XQhgWA_1 __pyx_string_tab[526]
+#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_E_E_Jj_E_aq_1_r_Bd __pyx_string_tab[527]
+#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jj_Jj_a_E_aq_1_uAQ __pyx_string_tab[528]
+#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_Jk_Q_wb_AQ_E_axq_u __pyx_string_tab[529]
+#define __pyx_kp_b_iso88591_Q_b_Rq_5_r_A_oQ_A_E_aq_Baq_vR_1 __pyx_string_tab[530]
+#define __pyx_kp_b_iso88591_Q_b_q_Rq_b_Qb_q_A_b_Qb_q_A_b_Qb __pyx_string_tab[531]
+#define __pyx_kp_b_iso88591_Q_q_5_5_9AWA_b_Rq_1 __pyx_string_tab[532]
+#define __pyx_kp_b_iso88591_Q_q_AU_XQe1_G2V2Q_G2V2Q_9AWJha __pyx_string_tab[533]
+#define __pyx_kp_b_iso88591_Q_q_AU_XQe1_G2V2Q_G2V2Q_9AWJha_2 __pyx_string_tab[534]
+#define __pyx_kp_b_iso88591_Q_uCq_q_uD_q_HAV1G1_d_aq_d_aq_d __pyx_string_tab[535]
+#define __pyx_kp_b_iso88591_Q_wc_j_0_b_Rq_5_r_A_Q_A_E_aq_1 __pyx_string_tab[536]
+#define __pyx_kp_b_iso88591_Q_wc_j_2XQfAYa_HAV1HA_BhavQj_Rx __pyx_string_tab[537]
+#define __pyx_kp_b_iso88591_Q_wc_j_vS_j_s_1_r_D_Bb_3c_Bb_4t __pyx_string_tab[538]
+#define __pyx_kp_b_iso88591_Rq_Q_1F_Q_Zq_1 __pyx_string_tab[539]
+#define __pyx_kp_b_iso88591_a_6_1_r_Zq_a_5_r_A_Zz_k_Q_E_aq __pyx_string_tab[540]
+#define __pyx_kp_b_iso88591_a_81HA_81HA_5_XQfA_5_xq_1 __pyx_string_tab[541]
+#define __pyx_kp_b_iso88591_a_AXWHG1 __pyx_string_tab[542]
+#define __pyx_kp_b_iso88591_a_XQha_1 __pyx_string_tab[543]
+#define __pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jk_Q_wb_AQ_E_axq_u __pyx_string_tab[544]
+#define __pyx_kp_b_iso88591_a_b_Rq_5_r_A_Jl_wb_WCq_j_1_E_ax __pyx_string_tab[545]
+#define __pyx_kp_b_iso88591_a_q_xwa __pyx_string_tab[546]
+#define __pyx_kp_b_iso88591_b_9AXQ_4q_1 __pyx_string_tab[547]
+#define __pyx_kp_b_iso88591_b_Rq_5_q_A_q_E_aq_Baq_vRq_q_r_q __pyx_string_tab[548]
+#define __pyx_kp_b_iso88591_b_Rq_5_r_A_E_aq_Baq_vRq_5_1 __pyx_string_tab[549]
+#define __pyx_kp_b_iso88591_b_Rq_5_r_A_E_aq_Baq_vRq_auA_s_a __pyx_string_tab[550]
+#define __pyx_kp_b_iso88591_b_Rt1A_1 __pyx_string_tab[551]
+#define __pyx_kp_b_iso88591_b_xq_A_Rq_5_r_A_CvRq_CvRq_q_Q_E __pyx_string_tab[552]
+#define __pyx_kp_b_iso88591_l_b_Rq_5_q_A_A_XQ_E_aq_7_AT_uAW __pyx_string_tab[553]
+#define __pyx_kp_b_iso88591_q_AU_XQe1_G2V2Q_G2V2Q_7_1 __pyx_string_tab[554]
+#define __pyx_kp_b_iso88591_q_AXWHG1 __pyx_string_tab[555]
+#define __pyx_kp_b_iso88591_q_F_1_81G1_81G1_87_U_F_D_XQgQ_6 __pyx_string_tab[556]
+#define __pyx_kp_b_iso88591_q_q_xwa __pyx_string_tab[557]
+#define __pyx_kp_b_iso88591_q_q_xwhgQ __pyx_string_tab[558]
+#define __pyx_kp_b_iso88591_q_wc_j_0_b_Rq_5_r_A_K_Q_E_aq_1 __pyx_string_tab[559]
+#define __pyx_kp_b_iso88591_q_xwa __pyx_string_tab[560]
+#define __pyx_kp_b_iso88591_q_xwhgQ __pyx_string_tab[561]
+#define __pyx_kp_b_iso88591_wb_j_b_Rq_5_r_A_A_E_axq_2Rq_5_1 __pyx_string_tab[562]
+#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_Ba_a_Q_E_aq_B __pyx_string_tab[563]
+#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_Cwb_t2Q_iq_a __pyx_string_tab[564]
+#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_q_A_L_Q_E_aq_Baq __pyx_string_tab[565]
+#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_E_aq_1_r __pyx_string_tab[566]
+#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_L_Q_E_aq_1_r_2 __pyx_string_tab[567]
+#define __pyx_kp_b_iso88591_wc_j_0_b_Rq_5_r_A_wc_Rq_L_Q_E_a __pyx_string_tab[568]
+#define __pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_E_awb_1_1 __pyx_string_tab[569]
+#define __pyx_kp_b_iso88591_wc_j_b_Rq_5_r_A_O1_q_E_awb_1_1_2 __pyx_string_tab[570]
+#define __pyx_kp_b_iso88591_wc_j_q_aq_Ct2Q_XQd_uE_1 __pyx_string_tab[571]
+#define __pyx_kp_b_iso88591_xs_A_A_A_A_81_A_81_j_1A_1 __pyx_string_tab[572]
+#define __pyx_n_b_O __pyx_string_tab[573]
 #define __pyx_float_2_0 __pyx_number_tab[0]
 #define __pyx_float_3_0 __pyx_number_tab[1]
 #define __pyx_float_4_0 __pyx_number_tab[2]
@@ -4122,8 +4142,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_slice[i]); }
   for (int i=0; i<17; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<69; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<562; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<73; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<574; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<12; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -4161,8 +4181,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_slice[i]); }
   for (int i=0; i<17; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<69; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<562; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<73; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<574; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<12; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -21772,7 +21792,7 @@ static PyObject *__pyx_pf_8mintalib_4core_20calc_updown(CYTHON_UNUSED PyObject *
  * 
 */
 
-static PyObject *__pyx_pf_8mintalib_4core_136__defaults__(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_8mintalib_4core_144__defaults__(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -45402,7 +45422,7 @@ static PyObject *__pyx_pf_8mintalib_4core_116calc_macdv(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/slope.pxi":13
+/* "src/mintalib/cython/linreg.pxi":14
  * 
  * 
  * def linear_regression(series, long period=20, *, int option=0, int offset=0):             # <<<<<<<<<<<<<<
@@ -45453,58 +45473,58 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,&__pyx_mstate_global->__pyx_n_u_option,&__pyx_mstate_global->__pyx_n_u_offset,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 13, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 14, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 13, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 13, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "linear_regression", 0) < (0)) __PYX_ERR(45, 13, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "linear_regression", 0) < (0)) __PYX_ERR(45, 14, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("linear_regression", 0, 1, 2, i); __PYX_ERR(45, 13, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("linear_regression", 0, 1, 2, i); __PYX_ERR(45, 14, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 13, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 13, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 14, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 13, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 14, __pyx_L3_error)
     } else {
       __pyx_v_period = ((long)((long)20));
     }
     if (values[2]) {
-      __pyx_v_option = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_option == (int)-1) && PyErr_Occurred())) __PYX_ERR(45, 13, __pyx_L3_error)
+      __pyx_v_option = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_option == (int)-1) && PyErr_Occurred())) __PYX_ERR(45, 14, __pyx_L3_error)
     } else {
       __pyx_v_option = ((int)((int)0));
     }
     if (values[3]) {
-      __pyx_v_offset = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_offset == (int)-1) && PyErr_Occurred())) __PYX_ERR(45, 13, __pyx_L3_error)
+      __pyx_v_offset = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_offset == (int)-1) && PyErr_Occurred())) __PYX_ERR(45, 14, __pyx_L3_error)
     } else {
       __pyx_v_offset = ((int)((int)0));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("linear_regression", 0, 1, 2, __pyx_nargs); __PYX_ERR(45, 13, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("linear_regression", 0, 1, 2, __pyx_nargs); __PYX_ERR(45, 14, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -45545,6 +45565,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
   double __pyx_v_slope;
   double __pyx_v_intercept;
   double __pyx_v_forecast;
+  double __pyx_v_mse;
   long __pyx_v_i;
   long __pyx_v_j;
   PyObject *__pyx_r = NULL;
@@ -45573,7 +45594,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("linear_regression", 0);
 
-  /* "src/mintalib/cython/slope.pxi":21
+  /* "src/mintalib/cython/linreg.pxi":22
  *     """
  * 
  *     if period < 2:             # <<<<<<<<<<<<<<
@@ -45583,7 +45604,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
   __pyx_t_1 = (__pyx_v_period < 2);
   if (unlikely(__pyx_t_1)) {
 
-    /* "src/mintalib/cython/slope.pxi":22
+    /* "src/mintalib/cython/linreg.pxi":23
  * 
  *     if period < 2:
  *         raise ValueError(f"Invalid period {period}, should be greater than 2")             # <<<<<<<<<<<<<<
@@ -45591,13 +45612,13 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
  *     if option < 0 or option > LINREG_BADOPTION:
 */
     __pyx_t_3 = NULL;
-    __pyx_t_4 = __Pyx_PyUnicode_From_long(__pyx_v_period, 0, ' ', 'd'); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 22, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_From_long(__pyx_v_period, 0, ' ', 'd'); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5[0] = __pyx_mstate_global->__pyx_kp_u_Invalid_period;
     __pyx_t_5[1] = __pyx_t_4;
     __pyx_t_5[2] = __pyx_mstate_global->__pyx_kp_u_should_be_greater_than_2;
     __pyx_t_6 = __Pyx_PyUnicode_Join(__pyx_t_5, 3, 15 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4) + 26, 127);
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(45, 22, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(45, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_7 = 1;
@@ -45606,14 +45627,14 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(45, 22, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(45, 23, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(45, 22, __pyx_L1_error)
+    __PYX_ERR(45, 23, __pyx_L1_error)
 
-    /* "src/mintalib/cython/slope.pxi":21
+    /* "src/mintalib/cython/linreg.pxi":22
  *     """
  * 
  *     if period < 2:             # <<<<<<<<<<<<<<
@@ -45622,7 +45643,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
   }
 
-  /* "src/mintalib/cython/slope.pxi":24
+  /* "src/mintalib/cython/linreg.pxi":25
  *         raise ValueError(f"Invalid period {period}, should be greater than 2")
  * 
  *     if option < 0 or option > LINREG_BADOPTION:             # <<<<<<<<<<<<<<
@@ -45640,7 +45661,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
   __pyx_L5_bool_binop_done:;
   if (unlikely(__pyx_t_1)) {
 
-    /* "src/mintalib/cython/slope.pxi":25
+    /* "src/mintalib/cython/linreg.pxi":26
  * 
  *     if option < 0 or option > LINREG_BADOPTION:
  *         raise ValueError(f"Invalid option {option}")             # <<<<<<<<<<<<<<
@@ -45648,9 +45669,9 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
  *     cdef const double[:] ys = np.asarray(series, float)
 */
     __pyx_t_6 = NULL;
-    __pyx_t_3 = __Pyx_PyUnicode_From_int(__pyx_v_option, 0, ' ', 'd'); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 25, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyUnicode_From_int(__pyx_v_option, 0, ' ', 'd'); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Invalid_option, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 25, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Invalid_option, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_7 = 1;
@@ -45659,14 +45680,14 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(45, 25, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(45, 26, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(45, 25, __pyx_L1_error)
+    __PYX_ERR(45, 26, __pyx_L1_error)
 
-    /* "src/mintalib/cython/slope.pxi":24
+    /* "src/mintalib/cython/linreg.pxi":25
  *         raise ValueError(f"Invalid period {period}, should be greater than 2")
  * 
  *     if option < 0 or option > LINREG_BADOPTION:             # <<<<<<<<<<<<<<
@@ -45675,7 +45696,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
   }
 
-  /* "src/mintalib/cython/slope.pxi":27
+  /* "src/mintalib/cython/linreg.pxi":28
  *         raise ValueError(f"Invalid option {option}")
  * 
  *     cdef const double[:] ys = np.asarray(series, float)             # <<<<<<<<<<<<<<
@@ -45683,9 +45704,9 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
  * 
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(45, 27, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(45, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 27, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_7 = 1;
@@ -45705,32 +45726,32 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_7, (3-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(45, 27, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(45, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_2, 0); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(45, 27, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_2, 0); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(45, 28, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_ys = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "src/mintalib/cython/slope.pxi":28
+  /* "src/mintalib/cython/linreg.pxi":29
  * 
  *     cdef const double[:] ys = np.asarray(series, float)
  *     cdef long size = ys.size             # <<<<<<<<<<<<<<
  * 
  *     cdef object result = np.full(size, np.nan)
 */
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_ys, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(45, 28, __pyx_L1_error)
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_ys, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(45, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 28, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_10 = __Pyx_PyLong_As_long(__pyx_t_3); if (unlikely((__pyx_t_10 == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 28, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyLong_As_long(__pyx_t_3); if (unlikely((__pyx_t_10 == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_size = __pyx_t_10;
 
-  /* "src/mintalib/cython/slope.pxi":30
+  /* "src/mintalib/cython/linreg.pxi":31
  *     cdef long size = ys.size
  * 
  *     cdef object result = np.full(size, np.nan)             # <<<<<<<<<<<<<<
@@ -45738,16 +45759,16 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 30, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_6)) __PYX_ERR(45, 30, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_6)) __PYX_ERR(45, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 30, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(45, 30, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(45, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_12)) __PYX_ERR(45, 30, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_12)) __PYX_ERR(45, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __pyx_t_7 = 1;
@@ -45769,25 +45790,25 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 30, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 31, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
   __pyx_v_result = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "src/mintalib/cython/slope.pxi":31
+  /* "src/mintalib/cython/linreg.pxi":32
  * 
  *     cdef object result = np.full(size, np.nan)
  *     cdef double[:] output = result             # <<<<<<<<<<<<<<
  * 
  *     if period >= size:
 */
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(45, 31, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(45, 32, __pyx_L1_error)
   __pyx_v_output = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "src/mintalib/cython/slope.pxi":33
+  /* "src/mintalib/cython/linreg.pxi":34
  *     cdef double[:] output = result
  * 
  *     if period >= size:             # <<<<<<<<<<<<<<
@@ -45797,7 +45818,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
   __pyx_t_1 = (__pyx_v_period >= __pyx_v_size);
   if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/slope.pxi":34
+    /* "src/mintalib/cython/linreg.pxi":35
  * 
  *     if period >= size:
  *         return result             # <<<<<<<<<<<<<<
@@ -45809,7 +45830,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
     __pyx_r = __pyx_v_result;
     goto __pyx_L0;
 
-    /* "src/mintalib/cython/slope.pxi":33
+    /* "src/mintalib/cython/linreg.pxi":34
  *     cdef double[:] output = result
  * 
  *     if period >= size:             # <<<<<<<<<<<<<<
@@ -45818,8 +45839,8 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
   }
 
-  /* "src/mintalib/cython/slope.pxi":41
- *     cdef double corr, slope, intercept, forecast
+  /* "src/mintalib/cython/linreg.pxi":42
+ *     cdef double corr, slope, intercept, forecast, mse
  * 
  *     cdef long i = 0, j = 0             # <<<<<<<<<<<<<<
  * 
@@ -45828,7 +45849,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
   __pyx_v_i = 0;
   __pyx_v_j = 0;
 
-  /* "src/mintalib/cython/slope.pxi":43
+  /* "src/mintalib/cython/linreg.pxi":44
  *     cdef long i = 0, j = 0
  * 
  *     s = sx = sy = sxy = sx2 = sy2 = 0.0             # <<<<<<<<<<<<<<
@@ -45842,7 +45863,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
   __pyx_v_sx2 = 0.0;
   __pyx_v_sy2 = 0.0;
 
-  /* "src/mintalib/cython/slope.pxi":45
+  /* "src/mintalib/cython/linreg.pxi":46
  *     s = sx = sy = sxy = sx2 = sy2 = 0.0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -45855,7 +45876,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
       __Pyx_FastGIL_Remember();
       /*try:*/ {
 
-        /* "src/mintalib/cython/slope.pxi":46
+        /* "src/mintalib/cython/linreg.pxi":47
  * 
  *     with nogil:
  *         for i in range(size):             # <<<<<<<<<<<<<<
@@ -45867,7 +45888,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
         for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
           __pyx_v_i = __pyx_t_15;
 
-          /* "src/mintalib/cython/slope.pxi":47
+          /* "src/mintalib/cython/linreg.pxi":48
  *     with nogil:
  *         for i in range(size):
  *             x, y = i, ys[i]             # <<<<<<<<<<<<<<
@@ -45880,7 +45901,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
           __pyx_v_x = __pyx_t_16;
           __pyx_v_y = __pyx_t_18;
 
-          /* "src/mintalib/cython/slope.pxi":49
+          /* "src/mintalib/cython/linreg.pxi":50
  *             x, y = i, ys[i]
  * 
  *             if y != y:             # <<<<<<<<<<<<<<
@@ -45890,7 +45911,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
           __pyx_t_1 = (__pyx_v_y != __pyx_v_y);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/slope.pxi":50
+            /* "src/mintalib/cython/linreg.pxi":51
  * 
  *             if y != y:
  *                 s = sx = sy = sxy = sx2 = sy2 = 0.0             # <<<<<<<<<<<<<<
@@ -45904,7 +45925,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
             __pyx_v_sx2 = 0.0;
             __pyx_v_sy2 = 0.0;
 
-            /* "src/mintalib/cython/slope.pxi":51
+            /* "src/mintalib/cython/linreg.pxi":52
  *             if y != y:
  *                 s = sx = sy = sxy = sx2 = sy2 = 0.0
  *                 continue             # <<<<<<<<<<<<<<
@@ -45913,7 +45934,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             goto __pyx_L11_continue;
 
-            /* "src/mintalib/cython/slope.pxi":49
+            /* "src/mintalib/cython/linreg.pxi":50
  *             x, y = i, ys[i]
  * 
  *             if y != y:             # <<<<<<<<<<<<<<
@@ -45922,7 +45943,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           }
 
-          /* "src/mintalib/cython/slope.pxi":53
+          /* "src/mintalib/cython/linreg.pxi":54
  *                 continue
  * 
  *             if s == 0:             # <<<<<<<<<<<<<<
@@ -45932,7 +45953,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
           __pyx_t_1 = (__pyx_v_s == 0.0);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/slope.pxi":54
+            /* "src/mintalib/cython/linreg.pxi":55
  * 
  *             if s == 0:
  *                 j = i             # <<<<<<<<<<<<<<
@@ -45941,7 +45962,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             __pyx_v_j = __pyx_v_i;
 
-            /* "src/mintalib/cython/slope.pxi":53
+            /* "src/mintalib/cython/linreg.pxi":54
  *                 continue
  * 
  *             if s == 0:             # <<<<<<<<<<<<<<
@@ -45950,7 +45971,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           }
 
-          /* "src/mintalib/cython/slope.pxi":56
+          /* "src/mintalib/cython/linreg.pxi":57
  *                 j = i
  * 
  *             s += 1             # <<<<<<<<<<<<<<
@@ -45959,7 +45980,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           __pyx_v_s = (__pyx_v_s + 1.0);
 
-          /* "src/mintalib/cython/slope.pxi":57
+          /* "src/mintalib/cython/linreg.pxi":58
  * 
  *             s += 1
  *             sx += x             # <<<<<<<<<<<<<<
@@ -45968,7 +45989,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           __pyx_v_sx = (__pyx_v_sx + __pyx_v_x);
 
-          /* "src/mintalib/cython/slope.pxi":58
+          /* "src/mintalib/cython/linreg.pxi":59
  *             s += 1
  *             sx += x
  *             sy += y             # <<<<<<<<<<<<<<
@@ -45977,7 +45998,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           __pyx_v_sy = (__pyx_v_sy + __pyx_v_y);
 
-          /* "src/mintalib/cython/slope.pxi":59
+          /* "src/mintalib/cython/linreg.pxi":60
  *             sx += x
  *             sy += y
  *             sxy += x * y             # <<<<<<<<<<<<<<
@@ -45986,7 +46007,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           __pyx_v_sxy = (__pyx_v_sxy + (__pyx_v_x * __pyx_v_y));
 
-          /* "src/mintalib/cython/slope.pxi":60
+          /* "src/mintalib/cython/linreg.pxi":61
  *             sy += y
  *             sxy += x * y
  *             sx2 += x * x             # <<<<<<<<<<<<<<
@@ -45995,7 +46016,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           __pyx_v_sx2 = (__pyx_v_sx2 + (__pyx_v_x * __pyx_v_x));
 
-          /* "src/mintalib/cython/slope.pxi":61
+          /* "src/mintalib/cython/linreg.pxi":62
  *             sxy += x * y
  *             sx2 += x * x
  *             sy2 += y * y             # <<<<<<<<<<<<<<
@@ -46004,7 +46025,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           __pyx_v_sy2 = (__pyx_v_sy2 + (__pyx_v_y * __pyx_v_y));
 
-          /* "src/mintalib/cython/slope.pxi":63
+          /* "src/mintalib/cython/linreg.pxi":64
  *             sy2 += y * y
  * 
  *             if s < period:             # <<<<<<<<<<<<<<
@@ -46014,7 +46035,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
           __pyx_t_1 = (__pyx_v_s < __pyx_v_period);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/slope.pxi":64
+            /* "src/mintalib/cython/linreg.pxi":65
  * 
  *             if s < period:
  *                 continue             # <<<<<<<<<<<<<<
@@ -46023,7 +46044,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             goto __pyx_L11_continue;
 
-            /* "src/mintalib/cython/slope.pxi":63
+            /* "src/mintalib/cython/linreg.pxi":64
  *             sy2 += y * y
  * 
  *             if s < period:             # <<<<<<<<<<<<<<
@@ -46032,7 +46053,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           }
 
-          /* "src/mintalib/cython/slope.pxi":66
+          /* "src/mintalib/cython/linreg.pxi":67
  *                 continue
  * 
  *             while s > period and j < size:             # <<<<<<<<<<<<<<
@@ -46051,7 +46072,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
             __pyx_L18_bool_binop_done:;
             if (!__pyx_t_1) break;
 
-            /* "src/mintalib/cython/slope.pxi":67
+            /* "src/mintalib/cython/linreg.pxi":68
  * 
  *             while s > period and j < size:
  *                 x, y, j = j, ys[j], j+1             # <<<<<<<<<<<<<<
@@ -46066,7 +46087,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
             __pyx_v_y = __pyx_t_18;
             __pyx_v_j = __pyx_t_19;
 
-            /* "src/mintalib/cython/slope.pxi":68
+            /* "src/mintalib/cython/linreg.pxi":69
  *             while s > period and j < size:
  *                 x, y, j = j, ys[j], j+1
  *                 s -= 1             # <<<<<<<<<<<<<<
@@ -46075,7 +46096,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             __pyx_v_s = (__pyx_v_s - 1.0);
 
-            /* "src/mintalib/cython/slope.pxi":69
+            /* "src/mintalib/cython/linreg.pxi":70
  *                 x, y, j = j, ys[j], j+1
  *                 s -= 1
  *                 sx -= x             # <<<<<<<<<<<<<<
@@ -46084,7 +46105,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             __pyx_v_sx = (__pyx_v_sx - __pyx_v_x);
 
-            /* "src/mintalib/cython/slope.pxi":70
+            /* "src/mintalib/cython/linreg.pxi":71
  *                 s -= 1
  *                 sx -= x
  *                 sy -= y             # <<<<<<<<<<<<<<
@@ -46093,7 +46114,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             __pyx_v_sy = (__pyx_v_sy - __pyx_v_y);
 
-            /* "src/mintalib/cython/slope.pxi":71
+            /* "src/mintalib/cython/linreg.pxi":72
  *                 sx -= x
  *                 sy -= y
  *                 sxy -= x * y             # <<<<<<<<<<<<<<
@@ -46102,7 +46123,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             __pyx_v_sxy = (__pyx_v_sxy - (__pyx_v_x * __pyx_v_y));
 
-            /* "src/mintalib/cython/slope.pxi":72
+            /* "src/mintalib/cython/linreg.pxi":73
  *                 sy -= y
  *                 sxy -= x * y
  *                 sx2 -= x * x             # <<<<<<<<<<<<<<
@@ -46111,7 +46132,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             __pyx_v_sx2 = (__pyx_v_sx2 - (__pyx_v_x * __pyx_v_x));
 
-            /* "src/mintalib/cython/slope.pxi":73
+            /* "src/mintalib/cython/linreg.pxi":74
  *                 sxy -= x * y
  *                 sx2 -= x * x
  *                 sy2 -= y * y             # <<<<<<<<<<<<<<
@@ -46121,7 +46142,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
             __pyx_v_sy2 = (__pyx_v_sy2 - (__pyx_v_y * __pyx_v_y));
           }
 
-          /* "src/mintalib/cython/slope.pxi":75
+          /* "src/mintalib/cython/linreg.pxi":76
  *                 sy2 -= y * y
  * 
  *             vxy = (sxy / s - sx * sy / s / s)             # <<<<<<<<<<<<<<
@@ -46130,7 +46151,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           __pyx_v_vxy = ((__pyx_v_sxy / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
 
-          /* "src/mintalib/cython/slope.pxi":76
+          /* "src/mintalib/cython/linreg.pxi":77
  * 
  *             vxy = (sxy / s - sx * sy / s / s)
  *             vxx = (sx2 / s - sx * sx / s / s)             # <<<<<<<<<<<<<<
@@ -46139,7 +46160,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           __pyx_v_vxx = ((__pyx_v_sx2 / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sx) / __pyx_v_s) / __pyx_v_s));
 
-          /* "src/mintalib/cython/slope.pxi":77
+          /* "src/mintalib/cython/linreg.pxi":78
  *             vxy = (sxy / s - sx * sy / s / s)
  *             vxx = (sx2 / s - sx * sx / s / s)
  *             vyy = (sy2 / s - sy * sy / s / s)             # <<<<<<<<<<<<<<
@@ -46148,7 +46169,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           __pyx_v_vyy = ((__pyx_v_sy2 / __pyx_v_s) - (((__pyx_v_sy * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
 
-          /* "src/mintalib/cython/slope.pxi":79
+          /* "src/mintalib/cython/linreg.pxi":80
  *             vyy = (sy2 / s - sy * sy / s / s)
  * 
  *             slope = vxy / vxx if vxx > 0  else NAN             # <<<<<<<<<<<<<<
@@ -46163,7 +46184,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
           }
           __pyx_v_slope = __pyx_t_18;
 
-          /* "src/mintalib/cython/slope.pxi":80
+          /* "src/mintalib/cython/linreg.pxi":81
  * 
  *             slope = vxy / vxx if vxx > 0  else NAN
  *             intercept = (sy - slope * sx) / s             # <<<<<<<<<<<<<<
@@ -46172,7 +46193,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           __pyx_v_intercept = ((__pyx_v_sy - (__pyx_v_slope * __pyx_v_sx)) / __pyx_v_s);
 
-          /* "src/mintalib/cython/slope.pxi":81
+          /* "src/mintalib/cython/linreg.pxi":82
  *             slope = vxy / vxx if vxx > 0  else NAN
  *             intercept = (sy - slope * sx) / s
  *             corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN             # <<<<<<<<<<<<<<
@@ -46187,7 +46208,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
           }
           __pyx_v_corr = __pyx_t_18;
 
-          /* "src/mintalib/cython/slope.pxi":84
+          /* "src/mintalib/cython/linreg.pxi":85
  * 
  * 
  *             if option == LINREG_SLOPE:             # <<<<<<<<<<<<<<
@@ -46197,7 +46218,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
           __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_SLOPE);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/slope.pxi":85
+            /* "src/mintalib/cython/linreg.pxi":86
  * 
  *             if option == LINREG_SLOPE:
  *                 output[i] = slope             # <<<<<<<<<<<<<<
@@ -46207,7 +46228,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
             __pyx_t_17 = __pyx_v_i;
             *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_slope;
 
-            /* "src/mintalib/cython/slope.pxi":86
+            /* "src/mintalib/cython/linreg.pxi":87
  *             if option == LINREG_SLOPE:
  *                 output[i] = slope
  *                 continue             # <<<<<<<<<<<<<<
@@ -46216,7 +46237,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             goto __pyx_L11_continue;
 
-            /* "src/mintalib/cython/slope.pxi":84
+            /* "src/mintalib/cython/linreg.pxi":85
  * 
  * 
  *             if option == LINREG_SLOPE:             # <<<<<<<<<<<<<<
@@ -46225,7 +46246,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           }
 
-          /* "src/mintalib/cython/slope.pxi":88
+          /* "src/mintalib/cython/linreg.pxi":89
  *                 continue
  * 
  *             if option == LINREG_INTERCEPT:             # <<<<<<<<<<<<<<
@@ -46235,7 +46256,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
           __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_INTERCEPT);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/slope.pxi":89
+            /* "src/mintalib/cython/linreg.pxi":90
  * 
  *             if option == LINREG_INTERCEPT:
  *                 output[i] = intercept             # <<<<<<<<<<<<<<
@@ -46245,7 +46266,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
             __pyx_t_17 = __pyx_v_i;
             *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_intercept;
 
-            /* "src/mintalib/cython/slope.pxi":90
+            /* "src/mintalib/cython/linreg.pxi":91
  *             if option == LINREG_INTERCEPT:
  *                 output[i] = intercept
  *                 continue             # <<<<<<<<<<<<<<
@@ -46254,7 +46275,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             goto __pyx_L11_continue;
 
-            /* "src/mintalib/cython/slope.pxi":88
+            /* "src/mintalib/cython/linreg.pxi":89
  *                 continue
  * 
  *             if option == LINREG_INTERCEPT:             # <<<<<<<<<<<<<<
@@ -46263,7 +46284,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           }
 
-          /* "src/mintalib/cython/slope.pxi":92
+          /* "src/mintalib/cython/linreg.pxi":93
  *                 continue
  * 
  *             if option == LINREG_RVALUE:             # <<<<<<<<<<<<<<
@@ -46273,7 +46294,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
           __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_RVALUE);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/slope.pxi":93
+            /* "src/mintalib/cython/linreg.pxi":94
  * 
  *             if option == LINREG_RVALUE:
  *                 output[i] = corr             # <<<<<<<<<<<<<<
@@ -46283,16 +46304,16 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
             __pyx_t_17 = __pyx_v_i;
             *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_corr;
 
-            /* "src/mintalib/cython/slope.pxi":94
+            /* "src/mintalib/cython/linreg.pxi":95
  *             if option == LINREG_RVALUE:
  *                 output[i] = corr
  *                 continue             # <<<<<<<<<<<<<<
  * 
- *             if option == LINREG_FORECAST:
+ *             if option == LINREG_RMSE:
 */
             goto __pyx_L11_continue;
 
-            /* "src/mintalib/cython/slope.pxi":92
+            /* "src/mintalib/cython/linreg.pxi":93
  *                 continue
  * 
  *             if option == LINREG_RVALUE:             # <<<<<<<<<<<<<<
@@ -46301,7 +46322,60 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
           }
 
-          /* "src/mintalib/cython/slope.pxi":96
+          /* "src/mintalib/cython/linreg.pxi":97
+ *                 continue
+ * 
+ *             if option == LINREG_RMSE:             # <<<<<<<<<<<<<<
+ *                 mse = vyy * (1 - corr * corr)
+ *                 output[i] = math.sqrt(mse) if mse >= 0 else NAN
+*/
+          __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_RMSE);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/linreg.pxi":98
+ * 
+ *             if option == LINREG_RMSE:
+ *                 mse = vyy * (1 - corr * corr)             # <<<<<<<<<<<<<<
+ *                 output[i] = math.sqrt(mse) if mse >= 0 else NAN
+ *                 continue
+*/
+            __pyx_v_mse = (__pyx_v_vyy * (1.0 - (__pyx_v_corr * __pyx_v_corr)));
+
+            /* "src/mintalib/cython/linreg.pxi":99
+ *             if option == LINREG_RMSE:
+ *                 mse = vyy * (1 - corr * corr)
+ *                 output[i] = math.sqrt(mse) if mse >= 0 else NAN             # <<<<<<<<<<<<<<
+ *                 continue
+ * 
+*/
+            __pyx_t_1 = (__pyx_v_mse >= 0.0);
+            if (__pyx_t_1) {
+              __pyx_t_18 = sqrt(__pyx_v_mse);
+            } else {
+              __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
+            }
+            __pyx_t_17 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_t_18;
+
+            /* "src/mintalib/cython/linreg.pxi":100
+ *                 mse = vyy * (1 - corr * corr)
+ *                 output[i] = math.sqrt(mse) if mse >= 0 else NAN
+ *                 continue             # <<<<<<<<<<<<<<
+ * 
+ *             if option == LINREG_FORECAST:
+*/
+            goto __pyx_L11_continue;
+
+            /* "src/mintalib/cython/linreg.pxi":97
+ *                 continue
+ * 
+ *             if option == LINREG_RMSE:             # <<<<<<<<<<<<<<
+ *                 mse = vyy * (1 - corr * corr)
+ *                 output[i] = math.sqrt(mse) if mse >= 0 else NAN
+*/
+          }
+
+          /* "src/mintalib/cython/linreg.pxi":102
  *                 continue
  * 
  *             if option == LINREG_FORECAST:             # <<<<<<<<<<<<<<
@@ -46311,7 +46385,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
           __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_LINREG_FORECAST);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/slope.pxi":97
+            /* "src/mintalib/cython/linreg.pxi":103
  * 
  *             if option == LINREG_FORECAST:
  *                 forecast = intercept + slope * (i + offset)             # <<<<<<<<<<<<<<
@@ -46320,7 +46394,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             __pyx_v_forecast = (__pyx_v_intercept + (__pyx_v_slope * (__pyx_v_i + __pyx_v_offset)));
 
-            /* "src/mintalib/cython/slope.pxi":98
+            /* "src/mintalib/cython/linreg.pxi":104
  *             if option == LINREG_FORECAST:
  *                 forecast = intercept + slope * (i + offset)
  *                 output[i] = forecast             # <<<<<<<<<<<<<<
@@ -46330,7 +46404,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
             __pyx_t_17 = __pyx_v_i;
             *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_forecast;
 
-            /* "src/mintalib/cython/slope.pxi":99
+            /* "src/mintalib/cython/linreg.pxi":105
  *                 forecast = intercept + slope * (i + offset)
  *                 output[i] = forecast
  *                 continue             # <<<<<<<<<<<<<<
@@ -46339,7 +46413,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
 */
             goto __pyx_L11_continue;
 
-            /* "src/mintalib/cython/slope.pxi":96
+            /* "src/mintalib/cython/linreg.pxi":102
  *                 continue
  * 
  *             if option == LINREG_FORECAST:             # <<<<<<<<<<<<<<
@@ -46351,7 +46425,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
         }
       }
 
-      /* "src/mintalib/cython/slope.pxi":45
+      /* "src/mintalib/cython/linreg.pxi":46
  *     s = sx = sy = sxy = sx2 = sy2 = 0.0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -46368,7 +46442,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
       }
   }
 
-  /* "src/mintalib/cython/slope.pxi":101
+  /* "src/mintalib/cython/linreg.pxi":107
  *                 continue
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -46380,7 +46454,7 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/slope.pxi":13
+  /* "src/mintalib/cython/linreg.pxi":14
  * 
  * 
  * def linear_regression(series, long period=20, *, int option=0, int offset=0):             # <<<<<<<<<<<<<<
@@ -46409,417 +46483,25 @@ static PyObject *__pyx_pf_8mintalib_4core_118linear_regression(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/slope.pxi":106
+/* "src/mintalib/cython/linreg.pxi":111
  * 
  * 
- * def calc_slope(series, long period=20):             # <<<<<<<<<<<<<<
+ * def calc_linreg(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
  *     """
- *     Slope (linear regression)
+ *     Linear Regression (least squares moving average)
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_121calc_slope(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8mintalib_4core_121calc_linreg(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_120calc_slope, "\n    Slope (linear regression)\n    \n    Args:\n        period (int): time period, default 20\n    ");
-static PyMethodDef __pyx_mdef_8mintalib_4core_121calc_slope = {"calc_slope", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_121calc_slope, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_120calc_slope};
-static PyObject *__pyx_pw_8mintalib_4core_121calc_slope(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyObject *__pyx_v_series = 0;
-  long __pyx_v_period;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[2] = {0,0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("calc_slope (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 106, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 106, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 106, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_slope", 0) < (0)) __PYX_ERR(45, 106, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_slope", 0, 1, 2, i); __PYX_ERR(45, 106, __pyx_L3_error) }
-      }
-    } else {
-      switch (__pyx_nargs) {
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 106, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 106, __pyx_L3_error)
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-    }
-    __pyx_v_series = values[0];
-    if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 106, __pyx_L3_error)
-    } else {
-      __pyx_v_period = ((long)((long)20));
-    }
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_slope", 0, 1, 2, __pyx_nargs); __PYX_ERR(45, 106, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("mintalib.core.calc_slope", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_120calc_slope(__pyx_self, __pyx_v_series, __pyx_v_period);
-
-  /* function exit code */
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_8mintalib_4core_120calc_slope(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  size_t __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("calc_slope", 0);
-
-  /* "src/mintalib/cython/slope.pxi":114
- *     """
- * 
- *     return linear_regression(series, period=period, option=LINREG_SLOPE)             # <<<<<<<<<<<<<<
- * 
- * 
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 114, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 114, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_SLOPE); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 114, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
-    assert(__pyx_t_2);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
-    __Pyx_INCREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
-    __pyx_t_6 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
-    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(45, 114, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 114, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 114, __pyx_L1_error)
-    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 114, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-  }
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "src/mintalib/cython/slope.pxi":106
- * 
- * 
- * def calc_slope(series, long period=20):             # <<<<<<<<<<<<<<
- *     """
- *     Slope (linear regression)
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("mintalib.core.calc_slope", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "src/mintalib/cython/slope.pxi":117
- * 
- * 
- * def calc_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
- *     """
- *     R-Value (linear regression)
-*/
-
-/* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_123calc_rvalue(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_122calc_rvalue, "\n    R-Value (linear regression)\n    \n    Args:\n        period (int): time period, default 20\n    ");
-static PyMethodDef __pyx_mdef_8mintalib_4core_123calc_rvalue = {"calc_rvalue", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_123calc_rvalue, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_122calc_rvalue};
-static PyObject *__pyx_pw_8mintalib_4core_123calc_rvalue(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyObject *__pyx_v_series = 0;
-  long __pyx_v_period;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[2] = {0,0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("calc_rvalue (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 117, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 117, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 117, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_rvalue", 0) < (0)) __PYX_ERR(45, 117, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_rvalue", 0, 1, 2, i); __PYX_ERR(45, 117, __pyx_L3_error) }
-      }
-    } else {
-      switch (__pyx_nargs) {
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 117, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 117, __pyx_L3_error)
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-    }
-    __pyx_v_series = values[0];
-    if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 117, __pyx_L3_error)
-    } else {
-      __pyx_v_period = ((long)((long)20));
-    }
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_rvalue", 0, 1, 2, __pyx_nargs); __PYX_ERR(45, 117, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("mintalib.core.calc_rvalue", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_122calc_rvalue(__pyx_self, __pyx_v_series, __pyx_v_period);
-
-  /* function exit code */
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_8mintalib_4core_122calc_rvalue(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  size_t __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("calc_rvalue", 0);
-
-  /* "src/mintalib/cython/slope.pxi":125
- *     """
- * 
- *     return linear_regression(series, period=period, option=LINREG_RVALUE)             # <<<<<<<<<<<<<<
- * 
- * 
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 125, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 125, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_RVALUE); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 125, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
-    assert(__pyx_t_2);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
-    __Pyx_INCREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
-    __pyx_t_6 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
-    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(45, 125, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 125, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 125, __pyx_L1_error)
-    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 125, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-  }
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "src/mintalib/cython/slope.pxi":117
- * 
- * 
- * def calc_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
- *     """
- *     R-Value (linear regression)
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("mintalib.core.calc_rvalue", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "src/mintalib/cython/slope.pxi":128
- * 
- * 
- * def calc_tsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
- *     """
- *     Time Series Forecast (linear regression)
-*/
-
-/* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_125calc_tsf(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_124calc_tsf, "\n    Time Series Forecast (linear regression)\n    \n    Args:\n        period (int): time period, default 20\n    ");
-static PyMethodDef __pyx_mdef_8mintalib_4core_125calc_tsf = {"calc_tsf", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_125calc_tsf, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_124calc_tsf};
-static PyObject *__pyx_pw_8mintalib_4core_125calc_tsf(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_120calc_linreg, "\n    Linear Regression (least squares moving average)\n\n    Value of the regression line at the current bar,\n    with `offset` projecting the line forward.\n\n    Args:\n        period (int): time period, default 20\n        offset (int): forecast offset, default 0\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_121calc_linreg = {"calc_linreg", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_121calc_linreg, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_120calc_linreg};
+static PyObject *__pyx_pw_8mintalib_4core_121calc_linreg(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -46839,7 +46521,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("calc_tsf (wrapper)", 0);
+  __Pyx_RefNannySetupContext("calc_linreg (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -46851,72 +46533,72 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,&__pyx_mstate_global->__pyx_n_u_offset,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 128, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 111, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(45, 128, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(45, 111, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 128, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 111, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 128, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 111, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_tsf", 0) < (0)) __PYX_ERR(45, 128, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_linreg", 0) < (0)) __PYX_ERR(45, 111, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_tsf", 0, 1, 3, i); __PYX_ERR(45, 128, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_linreg", 0, 1, 3, i); __PYX_ERR(45, 111, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(45, 128, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(45, 111, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 128, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 111, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 128, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 111, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 128, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 111, __pyx_L3_error)
     } else {
       __pyx_v_period = ((long)((long)20));
     }
     if (values[2]) {
-      __pyx_v_offset = __Pyx_PyLong_As_long(values[2]); if (unlikely((__pyx_v_offset == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 128, __pyx_L3_error)
+      __pyx_v_offset = __Pyx_PyLong_As_long(values[2]); if (unlikely((__pyx_v_offset == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 111, __pyx_L3_error)
     } else {
       __pyx_v_offset = ((long)((long)0));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_tsf", 0, 1, 3, __pyx_nargs); __PYX_ERR(45, 128, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_linreg", 0, 1, 3, __pyx_nargs); __PYX_ERR(45, 111, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("mintalib.core.calc_tsf", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.calc_linreg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_124calc_tsf(__pyx_self, __pyx_v_series, __pyx_v_period, __pyx_v_offset);
+  __pyx_r = __pyx_pf_8mintalib_4core_120calc_linreg(__pyx_self, __pyx_v_series, __pyx_v_period, __pyx_v_offset);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -46926,7 +46608,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, long __pyx_v_offset) {
+static PyObject *__pyx_pf_8mintalib_4core_120calc_linreg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, long __pyx_v_offset) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -46940,9 +46622,9 @@ static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("calc_tsf", 0);
+  __Pyx_RefNannySetupContext("calc_linreg", 0);
 
-  /* "src/mintalib/cython/slope.pxi":136
+  /* "src/mintalib/cython/linreg.pxi":123
  *     """
  * 
  *     return linear_regression(series, period=period, offset=offset, option=LINREG_FORECAST)             # <<<<<<<<<<<<<<
@@ -46951,13 +46633,13 @@ static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 136, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 136, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From_long(__pyx_v_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 136, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_long(__pyx_v_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_FORECAST); if (unlikely(!__pyx_t_6)) __PYX_ERR(45, 136, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_FORECAST); if (unlikely(!__pyx_t_6)) __PYX_ERR(45, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -46973,11 +46655,11 @@ static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 3 : 0)] = {__pyx_t_2, __pyx_v_series};
-    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(45, 136, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(45, 123, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_8, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 136, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_offset, __pyx_t_5, __pyx_t_8, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 136, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_6, __pyx_t_8, __pyx_callargs+2, 2) < (0)) __PYX_ERR(45, 136, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_8, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 123, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_offset, __pyx_t_5, __pyx_t_8, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 123, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_6, __pyx_t_8, __pyx_callargs+2, 2) < (0)) __PYX_ERR(45, 123, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_8);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -46985,19 +46667,19 @@ static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 136, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 123, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/slope.pxi":128
+  /* "src/mintalib/cython/linreg.pxi":111
  * 
  * 
- * def calc_tsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
+ * def calc_linreg(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
  *     """
- *     Time Series Forecast (linear regression)
+ *     Linear Regression (least squares moving average)
 */
 
   /* function exit code */
@@ -47009,7 +46691,7 @@ static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("mintalib.core.calc_tsf", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.calc_linreg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -47017,7 +46699,594 @@ static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/curve.pxi":11
+/* "src/mintalib/cython/linreg.pxi":127
+ * 
+ * 
+ * def calc_linreg_slope(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Linear Regression Slope
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_8mintalib_4core_123calc_linreg_slope(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_122calc_linreg_slope, "\n    Linear Regression Slope\n\n    Args:\n        period (int): time period, default 20\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_123calc_linreg_slope = {"calc_linreg_slope", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_123calc_linreg_slope, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_122calc_linreg_slope};
+static PyObject *__pyx_pw_8mintalib_4core_123calc_linreg_slope(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_series = 0;
+  long __pyx_v_period;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[2] = {0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("calc_linreg_slope (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 127, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 127, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 127, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_linreg_slope", 0) < (0)) __PYX_ERR(45, 127, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_linreg_slope", 0, 1, 2, i); __PYX_ERR(45, 127, __pyx_L3_error) }
+      }
+    } else {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 127, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 127, __pyx_L3_error)
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_series = values[0];
+    if (values[1]) {
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 127, __pyx_L3_error)
+    } else {
+      __pyx_v_period = ((long)((long)20));
+    }
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("calc_linreg_slope", 0, 1, 2, __pyx_nargs); __PYX_ERR(45, 127, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("mintalib.core.calc_linreg_slope", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_8mintalib_4core_122calc_linreg_slope(__pyx_self, __pyx_v_series, __pyx_v_period);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8mintalib_4core_122calc_linreg_slope(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  size_t __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("calc_linreg_slope", 0);
+
+  /* "src/mintalib/cython/linreg.pxi":135
+ *     """
+ * 
+ *     return linear_regression(series, period=period, option=LINREG_SLOPE)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_SLOPE); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    assert(__pyx_t_2);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+    __Pyx_INCREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+    __pyx_t_6 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
+    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(45, 135, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 135, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 135, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 135, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/mintalib/cython/linreg.pxi":127
+ * 
+ * 
+ * def calc_linreg_slope(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Linear Regression Slope
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("mintalib.core.calc_linreg_slope", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/mintalib/cython/linreg.pxi":138
+ * 
+ * 
+ * def calc_linreg_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Linear Regression R-Value
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_8mintalib_4core_125calc_linreg_rvalue(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_124calc_linreg_rvalue, "\n    Linear Regression R-Value\n\n    Args:\n        period (int): time period, default 20\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_125calc_linreg_rvalue = {"calc_linreg_rvalue", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_125calc_linreg_rvalue, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_124calc_linreg_rvalue};
+static PyObject *__pyx_pw_8mintalib_4core_125calc_linreg_rvalue(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_series = 0;
+  long __pyx_v_period;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[2] = {0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("calc_linreg_rvalue (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 138, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 138, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 138, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_linreg_rvalue", 0) < (0)) __PYX_ERR(45, 138, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_linreg_rvalue", 0, 1, 2, i); __PYX_ERR(45, 138, __pyx_L3_error) }
+      }
+    } else {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 138, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 138, __pyx_L3_error)
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_series = values[0];
+    if (values[1]) {
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 138, __pyx_L3_error)
+    } else {
+      __pyx_v_period = ((long)((long)20));
+    }
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("calc_linreg_rvalue", 0, 1, 2, __pyx_nargs); __PYX_ERR(45, 138, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("mintalib.core.calc_linreg_rvalue", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_8mintalib_4core_124calc_linreg_rvalue(__pyx_self, __pyx_v_series, __pyx_v_period);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8mintalib_4core_124calc_linreg_rvalue(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  size_t __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("calc_linreg_rvalue", 0);
+
+  /* "src/mintalib/cython/linreg.pxi":146
+ *     """
+ * 
+ *     return linear_regression(series, period=period, option=LINREG_RVALUE)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 146, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 146, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_RVALUE); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 146, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    assert(__pyx_t_2);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+    __Pyx_INCREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+    __pyx_t_6 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
+    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(45, 146, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 146, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 146, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 146, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/mintalib/cython/linreg.pxi":138
+ * 
+ * 
+ * def calc_linreg_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Linear Regression R-Value
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("mintalib.core.calc_linreg_rvalue", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/mintalib/cython/linreg.pxi":149
+ * 
+ * 
+ * def calc_linreg_rmse(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Linear Regression Root Mean Square Error
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_8mintalib_4core_127calc_linreg_rmse(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_126calc_linreg_rmse, "\n    Linear Regression Root Mean Square Error\n\n    Args:\n        period (int): time period, default 20\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_127calc_linreg_rmse = {"calc_linreg_rmse", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_127calc_linreg_rmse, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_126calc_linreg_rmse};
+static PyObject *__pyx_pw_8mintalib_4core_127calc_linreg_rmse(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_series = 0;
+  long __pyx_v_period;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[2] = {0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("calc_linreg_rmse (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(45, 149, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 149, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 149, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_linreg_rmse", 0) < (0)) __PYX_ERR(45, 149, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_linreg_rmse", 0, 1, 2, i); __PYX_ERR(45, 149, __pyx_L3_error) }
+      }
+    } else {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(45, 149, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(45, 149, __pyx_L3_error)
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_series = values[0];
+    if (values[1]) {
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(45, 149, __pyx_L3_error)
+    } else {
+      __pyx_v_period = ((long)((long)20));
+    }
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("calc_linreg_rmse", 0, 1, 2, __pyx_nargs); __PYX_ERR(45, 149, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("mintalib.core.calc_linreg_rmse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_8mintalib_4core_126calc_linreg_rmse(__pyx_self, __pyx_v_series, __pyx_v_period);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8mintalib_4core_126calc_linreg_rmse(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  size_t __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("calc_linreg_rmse", 0);
+
+  /* "src/mintalib/cython/linreg.pxi":157
+ *     """
+ * 
+ *     return linear_regression(series, period=period, option=LINREG_RMSE)             # <<<<<<<<<<<<<<
+ * 
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_linear_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(45, 157, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 157, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_LINREG_RMSE); if (unlikely(!__pyx_t_5)) __PYX_ERR(45, 157, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    assert(__pyx_t_2);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+    __Pyx_INCREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+    __pyx_t_6 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
+    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(45, 157, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(45, 157, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(45, 157, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(45, 157, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/mintalib/cython/linreg.pxi":149
+ * 
+ * 
+ * def calc_linreg_rmse(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Linear Regression Root Mean Square Error
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("mintalib.core.calc_linreg_rmse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/mintalib/cython/quadreg.pxi":14
  * 
  * 
  * def quadratic_regression(series, long period=20, *, int option=0, int offset=0):             # <<<<<<<<<<<<<<
@@ -47026,16 +47295,16 @@ static PyObject *__pyx_pf_8mintalib_4core_124calc_tsf(CYTHON_UNUSED PyObject *__
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_127quadratic_regression(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8mintalib_4core_129quadratic_regression(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_126quadratic_regression, "\n    Quadratic Regression\n    \n    Args:\n        period (int): time period, default 20\n    ");
-static PyMethodDef __pyx_mdef_8mintalib_4core_127quadratic_regression = {"quadratic_regression", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_127quadratic_regression, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_126quadratic_regression};
-static PyObject *__pyx_pw_8mintalib_4core_127quadratic_regression(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_128quadratic_regression, "\n    Quadratic Regression\n    \n    Args:\n        period (int): time period, default 20\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_129quadratic_regression = {"quadratic_regression", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_129quadratic_regression, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_128quadratic_regression};
+static PyObject *__pyx_pw_8mintalib_4core_129quadratic_regression(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -47068,58 +47337,58 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,&__pyx_mstate_global->__pyx_n_u_option,&__pyx_mstate_global->__pyx_n_u_offset,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 11, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 14, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 11, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 11, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "quadratic_regression", 0) < (0)) __PYX_ERR(46, 11, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "quadratic_regression", 0) < (0)) __PYX_ERR(46, 14, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("quadratic_regression", 0, 1, 2, i); __PYX_ERR(46, 11, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("quadratic_regression", 0, 1, 2, i); __PYX_ERR(46, 14, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 11, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 11, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 14, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 11, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 14, __pyx_L3_error)
     } else {
       __pyx_v_period = ((long)((long)20));
     }
     if (values[2]) {
-      __pyx_v_option = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_option == (int)-1) && PyErr_Occurred())) __PYX_ERR(46, 11, __pyx_L3_error)
+      __pyx_v_option = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_option == (int)-1) && PyErr_Occurred())) __PYX_ERR(46, 14, __pyx_L3_error)
     } else {
       __pyx_v_option = ((int)((int)0));
     }
     if (values[3]) {
-      __pyx_v_offset = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_offset == (int)-1) && PyErr_Occurred())) __PYX_ERR(46, 11, __pyx_L3_error)
+      __pyx_v_offset = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_offset == (int)-1) && PyErr_Occurred())) __PYX_ERR(46, 14, __pyx_L3_error)
     } else {
       __pyx_v_offset = ((int)((int)0));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("quadratic_regression", 0, 1, 2, __pyx_nargs); __PYX_ERR(46, 11, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("quadratic_regression", 0, 1, 2, __pyx_nargs); __PYX_ERR(46, 14, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -47130,7 +47399,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_126quadratic_regression(__pyx_self, __pyx_v_series, __pyx_v_period, __pyx_v_option, __pyx_v_offset);
+  __pyx_r = __pyx_pf_8mintalib_4core_128quadratic_regression(__pyx_self, __pyx_v_series, __pyx_v_period, __pyx_v_option, __pyx_v_offset);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -47140,7 +47409,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, int __pyx_v_option, int __pyx_v_offset) {
+static PyObject *__pyx_pf_8mintalib_4core_128quadratic_regression(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, int __pyx_v_option, int __pyx_v_offset) {
   __Pyx_memviewslice __pyx_v_ys = { 0, 0, { 0 }, { 0 }, { 0 } };
   long __pyx_v_size;
   PyObject *__pyx_v_result = 0;
@@ -47161,10 +47430,14 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
   double __pyx_v_sx2y;
   double __pyx_v_vxy;
   double __pyx_v_vxx;
-  CYTHON_UNUSED double __pyx_v_vyy;
+  double __pyx_v_vyy;
   double __pyx_v_vxx2;
   double __pyx_v_vx2y;
   double __pyx_v_vx2x2;
+  double __pyx_v_vzz;
+  double __pyx_v_vuu;
+  double __pyx_v_vzu;
+  double __pyx_v_mse;
   double __pyx_v_denom;
   double __pyx_v_slope;
   double __pyx_v_curve;
@@ -47196,7 +47469,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("quadratic_regression", 0);
 
-  /* "src/mintalib/cython/curve.pxi":20
+  /* "src/mintalib/cython/quadreg.pxi":23
  * 
  * 
  *     if period < 2:             # <<<<<<<<<<<<<<
@@ -47206,7 +47479,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
   __pyx_t_1 = (__pyx_v_period < 2);
   if (unlikely(__pyx_t_1)) {
 
-    /* "src/mintalib/cython/curve.pxi":21
+    /* "src/mintalib/cython/quadreg.pxi":24
  * 
  *     if period < 2:
  *         raise ValueError(f"Invalid period {period}, should be greater than 2")             # <<<<<<<<<<<<<<
@@ -47214,13 +47487,13 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
  *     if option < 0 or option > QUADREG_BADOPTION:
 */
     __pyx_t_3 = NULL;
-    __pyx_t_4 = __Pyx_PyUnicode_From_long(__pyx_v_period, 0, ' ', 'd'); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 21, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_From_long(__pyx_v_period, 0, ' ', 'd'); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5[0] = __pyx_mstate_global->__pyx_kp_u_Invalid_period;
     __pyx_t_5[1] = __pyx_t_4;
     __pyx_t_5[2] = __pyx_mstate_global->__pyx_kp_u_should_be_greater_than_2;
     __pyx_t_6 = __Pyx_PyUnicode_Join(__pyx_t_5, 3, 15 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4) + 26, 127);
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(46, 21, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(46, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_7 = 1;
@@ -47229,14 +47502,14 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(46, 21, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(46, 24, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(46, 21, __pyx_L1_error)
+    __PYX_ERR(46, 24, __pyx_L1_error)
 
-    /* "src/mintalib/cython/curve.pxi":20
+    /* "src/mintalib/cython/quadreg.pxi":23
  * 
  * 
  *     if period < 2:             # <<<<<<<<<<<<<<
@@ -47245,7 +47518,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
   }
 
-  /* "src/mintalib/cython/curve.pxi":23
+  /* "src/mintalib/cython/quadreg.pxi":26
  *         raise ValueError(f"Invalid period {period}, should be greater than 2")
  * 
  *     if option < 0 or option > QUADREG_BADOPTION:             # <<<<<<<<<<<<<<
@@ -47263,7 +47536,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
   __pyx_L5_bool_binop_done:;
   if (unlikely(__pyx_t_1)) {
 
-    /* "src/mintalib/cython/curve.pxi":24
+    /* "src/mintalib/cython/quadreg.pxi":27
  * 
  *     if option < 0 or option > QUADREG_BADOPTION:
  *         raise ValueError(f"Invalid option {option}")             # <<<<<<<<<<<<<<
@@ -47271,9 +47544,9 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
  *     cdef const double[:] ys = np.asarray(series, float)
 */
     __pyx_t_6 = NULL;
-    __pyx_t_3 = __Pyx_PyUnicode_From_int(__pyx_v_option, 0, ' ', 'd'); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 24, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyUnicode_From_int(__pyx_v_option, 0, ' ', 'd'); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Invalid_option, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 24, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Invalid_option, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 27, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_7 = 1;
@@ -47282,14 +47555,14 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(46, 24, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(46, 27, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(46, 24, __pyx_L1_error)
+    __PYX_ERR(46, 27, __pyx_L1_error)
 
-    /* "src/mintalib/cython/curve.pxi":23
+    /* "src/mintalib/cython/quadreg.pxi":26
  *         raise ValueError(f"Invalid period {period}, should be greater than 2")
  * 
  *     if option < 0 or option > QUADREG_BADOPTION:             # <<<<<<<<<<<<<<
@@ -47298,7 +47571,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
   }
 
-  /* "src/mintalib/cython/curve.pxi":26
+  /* "src/mintalib/cython/quadreg.pxi":29
  *         raise ValueError(f"Invalid option {option}")
  * 
  *     cdef const double[:] ys = np.asarray(series, float)             # <<<<<<<<<<<<<<
@@ -47306,9 +47579,9 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
  * 
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(46, 26, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(46, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 26, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_7 = 1;
@@ -47328,32 +47601,32 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_7, (3-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(46, 26, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(46, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_2, 0); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(46, 26, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double__const__(__pyx_t_2, 0); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(46, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_ys = __pyx_t_9;
   __pyx_t_9.memview = NULL;
   __pyx_t_9.data = NULL;
 
-  /* "src/mintalib/cython/curve.pxi":27
+  /* "src/mintalib/cython/quadreg.pxi":30
  * 
  *     cdef const double[:] ys = np.asarray(series, float)
  *     cdef long size = ys.size             # <<<<<<<<<<<<<<
  * 
  *     cdef object result = np.full(size, np.nan)
 */
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_ys, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(46, 27, __pyx_L1_error)
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_ys, 1, (PyObject *(*)(char *)) __pyx_memview_get_double__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(46, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 27, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_10 = __Pyx_PyLong_As_long(__pyx_t_3); if (unlikely((__pyx_t_10 == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 27, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyLong_As_long(__pyx_t_3); if (unlikely((__pyx_t_10 == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 30, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_size = __pyx_t_10;
 
-  /* "src/mintalib/cython/curve.pxi":29
+  /* "src/mintalib/cython/quadreg.pxi":32
  *     cdef long size = ys.size
  * 
  *     cdef object result = np.full(size, np.nan)             # <<<<<<<<<<<<<<
@@ -47361,16 +47634,16 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 29, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_6)) __PYX_ERR(46, 29, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_full); if (unlikely(!__pyx_t_6)) __PYX_ERR(46, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 29, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_size); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(46, 29, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(46, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 29, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_nan); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __pyx_t_7 = 1;
@@ -47392,25 +47665,25 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 29, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
   __pyx_v_result = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "src/mintalib/cython/curve.pxi":30
+  /* "src/mintalib/cython/quadreg.pxi":33
  * 
  *     cdef object result = np.full(size, np.nan)
  *     cdef double[:] output = result             # <<<<<<<<<<<<<<
  * 
  *     if period >= size:
 */
-  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(46, 30, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_result, PyBUF_WRITABLE); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(46, 33, __pyx_L1_error)
   __pyx_v_output = __pyx_t_13;
   __pyx_t_13.memview = NULL;
   __pyx_t_13.data = NULL;
 
-  /* "src/mintalib/cython/curve.pxi":32
+  /* "src/mintalib/cython/quadreg.pxi":35
  *     cdef double[:] output = result
  * 
  *     if period >= size:             # <<<<<<<<<<<<<<
@@ -47420,7 +47693,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
   __pyx_t_1 = (__pyx_v_period >= __pyx_v_size);
   if (__pyx_t_1) {
 
-    /* "src/mintalib/cython/curve.pxi":33
+    /* "src/mintalib/cython/quadreg.pxi":36
  * 
  *     if period >= size:
  *         return result             # <<<<<<<<<<<<<<
@@ -47432,7 +47705,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
     __pyx_r = __pyx_v_result;
     goto __pyx_L0;
 
-    /* "src/mintalib/cython/curve.pxi":32
+    /* "src/mintalib/cython/quadreg.pxi":35
  *     cdef double[:] output = result
  * 
  *     if period >= size:             # <<<<<<<<<<<<<<
@@ -47441,7 +47714,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
   }
 
-  /* "src/mintalib/cython/curve.pxi":40
+  /* "src/mintalib/cython/quadreg.pxi":44
  *     cdef double denom, slope, curve, intercept, forecast
  * 
  *     cdef long i = 0             # <<<<<<<<<<<<<<
@@ -47450,7 +47723,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
   __pyx_v_i = 0;
 
-  /* "src/mintalib/cython/curve.pxi":42
+  /* "src/mintalib/cython/quadreg.pxi":46
  *     cdef long i = 0
  * 
  *     s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0             # <<<<<<<<<<<<<<
@@ -47467,7 +47740,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
   __pyx_v_sxy = 0.0;
   __pyx_v_sx2y = 0.0;
 
-  /* "src/mintalib/cython/curve.pxi":44
+  /* "src/mintalib/cython/quadreg.pxi":48
  *     s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -47480,7 +47753,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
       __Pyx_FastGIL_Remember();
       /*try:*/ {
 
-        /* "src/mintalib/cython/curve.pxi":45
+        /* "src/mintalib/cython/quadreg.pxi":49
  * 
  *     with nogil:
  *         for i in range(size):             # <<<<<<<<<<<<<<
@@ -47492,7 +47765,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
         for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
           __pyx_v_i = __pyx_t_15;
 
-          /* "src/mintalib/cython/curve.pxi":46
+          /* "src/mintalib/cython/quadreg.pxi":50
  *     with nogil:
  *         for i in range(size):
  *             x, y = i, ys[i]             # <<<<<<<<<<<<<<
@@ -47505,7 +47778,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
           __pyx_v_x = __pyx_t_16;
           __pyx_v_y = __pyx_t_18;
 
-          /* "src/mintalib/cython/curve.pxi":48
+          /* "src/mintalib/cython/quadreg.pxi":52
  *             x, y = i, ys[i]
  * 
  *             if y != y:             # <<<<<<<<<<<<<<
@@ -47515,7 +47788,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
           __pyx_t_1 = (__pyx_v_y != __pyx_v_y);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/curve.pxi":49
+            /* "src/mintalib/cython/quadreg.pxi":53
  * 
  *             if y != y:
  *                 s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0             # <<<<<<<<<<<<<<
@@ -47532,7 +47805,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
             __pyx_v_sxy = 0.0;
             __pyx_v_sx2y = 0.0;
 
-            /* "src/mintalib/cython/curve.pxi":50
+            /* "src/mintalib/cython/quadreg.pxi":54
  *             if y != y:
  *                 s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
  *                 continue             # <<<<<<<<<<<<<<
@@ -47541,7 +47814,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             goto __pyx_L11_continue;
 
-            /* "src/mintalib/cython/curve.pxi":48
+            /* "src/mintalib/cython/quadreg.pxi":52
  *             x, y = i, ys[i]
  * 
  *             if y != y:             # <<<<<<<<<<<<<<
@@ -47550,7 +47823,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           }
 
-          /* "src/mintalib/cython/curve.pxi":52
+          /* "src/mintalib/cython/quadreg.pxi":56
  *                 continue
  * 
  *             s += 1             # <<<<<<<<<<<<<<
@@ -47559,7 +47832,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_s = (__pyx_v_s + 1.0);
 
-          /* "src/mintalib/cython/curve.pxi":53
+          /* "src/mintalib/cython/quadreg.pxi":57
  * 
  *             s += 1
  *             sx += x             # <<<<<<<<<<<<<<
@@ -47568,7 +47841,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_sx = (__pyx_v_sx + __pyx_v_x);
 
-          /* "src/mintalib/cython/curve.pxi":54
+          /* "src/mintalib/cython/quadreg.pxi":58
  *             s += 1
  *             sx += x
  *             sx2 += x * x             # <<<<<<<<<<<<<<
@@ -47577,7 +47850,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_sx2 = (__pyx_v_sx2 + (__pyx_v_x * __pyx_v_x));
 
-          /* "src/mintalib/cython/curve.pxi":55
+          /* "src/mintalib/cython/quadreg.pxi":59
  *             sx += x
  *             sx2 += x * x
  *             sx3 += x * x * x             # <<<<<<<<<<<<<<
@@ -47586,7 +47859,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_sx3 = (__pyx_v_sx3 + ((__pyx_v_x * __pyx_v_x) * __pyx_v_x));
 
-          /* "src/mintalib/cython/curve.pxi":56
+          /* "src/mintalib/cython/quadreg.pxi":60
  *             sx2 += x * x
  *             sx3 += x * x * x
  *             sx4 += x * x * x * x             # <<<<<<<<<<<<<<
@@ -47595,7 +47868,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_sx4 = (__pyx_v_sx4 + (((__pyx_v_x * __pyx_v_x) * __pyx_v_x) * __pyx_v_x));
 
-          /* "src/mintalib/cython/curve.pxi":57
+          /* "src/mintalib/cython/quadreg.pxi":61
  *             sx3 += x * x * x
  *             sx4 += x * x * x * x
  *             sy += y             # <<<<<<<<<<<<<<
@@ -47604,7 +47877,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_sy = (__pyx_v_sy + __pyx_v_y);
 
-          /* "src/mintalib/cython/curve.pxi":58
+          /* "src/mintalib/cython/quadreg.pxi":62
  *             sx4 += x * x * x * x
  *             sy += y
  *             sy2 += y * y             # <<<<<<<<<<<<<<
@@ -47613,7 +47886,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_sy2 = (__pyx_v_sy2 + (__pyx_v_y * __pyx_v_y));
 
-          /* "src/mintalib/cython/curve.pxi":59
+          /* "src/mintalib/cython/quadreg.pxi":63
  *             sy += y
  *             sy2 += y * y
  *             sxy += x * y             # <<<<<<<<<<<<<<
@@ -47622,7 +47895,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_sxy = (__pyx_v_sxy + (__pyx_v_x * __pyx_v_y));
 
-          /* "src/mintalib/cython/curve.pxi":60
+          /* "src/mintalib/cython/quadreg.pxi":64
  *             sy2 += y * y
  *             sxy += x * y
  *             sx2y += x * x * y             # <<<<<<<<<<<<<<
@@ -47631,7 +47904,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_sx2y = (__pyx_v_sx2y + ((__pyx_v_x * __pyx_v_x) * __pyx_v_y));
 
-          /* "src/mintalib/cython/curve.pxi":62
+          /* "src/mintalib/cython/quadreg.pxi":66
  *             sx2y += x * x * y
  * 
  *             if s < period:             # <<<<<<<<<<<<<<
@@ -47641,7 +47914,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
           __pyx_t_1 = (__pyx_v_s < __pyx_v_period);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/curve.pxi":63
+            /* "src/mintalib/cython/quadreg.pxi":67
  * 
  *             if s < period:
  *                 continue             # <<<<<<<<<<<<<<
@@ -47650,7 +47923,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             goto __pyx_L11_continue;
 
-            /* "src/mintalib/cython/curve.pxi":62
+            /* "src/mintalib/cython/quadreg.pxi":66
  *             sx2y += x * x * y
  * 
  *             if s < period:             # <<<<<<<<<<<<<<
@@ -47659,7 +47932,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           }
 
-          /* "src/mintalib/cython/curve.pxi":65
+          /* "src/mintalib/cython/quadreg.pxi":69
  *                 continue
  * 
  *             if s > period:             # <<<<<<<<<<<<<<
@@ -47669,7 +47942,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
           __pyx_t_1 = (__pyx_v_s > __pyx_v_period);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/curve.pxi":66
+            /* "src/mintalib/cython/quadreg.pxi":70
  * 
  *             if s > period:
  *                 xd = i - period             # <<<<<<<<<<<<<<
@@ -47678,7 +47951,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_xd = (__pyx_v_i - __pyx_v_period);
 
-            /* "src/mintalib/cython/curve.pxi":67
+            /* "src/mintalib/cython/quadreg.pxi":71
  *             if s > period:
  *                 xd = i - period
  *                 yd = ys[i - period]             # <<<<<<<<<<<<<<
@@ -47688,7 +47961,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
             __pyx_t_17 = (__pyx_v_i - __pyx_v_period);
             __pyx_v_yd = (*((double const  *) ( /* dim=0 */ (__pyx_v_ys.data + __pyx_t_17 * __pyx_v_ys.strides[0]) )));
 
-            /* "src/mintalib/cython/curve.pxi":68
+            /* "src/mintalib/cython/quadreg.pxi":72
  *                 xd = i - period
  *                 yd = ys[i - period]
  *                 xd2 = xd * xd             # <<<<<<<<<<<<<<
@@ -47697,7 +47970,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_xd2 = (__pyx_v_xd * __pyx_v_xd);
 
-            /* "src/mintalib/cython/curve.pxi":69
+            /* "src/mintalib/cython/quadreg.pxi":73
  *                 yd = ys[i - period]
  *                 xd2 = xd * xd
  *                 s -= 1             # <<<<<<<<<<<<<<
@@ -47706,7 +47979,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_s = (__pyx_v_s - 1.0);
 
-            /* "src/mintalib/cython/curve.pxi":70
+            /* "src/mintalib/cython/quadreg.pxi":74
  *                 xd2 = xd * xd
  *                 s -= 1
  *                 sx -= xd             # <<<<<<<<<<<<<<
@@ -47715,7 +47988,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_sx = (__pyx_v_sx - __pyx_v_xd);
 
-            /* "src/mintalib/cython/curve.pxi":71
+            /* "src/mintalib/cython/quadreg.pxi":75
  *                 s -= 1
  *                 sx -= xd
  *                 sx2 -= xd2             # <<<<<<<<<<<<<<
@@ -47724,7 +47997,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_sx2 = (__pyx_v_sx2 - __pyx_v_xd2);
 
-            /* "src/mintalib/cython/curve.pxi":72
+            /* "src/mintalib/cython/quadreg.pxi":76
  *                 sx -= xd
  *                 sx2 -= xd2
  *                 sx3 -= xd2 * xd             # <<<<<<<<<<<<<<
@@ -47733,7 +48006,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_sx3 = (__pyx_v_sx3 - (__pyx_v_xd2 * __pyx_v_xd));
 
-            /* "src/mintalib/cython/curve.pxi":73
+            /* "src/mintalib/cython/quadreg.pxi":77
  *                 sx2 -= xd2
  *                 sx3 -= xd2 * xd
  *                 sx4 -= xd2 * xd2             # <<<<<<<<<<<<<<
@@ -47742,7 +48015,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_sx4 = (__pyx_v_sx4 - (__pyx_v_xd2 * __pyx_v_xd2));
 
-            /* "src/mintalib/cython/curve.pxi":74
+            /* "src/mintalib/cython/quadreg.pxi":78
  *                 sx3 -= xd2 * xd
  *                 sx4 -= xd2 * xd2
  *                 sy -= yd             # <<<<<<<<<<<<<<
@@ -47751,7 +48024,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_sy = (__pyx_v_sy - __pyx_v_yd);
 
-            /* "src/mintalib/cython/curve.pxi":75
+            /* "src/mintalib/cython/quadreg.pxi":79
  *                 sx4 -= xd2 * xd2
  *                 sy -= yd
  *                 sy2 -= yd * yd             # <<<<<<<<<<<<<<
@@ -47760,7 +48033,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_sy2 = (__pyx_v_sy2 - (__pyx_v_yd * __pyx_v_yd));
 
-            /* "src/mintalib/cython/curve.pxi":76
+            /* "src/mintalib/cython/quadreg.pxi":80
  *                 sy -= yd
  *                 sy2 -= yd * yd
  *                 sxy -= xd * yd             # <<<<<<<<<<<<<<
@@ -47769,7 +48042,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_sxy = (__pyx_v_sxy - (__pyx_v_xd * __pyx_v_yd));
 
-            /* "src/mintalib/cython/curve.pxi":77
+            /* "src/mintalib/cython/quadreg.pxi":81
  *                 sy2 -= yd * yd
  *                 sxy -= xd * yd
  *                 sx2y -= xd2 * yd             # <<<<<<<<<<<<<<
@@ -47778,7 +48051,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_sx2y = (__pyx_v_sx2y - (__pyx_v_xd2 * __pyx_v_yd));
 
-            /* "src/mintalib/cython/curve.pxi":65
+            /* "src/mintalib/cython/quadreg.pxi":69
  *                 continue
  * 
  *             if s > period:             # <<<<<<<<<<<<<<
@@ -47787,7 +48060,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           }
 
-          /* "src/mintalib/cython/curve.pxi":79
+          /* "src/mintalib/cython/quadreg.pxi":83
  *                 sx2y -= xd2 * yd
  * 
  *             vxy = (sxy / s - sx * sy / s / s)             # <<<<<<<<<<<<<<
@@ -47796,7 +48069,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_vxy = ((__pyx_v_sxy / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
 
-          /* "src/mintalib/cython/curve.pxi":80
+          /* "src/mintalib/cython/quadreg.pxi":84
  * 
  *             vxy = (sxy / s - sx * sy / s / s)
  *             vxx = (sx2 / s - sx * sx / s / s)             # <<<<<<<<<<<<<<
@@ -47805,7 +48078,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_vxx = ((__pyx_v_sx2 / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sx) / __pyx_v_s) / __pyx_v_s));
 
-          /* "src/mintalib/cython/curve.pxi":81
+          /* "src/mintalib/cython/quadreg.pxi":85
  *             vxy = (sxy / s - sx * sy / s / s)
  *             vxx = (sx2 / s - sx * sx / s / s)
  *             vyy = (sy2 / s - sy * sy / s / s)             # <<<<<<<<<<<<<<
@@ -47814,7 +48087,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_vyy = ((__pyx_v_sy2 / __pyx_v_s) - (((__pyx_v_sy * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
 
-          /* "src/mintalib/cython/curve.pxi":82
+          /* "src/mintalib/cython/quadreg.pxi":86
  *             vxx = (sx2 / s - sx * sx / s / s)
  *             vyy = (sy2 / s - sy * sy / s / s)
  *             vxx2 = (sx3 / s - sx * sx2 / s / s)             # <<<<<<<<<<<<<<
@@ -47823,7 +48096,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_vxx2 = ((__pyx_v_sx3 / __pyx_v_s) - (((__pyx_v_sx * __pyx_v_sx2) / __pyx_v_s) / __pyx_v_s));
 
-          /* "src/mintalib/cython/curve.pxi":83
+          /* "src/mintalib/cython/quadreg.pxi":87
  *             vyy = (sy2 / s - sy * sy / s / s)
  *             vxx2 = (sx3 / s - sx * sx2 / s / s)
  *             vx2y = (sx2y / s - sx2 * sy / s / s)             # <<<<<<<<<<<<<<
@@ -47832,7 +48105,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_vx2y = ((__pyx_v_sx2y / __pyx_v_s) - (((__pyx_v_sx2 * __pyx_v_sy) / __pyx_v_s) / __pyx_v_s));
 
-          /* "src/mintalib/cython/curve.pxi":84
+          /* "src/mintalib/cython/quadreg.pxi":88
  *             vxx2 = (sx3 / s - sx * sx2 / s / s)
  *             vx2y = (sx2y / s - sx2 * sy / s / s)
  *             vx2x2 = (sx4 / s - sx2 * sx2 / s / s)             # <<<<<<<<<<<<<<
@@ -47841,7 +48114,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_vx2x2 = ((__pyx_v_sx4 / __pyx_v_s) - (((__pyx_v_sx2 * __pyx_v_sx2) / __pyx_v_s) / __pyx_v_s));
 
-          /* "src/mintalib/cython/curve.pxi":86
+          /* "src/mintalib/cython/quadreg.pxi":90
  *             vx2x2 = (sx4 / s - sx2 * sx2 / s / s)
  * 
  *             denom = vx2x2 * vxx - vxx2 * vxx2             # <<<<<<<<<<<<<<
@@ -47850,7 +48123,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           __pyx_v_denom = ((__pyx_v_vx2x2 * __pyx_v_vxx) - (__pyx_v_vxx2 * __pyx_v_vxx2));
 
-          /* "src/mintalib/cython/curve.pxi":87
+          /* "src/mintalib/cython/quadreg.pxi":91
  * 
  *             denom = vx2x2 * vxx - vxx2 * vxx2
  *             curve = (vx2y * vxx - vxy * vxx2) / denom if denom > 0 else NAN             # <<<<<<<<<<<<<<
@@ -47865,7 +48138,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
           }
           __pyx_v_curve = __pyx_t_18;
 
-          /* "src/mintalib/cython/curve.pxi":88
+          /* "src/mintalib/cython/quadreg.pxi":92
  *             denom = vx2x2 * vxx - vxx2 * vxx2
  *             curve = (vx2y * vxx - vxy * vxx2) / denom if denom > 0 else NAN
  *             slope = (vxy * vx2x2 - vxx2 * vx2y) / denom if denom > 0 else NAN             # <<<<<<<<<<<<<<
@@ -47880,7 +48153,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
           }
           __pyx_v_slope = __pyx_t_18;
 
-          /* "src/mintalib/cython/curve.pxi":89
+          /* "src/mintalib/cython/quadreg.pxi":93
  *             curve = (vx2y * vxx - vxy * vxx2) / denom if denom > 0 else NAN
  *             slope = (vxy * vx2x2 - vxx2 * vx2y) / denom if denom > 0 else NAN
  *             intercept = (sy - slope * sx - curve * sx2) / s if s > 0 else NAN             # <<<<<<<<<<<<<<
@@ -47895,7 +48168,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
           }
           __pyx_v_intercept = __pyx_t_18;
 
-          /* "src/mintalib/cython/curve.pxi":92
+          /* "src/mintalib/cython/quadreg.pxi":96
  * 
  * 
  *             if option == QUADREG_CURVE:             # <<<<<<<<<<<<<<
@@ -47905,7 +48178,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
           __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_QUADREG_CURVE);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/curve.pxi":93
+            /* "src/mintalib/cython/quadreg.pxi":97
  * 
  *             if option == QUADREG_CURVE:
  *                 output[i] = curve             # <<<<<<<<<<<<<<
@@ -47915,16 +48188,16 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
             __pyx_t_17 = __pyx_v_i;
             *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_curve;
 
-            /* "src/mintalib/cython/curve.pxi":94
+            /* "src/mintalib/cython/quadreg.pxi":98
  *             if option == QUADREG_CURVE:
  *                 output[i] = curve
  *                 continue             # <<<<<<<<<<<<<<
  * 
- *             if option == QUADREG_FORECAST:
+ *             if option == QUADREG_SLOPE:
 */
             goto __pyx_L11_continue;
 
-            /* "src/mintalib/cython/curve.pxi":92
+            /* "src/mintalib/cython/quadreg.pxi":96
  * 
  * 
  *             if option == QUADREG_CURVE:             # <<<<<<<<<<<<<<
@@ -47933,7 +48206,196 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
           }
 
-          /* "src/mintalib/cython/curve.pxi":96
+          /* "src/mintalib/cython/quadreg.pxi":100
+ *                 continue
+ * 
+ *             if option == QUADREG_SLOPE:             # <<<<<<<<<<<<<<
+ *                 x = (i + offset)
+ *                 output[i] = slope + 2 * curve * x
+*/
+          __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_QUADREG_SLOPE);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/quadreg.pxi":101
+ * 
+ *             if option == QUADREG_SLOPE:
+ *                 x = (i + offset)             # <<<<<<<<<<<<<<
+ *                 output[i] = slope + 2 * curve * x
+ *                 continue
+*/
+            __pyx_v_x = (__pyx_v_i + __pyx_v_offset);
+
+            /* "src/mintalib/cython/quadreg.pxi":102
+ *             if option == QUADREG_SLOPE:
+ *                 x = (i + offset)
+ *                 output[i] = slope + 2 * curve * x             # <<<<<<<<<<<<<<
+ *                 continue
+ * 
+*/
+            __pyx_t_17 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = (__pyx_v_slope + ((2.0 * __pyx_v_curve) * __pyx_v_x));
+
+            /* "src/mintalib/cython/quadreg.pxi":103
+ *                 x = (i + offset)
+ *                 output[i] = slope + 2 * curve * x
+ *                 continue             # <<<<<<<<<<<<<<
+ * 
+ *             if option == QUADREG_RVALUE:
+*/
+            goto __pyx_L11_continue;
+
+            /* "src/mintalib/cython/quadreg.pxi":100
+ *                 continue
+ * 
+ *             if option == QUADREG_SLOPE:             # <<<<<<<<<<<<<<
+ *                 x = (i + offset)
+ *                 output[i] = slope + 2 * curve * x
+*/
+          }
+
+          /* "src/mintalib/cython/quadreg.pxi":105
+ *                 continue
+ * 
+ *             if option == QUADREG_RVALUE:             # <<<<<<<<<<<<<<
+ *                 # partial correlation of the quadratic term, given the linear term
+ *                 vzz = vyy - vxy * vxy / vxx if vxx > 0 else NAN
+*/
+          __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_QUADREG_RVALUE);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/quadreg.pxi":107
+ *             if option == QUADREG_RVALUE:
+ *                 # partial correlation of the quadratic term, given the linear term
+ *                 vzz = vyy - vxy * vxy / vxx if vxx > 0 else NAN             # <<<<<<<<<<<<<<
+ *                 vuu = vx2x2 - vxx2 * vxx2 / vxx if vxx > 0 else NAN
+ *                 vzu = vx2y - vxy * vxx2 / vxx if vxx > 0 else NAN
+*/
+            __pyx_t_1 = (__pyx_v_vxx > 0.0);
+            if (__pyx_t_1) {
+              __pyx_t_18 = (__pyx_v_vyy - ((__pyx_v_vxy * __pyx_v_vxy) / __pyx_v_vxx));
+            } else {
+              __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
+            }
+            __pyx_v_vzz = __pyx_t_18;
+
+            /* "src/mintalib/cython/quadreg.pxi":108
+ *                 # partial correlation of the quadratic term, given the linear term
+ *                 vzz = vyy - vxy * vxy / vxx if vxx > 0 else NAN
+ *                 vuu = vx2x2 - vxx2 * vxx2 / vxx if vxx > 0 else NAN             # <<<<<<<<<<<<<<
+ *                 vzu = vx2y - vxy * vxx2 / vxx if vxx > 0 else NAN
+ *                 output[i] = vzu / math.sqrt(vzz * vuu) if vzz * vuu > 0 else NAN
+*/
+            __pyx_t_1 = (__pyx_v_vxx > 0.0);
+            if (__pyx_t_1) {
+              __pyx_t_18 = (__pyx_v_vx2x2 - ((__pyx_v_vxx2 * __pyx_v_vxx2) / __pyx_v_vxx));
+            } else {
+              __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
+            }
+            __pyx_v_vuu = __pyx_t_18;
+
+            /* "src/mintalib/cython/quadreg.pxi":109
+ *                 vzz = vyy - vxy * vxy / vxx if vxx > 0 else NAN
+ *                 vuu = vx2x2 - vxx2 * vxx2 / vxx if vxx > 0 else NAN
+ *                 vzu = vx2y - vxy * vxx2 / vxx if vxx > 0 else NAN             # <<<<<<<<<<<<<<
+ *                 output[i] = vzu / math.sqrt(vzz * vuu) if vzz * vuu > 0 else NAN
+ *                 continue
+*/
+            __pyx_t_1 = (__pyx_v_vxx > 0.0);
+            if (__pyx_t_1) {
+              __pyx_t_18 = (__pyx_v_vx2y - ((__pyx_v_vxy * __pyx_v_vxx2) / __pyx_v_vxx));
+            } else {
+              __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
+            }
+            __pyx_v_vzu = __pyx_t_18;
+
+            /* "src/mintalib/cython/quadreg.pxi":110
+ *                 vuu = vx2x2 - vxx2 * vxx2 / vxx if vxx > 0 else NAN
+ *                 vzu = vx2y - vxy * vxx2 / vxx if vxx > 0 else NAN
+ *                 output[i] = vzu / math.sqrt(vzz * vuu) if vzz * vuu > 0 else NAN             # <<<<<<<<<<<<<<
+ *                 continue
+ * 
+*/
+            __pyx_t_1 = ((__pyx_v_vzz * __pyx_v_vuu) > 0.0);
+            if (__pyx_t_1) {
+              __pyx_t_18 = (__pyx_v_vzu / sqrt((__pyx_v_vzz * __pyx_v_vuu)));
+            } else {
+              __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
+            }
+            __pyx_t_17 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_t_18;
+
+            /* "src/mintalib/cython/quadreg.pxi":111
+ *                 vzu = vx2y - vxy * vxx2 / vxx if vxx > 0 else NAN
+ *                 output[i] = vzu / math.sqrt(vzz * vuu) if vzz * vuu > 0 else NAN
+ *                 continue             # <<<<<<<<<<<<<<
+ * 
+ *             if option == QUADREG_RMSE:
+*/
+            goto __pyx_L11_continue;
+
+            /* "src/mintalib/cython/quadreg.pxi":105
+ *                 continue
+ * 
+ *             if option == QUADREG_RVALUE:             # <<<<<<<<<<<<<<
+ *                 # partial correlation of the quadratic term, given the linear term
+ *                 vzz = vyy - vxy * vxy / vxx if vxx > 0 else NAN
+*/
+          }
+
+          /* "src/mintalib/cython/quadreg.pxi":113
+ *                 continue
+ * 
+ *             if option == QUADREG_RMSE:             # <<<<<<<<<<<<<<
+ *                 mse = vyy - slope * vxy - curve * vx2y
+ *                 output[i] = math.sqrt(mse) if mse >= 0 else NAN
+*/
+          __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_QUADREG_RMSE);
+          if (__pyx_t_1) {
+
+            /* "src/mintalib/cython/quadreg.pxi":114
+ * 
+ *             if option == QUADREG_RMSE:
+ *                 mse = vyy - slope * vxy - curve * vx2y             # <<<<<<<<<<<<<<
+ *                 output[i] = math.sqrt(mse) if mse >= 0 else NAN
+ *                 continue
+*/
+            __pyx_v_mse = ((__pyx_v_vyy - (__pyx_v_slope * __pyx_v_vxy)) - (__pyx_v_curve * __pyx_v_vx2y));
+
+            /* "src/mintalib/cython/quadreg.pxi":115
+ *             if option == QUADREG_RMSE:
+ *                 mse = vyy - slope * vxy - curve * vx2y
+ *                 output[i] = math.sqrt(mse) if mse >= 0 else NAN             # <<<<<<<<<<<<<<
+ *                 continue
+ * 
+*/
+            __pyx_t_1 = (__pyx_v_mse >= 0.0);
+            if (__pyx_t_1) {
+              __pyx_t_18 = sqrt(__pyx_v_mse);
+            } else {
+              __pyx_t_18 = __pyx_v_8mintalib_4core_NAN;
+            }
+            __pyx_t_17 = __pyx_v_i;
+            *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_t_18;
+
+            /* "src/mintalib/cython/quadreg.pxi":116
+ *                 mse = vyy - slope * vxy - curve * vx2y
+ *                 output[i] = math.sqrt(mse) if mse >= 0 else NAN
+ *                 continue             # <<<<<<<<<<<<<<
+ * 
+ *             if option == QUADREG_FORECAST:
+*/
+            goto __pyx_L11_continue;
+
+            /* "src/mintalib/cython/quadreg.pxi":113
+ *                 continue
+ * 
+ *             if option == QUADREG_RMSE:             # <<<<<<<<<<<<<<
+ *                 mse = vyy - slope * vxy - curve * vx2y
+ *                 output[i] = math.sqrt(mse) if mse >= 0 else NAN
+*/
+          }
+
+          /* "src/mintalib/cython/quadreg.pxi":118
  *                 continue
  * 
  *             if option == QUADREG_FORECAST:             # <<<<<<<<<<<<<<
@@ -47943,7 +48405,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
           __pyx_t_1 = (__pyx_v_option == __pyx_e_8mintalib_4core_QUADREG_FORECAST);
           if (__pyx_t_1) {
 
-            /* "src/mintalib/cython/curve.pxi":97
+            /* "src/mintalib/cython/quadreg.pxi":119
  * 
  *             if option == QUADREG_FORECAST:
  *                 x = (i + offset)             # <<<<<<<<<<<<<<
@@ -47952,7 +48414,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_x = (__pyx_v_i + __pyx_v_offset);
 
-            /* "src/mintalib/cython/curve.pxi":98
+            /* "src/mintalib/cython/quadreg.pxi":120
  *             if option == QUADREG_FORECAST:
  *                 x = (i + offset)
  *                 forecast = intercept + slope * x + curve * x * x             # <<<<<<<<<<<<<<
@@ -47961,7 +48423,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             __pyx_v_forecast = ((__pyx_v_intercept + (__pyx_v_slope * __pyx_v_x)) + ((__pyx_v_curve * __pyx_v_x) * __pyx_v_x));
 
-            /* "src/mintalib/cython/curve.pxi":99
+            /* "src/mintalib/cython/quadreg.pxi":121
  *                 x = (i + offset)
  *                 forecast = intercept + slope * x + curve * x * x
  *                 output[i] = forecast             # <<<<<<<<<<<<<<
@@ -47971,7 +48433,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
             __pyx_t_17 = __pyx_v_i;
             *((double *) ( /* dim=0 */ (__pyx_v_output.data + __pyx_t_17 * __pyx_v_output.strides[0]) )) = __pyx_v_forecast;
 
-            /* "src/mintalib/cython/curve.pxi":100
+            /* "src/mintalib/cython/quadreg.pxi":122
  *                 forecast = intercept + slope * x + curve * x * x
  *                 output[i] = forecast
  *                 continue             # <<<<<<<<<<<<<<
@@ -47980,7 +48442,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
 */
             goto __pyx_L11_continue;
 
-            /* "src/mintalib/cython/curve.pxi":96
+            /* "src/mintalib/cython/quadreg.pxi":118
  *                 continue
  * 
  *             if option == QUADREG_FORECAST:             # <<<<<<<<<<<<<<
@@ -47992,7 +48454,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
         }
       }
 
-      /* "src/mintalib/cython/curve.pxi":44
+      /* "src/mintalib/cython/quadreg.pxi":48
  *     s = sx = sx2 = sx3 = sx4 = sy = sy2 = sxy = sx2y = 0.0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -48009,7 +48471,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
       }
   }
 
-  /* "src/mintalib/cython/curve.pxi":102
+  /* "src/mintalib/cython/quadreg.pxi":124
  *                 continue
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -48021,7 +48483,7 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/curve.pxi":11
+  /* "src/mintalib/cython/quadreg.pxi":14
  * 
  * 
  * def quadratic_regression(series, long period=20, *, int option=0, int offset=0):             # <<<<<<<<<<<<<<
@@ -48050,221 +48512,25 @@ static PyObject *__pyx_pf_8mintalib_4core_126quadratic_regression(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "src/mintalib/cython/curve.pxi":106
+/* "src/mintalib/cython/quadreg.pxi":128
  * 
  * 
- * def calc_curve(series, long period=20):             # <<<<<<<<<<<<<<
- *     """ Curve (quadratic regression) """
- * 
-*/
-
-/* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_129calc_curve(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_128calc_curve, " Curve (quadratic regression) ");
-static PyMethodDef __pyx_mdef_8mintalib_4core_129calc_curve = {"calc_curve", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_129calc_curve, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_128calc_curve};
-static PyObject *__pyx_pw_8mintalib_4core_129calc_curve(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyObject *__pyx_v_series = 0;
-  long __pyx_v_period;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[2] = {0,0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("calc_curve (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 106, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 106, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 106, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_curve", 0) < (0)) __PYX_ERR(46, 106, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_curve", 0, 1, 2, i); __PYX_ERR(46, 106, __pyx_L3_error) }
-      }
-    } else {
-      switch (__pyx_nargs) {
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 106, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 106, __pyx_L3_error)
-        break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-    }
-    __pyx_v_series = values[0];
-    if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 106, __pyx_L3_error)
-    } else {
-      __pyx_v_period = ((long)((long)20));
-    }
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_curve", 0, 1, 2, __pyx_nargs); __PYX_ERR(46, 106, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("mintalib.core.calc_curve", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_128calc_curve(__pyx_self, __pyx_v_series, __pyx_v_period);
-
-  /* function exit code */
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_8mintalib_4core_128calc_curve(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  size_t __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("calc_curve", 0);
-
-  /* "src/mintalib/cython/curve.pxi":109
- *     """ Curve (quadratic regression) """
- * 
- *     return quadratic_regression(series, period=period, option=QUADREG_CURVE)             # <<<<<<<<<<<<<<
- * 
- * 
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_quadratic_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 109, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 109, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_QUADREG_CURVE); if (unlikely(!__pyx_t_5)) __PYX_ERR(46, 109, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
-    assert(__pyx_t_2);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
-    __Pyx_INCREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
-    __pyx_t_6 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
-    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(46, 109, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(46, 109, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(46, 109, __pyx_L1_error)
-    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(46, 109, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-  }
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "src/mintalib/cython/curve.pxi":106
- * 
- * 
- * def calc_curve(series, long period=20):             # <<<<<<<<<<<<<<
- *     """ Curve (quadratic regression) """
- * 
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("mintalib.core.calc_curve", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "src/mintalib/cython/curve.pxi":112
- * 
- * 
- * def calc_qsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
+ * def calc_quadreg(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
  *     """
- *     Quadratic Series Forecast (quadratic regression)
+ *     Quadratic Regression (parabolic moving average)
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_131calc_qsf(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8mintalib_4core_131calc_quadreg(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_130calc_qsf, "\n    Quadratic Series Forecast (quadratic regression)\n    \n    Args:\n        period (int): time period, default 20\n    ");
-static PyMethodDef __pyx_mdef_8mintalib_4core_131calc_qsf = {"calc_qsf", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_131calc_qsf, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_130calc_qsf};
-static PyObject *__pyx_pw_8mintalib_4core_131calc_qsf(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_130calc_quadreg, "\n    Quadratic Regression (parabolic moving average)\n\n    Value of the regression parabola at the current bar,\n    with `offset` projecting the parabola forward.\n\n    Args:\n        period (int): time period, default 20\n        offset (int): forecast offset, default 0\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_131calc_quadreg = {"calc_quadreg", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_131calc_quadreg, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_130calc_quadreg};
+static PyObject *__pyx_pw_8mintalib_4core_131calc_quadreg(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -48284,7 +48550,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("calc_qsf (wrapper)", 0);
+  __Pyx_RefNannySetupContext("calc_quadreg (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -48296,72 +48562,72 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,&__pyx_mstate_global->__pyx_n_u_offset,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 112, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 128, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(46, 112, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(46, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 112, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 112, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_qsf", 0) < (0)) __PYX_ERR(46, 112, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_quadreg", 0) < (0)) __PYX_ERR(46, 128, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_qsf", 0, 1, 3, i); __PYX_ERR(46, 112, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_quadreg", 0, 1, 3, i); __PYX_ERR(46, 128, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(46, 112, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(46, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 112, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 112, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 128, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_series = values[0];
     if (values[1]) {
-      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 112, __pyx_L3_error)
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 128, __pyx_L3_error)
     } else {
       __pyx_v_period = ((long)((long)20));
     }
     if (values[2]) {
-      __pyx_v_offset = __Pyx_PyLong_As_long(values[2]); if (unlikely((__pyx_v_offset == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 112, __pyx_L3_error)
+      __pyx_v_offset = __Pyx_PyLong_As_long(values[2]); if (unlikely((__pyx_v_offset == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 128, __pyx_L3_error)
     } else {
       __pyx_v_offset = ((long)((long)0));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("calc_qsf", 0, 1, 3, __pyx_nargs); __PYX_ERR(46, 112, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("calc_quadreg", 0, 1, 3, __pyx_nargs); __PYX_ERR(46, 128, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("mintalib.core.calc_qsf", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.calc_quadreg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_130calc_qsf(__pyx_self, __pyx_v_series, __pyx_v_period, __pyx_v_offset);
+  __pyx_r = __pyx_pf_8mintalib_4core_130calc_quadreg(__pyx_self, __pyx_v_series, __pyx_v_period, __pyx_v_offset);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -48371,7 +48637,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8mintalib_4core_130calc_qsf(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, long __pyx_v_offset) {
+static PyObject *__pyx_pf_8mintalib_4core_130calc_quadreg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, long __pyx_v_offset) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -48385,22 +48651,24 @@ static PyObject *__pyx_pf_8mintalib_4core_130calc_qsf(CYTHON_UNUSED PyObject *__
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("calc_qsf", 0);
+  __Pyx_RefNannySetupContext("calc_quadreg", 0);
 
-  /* "src/mintalib/cython/curve.pxi":120
+  /* "src/mintalib/cython/quadreg.pxi":140
  *     """
  * 
  *     return quadratic_regression(series, period=period, offset=offset, option=QUADREG_FORECAST)             # <<<<<<<<<<<<<<
+ * 
+ * 
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_quadratic_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 120, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_quadratic_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 120, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From_long(__pyx_v_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(46, 120, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_long(__pyx_v_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(46, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_QUADREG_FORECAST); if (unlikely(!__pyx_t_6)) __PYX_ERR(46, 120, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_QUADREG_FORECAST); if (unlikely(!__pyx_t_6)) __PYX_ERR(46, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -48416,11 +48684,11 @@ static PyObject *__pyx_pf_8mintalib_4core_130calc_qsf(CYTHON_UNUSED PyObject *__
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 3 : 0)] = {__pyx_t_2, __pyx_v_series};
-    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(46, 120, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(46, 140, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_8, __pyx_callargs+2, 0) < (0)) __PYX_ERR(46, 120, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_offset, __pyx_t_5, __pyx_t_8, __pyx_callargs+2, 1) < (0)) __PYX_ERR(46, 120, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_6, __pyx_t_8, __pyx_callargs+2, 2) < (0)) __PYX_ERR(46, 120, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_8, __pyx_callargs+2, 0) < (0)) __PYX_ERR(46, 140, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_offset, __pyx_t_5, __pyx_t_8, __pyx_callargs+2, 1) < (0)) __PYX_ERR(46, 140, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_6, __pyx_t_8, __pyx_callargs+2, 2) < (0)) __PYX_ERR(46, 140, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_8);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -48428,19 +48696,19 @@ static PyObject *__pyx_pf_8mintalib_4core_130calc_qsf(CYTHON_UNUSED PyObject *__
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(46, 120, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(46, 140, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/mintalib/cython/curve.pxi":112
+  /* "src/mintalib/cython/quadreg.pxi":128
  * 
  * 
- * def calc_qsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
+ * def calc_quadreg(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
  *     """
- *     Quadratic Series Forecast (quadratic regression)
+ *     Quadratic Regression (parabolic moving average)
 */
 
   /* function exit code */
@@ -48452,7 +48720,810 @@ static PyObject *__pyx_pf_8mintalib_4core_130calc_qsf(CYTHON_UNUSED PyObject *__
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("mintalib.core.calc_qsf", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mintalib.core.calc_quadreg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/mintalib/cython/quadreg.pxi":143
+ * 
+ * 
+ * def calc_quadreg_curve(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression Curve
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_8mintalib_4core_133calc_quadreg_curve(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_132calc_quadreg_curve, "\n    Quadratic Regression Curve\n\n    Args:\n        period (int): time period, default 20\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_133calc_quadreg_curve = {"calc_quadreg_curve", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_133calc_quadreg_curve, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_132calc_quadreg_curve};
+static PyObject *__pyx_pw_8mintalib_4core_133calc_quadreg_curve(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_series = 0;
+  long __pyx_v_period;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[2] = {0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("calc_quadreg_curve (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 143, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 143, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 143, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_quadreg_curve", 0) < (0)) __PYX_ERR(46, 143, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_quadreg_curve", 0, 1, 2, i); __PYX_ERR(46, 143, __pyx_L3_error) }
+      }
+    } else {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 143, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 143, __pyx_L3_error)
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_series = values[0];
+    if (values[1]) {
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 143, __pyx_L3_error)
+    } else {
+      __pyx_v_period = ((long)((long)20));
+    }
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("calc_quadreg_curve", 0, 1, 2, __pyx_nargs); __PYX_ERR(46, 143, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("mintalib.core.calc_quadreg_curve", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_8mintalib_4core_132calc_quadreg_curve(__pyx_self, __pyx_v_series, __pyx_v_period);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8mintalib_4core_132calc_quadreg_curve(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  size_t __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("calc_quadreg_curve", 0);
+
+  /* "src/mintalib/cython/quadreg.pxi":151
+ *     """
+ * 
+ *     return quadratic_regression(series, period=period, option=QUADREG_CURVE)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_quadratic_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 151, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 151, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_QUADREG_CURVE); if (unlikely(!__pyx_t_5)) __PYX_ERR(46, 151, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    assert(__pyx_t_2);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+    __Pyx_INCREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+    __pyx_t_6 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
+    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(46, 151, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(46, 151, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(46, 151, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(46, 151, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/mintalib/cython/quadreg.pxi":143
+ * 
+ * 
+ * def calc_quadreg_curve(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression Curve
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("mintalib.core.calc_quadreg_curve", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/mintalib/cython/quadreg.pxi":154
+ * 
+ * 
+ * def calc_quadreg_slope(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression Slope
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_8mintalib_4core_135calc_quadreg_slope(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_134calc_quadreg_slope, "\n    Quadratic Regression Slope\n\n    Slope of the regression parabola at the current bar,\n    with `offset` projecting the slope forward.\n\n    Args:\n        period (int): time period, default 20\n        offset (int): forecast offset, default 0\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_135calc_quadreg_slope = {"calc_quadreg_slope", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_135calc_quadreg_slope, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_134calc_quadreg_slope};
+static PyObject *__pyx_pw_8mintalib_4core_135calc_quadreg_slope(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_series = 0;
+  long __pyx_v_period;
+  long __pyx_v_offset;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[3] = {0,0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("calc_quadreg_slope (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,&__pyx_mstate_global->__pyx_n_u_offset,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 154, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(46, 154, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 154, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 154, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_quadreg_slope", 0) < (0)) __PYX_ERR(46, 154, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_quadreg_slope", 0, 1, 3, i); __PYX_ERR(46, 154, __pyx_L3_error) }
+      }
+    } else {
+      switch (__pyx_nargs) {
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(46, 154, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 154, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 154, __pyx_L3_error)
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_series = values[0];
+    if (values[1]) {
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 154, __pyx_L3_error)
+    } else {
+      __pyx_v_period = ((long)((long)20));
+    }
+    if (values[2]) {
+      __pyx_v_offset = __Pyx_PyLong_As_long(values[2]); if (unlikely((__pyx_v_offset == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 154, __pyx_L3_error)
+    } else {
+      __pyx_v_offset = ((long)((long)0));
+    }
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("calc_quadreg_slope", 0, 1, 3, __pyx_nargs); __PYX_ERR(46, 154, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("mintalib.core.calc_quadreg_slope", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_8mintalib_4core_134calc_quadreg_slope(__pyx_self, __pyx_v_series, __pyx_v_period, __pyx_v_offset);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8mintalib_4core_134calc_quadreg_slope(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period, long __pyx_v_offset) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  size_t __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("calc_quadreg_slope", 0);
+
+  /* "src/mintalib/cython/quadreg.pxi":166
+ *     """
+ * 
+ *     return quadratic_regression(series, period=period, offset=offset, option=QUADREG_SLOPE)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_quadratic_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 166, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 166, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyLong_From_long(__pyx_v_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(46, 166, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_QUADREG_SLOPE); if (unlikely(!__pyx_t_6)) __PYX_ERR(46, 166, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_7 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    assert(__pyx_t_2);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+    __Pyx_INCREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+    __pyx_t_7 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 3 : 0)] = {__pyx_t_2, __pyx_v_series};
+    __pyx_t_8 = __Pyx_MakeVectorcallBuilderKwds(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(46, 166, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_8, __pyx_callargs+2, 0) < (0)) __PYX_ERR(46, 166, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_offset, __pyx_t_5, __pyx_t_8, __pyx_callargs+2, 1) < (0)) __PYX_ERR(46, 166, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_6, __pyx_t_8, __pyx_callargs+2, 2) < (0)) __PYX_ERR(46, 166, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_8);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(46, 166, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/mintalib/cython/quadreg.pxi":154
+ * 
+ * 
+ * def calc_quadreg_slope(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression Slope
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("mintalib.core.calc_quadreg_slope", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/mintalib/cython/quadreg.pxi":169
+ * 
+ * 
+ * def calc_quadreg_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression R-Value
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_8mintalib_4core_137calc_quadreg_rvalue(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_136calc_quadreg_rvalue, "\n    Quadratic Regression R-Value\n\n    Partial correlation of the quadratic term, given the linear term.\n\n    Args:\n        period (int): time period, default 20\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_137calc_quadreg_rvalue = {"calc_quadreg_rvalue", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_137calc_quadreg_rvalue, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_136calc_quadreg_rvalue};
+static PyObject *__pyx_pw_8mintalib_4core_137calc_quadreg_rvalue(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_series = 0;
+  long __pyx_v_period;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[2] = {0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("calc_quadreg_rvalue (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 169, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 169, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 169, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_quadreg_rvalue", 0) < (0)) __PYX_ERR(46, 169, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_quadreg_rvalue", 0, 1, 2, i); __PYX_ERR(46, 169, __pyx_L3_error) }
+      }
+    } else {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 169, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 169, __pyx_L3_error)
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_series = values[0];
+    if (values[1]) {
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 169, __pyx_L3_error)
+    } else {
+      __pyx_v_period = ((long)((long)20));
+    }
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("calc_quadreg_rvalue", 0, 1, 2, __pyx_nargs); __PYX_ERR(46, 169, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("mintalib.core.calc_quadreg_rvalue", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_8mintalib_4core_136calc_quadreg_rvalue(__pyx_self, __pyx_v_series, __pyx_v_period);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8mintalib_4core_136calc_quadreg_rvalue(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  size_t __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("calc_quadreg_rvalue", 0);
+
+  /* "src/mintalib/cython/quadreg.pxi":179
+ *     """
+ * 
+ *     return quadratic_regression(series, period=period, option=QUADREG_RVALUE)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_quadratic_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 179, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 179, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_QUADREG_RVALUE); if (unlikely(!__pyx_t_5)) __PYX_ERR(46, 179, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    assert(__pyx_t_2);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+    __Pyx_INCREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+    __pyx_t_6 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
+    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(46, 179, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(46, 179, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(46, 179, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(46, 179, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/mintalib/cython/quadreg.pxi":169
+ * 
+ * 
+ * def calc_quadreg_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression R-Value
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("mintalib.core.calc_quadreg_rvalue", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/mintalib/cython/quadreg.pxi":182
+ * 
+ * 
+ * def calc_quadreg_rmse(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression Root Mean Square Error
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_8mintalib_4core_139calc_quadreg_rmse(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_138calc_quadreg_rmse, "\n    Quadratic Regression Root Mean Square Error\n\n    Args:\n        period (int): time period, default 20\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_139calc_quadreg_rmse = {"calc_quadreg_rmse", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_139calc_quadreg_rmse, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_138calc_quadreg_rmse};
+static PyObject *__pyx_pw_8mintalib_4core_139calc_quadreg_rmse(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_series = 0;
+  long __pyx_v_period;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[2] = {0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("calc_quadreg_rmse (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,&__pyx_mstate_global->__pyx_n_u_period,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(46, 182, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 182, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 182, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "calc_quadreg_rmse", 0) < (0)) __PYX_ERR(46, 182, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("calc_quadreg_rmse", 0, 1, 2, i); __PYX_ERR(46, 182, __pyx_L3_error) }
+      }
+    } else {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(46, 182, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(46, 182, __pyx_L3_error)
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_series = values[0];
+    if (values[1]) {
+      __pyx_v_period = __Pyx_PyLong_As_long(values[1]); if (unlikely((__pyx_v_period == (long)-1) && PyErr_Occurred())) __PYX_ERR(46, 182, __pyx_L3_error)
+    } else {
+      __pyx_v_period = ((long)((long)20));
+    }
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("calc_quadreg_rmse", 0, 1, 2, __pyx_nargs); __PYX_ERR(46, 182, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("mintalib.core.calc_quadreg_rmse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_8mintalib_4core_138calc_quadreg_rmse(__pyx_self, __pyx_v_series, __pyx_v_period);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8mintalib_4core_138calc_quadreg_rmse(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series, long __pyx_v_period) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  size_t __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("calc_quadreg_rmse", 0);
+
+  /* "src/mintalib/cython/quadreg.pxi":190
+ *     """
+ * 
+ *     return quadratic_regression(series, period=period, option=QUADREG_RMSE)             # <<<<<<<<<<<<<<
+ * 
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_quadratic_regression); if (unlikely(!__pyx_t_3)) __PYX_ERR(46, 190, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyLong_From_long(__pyx_v_period); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 190, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyLong_From___pyx_anon_enum(__pyx_e_8mintalib_4core_QUADREG_RMSE); if (unlikely(!__pyx_t_5)) __PYX_ERR(46, 190, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    assert(__pyx_t_2);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_3);
+    __Pyx_INCREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_3, __pyx__function);
+    __pyx_t_6 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_v_series};
+    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(46, 190, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_period, __pyx_t_4, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(46, 190, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_option, __pyx_t_5, __pyx_t_7, __pyx_callargs+2, 1) < (0)) __PYX_ERR(46, 190, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(46, 190, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/mintalib/cython/quadreg.pxi":182
+ * 
+ * 
+ * def calc_quadreg_rmse(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression Root Mean Square Error
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("mintalib.core.calc_quadreg_rmse", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -48469,16 +49540,16 @@ static PyObject *__pyx_pf_8mintalib_4core_130calc_qsf(CYTHON_UNUSED PyObject *__
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_133calc_stoch(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8mintalib_4core_141calc_stoch(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_132calc_stoch, "\n    Stochastic Oscillator\n    \n    Args:\n        period (int):  time period of window, default, 14\n        fastn (int): time period of fast average, default 3\n        slown (int): time period of slow average, default 3\n    ");
-static PyMethodDef __pyx_mdef_8mintalib_4core_133calc_stoch = {"calc_stoch", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_133calc_stoch, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_132calc_stoch};
-static PyObject *__pyx_pw_8mintalib_4core_133calc_stoch(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_140calc_stoch, "\n    Stochastic Oscillator\n    \n    Args:\n        period (int):  time period of window, default, 14\n        fastn (int): time period of fast average, default 3\n        slown (int): time period of slow average, default 3\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_141calc_stoch = {"calc_stoch", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_141calc_stoch, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_140calc_stoch};
+static PyObject *__pyx_pw_8mintalib_4core_141calc_stoch(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -48589,7 +49660,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_132calc_stoch(__pyx_self, __pyx_v_prices, __pyx_v_period, __pyx_v_fastn, __pyx_v_slown);
+  __pyx_r = __pyx_pf_8mintalib_4core_140calc_stoch(__pyx_self, __pyx_v_prices, __pyx_v_period, __pyx_v_fastn, __pyx_v_slown);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -48599,7 +49670,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8mintalib_4core_132calc_stoch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_prices, long __pyx_v_period, long __pyx_v_fastn, long __pyx_v_slown) {
+static PyObject *__pyx_pf_8mintalib_4core_140calc_stoch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_prices, long __pyx_v_period, long __pyx_v_fastn, long __pyx_v_slown) {
   __Pyx_memviewslice __pyx_v_high = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_low = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_close = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -49232,16 +50303,16 @@ static PyObject *__pyx_pf_8mintalib_4core_132calc_stoch(CYTHON_UNUSED PyObject *
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8mintalib_4core_135calc_streak(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8mintalib_4core_143calc_streak(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_134calc_streak, "\n    Consecutive streak of values above zero\n    ");
-static PyMethodDef __pyx_mdef_8mintalib_4core_135calc_streak = {"calc_streak", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_135calc_streak, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_134calc_streak};
-static PyObject *__pyx_pw_8mintalib_4core_135calc_streak(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_142calc_streak, "\n    Consecutive streak of values above zero\n    ");
+static PyMethodDef __pyx_mdef_8mintalib_4core_143calc_streak = {"calc_streak", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_143calc_streak, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_142calc_streak};
+static PyObject *__pyx_pw_8mintalib_4core_143calc_streak(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -49307,7 +50378,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8mintalib_4core_134calc_streak(__pyx_self, __pyx_v_series);
+  __pyx_r = __pyx_pf_8mintalib_4core_142calc_streak(__pyx_self, __pyx_v_series);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -49317,7 +50388,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8mintalib_4core_134calc_streak(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series) {
+static PyObject *__pyx_pf_8mintalib_4core_142calc_streak(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_series) {
   __Pyx_memviewslice __pyx_v_xs = { 0, 0, { 0 }, { 0 }, { 0 } };
   long __pyx_v_size;
   PyObject *__pyx_v_result = 0;
@@ -52182,7 +53253,7 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   __Pyx_CyFunction_Defaults(struct __pyx_defaults, __pyx_t_4)->arg0 = __pyx_t_14;
   __Pyx_GIVEREF(__pyx_t_14);
   __pyx_t_14 = 0;
-  __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_4, __pyx_pf_8mintalib_4core_136__defaults__);
+  __Pyx_CyFunction_SetDefaultsGetter(__pyx_t_4, __pyx_pf_8mintalib_4core_144__defaults__);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_where_flag, __pyx_t_4) < (0)) __PYX_ERR(6, 70, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
@@ -54202,29 +55273,29 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_macdv, __pyx_t_14) < (0)) __PYX_ERR(44, 5, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-  /* "src/mintalib/cython/slope.pxi":13
+  /* "src/mintalib/cython/linreg.pxi":14
  * 
  * 
  * def linear_regression(series, long period=20, *, int option=0, int offset=0):             # <<<<<<<<<<<<<<
  *     """
  *     Linear Regression
 */
-  __pyx_t_14 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 13, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(45, 13, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(45, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_14 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 13, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_4 = __Pyx_PyLong_From_int(((int)0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 13, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int(((int)0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_option, __pyx_t_4) < (0)) __PYX_ERR(45, 13, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_option, __pyx_t_4) < (0)) __PYX_ERR(45, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyLong_From_int(((int)0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 13, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int(((int)0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_offset, __pyx_t_4) < (0)) __PYX_ERR(45, 13, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_offset, __pyx_t_4) < (0)) __PYX_ERR(45, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_119linear_regression, 0, __pyx_mstate_global->__pyx_n_u_linear_regression, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[60])); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 13, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_119linear_regression, 0, __pyx_mstate_global->__pyx_n_u_linear_regression, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[60])); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -54233,101 +55304,123 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   __Pyx_CyFunction_SetDefaultsKwDict(__pyx_t_4, __pyx_t_14);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_linear_regression, __pyx_t_4) < (0)) __PYX_ERR(45, 13, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_linear_regression, __pyx_t_4) < (0)) __PYX_ERR(45, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/slope.pxi":106
+  /* "src/mintalib/cython/linreg.pxi":111
  * 
  * 
- * def calc_slope(series, long period=20):             # <<<<<<<<<<<<<<
+ * def calc_linreg(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
  *     """
- *     Slope (linear regression)
+ *     Linear Regression (least squares moving average)
 */
-  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 106, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_14 = PyTuple_Pack(1, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 106, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)0)); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_121calc_slope, 0, __pyx_mstate_global->__pyx_n_u_calc_slope, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[61])); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 106, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
-  #endif
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_t_14);
-  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_slope, __pyx_t_4) < (0)) __PYX_ERR(45, 106, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "src/mintalib/cython/slope.pxi":117
- * 
- * 
- * def calc_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
- *     """
- *     R-Value (linear regression)
-*/
-  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 117, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_14 = PyTuple_Pack(1, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 117, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_14);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_123calc_rvalue, 0, __pyx_mstate_global->__pyx_n_u_calc_rvalue, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[62])); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 117, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
-  #endif
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_t_14);
-  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_rvalue, __pyx_t_4) < (0)) __PYX_ERR(45, 117, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "src/mintalib/cython/slope.pxi":128
- * 
- * 
- * def calc_tsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
- *     """
- *     Time Series Forecast (linear regression)
-*/
-  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(45, 128, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_14 = __Pyx_PyLong_From_long(((long)0)); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 128, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_12 = PyTuple_Pack(2, __pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(45, 128, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_Pack(2, __pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(45, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_125calc_tsf, 0, __pyx_mstate_global->__pyx_n_u_calc_tsf, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[63])); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 128, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_121calc_linreg, 0, __pyx_mstate_global->__pyx_n_u_calc_linreg, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[61])); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_14);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_14, __pyx_t_12);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_tsf, __pyx_t_14) < (0)) __PYX_ERR(45, 128, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_linreg, __pyx_t_14) < (0)) __PYX_ERR(45, 111, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-  /* "src/mintalib/cython/curve.pxi":11
+  /* "src/mintalib/cython/linreg.pxi":127
+ * 
+ * 
+ * def calc_linreg_slope(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Linear Regression Slope
+*/
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 127, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(45, 127, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_123calc_linreg_slope, 0, __pyx_mstate_global->__pyx_n_u_calc_linreg_slope, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[62])); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 127, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_14);
+  #endif
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_14, __pyx_t_12);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_linreg_slope, __pyx_t_14) < (0)) __PYX_ERR(45, 127, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+
+  /* "src/mintalib/cython/linreg.pxi":138
+ * 
+ * 
+ * def calc_linreg_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Linear Regression R-Value
+*/
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(45, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_125calc_linreg_rvalue, 0, __pyx_mstate_global->__pyx_n_u_calc_linreg_rvalue, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[63])); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_14);
+  #endif
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_14, __pyx_t_12);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_linreg_rvalue, __pyx_t_14) < (0)) __PYX_ERR(45, 138, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+
+  /* "src/mintalib/cython/linreg.pxi":149
+ * 
+ * 
+ * def calc_linreg_rmse(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Linear Regression Root Mean Square Error
+*/
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 149, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(45, 149, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_127calc_linreg_rmse, 0, __pyx_mstate_global->__pyx_n_u_calc_linreg_rmse, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[64])); if (unlikely(!__pyx_t_14)) __PYX_ERR(45, 149, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_14);
+  #endif
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_14, __pyx_t_12);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_linreg_rmse, __pyx_t_14) < (0)) __PYX_ERR(45, 149, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+
+  /* "src/mintalib/cython/quadreg.pxi":14
  * 
  * 
  * def quadratic_regression(series, long period=20, *, int option=0, int offset=0):             # <<<<<<<<<<<<<<
  *     """
  *     Quadratic Regression
 */
-  __pyx_t_14 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 11, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 11, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_14 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 11, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_4 = __Pyx_PyLong_From_int(((int)0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 11, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int(((int)0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_option, __pyx_t_4) < (0)) __PYX_ERR(46, 11, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_option, __pyx_t_4) < (0)) __PYX_ERR(46, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyLong_From_int(((int)0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 11, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int(((int)0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_offset, __pyx_t_4) < (0)) __PYX_ERR(46, 11, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_offset, __pyx_t_4) < (0)) __PYX_ERR(46, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_127quadratic_regression, 0, __pyx_mstate_global->__pyx_n_u_quadratic_regression, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[64])); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 11, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_129quadratic_regression, 0, __pyx_mstate_global->__pyx_n_u_quadratic_regression, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[65])); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -54336,55 +55429,124 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   __Pyx_CyFunction_SetDefaultsKwDict(__pyx_t_4, __pyx_t_14);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_quadratic_regression, __pyx_t_4) < (0)) __PYX_ERR(46, 11, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_quadratic_regression, __pyx_t_4) < (0)) __PYX_ERR(46, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/mintalib/cython/curve.pxi":106
+  /* "src/mintalib/cython/quadreg.pxi":128
  * 
  * 
- * def calc_curve(series, long period=20):             # <<<<<<<<<<<<<<
- *     """ Curve (quadratic regression) """
- * 
-*/
-  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 106, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_14 = PyTuple_Pack(1, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 106, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_14);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_129calc_curve, 0, __pyx_mstate_global->__pyx_n_u_calc_curve, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[65])); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 106, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
-  #endif
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_t_14);
-  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_curve, __pyx_t_4) < (0)) __PYX_ERR(46, 106, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "src/mintalib/cython/curve.pxi":112
- * 
- * 
- * def calc_qsf(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
+ * def calc_quadreg(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
  *     """
- *     Quadratic Series Forecast (quadratic regression)
+ *     Quadratic Regression (parabolic moving average)
 */
-  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 112, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_14 = __Pyx_PyLong_From_long(((long)0)); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 112, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)0)); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_12 = PyTuple_Pack(2, __pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 112, __pyx_L1_error)
+  __pyx_t_12 = PyTuple_Pack(2, __pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_131calc_qsf, 0, __pyx_mstate_global->__pyx_n_u_calc_qsf, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[66])); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 112, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_131calc_quadreg, 0, __pyx_mstate_global->__pyx_n_u_calc_quadreg, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[66])); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_14);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_14, __pyx_t_12);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_qsf, __pyx_t_14) < (0)) __PYX_ERR(46, 112, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_quadreg, __pyx_t_14) < (0)) __PYX_ERR(46, 128, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+
+  /* "src/mintalib/cython/quadreg.pxi":143
+ * 
+ * 
+ * def calc_quadreg_curve(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression Curve
+*/
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 143, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_12 = PyTuple_Pack(1, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 143, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+  __pyx_t_14 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_133calc_quadreg_curve, 0, __pyx_mstate_global->__pyx_n_u_calc_quadreg_curve, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[67])); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 143, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_14);
+  #endif
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_14, __pyx_t_12);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_quadreg_curve, __pyx_t_14) < (0)) __PYX_ERR(46, 143, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+
+  /* "src/mintalib/cython/quadreg.pxi":154
+ * 
+ * 
+ * def calc_quadreg_slope(series, long period=20, long offset=0):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression Slope
+*/
+  __pyx_t_14 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_14)) __PYX_ERR(46, 154, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_12 = __Pyx_PyLong_From_long(((long)0)); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 154, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_4 = PyTuple_Pack(2, __pyx_t_14, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 154, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_12 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_135calc_quadreg_slope, 0, __pyx_mstate_global->__pyx_n_u_calc_quadreg_slope, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[68])); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 154, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_12);
+  #endif
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_12, __pyx_t_4);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_quadreg_slope, __pyx_t_12) < (0)) __PYX_ERR(46, 154, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+
+  /* "src/mintalib/cython/quadreg.pxi":169
+ * 
+ * 
+ * def calc_quadreg_rvalue(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression R-Value
+*/
+  __pyx_t_12 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 169, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_4 = PyTuple_Pack(1, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 169, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_12 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_137calc_quadreg_rvalue, 0, __pyx_mstate_global->__pyx_n_u_calc_quadreg_rvalue, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[69])); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 169, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_12);
+  #endif
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_12, __pyx_t_4);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_quadreg_rvalue, __pyx_t_12) < (0)) __PYX_ERR(46, 169, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+
+  /* "src/mintalib/cython/quadreg.pxi":182
+ * 
+ * 
+ * def calc_quadreg_rmse(series, long period=20):             # <<<<<<<<<<<<<<
+ *     """
+ *     Quadratic Regression Root Mean Square Error
+*/
+  __pyx_t_12 = __Pyx_PyLong_From_long(((long)20)); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 182, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_4 = PyTuple_Pack(1, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(46, 182, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_12 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_139calc_quadreg_rmse, 0, __pyx_mstate_global->__pyx_n_u_calc_quadreg_rmse, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[70])); if (unlikely(!__pyx_t_12)) __PYX_ERR(46, 182, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_12);
+  #endif
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_12, __pyx_t_4);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_quadreg_rmse, __pyx_t_12) < (0)) __PYX_ERR(46, 182, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
   /* "src/mintalib/cython/stoch.pxi":4
  * 
@@ -54393,13 +55555,13 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
  * 
  * @add_metadata(output_names=('slowk', 'slowd'))
 */
-  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_namedtuple); if (unlikely(!__pyx_t_14)) __PYX_ERR(47, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_mstate_global->__pyx_tuple[15], NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(47, 4, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_namedtuple); if (unlikely(!__pyx_t_12)) __PYX_ERR(47, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
-  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_stoch_result, __pyx_t_12) < (0)) __PYX_ERR(47, 4, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_mstate_global->__pyx_tuple[15], NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(47, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_stoch_result, __pyx_t_4) < (0)) __PYX_ERR(47, 4, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "src/mintalib/cython/stoch.pxi":6
  * stoch_result = namedtuple("stoch_result", "slowk, slowd")
@@ -54408,7 +55570,7 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
  * def calc_stoch(prices, long period=14, long fastn=3, long slown=3):
  *     """
 */
-  __pyx_t_14 = NULL;
+  __pyx_t_12 = NULL;
   __pyx_t_11 = NULL;
   __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_add_metadata); if (unlikely(!__pyx_t_5)) __PYX_ERR(47, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
@@ -54418,12 +55580,12 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
     __pyx_t_15 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_15)) __PYX_ERR(47, 6, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_output_names, __pyx_mstate_global->__pyx_tuple[16], __pyx_t_15, __pyx_callargs+1, 0) < (0)) __PYX_ERR(47, 6, __pyx_L1_error)
-    __pyx_t_4 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_5, __pyx_callargs+__pyx_t_6, (1-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_15);
+    __pyx_t_14 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_5, __pyx_callargs+__pyx_t_6, (1-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_15);
     __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(47, 6, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
+    if (unlikely(!__pyx_t_14)) __PYX_ERR(47, 6, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_14);
   }
 
   /* "src/mintalib/cython/stoch.pxi":7
@@ -54452,7 +55614,7 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  __pyx_t_11 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_133calc_stoch, 0, __pyx_mstate_global->__pyx_n_u_calc_stoch, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[67])); if (unlikely(!__pyx_t_11)) __PYX_ERR(47, 6, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_141calc_stoch, 0, __pyx_mstate_global->__pyx_n_u_calc_stoch, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[71])); if (unlikely(!__pyx_t_11)) __PYX_ERR(47, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_11);
@@ -54461,16 +55623,16 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   __pyx_t_6 = 1;
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_14, __pyx_t_11};
-    __pyx_t_12 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
+    PyObject *__pyx_callargs[2] = {__pyx_t_12, __pyx_t_11};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_14, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_12)) __PYX_ERR(47, 6, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_12);
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(47, 6, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
   }
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_stoch, __pyx_t_12) < (0)) __PYX_ERR(47, 6, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_stoch, __pyx_t_4) < (0)) __PYX_ERR(47, 6, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "src/mintalib/cython/streak.pxi":4
  * 
@@ -54479,13 +55641,13 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
  *     """
  *     Consecutive streak of values above zero
 */
-  __pyx_t_12 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_135calc_streak, 0, __pyx_mstate_global->__pyx_n_u_calc_streak, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[68])); if (unlikely(!__pyx_t_12)) __PYX_ERR(48, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8mintalib_4core_143calc_streak, 0, __pyx_mstate_global->__pyx_n_u_calc_streak, NULL, __pyx_mstate_global->__pyx_n_u_mintalib_core, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[72])); if (unlikely(!__pyx_t_4)) __PYX_ERR(48, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_12);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_streak, __pyx_t_12) < (0)) __PYX_ERR(48, 4, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_calc_streak, __pyx_t_4) < (0)) __PYX_ERR(48, 4, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "mintalib/core.pyx":19
  * include "cython/_all_core.pxi"
@@ -54500,10 +55662,10 @@ __Pyx_RefNannySetupContext("PyInit_core", 0);
  * # cython: boundscheck=False, wraparound=False, cdivision=True, nonecheck=False
  * # cython: freethreading_compatible=True
 */
-  __pyx_t_12 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_12) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_4) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /*--- Wrapped vars code ---*/
 
@@ -54820,31 +55982,31 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 10; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{16},{26},{34},{29},{33},{16},{45},{15},{15},{21},{22},{15},{4},{179},{46},{37},{7},{25},{23},{30},{32},{19},{1},{1},{1},{1},{1},{8},{13},{5},{6},{15},{23},{25},{7},{6},{2},{6},{35},{9},{30},{12},{26},{29},{50},{8},{14},{32},{23},{23},{26},{22},{12},{31},{27},{28},{27},{30},{27},{27},{28},{27},{29},{29},{28},{28},{27},{32},{27},{27},{29},{27},{28},{31},{27},{27},{28},{28},{29},{27},{27},{27},{27},{27},{27},{29},{27},{27},{27},{27},{28},{29},{27},{29},{28},{29},{30},{27},{28},{27},{20},{32},{22},{30},{37},{32},{5},{4},{3},{8},{3},{7},{16},{20},{3},{8},{4},{15},{3},{3},{3},{12},{29},{6},{3},{2},{3},{3},{7},{15},{5},{4},{5},{7},{18},{3},{3},{4},{13},{4},{3},{12},{1},{8},{8},{9},{8},{13},{11},{8},{8},{8},{8},{9},{8},{14},{15},{10},{9},{9},{8},{13},{8},{8},{9},{8},{9},{12},{8},{8},{8},{9},{9},{10},{8},{8},{8},{8},{8},{13},{8},{9},{8},{8},{10},{8},{8},{8},{8},{11},{8},{9},{10},{8},{10},{9},{10},{11},{8},{9},{11},{8},{13},{11},{13},{8},{10},{2},{4},{9},{17},{18},{5},{11},{4},{9},{5},{7},{7},{5},{1},{5},{8},{4},{3},{6},{10},{3},{7},{15},{9},{10},{5},{15},{2},{2},{2},{3},{4},{4},{4},{6},{9},{4},{9},{2},{2},{5},{5},{5},{5},{8},{3},{5},{8},{3},{5},{5},{5},{4},{5},{6},{5},{4},{8},{8},{6},{7},{2},{4},{4},{8},{4},{12},{2},{3},{4},{4},{3},{4},{5},{2},{1},{2},{6},{10},{5},{6},{9},{7},{13},{4},{5},{8},{1},{1},{4},{14},{5},{17},{2},{2},{2},{3},{3},{10},{3},{5},{9},{1},{2},{2},{2},{7},{4},{11},{8},{10},{5},{12},{9},{11},{3},{8},{7},{5},{3},{3},{4},{7},{8},{3},{6},{10},{7},{13},{4},{10},{4},{2},{2},{2},{4},{8},{10},{3},{5},{5},{4},{7},{2},{4},{3},{5},{3},{6},{5},{3},{4},{6},{6},{6},{12},{4},{7},{2},{3},{3},{7},{6},{2},{2},{3},{3},{10},{7},{9},{3},{7},{4},{6},{4},{2},{2},{2},{14},{11},{10},{19},{14},{20},{12},{10},{17},{13},{8},{6},{3},{3},{7},{7},{3},{5},{4},{1},{10},{3},{6},{12},{10},{12},{19},{5},{5},{5},{4},{6},{4},{5},{5},{5},{5},{5},{3},{5},{3},{4},{12},{4},{3},{6},{6},{3},{2},{3},{4},{3},{3},{3},{3},{2},{3},{8},{9},{5},{2},{6},{5},{3},{5},{1},{2},{6},{7},{8},{6},{5},{9},{3},{7},{1},{5},{5},{6},{6},{5},{4},{3},{4},{3},{3},{1},{3},{4},{5},{10},{7},{4},{1},{2},{3},{2},{1},{2},{2},{1},{2},{125},{84},{588},{111},{235},{92},{88},{65},{290},{757},{66},{44},{25},{19},{125},{68},{101},{134},{170},{167},{99},{32},{32},{27},{340},{276},{173},{152},{199},{71},{107},{103},{32},{146},{248},{394},{188},{50},{461},{80},{36},{173},{151},{44},{132},{115},{116},{33},{236},{170},{84},{25},{110},{25},{264},{115},{194},{251},{173},{183},{187},{222},{234},{234},{89},{138},{1}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (5295 bytes) */
-const char* const cstring = "BZh91AY&SYj\036q\217\000\010\273\177\377\377\377\377\377\377\377\377\377\277\377\377\377\277\377\377\377\300@@@@@@@@@@@@\000@\000`\027\327\274\013\346i\246\300{\357\215\367\331\323\256\373v6w<=\255\263\026mhe,\325\2066\311{\354\352\036\262\324i\367\316@\000\007\325-\036\033n\366\275\357 (\372\022H&\204\03114!\246\24645\005?MHi\2654i\3522\036\232l\010\246\200\323Oj\206\200\000h\014\200\032h\r4 \020&A\003M\n\237\247\251&\217Q\351?T4l\240\000\000\000\006@\003\324\001\240\r\003\020\001\246 \245\n\r\000\000\000\000\000\006\200\001\275\r\022\000\000\000\000\000i\240\000\t5\010\224J\000\320\000\r\000\003G\251\243\324\310y6\211\223\324OPh\000=@4z@\32044\014\230 E*\2175\036\244\2151\014\215\000\032\006\201\243\004\364\200\032\000\001\2402\014\232\032\000\000\000h\006\202DB\032\020S\311)\370j\246\323&\243\3212zG\250\014\232h\000\r\017F\240\000\003#A\240\r\000\000\016m\006tU6\331\332\356L\037\221\230:\201\025\326\t$\264\302\244\n\220\0342J,jI\246\326\2112)\260\260\253\001\374\005\354'\331\373\200\345\200\037\201_\310?\254\2043\013n\312j\024\230h\225<\366\323H#!\264\337\232@\313\205\260\020\242\265v\353$\261u\ndXb>q\311\000\300\r\022\030\007\001\306L\223\014\364d=\030\212\212\242\300Q`\301I\010\301`\242$T`\254`\200\214\001\212\250\210\300QD\005\221Ea\005\005\214X\310\250\"\"\252,bI\025$\214\"0A\021Q\220\310\220\324n\005\002l\202C&_\355\036`\005#JT\322\24211,Z\305\202\370\254\301\013A\241\r\200x@\214\322\271r\340\005\201Y\244&\r\025\024\345\2164\004P\360\322K\254\212#\002\007\254I\003 '$9F,\021\030\3101 \010F\"*\301H\203\031\004B\n\210\243\240\2264\252\302\221Y\261K@\202\205\242\024(\230VZZ\022\226a`\225\002r\276\351\214\002\330\244\222\220\206\344\014\010t\0301\202\302\021`\211 \250\302,\001T\021#\335\206\215\010m\261:,\330U\250\337R\251\344\210H\332\215Aj\215\350\334\251B\3612\004\365Yd\205\334\324%\246\021*\200\325P\006\206\027\354L\274\321^\265\261b\"Y[\334\301\246\210\310\356\202\270L\255E\240\005\220\205\2521d\020\330+Y\n\240\255Qk)5\236x\272\342j_:4\023\r@\232m\0170Fh3Fz""\245\326\021\301\240c\021\226%\357\002\033\006\201\300.\014\31703Y\206\322\350\346\030]b\302\345\304D\202Mo\244N\2213\353\232Z\240\rQ\256\245\316\235\306\250\337\242\021q\244\335\2235a3t]$\257\303\270]`\261\000\305dB\032kB)$\215\233\242Qs\217`\310G\006\371\302\374q\003$\r\213G\240\321-\250!@p\r\346\251oB\\\313\035\021\253A\251\225\320\306#|\t-e\350i\3042\330Xi\343\211\022\032\231\311\245\0102\255;\\Jbq%\tW\016\330\320\355\324\030b\2423\023\244\260\226O\235\001\204\212\231\277G\3368\243\350\017\212\370\207\352\256\037\347\243\255\371\317\026\235\354\277\261\351<K\2763`~\027\204\220u\330\316\366\261`\212l\027\367\253<\353\352\275\301Y\337\371Qp3C\360\375Og\362^y|\310\302\016\226\n\276\2266\017z\225\312n@\376\346q:\203A\006~\2344\215\342'S\343xy*\312\323\316\036\257\331\256\021J\242\212\323(\372ry-\323\260*\317A\014\321\212\263 \234'\007\037\357Z\274'J\352\233\033J\235G\0368\354\0008\322\\$\306\276N\352\344K\270\275>\355\004b\024\270`m8\002]9q\013\205\333E\323\272\t\222c\247\275\325=\020\233\211 \035\230_\311&%BC%\315\233Y\001\"\366A!\241\242\366\354)\212+\014\0220x1\310RR\230)A\327\336\370\334{\233u\006\004\214\001f\014\025W \250S\223\205\305t%\263\200\225 \313\306\024$1\246i\273\354\337\357\342\277\\;\332\377\326?vF|Pi\247\0373o\227\345\353\205\007\251\224\331\327\327\257v\316\317\003\326M\t\264\242\242s\036\263>Ryk[\357\246x\3234c>\036L\374\261*\341\335\245\"\324\222\030\021\215$\206\000\274\200\032'\242/H\343`\0237h\003m#I\255\035|\023\000\242(\251'M(\017|/\341\266\016\024S'\002\350\034\225\230\rK\224K\0211\304t\317~\254:86\352\253&\340ic \212\222\026\020AX\030\327MeYqb\301Jg;c#\026eK:\242\331\314\304\235-*\224\250\024\225\212K9I$\312Ab\325\252\250u\327\227\212EUJ\243\034q\262\n\237\252\010(\034Myy\217\241\347\350\341\357w\245\274\344{^\352\322\313\025v\241\006@F \302\3418L\300\366\264\346\211\025\2504\222\264\303\272\271Cu*B\262\255--J)Q\220\206\222\263\221\204\224\254\227\304TB$J\312\302\266\036\256\315\275\323~\315\r\005\240\032h\037\237\267\237V8\206(\304\333""\371?\027\355\366\261\316|\013\244\225\320\256\005\367P(**\006\342\200QR\232.m\266\005d\026Al\026\377R\375n\235\274\364E\357{\217\023\323&`~\017\322~\315\247{\375\275Zo\305\350\346\374Q~2\231\223\374\023\236\264\310\026A\031\017V\037\001\270Y\225\351\216\352\254L\325\312\032\252\244\264V\220*\332\037gT\356\345\334\r%\n\010\333Z\240D\021\315e{N$\321\005\241Y R\022j\\W\2139\315I\2430\231M\314\211\003%\222t\351R\251\025F8d\353T\"\246%\274J$\251@\252\021$\210&I\023Lj\007]\311g\177\036E2\341\035\210;\257\274u\372\375F5\362\355>A\024'\256\214\004\263\321X\022\366\302\367\244<\213p\304\030\330\250I\031\301H>H*@\027$\367\020\241\212\223_\023\326\002DF\222h\234V\000<\325\004\t:\214AEd\241,\256h\311\230d\n@1\177\r\032^?7\3074\027\324\005\361\221\211\010\303\0130\312\005\231\213*\216]\233dP\002Q\r\273\335-T'C\266\267\320\001R\020\r\017\2171`\363\002kl\305\372\245G5\024a\246\343\203t\023\346\031\266\255Z\013@\002\220\005\000m\317\200\370\274\r\233c/\321\027\270t\251\014\331N\203\017&2\330\266\010\347A!]\022\235\227\243\032\001\217K\014\355\242\354;\220\032\344\352\367\353\226\326p\243$49\211B\263sP2\2207\"\232\346\245\304#g\207WFZ\267g\250PR\n\203\3105\027b\007X\034Q\004\035\300]\303\271\343x\362\"\265c*\207\023\036<\212\033R\313V\nR\261H\016b.\"\320\336\000Y\212Fj\323]e\321\261n\234$nANp\210\031\350\332\242F-\331'\220h^\203\"\025\300\221h\255FR\335\352\314\251$U\245\260\353\n\210\020k  g\350\343\244\371\037g\2555\303\246BSh^\322\222\211\005\026\341\304\233\350-Y\266Ou\253\007\214\226\024\273\257\217\\#c3\252\376q\223\262k)=\373\324 \032\205x\000\314\022y\242\246\224HNh\341VO\022\246\225\210\370\274\202-\237 \223_m\322\177\010\260\342{]<\331\3351L\213fH\260a\230.\337\305)c\240zI\0177\322[\350;H\355.\322\307M\203\016x\224|M\304\303&[\033u\232\023\324\372\210{\246\304\341\311Zw\263\232a\026vWL-\301\360\341|\354X\352\220\314\360\265o\034\231zJ,\202\373N\001\320\241\036(p\345\353\351\316\251\2163\307\033\3068\364g\035T\305\266\303\262{-vN\025FBz+\032.\014t>J\206\223\"\205}\261\035""\263JZ@\323\247M\234\r\3607V*u\360\014W\235t)\006:\240\222\204\264\213ro\245#*\321\303\324\303z\332\207\241c\002\226\231\2337l\255Y*\324R\002\266/\0312\371g&\006\303f:Q\177\226&'`\314\370&\336{>\0138\345Z\201\224&=)\007x\"\234\r`{\310f\215\324\275\036\323\331C\262\027a\322\255vC\330\002\214\207v\355\222\345\3756\255\353@\233\237\005\271]Q\353\243G\333qd#\221MZ\233\333\2104\276\\\256)y\322\316\2723x\201%-nq<+\252\321\265\t\325\305\205_!\307votV\265\274\210\014\n\001\r\327\010\241\353$\223\033\340nC9^\003\023\335\0033\r\272\334l\336\363l\r\210\3438\302\361|\274{\233\\9\237\273\002/\3142Vfc01\202b\302\373\263\274\245\264\323VS;\373\354\370U\202X\351\332\300g\316\205\334\016Z\025\206\212\2526t\226F.(J\335\010(D\304wJl\"%\241\222\021p\027'v\207h\333r\264\030{0\327\r\232\230(\366\355\267\203|\264}3;\217r\177V\231\002\025\316\255\373@\\\270\027\307\250\311\332\325M\274\220\271\353\264\200X\247\215\0245\025%&Uxb\370%$\251b70}\003\300\177RH&I3\200\260\010\247\004j\366\300D\240\257RJ<\035\031B\030jT\266\273H\337\326\310\001X\233\001\260\2266\330\333\266,F\001\222\255\312M\004\221]\234\230\2734\275\257\331\326\372v\006\242\240\336\020J4wT\343Cm$o\240\242\353wn\342\204 \350\030\375\010\332\323\314\342\203u\371\231^\341\304sg\205\243\024\006\376\326&\t$\2359P\257W\020\353V8\232\220\253.\372pv\220\005E\356\003\014\016\377\247\003\031\212\177R\371\346I\232k\017J\n\355:\253\343\325b\262\227\022\325\270\356\203\r\246WY\223D\035\244\rhC\022\006j\322\320\005\352\351\213GWv\214\360\263\ry\354\210\351\307f\267\001v\371K'\022\223\311\306\315\373w\332\005D;\320g\261[\342\360\221\265\260\271e\002{H\266Ey\363\252\r\246\0109\\$\221\3441nag\321)\222\315\365\305\330`\310\210\2029\300m\260\254'\212\242G\r\362\016\204FH\031\246/&ET\202\273k\306\224*\016&RH\346\350\350\232\263\030xD\344\177+\227KwN\300\243\353\363\342g\236Zc\242\360\342\266B\303\273+\224@P\255T(x\0248\017\202{\"\262\r3}\203\340\320\n\343\213\331\270\226\306\306_\036\336\204\310z\306\365\307!o\322\275\232\025\310\001R\367i\245<""\3201\227h\234R\232\026\006F\014\021l\355\027\026\226f\201\030\001&\005\014\221-\201S\225Bq\232\n\n_\353\270XG\232\374\237\004\272J\3520 \002\226\366*\3739\217\204@\261\017\02440\3167\033\262\325\370\203\210\313\rfC\002\r\211A\223E\227V \330\330]\355g\034\355\260\323\241l(e\3335H\276\345\020\360sn\357-\205)\302\351`g<\351\036|\267>\211\322\225T5QV\332\225\334\353\357\340\273b%H-6m\321\345znvD\216\013\262\212/K\250\204c\307\r#\224\346\315\014o}5-u\266y\341\007-9\236\315w\314\311\326\333\270\217t\222F\\'01\361\220\274d\216\243\274\273\264\224\350\272,\007(\251q\214\213\005\2008\332\227_\032\212v\3110\003\213P\0359\230\265L&\242\004!s\014DI\241h>?C\r\033\037K\336DK\031\320\327\212I\317=\224Hu\322H\230\007\204\005:\"/\031\026\\\216\242\270t\210\346\363\023X\336\331_\027=\213\230\245\203\265\247Lh!\212\201\006*\2750\306v\021\210\353\3413\031v\306\354\300\250\363n@\244\301H \326\213+\265\266\003d\340\311-\314\260\233%\320$s\211.B:\220\007Hr\344r6\361\201x\271F,\255\330b\260\213\243n\203\363C\220\306pf\346w23\345}\333m\272\302T\205\206\321|\226\355\3207\016\211\214\016\377\365\236P\212G \264\036\306U\317WfJ\253\215\265*H\024\327\327\02417\3536|C\\\271\0361\215\265_\0263\330\021\0206\017\216$bQ\203\r\310$\031\330\346.7^\314\253t\342\t(K\332\021wie\346!\022\311E\310\004\232UM=;\371)\215&\273\370\271r\367c\013Y\315\255\032\320\265\243Y\340\221\267\245\262\014\311\262\261\337\004\010m\336\217\010\r\014\203\242>*:\t\235cZU\231#\302\010\365\000\004\264XQ\215+BG{+17\027\205\221\313\252\003_+%l^\212p\230m\340t\245\2359\201\n\326\301k\270\331\322U\350ns\252\317\021\215\260f\240g\013\007\302\327I\330RW\002h\311\004\244\224'\201\325\214)u:\350\225\234$.\301D\303\002\257p\375\0104$h\\wk+$\030\2619\316\203\034G\362bSd\264\240Z\231^\331I%*\252IOq\340\230j\244t_);\345\337\276\223\317\232\202\031s \262d\203\302\275\307\235\206b\177\021\270%\270\204n#\213N#j\267d\315\241.\035P\232bN\336{A\206\036\235[N\323\023\016$o\254\260\236\306\265\346l4G\267\303K\232\373\322J\361\027\253\327%\010.""\337\307\335\325\004\243\236\361\353d\242\364j\336\233-\226$\213\022\260,2iXL\333{Y\263\335-\232\340\354\303\010o\3508\301\327\251\320 I\021#Da\\\250F\\\253\034\316vL\201\220Y\r\273\r\025\260\315\276\331L\034\261\252\005\2172\334\351C5+\327d\027\306\231\375^\024\201aSG\016,(\243-\246\362\250c\342F\373\314\303)\2449\35637\311H\376\254#\332\361\220\302B0C\020\271#\225\342\205\"\007&\034uS&\024\025\024\031\004\020\236E\023\243MI'\215g\244\260(\212]N\335I\353\372\364X\223\332\220C\270\212\260C\274\001d\210N\221\030\013\357\366\330q\363`A\362\316\334*Me\010\366\014G\244\304\233\205H\221\250\030\377L\236\373\312D\010\375\203\205\020\241\213\316\365>\270w|\224\227`\216\365H\017V`\244\004#\332\222J(\207w\366\030\036)\373I\036\333;\313\207\221\243V\023\007g\037[}#Z\335\344\363\365O\002\034h5\313\2343c!\337g\336{r\017\327\320*\005\032\252\002\372\242\237\340\rL\0145A,\022\244\212w(\373\215\304\371\020\356W\225\277\355\037\315!`\354\240\275@\371C\016\366\302h\033\237SX\211\313Z+e@V]4z\025(\227\001I\321\362\340\036@\374\266x\375#\312c\372\3128\247\277\240\261\222Y,\207-\310Kbr`\005\335\352\356\234n\\\262\351\336\254\206\260\007VM\030\3210\220\371\250D\207 \306@\374rY\036\376\317%\223O2\035\261N1\273\324\334-f\260J\330B\225\224v\341\363\217\241\337\177\323\246W\356\2352JPd\030WR\250F1\005\233\251\t\334u\003\t\226P\323E\262\254\225e\026h\3116w\326^\342\006\332!/y\230),\245\236oL\237\210\016\244\351\3645\316\352I\315\371y\020\330\t\311]d`$\254\304\2056\ncL\0073\2257L\321ln\214\006f\032\345\300\352t\322\272\236qS\305\346\353sq\343\303\226\337\006\025+EU\331UE8\235\007B\026\224B\263L\340\312\264\323\276\n%:$\226Q\264\243FSzbR\026\351\320q9\272\320\3533\372\236\177@\354\366{\006\215\263\261\207,/\313\336\322\323,\243\241\274]\032\2732\323C\306\342r^]aF\206\031\350s\020\353\366{\035\225o\375\1772\247\204\250\216\246\370\274c\256y\200\314J\n\300`S|\025BI3\032\321\272\270\226u\316o\n~\217\367<\"\026\241\375!\262,\nKT4\010b\024\270\201\024\3441\252\205\204R\246\010e \346\2604\224'\rW<""\206\346u\347g\260O\032\341\\\377\302\347\374\347h|\302\215c\200\030\320Tm\260A\215\315\221\262\342l\241\010\027Z;\271\024h3D\267e\302x|\223\304j\247\226xs\373\275\246\203\351\r&o\2656j\327\3146#\020H\202\303u/\013\326\352\316D\344\303\315\020C\350\375>~~\326G\323\237\237\372\327\221\274\006\213\024A)\357\240(i\023[\373X\342\305\351L\0232\366\206\300\331\037\034\000\363\277\331\351w\377\tS\301c\276\212\372\007\237\350JNW\270/b\245b0\202\034\031\021\243\201\020\240\355l\250Z\265\356\241\255\356o\320\232\205[\316\3528\002\367\205\211\025R\004F\021\212\243K\320g\215\257s^\240;\201\252\\n\306Pc\342\261\233\313(C#\022Bw\230\027\261\033\033\\/\254~\373\243m\030\334\262\267F\033\001\321\010\210\357\206\361\325\302\215\301bok\334\037\317\007{c:=>j\034yU,9\324u\321\203\307\315\327W\\\016\207\036\020\177I.\243\252q{c\212\024YPFRz\207\271OGG\302#\237\246\036\036\256\266\213\240\321\363\263\316\265\377\271\372\374\2169\304\335]N;#7\262[8\220\3239\205\346\034u\274>w\314\346B^p\362&Gd\r\007P\366\352\177S\234\347\371J(Ls\363\363\007\361:\004\216\226\036\302\255\216\231\272\234\005K!*\375\223\323\373\201\305zg\312;\363\350\223\340\211<\377?\300Z\0230\017\001I\262^\246\370\033{\2205\217]Ja\321\336<4f\030\362w|\210\325\277\266\344\301\334\326\203\203dS\037={\036O\027Ct?\324\354\350\217C\230\211G\357\354\\\3765\3607:\3628nn~\222>\267\217\330\361?\337\360\345\017\210y u|\022}\377\007\262\331Y)\352\316\241\t\325\037\002E\360'5j\365\254u\270\333\203*\352+\357 \335\261^\37400p\253\321LDFT\210\300\353E\246\023\315\366\340\231\227\327\307Oix\336\206\305\334og\013\373\354\333>\035\236W\371\223\370\226\316\346\316\341\321\257\304~e\371x\270~\344#\364W\257\331\347\\\267\266\255Pfh\264\270\332m\316\222\342\344\313\266\267\2678\373\334<^\257A\307\274[\350\023\016\034H\327\303\220\234C\016\357`%\345ug\344i\346\351\244c3n\026\002\252\214 \216\371FV`\007(\207R)\2014p\227\031x,X\306\260L\001\013\02590\016cl\271\232L\230\201c)V&\316%M\237jI2\027n\321NN,\242\340[0\275r^\315\3446\025[/\223n\247\006""\270\314\204FR&\351+L\022b\221\003\035\332\210\023k1<\025\202f@\"CQ\205\270\254\253\233Y\202\330(\250\3142\271f\364\025@)\030rP\320\205lK\010\330\222\034\240\214\341\027\206n\211,\346T\221\222-\331\023i\265f\321\271(\t\213\232\014^\t\025B\260\254B\260P\212\254\242*s\235\313\315\010\3017\246\225J\004! `\241 `r0U\203$\2622Cv\251\315\234\262B\246\214\"\251 l\220USY!\342\2233\226\244V:\246Z\205\017.f\005\322\231\241N\342\354SJ\034\231\0349\216Q\r;\302\255XM\031\000\343\212\230\221\340\301\002\370\242\330R\261\3034X\006\010\211\014SsI\344\213\014Ywu\002\240J\221122\222W\225v\013\262\020\027\200\303\"\351\000\201\263F\263\032Wr\231L\343\023r\016\025\3000\256\302\321\211\2233\240\227\246\222\354\205\214\213\277!\t LJ\250\251\334\356\303\"(CP\200l\254\trW+j\325\325\242t\361?\361w$S\205\t\006\241\347\030\360";
-    PyObject *data = __Pyx_DecompressString(cstring, 5295, 2);
+    const struct { const unsigned int length: 10; } index[] = {{2},{68},{35},{54},{37},{60},{24},{52},{16},{26},{34},{29},{33},{16},{45},{15},{15},{21},{22},{15},{4},{179},{46},{37},{7},{25},{23},{30},{32},{19},{1},{1},{1},{1},{1},{8},{13},{5},{6},{15},{23},{25},{7},{6},{2},{6},{35},{9},{30},{12},{26},{29},{50},{8},{14},{32},{23},{23},{26},{22},{12},{31},{27},{28},{27},{30},{27},{27},{28},{27},{29},{28},{28},{27},{32},{27},{27},{29},{27},{28},{31},{27},{30},{27},{28},{28},{29},{27},{27},{27},{27},{27},{27},{29},{31},{27},{27},{27},{27},{28},{27},{29},{28},{29},{30},{27},{28},{27},{20},{32},{22},{30},{37},{32},{5},{4},{3},{8},{3},{7},{16},{20},{3},{8},{4},{15},{3},{3},{3},{12},{29},{6},{3},{2},{3},{3},{7},{15},{5},{4},{5},{7},{18},{3},{3},{4},{13},{4},{3},{12},{1},{8},{8},{9},{8},{13},{11},{8},{8},{8},{8},{9},{8},{14},{15},{9},{9},{8},{13},{8},{8},{9},{8},{9},{12},{8},{8},{11},{16},{18},{17},{8},{9},{9},{10},{8},{8},{8},{8},{8},{13},{8},{9},{8},{8},{10},{12},{18},{17},{19},{18},{8},{8},{8},{8},{9},{8},{10},{9},{10},{11},{8},{9},{11},{13},{11},{13},{8},{10},{2},{4},{9},{17},{18},{5},{11},{4},{9},{5},{7},{7},{5},{1},{5},{8},{4},{3},{6},{10},{3},{7},{15},{9},{10},{5},{15},{2},{2},{2},{3},{4},{4},{4},{6},{9},{4},{9},{2},{2},{5},{5},{5},{5},{8},{3},{5},{8},{3},{5},{5},{5},{4},{5},{6},{5},{4},{8},{8},{6},{7},{2},{4},{4},{8},{4},{12},{2},{3},{4},{4},{3},{4},{5},{2},{1},{2},{6},{10},{5},{6},{9},{7},{13},{4},{5},{8},{1},{1},{4},{14},{5},{17},{2},{2},{2},{3},{3},{10},{3},{5},{9},{1},{2},{2},{2},{7},{4},{11},{8},{10},{5},{12},{9},{11},{3},{8},{7},{5},{3},{3},{4},{7},{8},{3},{6},{10},{7},{13},{4},{10},{3},{4},{2},{2},{2},{4},{8},{10},{3},{5},{5},{4},{7},{2},{4},{3},{5},{3},{6},{5},{3},{4},{6},{6},{6},{12},{4},{7},{2},{3},{3},{7},{6},{2},{2},{3},{3},{10},{7},{9},{3},{7},{4},{6},{4},{2},{2},{2},{14},{11},{10},{19},{14},{20},{12},{10},{17},{13},{8},{6},{3},{3},{7},{7},{3},{5},{4},{1},{10},{3},{6},{12},{10},{12},{19},{5},{5},{5},{4},{6},{4},{5},{5},{5},{5},{5},{3},{5},{3},{4},{12},{4},{3},{6},{6},{3},{2},{3},{4},{3},{3},{3},{3},{2},{3},{8},{9},{5},{2},{6},{5},{3},{5},{1},{2},{6},{7},{8},{6},{5},{9},{3},{7},{1},{5},{5},{6},{6},{3},{5},{4},{3},{4},{3},{3},{3},{3},{1},{3},{4},{5},{10},{7},{4},{1},{2},{3},{2},{1},{2},{2},{1},{2},{125},{84},{640},{111},{235},{92},{88},{65},{290},{975},{66},{44},{32},{19},{125},{68},{101},{134},{170},{167},{99},{25},{32},{27},{340},{276},{173},{152},{199},{71},{107},{103},{146},{248},{394},{188},{50},{461},{80},{25},{36},{173},{151},{25},{44},{132},{115},{116},{33},{236},{170},{84},{25},{110},{25},{32},{264},{25},{32},{115},{194},{251},{173},{183},{187},{222},{234},{234},{89},{138},{1}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (5471 bytes) */
+const char* const cstring = "BZh91AY&SY\000\363hQ\000\010\370\177\377\377\377\377\377\377\377\377\377\277\377\377\377\277\377\377\377\300@@@@@@@@@@@@\000@\000`\030\227\274\007\315\225\225\240\034.\274\353\336\336\2554\373g\303f\3351\367\263\240M&j\215[dw\334\347\241X\301\364\370\033\355UP\325=\254\232\257%\246\366;\320\000}\t$\020 \321\246\232L\023D\364O SMOH\365\014\324\365<\241\247\212~\032$j\007\251\352\036\215@\365\000\001\352h\000\3654\006\232\023@\201\032L\232\004\311O5L\230\324\365\032\0326\247\250\000\000\000\000\000\032\000\001\246\200\310\000\224\310\025$\221\210\323Ce2d\321\240hi\204\323LC\004\332G\250{A\252\0324\032\030C!\246!\221\220\302z\214\022j\021(T\3104\007\244\000h\321\241\241\223\324\310i\262\217\322\206\230\232h\014!\232\206\232\014\232d\006\020\3203D\010\222BOU=\010z\237\252h\003M?Tz\215\003G\251\220\366\251\351<\220\0004\032\003CLG\250z\217D\321\240\320\3204\320\001\"!\000Dj&bFCS\t\265\036\240z\231\032h\017\021=\240e@\000\364\200\000\033H4i\352\r\001\2476\273MJ\233\362w\235\311\223\362\263\007P!w\002I-@\251\314hT2\240\226F\371m\014\215\372W`\340_U\214\017\354\000\343\247\354\376\340=\020\003\370\025\351\004\3652\020\314-\273)\250Ra\242T\3536&\220MQ\326`p\227\352\2205ai\004(\255\335\272\311,]B\220\230\227GX\345\200h\003$\206\020\340\234d\3110\317^C\327\210\250\252,\005\026\014\024\220\214\026\n\"EF\n\306\010\010\300\030\252\210\214\005\024@Y\024V\020PX\305\214\212\202\"*\242\306$\221RH\302$D^&\311\263d\342st\010@\346\234\007\004\342\034o\336\373\251*\212\242\252\316\242//,Z\302\260cz\310\020\263\032\020\330\007D\021\222X\230\230\244\005\201Y\244&\r\025\024\341}\364\004P\336\252\351!r\\\240e\212\205\310CA1#\"B\021\214\030\222\002\021\210\212E\213\020c \210AQ\024t\022\311\251$d\036ip=\230&I\214\201\234\241\314K\333\222\367\020\244\244\034fh\304\013FAZ\2008\"\\\004\346`\306\nBEP\021$\025\030E\200*\301\214O\246\025*!\266\304\350\262aV\243z\245S\301\020\221\261\032\002\321\033\310\332\251Bh\312 [\324\221\"eU\nYA2!\006\232H\032\030_@\313\315\025\355\333\026\"%\225\275\314\032hM!""\332\002.j\221W]\240\031\0107\220\236@\324$\261A\200+\212\271\024\305q\312i\3457'M\243tB\325\032\030\310\223D\023E\014\221\226\200o\210\334\3201\210\302\363\034`C`\3208\005\271\231d\006K \330\261A\202\271\206\006\002\"A&\033i\023\224L\371\215,\320\006h\314\314\341\330h\215\271 X\r&\365L\321\240\231\305\030\244\226;\376q\212\271^\001~\004!\246\263\"\222H\331\266%\030\230n\350\233\026B8\0339\341\2373\0202@\332Z\r\020\332\202\024\006\340\3375K}\tsV\371\230\264h40\305\014b7@\222\322^fxl\014u.\032x`D\206\206r_B\014+N\227\232\026/\022T\273m<\241\320\363\366\006uU\033*^\222\314\337\233s\320\031\242K+\234~\277h\361\036\301>)\366\337\263_\241\375o\232\362\322\357VM\026o\334\324\177J#\n\217F&I\007\344@\237\267\2640E7\013\373\325\236\226\365\037\000\254\357\350\325r4C\360=?a\361\236\232|\230\224\235.\025},\356\037\025+\245\034\201\375\215 \354\r$\033\177\304\265\214D\035\217\236!\346\253;\323l\275O\261l\241,\212-]#\374M\346\270R\340\253=D\266\243\025fAIRN?\336\345yR\272g\031\031\333\257\254\367\263\217?\311\000\001\344\"^iq\346uz\213\252\227\240\264\274\245\003\010\030<],\322\202\220\353)\204\242\355\242\351\312\t\222c\247\243\252{p\233\220\331\t\362\303\243\2719d8,+\001\241\360,\005\213\037\022\340\270U\n\372=n\240Z\310\3363\274\306\375n\025\312Y\002\201\035<}\255Y\262\322\026\222-\005V\255\024\336\224)\024\304\301Yy\247JmzI\2740\007'\004\351\014g\222N\3037\373\371\017\336\207\036\367\372\273\373%6\251F\n\272\375\2338xk\215G\247\245\031\327\313_7\223\273\346<+\315\242J'4\365[x\223\306\326\303*Z\261i\275p\360r\370dS\277\2678\214\t$2\021q$\206\000\352\304D\014\223\321#\301kd\221\275\000\354T\354\316\334}n\333\005\311\031\025\300pl\326\031.-d\267{,\016\024S'\002\350\034\225\230\rK\224K\0211\304\255\335\374\016\273\241\275\236\232o\355\206\206/\210\245![B\013\310.\255\227\357\227\254\273v\335\244\250\242s\340\362\340]\255\342Z\340},\n\252\244\212\244\005V%MmdYZ\301b\325\252\210X\275\271\222\"\242E\023M4\210\"~\327\016 \025\2273\367\033\033Z\373\366\3719%\3539\037g\331^;Zm\334""\204\033\310F\201\234\n\004\330K\334w*UU\016\034\3067\246\036\327\014lr\245HV\252\352\213ih\241Q\220\246\222\243\221\204\224\254\230\336*!\022\222\260XV\273\306\376;6\365M\375\232\032\013@4\320=\216\236\\W\336\027\240\275_\267\365~\217k\255\034\007_$\222\311\013 2\333@\200\240\210\005\262\000AB\020\266\026S()PJ\202YB\377\347\242\254\264\343\2021\307\034I\024\246\233\t\313\366\036\036\030\366\374\376\227\217\343i\351s\277-gS\033)\370\327\235{ [\3027\203|<\252\305\021B\261\241\272$e+%\234\216b!\224cm\240\034\246.ckf&`-\014H\020\245;`\3201T`\354\323%\024\204\240\001\"\002! K\213\333k\263\316\221:\024\3419\034\226,\n\300Y\0349\324\252EQ[\356\301\332\310E\213\026\362\350\222\245\021\242\262\021B\211\005$\2214\306\240v\332\226yz\022)\227\010\350\301\357\337\302\033\367\363\212K\305\r\345\205p\335\225`'\256\345`K\337,^\262\364\027\001\2301r\241&i% \372\022Q\244\005\221'\315!C\025&\376\325\357!B\"\323h:,\200z*\001\"N\323\000\242\262T\226W5d\270`\212\200\241\207\360\325\247\343\363\274t\260 \203\215\300_\033\205\314\204q\226\r\244\2133\026U\034y7\314\240\004\242\034;\372\037Bf\255\254\242\344\340P\302\n\333\271\210\300<\264\232\272\256~\231g\346Jy\355\321Y\275\266\nl7\305\271p\233\201\001\210\002\2006e\270|\307q\256\310\303\303\030\342\216%!\223)\300]\325\2145Z\210\347\240\220\333\205\327\265\326\256\000\317G;\337\0073>\205\003\271\027N\356\223\346\345\002\273\037\212\2217\320tu\201\244\301\301\024\333j\227\022\213\274\272\3724\331\212\253\344\344\361r=%\366\203\3308z\301\251$\203X-f\270\234o\021\030\260\305\300\234\277\241\224D\245\024\211\266U[\252\032-\014\265]\240\004|b\201\232\362j\352\2565-\263|\215h(\332\010\201\265>I\345.m\312\236A\241b\013\350X\001#\002\014\002\302a\257v\371bI\027\263\265\314#\204\013\013 \037\014\335\273\251\305\367\371&\331uLQ_\026\210Q\001j\t7\356v\223\215\204Z\215\245d\202\326\224M\353~\316\336\311XL\354\307\240h\354\233\212O\253\251B\001\240\267X\014\301)\261\0256\325%J#\205Y\274\0255\264\017\207\312!\266r\211\2667\3417\360\215\243\265\216\352G""\005\201i\216\253\0054\210H\031snp\335bb\252X\314\256ds&g3\241\270\335\0209\361(\365\266\223\014\231lm\326hO\023\342!\355\233\023wAZw\231\315\230E\214%\220\201\032\235u\265\340@\347`.:q&\225\"\325\2342\014oI\007B\204x\245\335\343\331\325\266\311\236t\317<Fy\364m\215\225\315\267\313\273NK\341\242\"\204\314l\024\256\200\311B\354\357\225N\322\262'V`\210\355y\322\316\221\237>uV\226\365\266\345.j\364\017gev\002\222c\262I9OXn^\232\312\324\260k\033t\255\352z\026$\036\031\232\t\212\304\230H\242\272\201(\026Sj5\235\331\356\242c!\224\360t\377$!\024\270f|\223\177=\337%\244ik\001\244\250=)\211 \022\222\240S\221\264\217}\r\021\272\327\243\330\372\371we\206]J\330h<\000\243&\365\340\274\223\343\372/lV\2418>K\202\272\243\333V\217g\332\310G*\2335z[\264\032\343>.+\211\326\356\272\263x\201%/~qL\255\262\361z\223\263\265\205\237A\333\303k\341\013kbD\206E\000\227\014\004!\354$\223\030\310\340\206\223\304\001\213,\014L6\333jf\370\233Xk\026\275kXb\027\271N|\275}\247\350\201\027\201V&1\003\024D\250\262\274o1\266\335\024\330c\177a\237\nmKv\214\266\214x\304\261\207fuh\303[>bF\227\220\344nb(`\334gJ\300\226\303\341\335|\226.\334\356L\3143]\245\200\3342\271`\006\036\3145cb\242\n<\0300i\353\030\007\321#\265f\233\277D\240\205[\257? \025\255(\366\212K\373\232(\301\354B\267\255\304\002\2714g\235\247\245)YS\335\213\350\225\312\026L\347IM\305*x\233cw+\336\246@\241\352\247\036\235K4c\322W[\242\350\312\020\303B\245\264\330F\365Q\277\200\002\270\245\300jK\033d\022g2\020L\n\244\254\035\234\" \226]\004'c\332-\331\215\260\356\002\213 \t\232\206A\307\312J\002\374\350\210;\250\005wk\325\273\265\335\325\306^\272Z\232B\212\216\246\340\312\307\016#i\215\273l'\005\376\264\304\251\00043@\216Z\302\250\272\262\340\345\0266\303S\014\000\t]\352\000\301\363\200\027\326\371\3603\031[\307\276\220\210Lj<\347L:t]\325\242\245U\016%\321\232\020E\333\032[v\236\260#y\202\264\303\331\221S\237.\000v\347T4l\363ug\225\330n\333\311\003\253>M\316\002\357\362\026n'7\233\216N\235\3757\221Q.\374\231\356W\030yL\336\371`\263\221=\342/""\241^}\266A\274\311\007\027\t4y\214\333\230]\365J\350\264}\320\3542dDA\033d7\334ZT\315Q#.\231\215\242p\214\r\020q\201\253w\270\2068\333^e(T\034L\244\221\315\340\340\232\262\370wD\340x\254,\211\263\233 \034\360\322\202\367\256\024\301:\326P\201'\340d\350U\001\304\244\212\212f(n\036\344\365\212\3104\315\353\007^\200V\373\336\273Illf7\364\363'4@13:i\305~\334w`^\224\001P\367g\241<\3061\207!0\245\222\025\006\302\005\344yL\224j6\360q)\0016\005\014\321/\221S\245\202v\321\005Eq\362\273\231\026\341\323m5Y\335\024\203V\000\245\275U~\014\307`\201^\036pf]\224m6\341\243\362\307\021\205\332L\205\304\032\245\006\r\026\\W\203ca\213\330\316fV\324a\3052\016+\336\030\242\013h\213/3\233\207}n+^\346\023\310\322\233k\034\372p}S\251\nXYE\233z[\203\257\274\222\357\201:\311k\311\277W\236)\301\331\0222^J\250\3050\252\021\237nZ\306\224\2434\263\305\365\330\266\334\327\274\324ta\310r\307c3\r\271\350\027\304\210\210+\253\\z\2108\357\221\337\013\330\032\217}u\241\300\227\226\002]E6c\026D\214\001\306\324\272\355h\247l\306\005\315\324/W\2317U\246\256\244\024\026\242\221*V\323bhm\275\246\215\217\205\357\221\022\306p5\347\022pO\222\211\016rI\023\000\356\200\247\014F1\201e\320:\005n\342\021\315\371\013\310\324m\266Id\266\024\276\026-\334\300Q\022f!\262\243\204\004#\204\032*\361\226\312\\\021\020;:\350e>\364a\270\013\017;\004\nL\224\202\r\252\263\303kL\022\032d0\201\274\225\362%\264$dI,\211\031\220\006P\316g3\224\326\342\341m\305/s\3634,\241\321\270I\371\245\312b\222f\346w34\342\3747\337\205\304\353+\215\343\031\365\0068\362\301\304t\324fz\263gG\314,\307\203Z\355\331\331\242\252\345}\212\223\0057m\2040q\324\260\314-\327C\337\312/\263\030cM\301\021\003d\371\346Fe\0300\336\202a\235\216\321\201\303\026e\\)\000\222\204\275\345\016\355=<(D\364Q\202\0016\236qKvl\264\2544\331\277\330\303\303\030`g6\224iB\322\215'nS.v\2763&\302\307\\`\215\231\324#!\251\230tG\315GA4\264Z\266fH\356I\036\300\000\227\206\010\264y8`q\262\263\023q\214,\016\207\024\006\236\226\n\327\274\324\3350\333\270\341K*sA\n\326\271i\264\327""\204\253\314\332\347E\225\343\033`\315\000\312\025\317\243\226wRL.\314o\tUX]\002\352R%\327\014\374\233\326\027R\306z\301\231#\211\202x\020p$cZ\265a\365\201|\230.\335s\234A\215G\361bY*\254\234[\214\2615\214\314\312\2079\231\227s\222a\364)+w\002\326\320\206\2655Yg#{(ZW\221\354\273\264\331\230f&\336\257\177\351\232\004\264 Z\021\253E\3436\007W\2232Ww`I!+\264\275\224\007\247T\3234\204\203\211M\345\212\023V\330^c}\271\354\341\325i\314?\026$\222\304#\022\304\267\355\240\303\246\236-\330%\034x\207\256\tb\364n\351\222\315\025$\212\222*\n\213\372\022\266c\317\233\036J\336\221\313\325\2105\245\371\023\325}\212\240dD\016E\003\333\342\241\361vV\376+u\373\341|W\314\325#%\346\031\267\232\302\327\263\032`T\363\rn\226\033T/\003 \2624M\337\324\220+jH\333\271m\023\341\300iT\214f\203E\326Xb\031K0\347\270\304\3371\t\273\200~\260|.O0\214H\214#\"\354\216\327.) \354\307\224*l\300I! E @~\272\035\375JU\332\261\270\260\0242\026\247\223K\273\362\350\261\007x$\r\270I\"@\324\002E`9\306 \355i\300\313\257B\034CN\233\255}\221:\370'\315\005\222\233\250\261\006\210O\262\307\217\235(O\274\224\3255\007\322\346\374!\277\357\325\336\025\340\336Ps\355E\310@g\021V\212\0237\265\020\342\234\321g\":\226Nu\227!\024,7\247\237`\273\311\250\352[Z \333\013\342\255Q\202\210<\n\374\217VA\371\332\005@\243U@_\326\024\376\340j`a\252\ta\nVCn\2164\263\rD\333\256\206\037\2136T\260L\n\013^\207\004\211\321\260\232\006\347\335\326\"r\326\212\331P\025\227M\036\265J%\300`\360:(\034\342xq\345\352\235\010\316aFJ\232\324\026\"\266\033\t\215\224\226\202r`\005\335\352\356\234n\\\262\351\336\254\206\260\007VM\027J\033\2053\300`\232\004b\247)l3Z\307\341\026\371\344\300\344\nq\215\336\246\300\264f\223\006\207dY\005\224\254\243\253\016\021\257\342\364\215\202\276\247`Z\220\"\221+\207TB1\201#\205(\371N\240`e\312\032h\266U\222\254\242\315\031&\317\245e\356 m\242I{\314\301Ie,\365:D\374\300t\347K\233]\353\251'?\221\310\206\300NJ\352#\001%f0),\024\306\220\034\316T\3353E\261\2720\031\230k\227\003\247\322J\351\372\245O\277\317\324\347\343""\313\207-\277`\215J\035\222\346F\330\325#\224\254A(`Z&\345F\224\345\026\263J%:$\226Q\264\243FSzbR\026\351\320q9\372\220\3521\353\235NQ\344y\034\322\314Q\315\243\212\t\366\263\021(\251\031\312\312m\331s4\224\263C\306\342r^]aF\206\031\353s\220\372\375\347\331\357\025\277\363\375\n\237iQ\035M\361x\307]\354\300f%\005`0)\336p]\t$\326\232\261tJd\235\223\257\332_\217\373\207hD\266\037\301\026\025\202\261\035\26502P\325LA\027TI\316\263\006\233\275\241\224\233*2\240Q\214b1\303q\306\221eN\312\371\376\260\277$\2428\3742\277\307\033\201\373\204\025\244\240\222\362\241\337\330\214\373|\326\363d\275\264J\033\327%\355\336\032t[\213n\313$\357\271'~\325O\370w\323\322|\006\203\356\r!\233\360&\315Z\377cb1\004\2106\213B\232\023[L\262\366_C\375\014\030wy8\370\373\324OT~/\367\337\271r\005\361t$\334M\307,\205\212\321V9r\272U\213_Y\033\245'#\003\023\264\000}\376\241\347q\377\002\316\226\034f(\316\211\320\350\314B\220\357L\302\313oY\204\2710\244\027\321\t@\236X\302\216\337\177\275\007~{\274\265)U\025\344\211\265V\361NB\305\027n\202#Q\256c\206p7\233\317\374\034\376pw\307:\246?\014m\222z\030o\034=\250\245\253\242 \247$\205\260Xe\307\373\217s\274w!\256\355\234w\213\235\216\373)f\241\213\274t\2677*\350\025\326\362\372\007\363\301\336a\235\035\236\364\361y\343s\0240\367O\325\033^.e\325OT\016\207\037<~\302^\223\246ay\207\023\250\262\234h\313,\002\036\212::>1\034\373!\336\351\267,Z\323fG\201\312\345U=\336\357/n\016\350\237'$\036\275m\364\315\327\211\016\320\305\364H9d>o\312\356!/\000v\301\243\327\242\3419I|\234\264|\256\"\2240\301\r\034\374\374\301\352:\004\215\214=\276\026E\366:e\352g\004\204\250J>s\323\350\014+\322l:3\346\223\310\344\351t\271\014q\323g\000\344.Ml\375]\016\230s\370\340\350\224\351\3111o\033{\356h'\236N\236U\316\336\367D\036\233gS\207\246\221: \343\335\\\274\336\035\215\261\375\337>\310\354s\021'\375\376u\263\225z\333\233\2253\206\347\220\350\351$\372_S\227\302\377W\362\350O\330\316r=@v{B~\010\355v\337\034\223U\017\262\272\342\027d}\204\233\354/V+5\245j\274\377\223\351\236\237""\346\356ep\330\3543[\304\r\\\374\177\033\205\257\206I$\371\364\t\237\340\232Z\341\305\347\353\037\366\256\253\234\353x\334\036\333v\370\327\260\337Z\350\377i0\307\027\307\305\310\377\"\177\002\343\342\342\3446C\305\301\276\274k\362\360k\341\204|\007\2017\213\317\367V\356\323n\206\353w\330\377\333{\276n\267{\313\243w>c\374Y\223!\213\243\335\360\030n}\237}|\013\344\244\245c\305\344w\023$\366>\024\036\016C\360r\t{\231\377'w\263k\350\\\270\351\336\371)\220\010\25008|\205\"\345\200\246\006\254u\243\226\265)\215\3150\303e\351P\022\270\255^0x\342\356\333\314\3252b\005\214\245X\2338\2256~h\210\212\202eb\0228l\214\230\tQD\337\t\303*\014\006\360\236\030\2564\275\252\202\020\241\250Yr\361\310\222\213h6s\034AX\367\\\351zUP$K(\247\032\246b\266\362\261\356\231\"i\306\352\246r\346x\027`\350\325:\316\024\345\024e\225#XRb\271\253\241\253\324f\252\313IJ\335\272F\321\223\210\254s/\0265\224\230TeY&iE\331z\236\262\364\262.\366\321u\277+sx#J\316\034.\334\020\312\r,\240\322h\322\360T\224\243h\231\307sX\265cC\271hi\333k\022\023\273\227\264Jld\352\234\315\312sJ\\8\234\272\2502\335U\2279\031\205\313q4\250\325T\251\220Z\312\034\244\240\213*\000\335qH\205\245\010\t\326\246GOf%Z\220P\210\242K\231\253s\264a&)\314\270.\ntTU\033m\274\333\314\024\342\030f\212%\031l\006,V\257v[\314\247)\312\331+(Z\237\032\007\230>\022U*\256\005N\313\264;\305U\314Dq\023\005TX\361u\240]\214\031\224EH\006\352\300\231\022\2632\274,<\033\322\251>w\276.\344\212p\241 \001\346\320\242";
+    PyObject *data = __Pyx_DecompressString(cstring, 5471, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (5705 bytes) */
-const char* const cstring = "x\332\345ZKw\333F\2266\035\311\226c\331\021eI\226\354\356\004\224\037r\272\023uS\226\035w&\235>\3643\356\316\213\362#\351\356\351\346\001\001PD\014\002$\000>\224\356\236\311\222K,\261\304\022K.\271\3642K-\271\344O\360O\230\357\336*\360!\221\212\234df\316\2349\221\201B\025Pu\353>\276\373\335b>Tr\226\245\350f\305\260=\323\261=\245\352\032\232\241\233\366\356\260S\271\246+\225\272\347+EC1m\335h\031\272\242\332\272b;\276\342Y&^\277[/\225\014Wi\230FS\321\035\303\343!\243Uu<C\361|\327\324\r\357\236j+\216m\355)\232k\250\276\241\250JQ|\344\227U_1=Esl\337\334\255;u\017\213(\025\243\342\270{\233\370\212\246R=\317\334\265\025\337Q\360\261\376>\317#\336\240%\345Kr\342\246k\372j\3212\344\013B\250\222\353T\216\372\226\267\2454M\277\254\370{UC\331\220\375\276\253\332\036oc\370\211x\r_\230P\225?\242\273\373&m\310\260\241\025\363[\303\313\334\037U\240)\224\">zP\251\372{\212WV\261\224_\257B\330\222\343*\332\236_v\354M\325u\325\275\307,\220S\367\025\247\244\024\235\272\255{\312\r\265\205Y\256\351\357>>\274\2660F\275Zu\\\337\320\037\333\r\3252a5\265\300\333\031<;\272\361\036\031\006\037\303\210\033\332\206\202u7\2608mt\343=e\027\263$/;U\237dO\036\253\206k:\372\301G<\324\207\363\213\035\301|,\351G\237\261\316\236\223\316\260\213\317\035\333\370\334\201\205\330\342\367x\263\244\026\335\260\314\242\341\302v\260\014y\013dc\267\260\225/\037|\371\376\366\235m\3666\327\370\006R{\330dQ\263\340\020\3602RM\335\264|,H\333\3646\225\307%e\317\251+\266\201\335\301[\252xo\364\003\277l\330\212g\370\324P6\330\304*m\222\264\004\227\337\220\3461\033\006}\375P\265<c\363\013r\030\210N\253Y\316n\241\n\0011\025\211\004\035hdn\r\242\"6|\267n|1f1lPz\271\252\341\243\304\204_\n\335\311\233&\\\r\023\330\306\256J\213\313\201$\346\340\177&u?\361\215*L\272\247\310\327\2775\\g\350\024\317l\366z\310\215Hj\030.\234\3327*\364\354\024Is\317\354\027\266\323\264\025\226_x\371\346\307\033\357\376A\325\365\002&Dl\264\336S\252\272\371\236R\321M\336\236\0023\375\266\2459\226E:\201\223m\252E\355\243\2218\245\227\204\306>>\330""\235\204\307\307\272\351\221\\\006K\267\253)7\310\305v9\022H1\0044F\313\207\0269\354\207\230cz\342\023\235vA\361\244|\364{\345\267\207\342\3042\241\243\177\212 \252\250\232\016\351q%\264P-\321.\343\r\2727\304cct\254A\203\266\003\027,\251u\313W\n\005\327\320\353\232Q((z\235ui;\366\373p\311\206\251Z\030\325L\333\3641(4\372q\022\237\210\235]#S\035\267\332.\303\221td2Uu\262U\021\262\320;=\t\271\320$\251\336C09uK?4\325\026^\254\250\207\246\361,\247\371\002\037\341\246{\256\366\233\212i\373\210\311\342o\204\266~S\320\234J\005Z\253\302]&\014\253Eo\352\220UQ\247\216\371\356\264\241b\021~0u\322\242S\2356\244i\346\324!K\335\235:V)M\035r\035o\252$Z\335m\030\323\006uc\372\336\311\201\247\216U\246\356Awl\255l\252S-q\304\212\000\356iC%hf\352\026\313\323\247|\241\0361fX\276mL5\360\021\266\000NN\035r\035m\332\030\205\344Qc\215\351\203G|w\304W\255\251C\245\251\366\303\363\264!\204\356\324!B\335i\203\356t\033\034\241-\327\233*\243\247N\265\032\301\314\3241\013 5up\272\220\236\257\033\215\351\203Fu\372\230\243\225\247\017\002\366^L\035\255W\246\r\371G\204PS\014}$X\251>\226\302\016\367\021;\032d\262\261\361Ao}\220vU\313r4\246\266\224\230\024]\365\325\315\t\243\202#\321\034\222\031o\202\265\031.\241%\222\222\251\353\226!\332@r\321\235{r\357\361\343\373\017>\313\321\237e\231U\317\364>\371,\367\330\366\037\330\365\312gj\225\270\313\227\256\323\332{\212\254^(|\271\327\302\277\373\340Q\205\317\221[w\214\322\223\317rO\214Z\335\2605\343)&!F\2669$g_}\226CbG\006 *P1|\225D\037mo~D\262[\336\307\233MW%aU\375\033\244\0370\006\265\244\226<l\255PH.\274\311\202`=\252U-\253\252\273\353\261F\324\344\266gk\246\263\2519.\322\247i\033\036\222\210\332\330-\252\236!r\006\222\260\207l\\t\034\013i\242\350:\252\256\251\236_\200\263@\n\255\000I\305]o\211;\022\224h\370\256\2707v9\336\370A\314)\233Uyo\212\273#\236\221q\304\035\220&\032\225\222\270S\342p@\246\206O\340u\311#%\016nQ\226\020\r\244\004\321\250\210\031\023\260\347\207\344-\3008\337K\311re9@`,\032\002ye[\334\223\227\201\255\342\356Ju\0202\016\032\r\331Jz""\222g\241)0;q/\311\273\251\017\025\205P\341\273\235\250\261*\337\006\254\211\373\340\325\232'\266\351Jy\023Q\000I\342\316e\0017atq\007\356\210\006\201\214h\311\257\031>d\313\250\312\006\200A\266\010\005D\263^\341\273\237(\322g\342%\232R\"\360\332\241\230\365\252\016\306\313\315\246f\r\373\001\002Z\331\320^\024\210Wj\026\231\275P\340\032\241PH\032\273\206O\314\223\036\341\243\005\323\246\3254\204\246\366B\263P\020\216\320bx\262K\377\014\013\256\257\201\371\373p\r\3269\335\240Ur\024]7l\007\323\351\024\226\354(\272\331\300\037!J\305\224.\257\333\036\376\n\210\223\304q\222\001\354\203\375\205\033\226\3210,\235(<_\n\246W\020\214To\350-}\017\352\301_\026\377\266\360\357&\242\036e_\241\000\216m\270t\253W\370\037U\\\006\202\031\376E#\220\305p\271\337u\320\347\"\2761\356z\006\031\023\237\265\210\371\302uK\010\305\022]^\320\305&\241\230|\224,G\365\013|\305\245I\377h# \354\006E/\356\025\325\227\225f\311+\325-\253T\267\265BA^y\021(\235\227-\024\312f\331\334*\233\273e\342\302ek\253li7\361O\333.WLS\207/a\332B\301\254P\275\213;U\313\246\rY\001(>Ue\250]EMJ\312\031@\rYT\324\023\262\250\370\346\005\305\234\0147\251k\326.\031]\245\036po\217\n\022\313\262*\226c9[\210\277a\031\210M2L\017\260\272R\311V\266*7e\341M\021I\377\344\314\243\345\210\240\373\034\262|\031y\2451(Y\222\227\364\002\334\t.HNU0\365\026nj\t\301\\\301z\206jW\214\n\035L$p\215\250\026yd\230M\340\205\374\235\314\206\004\276F\205\275\002\327\272Ew,ng\355-\373\246\255V\360<\274\352\\\\\331\250R\213@\006\273\210`E\362\203+\333F\023\227\252\215\270\264\371\257\272\0077tJ%T\330\016\214\265\355X:b\335\026\007\t\016jn\327\203\035\252u_\\yv\257\212\210\252\"\333 \207U5@NU\257\310\272Z\024L\325r\325\252:\325*\375s\244\226d\2154\250\232\252\256Vu\341\3136\340\314h\010\323T!V\265QmU\367\n\205*2\"G<\372\304\223t3jr\010q\253nWM\355\005\264AyUt5\370,\251P\250\325U\035\001cj#.\301\275\226P\324\260r\034\264\004\343\030\3510Z\324\334\205\340\010/\336\207[\246\250\300_\001aO\267z\325\003\226\272tz\340BV\317\243\311)y!KR(\232\006 \n\352\225""\346AK\226\256\334\226\233\032i'20\351\360\312f\311\347\352\221\264&4\307'U\204\310\242p\244\300\345J\222.6\000\032\323\270\230K'dfP\226\026@\033\317\256@g\\\353\232O\362\266\274\326\026\376\366\274\326M\257\265\355\265\360\274\347\341\277\255\002P\033)\274\340\227\361}\031\216\341;\360D\337\025\020\216Yl\2022>\305\251\327-\030\002^Q\2572\344\341\306!\t4\307\226\230,\r\030\023\364\205?\302\231\006G;\347\035\276x\r\307\002\2305Z[\255-\\\366\032\255\026\376\320\334k\354\3555\221\016\232\000\274&\\\322\340\013\257$\331M\023;i\265\200\244[-ooO\337\363\276\375\326\333?q9\314\276Z:1\373NX\214\346\342T\274\332I\367f\226\203\235\240\326\237Y\013\027\303[Q*Z\211\274\370z'\325\233\371E\230\353\317\\\014\376\025\341\266\030d\372g\336\354\315\315\267\037\004\313\201\032\324z\363K\301]j\364\347\337j70\303^\224\352-\254\240\247\216\317\320\347\007\267\302T\230\356-\\\244\311\317\266\263\337\245zk\277\216\263\257\026O\314\236m\277\037\324B,\361f\373F\220\t\356\204\331\376\314\271\366\327A>0\302lof\276\375(\330\n\236\207[a~\354\201^\372{\230\r\037Ew\342,\317\271\177\342\355\375\267\263\235\267\273\265W\013'f\347\276k\266\213A\2527w\276\375M\230\332_\373U\234\241\367Ns\367\311\340J\360Ux7T\017\016\277}\244.\3348-5A\323hA\2727\367V\273\366\352\374\211\331\013\301F\230\356\317\314\265g\333\317\202\353\341\251\260\004E\035\320\021\251\341fP$E\220N\334\340B\220\353-,\005\017\302e\274\376\220\365\2740>\004\345\245\261\312<4./\027\260\377\035\232\355`C|\267\030dy\216\305`\035\026\331\r\237F\213\321V\224\357-\\\300\322zx%\334\tk\321L\224\213\362\221\332[X\016\362l&y\271\030\270\330j\366p\243\217E\266\271\271\025>\211NFW\242\035\350b1\316\366^{\240\017W\271\037\236\0147\242%t\265bl`-\274\000S\224\242\273\221\036\257\3079\361i#|\026e\242m|\264\332Y\352\354t\232]\365\325\251\023\347\026\332\315@#G\222\316%\025\366\332\235\227\303\017\261|#~\3229\331Y\357\344\306\336\022\376IV\235oo\261#\226\302\\\370g(\014#\007:\336l\257\267?\trp\311l\370I\224#\017\275\333.c\256F\230\017\277\211S\375\231\363m""\025!\361\234<\210\036\014X\353Y\270\036\336\207R6X!2\034\226W\310k\347\177`\201\3760Jz3g\332kh\336\306~\320L\267\337\r\262\360\245t\237\277y\010\007\270\007\003,A\375o\300\005\236\306Kq\2767}\250\177\346l\373wX\347+\350\0001\241\343\235O \303\263\350\006\333dR\327\271\366S\370\333V\3604L\207W\0217\263\321\223x&\276\033\253\211\220\333\024=\347\332\177Ax\317\2229\217\322\354q\025\371,\314$j|\312\336\265\0236\243\"\215\377\354s\177\020\255\223\302\217=o2M~\324\3169\tM\227\367/ou2\204ws\337\375#\270\032$\310C\366R\340\0137\200?\267;\351\316\273]\030\366\235\320\215V\3434!Bg\265\013\363f\020\306\200\271\370a'\323\371\260\213\005\226\203\277 \220OE\0069\320$\200\242\027\276\215/\211\267'\000\366B0\2038\234\005@\244\243\253\221\206\305\256\306F'\333\271\337MQ\230\324\341!^x-\254\311\260\361`\374\034\003\306\341'\274\263\006g\312\207zt\035\016\220\203\237\245\027i\364)\002\373\036\266\2624\010\265\215n\272\217P\323\004\250@,\312\013RC\231\375\314v\347\363\227RG\377\263\340\235\021\320\375\034\301\264\022\326\031\213Owj\307\007\360\225\260\021=\217ouNuJ\335G/\005\004\017\201\373\000T\013l\035y '\256M\305wJ\255E \346\272H\245C\214\037\264\227y\236\264h\324\304\253\275D\315\243(\217\354K\027\237\223\351\260!\307<\361\335\240\261\032\316\220\226\177F\360\357I\360_\307\274\032\\z\233\273\267\3400\363\244E\241\t\037\220\364$>\t\214\001\224\364\346\227\007q\3563V\321\373;q\215\362\310C\211\243\327\330\266\350\310\r\240\365*0\341T\\\354\234\351\256t\335\227\027\277O\211a\232\3526\026\276\205\371\257\303\037\337\355\336~\271\370\362\203\357\241\370U\2305\311C\032V\271\335Y\354\334\352\236\354^\303\367\374\312\017\247\237\201\035\222\354\262\023\273\230\345vw\261\273\325\335\351\326&d\231\336\312E\001\373w\000\336@WJ1\324|\030fF\232\204\242;\260\366\262t\204\007\330B\2228(\\&}>\372M\022b\330#\257\266\177\026q\020~\035}\025\177\322y\324\315~\227#7\377t\177\365\006\202G\204\305\376\t\274\361#\310a\357g\"\207\227.\223\240\347\006\360\3728b\3667\206\342\347\333%\3468\010\036\332l\001[""\372*\372$N\020w)\3704:\027\377\275\233\205\341\030t\301\320zs\313\234\2562\004\002\377\n\036!<\346.\222\034\304'/@q\177\n\377\031\377\276\213-\211\360\276\313\234\2112\336\365\316\033\235\233\235b\367t\027\213\315\276\232#\245c\021\304\326\304\264\375#\210\302\331\366\207\374\301C\370s-I\307OC\266\007\251\255\201X\232\205[\325zs\351`\025\233\270\026\326\344V\247I\361C\213\366\330GZ\300\214S\241\032\376#\316\014\245x\020]\204P\003R\360\307\250\214`\234[\000\370\256s\334=\340(z\003\230w\262s\255\343\"I\001\214\345\324I\263\005\001!\353\222\360\032a\330\213\033\321\177t\362\344Y\231\237\230\365\316\264W\2034\270v\252'\233\327\202\332\030\213\241\024w\017\362\014!\005\373\023>D\343\303&y\317\277C\241\033\321 ,\2273\321/\342\374\253K\023b\013\315Cd\351\n\003\317CA\030F\212\227\263\355m\370Qz\310\202\276\216\362\211\315\366\227\257E\371\t\341x\207\300f`\323\363\355\277rp\310Y\313\300\3431\233\237\227\335\273\370:7>\364\3161\323\341%6g\032\311\033\032\352\035|\\\243\305\327\210\246,\005\177\024N3\221N\234D2\317\366\346G\343\346\t\005\372\000\024/0=]\t=h\351q\234O:\322\341uf\241\177&\260\037$U\242\0263W\330\372\217;\010\375A\223\304x\014\027;\264\376i.\"\207\215\241 \353\003\022B{\226\310\363\020Y\351y|3\326A\377\357\"\256S\275\364\005N\3563\234\233\206\020\377\343t:\320\225l\364gV\303s\321\337:\360@\312\266P!\325\213\223\225(\370W\216\2626\262\313B0\313\032\004\301\032\037XC\331\250\022o`\032\266\210Hx\203\262\275H\275\304\3101\210\232\003\035\002^\227\226\373\013I\226\005\353\353/\374\202\315\234\211\262\021'\373S\330\332\231\370r'\327\3479\030\024{K\231h9R\2019K\277\014\363\007\031\033\351d\361\365t\362\202\236\026\203_\023\336\236NH^\232l\216]!bS\301\270VZ!\363\256:g\020\246+X\354d\224\351I\3663(j\311^\224\034\007\017*\023\220\337E\211\001W\367W\337\217_K\336\213\301\177F\0169\337j8\177\274\314\366\317(+HV\232H\324\373QM\344\264\201\332\370\265'\360\316A\252\333?\001\275R\202J\204Z\001\265I\204\">{.\316\203\306\200\214vg\272\220\3418]\223w\263J@I\262M\332\007\221\315|""\240\366\023U\223?\234\0143\360\247\364\212\3406\362\271?hL\360\205\205C\2079\267F\233sd\2701\350\\D!T\004*\356\204\203\374\300\2408~*\364+\346u\231\021`\355O?\025:\230\261\304\022\247\201:\204g\033\240c\331\377\276\245\256\363\301\306b\364\001\025\310\223p\376\035\204\344\\|:nu\232\335\362\313\335\357\363\224\021\311\003.\021E\251\267\357\241\230\"\372E\301Qo\337\017\346\240\264\323\224\361\027e\361\375\034\321\372\010D\372\014e\035&4\351\340\227\014\003?\252\247\237TP\233\261\032\217\262\211S\242\006\343*I\276\362[\244\345\364q\213,\232`\005!\315@w\371\360Y\330\010\324I\304_\223\264\232<,5\250-\033\\\003ql\247\030\271\362\374\346X$yI\275\243&\247i*\360^X\341\0363\360lo\351\035\224u9bO\340,TpHx\277\317>9\346\302\343\373\016\231\022\374\034\274\352\026\266,|\321Ez\231!\336\273\305u,\235\234\344Q\257\314\"\210\215\316\035\324\ny:\023H\221z\237\"a\022\212\217\250\2706\200\323?\301\244\010iB\035\211\251\023\212\374\\0\2327d\005X\353\t-\217V\221\324\221f \340v\177\376\240\tt\304\275(U\223$\323[\202$\275\3455\2563\271}\3008\224{\000\027\275\245K\370\366\026\230\033Ue\032\037\350\325\273w\273jo\371\022\033O\216\247\006U\321\306\376\306\357\273\023\334\220\314q\372\273F\373\311\340p@\034\273\236n{p4\022\203\037\300\271\250q\262}\2352\nb\347\276\254\356\212\340\0327Q\337]@qY\204C/v\266;~\367\326\313\331\227\371\227\252\370d\275\235k?%\316v\036\331i\026f\247\n\203HKN\230\365[$\327\033`\017y\361\330\344,\345\rO\267 \363\233t0'a\274\307'\013Hn\030m?\004S\314\367\336\022<6\325K\200\350z\244\022\020\3750#N\010\260:\355\320\347\257\321\233D\332\222\323\237\177\353\276\370>\335\237\354\034t\214C\322p\3140\273 \252!\016\3634\"\006\303s\240+ \014\027\242{QM\236-\023\325\330\".\333\033}\020\005rC\262\225'\234\246\345\344_\363!\343s`oZ\034)oK\215\216\215?\003\317\037&\026\324X<\035\034\251\277 \270Y\252\267\264\312gV\253\3612B\345V7\325M\367\307\272nw\323\020#\275\312B\263\010\364\270\024\334\026.\232\034y\254\276\035\252\364$\240c\365\227I\027\3269\336\233\302\307\237\262O\251\222""\256J\327]\217\336\213\325i\225CO\002\301 \305\224\016\364\021\333_\t[Q\002\306\200\251a\031\260J\336p\270\024\240wV\376wy\330\326P\027\227\230z\022\000g'\3610\022\3665I\243E\000J\254e\354\000\360\036D\222\020\260F,\366\230\362&\2364\306_D\330\216\310\224$\367\257\251\232Mc\203\333D\021&\277;A\376\332qH\327\001\362X\033PGW\036\206\010\032\2319@\"\245\014o\036_\207,\005\227p\307\222\002X\334\0278~`\311\363\257\271\344\261VK\216\304\222\275\216\226]\207\315\302\220\353#\226r\203x\273Fe\325\241\243\252w(\206\3504\272\177\264\2303\360\243\006\237\252\034|H\365F\314\307\001>}?\275y\031;I\252%\367$\302!J\265ef\214\364k\313\355x1\276\323\271\331Q\017\344\344\3642\361\3160+\n1M\010y\220c\257\004V\224\371\341C\271\241\363q\331\262LN\334\237\314\372? T\343jp\242\334\224\020\350`\343OQ\235\177\327\031Z\215\311\202\364T&\013\343\256\322\243\243\304\237\302\255\361\322\337\240\217\017(\037\312\335CM\023\017/\301\240\257D\037\3055\202\334s\310\260D+%\340>\022g0\203f\362\333\331\007\000\002\254\360L\236eI\022(\344\332%Q\316\266o\023)\032\036\014\001wG\3048u\210\314\253\003\371~\022m\026\254\216\t#\345\362T\177\032\257\233\306\236\207?\331&4\372y\230\035\261\233\360W\371\353\356\341\217Fi5\241\346sypv%\336\211\033 m\222\007^\343\235\317\200]7;\352\241\220=\364\373M\370Z\373\237Pi3\232\213M\313\037E\016 \323\322\217\324{m\004\007(y\211\210\347\023\032\362\352\311\332\037\301\260\301\321\365\2328\341\272\215$\230\343\263\022\242\264\327\331\257\226.\207\267\301\236\036rM8T\360\270\322z\327\256\277\272\3723l\342\236\3705\224PK\360\227dG&\325\nT^\275\326\236FN\217.I\032/.\313+\311\006\257\362zK\227\370'\340\231\350.\352#\371\220:\346\326W.N\265\337\353d\332\371\350\323\3161L6<@\023\354v\244\036\352\037*-\017\247\335\305\237!\302?\215R\275\343\0066G1[b \345(\n\237\034\326d\343\262\037\210\311\205\377Sb\037\374}\353'\212~1h\"\245^\2248V\353\361^\270Nz\035t\345-\211c\322\024m\253\031\252\2077\226\372\311\273{=\260\374B\324\376\033\341\333\321\370\317\325M.u\263c\273iq\025s7\334e\212#\213x""\006,.r\250\254!\362G\277_f\2178JI\216\006\271F\"\221.D\367\371\177\374\320 \356\352:r+]\016E\316\334\377\233\235N\264\251\370\215\352\006\347\316S|\244>\350\312\210\023\245{|\"\224O\210\010\245\331z\364\000\345\177fpbI\254j\205fo\241x\317P\2416\307e!\352\025&\240\311O\2037\350\240\365\265z\326\260\321;TD\035\352I\202\356\327qV\036j~\361_}m\217'";
-    PyObject *data = __Pyx_DecompressString(cstring, 5705, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (5880 bytes) */
+const char* const cstring = "x\332\345ZKw\333F\2266\025\311\226c\331\021e=\355$&\345\207\234\356D\te\331qg\322\231C\371\025w\347%Yv\322\335\323\315\003\002\240\210\030\004H\000\244(w\367L\226\\b\211%\226Xr\311\245\227Yj\311%\177\202\177\302|\367V\201/\221\212\234\244g\316\2349\221\201B\025Pu\353>\276\373\335b>IeM3\245\031%\335r\r\333rSeGWu\315\260\366z\235\251\353Z\252Tu\275T^O\031\226\246\327u-\245XZ\312\262\275\224k\032x}\253Z(\350N\252f\350\373)\315\326]\036\322\353e\333\325S\256\347\030\232\356\336S\254\224m\231\007)\325\321\025OO)\251\274\370\310+*^\312pS\252my\306^\325\256\272X$U\322K\266s\260\216\257h*\305u\215=+\345\331)|\254}\300\363\2107hI\371\222\234x\3371<%o\352\362\005!T\301\261K\307}\313\333J\355\033^1\345\035\224\365\324\232\354\367\034\305ry\033\275O\304k\370\302\200\252\274>\335\3357hC\272\005\255\030/t7}\277_\201\206P\212\370\350A\251\354\035\244\334\242\202\245\274j\031\302\026l'\245\036xE\333ZW\034G9x\314\002\331U/e\027Ry\273jin\352\246R\307,\327\265\367\036\037][\030\243Z.\333\216\247k\217\255\232b\032\260\232\222\343\355t\237mM\177\237\014\203\217a\3045u-\205u\327\2608mt\355\375\324\036f\211_\266\313\036\311\036?\226u\307\260\265\341G<T{\363\213\035\301|,\351\247_\262\316\236\221\316\260\213\257lK\377\312\206\205\330\342\367x\263\244\026M7\215\274\356\300v\260\014y\013dc\267\260R\337<\370\346\203\315\273\233\354m\216\376=\244v\261\311\274j\302!\340e\244\232\252azX\220\266\351\256\247\036\027R\007v5e\351\330\035\274\245\214\367\372?\360\212\272\225ru\217\032\25156\261B\233$-\301\345\327\244y\214\232N_?TLW_\377\232\034\006\242\323j\246\275\227+C@LE\"A\007*\231[\205\250\210\r\317\251\352_\017X\014\033\224^\256\250\370(6\3417Bw\362\246\nW\303\004\226\276\247\320\342r \2169\370\237A\335O<\275\014\223\036\244\344\353/t\307\3569\305S\213\275\036r#\222j\272\003\247\366\364\022=\333y\322\334S\353\271e\357[)\226_x\371\372gk\357\375\273\242i9L\210\330\250\277\237*k\306\373\251\222f\360\366R0\323Gu\3256M\322\t\234l]\311\253\237\366\305)\275$4\366\331pw\034\036\237i\206Kr\351,\335\236""\232\272I.\266\307\221@\212!\240\321\353\036\264\310a\337\303\034\303\025\237h\264\013\212\247\324\247\277O}t$NL\003:\372\207\010\242\222\242j\220\036WB\013\305\024\355\"\336\240{M<\326\372\307j4h\331p\301\202R5\275T.\347\350ZU\325s\271\224Ve]Z\266\365\001\\\262f(&FU\3032<\014\n\215~\026\307'bgOO\227\007\255\266\307p$\035\231LU\036mU\204,\364NOB.4I\252\367\021Lv\325\324\216L\265\201\027K\312\221i\\\323\336\177\216\217p\323\\G\375\260dX\036b2\377\241\320\326\2079\325.\225\240\2652\334e\304\260\222w\307\016\231%e\354\230\347\214\033\312\347\341\007c'\315\333\345qC\252j\214\0352\225\275\261c\245\302\330!\307v\307J\242\351\343\267G>:v\2544VL\315\266\324\242\241\214U\3661+\002\233\307\r\025\260\371\261\273(\216\237\362\271r\314\230nz\226>\326\206\307\250\3334,G\037?j\217\037rlu\334\030\305\344qc\265\361\203\307|w\314W\365\261C\205\261\326\305\363\270!\304\356\330!\202\335q\203\225\252\242\035\243Mg\274\001\217Q\246\343\216\335\202\253\21459\301\320\330\261\361r\270\236\246\327\306\017\352\345\361c\266Z\034?\010\344{>v\264Z\0327\344\035\023b\373b\350SAL\265\201,v\264\217\010R7\231\r\214w{\253\335\314\253\230\246\2552\273\245\334\224\322\024OY\0371*h\022\315!\311\361:\210\233\356\020`\"/\031\232f\352\242\r0\027\335\331'\367\036?\276\377\340\313,\375\231\246Qv\r\367\363/\263\217-\357\201U-}\251\224\211\276|\343\330\365\203]$\366\\\356\233\203:\376\335\007\225\312}\205\364\272\243\027\236|\231}\242W\252\272\245\352\273\230\204H\331z\217\237}\373e\026\271\035I\200\330@I\367\024\022\275\277\275\376)\311n\272\237\255\357;\n\t\253h\337#\003\2014(\005\245\340bk\271\\|\341M\346\004\361Q\314rQQ\234=\2275\242\304\267\003K5\354u\325v\220A\rKw\221G\224\332^^qu\2216\220\207]$\344\274m\233\310\024y\307V4Uq\275\034\234\005R\2509H*\356Z]\334\221\243D\303s\304\275\266\307\021\307\017bN\331,\313\373\276\270\333\342\031IG\334\001y\242Q*\210;\345\016\033|\252\367\004j'\037)w\210\006\022\205h\224\304<q\n\340\207\370-\200;\337\013\361\"E9@\020-\032\002\217e[\334\343\227\005\342\3665sN\311\325""\007\236\231\215\367\367\200\016\224e\207-?u\244\n\tO\273\215\232l\305=\361\263\320.\010\241\270\027\344\335\320z\312Ex\361\335\212U_\226o\003\014\305\275\373\252\204\271\376vN\255:\265\201\321\336\256\272\035\275m\305]\275}9Rs\361\266\200z|\207\247\211;\360L4\344\213\214T\262\245\227e\003\030$[\0048\242Y-\361\335\213\255\3471\315\023\315\203roW\325\262\006^\315\315}\325\354\365\003g\324\242\256>\317\021{UM\362\254\\\216+\221\\.n\354\351\036\361[zD\030\344\014\213VQ\021\375\352s\325D\331\331G\276\021,\016\375\323MD\227\212\372\302\203\352\330Dt\203\021H\221\232\246[6\246\323(\362\331+5\243\206?\002\255\222!\243J\263\\\374\345\020\212\261\227\306\003\330\007;'7L\275\246\233\032\025\n|\311\031nN\360^\255\246\325\265\003\250\005\177\031\374\333\300\277[\000\026\024\227\271\034\230\274\356\320\255Z\342\177T\327\351\300\01383\215@\026\335\341~\307F\237\003\010\301\270\343\352dd|V'~\2158) \332\013tyN\027\213\204b\376S0m\305\313\361\025\227}\372G\033AY\240\023@\340^R<Y\317\026\334B\3254\013UK\315\345\344\225\027\201\322y\331\\\256h\024\215\215\242\261W$\306]47\212\246z\013\377\324\315b\31104x\016\246\315\345\214\022U\325\270SMnX\220\025\230\345Q\355\207\nYT\276\244\234.\232\221EE\325\"K\227\357\237S\200\313\330\226\272f\355\222\321\025\352\001\303w\251\3541M\263d\332\246\275\201p\355\025\233\330$g\202n:(\2252\245\215\322-Y\336S\000\323?9s\177\321#\212\n\216p\276\364\275R\353\026F\361KZ\016\356\004\027$\247\312\031Z\0357\245\200\330/a=]\261Jz\211\216?\342\214\000\020\020\251\252\227\260\340\205\374\235L\270\204\357z\211\275\002\327\252IwW/a}+cmX\267,\245\204\256\336U\343*\316B9\234\007\226Xy\304)R,\274\331\322\367q)[\010I\213\377\312\007\360D\273P@)o\303^\233\266\251\001\017,qba\243\270w\\\230\242\\\365\304\225gw\313\010\2522r\0322eY\005H\225\265\222,\340EeV.\226\315\262].\323?[*J\026c\335\362\254\354\250e\007\356l\001\000\365\232\260N\031b\225k\345z\371 \227+#\357r\320\243O<IO\243&G\021\267\252V\331P\237C!\224\275EW\215\017\255r\002\341\024\317P\373\274\202{M\241\250^\211""\332m\t^\323\327\241\327\251\271\007\301\021a\274\017\247H\201\201\277\034\"\237n\325\262\013\304t\350\230\302\201\254\256K\223S\212D.\246h4t\240\024\324+\315\203\226\254\221\271-7\325\327\216e`j\343\026\215\202\307e*iMh\216\217\304\010\265E\205J\261\313%+],`3\246q0\227F\240\314x,-\2006\236\035\001\314\270VU\217\344\255\273\365\r\374\035\270\365[n}\323\255\343\371\300\305\177\0339\0006\210B\316+\342\373\"\034\303\263\341\214\236#\320\033\263X\204f|\\T\255\2320\004\274\242Zf\324\303\215\243\022\200\216-1%\353\3622\350\013\177\00455\016xNI|qk\266\t<\253U\253\265\372F}\003\227\203Z\275\216?4\017j\007\007\265\027\325\332\213\027\373H\r\373\000\277}\370\246\316\027^R\222\251}l\251^\007\252n\324\335\203\003\355\300}\361\302=<u9\310\274\232?5u%\310\207\323Q\"Zn&\333\223\013\376\216_\351L\256\004s\301\3550\021.\206nt\243\231hO\276\035d;\223K\376?C\334\346\374t\347\354\233\355\351\231\306\003\177\301W\374J{f\336\337\242Fg\346\255F\r3\034\204\211\366\354\"z\252\370\014}\236\177;H\004\311\366\354\022M~\256\221\371!\321^\371m\224y5wj\352\\\343\003\277\022`\2117\0337\375\264\1777\310t&\3177\276\363\267}=\310\264'g\032\217\374\r\377Y\260\021l\017<\320K\177\0132\301\243\360n\224\3419\017O\275{\370n\246\371n\253\362j\366\324\324\364\017\373\215\274\237hO_h|\037$\016W~\023\245\351\2753\334=\341_\365\277\r\266\002ex\370\335cu\341DI\251\t\232F\365\223\355\351\267\032\225W\027NM]\364\327\202dgr\2721\325x\352\337\010N\007\005(jHG\244\206[~\236\024A:q\374\213~\266=;\357?\010\026\360\372C\326\363\354\340\020\224\227\304*3\320\270\274\\\304\376wh\266\341\206\370n\316\317\360\034s\376*,\262\027\354\206s\341F\270\335\236\275\210\245\265\340j\260\023T\302\3110\033n\207J{v\301\337f3\311\313\222\357`\253\231\243\215\016\026\331\344\346F\360$\234\010\257\206;\320\305\\\224i\277\366@\007\256r?\230\010\326\302yt\325#l`%\270\010S\024\302\255P\213V\243\254\370\264\026<\r\323\341&>Zn\3167w\232\373-\345\325\351S\347g\033\373\276J\216$\235K*\354gt\ne8\341B\230\217\272\316z?\234\202f\212\221\326\274""\332\374\2665\364\315\345\340\023\210\\\213\2364'\232\253\315\354\300\314\302\247\311\023f\032\033\354\274\205 \033\374\tJ\306\310P\307\233\215\325\306\347~\026n\234\t>\017\263\344\325[\215\"\346\252\005\333\301\367Q\2423y\241\241 \214\236\221\327\321\203\016\013?\rV!\335D\270\306J\224!\264\260H\236>\363\023\013tz\221\325\236<\333XA\363\016\366\203f\262\361\236\237\201\377%;\374\315C8\315=\030m\036&{\003n\263\033\315G\333\355\361C\235\263\347\032\277\303:\337B\007\210#\r\357|\016\031\236\2067\331\216\243\272\3167v\341\243\033\376n\220\014\256!\326\246\302'\321d\264\025)\261\220\233\024q\347\033\177\006$L\221\013\034\247\331\223*\362i\220\216\325\270\313\036\271\023\354\223\325\377\005s\177\034\256\222\302O<o<\315v\277\235\263\022\316.\037^\336h\246\t#\247\177\370\273\177\315\217\321\212\354\225\202/\334\004f\335i&\233\357\265`\330+\360\345\345(I(\322\\n\301\274i\204>\2401z\330L7?ia\201\005\377\317\010\376\323\241N\0164\n\324\350\205\027\321%\361\366\010\220\237\365'\021\273S\000\225dx-T\261\330\265Hof\232\367[\t\n\223*<\304\r\256\007\025\0316.\214\237e\2209\372\204wV\340L\333\201\026\336\200\003d\341g\3119\032\335\005\030\334\303V\346\273\241\266\326Jv\020j\252\000\"\210E\271Dj(}\230\336l~\365R\352\350\177\014\360g\t\360\323\002\356\237!\230\026\203*\343\367\231f\345\344\240\277\030\324\302g\321\355\346\351f\241\365\350\245\200\355\036\330\017\301\273\300\343\276\007r\342\312\330\234@\3518\017\224]\025\351\267\227\027\272\355\005\236')\032\025\361j;Vs\177f@\306\246\213\307\t\270\327\220c\256\370\256\333X\016&I\313\277b\302h\313\204\261\212yU\270\364&wo\300afH\213B\023\036 \351I4\001\214\001\224\264g\026\272q\3561V\321\373;Q\205r\317C\211\243\327\331\266\350\310v\241\365\0320\341t\224o\236m-\266\234\227K?&\3040Mu\007\013\337\306\3747\340\217\357\265\356\274\234{\371\361\217P\3742\314\032\347.\025\253\334i\3165o\267&Z\327\361=\277\362\323)\253k\0071\372\020\370\261%\345H\364\277\331\341\224\325\023\364L\34457D\216Z\004\272l\005:v\372\024\nx\324\334l:\255\245\227\234""\323t(aW\312\276\026\347\321^\262c,\210\356cS7[\327Z\371\227\223/\267^\356\375\270}4U\256\262`\367\245\006\322'J\227\335\235\305ys'r\240\237;\255\271\326Fk\247U\031\221?\333\213K\"\241\335EZB\336\240\344I\315\207A\272\257I\371a\007~\274 ]\374\0016\030\247D\002\202Q\237\367\177\023\203\307\362\341\362\315(\361j\031_\034\236C\220\007\337\205\337F\2377\037\265\356\222\351~\310R\034\177\301\357D\"\356\017O\341\255\237\301\230\333\277\022c\276t\231\264s\276\233?\036\207L\211\007\322\324\205F\201\211\037\320\201\366\234\303\266\276\r?\217\342\2242\357\177\021\236\217\376\326\312\30039\253\200\266\266\247\0278\037\247\t\345\376\351?B\374O/\221\034D\262/B\177\177\014\376\021\375\276\205-\t\374\332b\356D)\375F\363\215\346\255f\276u\246\205\305\246^M\223\356\261\010\300c$/\371\031L\350\\\343\023\376\340!\002\266\022\363\215\335\200\355Aj\253\001,\246\340]\225\366t\322_\306&\256\007\025\271\325qR\374\324\242mv\225:@\361t\240\004\177\217\322=)\036\204K\020\252\313z\376\000\327GB\231EvYe`y\300\241\366\006@}\242y\035Q\230\244l#\247\216\233u\010\010Y\347\205\327\010\303.\255\205\377\331\334&\317J\377\302\264~\266\261\354'Q\200$\332\262y\335\257\014\3204\312\341\367 O\0173\261?\341C4\336k\222\367\374\007\024\272\026v\243s!\035\276\035m\277\2724\"\304\320<\302\006\2572\262>\024\214\250\257\242;\327\330\204\037%{4\357\273p[\332\354\235@\330l0\036{\306\274\320\370\013G\205\234\256\210L3`\354\013\262{\017_f\007\207\256\2340\321_b;&AK\240\232\366\360\343\n-\276B\004l\336\377\203\360\226\221Di\0024%\323\236\351\017\230'\024\341]P\274\310\304{1p\241\236\307\321v\334\221\014n0\277\376\023\245\261.] \3224y\225\315\376\270\211\230\3576I\214\307\360\255#\353\237\341\222\272\327\350\t\262\332\245W\264\347n\332\271\n.r\013@\276\332\334B@'\332\311\213L[&9\353\366\222\327\317\323iWW\262\321\231\\\016\316\207\177m\302\365\210G@\205T=\217V\242`\226Y_d\245Y\177\2125\010\35288\260\202\"Z!F\304\004s\016!\360\006\361\030A*\250\326\300 \252)t\010\\\235_\350\314\306\374\001|\2663\3736\2339\035fB\2461""\247\261\265\263\321\345f\266\303s0\032\266\347\323(\027\025\200\315\374;\301\3660\027%\235\314\275\236N\236\323\323\234\377[\002\33231}M\222\315\261+\204j\302\037\324J=`FY\345\324\301D\014\213M\204\351\266\344u\335\022\237\354E\311\261\373\2400\265\372]\230\355\345\276\017\242\327\222w\311\377\257\320&\347[\016fN\226\322\376\021f\004}L\022=\374 \254\210d\326U\033\277\366\004\336\331\315q\002\000N\367\204Z\004i\213\205\"\246~>\332\0061\002\315nM\202n\234\250k\364n\226\t!I\266Q\373 \032\275\355+\235X\325\344\017\023A\032\376\224\\\024\334F>w\272\215\021\2760{\344h\353v\177s\232\0147\200\231s(\361\362\200\303\235\240\233\030\026\256\207\333Cgd\277a\306\232\356C\324\316\3703\262\341T%\2268\003\324\271\301\214p\256\231\371\327-u\203\217y\346\302\217\251\364\357\246:\262\360%\342\036\325\306=\224\201\304\253\310\371\253\215\373\3764\224r\206R\371\234<6x\206h|\204\022\340,\245\023f*I\377\035\016\363\237\325\323\211k\277\365H\211\372i\302iQ=r}'_\371\010\3716y\322\362\220&XD\3102\220]>z\362\327\007e\022\321W$\345'\017Jt\253\342\032Wo\034\273\tF\246m~s R\334\270RS\342\263C\005x.\264|\217\031v\246=\177\005\005i\226h\021\310\010\225J]\276>!OT\272.:\270\357\200s\375\257A\230nc\313\302\327\034\244\217I\"\264\033\\\201\347\271f\310GS\010R\275y\027\265\3006\235f$H\275\273H\210\204\322}*\256t\341\362\2170)B\226PEb\346\210\343\211\254\337\237\027d\355Zi\013-\367\327\277\324\221\344@\347vgf\330\004\032\342Z\024\331q\022i\317C\222\366\302\nW\310\334\0362\016\345\026\300A{\376\022\276\275\rJFu\234\312eW\265\265\205\302k\341\022\033O\216'\272U\317\332\341\332\357[#\334\220\314q\346\207Z\343I\367XC\0342\237i\270p4\022\203\037@\246\2501\321\270A\031\003\261s_\326\245yp\211[\250L/\242,F=\t\337\330lz\255\333/\247^n\277T\304'\253\215lc\227\310\330\005d\237)\230\235J\007\"%Ya\326\027H\2367\301\016\266\305\343>g!\267w.\007\231\337\244#E\t\323m>\023A\362\302h\343!(\340v\373-AP\023\355\030hn\204\n\001\315OS\335\230\331*\343\216\253\376\022\276I\244,>\267\372\267\326\363\037\223\235\321\316A\007P""$\r\307\014\263\007\242\022\342\030R\245\304\337;\301\272\nBp1\274\027V\344I:Q\211\r\"\251\355\376\007Q\332\327$\033y\302iXN\376\035\037\217>\003\266&\305\001\372\246\324\350\300\370S\020\370^\342@\361\304\323\301\221:\263\202{%\332\363\313|\332\266\034- Tn\267\022\255dg\240\353N+\t1\222\313,4\213@\217\363\376\035\341\242\361a\315\362\273\201BO\002:\226\337\211\273\260\316\311\336\024>\276\313>\245H:*]w5|?R\306\225\004m\t\004\335\024R\030\352#6\277\030\324\303\030\214\261\326h\376\017\374\352\361\377er\223\2435\000\275\263\370\277K\3006zJ\272\304\234\223\22093\212\200\221\260\257\311\026MBV\242+\003g\232\367 \222\304\206\025\242\257'\2247v\261!\342\3223\300\025\204\336tt&\252\323\221\221\010\364>a\343t\377\035\025\266I\354|\223HC\037(\034\277\261\312Ih\330\020\235\254t\311\244#\317E\004\261L\017\321J)\303\233'W.K\301E\335\211\244\000zw\004\362\017-y\3415\227<\321j\361!Y\274\327\376B\354\250Y\030\244=D_\227p-^\247B\353\310\251\325\025\212::y\357\034/\346$\034\254\306\007,\303\017\211v\237\371\030\022\306\357\247=#\203*N\316\344\267DQD\361\266\300\034\222~Y\272\023\315Ew\233\267\232\312P\026O.\020\023\r2\2424S\205\220\303\254{\3217\303\364O\237\317\365\234\217\013\231\005r\342\316\350:\340c\302A\256\017G\312M)\204\3168\376\030V\3717\254\236\325\230^HOez1\350*m>y\374\005l\033/\375\025\372\370\2302\250\334=\002v\024v\022\347\276\032~\032U\010\244\317#'\023\021\225\020\375H\034\307t\233\361\357\204\037\003!\260\302Sy\254%i\243\220k\217D9\327\270C4\252wF\004@>\"\306\000\202`\340\360\312\207\220b\371\310X\221\316\234\017O\301\314G\t\351k\022q\301\023\231\202\022;Ht\3061\305q|\274\367\223wL\314\237\005\231>\273\n\177\226\277\216\037\375\250\237\250\023\334>\223glW\243\235\250\006\032(\231\345u\336\375$\370\372~S\031>[\001\027&\037>\252\300\225\303\225\367\242\3448\005\212\263\357\301\037\301\202\327R\334\210\242\236\363\207\320\226\374ei\010\362\346\177\246\301*}\000C\351R@\t\037\006Q\270\2146[\0378v\217\307W\304a\332\035\244\335,\037\313\020\273\276\301\016;\1779\270\003""\"\367\220\313\317\236e\006\001\264}\375\306\253k\277\302&\356\211\237\224\t\016\005\225\212wdP\331B\225\336k\355\251\357\240\352\222\254(\304ea1\336\3405^o\376\022\377\216>\031n\241T\223\017\211\023n}qi\254\375^'\205\317\204_4O`\262\336Y\235 \332}\245Y\347H\225{4\237\317\375\n\320\360E\230h\237\024\0218\374\331\022])\373\341}\242W\036\016\312>\224\237g\377O\211=\374S\332/\024}\311\337G\256^\222\000Xi\363^\270d{\035X\346-\211\023\331\004mk?P\216n,\361\213w\367z`\371\2658\206X\013\336\r\007\177\363\337\347\252;3\260\233:\027T[\301\036s'y\236\300\200\305\365\026UX\304*\351\247\322\3141\247:\361)$\227k$\322\305\360>\377\3373*\304]^E\322\246\313\221\310\231\376\177\263\323\2216\025\277\203\335\344\244{\232O\357\273]iq\270u\217\017\247\266c\206C\371\271\032>\210\222Q\272{8Jtm\221f\2577\\?M\245\3414\027\242(\204\230\331\306\077\077\336\2443\335\327\352Y\301F\357R\331v\244'\016\272\337F\031y~\372\365\177\003\007\240Y\246";
+    PyObject *data = __Pyx_DecompressString(cstring, 5880, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (15715 bytes) */
-const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDifferent sizes!Dimension %d is not directEmpty shape tuple for cython.arrayIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid ma_type Invalid mode, expected 'c' or 'fortran', got Invalid option Invalid period Invalid period value Invalid shape in axis <MemoryView of NoneNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Only one of log_prices and percent can be trueOut of bounds on buffer access (axis Period Period cannot be negativePeriod must be positiveStep may not be zero (axis %d)Unable to convert item to objectUnknown price type .>')?add_noteadx, pdi, mdi and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arraylist | tuplemacd, macdsignal, macdhistmacdv, macdvsignal, macdvhistno default __reduce__ due to non-trivial __cinit__ object> out of range!period must be greater than zeroperiod must be positiveppo, pposignal, ppohist, should be greater than 2sigma must be positiveslowk, slowdsrc/mintalib/cython/_common.pxisrc/mintalib/cython/abs.pxisrc/mintalib/cython/alma.pxisrc/mintalib/cython/atr.pxisrc/mintalib/cython/bbands.pxisrc/mintalib/cython/bop.pxisrc/mintalib/cython/cci.pxisrc/mintalib/cython/clag.pxisrc/mintalib/cython/cmf.pxisrc/mintalib/cython/cross.pxisrc/mintalib/cython/curve.pxisrc/mintalib/cython/dema.pxisrc/mintalib/cython/diff.pxisrc/mintalib/cython/dmi.pxisrc/mintalib/cython/donchian.pxisrc/mintalib/cython/ema.pxisrc/mintalib/cython/exp.pxisrc/mintalib/cython/flags.px""isrc/mintalib/cython/hma.pxisrc/mintalib/cython/kama.pxisrc/mintalib/cython/keltner.pxisrc/mintalib/cython/lag.pxisrc/mintalib/cython/log.pxisrc/mintalib/cython/lroc.pxisrc/mintalib/cython/macd.pxisrc/mintalib/cython/macdv.pxisrc/mintalib/cython/mad.pxisrc/mintalib/cython/mav.pxisrc/mintalib/cython/max.pxisrc/mintalib/cython/mfi.pxisrc/mintalib/cython/min.pxisrc/mintalib/cython/ppo.pxisrc/mintalib/cython/price.pxisrc/mintalib/cython/rma.pxisrc/mintalib/cython/roc.pxisrc/mintalib/cython/rsi.pxisrc/mintalib/cython/sar.pxisrc/mintalib/cython/sign.pxisrc/mintalib/cython/slope.pxisrc/mintalib/cython/sma.pxisrc/mintalib/cython/stdev.pxisrc/mintalib/cython/step.pxisrc/mintalib/cython/stoch.pxisrc/mintalib/cython/streak.pxisrc/mintalib/cython/sum.pxisrc/mintalib/cython/tema.pxisrc/mintalib/cython/wma.pxi<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.upperband, middleband, lowerbandASCIIDEMAEMAEllipsisHMAIntEnumMappingProxyType__Pyx_PyDict_NextRefSMASequenceTEMAView.MemoryViewWMAabcabsadd_metadataadd_metadata.<locals>.wrapperadjustadxafafsall__all__allocate_bufferalphaargsarrayasarrayasyncio.coroutinesatravgbasebbands_resultboolbopbroadcast_toccalc_abscalc_adxcalc_almacalc_atrcalc_avgpricecalc_bbandscalc_bbpcalc_bbwcalc_bopcalc_ccicalc_clagcalc_cmfcalc_crossovercalc_crossundercalc_curvecalc_demacalc_diffcalc_dmicalc_donchiancalc_emacalc_expcalc_flagcalc_hmacalc_kamacalc_keltnercalc_kercalc_lagcalc_logcalc_lroccalc_macdcalc_macdvcalc_madcalc_mavcalc_maxcalc_mdicalc_mficalc_midpricecalc_mincalc_natrcalc_pdicalc_ppocalc_pricecalc_qsfcalc_rmacalc_roccalc_rsicalc_rvaluecalc_sarcalc_signcalc_slopecalc_smacalc_stdevcalc_stepcalc_stochcalc_streakcalc_sumcalc_temacalc_trangecalc_tsfcalc_typpricecalc_updowncalc_wclpricecalc_wmacheck_sizeclclag__class____class_getitem__cline_in_tracebackclosecollectionscorrcorrelatecountcur_maxcur_mincurveddenom__dict__diffdivdividedmi_resultdnsdns_arrdonchian""_resultdown_flagdown_leveldtypedtype_is_objectdvdxdyemaema1ema2ema3encode__enter__enumenumerateeperercnterdivernumerrorerrstateerserval__exit__expfastffastkfastnflagflagsfloat_floatflowflow_arrforecastformatfortranfsfullfunc__func__fval__getstate__hihi2highhisthl2hlc3hlcc4hmiidignore__import__indexinsertinterceptinvalid_is_coroutineitemitemsitemsizejkkamakeltner_resultlevellinear_regressionlllmlolo2loglog_priceslowlowerlowerbandmm1m2m3ma_typemacdmacd_resultmacdhistmacdsignalmacdvmacdv_resultmacdvhistmacdvsignalmad__main__max_idxmaxafmdimdmmeanmemviewmetadatamidmiddlemiddlebandmin_idxmintalib.coremode__module__multn1n2n3name__name__namedtuplenannbatrnbdevndim__new__npnsumnumnumpyobjoffsetohlc4oldopenoptionothersoutputoutput_namespackpaddingpcpdipdmpercentperiodphplpopppoppo_resultppohistpposignalprcprependprevpricespsumpvpxpy__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable__quadratic_regression__qualname____reduce____reduce_cython____reduce_ex__registerresultrhormarma_dnsrma_upsrocroundrsumssame_scalesarseries__set_name__setdefault__setstate____setstate_cython__shapeshiftsigmasignsignalsizeslopeslowdslowfslowkslownsmastartstdstepstoch_resultstopstrstreakstructsumsxsx2sx2ysx3sx4sxxsxysysy2__test__thresholdtotaltrtrangetrendtyptypesuulunpackup_flagup_levelupdateupperupperbandupsups_arrvvalidvaluevaluesvolumevx2x2vx2yvxxvxx2vxyvyywwclwdivwherewhere_flagwrapperwsumxxdxd2xsyydyszzs\320\000\033\2301\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240s\250&\260\001\330\004\034\230A\340\004\027\220}\240A\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220y\240\001\330\020\026\220a\220u\230A\340\014\017\210t\2205\230\001\230\021\330\020\027\220q\340\004\013\2101\200\001\330\031+\2501\360\022\000\005\013\210-\220q\230\001\330\004\n\210(\220!\2208\2301\340\004\r\210X\220Q\220e\2301\330\004\014\210G\2202\220V\2302\230Q\330\004""\014\210G\2202\220V\2302\230Q\340\004\r\210^\2301\230G\2408\2501\340\004\013\2101\320\000\036\320\0361\260\036\270q\360\020\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\320\031*\250!\2501\340\004\007\200w\210b\220\002\220#\220W\230B\230a\330\010\016\210j\230\001\320\031*\250!\2501\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\007\200w\210c\220\021\330\010\017\210q\360\016\000\005\023\220'\230\021\340\004\010\210\005\210U\220&\230\006\230f\240A\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\017\210t\2203\220b\230\001\230\021\340\014\017\210r\220\023\220A\330\020\024\220E\230\025\230f\240F\250&\260\001\330\020\021\340\014\017\210r\220\023\220A\330\020\024\220A\340\014\021\220\021\330\014\022\220!\330\014\022\220!\330\014\023\2202\220R\220q\330\014\023\2202\220R\220q\330\014\023\2202\220R\220q\340\014\017\210r\220\022\2201\330\020\021\340\014\022\220\"\220B\220g\230T\240\022\2402\240Q\330\020\023\2203\220d\230#\230R\230q\240\004\240A\240Q\240a\330\020\025\220Q\330\020\026\220a\330\020\026\220a\330\020\027\220r\230\022\2301\330\020\027\220r\230\022\2301\330\020\027\220r\230\022\2301\340\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\340\014\024\220D\230\002\230'\240\024\240R\240x\250q\330\014\031\230\023\230B\230f\240B\240d\250\"\250A\330\014\023\2204\220v\230U\240!\2404\240r\250\030\260\024\260R\260w\270a\360\006\000\r\020\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\033\230:\240R\240v\250S\260\002\260\"\260A\330\020\026\220a\220u\230A\330\020\021\340\004\013\2101\200\001\360\016\000\005\014""\2102\210X\220Q\220f\230A\230Y\240a\330\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220V\2305\240\001\340\004\016\210e\2202\220U\230\"\230D\240\002\240'\250\022\2501\340\004\013\2101\200\001\330\025\026\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\340\004\n\210(\220!\2208\2301\330\004\t\210\031\220!\2206\230\021\330\004\t\210\021\210)\2201\220E\230\021\340\004\n\210\"\210F\220\"\220C\220r\230\024\230S\240\003\2402\240T\250\024\250Q\330\004\n\210\"\210F\220\"\220C\220r\230\024\230S\240\003\2402\240T\250\024\250Q\340\t\013\2109\220A\220W\230A\330\010\016\210d\220\"\220H\230A\230U\240(\250\"\250A\330\010\016\210d\220\"\220H\230A\230U\240(\250\"\250A\330\010\r\210T\220\022\2202\220T\230\021\230$\230b\240\005\240S\250\004\250B\250a\340\004\n\210(\220!\2204\220q\340\004\r\210Z\220q\230\005\230U\240!\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220U\230!\340\004\016\210e\2202\220T\230\022\2302\230R\230w\240b\250\001\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220U\230!\340\004\016\210e\2202\220T\230\022\2307\240\"\240A\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\340\004\016\210a\210v\220Q\340\004\016\210e\2202\220U\230\"\230A\340\004\013\2101\320\000\033\320\0332\260!\360\022\000\005\010\200{\220$\220a\330\010\016\210j\230\001\230\021\340\004 \240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004!\240\022\2408\2501\250F\260!\260:\270Q\340\004\025\220Z\230q\240\006""\240e\2501\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\025\220Z\230z\250\032\260:\270Q\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\004\220D\230\005\230T\240\021\240$\240c\250\021\250$\250e\2601\260D\270\001\340\014\017\210u\220C\220s\230%\230q\330\020\021\340\014\017\210s\220\"\220A\330\020\025\220Q\340\014\017\210s\220\"\220A\330\020\025\220Q\340\014\017\210q\330\020\031\230\024\230Q\230d\240&\250\004\250A\250Q\330\021\022\330\020\025\220T\230\023\230C\230r\240\024\240R\240v\250S\260\002\260'\270\021\340\020\026\220c\230\022\2301\340\014\022\220!\2205\230\001\340\004\013\2101\320\000!\320!4\260N\300!\360\022\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\320\031*\250!\2501\340\004\007\200w\210b\220\002\220#\220W\230B\230a\330\010\016\210j\230\001\320\031*\250!\2501\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\007\200w\210c\220\021\330\010\017\210q\360\016\000\005\023\220!\340\004\010\210\005\210V\2206\230\026\230u\240F\250&\260\007\260q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\017\210t\2203\220b\230\001\230\021\340\014\017\210r\220\023\220A\330\020\024\220E\230\026\230v\240V\2505\260\006\260f\270G\3001\330\020\021\340\014\021\220\021\330\014\022\220!\330\014\023\2202\220R\220q\330\014\023\2202\220R\220r\230\022\2301\330\014\023\2202\220R\220r\230\022\2302\230R\230q\330\014\022\220!\330\014\023\2202\220R\220q\330\014\023\2202\220R\220q\330\014\024\220B\220b\230\002\230\"\230A\340\014\017\210r\220\022\2201\330\020\021\340\014\017\210r\220\022\2201\330\020\025\220R\220r\230\021\330\020\025\220R\220q\230\002\230\"\230A\330\020\026\220c\230\022\2301\330\020\025\220Q\330\020\026\220a\330\020\027\220q\330\020\027\220t\2302\230Q\330\020\027\220t\2302\230Q\330\020\026\220a\330\020\027\220s\230\"\230A\330\020\027\220s\230\"\230A\330\020\030\230\004\230B\230a\340\014\023\2204\220r\230\022""\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\024\220D\230\002\230\"\230B\230c\240\022\2404\240r\250\022\2502\250Q\330\014\024\220E\230\022\2302\230R\230t\2402\240S\250\002\250\"\250B\250a\330\014\025\220T\230\022\2302\230R\230t\2402\240T\250\022\2502\250R\250q\340\014\024\220F\230\"\230D\240\002\240%\240r\250\021\330\014\024\220A\220U\230\"\230D\240\002\240$\240b\250\006\250b\260\t\270\026\270r\300\027\310\001\330\014\024\220A\220T\230\022\2306\240\022\2405\250\002\250&\260\002\260)\2706\300\022\3007\310!\330\014\030\230\001\230\023\230B\230f\240B\240c\250\022\2506\260\022\2605\270\002\270%\270r\300\022\3007\310!\360\006\000\r\020\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\025\220R\220r\230\021\330\020\033\230:\240R\240v\250R\250r\260\022\2606\270\022\2702\270R\270q\330\020\026\220a\220u\230A\330\020\021\340\004\013\2101\200\001\330\026\027\360\020\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220F\230!\330\004\013\2108\2201\220F\230!\340\004\r\210R\210r\220\025\220b\230\002\230\"\230E\240\022\2401\340\004\013\2101\200\001\360\022\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220F\230!\340\004\r\210R\210r\220\025\220b\230\001\340\004\013\2101\320\000\030\230\001\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2701\200A\330\010\014\210L\320\030(\250\001\250\021\330\010\017\210q\320\000\034\230A\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240s\250&\260\001\330\004\034\230A\340\004\027\220}\240A\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220y\240\001\330\020\026\220a\220u\230A\340\014\017\210t\2205\230\001\230\021\330\020\027\220q\340\004\013\2101\200\001\330\032\033\360\020\000\005\r\210H\220A""\220V\2301\230I\240Q\330\004\014\210H\220A\220V\2301\230H\240A\330\004\016\210f\220B\220g\230R\230q\340\004\r\210_\230A\230W\240H\250A\340\004\013\2101\320\000\024\220L\240\r\250^\2701\360\006\000\005\010\200{\220'\230\021\330\010\025\220T\230\021\230!\340\004\007\200}\220G\2301\330\010\027\220u\230A\230Q\340\004\023\2201\220K\230|\250=\270\001\330\004\017\210r\220\023\220B\220d\230#\230U\240(\250&\260\003\2603\260b\270\007\270q\340\004\005\360\010\000\005\014\2101\320\000\025\220Q\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\013\210:\220Q\220f\230F\240%\240q\340\t\013\2109\220A\220T\230\021\330\010\017\210v\220R\220v\230S\240\005\240R\240q\330\010\021\220\030\230\021\230%\230q\340\004\013\2101\320\000\025\220Q\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\330\004\r\210R\210x\220q\230\006\230a\230{\250!\340\004\013\210:\220Q\220f\230E\240\027\250\001\340\t\013\2109\220A\220W\230J\240h\250a\330\010\020\220\002\220\"\220F\230\"\230E\240\022\2405\250\003\2505\260\002\260%\260r\270\021\330\010\016\210h\220a\220v\230Q\330\010\016\210h\220a\220x\230q\340\010\021\220\024\220R\220q\340\004\013\2101\200\001\330\027'\240~\260Q\360\024\000\005!\240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004!\240\022\2408\2501\250F\260!\260:\270Q\340\004\025\220Z\230q\240\006\240e\2501\340\004\t\210\030\220\021\220&\230\001\330\004\t\210\030\220\021\220%\220q\340\t\013\2109\220A\220W\230A\330\010\020\220\004\220C\220v\230R\230t\2402\240S\250\002\250!\340\004\014\210H\220A\220W\230A\330\004\014\210H\220A\220W\230A\340\004\r\210\\\230\021\230'\240\021\340\004\013\2101\200\001\330\025!\240\034\250Q\360\032\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220H\230A\340""\t\013\2109\220A\220W\230A\330\010\016\210d\220#\220U\230\"\230F\240\"\240A\340\004\r\210X\220Q\220e\2301\330\004\013\2104\210r\220\021\340\004\r\210Z\220q\230\005\230X\240Q\340\004\013\2101\320\000\025\320\025%\240Q\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2708\3007\310!\320\000\025\220Q\360\020\000\005\016\210[\230\001\230\021\330\004\r\210X\220Q\220h\230a\340\004\013\2101\320\000\025\220Q\360\020\000\005\016\210X\220Q\220h\230g\240W\250A\340\004\013\2101\320\000\025\220Q\360\020\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\032\230\"\230E\240\021\240&\250\002\250!\330\004\032\230\"\230E\240\021\240&\250\002\250!\330\004\031\230\021\330\004\031\230\021\340\004\024\220J\230j\250\001\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\330\014\017\210r\220\023\220B\220d\230#\230S\240\001\330\020\025\220R\220r\230\021\330\020\023\2201\220E\230\026\230s\240\"\240I\250Q\330\020\023\2201\220E\230\021\230&\240\003\2402\240Y\250a\330\014\017\210r\220\023\220A\330\020\025\220Q\340\004#\2408\2501\250I\260Q\330\004#\2408\2501\250I\260Q\340\004\024\220I\230Q\330\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\007\220q\230\001\330\014\020\220\007\220q\230\001\330\014\017\210r\220\023\220B\220d\230\"\230C\230r\240\024\240R\240r\250\021\330\020\026\220a\220u\230F\240#\240V\2503\250d\260\"\260B\260b\270\001\330\021\023\2203\220b\230\004\230B\230c\240\021\330\020\026\220a\220u\230A\340\004\013\2101\320\000\025\220Q\360\020\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230j\250\001\330\004\024\220J\230j\250\001\340\004\030\230\r\240]\260!\340\004\026\220a\330\004\022\220'\230\021\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210u\220A\220Q\330\020\021\340\014\020\220\005""\220R\220r\230\024\230Q\340\014\017\210u\220A\220Q\330\020\021\340\014\031\230\025\230a\230q\330\014\025\220Q\340\014\022\220&\230\003\2301\330\020\023\2204\220r\230\021\230$\230a\230q\240\001\340\020\023\2205\230\001\230\021\330\024\025\340\020\024\220E\230\022\2302\230T\240\021\340\020\034\230E\240\021\240!\2401\240A\330\020\030\230\006\230b\240\t\250\033\260A\340\020\023\2204\220u\230A\230Q\330\024!\240\025\240a\240q\330\024\035\230Q\340\014\022\220!\2205\230\001\340\004\013\2101\320\000\025\220Q\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230k\250\021\330\004\022\220+\230Q\340\004\007\200w\210b\220\001\330\010\021\220\023\220A\220Q\330\010\020\220\001\220\021\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\017\210u\220B\220a\220t\2302\230Q\230b\240\002\240!\330\014\017\210r\220\022\2203\220d\230#\230R\230q\330\020\026\220b\230\002\230#\230R\230q\330\020\026\220a\220r\230\022\2309\240A\340\004\013\2101\320\000\030\320\030-\250Q\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\027\220\177\240o\260Q\330\004\030\230\014\240A\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220|\2401\330\020\027\220q\330\021\027\220s\230-\240q\330\020\027\220q\340\014\022\220!\2205\230\001\340\014\017\210v\220S\230\001\330\020\027\220q\340\004\013\2101\320\000\035\230Q\360\006\000\005\037\230b\240\010\250\001\250\026\250q\340\004\025\220R\220q\340\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\330\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\330\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\027\220q\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330""\014\023\2202\220Q\220a\340\014\017\210u\220B\220a\330\020\030\230\002\230!\2301\330\021\026\220c\230\021\330\020\030\230\002\230!\2301\340\020\030\230\002\230!\2301\340\014\022\220!\2205\230\001\340\004\013\2101\320\000\025\220Q\360\020\000\005\013\210-\220q\230\001\330\004\n\210(\220!\2205\230\001\330\004\n\210(\220!\2205\230\010\240\002\240!\340\t\013\2109\220A\220W\230A\330\010\022\220$\220b\230\005\230R\230q\340\004\013\2101\200\001\330\025%\240Q\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\t\013\2109\220A\220W\230J\240h\250a\330\010\022\220$\220b\230\007\230s\240&\250\002\250'\260\022\2601\340\004\013\2101\200\001\330\025%\240Q\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\t\013\2109\220A\220W\230J\240h\250a\330\010\022\220&\230\002\230'\240\022\2407\250\"\250A\340\004\013\2101\320\000\025\320\025%\240Q\360\020\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270h\300g\310Q\200\001\330\027\035\230Q\360\032\000\005\010\200u\210C\210q\330\010\017\210q\340\004\007\200u\210D\220\010\230\010\240\007\240q\330\010\022\220\"\220H\230A\230V\2401\240G\2501\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\340\010\016\210j\230\001\320\031.\250a\250q\340\004\013\2101\320\000\025\220Q\360\006\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\360\006\000\005\026\220Q\330\004\022\220'\230\033\240A\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!""\2201\340\014\017\210r\220\023\220A\330\020\031\230\021\330\020\026\220a\340\020\030\230\001\330\020\025\220Q\340\014\017\210v\220R\220q\330\020\026\220b\230\001\230\022\2302\230Q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\027\220s\230\"\230A\330\020\026\220a\330\020\024\220E\230\025\230a\230r\240\022\2407\250\"\250C\250r\260\022\2601\330\024\037\230u\240A\240R\240q\250\003\2502\250Q\330\020\026\220a\220u\230D\240\002\240!\340\004\013\2101\320\000\025\220Q\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\330\004\r\210R\210x\220q\230\006\230a\230{\250!\340\004\013\2105\220\002\220$\220b\230\007\230r\240\021\330\004\017\210t\2202\220W\230B\230b\240\005\240Q\240b\250\005\250Q\250e\2608\2702\270Q\340\004 \240\001\330\004\025\220T\230\026\230q\240\001\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\024\220K\230q\330\004\027\220|\2401\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\004\220A\220Q\340\014\017\210u\220A\220Q\330\020\027\220q\330\020\027\220q\330\020\030\230\001\330\020\021\340\014\017\210r\220\022\2201\330\020\030\230\001\330\021\023\2202\220Q\330\020\030\230\001\340\014\025\220Q\340\014\017\210v\220R\220q\330\020\026\220d\230!\2302\230R\230q\330\020\023\2204\220r\230\021\330\024\034\230A\330\025\031\230\022\2301\330\024\034\230A\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\023\2205\230\002\230!\330\024\032\230!\2305\240\006\240b\250\006\250c\260\024\260R\260u\270B\270a\330\025\032\230\"\230A\330\024\032\230!\2305\240\001\340\004\013\2101\200\001\330\026'\320'=\270Q\360\006\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\007\200v\210S\220\001\330\010\016\210j\230\001\230\021\340\004\010\210\007\210s\220'\230\022\2301\330\004\010\210\007\210r\220\021\330\004\010\210\002\210&\220\001\220\021""\220\"\220D\230\001\230\023\230B\230b\240\003\2403\240c\250\023\250B\250b\260\001\260\022\2604\260t\2705\300\005\300Q\300a\330\004\010\210\002\210\"\210A\210T\220\021\340\004\016\210b\220\005\220Q\220g\230R\230s\240\"\240A\330\004\r\210R\210z\230\021\230(\240#\240Q\330\004\r\210R\210w\220a\220x\230s\240!\340\004\013\2101\200\001\360\006\000\005\n\210\031\220!\340\004\025\220R\220q\330\004\010\210\005\210Q\330\010\013\2101\210F\220#\220Q\330\017\025\220Z\230q\240\001\330\004\013\2101\200\001\330\025&\240a\360\022\000\005!\240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004\025\220Z\230q\240\006\240a\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\025\220[\240\n\250!\330\004\025\220Z\230z\250\032\260;\270k\310\021\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\017\210s\220#\220Q\330\020\024\220E\230\024\230Q\340\014\020\220\005\220T\230\021\230$\230c\240\021\240!\340\014\017\210u\220C\220s\230#\230T\240\023\240C\240q\330\020\021\340\014\022\220&\230\003\2302\230X\240Q\330\014\022\220&\230\003\2302\230X\240Q\360\006\000\r\020\210v\220R\220r\230\024\230S\240\002\240!\330\020\024\220E\230\024\230X\240T\250\024\250V\2601\340\021\027\220r\230\022\2304\230s\240\"\240A\330\020\024\220E\230\024\230X\240T\250\024\250U\260!\2601\340\014\022\220!\2205\230\001\360\010\000\r\020\210v\220S\230\001\340\020\023\2203\220b\230\001\330\024\030\230\005\230T\240\030\250\025\250e\2605\270\001\270\021\340\024\030\230\005\230T\240\030\250\025\250e\2606\270\021\360\006\000\021\030\220s\230#\230S\240\002\240!\360\006\000\021\024\2206\230\022\2301\330\024\027\220t\2302\230Q\330\030\036\230a\330\024\027\220s\230\"\230A\330\030\035\230Q\330\030\036\230a\330\020\023\2206\230\022\2301\330\024\027\220t\2302\230Q\330\030\036\230a\330\024\027\220s\230\"\230A\330\030\035\230Q\330\030\036\230a\340\014\017\210v\220T\230\023\230B\230a\330\020\025\220Q\340\004\013\2101\200\001\330\026\"\240,""\250a\360\032\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220H\230A\330\004\013\2105\220\002\220!\340\004\r\210X\220Q\220f\230A\330\004\013\2105\220\002\220!\340\004\r\210[\230\001\230\026\230x\240q\340\004\013\2101\320\000\026\220a\360\020\000\005\016\210[\230\001\230\030\240\030\250\021\330\004\r\210X\220Q\220h\230a\340\004\013\2101\320\000\026\220a\360\026\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230k\250\021\330\004\022\220+\230Q\340\004\007\200w\210b\220\001\330\010\021\220\023\220A\220Q\330\010\020\220\001\220\021\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\017\210u\220B\220a\220t\2302\230Q\230b\240\002\240!\330\014\017\210r\220\022\2202\220T\230\023\230B\230a\330\020\032\230$\230a\230r\240\022\2401\330\020\026\220a\220r\230\022\2309\240A\340\004\013\2101\320\000\026\220a\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230l\250!\340\004\022\220!\340\004\007\200w\210b\220\002\220#\220W\230C\230q\330\010\016\210j\230\001\230\031\240!\2401\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\017\210u\220B\220a\220t\2302\230Q\230b\240\002\240!\330\014\023\2203\220b\230\001\330\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\340\t\013\2109\220A\220X\230Q\330\010\021\220\022\2204\220q\230\001\340\004\013\2101\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\001\330\004\027\220q\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220q\330\020\027\220q\330\021\027\220r\230\021\330\020\027\220q\330\021\027\220s\230!\330\020\027\220q\340\014\022\220!\2205\230\001\340\004\013\2101""\200\001\360\n\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\031\230\021\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220q\330\020\032\230!\340\020\031\230\021\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\016\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220q\330\020\026\220a\220u\230A\330\021\027\220s\230!\330\020\026\220a\220u\230A\340\004\013\2101\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\340\004\r\210R\210t\2201\220A\340\004\013\2101\200\001\330\026%\240]\260!\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\037\230x\240q\250\004\250A\340\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\004\230C\230v\240R\240q\330\004\030\230\004\230C\230v\240R\240q\330\004\030\230\001\330\004\030\230\001\330\004\027\220q\330\004\025\220Q\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\330\014\021\220\023\220A\220Q\340\014\017\210u\220A\220W\230C\230u\240A\240Q\330\020\021\340\014\025\220V\2302\230S\240\003\2406\250\022\2508\2603\260a\340\014\017\210u\220A\220Q\330\020\027\220q\330\021\025\220U\230!\2301\330\020\030\230\006\230c\240\026\240r\250\021\340\014\022\220!\2205\230\001\340\004\013\2101\320\000\026\220l\240!\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\014\240A\330\004\025\220X\230Q\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\023\2207\230\"\230A\230T\240\021\340\014\017\210u\220A\220W""\230C\230u\240A\240Q\330\020\021\340\014\020\220\005\220U\230\"\230K\240u\250B\250a\340\014\017\210v\220R\220q\330\020\030\230\001\330\021\027\220r\230\021\330\020\030\230\001\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\330\030(\250\001\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\004\r\210]\230!\2307\240(\250!\340\004\013\2101\320\000\027\220q\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2701\200\001\330\027#\240<\250q\360\032\000\005\r\210F\220!\2201\340\004\013\2108\2201\220G\2301\330\004\013\2108\2201\220G\2301\330\004\n\210(\220!\2208\2307\240!\330\004\r\210U\220\"\220F\230\"\230D\240\002\240!\340\004\r\210X\220Q\220g\230Q\330\004\013\2106\220\022\2201\340\004\r\210\\\230\021\230'\240\030\250\021\340\004\013\2101\320\000\027\220q\360\006\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270a\320\000\027\220q\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220K\230{\250!\340\004\025\220[\240\001\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220\023\220A\330\020\031\230\021\330\020\026\220a\330\020\027\220r\230\022\2301\340\020\030\230\001\330\020\025\220V\2301\340\014\017\210v\220R\220q\330\020\024\220B\220a\220r\230\022\2301\330\020\031\230\021\330\020\026\220a\330\020\027\220r\230\022\2301\340\014\017\210v\220S\230\001\330\020\027\220t\2302\230V\2402\240S\250\002\250#\250R\250v\260R\260q\330\020\026\220d\230%\230q\240\010\250\004\250C\250w\260a\330\020\026\220a\220u\230A\340\004\013\2101\200\001\360\022\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031""\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220A\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\020\220\002\220!\2202\220R\220q\330\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\024\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\004\230B\230a\330\004\030\230\001\330\004\026\220a\330\004\030\230\001\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210t\2205\230\001\230\021\330\020\031\230\021\330\020\023\2206\230\023\230A\330\024\035\230Q\330\024\032\230&\240\002\240!\340\024\033\2306\240\023\240F\250\"\250A\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230A\340\004\013\2101\200\001\330%&\360$\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\004\230C\230w\240b\250\001\330\004\027\220t\2302\230Q\330\004\030\230\001\330\004\026\220i\230q\330\004\026\220a\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210t\2205\230\001\230\021\330\020\031\230\021\340\020\023\2205\230\001\230\021\330\024\032\230!\330\024\032\230!\330\024\032\230!\330\025\026\330\024\032\230&\240\002\240$\240b\250\001\330\024\032\230$\230b\240\004\240B\240a\330\024\032\230$\230b\240\001\340\024\033\2306\240\023\240F\250\"\250A\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230A\340\004\013\2101\200\001\330\026\027\360\024\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\014\240L""\260\001\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210u\220A\220Q\330\020\021\340\014\017\210u\220C\220q\330\020\027\220q\330\020\030\230\001\340\020\031\230\021\340\014\017\210v\220S\230\001\330\020\027\220q\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220L\240\001\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220\023\220A\330\020\030\230\001\330\020\031\230\021\340\020\027\220q\330\020\030\230\001\340\014\017\210v\220R\220q\330\020\030\230\002\230!\2302\230R\230q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230A\340\004\013\2101\200\001\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220L\240\001\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220\023\220A\330\020\030\230\001\330\020\031\230\021\340\020\027\220q\330\020\030\230\001\340\014\017\210v\220R\220q\330\020\030\230\002\230!\2302\230R\230q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230E\240\022\2401\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\027\220w\230c\240\027\250\002\250#\250R\250q\330\004\024\220L\240\n\250!\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201""\340\014\017\210r\220\023\220A\330\020\031\230\021\330\020\030\230\001\330\020\030\230\006\230b\240\001\340\020\027\220w\230a\330\020\030\230\001\340\014\017\210v\220R\220q\330\020\030\230\001\330\020\030\230\002\230!\2302\230R\230q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230E\240\022\2401\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220O\2401\330\004\022\220'\230\036\240q\340\t\n\330\010\014\210E\220\025\220a\220w\230b\240\003\2401\330\014\020\220\002\220!\2201\340\014\017\210x\220s\230\"\230B\230g\240R\240q\330\020\023\2204\220r\230\023\230A\330\024\036\230a\330\024\036\230a\340\020\032\230!\330\020\033\2301\330\020\024\220E\230\025\230a\230r\240\022\2407\250\"\250C\250r\260\022\2601\330\024\030\230\002\230!\2301\330\024\027\220t\2305\240\001\240\023\240D\250\004\250B\250c\260\021\330\030\"\240!\330\030\"\240!\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\010\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220O\2401\330\004\022\220'\230\036\240q\340\t\n\330\010\014\210E\220\025\220a\220w\230b\240\003\2401\330\014\020\220\002\220!\2201\340\014\017\210x\220s\230\"\230B\230g\240R\240q\330\020\023\2204\220r\230\023\230A\330\024\036\230a\330\024\036\230a\340\020\032\230!\330\020\033\2301\330\020\024\220E\230\025\230a\230r\240\022\2407\250\"\250C\250r\260\022\2601\330\024\030\230\002\230!\2301\330\024\027\220t\2305\240\001\240\023\240D\250\004\250B\250c\260\021\330\030\"\240!\330\030\"\240!\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\t\210\030\220\021\220(\230%\230q\240""\006\240a\240q\330\004\t\210\030\220\021\220(\230!\330\004\n\210\"\210C\210t\2202\220Q\340\004\r\210X\220Q\220d\230%\230u\240E\250\021\250!\340\004\013\2101\200\001\330\025(\250\001\360\026\000\005\010\200x\210s\220!\330\010\020\220\010\230\001\230\030\240\021\340\t\021\220\023\220A\330\010\021\220\030\230\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\030\230\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\030\230\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\031\230!\2308\2401\340\t\021\220\023\220A\330\010\021\220\031\230!\2308\2401\340\010\016\210j\230\001\320\031+\2501\250A\340\004\013\2101O";
+    #else /* compression: none (16206 bytes) */
+const char* const bytes = ": All dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDifferent sizes!Dimension %d is not directEmpty shape tuple for cython.arrayIndex out of bounds (axis %d)Indirect dimensions not supportedInvalid ma_type Invalid mode, expected 'c' or 'fortran', got Invalid option Invalid period Invalid period value Invalid shape in axis <MemoryView of NoneNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Only one of log_prices and percent can be trueOut of bounds on buffer access (axis Period Period cannot be negativePeriod must be positiveStep may not be zero (axis %d)Unable to convert item to objectUnknown price type .>')?add_noteadx, pdi, mdi and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>disableenablegc (got got differing extents in dimension isenableditemsize <= 0 for cython.arraylist | tuplemacd, macdsignal, macdhistmacdv, macdvsignal, macdvhistno default __reduce__ due to non-trivial __cinit__ object> out of range!period must be greater than zeroperiod must be positiveppo, pposignal, ppohist, should be greater than 2sigma must be positiveslowk, slowdsrc/mintalib/cython/_common.pxisrc/mintalib/cython/abs.pxisrc/mintalib/cython/alma.pxisrc/mintalib/cython/atr.pxisrc/mintalib/cython/bbands.pxisrc/mintalib/cython/bop.pxisrc/mintalib/cython/cci.pxisrc/mintalib/cython/clag.pxisrc/mintalib/cython/cmf.pxisrc/mintalib/cython/cross.pxisrc/mintalib/cython/dema.pxisrc/mintalib/cython/diff.pxisrc/mintalib/cython/dmi.pxisrc/mintalib/cython/donchian.pxisrc/mintalib/cython/ema.pxisrc/mintalib/cython/exp.pxisrc/mintalib/cython/flags.pxisrc/mintalib/cython/hma.pxis""rc/mintalib/cython/kama.pxisrc/mintalib/cython/keltner.pxisrc/mintalib/cython/lag.pxisrc/mintalib/cython/linreg.pxisrc/mintalib/cython/log.pxisrc/mintalib/cython/lroc.pxisrc/mintalib/cython/macd.pxisrc/mintalib/cython/macdv.pxisrc/mintalib/cython/mad.pxisrc/mintalib/cython/mav.pxisrc/mintalib/cython/max.pxisrc/mintalib/cython/mfi.pxisrc/mintalib/cython/min.pxisrc/mintalib/cython/ppo.pxisrc/mintalib/cython/price.pxisrc/mintalib/cython/quadreg.pxisrc/mintalib/cython/rma.pxisrc/mintalib/cython/roc.pxisrc/mintalib/cython/rsi.pxisrc/mintalib/cython/sar.pxisrc/mintalib/cython/sign.pxisrc/mintalib/cython/sma.pxisrc/mintalib/cython/stdev.pxisrc/mintalib/cython/step.pxisrc/mintalib/cython/stoch.pxisrc/mintalib/cython/streak.pxisrc/mintalib/cython/sum.pxisrc/mintalib/cython/tema.pxisrc/mintalib/cython/wma.pxi<strided and direct><strided and direct or indirect><strided and indirect>unable to allocate array data.unable to allocate shape and strides.upperband, middleband, lowerbandASCIIDEMAEMAEllipsisHMAIntEnumMappingProxyType__Pyx_PyDict_NextRefSMASequenceTEMAView.MemoryViewWMAabcabsadd_metadataadd_metadata.<locals>.wrapperadjustadxafafsall__all__allocate_bufferalphaargsarrayasarrayasyncio.coroutinesatravgbasebbands_resultboolbopbroadcast_toccalc_abscalc_adxcalc_almacalc_atrcalc_avgpricecalc_bbandscalc_bbpcalc_bbwcalc_bopcalc_ccicalc_clagcalc_cmfcalc_crossovercalc_crossundercalc_demacalc_diffcalc_dmicalc_donchiancalc_emacalc_expcalc_flagcalc_hmacalc_kamacalc_keltnercalc_kercalc_lagcalc_linregcalc_linreg_rmsecalc_linreg_rvaluecalc_linreg_slopecalc_logcalc_lroccalc_macdcalc_macdvcalc_madcalc_mavcalc_maxcalc_mdicalc_mficalc_midpricecalc_mincalc_natrcalc_pdicalc_ppocalc_pricecalc_quadregcalc_quadreg_curvecalc_quadreg_rmsecalc_quadreg_rvaluecalc_quadreg_slopecalc_rmacalc_roccalc_rsicalc_sarcalc_signcalc_smacalc_stdevcalc_stepcalc_stochcalc_streakcalc_sumcalc_temacalc_trangecalc_typpricecalc_updowncalc_wclpricecalc_wmacheck_sizeclclag__class____class_getitem__cline_in_tracebackclosec""ollectionscorrcorrelatecountcur_maxcur_mincurveddenom__dict__diffdivdividedmi_resultdnsdns_arrdonchian_resultdown_flagdown_leveldtypedtype_is_objectdvdxdyemaema1ema2ema3encode__enter__enumenumerateeperercnterdivernumerrorerrstateerserval__exit__expfastffastkfastnflagflagsfloat_floatflowflow_arrforecastformatfortranfsfullfunc__func__fval__getstate__hihi2highhisthl2hlc3hlcc4hmiidignore__import__indexinsertinterceptinvalid_is_coroutineitemitemsitemsizejkkamakeltner_resultlevellinear_regressionlllmlolo2loglog_priceslowlowerlowerbandmm1m2m3ma_typemacdmacd_resultmacdhistmacdsignalmacdvmacdv_resultmacdvhistmacdvsignalmad__main__max_idxmaxafmdimdmmeanmemviewmetadatamidmiddlemiddlebandmin_idxmintalib.coremode__module__msemultn1n2n3name__name__namedtuplenannbatrnbdevndim__new__npnsumnumnumpyobjoffsetohlc4oldopenoptionothersoutputoutput_namespackpaddingpcpdipdmpercentperiodphplpopppoppo_resultppohistpposignalprcprependprevpricespsumpvpxpy__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable__quadratic_regression__qualname____reduce____reduce_cython____reduce_ex__registerresultrhormarma_dnsrma_upsrocroundrsumssame_scalesarseries__set_name__setdefault__setstate____setstate_cython__shapeshiftsigmasignsignalsizeslopeslowdslowfslowkslownsmastartstdstepstoch_resultstopstrstreakstructsumsxsx2sx2ysx3sx4sxxsxysysy2__test__thresholdtotaltrtrangetrendtyptypesuulunpackup_flagup_levelupdateupperupperbandupsups_arrvvalidvaluevaluesvolumevuuvx2x2vx2yvxxvxx2vxyvyyvzuvzzwwclwdivwherewhere_flagwrapperwsumxxdxd2xsyydyszzs\320\000\033\2301\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240s\250&\260\001\330\004\034\230A\340\004\027\220}\240A\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220y\240\001\330\020\026\220a\220u\230A\340\014\017\210t\2205\230\001\230\021\330\020\027\220q\340\004\013\2101\200\001\330\031+\2501\360\022\000\005\013\210-\220q""\230\001\330\004\n\210(\220!\2208\2301\340\004\r\210X\220Q\220e\2301\330\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\004\r\210^\2301\230G\2408\2501\340\004\013\2101\320\000\036\320\0361\260\036\270q\360\020\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\320\031*\250!\2501\340\004\007\200w\210b\220\002\220#\220W\230B\230a\330\010\016\210j\230\001\320\031*\250!\2501\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\007\200w\210c\220\021\330\010\017\210q\360\016\000\005\023\220'\230\021\340\004\010\210\005\210U\220&\230\006\230f\240A\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\017\210t\2203\220b\230\001\230\021\340\014\017\210r\220\023\220A\330\020\024\220E\230\025\230f\240F\250&\260\001\330\020\021\340\014\017\210r\220\023\220A\330\020\024\220A\340\014\021\220\021\330\014\022\220!\330\014\022\220!\330\014\023\2202\220R\220q\330\014\023\2202\220R\220q\330\014\023\2202\220R\220q\340\014\017\210r\220\022\2201\330\020\021\340\014\022\220\"\220B\220g\230T\240\022\2402\240Q\330\020\023\2203\220d\230#\230R\230q\240\004\240A\240Q\240a\330\020\025\220Q\330\020\026\220a\330\020\026\220a\330\020\027\220r\230\022\2301\330\020\027\220r\230\022\2301\330\020\027\220r\230\022\2301\340\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\340\014\024\220D\230\002\230'\240\024\240R\240x\250q\330\014\031\230\023\230B\230f\240B\240d\250\"\250A\330\014\023\2204\220v\230U\240!\2404\240r\250\030\260\024\260R\260w\270a\360\006\000\r\020\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\026\220d\230#""\230R\230r\240\025\240b\250\001\330\020\026\220a\220u\230D\240\005\240Q\240h\250d\260#\260W\270A\330\020\021\340\014\017\210w\220c\230\021\330\020\033\230:\240R\240v\250S\260\002\260\"\260A\330\020\026\220a\220u\230A\330\020\021\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220V\2305\240\001\340\004\016\210e\2202\220U\230\"\230D\240\002\240'\250\022\2501\340\004\013\2101\200\001\330\025\026\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\340\004\n\210(\220!\2208\2301\330\004\t\210\031\220!\2206\230\021\330\004\t\210\021\210)\2201\220E\230\021\340\004\n\210\"\210F\220\"\220C\220r\230\024\230S\240\003\2402\240T\250\024\250Q\330\004\n\210\"\210F\220\"\220C\220r\230\024\230S\240\003\2402\240T\250\024\250Q\340\t\013\2109\220A\220W\230A\330\010\016\210d\220\"\220H\230A\230U\240(\250\"\250A\330\010\016\210d\220\"\220H\230A\230U\240(\250\"\250A\330\010\r\210T\220\022\2202\220T\230\021\230$\230b\240\005\240S\250\004\250B\250a\340\004\n\210(\220!\2204\220q\340\004\r\210Z\220q\230\005\230U\240!\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220U\230!\340\004\016\210e\2202\220T\230\022\2302\230R\230w\240b\250\001\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\016\210a\210v\220U\230!\340\004\016\210e\2202\220T\230\022\2307\240\"\240A\340\004\013\2101\200\001\360\016\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\340\004\016\210a\210v\220Q\340\004\016\210e\2202\220U\230\"\230A\340\004\013\2101\320\000""\033\320\0332\260!\360\022\000\005\010\200{\220$\220a\330\010\016\210j\230\001\230\021\340\004 \240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004!\240\022\2408\2501\250F\260!\260:\270Q\340\004\025\220Z\230q\240\006\240e\2501\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\025\220Z\230z\250\032\260:\270Q\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\004\220D\230\005\230T\240\021\240$\240c\250\021\250$\250e\2601\260D\270\001\340\014\017\210u\220C\220s\230%\230q\330\020\021\340\014\017\210s\220\"\220A\330\020\025\220Q\340\014\017\210s\220\"\220A\330\020\025\220Q\340\014\017\210q\330\020\031\230\024\230Q\230d\240&\250\004\250A\250Q\330\021\022\330\020\025\220T\230\023\230C\230r\240\024\240R\240v\250S\260\002\260'\270\021\340\020\026\220c\230\022\2301\340\014\022\220!\2205\230\001\340\004\013\2101\320\000!\320!4\260N\300!\360\022\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\320\031*\250!\2501\340\004\007\200w\210b\220\002\220#\220W\230B\230a\330\010\016\210j\230\001\320\031*\250!\2501\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\007\200w\210c\220\021\330\010\017\210q\360\020\000\005\023\220!\340\004\010\210\005\210V\2206\230\026\230u\240F\250&\260\007\260q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\017\210t\2203\220b\230\001\230\021\340\014\017\210r\220\023\220A\330\020\024\220E\230\026\230v\240V\2505\260\006\260f\270G\3001\330\020\021\340\014\021\220\021\330\014\022\220!\330\014\023\2202\220R\220q\330\014\023\2202\220R\220r\230\022\2301\330\014\023\2202\220R\220r\230\022\2302\230R\230q\330\014\022\220!\330\014\023\2202\220R\220q\330\014\023\2202\220R\220q\330\014\024\220B\220b\230\002\230\"\230A\340\014\017\210r\220\022\2201\330\020\021\340\014\017\210r\220\022\2201\330\020\025\220R\220r\230\021\330\020\025\220R\220q\230\002\230""\"\230A\330\020\026\220c\230\022\2301\330\020\025\220Q\330\020\026\220a\330\020\027\220q\330\020\027\220t\2302\230Q\330\020\027\220t\2302\230Q\330\020\026\220a\330\020\027\220s\230\"\230A\330\020\027\220s\230\"\230A\330\020\030\230\004\230B\230a\340\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\023\2204\220r\230\022\2302\230S\240\002\240#\240R\240r\250\022\2501\330\014\024\220D\230\002\230\"\230B\230c\240\022\2404\240r\250\022\2502\250Q\330\014\024\220E\230\022\2302\230R\230t\2402\240S\250\002\250\"\250B\250a\330\014\025\220T\230\022\2302\230R\230t\2402\240T\250\022\2502\250R\250q\340\014\024\220F\230\"\230D\240\002\240%\240r\250\021\330\014\024\220A\220U\230\"\230D\240\002\240$\240b\250\006\250b\260\t\270\026\270r\300\027\310\001\330\014\024\220A\220T\230\022\2306\240\022\2405\250\002\250&\260\002\260)\2706\300\022\3007\310!\330\014\030\230\001\230\023\230B\230f\240B\240c\250\022\2506\260\022\2605\270\002\270%\270r\300\022\3007\310!\360\006\000\r\020\210w\220c\230\021\330\020\026\220a\220u\230A\330\020\021\340\014\017\210w\220c\230\021\330\020\025\220R\220r\230\021\330\020\026\220a\220u\230F\240\"\240B\240b\250\006\250b\260\001\330\020\021\340\014\017\210w\220c\230\021\340\020\026\220d\230\"\230D\240\002\240$\240b\250\007\250t\2602\260W\270A\330\020\026\220f\230B\230e\2402\240U\250\"\250G\2604\260r\270\027\300\001\330\020\026\220e\2302\230T\240\022\2405\250\002\250'\260\024\260R\260w\270a\330\020\026\220a\220u\230D\240\006\240e\2501\250D\260\002\260(\270$\270b\300\004\300B\300g\310Q\330\020\021\340\014\017\210w\220c\230\021\330\020\026\220d\230\"\230F\240\"\240D\250\002\250&\260\002\260!\330\020\026\220a\220u\230D\240\005\240Q\240h\250d\260#\260W\270A\330\020\021\340\014\017\210w\220c\230\021\330\020\025\220R\220r\230\021\330\020\033\230:\240R\240v\250R\250r\260\022\2606\270\022\2702\270R\270q\330\020\026\220a\220u\230A\330\020\021\340\004\013\2101\200\001""\330\026\027\360\020\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220F\230!\330\004\013\2108\2201\220F\230!\340\004\r\210R\210r\220\025\220b\230\002\230\"\230E\240\022\2401\340\004\013\2101\200\001\360\022\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220F\230!\340\004\r\210R\210r\220\025\220b\230\001\340\004\013\2101\320\000\030\320\030(\250\001\360\030\000\005\014\320\013\034\230A\230X\240W\250H\260G\2708\3007\310!\200A\330\010\014\210L\320\030(\250\001\250\021\330\010\017\210q\320\000\034\230A\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240s\250&\260\001\330\004\034\230A\340\004\027\220}\240A\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220y\240\001\330\020\026\220a\220u\230A\340\014\017\210t\2205\230\001\230\021\330\020\027\220q\340\004\013\2101\200\001\330\032\033\360\020\000\005\r\210H\220A\220V\2301\230I\240Q\330\004\014\210H\220A\220V\2301\230H\240A\330\004\016\210f\220B\220g\230R\230q\340\004\r\210_\230A\230W\240H\250A\340\004\013\2101\320\000\024\220L\240\r\250^\2701\360\006\000\005\010\200{\220'\230\021\330\010\025\220T\230\021\230!\340\004\007\200}\220G\2301\330\010\027\220u\230A\230Q\340\004\023\2201\220K\230|\250=\270\001\330\004\017\210r\220\023\220B\220d\230#\230U\240(\250&\260\003\2603\260b\270\007\270q\340\004\005\360\010\000\005\014\2101\320\000\025\220Q\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\340\004\013\210:\220Q\220f\230F\240%\240q\340\t\013\2109\220A\220T\230\021\330\010\017\210v\220R\220v\230S\240\005\240R\240q\330\010\021\220\030\230\021\230%\230q\340\004\013\2101\320\000\025\220Q\360\020\000\005\014\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001""\330\004\r\210R\210x\220q\230\006\230a\230{\250!\340\004\013\210:\220Q\220f\230E\240\027\250\001\340\t\013\2109\220A\220W\230J\240h\250a\330\010\020\220\002\220\"\220F\230\"\230E\240\022\2405\250\003\2505\260\002\260%\260r\270\021\330\010\016\210h\220a\220v\230Q\330\010\016\210h\220a\220x\230q\340\010\021\220\024\220R\220q\340\004\013\2101\200\001\330\027'\240~\260Q\360\024\000\005!\240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004!\240\022\2408\2501\250F\260!\260:\270Q\340\004\025\220Z\230q\240\006\240e\2501\340\004\t\210\030\220\021\220&\230\001\330\004\t\210\030\220\021\220%\220q\340\t\013\2109\220A\220W\230A\330\010\020\220\004\220C\220v\230R\230t\2402\240S\250\002\250!\340\004\014\210H\220A\220W\230A\330\004\014\210H\220A\220W\230A\340\004\r\210\\\230\021\230'\240\021\340\004\013\2101\200\001\330\025!\240\034\250Q\360\032\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220H\230A\340\t\013\2109\220A\220W\230A\330\010\016\210d\220#\220U\230\"\230F\240\"\240A\340\004\r\210X\220Q\220e\2301\330\004\013\2104\210r\220\021\340\004\r\210Z\220q\230\005\230X\240Q\340\004\013\2101\320\000\035\230Q\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2701\320\000\025\220Q\360\020\000\005\016\210[\230\001\230\021\330\004\r\210X\220Q\220h\230a\340\004\013\2101\320\000\025\220Q\360\020\000\005\016\210X\220Q\220h\230g\240W\250A\340\004\013\2101\320\000\025\220Q\360\020\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\032\230\"\230E\240\021\240&\250\002\250!\330\004\032\230\"\230E\240\021\240&\250\002\250!\330\004\031\230\021\330\004\031\230\021\340\004\024\220J\230j\250\001\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\330\014\017\210r\220\023\220B\220d\230#\230S\240\001\330\020\025\220R\220r\230\021\330\020\023\2201\220E\230\026\230s\240\"\240I\250Q\330\020\023""\2201\220E\230\021\230&\240\003\2402\240Y\250a\330\014\017\210r\220\023\220A\330\020\025\220Q\340\004#\2408\2501\250I\260Q\330\004#\2408\2501\250I\260Q\340\004\024\220I\230Q\330\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\007\220q\230\001\330\014\020\220\007\220q\230\001\330\014\017\210r\220\023\220B\220d\230\"\230C\230r\240\024\240R\240r\250\021\330\020\026\220a\220u\230F\240#\240V\2503\250d\260\"\260B\260b\270\001\330\021\023\2203\220b\230\004\230B\230c\240\021\330\020\026\220a\220u\230A\340\004\013\2101\320\000\025\220Q\360\020\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230j\250\001\330\004\024\220J\230j\250\001\340\004\030\230\r\240]\260!\340\004\026\220a\330\004\022\220'\230\021\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210u\220A\220Q\330\020\021\340\014\020\220\005\220R\220r\230\024\230Q\340\014\017\210u\220A\220Q\330\020\021\340\014\031\230\025\230a\230q\330\014\025\220Q\340\014\022\220&\230\003\2301\330\020\023\2204\220r\230\021\230$\230a\230q\240\001\340\020\023\2205\230\001\230\021\330\024\025\340\020\024\220E\230\022\2302\230T\240\021\340\020\034\230E\240\021\240!\2401\240A\330\020\030\230\006\230b\240\t\250\033\260A\340\020\023\2204\220u\230A\230Q\330\024!\240\025\240a\240q\330\024\035\230Q\340\014\022\220!\2205\230\001\340\004\013\2101\320\000\025\220Q\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230k\250\021\330\004\022\220+\230Q\340\004\007\200w\210b\220\001\330\010\021\220\023\220A\220Q\330\010\020\220\001\220\021\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\017\210u\220B\220a\220t\2302\230Q\230b\240\002\240!\330\014\017\210r\220\022\2203\220d\230#\230R\230q\330\020\026\220b\230\002\230#\230R\230q\330\020\026\220a\220r\230\022\2309\240A\340\004\013\2101""\320\000\030\320\030-\250Q\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\027\220\177\240o\260Q\330\004\030\230\014\240A\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220|\2401\330\020\027\220q\330\021\027\220s\230-\240q\330\020\027\220q\340\014\022\220!\2205\230\001\340\014\017\210v\220S\230\001\330\020\027\220q\340\004\013\2101\320\000\035\230Q\360\006\000\005\037\230b\240\010\250\001\250\026\250q\340\004\025\220R\220q\340\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\330\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\330\004\036\230b\240\r\250Q\250b\260\007\260q\270\004\270A\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\027\220q\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\023\2202\220Q\220a\340\014\017\210u\220B\220a\330\020\030\230\002\230!\2301\330\021\026\220c\230\021\330\020\030\230\002\230!\2301\340\020\030\230\002\230!\2301\340\014\022\220!\2205\230\001\340\004\013\2101\320\000\025\220Q\360\020\000\005\013\210-\220q\230\001\330\004\n\210(\220!\2205\230\001\330\004\n\210(\220!\2205\230\010\240\002\240!\340\t\013\2109\220A\220W\230A\330\010\022\220$\220b\230\005\230R\230q\340\004\013\2101\200\001\330\025%\240Q\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\t\013\2109\220A\220W\230J\240h\250a\330\010\022\220$\220b\230\007\230s\240&\250\002\250'\260\022\2601\340\004\013\2101\200\001\330\025%\240Q\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\t\013\2109\220A\220W\230J\240h\250a\330\010\022\220&\230\002\230'\240\022\2407\250\"\250A\340\004\013""\2101\200\001\330\027\035\230Q\360\032\000\005\010\200u\210C\210q\330\010\017\210q\340\004\007\200u\210D\220\010\230\010\240\007\240q\330\010\022\220\"\220H\230A\230V\2401\240G\2501\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\330\t\016\210d\220'\230\021\330\010\021\220\035\230a\230q\340\010\016\210j\230\001\320\031.\250a\250q\340\004\013\2101\320\000\025\220Q\360\006\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\360\006\000\005\026\220Q\330\004\022\220'\230\033\240A\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220\023\220A\330\020\031\230\021\330\020\026\220a\340\020\030\230\001\330\020\025\220Q\340\014\017\210v\220R\220q\330\020\026\220b\230\001\230\022\2302\230Q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\027\220s\230\"\230A\330\020\026\220a\330\020\024\220E\230\025\230a\230r\240\022\2407\250\"\250C\250r\260\022\2601\330\024\037\230u\240A\240R\240q\250\003\2502\250Q\330\020\026\220a\220u\230D\240\002\240!\340\004\013\2101\320\000\025\220Q\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\013\2102\210X\220Q\220f\230A\230Y\240a\330\004\n\210\"\210H\220A\220V\2301\230H\240A\330\004\014\210B\210h\220a\220v\230Q\230j\250\001\330\004\r\210R\210x\220q\230\006\230a\230{\250!\340\004\013\2105\220\002\220$\220b\230\007\230r\240\021\330\004\017\210t\2202\220W\230B\230b\240\005\240Q\240b\250\005\250Q\250e\2608\2702\270Q\340\004 \240\001\330\004\025\220T\230\026\230q\240\001\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\024\220K\230q\330\004\027\220|\2401\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\004\220A\220Q\340\014\017\210u""\220A\220Q\330\020\027\220q\330\020\027\220q\330\020\030\230\001\330\020\021\340\014\017\210r\220\022\2201\330\020\030\230\001\330\021\023\2202\220Q\330\020\030\230\001\340\014\025\220Q\340\014\017\210v\220R\220q\330\020\026\220d\230!\2302\230R\230q\330\020\023\2204\220r\230\021\330\024\034\230A\330\025\031\230\022\2301\330\024\034\230A\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\023\2205\230\002\230!\330\024\032\230!\2305\240\006\240b\250\006\250c\260\024\260R\260u\270B\270a\330\025\032\230\"\230A\330\024\032\230!\2305\240\001\340\004\013\2101\200\001\330\026'\320'=\270Q\360\006\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\007\200v\210S\220\001\330\010\016\210j\230\001\230\021\340\004\010\210\007\210s\220'\230\022\2301\330\004\010\210\007\210r\220\021\330\004\010\210\002\210&\220\001\220\021\220\"\220D\230\001\230\023\230B\230b\240\003\2403\240c\250\023\250B\250b\260\001\260\022\2604\260t\2705\300\005\300Q\300a\330\004\010\210\002\210\"\210A\210T\220\021\340\004\016\210b\220\005\220Q\220g\230R\230s\240\"\240A\330\004\r\210R\210z\230\021\230(\240#\240Q\330\004\r\210R\210w\220a\220x\230s\240!\340\004\013\2101\200\001\360\006\000\005\n\210\031\220!\340\004\025\220R\220q\330\004\010\210\005\210Q\330\010\013\2101\210F\220#\220Q\330\017\025\220Z\230q\240\001\330\004\013\2101\200\001\330\025&\240a\360\022\000\005!\240\002\240(\250!\2506\260\021\260)\2701\330\004\037\230r\240\030\250\021\250&\260\001\260\030\270\021\330\004\025\220Z\230q\240\006\240a\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\025\220[\240\n\250!\330\004\025\220Z\230z\250\032\260;\270k\310\021\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\017\210s\220#\220Q\330\020\024\220E\230\024\230Q\340\014\020\220\005\220T\230\021\230$\230c\240\021\240!\340\014\017\210u\220C\220s\230#\230T\240\023\240C\240q\330\020\021\340\014\022\220&\230\003\2302\230X\240Q\330\014\022\220&\230\003\2302\230X\240Q\360\006\000\r\020""\210v\220R\220r\230\024\230S\240\002\240!\330\020\024\220E\230\024\230X\240T\250\024\250V\2601\340\021\027\220r\230\022\2304\230s\240\"\240A\330\020\024\220E\230\024\230X\240T\250\024\250U\260!\2601\340\014\022\220!\2205\230\001\360\010\000\r\020\210v\220S\230\001\340\020\023\2203\220b\230\001\330\024\030\230\005\230T\240\030\250\025\250e\2605\270\001\270\021\340\024\030\230\005\230T\240\030\250\025\250e\2606\270\021\360\006\000\021\030\220s\230#\230S\240\002\240!\360\006\000\021\024\2206\230\022\2301\330\024\027\220t\2302\230Q\330\030\036\230a\330\024\027\220s\230\"\230A\330\030\035\230Q\330\030\036\230a\330\020\023\2206\230\022\2301\330\024\027\220t\2302\230Q\330\030\036\230a\330\024\027\220s\230\"\230A\330\030\035\230Q\330\030\036\230a\340\014\017\210v\220T\230\023\230B\230a\330\020\025\220Q\340\004\013\2101\200\001\330\026\"\240,\250a\360\032\000\005\014\2108\2201\220H\230A\330\004\013\2108\2201\220H\230A\330\004\013\2105\220\002\220!\340\004\r\210X\220Q\220f\230A\330\004\013\2105\220\002\220!\340\004\r\210[\230\001\230\026\230x\240q\340\004\013\2101\320\000\036\230a\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2701\320\000\026\220a\360\020\000\005\016\210[\230\001\230\030\240\030\250\021\330\004\r\210X\220Q\220h\230a\340\004\013\2101\320\000\026\220a\360\026\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220J\230k\250\021\330\004\022\220+\230Q\340\004\007\200w\210b\220\001\330\010\021\220\023\220A\220Q\330\010\020\220\001\220\021\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\017\210u\220B\220a\220t\2302\230Q\230b\240\002\240!\330\014\017\210r\220\022\2202\220T\230\023\230B\230a\330\020\032\230$\230a\230r\240\022\2401\330\020\026\220a\220r\230\022\2309\240A\340\004\013\2101\320\000\026\220a\360\022\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034""\230A\340\004\024\220J\230l\250!\340\004\022\220!\340\004\007\200w\210b\220\002\220#\220W\230C\230q\330\010\016\210j\230\001\230\031\240!\2401\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\017\210u\220B\220a\220t\2302\230Q\230b\240\002\240!\330\014\023\2203\220b\230\001\330\014\022\220!\2205\230\001\340\004\013\2101\320\000\036\230a\360\020\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270a\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\340\t\013\2109\220A\220X\230Q\330\010\021\220\022\2204\220q\230\001\340\004\013\2101\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\001\330\004\027\220q\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220q\330\020\027\220q\330\021\027\220r\230\021\330\020\027\220q\330\021\027\220s\230!\330\020\027\220q\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\n\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\031\230\021\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220q\330\020\032\230!\340\020\031\230\021\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\016\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\001\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210v\220R\220q\330\020\026\220a\220u\230A\330\021\027\220s\230!\330\020\026\220a\220u\230A\340\004\013\2101\200\001\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\340\004\r\210R\210t\2201\220A\340\004\013\2101\200\001\330\026%\240]\260!\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\037\230x""\240q\250\004\250A\340\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\030\230\004\230C\230v\240R\240q\330\004\030\230\004\230C\230v\240R\240q\330\004\030\230\001\330\004\030\230\001\330\004\027\220q\330\004\025\220Q\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\330\014\021\220\023\220A\220Q\340\014\017\210u\220A\220W\230C\230u\240A\240Q\330\020\021\340\014\025\220V\2302\230S\240\003\2406\250\022\2508\2603\260a\340\014\017\210u\220A\220Q\330\020\027\220q\330\021\025\220U\230!\2301\330\020\030\230\006\230c\240\026\240r\250\021\340\014\022\220!\2205\230\001\340\004\013\2101\320\000\026\220l\240!\360\024\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\014\240A\330\004\025\220X\230Q\340\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\023\2207\230\"\230A\230T\240\021\340\014\017\210u\220A\220W\230C\230u\240A\240Q\330\020\021\340\014\020\220\005\220U\230\"\230K\240u\250B\250a\340\014\017\210v\220R\220q\330\020\030\230\001\330\021\027\220r\230\021\330\020\030\230\001\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\330\030(\250\001\360\022\000\005\013\210-\220q\230\001\330\004\n\210*\220A\220U\230!\340\004\r\210X\220Q\220e\2301\340\004\014\210G\2202\220V\2302\230Q\330\004\014\210G\2202\220V\2302\230Q\340\004\r\210]\230!\2307\240(\250!\340\004\013\2101\320\000\037\230q\360\020\000\005\014\320\013\034\230A\230X\240W\250H\260G\2701\200\001\330\027#\240<\250q\360\032\000\005\r\210F\220!\2201\340\004\013\2108\2201\220G\2301\330\004\013\2108\2201\220G\2301\330\004\n\210(\220!\2208\2307\240!\330\004\r\210U\220\"\220F\230\"\230D\240\002\240!\340\004\r\210X\220Q\220g\230Q\330\004\013\2106\220\022\2201\340\004\r\210\\\230\021\230'\240\030\250\021\340\004\013\2101\320\000\037\230q\360\020\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270a\320\000\037\320\037/\250q""\360\030\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270h\300g\310Q\320\000\027\220q\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220K\230{\250!\340\004\025\220[\240\001\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220\023\220A\330\020\031\230\021\330\020\026\220a\330\020\027\220r\230\022\2301\340\020\030\230\001\330\020\025\220V\2301\340\014\017\210v\220R\220q\330\020\024\220B\220a\220r\230\022\2301\330\020\031\230\021\330\020\026\220a\330\020\027\220r\230\022\2301\340\014\017\210v\220S\230\001\330\020\027\220t\2302\230V\2402\240S\250\002\250#\250R\250v\260R\260q\330\020\026\220d\230%\230q\240\010\250\004\250C\250w\260a\330\020\026\220a\220u\230A\340\004\013\2101\320\000 \240\001\360\024\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270a\320\000\031\320\031)\250\021\360\030\000\005\014\320\013\037\230q\240\010\250\007\250x\260w\270h\300g\310Q\200\001\360\022\000\005\010\200w\210b\220\001\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220A\330\004\022\220!\340\t\n\330\010\014\210E\220\025\220a\220x\230q\330\014\020\220\002\220!\2202\220R\220q\330\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\024\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\004\230B\230a\330\004\030\230\001\330\004\026\220a\330\004\030\230\001\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210t\2205\230\001\230\021\330\020\031\230\021""\330\020\023\2206\230\023\230A\330\024\035\230Q\330\024\032\230&\240\002\240!\340\024\033\2306\240\023\240F\250\"\250A\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230A\340\004\013\2101\200\001\330%&\360$\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\004\230C\230w\240b\250\001\330\004\027\220t\2302\230Q\330\004\030\230\001\330\004\026\220i\230q\330\004\026\220a\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210t\2205\230\001\230\021\330\020\031\230\021\340\020\023\2205\230\001\230\021\330\024\032\230!\330\024\032\230!\330\024\032\230!\330\025\026\330\024\032\230&\240\002\240$\240b\250\001\330\024\032\230$\230b\240\004\240B\240a\330\024\032\230$\230b\240\001\340\024\033\2306\240\023\240F\250\"\250A\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230A\340\004\013\2101\200\001\330\026\027\360\024\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\360\006\000\005\037\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240q\330\004\034\230A\340\004\030\230\014\240L\260\001\340\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\024\220B\220a\220q\340\014\017\210u\220A\220Q\330\020\021\340\014\017\210u\220C\220q\330\020\027\220q\330\020\030\230\001\340\020\031\230\021\340\014\017\210v\220S\230\001\330\020\027\220q\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220L\240\001\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220""\023\220A\330\020\030\230\001\330\020\031\230\021\340\020\027\220q\330\020\030\230\001\340\014\017\210v\220R\220q\330\020\030\230\002\230!\2302\230R\230q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230A\340\004\013\2101\200\001\360\020\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220L\240\001\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220\023\220A\330\020\030\230\001\330\020\031\230\021\340\020\027\220q\330\020\030\230\001\340\014\017\210v\220R\220q\330\020\030\230\002\230!\2302\230R\230q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230E\240\022\2401\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\320\0310\260\001\260\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\027\220w\230c\240\027\250\002\250#\250R\250q\330\004\024\220L\240\n\250!\330\004\022\220+\230Q\340\t\n\330\010\014\210E\220\025\220a\220q\330\014\020\220\002\220!\2201\340\014\017\210r\220\023\220A\330\020\031\230\021\330\020\030\230\001\330\020\030\230\006\230b\240\001\340\020\027\220w\230a\330\020\030\230\001\340\014\017\210v\220R\220q\330\020\030\230\001\330\020\030\230\002\230!\2302\230R\230q\330\020\031\230\021\340\014\017\210v\220S\230\001\330\020\026\220a\220u\230E\240\022\2401\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220O\2401\330\004\022\220'\230\036\240q\340\t\n\330\010\014\210E\220\025\220a\220w\230b\240\003\2401\330\014\020\220\002\220!""\2201\340\014\017\210x\220s\230\"\230B\230g\240R\240q\330\020\023\2204\220r\230\023\230A\330\024\036\230a\330\024\036\230a\340\020\032\230!\330\020\033\2301\330\020\024\220E\230\025\230a\230r\240\022\2407\250\"\250C\250r\260\022\2601\330\024\030\230\002\230!\2301\330\024\027\220t\2305\240\001\240\023\240D\250\004\250B\250c\260\021\330\030\"\240!\330\030\"\240!\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\010\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\036\230b\240\010\250\001\250\030\260\021\330\004\025\220R\220q\340\004\031\230\022\2305\240\001\240\026\240r\250\021\330\004\034\230A\340\004\024\220O\2401\330\004\022\220'\230\036\240q\340\t\n\330\010\014\210E\220\025\220a\220w\230b\240\003\2401\330\014\020\220\002\220!\2201\340\014\017\210x\220s\230\"\230B\230g\240R\240q\330\020\023\2204\220r\230\023\230A\330\024\036\230a\330\024\036\230a\340\020\032\230!\330\020\033\2301\330\020\024\220E\230\025\230a\230r\240\022\2407\250\"\250C\250r\260\022\2601\330\024\030\230\002\230!\2301\330\024\027\220t\2305\240\001\240\023\240D\250\004\250B\250c\260\021\330\030\"\240!\330\030\"\240!\340\014\022\220!\2205\230\001\340\004\013\2101\200\001\360\022\000\005\010\200w\210c\220\021\330\010\016\210j\230\001\230\021\340\004\t\210\030\220\021\220(\230%\230q\240\006\240a\240q\330\004\t\210\030\220\021\220(\230!\330\004\n\210\"\210C\210t\2202\220Q\340\004\r\210X\220Q\220d\230%\230u\240E\250\021\250!\340\004\013\2101\200\001\330\025(\250\001\360\026\000\005\010\200x\210s\220!\330\010\020\220\010\230\001\230\030\240\021\340\t\021\220\023\220A\330\010\021\220\030\230\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\030\230\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\030\230\021\230(\240!\340\t\021\220\023\220A\330\010\021\220\031\230!\2308\2401\340\t\021\220\023\220A\330\010\021\220\031\230!\2308\2401\340\010\016\210j\230\001\320\031+\2501\250A\340\004\013\2101O";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 495; i++) {
+    for (int i = 0; i < 503; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
       if (likely(string) && i >= 114) PyUnicode_InternInPlace(&string);
@@ -54855,7 +56017,7 @@ const char* const bytes = ": All dimensions preceding dimension %d must be index
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 495; i < 562; i++) {
+    for (int i = 503; i < 574; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -54866,15 +56028,15 @@ const char* const bytes = ": All dimensions preceding dimension %d must be index
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 562; i++) {
+    for (Py_ssize_t i = 0; i < 574; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 495;
-      for (Py_ssize_t i=0; i<67; ++i) {
+      PyObject **table = stringtab + 503;
+      for (Py_ssize_t i=0; i<71; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         #if PY_VERSION_HEX < 0x030E0000
         if (_Py_IsOwnedByCurrentThread(table[i]) && Py_REFCNT(table[i]) == 1)
@@ -55255,49 +56417,69 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[59] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_macdv_pxi, __pyx_mstate->__pyx_n_u_calc_macdv, __pyx_mstate->__pyx_kp_b_iso88591_q_F_1_81G1_81G1_87_U_F_D_XQgQ_6, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[59])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 2, 25, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 13};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_option, __pyx_mstate->__pyx_n_u_offset, __pyx_mstate->__pyx_n_u_ys, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_s, __pyx_mstate->__pyx_n_u_sx, __pyx_mstate->__pyx_n_u_sy, __pyx_mstate->__pyx_n_u_sxy, __pyx_mstate->__pyx_n_u_sx2, __pyx_mstate->__pyx_n_u_sy2, __pyx_mstate->__pyx_n_u_vxy, __pyx_mstate->__pyx_n_u_vxx, __pyx_mstate->__pyx_n_u_vyy, __pyx_mstate->__pyx_n_u_corr, __pyx_mstate->__pyx_n_u_slope, __pyx_mstate->__pyx_n_u_intercept, __pyx_mstate->__pyx_n_u_forecast, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_j};
-    __pyx_mstate_global->__pyx_codeobj_tab[60] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_slope_pxi, __pyx_mstate->__pyx_n_u_linear_regression, __pyx_mstate->__pyx_kp_b_iso88591_1_q_wb_j_1_wb_WBa_j_1_b_Rq_5_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[60])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 2, 26, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 14};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_option, __pyx_mstate->__pyx_n_u_offset, __pyx_mstate->__pyx_n_u_ys, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_s, __pyx_mstate->__pyx_n_u_sx, __pyx_mstate->__pyx_n_u_sy, __pyx_mstate->__pyx_n_u_sxy, __pyx_mstate->__pyx_n_u_sx2, __pyx_mstate->__pyx_n_u_sy2, __pyx_mstate->__pyx_n_u_vxy, __pyx_mstate->__pyx_n_u_vxx, __pyx_mstate->__pyx_n_u_vyy, __pyx_mstate->__pyx_n_u_corr, __pyx_mstate->__pyx_n_u_slope, __pyx_mstate->__pyx_n_u_intercept, __pyx_mstate->__pyx_n_u_forecast, __pyx_mstate->__pyx_n_u_mse, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_j};
+    __pyx_mstate_global->__pyx_codeobj_tab[60] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_linreg_pxi, __pyx_mstate->__pyx_n_u_linear_regression, __pyx_mstate->__pyx_kp_b_iso88591_1_q_wb_j_1_wb_WBa_j_1_b_Rq_5_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[60])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 106};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period};
-    __pyx_mstate_global->__pyx_codeobj_tab[61] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_slope_pxi, __pyx_mstate->__pyx_n_u_calc_slope, __pyx_mstate->__pyx_kp_b_iso88591_q_AXWHG1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[61])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 111};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_offset};
+    __pyx_mstate_global->__pyx_codeobj_tab[61] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_linreg_pxi, __pyx_mstate->__pyx_n_u_calc_linreg, __pyx_mstate->__pyx_kp_b_iso88591_AXWHG87, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[61])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 117};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 127};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period};
-    __pyx_mstate_global->__pyx_codeobj_tab[62] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_slope_pxi, __pyx_mstate->__pyx_n_u_calc_rvalue, __pyx_mstate->__pyx_kp_b_iso88591_AXWHG1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[62])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[62] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_linreg_pxi, __pyx_mstate->__pyx_n_u_calc_linreg_slope, __pyx_mstate->__pyx_kp_b_iso88591_a_AXWHG1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[62])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 138};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period};
+    __pyx_mstate_global->__pyx_codeobj_tab[63] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_linreg_pxi, __pyx_mstate->__pyx_n_u_calc_linreg_rvalue, __pyx_mstate->__pyx_kp_b_iso88591_q_AXWHG1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[63])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 149};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period};
+    __pyx_mstate_global->__pyx_codeobj_tab[64] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_linreg_pxi, __pyx_mstate->__pyx_n_u_calc_linreg_rmse, __pyx_mstate->__pyx_kp_b_iso88591_Q_AXWHG1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[64])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 2, 38, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 14};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_option, __pyx_mstate->__pyx_n_u_offset, __pyx_mstate->__pyx_n_u_ys, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_xd, __pyx_mstate->__pyx_n_u_yd, __pyx_mstate->__pyx_n_u_xd2, __pyx_mstate->__pyx_n_u_s, __pyx_mstate->__pyx_n_u_sx, __pyx_mstate->__pyx_n_u_sx2, __pyx_mstate->__pyx_n_u_sx3, __pyx_mstate->__pyx_n_u_sx4, __pyx_mstate->__pyx_n_u_sy, __pyx_mstate->__pyx_n_u_sy2, __pyx_mstate->__pyx_n_u_sxy, __pyx_mstate->__pyx_n_u_sx2y, __pyx_mstate->__pyx_n_u_vxy, __pyx_mstate->__pyx_n_u_vxx, __pyx_mstate->__pyx_n_u_vyy, __pyx_mstate->__pyx_n_u_vxx2, __pyx_mstate->__pyx_n_u_vx2y, __pyx_mstate->__pyx_n_u_vx2x2, __pyx_mstate->__pyx_n_u_vzz, __pyx_mstate->__pyx_n_u_vuu, __pyx_mstate->__pyx_n_u_vzu, __pyx_mstate->__pyx_n_u_mse, __pyx_mstate->__pyx_n_u_denom, __pyx_mstate->__pyx_n_u_slope, __pyx_mstate->__pyx_n_u_curve, __pyx_mstate->__pyx_n_u_intercept, __pyx_mstate->__pyx_n_u_forecast, __pyx_mstate->__pyx_n_u_i};
+    __pyx_mstate_global->__pyx_codeobj_tab[65] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_quadreg_pxi, __pyx_mstate->__pyx_n_u_quadratic_regression, __pyx_mstate->__pyx_kp_b_iso88591_4N_wb_j_1_wb_WBa_j_1_b_Rq_5_r_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[65])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 128};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_offset};
-    __pyx_mstate_global->__pyx_codeobj_tab[63] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_slope_pxi, __pyx_mstate->__pyx_n_u_calc_tsf, __pyx_mstate->__pyx_kp_b_iso88591_Q_AXWHG87, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[63])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[66] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_quadreg_pxi, __pyx_mstate->__pyx_n_u_calc_quadreg, __pyx_mstate->__pyx_kp_b_iso88591_q_xwhgQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[66])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 2, 34, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 11};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_option, __pyx_mstate->__pyx_n_u_offset, __pyx_mstate->__pyx_n_u_ys, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_xd, __pyx_mstate->__pyx_n_u_yd, __pyx_mstate->__pyx_n_u_xd2, __pyx_mstate->__pyx_n_u_s, __pyx_mstate->__pyx_n_u_sx, __pyx_mstate->__pyx_n_u_sx2, __pyx_mstate->__pyx_n_u_sx3, __pyx_mstate->__pyx_n_u_sx4, __pyx_mstate->__pyx_n_u_sy, __pyx_mstate->__pyx_n_u_sy2, __pyx_mstate->__pyx_n_u_sxy, __pyx_mstate->__pyx_n_u_sx2y, __pyx_mstate->__pyx_n_u_vxy, __pyx_mstate->__pyx_n_u_vxx, __pyx_mstate->__pyx_n_u_vyy, __pyx_mstate->__pyx_n_u_vxx2, __pyx_mstate->__pyx_n_u_vx2y, __pyx_mstate->__pyx_n_u_vx2x2, __pyx_mstate->__pyx_n_u_denom, __pyx_mstate->__pyx_n_u_slope, __pyx_mstate->__pyx_n_u_curve, __pyx_mstate->__pyx_n_u_intercept, __pyx_mstate->__pyx_n_u_forecast, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[64] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_curve_pxi, __pyx_mstate->__pyx_n_u_quadratic_regression, __pyx_mstate->__pyx_kp_b_iso88591_4N_wb_j_1_wb_WBa_j_1_b_Rq_5_r_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[64])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 106};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 143};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period};
-    __pyx_mstate_global->__pyx_codeobj_tab[65] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_curve_pxi, __pyx_mstate->__pyx_n_u_calc_curve, __pyx_mstate->__pyx_kp_b_iso88591_q_q_xwa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[65])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[67] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_quadreg_pxi, __pyx_mstate->__pyx_n_u_calc_quadreg_curve, __pyx_mstate->__pyx_kp_b_iso88591_q_q_xwa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[67])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 112};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 154};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_offset};
-    __pyx_mstate_global->__pyx_codeobj_tab[66] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_curve_pxi, __pyx_mstate->__pyx_n_u_calc_qsf, __pyx_mstate->__pyx_kp_b_iso88591_Q_q_xwhgQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[66])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[68] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_quadreg_pxi, __pyx_mstate->__pyx_n_u_calc_quadreg_slope, __pyx_mstate->__pyx_kp_b_iso88591_q_q_xwhgQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[68])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 169};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period};
+    __pyx_mstate_global->__pyx_codeobj_tab[69] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_quadreg_pxi, __pyx_mstate->__pyx_n_u_calc_quadreg_rvalue, __pyx_mstate->__pyx_kp_b_iso88591_q_xwa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[69])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 182};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_period};
+    __pyx_mstate_global->__pyx_codeobj_tab[70] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_quadreg_pxi, __pyx_mstate->__pyx_n_u_calc_quadreg_rmse, __pyx_mstate->__pyx_kp_b_iso88591_a_q_xwa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[70])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 14, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 6};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_prices, __pyx_mstate->__pyx_n_u_period, __pyx_mstate->__pyx_n_u_fastn, __pyx_mstate->__pyx_n_u_slown, __pyx_mstate->__pyx_n_u_high, __pyx_mstate->__pyx_n_u_low, __pyx_mstate->__pyx_n_u_close, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_hi, __pyx_mstate->__pyx_n_u_lo, __pyx_mstate->__pyx_n_u_fastk, __pyx_mstate->__pyx_n_u_slowk, __pyx_mstate->__pyx_n_u_slowd, __pyx_mstate->__pyx_n_u_result};
-    __pyx_mstate_global->__pyx_codeobj_tab[67] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_stoch_pxi, __pyx_mstate->__pyx_n_u_calc_stoch, __pyx_mstate->__pyx_kp_b_iso88591_Q_6_1_r_81F_Q_Zq_e1_q_9AWA_CvRt, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[67])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[71] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_stoch_pxi, __pyx_mstate->__pyx_n_u_calc_stoch, __pyx_mstate->__pyx_kp_b_iso88591_Q_6_1_r_81F_Q_Zq_e1_q_9AWA_CvRt, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[71])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_xs, __pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_output, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_streak, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[68] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_streak_pxi, __pyx_mstate->__pyx_n_u_calc_streak, __pyx_mstate->__pyx_kp_b_iso88591_b_Rq_5_r_A_E_aq_Baq_vRq_5_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[68])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[72] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_mintalib_cython_streak_pxi, __pyx_mstate->__pyx_n_u_calc_streak, __pyx_mstate->__pyx_kp_b_iso88591_b_Rq_5_r_A_E_aq_Baq_vRq_5_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[72])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;

@@ -147,10 +147,6 @@ Yields a value of 1 at the point where series crosses under level
 
 
 
-### `curve(series, period: int = 20)`
-
-Curve (quadratic regression)
-
 ### `dema(series, period: int)`
 
 Double Exponential Moving Average
@@ -274,6 +270,50 @@ Lag Function
 
 ###### Arguments:
  - **period (int):**  time period, required
+
+
+
+### `linreg(series, period: int = 20, offset: int = 0)`
+
+Linear Regression (least squares moving average)
+
+Value of the regression line at the current bar,
+with `offset` projecting the line forward.
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+ - **offset (int):**  forecast offset, default 0
+
+
+
+### `linreg_rmse(series, period: int = 20)`
+
+Linear Regression Root Mean Square Error
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+### `linreg_rvalue(series, period: int = 20)`
+
+Linear Regression R-Value
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+### `linreg_slope(series, period: int = 20)`
+
+Linear Regression Slope
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
 
 
 
@@ -434,13 +474,63 @@ Generic Price
 
 
 
-### `qsf(series, period: int = 20, offset: int = 0)`
+### `quadreg(series, period: int = 20, offset: int = 0)`
 
-Quadratic Series Forecast (quadratic regression)
+Quadratic Regression (parabolic moving average)
+
+Value of the regression parabola at the current bar,
+with `offset` projecting the parabola forward.
 
 
 ###### Arguments:
  - **period (int):**  time period, default 20
+ - **offset (int):**  forecast offset, default 0
+
+
+
+### `quadreg_curve(series, period: int = 20)`
+
+Quadratic Regression Curve
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+### `quadreg_rmse(series, period: int = 20)`
+
+Quadratic Regression Root Mean Square Error
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+### `quadreg_rvalue(series, period: int = 20)`
+
+Quadratic Regression R-Value
+
+Partial correlation of the quadratic term, given the linear term.
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+### `quadreg_slope(series, period: int = 20, offset: int = 0)`
+
+Quadratic Regression Slope
+
+Slope of the regression parabola at the current bar,
+with `offset` projecting the slope forward.
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+ - **offset (int):**  forecast offset, default 0
 
 
 
@@ -473,16 +563,6 @@ Relative Strength Index
 
 
 
-### `rvalue(series, period: int = 20)`
-
-R-Value (linear regression)
-
-
-###### Arguments:
- - **period (int):**  time period, default 20
-
-
-
 ### `sar(prices, afs: float = 0.02, maxaf: float = 0.2)`
 
 Parabolic Stop and Reverse
@@ -497,16 +577,6 @@ Parabolic Stop and Reverse
 ### `sign(series)`
 
 Sign
-
-### `slope(series, period: int = 20)`
-
-Slope (linear regression)
-
-
-###### Arguments:
- - **period (int):**  time period, default 20
-
-
 
 ### `sma(series, period: int)`
 
@@ -584,16 +654,6 @@ True Range
 ###### Arguments:
  - **log_prices (bool):**  whether to apply log to prices before calculation
  - **percent (bool):**  result as percentage of price
-
-
-
-### `tsf(series, period: int = 20, offset: int = 0)`
-
-Time Series Forecast (linear regression)
-
-
-###### Arguments:
- - **period (int):**  time period, default 20
 
 
 

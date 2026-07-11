@@ -159,10 +159,6 @@ Yields a value of 1 at the point where series crosses under level
 
 
 
-### `CURVE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
-
-Curve (quadratic regression)
-
 ### `DEMA(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 Double Exponential Moving Average
@@ -286,6 +282,50 @@ Lag Function
 
 ###### Arguments:
  - **period (int):**  time period, required
+
+
+
+### `LINREG(period: int = 20, offset: int = 0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+
+Linear Regression (least squares moving average)
+
+Value of the regression line at the current bar,
+with `offset` projecting the line forward.
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+ - **offset (int):**  forecast offset, default 0
+
+
+
+### `LINREG_RMSE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+
+Linear Regression Root Mean Square Error
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+### `LINREG_RVALUE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+
+Linear Regression R-Value
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+### `LINREG_SLOPE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+
+Linear Regression Slope
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
 
 
 
@@ -446,13 +486,63 @@ Generic Price
 
 
 
-### `QSF(period: int = 20, offset: int = 0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+### `QUADREG(period: int = 20, offset: int = 0, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
-Quadratic Series Forecast (quadratic regression)
+Quadratic Regression (parabolic moving average)
+
+Value of the regression parabola at the current bar,
+with `offset` projecting the parabola forward.
 
 
 ###### Arguments:
  - **period (int):**  time period, default 20
+ - **offset (int):**  forecast offset, default 0
+
+
+
+### `QUADREG_CURVE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+
+Quadratic Regression Curve
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+### `QUADREG_RMSE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+
+Quadratic Regression Root Mean Square Error
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+### `QUADREG_RVALUE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+
+Quadratic Regression R-Value
+
+Partial correlation of the quadratic term, given the linear term.
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
+
+### `QUADREG_SLOPE(period: int = 20, offset: int = 0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+
+Quadratic Regression Slope
+
+Slope of the regression parabola at the current bar,
+with `offset` projecting the slope forward.
+
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+ - **offset (int):**  forecast offset, default 0
 
 
 
@@ -485,16 +575,6 @@ Relative Strength Index
 
 
 
-### `RVALUE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
-
-R-Value (linear regression)
-
-
-###### Arguments:
- - **period (int):**  time period, default 20
-
-
-
 ### `SAR(afs: float = 0.02, maxaf: float = 0.2, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 Parabolic Stop and Reverse
@@ -509,16 +589,6 @@ Parabolic Stop and Reverse
 ### `SIGN(*, src: polars.Expr | str | None = None) -> polars.Expr`
 
 Sign
-
-### `SLOPE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
-
-Slope (linear regression)
-
-
-###### Arguments:
- - **period (int):**  time period, default 20
-
-
 
 ### `SMA(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
@@ -596,16 +666,6 @@ True Range
 ###### Arguments:
  - **log_prices (bool):**  whether to apply log to prices before calculation
  - **percent (bool):**  result as percentage of price
-
-
-
-### `TSF(period: int = 20, offset: int = 0, *, src: polars.Expr | str | None = None) -> polars.Expr`
-
-Time Series Forecast (linear regression)
-
-
-###### Arguments:
- - **period (int):**  time period, default 20
 
 
 

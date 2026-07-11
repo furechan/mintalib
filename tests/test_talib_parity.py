@@ -9,7 +9,7 @@ Convergence tests (checked from bar 200 onward):
   ATR - same algorithm as talib, values converge after EMA warm-up (~150 bars)
   KAMA, SAR                        - different algorithm
   STOCH                            - different default parameters
-  TSF                              - talib projects one bar ahead (use offset=1 to match)
+  LINREG                           - talib TSF projects one bar ahead (use offset=1 to match)
   ROC                              - talib multiplies by 100; mintalib returns fraction
   BBANDS                           - talib uses close; mintalib uses typical price
   BOP                              - talib has no period smoothing
@@ -125,14 +125,15 @@ def test_atr(prices, hlcv):
     check(talib.ATR(h, lo, c, 14)[200:], core.calc_atr(prices, 14)[200:])
 
 
-def test_slope(prices):
+def test_linreg_slope(prices):
     c = prices.close.values.astype(float)
-    check(talib.LINEARREG_SLOPE(c, 20), core.calc_slope(c, 20))
+    check(talib.LINEARREG_SLOPE(c, 20), core.calc_linreg_slope(c, 20))
 
 
-def test_tsf(prices):
+def test_linreg(prices):
     c = prices.close.values.astype(float)
+    check(talib.LINEARREG(c, 20), core.calc_linreg(c, 20))
     # talib TSF projects one bar ahead; match with offset=1
-    check(talib.TSF(c, 20), core.calc_tsf(c, 20, offset=1))
+    check(talib.TSF(c, 20), core.calc_linreg(c, 20, offset=1))
 
 

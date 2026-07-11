@@ -1,10 +1,11 @@
-""" Slope (linear regression) """
+""" Linear Regression """
 
 
 cdef enum:
     LINREG_SLOPE = 0
     LINREG_INTERCEPT = 1
     LINREG_RVALUE = 2
+    LINREG_RMSE = 3
     LINREG_FORECAST = 4
     LINREG_BADOPTION = 5
 
@@ -36,7 +37,7 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
     cdef double x, y
     cdef double s, sx, sy, sxy, sx2, sy2
     cdef double vxy, vxx, vyy
-    cdef double corr, slope, intercept, forecast
+    cdef double corr, slope, intercept, forecast, mse
 
     cdef long i = 0, j = 0
 
@@ -93,6 +94,11 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
                 output[i] = corr
                 continue
 
+            if option == LINREG_RMSE:
+                mse = vyy * (1 - corr * corr)
+                output[i] = math.sqrt(mse) if mse >= 0 else NAN
+                continue
+
             if option == LINREG_FORECAST:
                 forecast = intercept + slope * (i + offset)
                 output[i] = forecast
@@ -102,11 +108,26 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
 
 
 
-
-def calc_slope(series, long period=20):
+def calc_linreg(series, long period=20, long offset=0):
     """
-    Slope (linear regression)
-    
+    Linear Regression (least squares moving average)
+
+    Value of the regression line at the current bar,
+    with `offset` projecting the line forward.
+
+    Args:
+        period (int): time period, default 20
+        offset (int): forecast offset, default 0
+    """
+
+    return linear_regression(series, period=period, offset=offset, option=LINREG_FORECAST)
+
+
+
+def calc_linreg_slope(series, long period=20):
+    """
+    Linear Regression Slope
+
     Args:
         period (int): time period, default 20
     """
@@ -114,10 +135,10 @@ def calc_slope(series, long period=20):
     return linear_regression(series, period=period, option=LINREG_SLOPE)
 
 
-def calc_rvalue(series, long period=20):
+def calc_linreg_rvalue(series, long period=20):
     """
-    R-Value (linear regression)
-    
+    Linear Regression R-Value
+
     Args:
         period (int): time period, default 20
     """
@@ -125,14 +146,13 @@ def calc_rvalue(series, long period=20):
     return linear_regression(series, period=period, option=LINREG_RVALUE)
 
 
-def calc_tsf(series, long period=20, long offset=0):
+def calc_linreg_rmse(series, long period=20):
     """
-    Time Series Forecast (linear regression)
-    
+    Linear Regression Root Mean Square Error
+
     Args:
         period (int): time period, default 20
     """
 
-    return linear_regression(series, period=period, offset=offset, option=LINREG_FORECAST)
-
+    return linear_regression(series, period=period, option=LINREG_RMSE)
 

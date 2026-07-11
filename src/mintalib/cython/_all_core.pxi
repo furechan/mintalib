@@ -56,8 +56,8 @@ include "ppo.pxi"
 include "macd.pxi"
 include "macdv.pxi"
 
-include "slope.pxi"
-include "curve.pxi"
+include "linreg.pxi"
+include "quadreg.pxi"
 
 
 include "stoch.pxi"

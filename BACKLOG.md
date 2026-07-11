@@ -4,5 +4,5 @@ Items decided or considered but not scheduled. Add new items at the end.
 
 ## Indicators
 
-- Adopt the regression naming scheme settled in barcalc/bearta (python-dev, 2026-07-03): bare `LINREG(period, offset)` is the regression-line overlay (least squares moving average — == TA-Lib `LINEARREG`, `offset=1` == `TSF`; matches TradingView `ta.linreg`), diagnostics are family-prefixed (`LINREG_SLOPE`, `LINREG_RVALUE`, `LINREG_RMSE`), and a `QUADREG` family mirrors it (`QUADREG`, `QUADREG_CURVE`, ...). Would retire/deprecate the flat `SLOPE`, `RVALUE`, `ERROR`, `TSF`, `CURVE` — breaking rename for a published package, so needs deprecation aliases and a major-ish version bump.
+- ~~Adopt the barcalc/bearta regression naming scheme and diagnostics~~ — done in 0.1.0 (2026-07-11): family-prefixed rename (`LINREG`, `LINREG_SLOPE`, `LINREG_RVALUE`, `QUADREG`, `QUADREG_CURVE`) as a clean break without deprecation aliases, plus the missing diagnostics (`LINREG_RMSE`, `QUADREG_SLOPE`, `QUADREG_RVALUE`, `QUADREG_RMSE`). Deviation from barcalc: `QUADREG_SLOPE` returns the slope at the current bar (not the window midpoint) and takes an `offset` parameter.
 
