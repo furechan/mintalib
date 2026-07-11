@@ -10,37 +10,43 @@ from typing import ParamSpec, Callable, Any
 P = ParamSpec("P")
 
 
-def _column_accessor(data):
+def _get_prices(data):
+    """Column accessor for prices data, raises TypeError otherwise"""
+
     if isinstance(data, dict):
         return data
 
     if isinstance(data, np.ndarray):
         if data.dtype.names is not None:
             return data
-        return None
 
-    if hasattr(data, 'columns'):
+    elif hasattr(data, 'columns'):
         return data
 
-    if hasattr(data, 'dtype') and data.dtype.__class__.__name__ == 'Struct':
+    elif hasattr(data, 'dtype') and data.dtype.__class__.__name__ == 'Struct':
         return data.struct
 
-    return None
+    raise TypeError(f"Expected a prices data frame, got {type(data).__name__}!")
 
 
 def _get_series(data, item: str | None = None, *, default_item: str = 'close'):
-    columns = _column_accessor(data)
+    try:
+        columns = _get_prices(data)
+    except TypeError:
+        if item is not None:
+            tname = type(data).__name__
+            raise TypeError(
+                f"cannot select column {item!r} from {tname} data"
+            ) from None
+        return data
 
-    if columns is not None:
-        if item is None:
-            item = default_item
+    if item is None:
+        item = default_item
+
+    try:
         return columns[item]
-
-    if item is not None:
-        tname = type(data).__name__
-        raise ValueError(f"Cannot get series from {tname}")
-
-    return data
+    except KeyError:
+        raise KeyError(f"column {item!r} not found in prices data") from None
 
 
 def _wrap_result(result, source, name: str | None = None):
@@ -86,7 +92,7 @@ def wrap_function(calc_func) -> Callable[[Callable[P, Any]], Callable[P, Any]]:
             if first_param == 'series':
                 data = _get_series(srcdata, item=item)
             else:
-                data = _column_accessor(srcdata)
+                data = _get_prices(srcdata)
 
             result = calc_func(data, *args, **kwargs)
             return _wrap_result(result, srcdata)
