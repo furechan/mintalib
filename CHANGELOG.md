@@ -1,6 +1,7 @@
 # Change Log
 
 ## 0.0.37
+- Renamed `meta/` to `notes/` for internal notes and moved `paramspec-proposal.md` out of `docs/`, which now contains only generated user-facing API docs
 - Docs now render Google-style docstring sections properly: pdoc runs with `-d google` in the Pages workflow, and the markdown docs generator converts `Args:` sections to markdown via `pdoc.docstrings.google` (previously they rendered as flat text or code blocks)
 - Normalized docstring `Args:` entries to standard Google style (`period (int): ...` — no space before the colon) across all cython `.pxi` files
 - Removed the Cython `embedsignature` directive: docstrings no longer start with a shadow `calc_*` signature line, so generated docs (pdoc and markdown) show only the real function signature. Introspection is unaffected — `binding=True` already provides `inspect.signature` support, and `core.pyi` provides the typed stubs
