@@ -1,6 +1,7 @@
 # Change Log
 
 ## 0.0.36
+- README indicators table now includes an Input column (Prices/Series), derived from each core function's first parameter
 - RSI now bridges nulls like EMA/RMA: a NaN input no longer resets the previous price, so the price move across a gap is measured (delta taken from the last valid value). Bridging a null is now equivalent to removing it from the series.
 
 ## 0.0.35

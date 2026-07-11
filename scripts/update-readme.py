@@ -2,6 +2,7 @@
 
 import re
 import toml
+import inspect
 import posixpath
 
 from pathlib import Path
@@ -26,6 +27,19 @@ def get_project_url(pyproject=PYPROJECT):
     return jquery(config, "project.urls.homepage")
 
 
+def get_input(name):
+    """Input type (Prices/Series) from the core function's first parameter"""
+    from mintalib import core
+
+    func = getattr(core, f"calc_{name.lower()}", None) or getattr(
+        core, f"flag_{name.lower()}", None
+    )
+    if func is None:
+        return "Prices"  # EVAL has no core function, evaluates against prices
+    param = next(iter(inspect.signature(func).parameters), "")
+    return param.capitalize()
+
+
 def get_info(func):
     info = dict(Name=func.__name__)
     doc = func.__doc__ or ""
@@ -33,6 +47,7 @@ def get_info(func):
     if lines and lines[0].startswith(("calc_", "flag_")):
         lines = lines[1:]
     description = lines[0] if lines else ""
+    info.update(Input=get_input(func.__name__))
     if description:
         info.update(Description=description)
     return info

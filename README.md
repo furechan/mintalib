@@ -102,72 +102,72 @@ result = prices.assign(
 
 ## List of Indicators
 
-| Name       | Description                                                   |
-|:-----------|:--------------------------------------------------------------|
-| ABS        | Absolute Value                                                |
-| ADX        | Average Directional Index                                     |
-| ALMA       | Arnaud Legoux Moving Average                                  |
-| ATR        | Average True Range                                            |
-| AVGPRICE   | Average Price                                                 |
-| BBANDS     | Bollinger Bands                                               |
-| BBP        | Bollinger Bands Percent (%B)                                  |
-| BBW        | Bollinger Bands Width                                         |
-| BOP        | Balance of Power                                              |
-| CCI        | Commodity Channel Index                                       |
-| CLAG       | Confirmation Lag                                              |
-| CMF        | Chaikin Money Flow                                            |
-| CROSSOVER  | Cross Over                                                    |
-| CROSSUNDER | Cross Under                                                   |
-| CURVE      | Curve (quadratic regression)                                  |
-| DEMA       | Double Exponential Moving Average                             |
-| DIFF       | Difference                                                    |
-| DMI        | Directional Movement Indicator                                |
-| DONCHIAN   | Donchian Channel                                              |
-| EMA        | Exponential Moving Average                                    |
-| EVAL       | Evaluate a pandas expression against a DataFrame's columns.   |
-| EXP        | Exponential                                                   |
-| FLAG       | Flag Value                                                    |
-| HMA        | Hull Moving Average                                           |
-| KAMA       | Kaufman Adaptive Moving Average                               |
-| KELTNER    | Keltner Channel                                               |
-| KER        | Kaufman Efficiency Ratio                                      |
-| LAG        | Lag Function                                                  |
-| LOG        | Logarithm                                                     |
-| LROC       | Logarithmic Rate of Change                                    |
-| MACD       | Moving Average Convergence Divergence                         |
-| MACDV      | Moving Average Convergence Divergence - Volatility Normalized |
-| MAD        | Rolling Mean Absolute Deviation                               |
-| MAV        | Generic Moving Average                                        |
-| MAX        | Rolling Maximum                                               |
-| MDI        | Minus Directional Index                                       |
-| MFI        | Money Flow Index                                              |
-| MIDPRICE   | Mid Price                                                     |
-| MIN        | Rolling Minimum                                               |
-| NATR       | Normalized Average True Range                                 |
-| PDI        | Plus Directional Index                                        |
-| PPO        | Price Percentage Oscillator                                   |
-| PRICE      | Generic Price                                                 |
-| QSF        | Quadratic Series Forecast (quadratic regression)              |
-| RMA        | Rolling Moving Average (RSI style)                            |
-| ROC        | Rate of Change                                                |
-| RSI        | Relative Strength Index                                       |
-| RVALUE     | R-Value (linear regression)                                   |
-| SAR        | Parabolic Stop and Reverse                                    |
-| SIGN       | Sign                                                          |
-| SLOPE      | Slope (linear regression)                                     |
-| SMA        | Simple Moving Average                                         |
-| STDEV      | Standard Deviation                                            |
-| STEP       | Step Function                                                 |
-| STOCH      | Stochastic Oscillator                                         |
-| STREAK     | Consecutive streak of values above zero                       |
-| SUM        | Rolling sum                                                   |
-| TEMA       | Triple Exponential Moving Average                             |
-| TRANGE     | True Range                                                    |
-| TSF        | Time Series Forecast (linear regression)                      |
-| TYPPRICE   | Typical Price                                                 |
-| UPDOWN     | Flag for value crossing up & down levels                      |
-| WCLPRICE   | Weighted Close Price                                          |
-| WMA        | Weighted Moving Average                                       |
+| Name       | Input   | Description                                                   |
+|:-----------|:--------|:--------------------------------------------------------------|
+| ABS        | Series  | Absolute Value                                                |
+| ADX        | Prices  | Average Directional Index                                     |
+| ALMA       | Series  | Arnaud Legoux Moving Average                                  |
+| ATR        | Prices  | Average True Range                                            |
+| AVGPRICE   | Prices  | Average Price                                                 |
+| BBANDS     | Prices  | Bollinger Bands                                               |
+| BBP        | Prices  | Bollinger Bands Percent (%B)                                  |
+| BBW        | Prices  | Bollinger Bands Width                                         |
+| BOP        | Prices  | Balance of Power                                              |
+| CCI        | Prices  | Commodity Channel Index                                       |
+| CLAG       | Series  | Confirmation Lag                                              |
+| CMF        | Prices  | Chaikin Money Flow                                            |
+| CROSSOVER  | Series  | Cross Over                                                    |
+| CROSSUNDER | Series  | Cross Under                                                   |
+| CURVE      | Series  | Curve (quadratic regression)                                  |
+| DEMA       | Series  | Double Exponential Moving Average                             |
+| DIFF       | Series  | Difference                                                    |
+| DMI        | Prices  | Directional Movement Indicator                                |
+| DONCHIAN   | Prices  | Donchian Channel                                              |
+| EMA        | Series  | Exponential Moving Average                                    |
+| EVAL       | Prices  | Evaluate a pandas expression against a DataFrame's columns.   |
+| EXP        | Series  | Exponential                                                   |
+| FLAG       | Series  | Flag Value                                                    |
+| HMA        | Series  | Hull Moving Average                                           |
+| KAMA       | Series  | Kaufman Adaptive Moving Average                               |
+| KELTNER    | Prices  | Keltner Channel                                               |
+| KER        | Series  | Kaufman Efficiency Ratio                                      |
+| LAG        | Series  | Lag Function                                                  |
+| LOG        | Series  | Logarithm                                                     |
+| LROC       | Series  | Logarithmic Rate of Change                                    |
+| MACD       | Series  | Moving Average Convergence Divergence                         |
+| MACDV      | Prices  | Moving Average Convergence Divergence - Volatility Normalized |
+| MAD        | Series  | Rolling Mean Absolute Deviation                               |
+| MAV        | Series  | Generic Moving Average                                        |
+| MAX        | Series  | Rolling Maximum                                               |
+| MDI        | Prices  | Minus Directional Index                                       |
+| MFI        | Prices  | Money Flow Index                                              |
+| MIDPRICE   | Prices  | Mid Price                                                     |
+| MIN        | Series  | Rolling Minimum                                               |
+| NATR       | Prices  | Normalized Average True Range                                 |
+| PDI        | Prices  | Plus Directional Index                                        |
+| PPO        | Series  | Price Percentage Oscillator                                   |
+| PRICE      | Prices  | Generic Price                                                 |
+| QSF        | Series  | Quadratic Series Forecast (quadratic regression)              |
+| RMA        | Series  | Rolling Moving Average (RSI style)                            |
+| ROC        | Series  | Rate of Change                                                |
+| RSI        | Series  | Relative Strength Index                                       |
+| RVALUE     | Series  | R-Value (linear regression)                                   |
+| SAR        | Prices  | Parabolic Stop and Reverse                                    |
+| SIGN       | Series  | Sign                                                          |
+| SLOPE      | Series  | Slope (linear regression)                                     |
+| SMA        | Series  | Simple Moving Average                                         |
+| STDEV      | Series  | Standard Deviation                                            |
+| STEP       | Series  | Step Function                                                 |
+| STOCH      | Prices  | Stochastic Oscillator                                         |
+| STREAK     | Series  | Consecutive streak of values above zero                       |
+| SUM        | Series  | Rolling sum                                                   |
+| TEMA       | Series  | Triple Exponential Moving Average                             |
+| TRANGE     | Prices  | True Range                                                    |
+| TSF        | Series  | Time Series Forecast (linear regression)                      |
+| TYPPRICE   | Prices  | Typical Price                                                 |
+| UPDOWN     | Series  | Flag for value crossing up & down levels                      |
+| WCLPRICE   | Prices  | Weighted Close Price                                          |
+| WMA        | Series  | Weighted Moving Average                                       |
 
 
 ## Example Notebooks
