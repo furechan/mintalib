@@ -41,19 +41,19 @@ def test_prices_function_rejects_series():
     with pytest.raises(TypeError, match="Expected a prices data frame"):
         functions.atr(prices["close"])
 
-    with pytest.raises(TypeError, match="Expected a prices data frame"):
+    with pytest.raises(TypeError, match="named fields"):
         functions.atr(np.asarray(prices["close"]))
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
-def test_series_function_missing_column():
+def test_series_function_rejects_prices():
     prices = sample_prices()
 
-    with pytest.raises(KeyError, match="column 'close' not found"):
-        functions.sma(prices.drop(columns="close"), 20)
+    with pytest.raises(TypeError, match="wrong shape"):
+        functions.sma(prices, 20)
 
-    with pytest.raises(KeyError, match="column 'foo' not found"):
-        functions.sma(prices, 20, item="foo")
+    with pytest.raises(TypeError, match="Expected a series"):
+        functions.sma({"close": [1.0, 2.0, 3.0]}, 20)
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
@@ -64,3 +64,13 @@ def test_series_function_accepts_series():
 
     assert functions.sma(prices["close"], 20) is not None
     assert functions.sma(np.asarray(prices["close"]), 20) is not None
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_price_item_kwarg():
+    import numpy as np
+
+    prices = sample_prices()
+
+    result = functions.price(prices, item="high")
+    assert np.allclose(result, prices["high"], equal_nan=True)

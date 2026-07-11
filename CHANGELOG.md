@@ -1,7 +1,8 @@
 # Change Log
 
 ## 0.0.36
-- Functions now raise useful errors on wrong input: passing series data to a prices function raises `TypeError: Expected a prices data frame` (was a cryptic `'NoneType' object is not subscriptable`), and a missing column raises `KeyError` with the column name in context (renamed internal `_column_accessor` to `_get_prices`, which now raises instead of returning None)
+- Functions now validate their input and raise useful errors: passing series data to a prices function raises `TypeError: Expected a prices data frame` (was a cryptic `'NoneType' object is not subscriptable`), and series functions require 1D series data — a DataFrame no longer auto-selects the `close` column (use `prices['close']` explicitly; indicators keep the auto-select behavior)
+- Removed the undocumented `item` keyword from functions; this also fixes `price(prices, item=...)` silently ignoring the keyword form of its `item` parameter
 - README indicators table now includes an Input column (Prices/Series), derived from each core function's first parameter
 - RSI now bridges nulls like EMA/RMA: a NaN input no longer resets the previous price, so the price move across a gap is measured (delta taken from the last valid value). Bridging a null is now equivalent to removing it from the series.
 

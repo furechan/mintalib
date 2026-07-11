@@ -11,15 +11,17 @@ P = ParamSpec("P")
 
 
 def _get_prices(data):
-    """Column accessor for prices data, raises TypeError otherwise"""
-
-    if isinstance(data, dict):
-        return data
+    """Get prices data frame, raises on error
+    
+    Accepts a pandas or polars data frame, or a structured numpy ndarray.
+    """
 
     if isinstance(data, np.ndarray):
         if data.dtype.names is not None:
             return data
-
+        else:
+            raise TypeError(f"Ndarray must have named fields to be used as data frame, got {data.dtype}!")
+   
     elif hasattr(data, 'columns'):
         return data
 
@@ -29,24 +31,23 @@ def _get_prices(data):
     raise TypeError(f"Expected a prices data frame, got {type(data).__name__}!")
 
 
-def _get_series(data, item: str | None = None, *, default_item: str = 'close'):
-    try:
-        columns = _get_prices(data)
-    except TypeError:
-        if item is not None:
-            tname = type(data).__name__
-            raise TypeError(
-                f"cannot select column {item!r} from {tname} data"
-            ) from None
-        return data
 
-    if item is None:
-        item = default_item
+def _get_series(data):
+    """Get series, raises on error
 
-    try:
-        return columns[item]
-    except KeyError:
-        raise KeyError(f"column {item!r} not found in prices data") from None
+    Accepts a 1-dimensional pandas or polars series, or a 1-dimensional numpy ndarray.
+    """
+
+    shape = getattr(data, "shape", ())
+
+    if not shape:
+        raise TypeError(f"Expected a series, got {type(data).__name__}!")
+
+    if len(shape) != 1:
+        raise TypeError(f"Series is wrong shape {shape}!")
+    
+    return data
+
 
 
 def _wrap_result(result, source, name: str | None = None):
@@ -87,10 +88,8 @@ def wrap_function(calc_func) -> Callable[[Callable[P, Any]], Callable[P, Any]]:
         sig = inspect.signature(func)
 
         def wrapper(srcdata, *args, **kwargs):
-            item = kwargs.pop('item', None)
-
             if first_param == 'series':
-                data = _get_series(srcdata, item=item)
+                data = _get_series(srcdata)
             else:
                 data = _get_prices(srcdata)
 
