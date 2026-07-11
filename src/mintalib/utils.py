@@ -7,6 +7,27 @@ def detect_backend(data) -> str:
     return (getattr(data, '__module__', None) or '').partition('.')[0]
 
 
+def normalize_prices(prices):
+    """Normalize prices dataframe with lower case column names (pandas or polars).
+
+    Renames columns to lower case, and the index name as well for pandas.
+    Returns a new dataframe, the original is left unchanged.
+    """
+
+    backend = detect_backend(prices)
+
+    if backend == 'pandas' and hasattr(prices, 'columns'):
+        def lower(name):
+            return name.lower() if isinstance(name, str) else name
+        return prices.rename(columns=str.lower).rename_axis(index=lower)
+
+    if backend == 'polars' and hasattr(prices, 'columns'):
+        mapping = {c: c.lower() for c in prices.columns if c != c.lower()}
+        return prices.rename(mapping) if mapping else prices
+
+    raise TypeError(f"Expected a pandas or polars dataframe, got {type(prices).__name__}!")
+
+
 def get_metadata(func, name: str, default=None):
     """get metadata for a function"""
     return getattr(func, 'metadata', {}).get(name, default)

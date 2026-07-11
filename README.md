@@ -6,47 +6,35 @@ This package offers a curated list of technical analysis indicators implemented 
 > This project is experimental and the interface is likely to change.
 
 
-## Installation
-
-Pick the backend you want to use — pandas and polars are both optional extras:
-
-```console
-pip install mintalib[pandas]          # pandas DataFrames
-pip install mintalib[polars]          # polars DataFrames
-pip install mintalib[pandas,polars]   # both
-```
-
-A bare `pip install mintalib` installs only numpy (the core computation layer).
-
-## Dependencies
-
-- python >= 3.10
-- numpy
-- pandas [optional]
-- polars [optional]
-
-
 ## Interfaces
 
-Mintalib provides three interfaces for different workflows:
+Mintalib offers three interfaces for different workflows:
 
-- **Functions** (`mintalib.functions`) — plain functions, useful for scripting or building custom pipelines (work with both pandas and polars)
-- **Polars Expressions** (`mintalib.expressions`) — composable polars expressions, best for polars-native workflows
-- **Indicators** (`mintalib.indicators`) — callable objects that bind a calculation with its parameters; **pandas only**
+- **Functions** (`mintalib.functions`) — concrete functions compatible with both polars and pandas.
+- **Polars Expressions** (`mintalib.expressions`) — Composable polars expression factory methods, best for polars-native workflows
+- **Pandas Indicators** (`mintalib.indicators`) — Pandas only composable indicatos that bind an indicators with their calculation parameters.
+
+
+## Conventions
+
+Prices data frames (either pandas or polars) are expeted to have lower case columns names `open`, `high`, `low`, `close`, `volume`. If your dataframe has different column name capitalization you can use the `normalize_prices` utility method to normalize the columns names.
+
+```python
+from mintalib.utils import normalize_prices
+
+prices = normalize_prices(rawprices)
+```
 
 
 ## Functions
 
-Calculation functions are available from the `mintalib.functions` module with names in lower case like `sma`, `atr`, `macd`, etc.
+Concrete functions are available from the `mintalib.functions` module with names in lower case like `sma`, `atr`, `macd`, etc.
 
-Functions are polyvalent. They can be applied equaly to pandas or polars dataframes and series.
+Functions are polyvalent, they can be applied equaly to pandas or polars data interchangeably.
 
 The first parameter of a function is either `prices` or `series` depending on whether
 the function expects a dataframe of prices or a single series.
 
-A `prices` dataframe can be a pandas or polars dataframe. The column names for prices are expected to include `open`, `high`, `low`, `close`, `volume` all in **lower case**.
-
-A `series` can be a pandas/polars series or a numpy array.
 
 ```python
 import mintalib.functions as ta
@@ -61,10 +49,12 @@ atr = ta.atr(prices, 14)
 ## Expressions
 
 Mintalib offers expression factory methods via the `mintalib.expressions` module with names in upper case like `EMA`, `SMA`, `ATR`, `MACD`, ...
+
 The methods accept a source expression as an optional keyword-only `src` parameter.
-The source expression can also be passed as the first parameter to facilitate the use with `pipe`, e.g. `EMA(20).pipe(ROC, 1)` applies `ROC(1)` on top of `EMA(20)`. Multi-column calculations like `MACD` return a polars struct expression.
 
 When no source is given, series-based expressions (e.g. `EMA`, `SMA`) default to the `close` column, while prices-based ones (e.g. `ATR`, `MACD`) read the full DataFrame.
+
+Multi-output calculations like `MACD` return a polars struct expression.
 
 ```python
 from mintalib.expressions import EMA, SMA, ATR, ROC, MACD
@@ -78,13 +68,17 @@ prices.with_columns(
 )
 ```
 
+The source expression can also be passed as the first parameter to facilitate pipelining with the polars `pipe` method., e.g. `EMA(20).pipe(ROC, 1)` applies `ROC(1)` on top of `EMA(20)`. 
+
+
+
 ## Indicators
 
-Indicators offer a composable interface where a calculation function is bound with its parameters into a callable object. Indicators are accessible from the `mintalib.indicators` module with names in upper case like `EMA`, `SMA`, `ATR`, `MACD`, etc ...
+Indicators offer a composable interface where a computation method is bound with its parameters into a callable object. Indicators are accessible from the `mintalib.indicators` module with names in upper case like `EMA`, `SMA`, `ATR`, `MACD`, etc ...
 
 Indicators work only on pandas DataFrames and Series.
 
-An indicator instance is callable: `SMA(50)(prices)` applies it to data. The pandas idiom `prices.pipe(SMA(50))` works equivalently.
+An indicator instance is callable, ss you can use it as a function: `SMA(50)(prices)`. 
 
 Indicators chain with `|`, where for example `EMA(20) | ROC(1)` means `ROC(1)` applied after `EMA(20)`. The `.then()` method is the fluent equivalent.
 
@@ -173,6 +167,27 @@ result = prices.assign(
 ## Example Notebooks
 
 Example notebooks are available in the `examples` folder.
+
+
+## Installation
+
+Pick the backend you want to use — pandas and polars are both optional extras:
+
+```console
+pip install mintalib[pandas]          # pandas DataFrames
+pip install mintalib[polars]          # polars DataFrames
+pip install mintalib[pandas,polars]   # both
+```
+
+A bare `pip install mintalib` installs only numpy (the core computation layer).
+
+## Dependencies
+
+- python >= 3.10
+- numpy
+- pandas [optional]
+- polars [optional]
+
 
 
 ## Related Projects
