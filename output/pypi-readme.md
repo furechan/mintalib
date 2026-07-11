@@ -6,15 +6,6 @@ This package offers a curated list of technical analysis indicators implemented 
 > This project is experimental and the interface is likely to change.
 
 
-## Installation
-
-```console
-pip install mintalib
-```
-
-The base install requires only numpy. Add `pandas` and/or `polars` to your environment depending on which interfaces you use.
-
-
 ## Interfaces
 
 Mintalib offers three interfaces for different workflows:
@@ -178,17 +169,16 @@ result = prices.assign(
 Example notebooks are available in the `examples` folder.
 
 
+
+
 ## Installation
 
-Pick the backend you want to use — pandas and polars are both optional extras:
-
 ```console
-pip install mintalib[pandas]          # pandas DataFrames
-pip install mintalib[polars]          # polars DataFrames
-pip install mintalib[pandas,polars]   # both
+pip install mintalib
 ```
 
-A bare `pip install mintalib` installs only numpy (the core computation layer).
+The base install includes only the numpy requirements. Add `pandas` and/or `polars` to your environment depending on which interfaces you want to use.
+
 
 ## Dependencies
 
