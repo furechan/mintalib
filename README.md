@@ -11,13 +11,13 @@ This package offers a curated list of technical analysis indicators implemented 
 Mintalib offers three interfaces for different workflows:
 
 - **Functions** (`mintalib.functions`) — concrete functions compatible with both polars and pandas.
-- **Polars Expressions** (`mintalib.expressions`) — Composable polars expression factory methods, best for polars-native workflows
-- **Pandas Indicators** (`mintalib.indicators`) — Pandas only composable indicatos that bind an indicators with their calculation parameters.
+- **Polars Expressions** (`mintalib.expressions`) — composable polars expression factory methods, best for polars-native workflows.
+- **Pandas Indicators** (`mintalib.indicators`) — pandas-only composable indicators that bind an indicator with its calculation parameters.
 
 
 ## Conventions
 
-Prices data frames (either pandas or polars) are expeted to have lower case columns names `open`, `high`, `low`, `close`, `volume`. If your dataframe has different column name capitalization you can use the `normalize_prices` utility method to normalize the columns names.
+Prices data frames (either pandas or polars) are expected to have lower case column names `open`, `high`, `low`, `close`, `volume`. If your dataframe has different column name capitalization you can use the `normalize_prices` utility function to normalize the column names.
 
 ```python
 from mintalib.utils import normalize_prices
@@ -30,7 +30,7 @@ prices = normalize_prices(rawprices)
 
 Concrete functions are available from the `mintalib.functions` module with names in lower case like `sma`, `atr`, `macd`, etc.
 
-Functions are polyvalent, they can be applied equaly to pandas or polars data interchangeably.
+Functions are polyvalent, they can be applied equally to pandas or polars data interchangeably.
 
 The first parameter of a function is either `prices` or `series` depending on whether
 the function expects a dataframe of prices or a single series.
