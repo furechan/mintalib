@@ -5,7 +5,7 @@ def calc_roc(series, long period=1):
     Rate of Change
     
     Args:
-        period (int) : time period, default 1
+        period (int): time period, default 1
         when negative the calculation is shifted back
     """
 

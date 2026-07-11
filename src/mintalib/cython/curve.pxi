@@ -13,7 +13,7 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
     Quadratic Regression
     
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
 
@@ -114,7 +114,7 @@ def calc_qsf(series, long period=20, long offset=0):
     Quadratic Series Forecast (quadratic regression)
     
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
     return quadratic_regression(series, period=period, offset=offset, option=QUADREG_FORECAST)

@@ -7,7 +7,7 @@ def calc_diff(series, long period=1):
     Difference between current value and the one offset by period
 
     Args:
-        period (int) : time period, default 1
+        period (int): time period, default 1
     """
 
     cdef const double[:] xs = np.asarray(series, float)

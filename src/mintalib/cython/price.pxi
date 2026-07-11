@@ -7,7 +7,7 @@ def calc_price(prices, item: str = None):
     Generic Price
 
     Args:
-        item (str) : price type, one of:
+        item (str): price type, one of:
             'open', 'high', 'low', 'close' (default),
             'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
             'mid' or 'hl2'    — mid price (high + low) / 2,

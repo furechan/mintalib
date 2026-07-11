@@ -8,7 +8,7 @@ def calc_donchian(prices, long period=20):
     Donchian Channel
 
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
     upper = calc_max(prices['high'], period)

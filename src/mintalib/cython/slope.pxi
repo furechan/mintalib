@@ -15,7 +15,7 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
     Linear Regression
     
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
     if period < 2:
@@ -108,7 +108,7 @@ def calc_slope(series, long period=20):
     Slope (linear regression)
     
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
     return linear_regression(series, period=period, option=LINREG_SLOPE)
@@ -119,7 +119,7 @@ def calc_rvalue(series, long period=20):
     R-Value (linear regression)
     
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
     return linear_regression(series, period=period, option=LINREG_RVALUE)
@@ -130,7 +130,7 @@ def calc_tsf(series, long period=20, long offset=0):
     Time Series Forecast (linear regression)
     
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
     return linear_regression(series, period=period, offset=offset, option=LINREG_FORECAST)

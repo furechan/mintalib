@@ -8,8 +8,8 @@ def calc_keltner(prices, long period = 20, double nbatr = 2.0):
     Keltner Channel
     
     Args:
-        period (int) : time period, default 20
-        nbatr (float) : channel width in number of atrs, default 2.0
+        period (int): time period, default 20
+        nbatr (float): channel width in number of atrs, default 2.0
     """
 
     prc = calc_typprice(prices)

@@ -6,7 +6,7 @@ def calc_bop(prices, long period=20):
     Balance of Power
     
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
     open = np.asarray(prices['open'], float)

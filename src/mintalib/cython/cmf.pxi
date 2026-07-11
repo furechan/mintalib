@@ -6,7 +6,7 @@ def calc_cmf(prices, long period=20):
     Chaikin Money Flow
     
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
     high = np.asarray(prices['high'], float)

@@ -7,7 +7,7 @@ def calc_shift(series, long period):
     Shift Function
 
     Args:
-        period (int) : time period, required
+        period (int): time period, required
     """
 
     cdef const double[:] xs = np.asarray(series, float)

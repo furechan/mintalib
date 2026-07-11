@@ -5,6 +5,7 @@ import inspect
 from pathlib import Path
 
 import pdoc.doc
+import pdoc.docstrings
 import pdoc.extract
 
 MODULES = [
@@ -22,6 +23,11 @@ def clean_type(text: str) -> str:
     return text.replace("polars.expr.expr.Expr", "polars.Expr")
 
 
+def format_docstring(text: str) -> str:
+    """Convert google-style sections (Args:, Returns:, ...) to markdown"""
+    return pdoc.docstrings.google(text.strip())
+
+
 def format_signature(name, sig):
     return f"`{clean_type(name + str(sig))}`"
 
@@ -35,7 +41,7 @@ def render_module(module_name: str) -> str:
     lines.append(f"# {module_name}\n")
 
     if mod.docstring:
-        lines.append(mod.docstring.strip())
+        lines.append(format_docstring(mod.docstring))
         lines.append("")
 
     members = [
@@ -90,7 +96,7 @@ def render_module(module_name: str) -> str:
             lines.append("---\n" if lines[-1] != "---\n" else "")
             lines.append(f"### `{clean_type(name + sig_str)}`\n" if sig_str else f"### `{name}`\n")
             if doc:
-                lines.append(doc)
+                lines.append(format_docstring(doc))
                 lines.append("")
         return "\n".join(lines)
 
@@ -115,7 +121,7 @@ def render_module(module_name: str) -> str:
                 lines.append("")
 
         if m.docstring:
-            lines.append(m.docstring.strip())
+            lines.append(format_docstring(m.docstring))
             lines.append("")
 
     return "\n".join(lines)

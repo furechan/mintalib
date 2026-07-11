@@ -6,8 +6,8 @@ def calc_ema(series, long period, *, bint adjust = False):
     Exponential Moving Average
 
     Args:
-        period (int) : time period, required
-        adjust (bool) : whether to adjust weights, default False
+        period (int): time period, required
+        adjust (bool): whether to adjust weights, default False
             when true update ratio increases gradually (see formula)
 
     Formula:

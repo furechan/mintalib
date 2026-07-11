@@ -6,7 +6,7 @@ def calc_mfi(prices, long period=14):
     Money Flow Index
 
     Args:
-        period (int) : time period, default 14
+        period (int): time period, default 14
     """
 
     if period <= 0:

@@ -8,7 +8,7 @@ def calc_step(series, threshold : float = 1.0):
     Limit value changes to threshold (in absolute value)
 
     Args:
-        threshold (float) : threshold value, default 1.0
+        threshold (float): threshold value, default 1.0
     """
 
     cdef const double[:] xs = np.asarray(series, float)

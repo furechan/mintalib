@@ -6,8 +6,8 @@ def calc_trange(prices, *, bint log_prices=False, bint percent=False):
     True Range
     
     Args:
-        log_prices (bool) : whether to apply log to prices before calculation
-        percent (bool) : result as percentage of price
+        log_prices (bool): whether to apply log to prices before calculation
+        percent (bool): result as percentage of price
     """
 
     if log_prices and percent:
@@ -57,7 +57,7 @@ def calc_atr(prices, long period=14):
     Average True Range
     
     Args:
-        period (int) : time period, default 14    
+        period (int): time period, default 14    
     """
 
     trange = calc_trange(prices)
@@ -72,7 +72,7 @@ def calc_natr(prices, long period=14):
     Normalized Average True Range
     
     Args:
-        period (int) : time period, default 14    
+        period (int): time period, default 14    
     """
 
     trange = calc_trange(prices, percent=True)

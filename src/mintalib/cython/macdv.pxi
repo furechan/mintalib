@@ -8,9 +8,9 @@ def calc_macdv(prices, long n1=12, long n2=26, long n3=9):
     Moving Average Convergence Divergence - Volatility Normalized
     
     Args:
-        n1 (int) : short time period, default 12
-        n2 (int) : long time period, default 26
-        n3 (int) : signal time period, default 9  
+        n1 (int): short time period, default 12
+        n2 (int): long time period, default 26
+        n3 (int): signal time period, default 9  
     
     Outputs:
         macdv, macdvsignal, macdvhist

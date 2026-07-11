@@ -6,7 +6,7 @@ def calc_rsi(series, long period=14):
     Relative Strength Index
 
     Args:
-        period (int) : time period, default 14
+        period (int): time period, default 14
     """
 
     cdef const double[:] xs = np.asarray(series, float)

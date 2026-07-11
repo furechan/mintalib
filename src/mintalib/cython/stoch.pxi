@@ -9,9 +9,9 @@ def calc_stoch(prices, long period=14, long fastn=3, long slown=3):
     Stochastic Oscillator
     
     Args:
-        period (int) :  time period of window, default, 14
-        fastn (int) : time period of fast average, default 3
-        slown (int) : time period of slow average, default 3
+        period (int):  time period of window, default, 14
+        fastn (int): time period of fast average, default 3
+        slown (int): time period of slow average, default 3
     """
 
     cdef const double[:] high = np.asarray(prices['high'], float)

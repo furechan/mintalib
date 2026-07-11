@@ -7,7 +7,7 @@ def calc_hma(series, long period):
     Hull Moving Average
 
     Args:
-        period (int) : time period, required    
+        period (int): time period, required    
     """
 
     if period <= 0:

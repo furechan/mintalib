@@ -9,7 +9,7 @@ def calc_mav(series, long period=20, *, unicode ma_type = "SMA"):
     Moving average computed according to ma_type
 
     Args:
-        ma_type (str) : one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
+        ma_type (str): one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
                 defaults to 'SMA'
     """
 

@@ -7,7 +7,7 @@ def calc_crossover(series, double level=0.0):
     Yields a value of 1 at the point where series crosses over level
 
     Args:
-        level (float) : level to cross, default 0.0
+        level (float): level to cross, default 0.0
     """
 
     cdef const double[:] xs = np.asarray(series, float)
@@ -40,7 +40,7 @@ def calc_crossunder(series, double level=0.0):
     Yields a value of 1 at the point where series crosses under level
 
     Args:
-        level (float) : level to cross, default 0.0
+        level (float): level to cross, default 0.0
     """
 
     cdef const double[:] xs = np.asarray(series, float)

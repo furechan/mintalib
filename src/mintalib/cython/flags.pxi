@@ -35,8 +35,8 @@ def calc_updown(series, double up_level=0.0, double down_level=0.0):
     Flag for value crossing up & down levels
     
     Args:
-        up_level (float) : flag set at 1 above that level
-        down_level (float) : flag set at 0 below that level
+        up_level (float): flag set at 1 above that level
+        down_level (float): flag set at 0 below that level
     """
 
     cdef const double[:] xs = np.asarray(series, float)

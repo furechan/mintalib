@@ -22,8 +22,11 @@ Absolute Value
 
 Average Directional Index
 
-Args:
-    period (int) : time period, default 14
+
+###### Arguments:
+ - **period (int):**  time period, default 14
+
+
 
 ---
 
@@ -37,8 +40,11 @@ Arnaud Legoux Moving Average
 
 Average True Range
 
-Args:
-    period (int) : time period, default 14    
+
+###### Arguments:
+ - **period (int):**  time period, default 14
+
+
 
 ---
 
@@ -54,9 +60,12 @@ Value of (open + high + low + close) / 4
 
 Bollinger Bands
 
-Args:
-    period (int) : time period, default 20
-    nbdev (float) : bands width in number of standard deviations
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+ - **nbdev (float):**  bands width in number of standard deviations
+
+
 
 ---
 
@@ -64,9 +73,12 @@ Args:
 
 Bollinger Bands Percent (%B)
 
-Args:
-    period (int) : time period, default 20
-    nbdev (float) : bands width in number of standard deviations
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+ - **nbdev (float):**  bands width in number of standard deviations
+
+
 
 ---
 
@@ -74,9 +86,12 @@ Args:
 
 Bollinger Bands Width
 
-Args:
-    period (int) : time period, default 20
-    nbdev (float) : bands width in number of standard deviations
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+ - **nbdev (float):**  bands width in number of standard deviations
+
+
 
 ---
 
@@ -84,8 +99,11 @@ Args:
 
 Balance of Power
 
-Args:
-    period (int) : time period, default 20
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
 
 ---
 
@@ -93,8 +111,11 @@ Args:
 
 Commodity Channel Index
 
-Args:
-    period (int) : time period, default 20
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
 
 ---
 
@@ -104,8 +125,11 @@ Confirmation Lag
 
 Changes value only after a confirmation period 
 
-Args:
-    period (int) : time period, default 1
+
+###### Arguments:
+ - **period (int):**  time period, default 1
+
+
 
 ---
 
@@ -113,8 +137,11 @@ Args:
 
 Chaikin Money Flow
 
-Args:
-    period (int) : time period, default 20
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
 
 ---
 
@@ -124,8 +151,11 @@ Cross Over
 
 Yields a value of 1 at the point where series crosses over level
 
-Args:
-    level (float) : level to cross, default 0.0
+
+###### Arguments:
+ - **level (float):**  level to cross, default 0.0
+
+
 
 ---
 
@@ -135,14 +165,17 @@ Cross Under
 
 Yields a value of 1 at the point where series crosses under level
 
-Args:
-    level (float) : level to cross, default 0.0
+
+###### Arguments:
+ - **level (float):**  level to cross, default 0.0
+
+
 
 ---
 
 ### `calc_curve(series, period=20) -> np.ndarray`
 
-Curve (quadratic regression) 
+Curve (quadratic regression)
 
 ---
 
@@ -150,8 +183,11 @@ Curve (quadratic regression)
 
 Double Exponential Moving Average
 
-Args:
-    period (int) : time period, required    
+
+###### Arguments:
+ - **period (int):**  time period, required
+
+
 
 ---
 
@@ -161,8 +197,11 @@ Difference
 
 Difference between current value and the one offset by period
 
-Args:
-    period (int) : time period, default 1
+
+###### Arguments:
+ - **period (int):**  time period, default 1
+
+
 
 ---
 
@@ -170,8 +209,11 @@ Args:
 
 Directional Movement Indicator
 
-Args:
-    period (int) : time period, default 14
+
+###### Arguments:
+ - **period (int):**  time period, default 14
+
+
 
 ---
 
@@ -179,8 +221,11 @@ Args:
 
 Donchian Channel
 
-Args:
-    period (int) : time period, default 20
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
 
 ---
 
@@ -188,18 +233,22 @@ Args:
 
 Exponential Moving Average
 
-Args:
-    period (int) : time period, required
-    adjust (bool) : whether to adjust weights, default False
-        when true update ratio increases gradually (see formula)
 
-Formula:
-    EMA is calculated as a recursive formula
-    The standard formula is ema += alpha * (value - ema)
-        with alpha = 2.0 / (period + 1.0)
-    The adjusted formula is ema = num/div
-        where num = value + rho * num, div = 1.0 + rho * div
-        with rho = 1.0 - alpha
+###### Arguments:
+ - **period (int):**  time period, required
+ - **adjust (bool):**  whether to adjust weights, default False
+   when true update ratio increases gradually (see formula)
+
+
+
+###### Formula:
+> EMA is calculated as a recursive formula
+> The standard formula is ema += alpha * (value - ema)
+>     with alpha = 2.0 / (period + 1.0)
+> The adjusted formula is ema = num/div
+>     where num = value + rho * num, div = 1.0 + rho * div
+>     with rho = 1.0 - alpha
+
 
 ---
 
@@ -221,8 +270,11 @@ Flag value of 1 for positive, 0 for zero or negative, and NaN otherwize
 
 Hull Moving Average
 
-Args:
-    period (int) : time period, required    
+
+###### Arguments:
+ - **period (int):**  time period, required
+
+
 
 ---
 
@@ -230,10 +282,13 @@ Args:
 
 Kaufman Adaptive Moving Average
 
-Args:
-    period (int) : time period for efficiency ratio, default 10
-    fastn (int) : time period for fast moving average, default, 2
-    slown (int) : time period for slow moving average, default 30
+
+###### Arguments:
+ - **period (int):**  time period for efficiency ratio, default 10
+ - **fastn (int):**  time period for fast moving average, default, 2
+ - **slown (int):**  time period for slow moving average, default 30
+
+
 
 ---
 
@@ -241,9 +296,12 @@ Args:
 
 Keltner Channel
 
-Args:
-    period (int) : time period, default 20
-    nbatr (float) : channel width in number of atrs, default 2.0
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+ - **nbatr (float):**  channel width in number of atrs, default 2.0
+
+
 
 ---
 
@@ -251,8 +309,11 @@ Args:
 
 Kaufman Efficiency Ratio
 
-Args:
-    period (int) : time period, default 10
+
+###### Arguments:
+ - **period (int):**  time period, default 10
+
+
 
 ---
 
@@ -260,14 +321,17 @@ Args:
 
 Lag Function
 
-Args:
-    period (int) : time period, required
+
+###### Arguments:
+ - **period (int):**  time period, required
+
+
 
 ---
 
 ### `calc_log(series) -> np.ndarray`
 
-Logarithm 
+Logarithm
 
 ---
 
@@ -277,9 +341,12 @@ Logarithmic Rate of Change
 
 Equivalent to the difference of log values
 
-Args:
-    period (int) : time period, default 1
-    when negative the calculation is shifted back
+
+###### Arguments:
+ - **period (int):**  time period, default 1
+ - when negative the calculation is shifted back
+
+
 
 ---
 
@@ -287,13 +354,17 @@ Args:
 
 Moving Average Convergence Divergence
 
-Args:
-    n1 (int) : short time period, default 12
-    n2 (int) : long time period, default 26
-    n3 (int) : signal time period, default 9  
 
-Outputs:
-    macd, macdsignal, macdhist
+###### Arguments:
+ - **n1 (int):**  short time period, default 12
+ - **n2 (int):**  long time period, default 26
+ - **n3 (int):**  signal time period, default 9  
+
+
+
+###### Outputs:
+> macd, macdsignal, macdhist
+
 
 ---
 
@@ -301,13 +372,17 @@ Outputs:
 
 Moving Average Convergence Divergence - Volatility Normalized
 
-Args:
-    n1 (int) : short time period, default 12
-    n2 (int) : long time period, default 26
-    n3 (int) : signal time period, default 9  
 
-Outputs:
-    macdv, macdvsignal, macdvhist
+###### Arguments:
+ - **n1 (int):**  short time period, default 12
+ - **n2 (int):**  long time period, default 26
+ - **n3 (int):**  signal time period, default 9  
+
+
+
+###### Outputs:
+> macdv, macdvsignal, macdvhist
+
 
 ---
 
@@ -323,15 +398,18 @@ Generic Moving Average
 
 Moving average computed according to ma_type
 
-Args:
-    ma_type (str) : one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
-            defaults to 'SMA'
+
+###### Arguments:
+ - **ma_type (str):**  one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
+   defaults to 'SMA'
+
+
 
 ---
 
 ### `calc_max(series, period) -> np.ndarray`
 
-Rolling Maximum 
+Rolling Maximum
 
 ---
 
@@ -339,8 +417,11 @@ Rolling Maximum
 
 Minus Directional Index
 
-Args:
-    period (int) : time period, default 14
+
+###### Arguments:
+ - **period (int):**  time period, default 14
+
+
 
 ---
 
@@ -348,8 +429,11 @@ Args:
 
 Money Flow Index
 
-Args:
-    period (int) : time period, default 14
+
+###### Arguments:
+ - **period (int):**  time period, default 14
+
+
 
 ---
 
@@ -365,8 +449,11 @@ Value of (high + low) / 2
 
 Rolling Minimum
 
-Args:
-    period (int) : time period, required
+
+###### Arguments:
+ - **period (int):**  time period, required
+
+
 
 ---
 
@@ -374,8 +461,11 @@ Args:
 
 Normalized Average True Range
 
-Args:
-    period (int) : time period, default 14    
+
+###### Arguments:
+ - **period (int):**  time period, default 14
+
+
 
 ---
 
@@ -383,8 +473,11 @@ Args:
 
 Plus Directional Index
 
-Args:
-    period (int) : time period, default 14
+
+###### Arguments:
+ - **period (int):**  time period, default 14
+
+
 
 ---
 
@@ -392,13 +485,17 @@ Args:
 
 Price Percentage Oscillator
 
-Args:
-    n1 (int) : short time period, default 12
-    n2 (int) : long time period, default 26
-    n3 (int) : signal time period, default 9
 
-Outputs:
-    ppo, pposignal, ppohist
+###### Arguments:
+ - **n1 (int):**  short time period, default 12
+ - **n2 (int):**  long time period, default 26
+ - **n3 (int):**  signal time period, default 9
+
+
+
+###### Outputs:
+> ppo, pposignal, ppohist
+
 
 ---
 
@@ -406,13 +503,16 @@ Outputs:
 
 Generic Price
 
-Args:
-    item (str) : price type, one of:
-        'open', 'high', 'low', 'close' (default),
-        'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
-        'mid' or 'hl2'    — mid price (high + low) / 2,
-        'typ' or 'hlc3'   — typical price (high + low + close) / 3,
-        'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
+
+###### Arguments:
+ - **item (str):**  price type, one of:
+   'open', 'high', 'low', 'close' (default),
+   'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
+   'mid' or 'hl2'    — mid price (high + low) / 2,
+   'typ' or 'hlc3'   — typical price (high + low + close) / 3,
+   'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
+
+
 
 ---
 
@@ -420,8 +520,11 @@ Args:
 
 Quadratic Series Forecast (quadratic regression)
 
-Args:
-    period (int) : time period, default 20
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
 
 ---
 
@@ -439,9 +542,12 @@ number of bars is equal to `period`.
 
 Rate of Change
 
-Args:
-    period (int) : time period, default 1
-    when negative the calculation is shifted back
+
+###### Arguments:
+ - **period (int):**  time period, default 1
+ - when negative the calculation is shifted back
+
+
 
 ---
 
@@ -449,8 +555,11 @@ Args:
 
 Relative Strength Index
 
-Args:
-    period (int) : time period, default 14
+
+###### Arguments:
+ - **period (int):**  time period, default 14
+
+
 
 ---
 
@@ -458,8 +567,11 @@ Args:
 
 R-Value (linear regression)
 
-Args:
-    period (int) : time period, default 20
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
 
 ---
 
@@ -467,9 +579,12 @@ Args:
 
 Parabolic Stop and Reverse
 
-Args:
-    afs (float) : starting acceleration factor, default 0.02
-    maxaf (float) : maximum acceleration factor, default 0.2
+
+###### Arguments:
+ - **afs (float):**  starting acceleration factor, default 0.02
+ - **maxaf (float):**  maximum acceleration factor, default 0.2
+
+
 
 ---
 
@@ -483,8 +598,11 @@ Sign
 
 Slope (linear regression)
 
-Args:
-    period (int) : time period, default 20
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
 
 ---
 
@@ -492,8 +610,11 @@ Args:
 
 Simple Moving Average
 
-Args:
-    period (int) : time period, required
+
+###### Arguments:
+ - **period (int):**  time period, required
+
+
 
 ---
 
@@ -501,8 +622,11 @@ Args:
 
 Standard Deviation
 
-Args:
-    period (int) : time period, default 20
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
 
 ---
 
@@ -512,8 +636,11 @@ Step Function
 
 Limit value changes to threshold (in absolute value)
 
-Args:
-    threshold (float) : threshold value, default 1.0
+
+###### Arguments:
+ - **threshold (float):**  threshold value, default 1.0
+
+
 
 ---
 
@@ -521,10 +648,13 @@ Args:
 
 Stochastic Oscillator
 
-Args:
-    period (int) :  time period of window, default, 14
-    fastn (int) : time period of fast average, default 3
-    slown (int) : time period of slow average, default 3
+
+###### Arguments:
+ - **period (int):**   time period of window, default, 14
+ - **fastn (int):**  time period of fast average, default 3
+ - **slown (int):**  time period of slow average, default 3
+
+
 
 ---
 
@@ -538,8 +668,11 @@ Consecutive streak of values above zero
 
 Rolling sum
 
-Args:
-    period (int) : time period, required
+
+###### Arguments:
+ - **period (int):**  time period, required
+
+
 
 ---
 
@@ -547,8 +680,11 @@ Args:
 
 Triple Exponential Moving Average
 
-Args:
-    period (int) : time period, default 20
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
 
 ---
 
@@ -556,9 +692,12 @@ Args:
 
 True Range
 
-Args:
-    log_prices (bool) : whether to apply log to prices before calculation
-    percent (bool) : result as percentage of price
+
+###### Arguments:
+ - **log_prices (bool):**  whether to apply log to prices before calculation
+ - **percent (bool):**  result as percentage of price
+
+
 
 ---
 
@@ -566,8 +705,11 @@ Args:
 
 Time Series Forecast (linear regression)
 
-Args:
-    period (int) : time period, default 20
+
+###### Arguments:
+ - **period (int):**  time period, default 20
+
+
 
 ---
 
@@ -583,9 +725,12 @@ Value of (high + low + close ) / 3
 
 Flag for value crossing up & down levels
 
-Args:
-    up_level (float) : flag set at 1 above that level
-    down_level (float) : flag set at 0 below that level
+
+###### Arguments:
+ - **up_level (float):**  flag set at 1 above that level
+ - **down_level (float):**  flag set at 0 below that level
+
+
 
 ---
 
@@ -601,5 +746,8 @@ Value of (high + low + 2 * close) / 4
 
 Weighted Moving Average
     
-Args:
-    period (int) : time period, required
+
+###### Arguments:
+ - **period (int):**  time period, required
+
+

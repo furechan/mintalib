@@ -6,7 +6,7 @@ def calc_dema(series, long period):
     Double Exponential Moving Average
  
     Args:
-        period (int) : time period, required    
+        period (int): time period, required    
     """
 
     ema1 = calc_ema(series, period)

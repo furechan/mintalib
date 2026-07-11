@@ -10,8 +10,8 @@ def calc_bbands(prices, long period=20, double nbdev=2.0):
     Bollinger Bands
     
     Args:
-        period (int) : time period, default 20
-        nbdev (float) : bands width in number of standard deviations
+        period (int): time period, default 20
+        nbdev (float): bands width in number of standard deviations
     """
 
     prc = calc_typprice(prices)
@@ -33,8 +33,8 @@ def calc_bbp(prices, long period=20, double nbdev=2.0):
     Bollinger Bands Percent (%B)
     
     Args:
-        period (int) : time period, default 20
-        nbdev (float) : bands width in number of standard deviations
+        period (int): time period, default 20
+        nbdev (float): bands width in number of standard deviations
     """
 
     prc = calc_typprice(prices)
@@ -58,8 +58,8 @@ def calc_bbw(prices, long period=20, double nbdev=2.0):
     Bollinger Bands Width
     
     Args:
-        period (int) : time period, default 20
-        nbdev (float) : bands width in number of standard deviations
+        period (int): time period, default 20
+        nbdev (float): bands width in number of standard deviations
     """
 
     prc = calc_typprice(prices)

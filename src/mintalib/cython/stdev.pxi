@@ -6,7 +6,7 @@ def calc_stdev(series, long period=20):
     Standard Deviation
     
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
     if period <= 0:

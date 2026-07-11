@@ -6,7 +6,7 @@ def calc_min(series, long period):
     Rolling Minimum
 
     Args:
-        period (int) : time period, required
+        period (int): time period, required
     """
 
     if period <= 0:

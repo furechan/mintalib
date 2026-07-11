@@ -6,7 +6,7 @@ def calc_cci(prices, long period=20):
     Commodity Channel Index
     
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
     prc = calc_typprice(prices)

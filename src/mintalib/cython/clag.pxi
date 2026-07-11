@@ -8,7 +8,7 @@ def calc_clag(series, long period=1):
     Changes value only after a confirmation period 
 
     Args:
-        period (int) : time period, default 1
+        period (int): time period, default 1
     """
 
     if period <= 0:

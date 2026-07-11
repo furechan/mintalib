@@ -7,7 +7,7 @@ def calc_lroc(series, long period=1):
     Equivalent to the difference of log values
 
     Args:
-        period (int) : time period, default 1
+        period (int): time period, default 1
         when negative the calculation is shifted back
     """
 

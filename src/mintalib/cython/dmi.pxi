@@ -8,7 +8,7 @@ def calc_dmi(prices, long period=14):
     Directional Movement Indicator
 
     Args:
-        period (int) : time period, default 14
+        period (int): time period, default 14
     """
 
     high = np.asarray(prices['high'], float)
@@ -38,7 +38,7 @@ def calc_adx(prices, long period=14):
     Average Directional Index
 
     Args:
-        period (int) : time period, default 14
+        period (int): time period, default 14
     """
 
     result = calc_dmi(prices, period=period).adx
@@ -51,7 +51,7 @@ def calc_pdi(prices, long period=14):
     Plus Directional Index
 
     Args:
-        period (int) : time period, default 14
+        period (int): time period, default 14
     """
 
     result = calc_dmi(prices, period=period).pdi
@@ -64,7 +64,7 @@ def calc_mdi(prices, long period=14):
     Minus Directional Index
 
     Args:
-        period (int) : time period, default 14
+        period (int): time period, default 14
     """
 
     result = calc_dmi(prices, period=period).mdi

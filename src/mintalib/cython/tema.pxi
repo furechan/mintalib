@@ -6,7 +6,7 @@ def calc_tema(series, long period=20):
     Triple Exponential Moving Average
     
     Args:
-        period (int) : time period, default 20
+        period (int): time period, default 20
     """
 
     ema1 = calc_ema(series, period)

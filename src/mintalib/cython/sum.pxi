@@ -6,7 +6,7 @@ def calc_sum(series, long period):
     Rolling sum
     
     Args:
-        period (int) : time period, required
+        period (int): time period, required
     """
 
     if period <= 0:

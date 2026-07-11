@@ -6,8 +6,8 @@ def calc_sar(prices, double afs=0.02, double maxaf=0.2):
     Parabolic Stop and Reverse
     
     Args:
-        afs (float) : starting acceleration factor, default 0.02
-        maxaf (float) : maximum acceleration factor, default 0.2
+        afs (float): starting acceleration factor, default 0.02
+        maxaf (float): maximum acceleration factor, default 0.2
     """
 
     cdef const double[:] high = np.asarray(prices['high'], float)

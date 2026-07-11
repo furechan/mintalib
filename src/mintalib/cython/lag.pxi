@@ -7,7 +7,7 @@ def calc_lag(series, long period):
     Lag Function
 
     Args:
-        period (int) : time period, required
+        period (int): time period, required
     """
 
     if period < 0:

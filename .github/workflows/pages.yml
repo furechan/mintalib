@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v4
       - run: uv sync
-      - run: uv run pdoc mintalib --output-dir _site/
+      - run: uv run pdoc mintalib -d google --output-dir _site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site/
