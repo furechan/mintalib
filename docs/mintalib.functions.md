@@ -16,13 +16,9 @@ import mintalib.functions as ta
 
 ### `abs(series)`
 
-calc_abs(series)
-
 Absolute Value
 
 ### `adx(prices, period: int = 14)`
-
-calc_adx(prices, long period=14)
 
 Average Directional Index
 
@@ -31,13 +27,9 @@ Args:
 
 ### `alma(series, period: int = 9, offset: float = 0.85, sigma: float = 6.0)`
 
-calc_alma(series, long period=9, double offset=0.85, double sigma=6.0)
-
 Arnaud Legoux Moving Average
 
 ### `atr(prices, period: int = 14)`
-
-calc_atr(prices, long period=14)
 
 Average True Range
 
@@ -46,15 +38,11 @@ Args:
 
 ### `avgprice(prices)`
 
-calc_avgprice(prices)
-
 Average Price
 
 Value of (open + high + low + close) / 4
 
 ### `bbands(prices, period: int = 20, nbdev: float = 2.0)`
-
-calc_bbands(prices, long period=20, double nbdev=2.0)
 
 Bollinger Bands
 
@@ -64,8 +52,6 @@ Args:
 
 ### `bbp(prices, period: int = 20, nbdev: float = 2.0)`
 
-calc_bbp(prices, long period=20, double nbdev=2.0)
-
 Bollinger Bands Percent (%B)
 
 Args:
@@ -73,8 +59,6 @@ Args:
     nbdev (float) : bands width in number of standard deviations
 
 ### `bbw(prices, period: int = 20, nbdev: float = 2.0)`
-
-calc_bbw(prices, long period=20, double nbdev=2.0)
 
 Bollinger Bands Width
 
@@ -84,8 +68,6 @@ Args:
 
 ### `bop(prices, period: int = 20)`
 
-calc_bop(prices, long period=20)
-
 Balance of Power
 
 Args:
@@ -93,16 +75,12 @@ Args:
 
 ### `cci(prices, period: int = 20)`
 
-calc_cci(prices, long period=20)
-
 Commodity Channel Index
 
 Args:
     period (int) : time period, default 20
 
 ### `clag(series, period: int = 1)`
-
-calc_clag(series, long period=1)
 
 Confirmation Lag
 
@@ -113,16 +91,12 @@ Args:
 
 ### `cmf(prices, period: int = 20)`
 
-calc_cmf(prices, long period=20)
-
 Chaikin Money Flow
 
 Args:
     period (int) : time period, default 20
 
 ### `crossover(series, level: float = 0.0)`
-
-calc_crossover(series, double level=0.0)
 
 Cross Over
 
@@ -133,8 +107,6 @@ Args:
 
 ### `crossunder(series, level: float = 0.0)`
 
-calc_crossunder(series, double level=0.0)
-
 Cross Under
 
 Yields a value of 1 at the point where series crosses under level
@@ -144,13 +116,9 @@ Args:
 
 ### `curve(series, period: int = 20)`
 
-calc_curve(series, long period=20)
-
 Curve (quadratic regression)
 
 ### `dema(series, period: int)`
-
-calc_dema(series, long period)
 
 Double Exponential Moving Average
 
@@ -158,8 +126,6 @@ Args:
     period (int) : time period, required
 
 ### `diff(series, period: int = 1)`
-
-calc_diff(series, long period=1)
 
 Difference
 
@@ -170,8 +136,6 @@ Args:
 
 ### `dmi(prices, period: int = 14)`
 
-calc_dmi(prices, long period=14)
-
 Directional Movement Indicator
 
 Args:
@@ -179,16 +143,12 @@ Args:
 
 ### `donchian(prices, period: int = 20)`
 
-calc_donchian(prices, long period=20)
-
 Donchian Channel
 
 Args:
     period (int) : time period, default 20
 
 ### `ema(series, period: int, *, adjust: bool = False)`
-
-calc_ema(series, long period, *, bool adjust=False)
 
 Exponential Moving Average
 
@@ -207,13 +167,9 @@ Formula:
 
 ### `exp(series)`
 
-calc_exp(series)
-
 Exponential
 
 ### `flag(series)`
-
-calc_flag(series)
 
 Flag Value
 
@@ -221,16 +177,12 @@ Flag value of 1 for positive, 0 for zero or negative, and NaN otherwize
 
 ### `hma(series, period: int)`
 
-calc_hma(series, long period)
-
 Hull Moving Average
 
 Args:
     period (int) : time period, required
 
 ### `kama(series, period: int = 10, fastn: int = 2, slown: int = 30)`
-
-calc_kama(series, int period=10, int fastn=2, int slown=30)
 
 Kaufman Adaptive Moving Average
 
@@ -241,8 +193,6 @@ Args:
 
 ### `keltner(prices, period: int = 20, nbatr: float = 2.0)`
 
-calc_keltner(prices, long period=20, double nbatr=2.0)
-
 Keltner Channel
 
 Args:
@@ -251,16 +201,12 @@ Args:
 
 ### `ker(series, period: int = 10)`
 
-calc_ker(series, int period=10)
-
 Kaufman Efficiency Ratio
 
 Args:
     period (int) : time period, default 10
 
 ### `lag(series, period: int)`
-
-calc_lag(series, long period)
 
 Lag Function
 
@@ -269,13 +215,9 @@ Args:
 
 ### `log(series)`
 
-calc_log(series)
-
 Logarithm
 
 ### `lroc(series, period: int = 1)`
-
-calc_lroc(series, long period=1)
 
 Logarithmic Rate of Change
 
@@ -286,8 +228,6 @@ Args:
     when negative the calculation is shifted back
 
 ### `macd(series, n1: int = 12, n2: int = 26, n3: int = 9)`
-
-calc_macd(series, long n1=12, long n2=26, long n3=9)
 
 Moving Average Convergence Divergence
 
@@ -301,8 +241,6 @@ Outputs:
 
 ### `macdv(prices, n1: int = 12, n2: int = 26, n3: int = 9)`
 
-calc_macdv(prices, long n1=12, long n2=26, long n3=9)
-
 Moving Average Convergence Divergence - Volatility Normalized
 
 Args:
@@ -315,13 +253,9 @@ Outputs:
 
 ### `mad(series, period: int = 14)`
 
-calc_mad(series, long period=14)
-
 Rolling Mean Absolute Deviation
 
 ### `mav(series, period: int = 20, *, ma_type: str = 'SMA')`
-
-calc_mav(series, long period=20, *, str ma_type='SMA')
 
 Generic Moving Average
 
@@ -333,13 +267,9 @@ Args:
 
 ### `max(series, period: int)`
 
-calc_max(series, long period)
-
 Rolling Maximum
 
 ### `mdi(prices, period: int = 14)`
-
-calc_mdi(prices, long period=14)
 
 Minus Directional Index
 
@@ -348,8 +278,6 @@ Args:
 
 ### `mfi(prices, period: int = 14)`
 
-calc_mfi(prices, long period=14)
-
 Money Flow Index
 
 Args:
@@ -357,15 +285,11 @@ Args:
 
 ### `midprice(prices)`
 
-calc_midprice(prices)
-
 Mid Price
 
 Value of (high + low) / 2
 
 ### `min(series, period: int)`
-
-calc_min(series, long period)
 
 Rolling Minimum
 
@@ -374,8 +298,6 @@ Args:
 
 ### `natr(prices, period: int = 14)`
 
-calc_natr(prices, long period=14)
-
 Normalized Average True Range
 
 Args:
@@ -383,16 +305,12 @@ Args:
 
 ### `pdi(prices, period: int = 14)`
 
-calc_pdi(prices, long period=14)
-
 Plus Directional Index
 
 Args:
     period (int) : time period, default 14
 
 ### `ppo(series, n1: int = 12, n2: int = 26, n3: int = 9)`
-
-calc_ppo(series, long n1=12, long n2=26, long n3=9)
 
 Price Percentage Oscillator
 
@@ -406,8 +324,6 @@ Outputs:
 
 ### `price(prices, item: str | None = None)`
 
-calc_price(prices, str item: str = None)
-
 Generic Price
 
 Args:
@@ -420,16 +336,12 @@ Args:
 
 ### `qsf(series, period: int = 20, offset: int = 0)`
 
-calc_qsf(series, long period=20, long offset=0)
-
 Quadratic Series Forecast (quadratic regression)
 
 Args:
     period (int) : time period, default 20
 
 ### `rma(series, period: int)`
-
-calc_rma(series, long period)
 
 Rolling Moving Average (RSI style)
 
@@ -439,8 +351,6 @@ number of bars is equal to `period`.
 
 ### `roc(series, period: int = 1)`
 
-calc_roc(series, long period=1)
-
 Rate of Change
 
 Args:
@@ -449,8 +359,6 @@ Args:
 
 ### `rsi(series, period: int = 14)`
 
-calc_rsi(series, long period=14)
-
 Relative Strength Index
 
 Args:
@@ -458,16 +366,12 @@ Args:
 
 ### `rvalue(series, period: int = 20)`
 
-calc_rvalue(series, long period=20)
-
 R-Value (linear regression)
 
 Args:
     period (int) : time period, default 20
 
 ### `sar(prices, afs: float = 0.02, maxaf: float = 0.2)`
-
-calc_sar(prices, double afs=0.02, double maxaf=0.2)
 
 Parabolic Stop and Reverse
 
@@ -477,13 +381,9 @@ Args:
 
 ### `sign(series)`
 
-calc_sign(series)
-
 Sign
 
 ### `slope(series, period: int = 20)`
-
-calc_slope(series, long period=20)
 
 Slope (linear regression)
 
@@ -492,8 +392,6 @@ Args:
 
 ### `sma(series, period: int)`
 
-calc_sma(series, long period)
-
 Simple Moving Average
 
 Args:
@@ -501,16 +399,12 @@ Args:
 
 ### `stdev(series, period: int = 20)`
 
-calc_stdev(series, long period=20)
-
 Standard Deviation
 
 Args:
     period (int) : time period, default 20
 
 ### `step(series, threshold: float = 1.0)`
-
-calc_step(series, double threshold: float = 1.0)
 
 Step Function
 
@@ -521,8 +415,6 @@ Args:
 
 ### `stoch(prices, period: int = 14, fastn: int = 3, slown: int = 3)`
 
-calc_stoch(prices, long period=14, long fastn=3, long slown=3)
-
 Stochastic Oscillator
 
 Args:
@@ -532,13 +424,9 @@ Args:
 
 ### `streak(series)`
 
-calc_streak(series)
-
 Consecutive streak of values above zero
 
 ### `sum(series, period: int)`
-
-calc_sum(series, long period)
 
 Rolling sum
 
@@ -547,16 +435,12 @@ Args:
 
 ### `tema(series, period: int = 20)`
 
-calc_tema(series, long period=20)
-
 Triple Exponential Moving Average
 
 Args:
     period (int) : time period, default 20
 
 ### `trange(prices, *, log_prices: bool = False, percent: bool = False)`
-
-calc_trange(prices, *, bool log_prices=False, bool percent=False)
 
 True Range
 
@@ -566,8 +450,6 @@ Args:
 
 ### `tsf(series, period: int = 20, offset: int = 0)`
 
-calc_tsf(series, long period=20, long offset=0)
-
 Time Series Forecast (linear regression)
 
 Args:
@@ -575,15 +457,11 @@ Args:
 
 ### `typprice(prices)`
 
-calc_typprice(prices)
-
 Typical Price
 
 Value of (high + low + close ) / 3
 
 ### `updown(series, up_level: float = 0.0, down_level: float = 0.0)`
-
-calc_updown(series, double up_level=0.0, double down_level=0.0)
 
 Flag for value crossing up & down levels
 
@@ -593,15 +471,11 @@ Args:
 
 ### `wclprice(prices)`
 
-calc_wclprice(prices)
-
 Weighted Close Price
 
 Value of (high + low + 2 * close) / 4
 
 ### `wma(series, period: int)`
-
-calc_wma(series, long period)
 
 Weighted Moving Average
     

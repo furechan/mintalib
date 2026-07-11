@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.37
+- Removed the Cython `embedsignature` directive: docstrings no longer start with a shadow `calc_*` signature line, so generated docs (pdoc and markdown) show only the real function signature. Introspection is unaffected — `binding=True` already provides `inspect.signature` support, and `core.pyi` provides the typed stubs
+
 ## 0.0.36
 - Replaced tox with nox for multi-version testing (`noxfile.py`; old config archived at `meta/tox.toml`). Sessions install the package via uv, whose built-wheel cache avoids recompiling the Cython extension when the source is unchanged — warm full-matrix runs drop from ~3.5 min to ~25 s. `uv run nox` runs the everyday set; `uv run nox -t full` runs the full pre-publish matrix
 - Restored the numpy-only base install: pandas is no longer a hard dependency (it had been re-added inadvertently). Install pandas and/or polars depending on the interfaces you use — the `[pandas]`, `[polars]`, and new `[all]` extras remain available as a convenience; `mintalib.functions` works with numpy alone
