@@ -12,12 +12,10 @@ license-files = ["LICENSE.txt"]
 description = "Minimal Technical Analysis Library for Python"
 urls.homepage = "https://github.com/furechan/mintalib"
 authors = [{ name = "Furechan", email = "furechan@xsmail.com" }]
-dependencies = [
-    "numpy",
-    "pandas>=2.3.3",
-]
-optional-dependencies.polars = ["polars"]
+dependencies = ["numpy"]
 optional-dependencies.pandas = ["pandas"]
+optional-dependencies.polars = ["polars"]
+optional-dependencies.all = ["pandas", "polars"]
 keywords = ["cython", "technical-analysis", "indicators"]
 classifiers = [
     "Programming Language :: Python :: 3",

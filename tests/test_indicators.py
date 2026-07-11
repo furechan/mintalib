@@ -1,5 +1,7 @@
 import pytest
 
+pytest.importorskip("pandas", reason="mintalib.indicators requires pandas")
+
 from mintalib import indicators
 from mintalib.indicators import EMA, ROC, SMA
 from mintalib.model.indicator import IndicatorChain

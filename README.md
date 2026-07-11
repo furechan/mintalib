@@ -169,17 +169,16 @@ result = prices.assign(
 Example notebooks are available in the `examples` folder.
 
 
+
+
 ## Installation
 
-Pick the backend you want to use — pandas and polars are both optional extras:
-
 ```console
-pip install mintalib[pandas]          # pandas DataFrames
-pip install mintalib[polars]          # polars DataFrames
-pip install mintalib[pandas,polars]   # both
+pip install mintalib
 ```
 
-A bare `pip install mintalib` installs only numpy (the core computation layer).
+The base install includes only the numpy requirements. Add `pandas` and/or `polars` to your environment depending on which interfaces you want to use.
+
 
 ## Dependencies
 

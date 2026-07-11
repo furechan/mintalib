@@ -9,6 +9,7 @@ as a regression guard for the ``freethreading_compatible`` declaration on
 """
 
 from concurrent.futures import ThreadPoolExecutor
+from importlib.util import find_spec
 
 import numpy as np
 import pytest
@@ -29,7 +30,8 @@ def equal(a, b):
 
 @pytest.fixture(scope="module")
 def prices():
-    return sample_prices(backend="pandas")
+    backend = "pandas" if find_spec("pandas") else "polars"
+    return sample_prices(backend=backend)
 
 
 def test_core_concurrent(prices):

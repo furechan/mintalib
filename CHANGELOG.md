@@ -1,6 +1,7 @@
 # Change Log
 
 ## 0.0.36
+- Restored the numpy-only base install: pandas is no longer a hard dependency (it had been re-added inadvertently). Install pandas and/or polars depending on the interfaces you use — the `[pandas]`, `[polars]`, and new `[all]` extras remain available as a convenience; `mintalib.functions` works with numpy alone
 - Added `mintalib.utils.normalize_prices` to rename dataframe columns (and the index name for pandas) to lower case; works with pandas and polars via duck typing, no backend import required
 - Functions now validate their input and raise useful errors: passing series data to a prices function raises `TypeError: Expected a prices data frame` (was a cryptic `'NoneType' object is not subscriptable`), and series functions require 1D series data — a DataFrame no longer auto-selects the `close` column (use `prices['close']` explicitly; indicators keep the auto-select behavior)
 - Removed the undocumented `item` keyword from functions; this also fixes `price(prices, item=...)` silently ignoring the keyword form of its `item` parameter

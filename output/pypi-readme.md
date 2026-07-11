@@ -6,6 +6,15 @@ This package offers a curated list of technical analysis indicators implemented 
 > This project is experimental and the interface is likely to change.
 
 
+## Installation
+
+```console
+pip install mintalib
+```
+
+The base install requires only numpy. Add `pandas` and/or `polars` to your environment depending on which interfaces you use.
+
+
 ## Interfaces
 
 Mintalib offers three interfaces for different workflows:
