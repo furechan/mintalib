@@ -1,6 +1,7 @@
 # Change Log
 
 ## 0.1.1
+- Added `ZLEMA` (Zero-Lag Exponential Moving Average, core function `calc_zlema`): an EMA applied to the de-lagged series `2 * value - value[lag]` with `lag = (period - 1) // 2`, available across all interfaces (functions, indicators, expressions)
 - Fixed precision degradation in the LINREG/QUADREG kernels on long series: the rolling sums used the absolute bar index as x, so the quadratic statistics decayed to noise past ~10k bars and overflowed to nan near 1M bars (the linear ones lost ~8 digits). Both kernels now use the anchored one-pass pattern from barcalc (x anchored to a periodically reset origin, with a bounded rewind), plus precomputed pure-x moments on the fixed window grid — QUADREG on a centered grid where the linear and quadratic terms are orthogonal, which also removes the ill-conditioned normal-equations denominator. Worst-case error at 1M bars is now ~1e-11 (curve) with no measurable performance cost (~7 ms per 1M bars); `tests/test_regression.py` gains a long-series precision test that fails on the old kernels
 
 ## 0.1.0

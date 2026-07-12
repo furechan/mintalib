@@ -217,6 +217,9 @@ def WCLPRICE(): ...
 @wrap_indicator(core.calc_wma)
 def WMA(period: int, *, item: str | None = None): ...
 
+@wrap_indicator(core.calc_zlema)
+def ZLEMA(period: int, *, item: str | None = None): ...
+
 __all__ = [
     'ABS', 'ADX', 'ALMA', 'ATR', 'AVGPRICE', 'BBANDS', 'BBP', 'BBW', 'BOP',
     'CCI', 'CLAG', 'CMF', 'CROSSOVER', 'CROSSUNDER', 'DEMA', 'DIFF', 'DMI',
@@ -227,5 +230,5 @@ __all__ = [
     'QUADREG_CURVE', 'QUADREG_RMSE', 'QUADREG_RVALUE', 'QUADREG_SLOPE',
     'RMA', 'ROC', 'RSI', 'SAR', 'SIGN', 'SMA', 'STDEV', 'STEP', 'STOCH',
     'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TYPPRICE', 'UPDOWN', 'WCLPRICE',
-    'WMA'
+    'WMA', 'ZLEMA'
 ]

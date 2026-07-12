@@ -701,3 +701,18 @@ Weighted Moving Average
  - **period (int):**  time period, required
 
 
+
+### `ZLEMA(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
+
+Zero-Lag Exponential Moving Average
+
+
+###### Arguments:
+ - **period (int):**  time period, required
+
+
+
+###### Formula:
+> ZLEMA is an EMA applied to a de-lagged series
+> data = 2 * value - value[lag] with lag = (period - 1) // 2
+

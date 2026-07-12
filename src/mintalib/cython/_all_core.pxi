@@ -35,6 +35,7 @@ include "hma.pxi"
 include "dema.pxi"
 include "tema.pxi"
 include "alma.pxi"
+include "zlema.pxi"
 
 include "rsi.pxi"
 include "dmi.pxi"

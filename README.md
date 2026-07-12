@@ -166,6 +166,7 @@ result = prices.assign(
 | UPDOWN         | Series  | Flag for value crossing up & down levels                      |
 | WCLPRICE       | Prices  | Weighted Close Price                                          |
 | WMA            | Series  | Weighted Moving Average                                       |
+| ZLEMA          | Series  | Zero-Lag Exponential Moving Average                           |
 
 
 ## Example Notebooks
