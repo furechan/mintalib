@@ -14,13 +14,13 @@ cdef enum:
 def linear_regression(series, long period=20, *, int option=0, int offset=0):
     """
     Linear Regression
-    
+
     Args:
         period (int): time period, default 20
     """
 
     if period < 2:
-        raise ValueError(f"Invalid period {period}, should be greater than 2")  
+        raise ValueError(f"Invalid period {period}, should be greater than 2")
 
     if option < 0 or option > LINREG_BADOPTION:
         raise ValueError(f"Invalid option {option}")
@@ -34,50 +34,78 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
     if period >= size:
         return result
 
-    cdef double x, y
-    cdef double s, sx, sy, sxy, sx2, sy2
-    cdef double vxy, vxx, vyy
-    cdef double corr, slope, intercept, forecast, mse
+    # windows reset on nan, so every emitted window is a contiguous integer
+    # grid - the pure-x moments on the 1..period grid are the same for every
+    # window and can be precomputed
+    cdef double x = 0.0, s = 0.0, sx = 0.0, sxx = 0.0
+    cdef long k = 0
 
-    cdef long i = 0, j = 0
+    for k in range(period):
+        x += 1.0
+        s += 1
+        sx += x
+        sxx += x * x
 
-    s = sx = sy = sxy = sx2 = sy2 = 0.0
+    cdef double vxx = sxx / s - sx * sx / s / s
+
+    if vxx <= 0:
+        return result
+
+    # anchored one-pass rolling sums; max_x trades rewind overhead
+    # against precision in the anchored x sums
+    cdef double max_x = 1000.0 if period < 500 else 2.0 * period
+
+    cdef double xa, y, xj, yj
+    cdef double sy, sxy, syy, sxy_g
+    cdef double vxy, vyy
+    cdef double corr, slope, intercept, mse
+
+    cdef long i = 0, j = 0, nexti = 0, anchor = 0, c = 0
+
+    sy = sxy = syy = 0.0
 
     with nogil:
-        for i in range(size):
-            x, y = i, ys[i]
+        while nexti < size:
+            i = nexti
+            nexti += 1
+            xa = i - anchor
+            y = ys[i]
 
-            if y != y:
-                s = sx = sy = sxy = sx2 = sy2 = 0.0
+            if y != y or xa > max_x:
+                if xa > max_x:  # rewind: replay from the window back with a fresh anchor
+                    nexti = j
+                c = 0
+                sy = sxy = syy = 0.0
+                anchor = nexti
                 continue
 
-            if s == 0:
+            if c == 0:
                 j = i
 
-            s += 1
-            sx += x
+            c += 1
             sy += y
-            sxy += x * y
-            sx2 += x * x
-            sy2 += y * y
+            sxy += xa * y
+            syy += y * y
 
-            if s < period:
+            while c > period:
+                xj = j - anchor
+                yj = ys[j]
+                j += 1
+                c -= 1
+                sy -= yj
+                sxy -= xj * yj
+                syy -= yj * yj
+
+            if c < period:
                 continue
 
-            while s > period and j < size:
-                x, y, j = j, ys[j], j+1
-                s -= 1
-                sx -= x
-                sy -= y
-                sxy -= x * y
-                sx2 -= x * x
-                sy2 -= y * y
+            # shift the anchored sum of x*y onto the 1..period grid the constants use
+            sxy_g = sxy + (period - xa) * sy
 
-            vxy = (sxy / s - sx * sy / s / s)
-            vxx = (sx2 / s - sx * sx / s / s)
-            vyy = (sy2 / s - sy * sy / s / s)
+            vxy = sxy_g / s - sx * sy / s / s
+            vyy = syy / s - sy * sy / s / s
 
-            slope = vxy / vxx if vxx > 0  else NAN
+            slope = vxy / vxx
             intercept = (sy - slope * sx) / s
             corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN
 
@@ -87,6 +115,7 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
                 continue
 
             if option == LINREG_INTERCEPT:
+                # fitted value at x=0, one bar before the window
                 output[i] = intercept
                 continue
 
@@ -100,8 +129,8 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
                 continue
 
             if option == LINREG_FORECAST:
-                forecast = intercept + slope * (i + offset)
-                output[i] = forecast
+                # the current bar sits at x=period on the grid
+                output[i] = intercept + slope * (period + offset)
                 continue
 
     return result
@@ -155,4 +184,3 @@ def calc_linreg_rmse(series, long period=20):
     """
 
     return linear_regression(series, period=period, option=LINREG_RMSE)
-

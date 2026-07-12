@@ -136,3 +136,31 @@ def test_quadreg_rmse(series):
         return np.sqrt(np.mean((w - intercept - slope * x - curve * x * x) ** 2))
 
     check(core.calc_quadreg_rmse(series, PERIOD), rolling_ref(series, PERIOD, stat))
+
+
+def test_long_series_precision():
+    """Late windows on a long series must not lose precision.
+
+    The kernels use anchored one-pass rolling sums (periodically re-anchoring
+    the x origin); with absolute-x accumulation the quadratic statistics
+    degrade to noise past ~10k bars and overflow to nan near 1M.
+    """
+    rng = np.random.default_rng(42)
+    size = 200_000
+    series = 100 + np.cumsum(rng.normal(0, 1, size))
+    series[size // 3 : size // 3 + 5] = np.nan  # exercise reset + rewind interaction
+
+    linreg = core.calc_linreg(series, PERIOD)
+    slope = core.calc_linreg_slope(series, PERIOD)
+    quadreg = core.calc_quadreg(series, PERIOD)
+    curve = core.calc_quadreg_curve(series, PERIOD)
+
+    x = np.arange(PERIOD, dtype=float)
+    for i in (size // 2, size - 1):
+        w = series[i - PERIOD + 1 : i + 1]
+        c, s, a = np.polyfit(x, w, 2)
+        ls, la = np.polyfit(x, w, 1)
+        assert np.isclose(linreg[i], la + ls * x[-1], rtol=1e-9)
+        assert np.isclose(slope[i], ls, rtol=1e-9)
+        assert np.isclose(quadreg[i], a + s * x[-1] + c * x[-1] ** 2, rtol=1e-9)
+        assert np.isclose(curve[i], c, rtol=1e-6)

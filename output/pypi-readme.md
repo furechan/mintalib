@@ -30,7 +30,7 @@ prices = normalize_prices(rawprices)
 
 Concrete functions are available from the `mintalib.functions` module with names in lower case like `sma`, `atr`, `macd`, etc.
 
-Functions are polyvalent, they can be applied equally to pandas or polars data interchangeably.
+Functions are polyvalent, they can be applied to pandas or polars data interchangeably.
 
 The first parameter of a function is either `prices` or `series` depending on whether
 the function expects a dataframe of prices or a single series.
