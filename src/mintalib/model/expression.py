@@ -4,13 +4,27 @@ import inspect
 
 import polars as pl
 
-from typing import TypeAlias, ParamSpec, Callable, Any
+from typing import TypeAlias, ParamSpec, Callable, Any, Protocol, overload
 from polars.datatypes import Struct, Float64
 
 
 IntoExpr: TypeAlias = pl.Expr | str
 
 P = ParamSpec("P")
+
+
+class ExprFactory(Protocol[P]):
+    """
+    Call signature of wrapped expression factories.
+
+    Wrapped factories accept an optional leading polars expression as `src`,
+    so they compose with `Expr.pipe` as in `EMA(20).pipe(ROC, 1)`.
+    """
+
+    @overload
+    def __call__(self, src: pl.Expr, /, *args: P.args, **kwargs: P.kwargs) -> pl.Expr: ...
+    @overload
+    def __call__(self, *args: P.args, **kwargs: P.kwargs) -> pl.Expr: ...
 
 
 
@@ -43,7 +57,7 @@ def get_struct_expr(src):
     raise ValueError(f"Unsupported src type: {type(src)}")
 
 
-def wrap_expression(calc_func) -> Callable[[Callable[P, Any]], Callable[P, pl.Expr]]:
+def wrap_expression(calc_func) -> Callable[[Callable[P, Any]], ExprFactory[P]]:
     calc_sig = inspect.signature(calc_func)
     first_param = next(iter(calc_sig.parameters.values()))
     force_struct = first_param.name == 'prices'
