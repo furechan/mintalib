@@ -9,7 +9,14 @@ Usage:
     uv run nox -l         # list sessions
 """
 
+import os
+
 import nox
+
+# nox provisions missing interpreters via `uv python install`, which by default
+# also symlinks python3.X into ~/.local/bin — keep uv-managed pythons off PATH.
+# The interpreters still download into uv's store and are reused from there.
+os.environ.setdefault("UV_PYTHON_INSTALL_BIN", "0")
 
 nox.options.default_venv_backend = "uv"
 nox.options.envdir = ".venv/nox"
