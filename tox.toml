@@ -1,0 +1,54 @@
+# tox configuration
+# https://tox.wiki/en/latest/config.html
+#
+# Usage:
+#   tox            # everyday set: tests + pandas + polars + ruff + ty
+#   tox -m full    # full pre-publish matrix (Python 3.10-3.14, 3.13t)
+#   tox list       # list environments
+
+work_dir = ".venv/tox"
+requires = ["tox>=4.19"]
+env_list = ["tests", "pandas", "polars", "ruff", "ty"]
+
+[labels]
+full = ["tests", "3.10", "3.11", "3.12", "3.13", "3.13t", "3.14", "pandas", "polars", "ruff", "ty"]
+
+[env_run_base]
+deps = ["pytest"]
+extras = ["pandas", "polars"]
+commands = [["python", "-m", "pytest"]]
+set_env = { PYTHONDONTWRITEBYTECODE = "1" }
+# tox-uv defaults --python-preference to "system", which overrides ~/.config/uv/uv.toml
+# (only-managed) and can grab a headerless system interpreter (e.g. /usr/bin/python3.14
+# without python3.14-dev), breaking the Cython build. Force uv-managed builds, which ship
+# Python.h, consistent with this project's uv-managed-everything convention.
+uv_python_preference = "only-managed"
+
+# test suite on the default interpreter with both backends
+[env.tests]
+
+[env.ruff]
+deps = ["ruff"]
+commands = [["python", "-m", "ruff", "check", "src", "tests"]]
+set_env = { RUFF_CACHE_DIR = ".venv/ruff_cache" }
+skip_install = true
+
+[env.ty]
+deps = ["ty"]
+extras = ["pandas", "polars"]
+commands = [["python", "-m", "ty", "check", "src/mintalib"]]
+
+# free-threaded build — validates GIL-free core kernels (see tests/test_concurrency.py).
+# pandas only: polars has no cp313t wheel yet and a source build OOMs.
+[env."3.13t"]
+extras = ["pandas"]
+
+# pandas-only install — polars tests skip via importorskip
+[env.pandas]
+deps = ["pytest"]
+extras = ["pandas"]
+
+# polars-only install — pandas tests skip via skipif
+[env.polars]
+deps = ["pytest"]
+extras = ["polars"]

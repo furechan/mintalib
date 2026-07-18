@@ -60,7 +60,7 @@ This runs cythonize, build_ext, and all codegen scripts (`make-functions`, `make
 - **pytest** — test runner. Run with `uv run pytest`. Tests are in `tests/`, split by interface: `test_core.py`, `test_functions.py`, `test_indicators.py`, `test_expressions.py`. All are parametrized over the full indicator set.
 - **ruff** — linter. Run with `uv run ruff check src tests`. Per-file ignores are configured in `pyproject.toml` (e.g. `F401` for generated files and notebooks).
 - **ty** — type checker (Astral). Run with `uv run ty check src/mintalib/*.py scripts/ examples/ tests/`. Per-file rule overrides are in `pyproject.toml` under `[[tool.ty.overrides]]` — see comments there for rationale.
-- **nox** — multi-version test runner. Config in `noxfile.py`. `uv run nox` runs the everyday set (tests on the default interpreter, pandas-only, polars-only, ruff, ty); `uv run nox -t full` runs the full pre-publish matrix (Python 3.10–3.14 plus a free-threaded `3.13t` session — pandas-only, polars has no `cp313t` wheel yet). Sessions install the package via uv, whose built-wheel cache skips recompiling the Cython extension when `core.c` is unchanged. Always run the full matrix before publishing. (Replaced tox in July 2026; the old `tox.toml` is in git history.)
+- **tox** (with tox-uv) — multi-version test runner. Config in `tox.toml`. `tox` runs the everyday set (tests on the default interpreter, pandas-only, polars-only, ruff, ty); `tox -m full` runs the full pre-publish matrix (Python 3.10–3.14 plus a free-threaded `3.13t` env — pandas-only, polars has no `cp313t` wheel yet). Envs build from sdist per interpreter (compiles the Cython extension). `uv_python_preference = "only-managed"` is required — system interpreters may lack Python.h. Always run the full matrix before publishing. (nox was used briefly in July 2026, then reverted — declarative config fits this repo; nox stays in python-dev where programmable sessions have an edge.)
 
 ## Project Conventions
 
@@ -113,7 +113,7 @@ Release workflow (run in order):
 uv run inv make       # recompile Cython, regenerate all derived files and stubs
 uv run inv build      # clean + build sdist (also builds wheel via uv build --wheel if needed)
 uv run inv dump       # inspect sdist contents to verify py.typed and core.pyi are included
-uv run nox -t full    # run full test matrix (Python 3.10-3.14, free-threaded 3.13t, ruff, ty) — must pass before publishing
+tox -m full           # run full test matrix (Python 3.10-3.14, free-threaded 3.13t, ruff, ty) — must pass before publishing
 uv run inv publish    # upload dist/*.tar.gz to PyPI via twine (--testpypi flag for test run)
 uv run inv bump       # bump patch version in pyproject.toml after successful publish
 ```

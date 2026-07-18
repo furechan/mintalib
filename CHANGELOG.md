@@ -1,6 +1,7 @@
 # Change Log
 
 ## 0.1.1
+- Reverted nox back to tox (tox-uv): declarative config fits this repo; same everyday set plus `tox -m full` for the full matrix (3.10-3.14, 3.13t); no PATH shims (tox-uv provisions via the uv store)
 - noxfile now sets `UV_PYTHON_INSTALL_BIN=0` so nox's interpreter provisioning (`uv python install`) no longer symlinks `python3.X` executables into `~/.local/bin`; uv-managed pythons stay in uv's store, off PATH
 - Added `ZLEMA` (Zero-Lag Exponential Moving Average, core function `calc_zlema`): an EMA applied to the de-lagged series `2 * value - value[lag]` with `lag = (period - 1) // 2`, available across all interfaces (functions, indicators, expressions)
 - Expression factories now type-check when used with `Expr.pipe` (e.g. `EMA(20).pipe(ROC, 1)`): `wrap_expression` is annotated to return an `ExprFactory` protocol declaring both call conventions — the classic keyword form and the pipe form with a leading positional expression as `src`. Annotation-only change, no runtime behavior difference
