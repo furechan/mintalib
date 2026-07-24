@@ -56,7 +56,7 @@ Value of (open + high + low + close) / 4
 
 ---
 
-### `calc_bbands(prices, period=20, nbdev=2.0) -> tuple`
+### `calc_bbands(series, period=20, nbdev=2.0) -> tuple`
 
 Bollinger Bands
 
@@ -69,7 +69,7 @@ Bollinger Bands
 
 ---
 
-### `calc_bbp(prices, period=20, nbdev=2.0) -> np.ndarray`
+### `calc_bbp(series, period=20, nbdev=2.0) -> np.ndarray`
 
 Bollinger Bands Percent (%B)
 
@@ -82,7 +82,7 @@ Bollinger Bands Percent (%B)
 
 ---
 
-### `calc_bbw(prices, period=20, nbdev=2.0) -> np.ndarray`
+### `calc_bbw(series, period=20, nbdev=2.0) -> np.ndarray`
 
 Bollinger Bands Width
 
@@ -471,6 +471,14 @@ Minus Directional Index
 
 ---
 
+### `calc_medprice(prices) -> np.ndarray`
+
+Median Price
+
+Value of (high + low) / 2
+
+---
+
 ### `calc_mfi(prices, period=14) -> np.ndarray`
 
 Money Flow Index
@@ -480,14 +488,6 @@ Money Flow Index
  - **period (int):**  time period, default 14
 
 
-
----
-
-### `calc_midprice(prices) -> np.ndarray`
-
-Mid Price
-
-Value of (high + low) / 2
 
 ---
 
@@ -554,7 +554,7 @@ Generic Price
  - **item (str):**  price type, one of:
    'open', 'high', 'low', 'close' (default),
    'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
-   'mid' or 'hl2'    — mid price (high + low) / 2,
+   'med' or 'hl2'    — median price (high + low) / 2,
    'typ' or 'hlc3'   — typical price (high + low + close) / 3,
    'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
 

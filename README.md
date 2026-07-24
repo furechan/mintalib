@@ -103,9 +103,9 @@ result = prices.assign(
 | ALMA           | Series  | Arnaud Legoux Moving Average                                  |
 | ATR            | Prices  | Average True Range                                            |
 | AVGPRICE       | Prices  | Average Price                                                 |
-| BBANDS         | Prices  | Bollinger Bands                                               |
-| BBP            | Prices  | Bollinger Bands Percent (%B)                                  |
-| BBW            | Prices  | Bollinger Bands Width                                         |
+| BBANDS         | Series  | Bollinger Bands                                               |
+| BBP            | Series  | Bollinger Bands Percent (%B)                                  |
+| BBW            | Series  | Bollinger Bands Width                                         |
 | BOP            | Prices  | Balance of Power                                              |
 | CCI            | Prices  | Commodity Channel Index                                       |
 | CLAG           | Series  | Confirmation Lag                                              |
@@ -137,8 +137,8 @@ result = prices.assign(
 | MAV            | Series  | Generic Moving Average                                        |
 | MAX            | Series  | Rolling Maximum                                               |
 | MDI            | Prices  | Minus Directional Index                                       |
+| MEDPRICE       | Prices  | Median Price                                                  |
 | MFI            | Prices  | Money Flow Index                                              |
-| MIDPRICE       | Prices  | Mid Price                                                     |
 | MIN            | Series  | Rolling Minimum                                               |
 | NATR           | Prices  | Normalized Average True Range                                 |
 | PDI            | Prices  | Plus Directional Index                                        |

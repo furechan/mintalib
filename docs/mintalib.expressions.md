@@ -409,6 +409,12 @@ Minus Directional Index
 
 
 
+### `MEDPRICE(*, src: polars.Expr | str | None = None) -> polars.Expr`
+
+Median Price
+
+Value of (high + low) / 2
+
 ### `MFI(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 Money Flow Index
@@ -418,12 +424,6 @@ Money Flow Index
  - **period (int):**  time period, default 14
 
 
-
-### `MIDPRICE(*, src: polars.Expr | str | None = None) -> polars.Expr`
-
-Mid Price
-
-Value of (high + low) / 2
 
 ### `MIN(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
@@ -480,7 +480,7 @@ Generic Price
  - **item (str):**  price type, one of:
    'open', 'high', 'low', 'close' (default),
    'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
-   'mid' or 'hl2'    — mid price (high + low) / 2,
+   'med' or 'hl2'    — median price (high + low) / 2,
    'typ' or 'hlc3'   — typical price (high + low + close) / 3,
    'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
 

@@ -11,7 +11,6 @@ Convergence tests (checked from bar 200 onward):
   STOCH                            - different default parameters
   LINREG                           - talib TSF projects one bar ahead (use offset=1 to match)
   ROC                              - talib multiplies by 100; mintalib returns fraction
-  BBANDS                           - talib uses close; mintalib uses typical price
   BOP                              - talib has no period smoothing
 """
 
@@ -67,6 +66,15 @@ def test_rsi(prices):
 def test_stdev(prices):
     c = prices.close.values.astype(float)
     check(talib.STDDEV(c, 20), core.calc_stdev(c, 20))
+
+
+def test_bbands(prices):
+    c = prices.close.values.astype(float)
+    upper, middle, lower = talib.BBANDS(c, timeperiod=20, nbdevup=2, nbdevdn=2, matype=0)
+    our_upper, our_middle, our_lower = core.calc_bbands(c, 20, 2.0)
+    check(upper, our_upper)
+    check(middle, our_middle)
+    check(lower, our_lower)
 
 
 def test_mad(prices):

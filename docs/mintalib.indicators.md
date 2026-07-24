@@ -45,7 +45,7 @@ Average Price
 
 Value of (open + high + low + close) / 4
 
-### `BBANDS(period: int = 20, nbdev: float = 2.0)`
+### `BBANDS(period: int = 20, nbdev: float = 2.0, *, item: str | None = None)`
 
 Bollinger Bands
 
@@ -56,7 +56,7 @@ Bollinger Bands
 
 
 
-### `BBP(period: int = 20, nbdev: float = 2.0)`
+### `BBP(period: int = 20, nbdev: float = 2.0, *, item: str | None = None)`
 
 Bollinger Bands Percent (%B)
 
@@ -67,7 +67,7 @@ Bollinger Bands Percent (%B)
 
 
 
-### `BBW(period: int = 20, nbdev: float = 2.0)`
+### `BBW(period: int = 20, nbdev: float = 2.0, *, item: str | None = None)`
 
 Bollinger Bands Width
 
@@ -398,6 +398,12 @@ Minus Directional Index
 
 
 
+### `MEDPRICE()`
+
+Median Price
+
+Value of (high + low) / 2
+
 ### `MFI(period: int = 14)`
 
 Money Flow Index
@@ -407,12 +413,6 @@ Money Flow Index
  - **period (int):**  time period, default 14
 
 
-
-### `MIDPRICE()`
-
-Mid Price
-
-Value of (high + low) / 2
 
 ### `MIN(period: int, *, item: str | None = None)`
 
@@ -469,7 +469,7 @@ Generic Price
  - **item (str):**  price type, one of:
    'open', 'high', 'low', 'close' (default),
    'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
-   'mid' or 'hl2'    — mid price (high + low) / 2,
+   'med' or 'hl2'    — median price (high + low) / 2,
    'typ' or 'hlc3'   — typical price (high + low + close) / 3,
    'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
 

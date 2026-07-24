@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.2
+- Breaking: renamed `MIDPRICE` to `MEDPRICE` (core function `calc_midprice` → `calc_medprice`) across all interfaces, following the established convention where (high + low) / 2 is the median price (talib `MEDPRICE`; talib `MIDPRICE` is a different, period-based indicator). The `PRICE` item shortcut `'mid'` is renamed to `'med'` accordingly (`'hl2'` unchanged). Clean break, no deprecation aliases
+- Breaking: the BBANDS family (`BBANDS`, `BBP`, `BBW`, core functions `calc_bbands`, `calc_bbp`, `calc_bbw`) now takes a series instead of a prices DataFrame, defaulting to the `close` column — the standard Bollinger definition matching TA-Lib (previously computed internally from typical price). Use `item=` (indicators) or `src=` (expressions) to select another price source; the old typical-price behavior is `TYPPRICE() | BBANDS(20)` (indicators) or `BBANDS(20, src=TYPPRICE())` (expressions). BBANDS is now covered by the TA-Lib parity tests
+
 ## 0.1.1
 - Reverted nox back to tox (tox-uv): declarative config fits this repo; same everyday set plus `tox -m full` for the full matrix (3.10-3.14, 3.13t); no PATH shims (tox-uv provisions via the uv store)
 - noxfile now sets `UV_PYTHON_INSTALL_BIN=0` so nox's interpreter provisioning (`uv python install`) no longer symlinks `python3.X` executables into `~/.local/bin`; uv-managed pythons stay in uv's store, off PATH
