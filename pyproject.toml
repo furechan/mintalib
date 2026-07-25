@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "mintalib"
 version = "0.1.2"
 requires-python = ">=3.10"
-readme = "output/pypi-readme.md"
+readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE.txt"]
 description = "Minimal Technical Analysis Library for Python"

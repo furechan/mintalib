@@ -3,6 +3,8 @@ Minimal technical analysis library for Python.
 
 ## Modules
 
+Every indicator is available in all three stable interfaces (functions, indicators, expressions) — enforced by the test suite.
+
 - [mintalib.core](core.md) — core calculation routines implemented in Cython, named `calc_sma`, `calc_ema`, etc.
 - [mintalib.functions](functions.md) — plain functions wrapping core routines, named `sma`, `ema`, etc. Primary stable interface.
 - [mintalib.indicators](indicators.md) — composable indicator objects for pandas, named `SMA`, `EMA`, etc.

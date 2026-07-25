@@ -99,6 +99,7 @@ def make(ctx):
 @task(clean)
 def build(ctx):
     """Build project sdist"""
+    ctx.run("python scripts/check-readme.py")
     ctx.run("uv build --sdist")
 
 
