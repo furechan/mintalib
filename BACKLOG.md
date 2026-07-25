@@ -12,4 +12,4 @@ Items decided or considered but not scheduled. Add new items at the end.
 ## Publishing
 
 - ~~Add PyPI project urls to pyproject~~ — done 2026-07-25: added `urls.documentation`, `urls.repository`, `urls.changelog` matching mplchart's format; takes effect when 0.1.3 publishes
-- Register https://furechan.github.io/mintalib/ on Google Search Console — URL-prefix property, HTML verification file into docs source so it deploys at site root, submit sitemap.xml, request indexing on key pages (same flow as mplchart, 2026-07-25)
+- ~~Register https://furechan.github.io/mintalib/ on Google Search Console~~ — done 2026-07-25: URL-prefix property verified via the account-level HTML file reused from mplchart (`docs/google3e5afa36401ddb09.html`, deploys at site root), sitemap.xml submitted
