@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.1.3
+- Added PyPI project urls: `documentation` (the mkdocs site), `repository`, and `changelog` alongside the existing `homepage`
+
 ## 0.1.2
 - Replaced the manually-refreshed interface coverage table (`output/coverage.md` and `scripts/make-coverage.py`, removed) with `tests/test_coverage.py`, which asserts every core `calc_*` routine is exposed in all three stable interfaces — previously each test file enumerated from its own module, so a codegen omission would have passed silently, and the table had gone stale. The guarantee is now stated on the reference index page instead
 - Removed the pypi-readme indirection: `pyproject.toml` now points `readme` at `README.md` directly, `output/pypi-readme.md` is deleted, and `update-readme.py` no longer rewrites repo-relative links (the README has none). Instead, a new `scripts/check-readme.py` fails `inv build` if repo-relative links ever reappear (PyPI renders the readme without repo context) — use absolute URLs in the README
