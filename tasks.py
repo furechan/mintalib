@@ -109,9 +109,11 @@ def dump(ctx):
         ctx.run(f"tar -tf {file}")
 
 @task
-def docs(ctx):
-    """Generate Markdown documentation"""
+def docs(ctx, serve=False):
+    """Generate Markdown API reference, optionally serve mkdocs site"""
     ctx.run("python scripts/make-api-docs.py")
+    if serve:
+        ctx.run("mkdocs serve")
 
 
 @task

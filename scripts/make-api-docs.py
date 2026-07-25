@@ -2,6 +2,7 @@
 
 import ast
 import inspect
+import re
 from pathlib import Path
 
 import pdoc.doc
@@ -16,7 +17,7 @@ MODULES = [
     "mintalib.expressions",
 ]
 
-OUTPUT_DIR = Path(__file__).parent.parent / "docs"
+OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "reference"
 
 
 def clean_type(text: str) -> str:
@@ -25,7 +26,10 @@ def clean_type(text: str) -> str:
 
 def format_docstring(text: str) -> str:
     """Convert google-style sections (Args:, Returns:, ...) to markdown"""
-    return pdoc.docstrings.google(text.strip())
+    text = pdoc.docstrings.google(text.strip())
+    # Demote section headings (e.g. "###### Arguments:") to bold text
+    # so they don't pollute the mkdocs page table of contents.
+    return re.sub(r"^#{4,6} *(.+?) *$", r"**\1**", text, flags=re.MULTILINE)
 
 
 def format_signature(name, sig):
@@ -94,7 +98,9 @@ def render_module(module_name: str) -> str:
                     doc_lines = doc_lines[1:]
             doc = "\n".join(doc_lines)
             lines.append("---\n" if lines[-1] != "---\n" else "")
-            lines.append(f"### `{clean_type(name + sig_str)}`\n" if sig_str else f"### `{name}`\n")
+            lines.append(f"### {name}\n")
+            if sig_str:
+                lines.append(format_signature(name, sig_str) + "\n")
             if doc:
                 lines.append(format_docstring(doc))
                 lines.append("")
@@ -105,16 +111,17 @@ def render_module(module_name: str) -> str:
     for m in members:
         if m.kind == "function":
             sig = str(m.signature) if hasattr(m, "signature") else ""
-            lines.append(f"### {format_signature(m.name, sig)}\n")
+            lines.append(f"### {m.name}\n")
+            if sig:
+                lines.append(format_signature(m.name, sig) + "\n")
         elif m.kind == "class":
-            lines.append(f"## {m.name}\n")
+            lines.append(f"### {m.name}\n")
         else:
             annotation = getattr(m, "annotation_str", "").lstrip(": ")
             default = getattr(m, "default_value_str", "")
+            lines.append(f"### {m.name}\n")
             if annotation:
-                lines.append(f"### `{clean_type(m.name + ': ' + annotation)}`\n")
-            else:
-                lines.append(f"### `{m.name}`\n")
+                lines.append(f"`{clean_type(m.name + ': ' + annotation)}`\n")
             if not m.docstring and default:
                 value = repr(m.obj) if hasattr(m, "obj") and m.obj is not None else default
                 lines.append(value)
@@ -133,7 +140,8 @@ def main():
     for module_name in MODULES:
         print(f"Generating {module_name} ...")
         content = render_module(module_name)
-        filename = module_name + ".md"
+        stem = module_name.removeprefix("mintalib.")
+        filename = ("index" if stem == "mintalib" else stem) + ".md"
         output_path = OUTPUT_DIR / filename
         output_path.write_text(content)
         print(f"  -> {output_path}")

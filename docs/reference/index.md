@@ -4,10 +4,10 @@ Minimal technical analysis library for Python.
 
 ## Modules
 
-- [mintalib.core](mintalib.core.md) — core calculation routines implemented in Cython, named `calc_sma`, `calc_ema`, etc.
-- [mintalib.functions](mintalib.functions.md) — plain functions wrapping core routines, named `sma`, `ema`, etc. Primary stable interface.
-- [mintalib.indicators](mintalib.indicators.md) — composable indicator objects for pandas, named `SMA`, `EMA`, etc.
-- [mintalib.expressions](mintalib.expressions.md) — polars expression factories, named `SMA`, `EMA`, etc.
+- [mintalib.core](core.md) — core calculation routines implemented in Cython, named `calc_sma`, `calc_ema`, etc.
+- [mintalib.functions](functions.md) — plain functions wrapping core routines, named `sma`, `ema`, etc. Primary stable interface.
+- [mintalib.indicators](indicators.md) — composable indicator objects for pandas, named `SMA`, `EMA`, etc.
+- [mintalib.expressions](expressions.md) — polars expression factories, named `SMA`, `EMA`, etc.
 
 ## Experimental Modules
 

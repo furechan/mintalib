@@ -1,207 +1,279 @@
-# mintalib.functions
+# mintalib.core
 
-Calculation functions for technical analysis indicators.
+Calculation routines implemented in cython.
 
-These functions are thin wrappers around core calculation routines that handle input and output type conversion.
+Routines are typically named `calc_` followed by an indicator name all in lower caps as in `calc_sma`.
 
-The function names are all lower case like `sma`, `ema`, etc.
-Some names like `abs`, `min`, `max`, `sum` shadow Python builtins.
-It is advised to import the module with a short alias rather than importing names directly:
+The first parameter `series` or `prices` indicates whether the calculation accepts a single series or a prices dataframe.
 
-```python
-import mintalib.functions as ta
-```
+A `prices` dataframe should contain the columns `open`, `high`, `low`, `close` and optionally `volume` all in **lower case**.
+
+The `wrap` parameter dictates whether to wrap the calculation result to match the type of the inputs.
 
 ---
 
-### `abs(series)`
+### calc_abs
+
+`calc_abs(series) -> np.ndarray`
 
 Absolute Value
 
-### `adx(prices, period: int = 14)`
+---
+
+### calc_adx
+
+`calc_adx(prices, period=14) -> np.ndarray`
 
 Average Directional Index
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 14
 
 
 
-### `alma(series, period: int = 9, offset: float = 0.85, sigma: float = 6.0)`
+---
+
+### calc_alma
+
+`calc_alma(series, period=9, offset=0.85, sigma=6.0) -> np.ndarray`
 
 Arnaud Legoux Moving Average
 
-### `atr(prices, period: int = 14)`
+---
+
+### calc_atr
+
+`calc_atr(prices, period=14) -> np.ndarray`
 
 Average True Range
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 14
 
 
 
-### `avgprice(prices)`
+---
+
+### calc_avgprice
+
+`calc_avgprice(prices) -> np.ndarray`
 
 Average Price
 
 Value of (open + high + low + close) / 4
 
-### `bbands(series, period: int = 20, nbdev: float = 2.0)`
+---
+
+### calc_bbands
+
+`calc_bbands(series, period=20, nbdev=2.0) -> tuple`
 
 Bollinger Bands
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
  - **nbdev (float):**  bands width in number of standard deviations
 
 
 
-### `bbp(series, period: int = 20, nbdev: float = 2.0)`
+---
+
+### calc_bbp
+
+`calc_bbp(series, period=20, nbdev=2.0) -> np.ndarray`
 
 Bollinger Bands Percent (%B)
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
  - **nbdev (float):**  bands width in number of standard deviations
 
 
 
-### `bbw(series, period: int = 20, nbdev: float = 2.0)`
+---
+
+### calc_bbw
+
+`calc_bbw(series, period=20, nbdev=2.0) -> np.ndarray`
 
 Bollinger Bands Width
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
  - **nbdev (float):**  bands width in number of standard deviations
 
 
 
-### `bop(prices, period: int = 20)`
+---
+
+### calc_bop
+
+`calc_bop(prices, period=20) -> np.ndarray`
 
 Balance of Power
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `cci(prices, period: int = 20)`
+---
+
+### calc_cci
+
+`calc_cci(prices, period=20) -> np.ndarray`
 
 Commodity Channel Index
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `clag(series, period: int = 1)`
+---
+
+### calc_clag
+
+`calc_clag(series, period=1) -> np.ndarray`
 
 Confirmation Lag
 
 Changes value only after a confirmation period 
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 1
 
 
 
-### `cmf(prices, period: int = 20)`
+---
+
+### calc_cmf
+
+`calc_cmf(prices, period=20) -> np.ndarray`
 
 Chaikin Money Flow
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `crossover(series, level: float = 0.0)`
+---
+
+### calc_crossover
+
+`calc_crossover(series, level=0.0) -> np.ndarray`
 
 Cross Over
 
 Yields a value of 1 at the point where series crosses over level
 
 
-###### Arguments:
+**Arguments:**
  - **level (float):**  level to cross, default 0.0
 
 
 
-### `crossunder(series, level: float = 0.0)`
+---
+
+### calc_crossunder
+
+`calc_crossunder(series, level=0.0) -> np.ndarray`
 
 Cross Under
 
 Yields a value of 1 at the point where series crosses under level
 
 
-###### Arguments:
+**Arguments:**
  - **level (float):**  level to cross, default 0.0
 
 
 
-### `dema(series, period: int)`
+---
+
+### calc_dema
+
+`calc_dema(series, period) -> np.ndarray`
 
 Double Exponential Moving Average
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, required
 
 
 
-### `diff(series, period: int = 1)`
+---
+
+### calc_diff
+
+`calc_diff(series, period=1) -> np.ndarray`
 
 Difference
 
 Difference between current value and the one offset by period
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 1
 
 
 
-### `dmi(prices, period: int = 14)`
+---
+
+### calc_dmi
+
+`calc_dmi(prices, period=14) -> tuple`
 
 Directional Movement Indicator
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 14
 
 
 
-### `donchian(prices, period: int = 20)`
+---
+
+### calc_donchian
+
+`calc_donchian(prices, period=20) -> tuple`
 
 Donchian Channel
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `ema(series, period: int, *, adjust: bool = False)`
+---
+
+### calc_ema
+
+`calc_ema(series, period, *, adjust=False) -> np.ndarray`
 
 Exponential Moving Average
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, required
  - **adjust (bool):**  whether to adjust weights, default False
    when true update ratio increases gradually (see formula)
 
 
 
-###### Formula:
+**Formula:**
 > EMA is calculated as a recursive formula
 > The standard formula is ema += alpha * (value - ema)
 >     with alpha = 2.0 / (period + 1.0)
@@ -210,70 +282,102 @@ Exponential Moving Average
 >     with rho = 1.0 - alpha
 
 
-### `exp(series)`
+---
+
+### calc_exp
+
+`calc_exp(series) -> np.ndarray`
 
 Exponential
 
-### `flag(series)`
+---
+
+### calc_flag
+
+`calc_flag(series) -> np.ndarray`
 
 Flag Value
 
 Flag value of 1 for positive, 0 for zero or negative, and NaN otherwize
 
-### `hma(series, period: int)`
+---
+
+### calc_hma
+
+`calc_hma(series, period) -> np.ndarray`
 
 Hull Moving Average
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, required
 
 
 
-### `kama(series, period: int = 10, fastn: int = 2, slown: int = 30)`
+---
+
+### calc_kama
+
+`calc_kama(series, period=10, fastn=2, slown=30) -> np.ndarray`
 
 Kaufman Adaptive Moving Average
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period for efficiency ratio, default 10
  - **fastn (int):**  time period for fast moving average, default, 2
  - **slown (int):**  time period for slow moving average, default 30
 
 
 
-### `keltner(prices, period: int = 20, nbatr: float = 2.0)`
+---
+
+### calc_keltner
+
+`calc_keltner(prices, period=20, nbatr=2.0) -> tuple`
 
 Keltner Channel
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
  - **nbatr (float):**  channel width in number of atrs, default 2.0
 
 
 
-### `ker(series, period: int = 10)`
+---
+
+### calc_ker
+
+`calc_ker(series, period=10) -> np.ndarray`
 
 Kaufman Efficiency Ratio
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 10
 
 
 
-### `lag(series, period: int)`
+---
+
+### calc_lag
+
+`calc_lag(series, period) -> np.ndarray`
 
 Lag Function
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, required
 
 
 
-### `linreg(series, period: int = 20, offset: int = 0)`
+---
+
+### calc_linreg
+
+`calc_linreg(series, period=20, offset=0) -> np.ndarray`
 
 Linear Regression (least squares moving average)
 
@@ -281,190 +385,262 @@ Value of the regression line at the current bar,
 with `offset` projecting the line forward.
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
  - **offset (int):**  forecast offset, default 0
 
 
 
-### `linreg_rmse(series, period: int = 20)`
+---
+
+### calc_linreg_rmse
+
+`calc_linreg_rmse(series, period=20) -> np.ndarray`
 
 Linear Regression Root Mean Square Error
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `linreg_rvalue(series, period: int = 20)`
+---
+
+### calc_linreg_rvalue
+
+`calc_linreg_rvalue(series, period=20) -> np.ndarray`
 
 Linear Regression R-Value
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `linreg_slope(series, period: int = 20)`
+---
+
+### calc_linreg_slope
+
+`calc_linreg_slope(series, period=20) -> np.ndarray`
 
 Linear Regression Slope
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `log(series)`
+---
+
+### calc_log
+
+`calc_log(series) -> np.ndarray`
 
 Logarithm
 
-### `lroc(series, period: int = 1)`
+---
+
+### calc_lroc
+
+`calc_lroc(series, period=1) -> np.ndarray`
 
 Logarithmic Rate of Change
 
 Equivalent to the difference of log values
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 1
  - when negative the calculation is shifted back
 
 
 
-### `macd(series, n1: int = 12, n2: int = 26, n3: int = 9)`
+---
+
+### calc_macd
+
+`calc_macd(series, n1=12, n2=26, n3=9) -> tuple`
 
 Moving Average Convergence Divergence
 
 
-###### Arguments:
+**Arguments:**
  - **n1 (int):**  short time period, default 12
  - **n2 (int):**  long time period, default 26
  - **n3 (int):**  signal time period, default 9  
 
 
 
-###### Outputs:
+**Outputs:**
 > macd, macdsignal, macdhist
 
 
-### `macdv(prices, n1: int = 12, n2: int = 26, n3: int = 9)`
+---
+
+### calc_macdv
+
+`calc_macdv(prices, n1=12, n2=26, n3=9) -> tuple`
 
 Moving Average Convergence Divergence - Volatility Normalized
 
 
-###### Arguments:
+**Arguments:**
  - **n1 (int):**  short time period, default 12
  - **n2 (int):**  long time period, default 26
  - **n3 (int):**  signal time period, default 9  
 
 
 
-###### Outputs:
+**Outputs:**
 > macdv, macdvsignal, macdvhist
 
 
-### `mad(series, period: int = 14)`
+---
+
+### calc_mad
+
+`calc_mad(series, period=14) -> np.ndarray`
 
 Rolling Mean Absolute Deviation
 
-### `mav(series, period: int = 20, *, ma_type: str = 'SMA')`
+---
+
+### calc_mav
+
+`calc_mav(series, period=20, *, ma_type='SMA') -> np.ndarray`
 
 Generic Moving Average
 
 Moving average computed according to ma_type
 
 
-###### Arguments:
+**Arguments:**
  - **ma_type (str):**  one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
    defaults to 'SMA'
 
 
 
-### `max(series, period: int)`
+---
+
+### calc_max
+
+`calc_max(series, period) -> np.ndarray`
 
 Rolling Maximum
 
-### `mdi(prices, period: int = 14)`
+---
+
+### calc_mdi
+
+`calc_mdi(prices, period=14) -> np.ndarray`
 
 Minus Directional Index
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 14
 
 
 
-### `medprice(prices)`
+---
+
+### calc_medprice
+
+`calc_medprice(prices) -> np.ndarray`
 
 Median Price
 
 Value of (high + low) / 2
 
-### `mfi(prices, period: int = 14)`
+---
+
+### calc_mfi
+
+`calc_mfi(prices, period=14) -> np.ndarray`
 
 Money Flow Index
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 14
 
 
 
-### `min(series, period: int)`
+---
+
+### calc_min
+
+`calc_min(series, period) -> np.ndarray`
 
 Rolling Minimum
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, required
 
 
 
-### `natr(prices, period: int = 14)`
+---
+
+### calc_natr
+
+`calc_natr(prices, period=14) -> np.ndarray`
 
 Normalized Average True Range
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 14
 
 
 
-### `pdi(prices, period: int = 14)`
+---
+
+### calc_pdi
+
+`calc_pdi(prices, period=14) -> np.ndarray`
 
 Plus Directional Index
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 14
 
 
 
-### `ppo(series, n1: int = 12, n2: int = 26, n3: int = 9)`
+---
+
+### calc_ppo
+
+`calc_ppo(series, n1=12, n2=26, n3=9) -> tuple`
 
 Price Percentage Oscillator
 
 
-###### Arguments:
+**Arguments:**
  - **n1 (int):**  short time period, default 12
  - **n2 (int):**  long time period, default 26
  - **n3 (int):**  signal time period, default 9
 
 
 
-###### Outputs:
+**Outputs:**
 > ppo, pposignal, ppohist
 
 
-### `price(prices, item: str | None = None)`
+---
+
+### calc_price
+
+`calc_price(prices, item: str | None=None) -> np.ndarray`
 
 Generic Price
 
 
-###### Arguments:
+**Arguments:**
  - **item (str):**  price type, one of:
    'open', 'high', 'low', 'close' (default),
    'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
@@ -474,7 +650,11 @@ Generic Price
 
 
 
-### `quadreg(series, period: int = 20, offset: int = 0)`
+---
+
+### calc_quadreg
+
+`calc_quadreg(series, period=20, offset=0) -> np.ndarray`
 
 Quadratic Regression (parabolic moving average)
 
@@ -482,45 +662,61 @@ Value of the regression parabola at the current bar,
 with `offset` projecting the parabola forward.
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
  - **offset (int):**  forecast offset, default 0
 
 
 
-### `quadreg_curve(series, period: int = 20)`
+---
+
+### calc_quadreg_curve
+
+`calc_quadreg_curve(series, period=20) -> np.ndarray`
 
 Quadratic Regression Curve
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `quadreg_rmse(series, period: int = 20)`
+---
+
+### calc_quadreg_rmse
+
+`calc_quadreg_rmse(series, period=20) -> np.ndarray`
 
 Quadratic Regression Root Mean Square Error
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `quadreg_rvalue(series, period: int = 20)`
+---
+
+### calc_quadreg_rvalue
+
+`calc_quadreg_rvalue(series, period=20) -> np.ndarray`
 
 Quadratic Regression R-Value
 
 Partial correlation of the quadratic term, given the linear term.
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `quadreg_slope(series, period: int = 20, offset: int = 0)`
+---
+
+### calc_quadreg_slope
+
+`calc_quadreg_slope(series, period=20, offset=0) -> np.ndarray`
 
 Quadratic Regression Slope
 
@@ -528,13 +724,17 @@ Slope of the regression parabola at the current bar,
 with `offset` projecting the slope forward.
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
  - **offset (int):**  forecast offset, default 0
 
 
 
-### `rma(series, period: int)`
+---
+
+### calc_rma
+
+`calc_rma(series, period) -> np.ndarray`
 
 Rolling Moving Average (RSI style)
 
@@ -542,165 +742,233 @@ Exponential moving average with `alpha = 2 / period`,
 that starts as a simple moving average until
 number of bars is equal to `period`.
 
-### `roc(series, period: int = 1)`
+---
+
+### calc_roc
+
+`calc_roc(series, period=1) -> np.ndarray`
 
 Rate of Change
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 1
  - when negative the calculation is shifted back
 
 
 
-### `rsi(series, period: int = 14)`
+---
+
+### calc_rsi
+
+`calc_rsi(series, period=14) -> np.ndarray`
 
 Relative Strength Index
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 14
 
 
 
-### `sar(prices, afs: float = 0.02, maxaf: float = 0.2)`
+---
+
+### calc_sar
+
+`calc_sar(prices, afs=0.02, maxaf=0.2) -> np.ndarray`
 
 Parabolic Stop and Reverse
 
 
-###### Arguments:
+**Arguments:**
  - **afs (float):**  starting acceleration factor, default 0.02
  - **maxaf (float):**  maximum acceleration factor, default 0.2
 
 
 
-### `sign(series)`
+---
+
+### calc_sign
+
+`calc_sign(series) -> np.ndarray`
 
 Sign
 
-### `sma(series, period: int)`
+---
+
+### calc_sma
+
+`calc_sma(series, period) -> np.ndarray`
 
 Simple Moving Average
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, required
 
 
 
-### `stdev(series, period: int = 20)`
+---
+
+### calc_stdev
+
+`calc_stdev(series, period=20) -> np.ndarray`
 
 Standard Deviation
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `step(series, threshold: float = 1.0)`
+---
+
+### calc_step
+
+`calc_step(series, threshold: float=1.0) -> np.ndarray`
 
 Step Function
 
 Limit value changes to threshold (in absolute value)
 
 
-###### Arguments:
+**Arguments:**
  - **threshold (float):**  threshold value, default 1.0
 
 
 
-### `stoch(prices, period: int = 14, fastn: int = 3, slown: int = 3)`
+---
+
+### calc_stoch
+
+`calc_stoch(prices, period=14, fastn=3, slown=3) -> tuple`
 
 Stochastic Oscillator
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**   time period of window, default, 14
  - **fastn (int):**  time period of fast average, default 3
  - **slown (int):**  time period of slow average, default 3
 
 
 
-### `streak(series)`
+---
+
+### calc_streak
+
+`calc_streak(series) -> np.ndarray`
 
 Consecutive streak of values above zero
 
-### `sum(series, period: int)`
+---
+
+### calc_sum
+
+`calc_sum(series, period) -> np.ndarray`
 
 Rolling sum
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, required
 
 
 
-### `tema(series, period: int = 20)`
+---
+
+### calc_tema
+
+`calc_tema(series, period=20) -> np.ndarray`
 
 Triple Exponential Moving Average
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, default 20
 
 
 
-### `trange(prices, *, log_prices: bool = False, percent: bool = False)`
+---
+
+### calc_trange
+
+`calc_trange(prices, *, log_prices=False, percent=False) -> np.ndarray`
 
 True Range
 
 
-###### Arguments:
+**Arguments:**
  - **log_prices (bool):**  whether to apply log to prices before calculation
  - **percent (bool):**  result as percentage of price
 
 
 
-### `typprice(prices)`
+---
+
+### calc_typprice
+
+`calc_typprice(prices) -> np.ndarray`
 
 Typical Price
 
 Value of (high + low + close ) / 3
 
-### `updown(series, up_level: float = 0.0, down_level: float = 0.0)`
+---
+
+### calc_updown
+
+`calc_updown(series, up_level=0.0, down_level=0.0) -> np.ndarray`
 
 Flag for value crossing up & down levels
 
 
-###### Arguments:
+**Arguments:**
  - **up_level (float):**  flag set at 1 above that level
  - **down_level (float):**  flag set at 0 below that level
 
 
 
-### `wclprice(prices)`
+---
+
+### calc_wclprice
+
+`calc_wclprice(prices) -> np.ndarray`
 
 Weighted Close Price
 
 Value of (high + low + 2 * close) / 4
 
-### `wma(series, period: int)`
+---
+
+### calc_wma
+
+`calc_wma(series, period) -> np.ndarray`
 
 Weighted Moving Average
     
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, required
 
 
 
-### `zlema(series, period: int)`
+---
+
+### calc_zlema
+
+`calc_zlema(series, period) -> np.ndarray`
 
 Zero-Lag Exponential Moving Average
 
 
-###### Arguments:
+**Arguments:**
  - **period (int):**  time period, required
 
 
 
-###### Formula:
+**Formula:**
 > ZLEMA is an EMA applied to a de-lagged series
 > data = 2 * value - value[lag] with lag = (period - 1) // 2
 

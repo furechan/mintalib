@@ -2,14 +2,25 @@
 
 from functools import lru_cache
 from importlib import resources
+from typing import TYPE_CHECKING, Literal, overload
+
+if TYPE_CHECKING:
+    import pandas as pd
+    import polars as pl
 
 
 TIMEZONE = "America/New_York"
 FREQUENCIES = "daily", "hourly", "minute"
-SAMPLE_TICKERS = tuple(f"T{i:03d}" for i in range(1, 501))
 
 
-@lru_cache
+@overload
+def sample_prices(
+    freq: str = "daily", *, backend: Literal["pandas"] = "pandas"
+) -> "pd.DataFrame": ...
+@overload
+def sample_prices(
+    freq: str = "daily", *, backend: Literal["polars"]
+) -> "pl.DataFrame": ...
 def sample_prices(freq: str = "daily", *, backend: str = "pandas"):
     """Load bundled sample OHLCV prices for testing and examples.
 
@@ -23,7 +34,11 @@ def sample_prices(freq: str = "daily", *, backend: str = "pandas"):
     Returns:
         DataFrame with OHLCV columns and a datetime index (pandas) or datetime column (polars).
     """
+    return _sample_prices_cached(freq, backend)
 
+
+@lru_cache
+def _sample_prices_cached(freq: str, backend: str):
     if freq not in FREQUENCIES:
         raise ValueError(f"Invalid freq {freq!r}")
 
@@ -37,42 +52,6 @@ def sample_prices(freq: str = "daily", *, backend: str = "pandas"):
             return _load_polars(path, freq=freq)
         case _:
             raise ValueError(f"Unknown backend {backend!r}")
-
-
-@lru_cache
-def sample_dataset(
-    n_tickers: int = 500,
-    *,
-    freq: str = "daily",
-    max_bars: int = 0,
-):
-    """Synthetic multi-ticker polars dataset for benchmarking `.over()` expressions.
-
-    Stacks ``n_tickers`` copies of :func:`sample_prices` (polars backend) with a
-    synthetic ``ticker`` column (``"T001"`` … ``"T500"``), sorted by
-    ``(ticker, date)`` so it is ready for ``.over("ticker")`` use.
-
-    Results are cached after the first call (per unique combination of arguments).
-
-    Args:
-        n_tickers: Number of synthetic tickers to generate. Defaults to 500.
-        freq: Data frequency passed to :func:`sample_prices`. Defaults to ``"daily"``.
-        max_bars: If greater than 0, return only the most recent ``max_bars`` rows
-            per ticker. Defaults to 0 (all rows).
-
-    Returns:
-        Polars DataFrame with a leading ``ticker`` column followed by the same
-        temporal and OHLCV columns as :func:`sample_prices`.
-    """
-    import polars as pl
-
-    prices = sample_prices(freq=freq, backend="polars")
-    if max_bars > 0:
-        prices = prices.tail(max_bars)
-    date_col = prices.columns[0]
-    tickers = SAMPLE_TICKERS[:n_tickers]
-    frames = [prices.with_columns(pl.lit(t).alias("ticker")) for t in tickers]
-    return pl.concat(frames).sort("ticker", date_col)
 
 
 def _load_pandas(path):

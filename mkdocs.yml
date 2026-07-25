@@ -1,0 +1,50 @@
+site_name: mintalib
+site_description: Minimal technical analysis library for Python, implemented in Cython
+site_url: https://furechan.github.io/mintalib/
+repo_url: https://github.com/furechan/mintalib
+repo_name: furechan/mintalib
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - content.code.copy
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      execute: false
+      include_source: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - Examples:
+      - Functions: examples/functions.ipynb
+      - Expressions: examples/expressions.ipynb
+      - Indicators: examples/indicators.ipynb
+  - Reference:
+      - reference/index.md
+      - Functions: reference/functions.md
+      - Expressions: reference/expressions.md
+      - Indicators: reference/indicators.md
+      - Core: reference/core.md
