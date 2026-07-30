@@ -4,8 +4,12 @@ site_url: https://furechan.github.io/mintalib/
 repo_url: https://github.com/furechan/mintalib
 repo_name: furechan/mintalib
 
+exclude_docs: |
+  overrides/
+
 theme:
   name: material
+  custom_dir: docs/overrides
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
