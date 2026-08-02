@@ -1,5 +1,6 @@
 # Exclude some file types from github stats
 *.ipynb linguist-documentation
+*.c linguist-generated
 
 # Generated files (codegen via inv make) — excluded from stats, collapsed in PR diffs
 src/mintalib/functions.py linguist-generated
@@ -7,4 +8,3 @@ src/mintalib/indicators.py linguist-generated
 src/mintalib/expressions.py linguist-generated
 src/mintalib/core.pyi linguist-generated
 docs/reference/** linguist-generated
-*.c linguist-generated
