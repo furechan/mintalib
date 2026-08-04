@@ -1,3 +1,4 @@
 # Memory Index
 
-(empty — durable instructions live in CLAUDE.md; investigation writeups live in notes/)
+- [Typing means annotations only](feedback-typing-not-hardening.md) — no runtime guards unless explicitly requested
+
