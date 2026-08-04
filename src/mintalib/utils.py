@@ -61,10 +61,10 @@ def format_partial(func, data, *, name: str | None = None):
     return "%s(%s)" % (name, arguments)
 
 
-def lazy_repr(obj):
+def lazy_repr(self) -> str:
     """minimal __repr__ based on __init__ signature"""
 
-    cname = obj.__class__.__qualname__
+    cname = self.__class__.__qualname__
 
-    return format_partial(obj.__init__, obj.__dict__, name=cname)
+    return format_partial(self.__init__, self.__dict__, name=cname)
 

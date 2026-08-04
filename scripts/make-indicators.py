@@ -19,13 +19,16 @@ An indicator instance is a callable applied to prices or series data: `SMA(50)(p
 Indicators chain via the `|` operator or the equivalent `.then()` method:
 `EMA(20) | ROC(1)` is the same as `EMA(20).then(ROC(1))`. The fluent form is handy in longer chains: `EMA(20).then(ROC(1)).as_expr()`.
 
+Single-output indicators return a pandas Series; multi-output indicators (e.g. `MACD`, `BBANDS`) return a DataFrame.
+Select one output of a multi-output indicator as a series indicator with `MACD()["macd"]`.
+
 Inputs must be a pandas DataFrame, pandas Series, or numpy array. For polars, use `mintalib.expressions`.
 """
 
 # Do not edit! This file was generated.
 
 from mintalib import core
-from mintalib.model.indicator import wrap_indicator, EVAL
+from mintalib.model.indicator import wrap_series_indicator, wrap_frame_indicator, EVAL
 
 '''
 
@@ -58,7 +61,10 @@ def make_indicator(calc_func, name=None):
         name = calc_func.__name__.removeprefix("calc_").upper()
     cname = f"core.{calc_func.__name__}"
     newsig = make_signature(calc_func)
-    buffer = f"@wrap_indicator({cname})\n"
+    metadata = getattr(calc_func, "metadata", None)
+    multi_output = bool(metadata and metadata.get("output_names"))
+    wrapper = "wrap_frame_indicator" if multi_output else "wrap_series_indicator"
+    buffer = f"@{wrapper}({cname})\n"
     buffer += f"def {name}{newsig}: ...\n"
     return buffer
 

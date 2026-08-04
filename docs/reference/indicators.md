@@ -7,6 +7,9 @@ An indicator instance is a callable applied to prices or series data: `SMA(50)(p
 Indicators chain via the `|` operator or the equivalent `.then()` method:
 `EMA(20) | ROC(1)` is the same as `EMA(20).then(ROC(1))`. The fluent form is handy in longer chains: `EMA(20).then(ROC(1)).as_expr()`.
 
+Single-output indicators return a pandas Series; multi-output indicators (e.g. `MACD`, `BBANDS`) return a DataFrame.
+Select one output of a multi-output indicator as a series indicator with `MACD()["macd"]`.
+
 Inputs must be a pandas DataFrame, pandas Series, or numpy array. For polars, use `mintalib.expressions`.
 
 ---
