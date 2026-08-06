@@ -1,3 +1,4 @@
+# ty: ignore[empty-body] (decorator-replaces-body pattern: empty stubs are intentional)
 """
 Polars Expression Factory Methods
 

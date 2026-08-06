@@ -10,7 +10,8 @@ PKGDIR = ROOTDIR.joinpath(f"src/{PACKAGE}").resolve(strict=True)
 from mintalib import core
 from mintalib.builder import annotate_parameter
 
-PRELUDE = '''"""
+PRELUDE = '''# ty: ignore[empty-body] (decorator-replaces-body pattern: empty stubs are intentional)
+"""
 Polars Expression Factory Methods
 
 Functions in this module are polars expression factories, typically named after

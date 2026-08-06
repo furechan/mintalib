@@ -4,7 +4,7 @@ from pathlib import Path
 from functools import lru_cache
 
 import pandas as pd
-import yfinance as yf  # type: ignore
+import yfinance as yf
 
 ROOTDIR = Path(__file__).parent.parent
 PKGDIR = ROOTDIR.joinpath("src/mintalib").resolve(strict=True)
@@ -64,7 +64,7 @@ def get_prices(symbol: str, *, freq: str = "daily") -> pd.DataFrame:
     prices.index.name = index_name
 
     if freq == "daily":
-        prices.index = prices.index.tz_localize(None)
+        prices = prices.tz_localize(None)
 
     return prices
 
