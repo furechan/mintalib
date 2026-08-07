@@ -16,8 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v4
-      - run: uv sync
-      - run: uv run mkdocs build --site-dir _site/
+      - run: uv sync --only-group docs
+      - run: uv run --no-sync mkdocs build --site-dir _site/
       # Google Search Console ownership verification (account-level token, not a secret)
       - run: |
           echo "google-site-verification: google3e5afa36401ddb09.html" > _site/google3e5afa36401ddb09.html

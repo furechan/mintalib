@@ -1600,8 +1600,6 @@ dev = [
     { name = "invoke" },
     { name = "ipykernel" },
     { name = "matplotlib" },
-    { name = "mkdocs-jupyter" },
-    { name = "mkdocs-material" },
     { name = "mplfinance" },
     { name = "mypy" },
     { name = "nbcheck" },
@@ -1624,6 +1622,10 @@ dev = [
     { name = "twine" },
     { name = "yfinance" },
 ]
+docs = [
+    { name = "mkdocs-jupyter" },
+    { name = "mkdocs-material" },
+]
 
 [package.metadata]
 requires-dist = [
@@ -1641,8 +1643,6 @@ dev = [
     { name = "invoke" },
     { name = "ipykernel" },
     { name = "matplotlib" },
-    { name = "mkdocs-jupyter", specifier = ">=0.26.3" },
-    { name = "mkdocs-material", specifier = ">=9.7.7" },
     { name = "mplfinance" },
     { name = "mypy" },
     { name = "nbcheck" },
@@ -1663,6 +1663,10 @@ dev = [
     { name = "toml" },
     { name = "twine" },
     { name = "yfinance" },
+]
+docs = [
+    { name = "mkdocs-jupyter", specifier = ">=0.26.3" },
+    { name = "mkdocs-material", specifier = ">=9.7.7" },
 ]
 
 [[package]]

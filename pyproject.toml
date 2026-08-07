@@ -51,9 +51,14 @@ dev = [
     "pdoc>=15.0.1",
     "pytest-sugar>=1.0.0",
     "ta-lib>=0.6.8",
+]
+docs = [
     "mkdocs-material>=9.7.7",
     "mkdocs-jupyter>=0.26.3",
 ]
+
+[tool.uv]
+default-groups = ["dev", "docs"]
 
 [tool.pytest.ini_options]
 addopts = ["-p no:cacheprovider"]
