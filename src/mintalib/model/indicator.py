@@ -20,13 +20,13 @@ P = ParamSpec("P")
 
 def _get_series(data, item: str | None = None) -> pd.Series | np.ndarray:
     if isinstance(data, pd.DataFrame):
-        return data[item or "close"]
+        return cast(pd.Series, data[item or "close"])
     return data
 
 
 def _wrap_result(result, source, name: str | None = None) -> pd.Series | pd.DataFrame:
     asdict = getattr(result, "_asdict", None)
-    if isinstance(result, tuple) and asdict is not None:
+    if asdict is not None:
         result = asdict()
 
     index = source.index if isinstance(source, (pd.DataFrame, pd.Series)) else None
@@ -160,7 +160,7 @@ class ItemIndicator(SeriesIndicator):
         return f"{self.indicator!r}[{self.item!r}]"
 
     def __call__(self, data) -> pd.Series:
-        return self.indicator(data)[self.item]
+        return cast(pd.Series, self.indicator(data)[self.item])
 
 
 class FuncIndicator(Indicator):
@@ -227,7 +227,7 @@ class FrameFuncIndicator(FuncIndicator, FrameIndicator):
     """Function based indicator with multiple outputs"""
 
     @cached_property
-    def output_names(self) -> tuple[str, ...]:
+    def output_names(self) -> tuple[str, ...]:  # pyright: ignore[reportIncompatibleVariableOverride]
         metadata = getattr(self, "metadata", None)
         names = metadata.get("output_names") if metadata else None
         if not names:
@@ -295,7 +295,7 @@ def _wrap_func_indicator(calc_func, cls: type[FuncIndicator]):
         wrapper.__qualname__ = func.__qualname__
         wrapper.__module__ = func.__module__
         wrapper.__doc__ = calc_func.__doc__
-        wrapper.__signature__ = sig  # ty: ignore[unresolved-attribute]
+        setattr(wrapper, "__signature__", sig)
 
         return wrapper
 

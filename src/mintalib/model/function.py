@@ -53,8 +53,9 @@ def _get_series(data):
 def _wrap_result(result, source, name: str | None = None):
     pname = getattr(source, '__module__', '').partition('.')[0]
 
-    if isinstance(result, tuple) and hasattr(result, '_asdict'):
-        result = result._asdict()
+    asdict = getattr(result, '_asdict', None)
+    if asdict is not None:
+        result = asdict()
 
     if pname == 'pandas':
         pandas = sys.modules['pandas']
@@ -100,7 +101,7 @@ def wrap_function(calc_func) -> Callable[[Callable[P, Any]], Callable[P, Any]]:
         wrapper.__qualname__ = func.__qualname__
         wrapper.__module__ = func.__module__
         wrapper.__doc__ = calc_func.__doc__
-        wrapper.__signature__ = sig  # ty: ignore[unresolved-attribute]
+        setattr(wrapper, "__signature__", sig)
 
         return wrapper
     return decorator

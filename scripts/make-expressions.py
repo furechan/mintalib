@@ -17,6 +17,9 @@ Polars Expression Factory Methods
 Functions in this module are polars expression factories, typically named after
 the indicator in upper case as in `SMA`, `EMA`, `MACD`.
 
+This module is polars-only: factories build native polars expressions for use in
+`select` or `with_columns` contexts. For pandas, use `mintalib.indicators` or `mintalib.functions`.
+
 The optional `src` keyword parameter allows overriding the default input column.
 For series-based indicators the default is `CLOSE` (i.e. `pl.col("close")`).
 For price-based indicators `src` is not applicable and should be left as `None`.

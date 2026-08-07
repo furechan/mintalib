@@ -104,7 +104,7 @@ def wrap_expression(calc_func) -> Callable[[Callable[P, Any]], ExprFactory[P]]:
         wrapper.__qualname__ = func.__qualname__
         wrapper.__module__ = func.__module__
         wrapper.__doc__ = calc_func.__doc__
-        wrapper.__signature__ = signature  # ty: ignore[unresolved-attribute]
+        setattr(wrapper, "__signature__", signature)
 
         return wrapper
 

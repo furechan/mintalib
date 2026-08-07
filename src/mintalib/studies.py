@@ -1,4 +1,12 @@
-"""mintalib studies"""
+"""
+Study interface intended to facilitate the composition of indicators.
+
+A study combines multiple indicators applied to the same prices into a single
+DataFrame result, and studies themselves compose into pipelines with the `|` operator.
+
+This module is pandas-only: studies accept and return pandas DataFrames.
+For polars, use `mintalib.expressions` natively.
+"""
 
 import functools
 
@@ -6,16 +14,18 @@ from abc import ABCMeta, abstractmethod
 
 from dataclasses import dataclass
 
-from .utils import detect_backend
+from typing import Any
+
+import pandas as pd
 
 
 class Study(metaclass=ABCMeta):
-    """callable/chainable with process method and composition"""
+    """Abstract base for studies: a callable applied to a prices DataFrame, chainable with `|` or `.pipe()`."""
 
     __pandas_priority__ = 5000
 
     @abstractmethod
-    def __call__(self, prices): ...
+    def __call__(self, prices) -> Any: ...
 
     def __or__(self, other):
         """pipe into callable"""
@@ -36,7 +46,7 @@ class Study(metaclass=ABCMeta):
 
 
 class ChainedStudy(Study):
-    """chain of callables/studies"""
+    """Chain of studies/callables applied left-to-right, as created by `|` or `.pipe()`."""
 
     funcs: tuple = ()
 
@@ -49,9 +59,9 @@ class ChainedStudy(Study):
     def __repr__(self):
         return " | ".join(repr(fn) for fn in self.funcs)
 
-    def __call__(self, prices):
+    def __call__(self, prices) -> Any:
         result = prices
-        
+
         for func in self.funcs:
             if result is None:
                 return
@@ -72,7 +82,11 @@ class ChainedStudy(Study):
 
 
 class QuickStudy(Study):
-    """Update Study"""
+    """Applies multiple indicators to the same prices and collects the results as columns of one DataFrame.
+
+    Keyword argument names become column names, as in `QuickStudy(sma=SMA(20), ema=EMA(50))`.
+    Positional arguments must yield results that carry their own name (a named Series or a DataFrame).
+    """
 
     args: tuple = ()
     kwargs: dict = {}
@@ -82,7 +96,7 @@ class QuickStudy(Study):
             yield None, arg
         for kv in self.kwargs.items():
             yield kv
-        
+
     def __init__(self, *args, **kwargs):
         self.args = args
         self.kwargs = kwargs
@@ -94,26 +108,15 @@ class QuickStudy(Study):
         return f"{cname}({params})"
 
 
-    def __call__(self, prices):
-        if not hasattr(prices, 'columns'):
-            raise ValueError("DataFrame expected!")
-
-        backend = detect_backend(prices)
-
-        if backend == "pandas":
-            return self.apply_pandas(prices)
-        
-        if backend == "polars":
-            return self.apply_polars(prices)
-        
-        raise ValueError(f"Unsupported DataFrame type: {backend}")
-       
-    
-    def apply_pandas(self, prices):
-        import pandas as pd
+    def __call__(self, prices) -> pd.DataFrame:
+        if not isinstance(prices, pd.DataFrame):
+            raise TypeError(
+                f"{type(self).__name__} only accepts pandas DataFrames, got {type(prices).__name__}. "
+                "For polars, use mintalib.expressions."
+            )
 
         columns = dict()
-        
+
         for name, func in self.items():
             result = func(prices)
 
@@ -125,71 +128,30 @@ class QuickStudy(Study):
                 columns[result.name] = result
             else:
                 raise ValueError(f"Unexpected result type {type(result)!r} in positional args!")
-                
+
         return pd.DataFrame(columns, index=prices.index)
-
-
-    def apply_polars(self, prices):
-        import polars as pl
-
-        columns = dict()
-
-        for name, func in self.items():
-            result = func(prices)
-
-            if hasattr(result, 'columns'):
-                columns.update(result.to_dict())
-            elif name is not None:
-                columns[name] = result
-            elif hasattr(result, 'name'):
-                columns[result.name] = result
-            else:
-                raise ValueError(f"Unexpected result type {type(result)!r} in positional args!")
-
-        return pl.DataFrame(columns)
 
 
 @dataclass(frozen=True)
 class Trail(Study):
-    """Trailing values"""
+    """Trailing values of a column: one column per lag, named `item0`, `item1`, ... for `skip <= n < windows`."""
 
     item: str
     windows: int
-    skip : int = 0
+    skip: int = 0
 
 
-    def __call__(self, prices):
-        if not hasattr(prices, 'columns'):
-            raise ValueError("DataFrame expected!")
-
-        backend = detect_backend(prices)
-
-        if backend == "pandas":
-            return self.apply_pandas(prices)
-        
-        if backend == "polars":
-            return self.apply_polars(prices)
-        
-        raise ValueError(f"Unsupported DataFrame type: {backend}")
-       
-    def apply_pandas(self, data):
-        import pandas as pd
+    def __call__(self, prices) -> pd.DataFrame:
+        if not isinstance(prices, pd.DataFrame):
+            raise TypeError(
+                f"{type(self).__name__} only accepts pandas DataFrames, got {type(prices).__name__}. "
+                "For polars, use mintalib.expressions."
+            )
 
         columns = {}
-        series = data[self.item]
+        series = prices[self.item]
         for n in range(self.skip, self.windows):
             name = f"{self.item}{n}"
             columns[name] = series.shift(n)
 
-        return pd.DataFrame(columns, index=data.index)
-
-    def apply_polars(self, data):
-        import polars as pl
-
-        columns = {}
-        series = data[self.item]
-        for n in range(self.skip, self.windows):
-            name = f"{self.item}{n}"
-            columns[name] = series.shift(n)
-
-        return pl.DataFrame(columns)
+        return pd.DataFrame(columns, index=prices.index)

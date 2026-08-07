@@ -14,6 +14,9 @@ from mintalib.builder import annotate_parameter
 PRELUDE = '''"""
 Indicators offer a composable interface where a calculation routine is bound with its parameters.
 
+This module is pandas-only: indicators accept pandas DataFrames, pandas Series, or numpy arrays,
+and return pandas results. For polars, use `mintalib.expressions`.
+
 An indicator instance is a callable applied to prices or series data: `SMA(50)(prices)`.
 
 Indicators chain via the `|` operator or the equivalent `.then()` method:
@@ -21,8 +24,6 @@ Indicators chain via the `|` operator or the equivalent `.then()` method:
 
 Single-output indicators return a pandas Series; multi-output indicators (e.g. `MACD`, `BBANDS`) return a DataFrame.
 Select one output of a multi-output indicator as a series indicator with `MACD()["macd"]`.
-
-Inputs must be a pandas DataFrame, pandas Series, or numpy array. For polars, use `mintalib.expressions`.
 """
 
 # Do not edit! This file was generated.

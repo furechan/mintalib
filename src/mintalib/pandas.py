@@ -28,8 +28,9 @@ NAMESPACE = "ts"
 def wrap_pandas(result, source, name: str | None = None):
     """ wrap result to pandas """
 
-    if isinstance(result, tuple) and hasattr(result, '_asdict'):
-        result = result._asdict()
+    asdict = getattr(result, '_asdict', None)
+    if asdict is not None:
+        result = asdict()
 
     index = getattr(source, 'index', None)
 

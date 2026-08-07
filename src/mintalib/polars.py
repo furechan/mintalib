@@ -36,8 +36,9 @@ __all__ = "OPEN", "HIGH", "LOW", "CLOSE", "OHLC", "DataFrameCalc", "SeriesCalc",
 def wrap_polars(result, name: str):
     """ wrap result to polars """
 
-    if isinstance(result, tuple) and hasattr(result, '_asdict'):
-        result = result._asdict()
+    asdict = getattr(result, '_asdict', None)
+    if asdict is not None:
+        result = asdict()
 
     if isinstance(result, dict):
         return pl.DataFrame(result).to_struct(name=name)
