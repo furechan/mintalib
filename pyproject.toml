@@ -59,8 +59,6 @@ testpaths = ["tests"]
 
 [tool.ruff.lint.per-file-ignores]
 "*.ipynb" = ["F401", "F811"]
-"__init__.py" = ["F401"]
-"functions.py" = ["F401"]
 
 # Some playground notebooks define names dynamically, which ty cannot resolve. Inline
 # `# ty: ignore[...]` file-level directives don't work in the IDE — the ty language server

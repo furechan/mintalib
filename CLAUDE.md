@@ -58,7 +58,7 @@ This runs cythonize, build_ext, and all codegen scripts (`make-functions`, `make
 
 - **uv** — package manager and virtual environment. `uv sync` installs all dependencies and compiles the Cython extension in editable mode.
 - **pytest** — test runner. Run with `uv run pytest`. Tests are in `tests/`, split by interface: `test_core.py`, `test_functions.py`, `test_indicators.py`, `test_expressions.py`. All are parametrized over the full indicator set.
-- **ruff** — linter. Run with `uv run ruff check src tests`. Per-file ignores are configured in `pyproject.toml` (e.g. `F401` for generated files and notebooks).
+- **ruff** — linter. Run with `uv run ruff check src tests`. Per-file ignores are configured in `pyproject.toml` (`F401`/`F811` for notebooks only).
 - **ty** — type checker (Astral). Run with `uv run ty check src/mintalib/*.py scripts/ examples/ tests/`. Per-file rule overrides are in `pyproject.toml` under `[[tool.ty.overrides]]` — see comments there for rationale.
 - **tox** (with tox-uv) — multi-version test runner. Config in `tox.toml`. `tox` runs the everyday set (tests on the default interpreter, pandas-only, polars-only, ruff, ty); `tox -m full` runs the full pre-publish matrix (Python 3.10–3.14 plus a free-threaded `3.13t` env — pandas-only, polars has no `cp313t` wheel yet). Envs build from sdist per interpreter (compiles the Cython extension). `uv_python_preference = "only-managed"` is required — system interpreters may lack Python.h. Always run the full matrix before publishing. (nox was used briefly in July 2026, then reverted — declarative config fits this repo; nox stays in python-dev where programmable sessions have an edge.)
 
