@@ -76,6 +76,3 @@ rules.unresolved-reference = "ignore"
 [[tool.ty.overrides]]
 include = ["playground/*accessor*.ipynb"]
 rules.unresolved-attribute = "ignore"
-
-[tool.pydev]
-allow-publish = true 
