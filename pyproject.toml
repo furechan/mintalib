@@ -64,12 +64,17 @@ testpaths = ["tests"]
 "__init__.py" = ["F401"]
 "functions.py" = ["F401"]
 
-# Playground notebooks define names dynamically (%%cython magic cells, registered polars accessors)
-# which ty cannot resolve. Inline `# ty: ignore[...]` file-level directives don't work in the IDE —
-# the ty language server analyzes notebook cells individually — so the rules are ignored here instead.
+# Some playground notebooks define names dynamically, which ty cannot resolve. Inline
+# `# ty: ignore[...]` file-level directives don't work in the IDE — the ty language server
+# analyzes notebook cells individually — so the rules are ignored per filename pattern instead.
+# Naming convention: notebooks with %%cython magic cells have "cython" in the name,
+# notebooks using the registered ts accessors have "accessor" in the name.
 [[tool.ty.overrides]]
-include = ["playground/**"]
+include = ["playground/*cython*.ipynb"]
 rules.unresolved-reference = "ignore"
+
+[[tool.ty.overrides]]
+include = ["playground/*accessor*.ipynb"]
 rules.unresolved-attribute = "ignore"
 
 [tool.pydev]
