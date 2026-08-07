@@ -10,7 +10,6 @@ readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE.txt"]
 description = "Minimal Technical Analysis Library for Python"
-urls.homepage = "https://github.com/furechan/mintalib"
 urls.documentation = "https://furechan.github.io/mintalib/"
 urls.repository = "https://github.com/furechan/mintalib"
 urls.changelog = "https://github.com/furechan/mintalib/blob/main/CHANGELOG.md"
