@@ -9,6 +9,9 @@ def annotate_parameter(param):
     if param.annotation in ("bint", "bool"):
         return param.replace(annotation=bool)
 
+    if param.annotation in ("float", "double"):
+        return param.replace(annotation=float)
+
     if param.annotation == "str":
         annotation = str | None if param.default is None else str
         return param.replace(annotation=annotation)

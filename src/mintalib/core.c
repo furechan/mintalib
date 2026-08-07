@@ -27522,7 +27522,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_46calc_roc, "\n    Rate of Change\n    \n    Args:\n        period (int): time period, default 1\n        when negative the calculation is shifted back\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_46calc_roc, "\n    Rate of Change\n    \n    Args:\n        period (int): time period, default 1\n            when negative the calculation is shifted back\n    ");
 static PyMethodDef __pyx_mdef_8mintalib_4core_47calc_roc = {"calc_roc", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_47calc_roc, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_46calc_roc};
 static PyObject *__pyx_pw_8mintalib_4core_47calc_roc(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -27982,7 +27982,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8mintalib_4core_48calc_lroc, "\n    Logarithmic Rate of Change\n\n    Equivalent to the difference of log values\n\n    Args:\n        period (int): time period, default 1\n        when negative the calculation is shifted back\n    ");
+PyDoc_STRVAR(__pyx_doc_8mintalib_4core_48calc_lroc, "\n    Logarithmic Rate of Change\n\n    Equivalent to the difference of log values\n\n    Args:\n        period (int): time period, default 1\n            when negative the calculation is shifted back\n    ");
 static PyMethodDef __pyx_mdef_8mintalib_4core_49calc_lroc = {"calc_lroc", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8mintalib_4core_49calc_lroc, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8mintalib_4core_48calc_lroc};
 static PyObject *__pyx_pw_8mintalib_4core_49calc_lroc(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL

@@ -1,13 +1,22 @@
-"""Generate Markdown API documentation using pdoc introspection."""
+"""Generate Markdown API documentation using griffe.
+
+Griffe's static analysis provides the module structure: public members in
+source order, exports, module and variable docstrings (string literals after
+assignments, invisible at runtime), and its google docstring parser. Function
+docstrings and signatures are read from the live objects with `inspect` —
+they are attached at runtime by the wrapper decorators (from the compiled
+core), so static analysis would come up empty there. The compiled
+`mintalib.core` module is rendered from its adjacent `.pyi` stub instead,
+which carries full type hints unlike the compiled functions.
+"""
 
 import ast
+import importlib
+import importlib.util
 import inspect
-import re
 from pathlib import Path
 
-import pdoc.doc
-import pdoc.docstrings
-import pdoc.extract
+import griffe
 
 MODULES = [
     "mintalib",
@@ -19,119 +28,181 @@ MODULES = [
 
 OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "reference"
 
+# griffe docstring section kind -> rendered field-list title
+SECTION_TITLES = {
+    "parameters": "Arguments",
+    "other parameters": "Other Arguments",
+    "returns": "Returns",
+    "yields": "Yields",
+    "raises": "Raises",
+    "attributes": "Attributes",
+}
+
 
 def clean_type(text: str) -> str:
     return text.replace("polars.expr.expr.Expr", "polars.Expr")
 
 
-def format_docstring(text: str) -> str:
-    """Convert google-style sections (Args:, Returns:, ...) to markdown"""
-    text = pdoc.docstrings.google(text.strip())
-    # Demote section headings (e.g. "###### Arguments:") to bold text
-    # so they don't pollute the mkdocs page table of contents.
-    return re.sub(r"^#{4,6} *(.+?) *$", r"**\1**", text, flags=re.MULTILINE)
+def render_field_list(title: str, items) -> str:
+    lines = [f"**{title}:**"]
+    for item in items:
+        name = getattr(item, "name", "") or ""
+        annotation = getattr(item, "annotation", None)
+        head = f"{name} ({clean_type(str(annotation))})" if annotation is not None else name
+        first, *rest = (item.description or "").splitlines() or [""]
+        lines.append(f" - **{head}:**  {first}".rstrip())
+        lines.extend(f"   {line}" for line in rest)
+    return "\n".join(lines)
 
 
-def format_signature(name, sig):
+def render_admonition(title: str, contents: str) -> str:
+    # Sections with unrecognized titles (Formula:, Outputs:, ...) parse as
+    # admonitions and render as a bold title over a blockquote.
+    lines = [f"**{title}:**"]
+    lines += [f"> {line}".rstrip() for line in contents.splitlines()]
+    return "\n".join(lines)
+
+
+def format_docstring(text: str) -> list[str]:
+    """Render a google-style docstring to markdown lines."""
+    if not text:
+        return []
+    blocks = []
+    for section in griffe.Docstring(text).parse("google"):
+        kind = section.kind.value
+        if kind == "text":
+            blocks.append(section.value.strip())
+        elif kind in SECTION_TITLES:
+            blocks.append(render_field_list(SECTION_TITLES[kind], section.value))
+        elif kind == "admonition":
+            blocks.append(render_admonition(section.title or "", section.value.contents))
+        else:
+            value = getattr(section, "value", "")
+            blocks.append(str(value).strip())
+    return ["\n\n\n".join(blocks), ""]
+
+
+def format_signature(name: str, sig) -> str:
     return f"`{clean_type(name + str(sig))}`"
 
 
-def render_module(module_name: str) -> str:
-    mod = pdoc.doc.Module(
-        pdoc.extract.load_module(pdoc.extract.parse_spec(module_name))
-    )
-
-    lines = []
-    lines.append(f"# {module_name}\n")
-
-    if mod.docstring:
-        lines.append(format_docstring(mod.docstring))
-        lines.append("")
-
-    members = [
-        m for m in mod.flattened_own_members
-        if not m.name.startswith("_") and m.kind in ("function", "class", "variable")
+def public_members(mod) -> list:
+    """Exported members in __all__ order, or own public members otherwise."""
+    if mod.exports:
+        return [mod.members[name] for name in mod.exports if name in mod.members]
+    return [
+        m
+        for m in mod.members.values()
+        if not m.name.startswith("_") and not m.is_alias and not m.is_module
     ]
 
-    # Fallback for modules with empty __all__ (e.g. mintalib.core):
-    # read signatures from the adjacent .pyi stub (it has full type hints,
-    # unlike inspect.signature on a compiled Cython function), and pair
-    # them with docstrings from the live module.
+
+def render_python_module(module_name: str) -> str:
+    mod = griffe.load(module_name)
+    obj = importlib.import_module(module_name)
+
+    lines = [f"# {module_name}\n"]
+
+    if mod.docstring:
+        lines += format_docstring(mod.docstring.value)
+
+    members = public_members(mod)
     if not members:
-        obj = mod.obj
-        obj_file = getattr(obj, "__file__", None)
-        # Compiled extensions are named e.g. "core.cpython-311-darwin.so" —
-        # strip the ABI tags by taking the basename up to the first dot.
-        if obj_file:
-            obj_path = Path(obj_file)
-            stem = obj_path.name.split(".", 1)[0]
-            pyi_path = obj_path.parent / f"{stem}.pyi"
-        else:
-            pyi_path = None
-        tree = ast.parse(pyi_path.read_text()) if pyi_path and pyi_path.exists() else None
-        stub_funcs = {
-            node.name: node for node in (tree.body if tree else [])
-            if isinstance(node, ast.FunctionDef) and not node.name.startswith("_")
-        }
-        names = sorted(stub_funcs) if stub_funcs else sorted(
-            n for n in dir(obj) if n.startswith("calc_")
-        )
-        for name in names:
-            node = stub_funcs.get(name)
-            if node is not None:
-                args_str = ast.unparse(node.args)
-                ret_str = f" -> {ast.unparse(node.returns)}" if node.returns else ""
-                sig_str = f"({args_str}){ret_str}"
-            else:
-                fn = getattr(obj, name, None)
-                try:
-                    sig_str = str(inspect.signature(fn)) if fn else ""
-                except (ValueError, TypeError):
-                    sig_str = ""
-            fn = getattr(obj, name, None)
-            doc = inspect.getdoc(fn) or "" if fn else ""
-            # Cython prepends a "name(sig)" line to docstrings — strip it.
-            doc_lines = doc.splitlines()
-            if doc_lines and doc_lines[0].lstrip().startswith(name + "("):
-                doc_lines = doc_lines[1:]
-                while doc_lines and not doc_lines[0].strip():
-                    doc_lines = doc_lines[1:]
-            doc = "\n".join(doc_lines)
-            lines.append("---\n" if lines[-1] != "---\n" else "")
-            lines.append(f"### {name}\n")
-            if sig_str:
-                lines.append(format_signature(name, sig_str) + "\n")
-            if doc:
-                lines.append(format_docstring(doc))
-                lines.append("")
         return "\n".join(lines)
 
     lines.append("---\n")
 
     for m in members:
-        if m.kind == "function":
-            sig = str(m.signature) if hasattr(m, "signature") else ""
-            lines.append(f"### {m.name}\n")
-            if sig:
-                lines.append(format_signature(m.name, sig) + "\n")
-        elif m.kind == "class":
-            lines.append(f"### {m.name}\n")
-        else:
-            annotation = getattr(m, "annotation_str", "").lstrip(": ")
-            default = getattr(m, "default_value_str", "")
-            lines.append(f"### {m.name}\n")
-            if annotation:
-                lines.append(f"`{clean_type(m.name + ': ' + annotation)}`\n")
-            if not m.docstring and default:
-                value = repr(m.obj) if hasattr(m, "obj") and m.obj is not None else default
-                lines.append(value)
-                lines.append("")
+        runtime = getattr(obj, m.name, None)
+        lines.append(f"### {m.name}\n")
 
-        if m.docstring:
-            lines.append(format_docstring(m.docstring))
-            lines.append("")
+        if inspect.isroutine(runtime):
+            try:
+                sig = inspect.signature(runtime)
+            except (ValueError, TypeError):
+                sig = None
+            if sig is not None:
+                lines.append(format_signature(m.name, sig) + "\n")
+            lines += format_docstring(inspect.getdoc(runtime) or "")
+        elif inspect.isclass(runtime):
+            lines += format_docstring(inspect.getdoc(runtime) or "")
+        else:
+            # module variable: annotation and docstring only exist in source
+            annotation = getattr(m, "annotation", None)
+            if annotation is not None:
+                lines.append(f"`{clean_type(m.name + ': ' + str(annotation))}`\n")
+            if m.docstring:
+                lines += format_docstring(m.docstring.value)
 
     return "\n".join(lines)
+
+
+def render_core_module(module_name: str) -> str:
+    """Render a compiled extension module from its adjacent .pyi stub.
+
+    Signatures come from the stub (it has full type hints, unlike
+    inspect.signature on a compiled Cython function) and are paired with
+    docstrings from the live module.
+    """
+    obj = importlib.import_module(module_name)
+
+    lines = [f"# {module_name}\n"]
+    if obj.__doc__:
+        lines += format_docstring(obj.__doc__)
+
+    obj_file = getattr(obj, "__file__", None)
+    # Compiled extensions are named e.g. "core.cpython-311-darwin.so" —
+    # strip the ABI tags by taking the basename up to the first dot.
+    if obj_file:
+        obj_path = Path(obj_file)
+        stem = obj_path.name.split(".", 1)[0]
+        pyi_path = obj_path.parent / f"{stem}.pyi"
+    else:
+        pyi_path = None
+    tree = ast.parse(pyi_path.read_text()) if pyi_path and pyi_path.exists() else None
+    stub_funcs = {
+        node.name: node for node in (tree.body if tree else [])
+        if isinstance(node, ast.FunctionDef) and not node.name.startswith("_")
+    }
+    names = sorted(stub_funcs) if stub_funcs else sorted(
+        n for n in dir(obj) if n.startswith("calc_")
+    )
+    for name in names:
+        node = stub_funcs.get(name)
+        if node is not None:
+            args_str = ast.unparse(node.args)
+            ret_str = f" -> {ast.unparse(node.returns)}" if node.returns else ""
+            sig_str = f"({args_str}){ret_str}"
+        else:
+            fn = getattr(obj, name, None)
+            try:
+                sig_str = str(inspect.signature(fn)) if fn else ""
+            except (ValueError, TypeError):
+                sig_str = ""
+        fn = getattr(obj, name, None)
+        doc = inspect.getdoc(fn) or "" if fn else ""
+        # Cython prepends a "name(sig)" line to docstrings — strip it.
+        doc_lines = doc.splitlines()
+        if doc_lines and doc_lines[0].lstrip().startswith(name + "("):
+            doc_lines = doc_lines[1:]
+            while doc_lines and not doc_lines[0].strip():
+                doc_lines = doc_lines[1:]
+        doc = "\n".join(doc_lines)
+        lines.append("---\n" if lines[-1] != "---\n" else "")
+        lines.append(f"### {name}\n")
+        if sig_str:
+            lines.append(format_signature(name, sig_str) + "\n")
+        if doc:
+            lines += format_docstring(doc)
+    return "\n".join(lines)
+
+
+def render_module(module_name: str) -> str:
+    spec = importlib.util.find_spec(module_name)
+    origin = spec.origin if spec else None
+    if origin and not origin.endswith(".py"):
+        return render_core_module(module_name)
+    return render_python_module(module_name)
 
 
 def main():

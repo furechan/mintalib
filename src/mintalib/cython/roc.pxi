@@ -6,7 +6,7 @@ def calc_roc(series, long period=1):
     
     Args:
         period (int): time period, default 1
-        when negative the calculation is shifted back
+            when negative the calculation is shifted back
     """
 
     cdef const double[:] xs = np.asarray(series, float)

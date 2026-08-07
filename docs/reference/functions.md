@@ -30,8 +30,6 @@ Average Directional Index
 **Arguments:**
  - **period (int):**  time period, default 14
 
-
-
 ### alma
 
 `alma(series, period: int = 9, offset: float = 0.85, sigma: float = 6.0)`
@@ -47,8 +45,6 @@ Average True Range
 
 **Arguments:**
  - **period (int):**  time period, default 14
-
-
 
 ### avgprice
 
@@ -69,8 +65,6 @@ Bollinger Bands
  - **period (int):**  time period, default 20
  - **nbdev (float):**  bands width in number of standard deviations
 
-
-
 ### bbp
 
 `bbp(series, period: int = 20, nbdev: float = 2.0)`
@@ -81,8 +75,6 @@ Bollinger Bands Percent (%B)
 **Arguments:**
  - **period (int):**  time period, default 20
  - **nbdev (float):**  bands width in number of standard deviations
-
-
 
 ### bbw
 
@@ -95,8 +87,6 @@ Bollinger Bands Width
  - **period (int):**  time period, default 20
  - **nbdev (float):**  bands width in number of standard deviations
 
-
-
 ### bop
 
 `bop(prices, period: int = 20)`
@@ -106,8 +96,6 @@ Balance of Power
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### cci
 
@@ -119,21 +107,17 @@ Commodity Channel Index
 **Arguments:**
  - **period (int):**  time period, default 20
 
-
-
 ### clag
 
 `clag(series, period: int = 1)`
 
 Confirmation Lag
 
-Changes value only after a confirmation period 
+Changes value only after a confirmation period
 
 
 **Arguments:**
  - **period (int):**  time period, default 1
-
-
 
 ### cmf
 
@@ -144,8 +128,6 @@ Chaikin Money Flow
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### crossover
 
@@ -159,8 +141,6 @@ Yields a value of 1 at the point where series crosses over level
 **Arguments:**
  - **level (float):**  level to cross, default 0.0
 
-
-
 ### crossunder
 
 `crossunder(series, level: float = 0.0)`
@@ -173,8 +153,6 @@ Yields a value of 1 at the point where series crosses under level
 **Arguments:**
  - **level (float):**  level to cross, default 0.0
 
-
-
 ### dema
 
 `dema(series, period: int)`
@@ -184,8 +162,6 @@ Double Exponential Moving Average
 
 **Arguments:**
  - **period (int):**  time period, required
-
-
 
 ### diff
 
@@ -199,8 +175,6 @@ Difference between current value and the one offset by period
 **Arguments:**
  - **period (int):**  time period, default 1
 
-
-
 ### dmi
 
 `dmi(prices, period: int = 14)`
@@ -211,8 +185,6 @@ Directional Movement Indicator
 **Arguments:**
  - **period (int):**  time period, default 14
 
-
-
 ### donchian
 
 `donchian(prices, period: int = 20)`
@@ -222,8 +194,6 @@ Donchian Channel
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### ema
 
@@ -238,7 +208,6 @@ Exponential Moving Average
    when true update ratio increases gradually (see formula)
 
 
-
 **Formula:**
 > EMA is calculated as a recursive formula
 > The standard formula is ema += alpha * (value - ema)
@@ -246,7 +215,6 @@ Exponential Moving Average
 > The adjusted formula is ema = num/div
 >     where num = value + rho * num, div = 1.0 + rho * div
 >     with rho = 1.0 - alpha
-
 
 ### exp
 
@@ -272,8 +240,6 @@ Hull Moving Average
 **Arguments:**
  - **period (int):**  time period, required
 
-
-
 ### kama
 
 `kama(series, period: int = 10, fastn: int = 2, slown: int = 30)`
@@ -286,8 +252,6 @@ Kaufman Adaptive Moving Average
  - **fastn (int):**  time period for fast moving average, default, 2
  - **slown (int):**  time period for slow moving average, default 30
 
-
-
 ### keltner
 
 `keltner(prices, period: int = 20, nbatr: float = 2.0)`
@@ -299,8 +263,6 @@ Keltner Channel
  - **period (int):**  time period, default 20
  - **nbatr (float):**  channel width in number of atrs, default 2.0
 
-
-
 ### ker
 
 `ker(series, period: int = 10)`
@@ -311,8 +273,6 @@ Kaufman Efficiency Ratio
 **Arguments:**
  - **period (int):**  time period, default 10
 
-
-
 ### lag
 
 `lag(series, period: int)`
@@ -322,8 +282,6 @@ Lag Function
 
 **Arguments:**
  - **period (int):**  time period, required
-
-
 
 ### linreg
 
@@ -339,8 +297,6 @@ with `offset` projecting the line forward.
  - **period (int):**  time period, default 20
  - **offset (int):**  forecast offset, default 0
 
-
-
 ### linreg_rmse
 
 `linreg_rmse(series, period: int = 20)`
@@ -350,8 +306,6 @@ Linear Regression Root Mean Square Error
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### linreg_rvalue
 
@@ -363,8 +317,6 @@ Linear Regression R-Value
 **Arguments:**
  - **period (int):**  time period, default 20
 
-
-
 ### linreg_slope
 
 `linreg_slope(series, period: int = 20)`
@@ -374,8 +326,6 @@ Linear Regression Slope
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### log
 
@@ -394,9 +344,7 @@ Equivalent to the difference of log values
 
 **Arguments:**
  - **period (int):**  time period, default 1
- - when negative the calculation is shifted back
-
-
+   when negative the calculation is shifted back
 
 ### macd
 
@@ -408,13 +356,11 @@ Moving Average Convergence Divergence
 **Arguments:**
  - **n1 (int):**  short time period, default 12
  - **n2 (int):**  long time period, default 26
- - **n3 (int):**  signal time period, default 9  
-
+ - **n3 (int):**  signal time period, default 9
 
 
 **Outputs:**
 > macd, macdsignal, macdhist
-
 
 ### macdv
 
@@ -426,13 +372,11 @@ Moving Average Convergence Divergence - Volatility Normalized
 **Arguments:**
  - **n1 (int):**  short time period, default 12
  - **n2 (int):**  long time period, default 26
- - **n3 (int):**  signal time period, default 9  
-
+ - **n3 (int):**  signal time period, default 9
 
 
 **Outputs:**
 > macdv, macdvsignal, macdvhist
-
 
 ### mad
 
@@ -451,9 +395,7 @@ Moving average computed according to ma_type
 
 **Arguments:**
  - **ma_type (str):**  one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
-   defaults to 'SMA'
-
-
+       defaults to 'SMA'
 
 ### max
 
@@ -470,8 +412,6 @@ Minus Directional Index
 
 **Arguments:**
  - **period (int):**  time period, default 14
-
-
 
 ### medprice
 
@@ -491,8 +431,6 @@ Money Flow Index
 **Arguments:**
  - **period (int):**  time period, default 14
 
-
-
 ### min
 
 `min(series, period: int)`
@@ -502,8 +440,6 @@ Rolling Minimum
 
 **Arguments:**
  - **period (int):**  time period, required
-
-
 
 ### natr
 
@@ -515,8 +451,6 @@ Normalized Average True Range
 **Arguments:**
  - **period (int):**  time period, default 14
 
-
-
 ### pdi
 
 `pdi(prices, period: int = 14)`
@@ -526,8 +460,6 @@ Plus Directional Index
 
 **Arguments:**
  - **period (int):**  time period, default 14
-
-
 
 ### ppo
 
@@ -542,10 +474,8 @@ Price Percentage Oscillator
  - **n3 (int):**  signal time period, default 9
 
 
-
 **Outputs:**
 > ppo, pposignal, ppohist
-
 
 ### price
 
@@ -562,8 +492,6 @@ Generic Price
    'typ' or 'hlc3'   — typical price (high + low + close) / 3,
    'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
 
-
-
 ### quadreg
 
 `quadreg(series, period: int = 20, offset: int = 0)`
@@ -578,8 +506,6 @@ with `offset` projecting the parabola forward.
  - **period (int):**  time period, default 20
  - **offset (int):**  forecast offset, default 0
 
-
-
 ### quadreg_curve
 
 `quadreg_curve(series, period: int = 20)`
@@ -590,8 +516,6 @@ Quadratic Regression Curve
 **Arguments:**
  - **period (int):**  time period, default 20
 
-
-
 ### quadreg_rmse
 
 `quadreg_rmse(series, period: int = 20)`
@@ -601,8 +525,6 @@ Quadratic Regression Root Mean Square Error
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### quadreg_rvalue
 
@@ -615,8 +537,6 @@ Partial correlation of the quadratic term, given the linear term.
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### quadreg_slope
 
@@ -631,8 +551,6 @@ with `offset` projecting the slope forward.
 **Arguments:**
  - **period (int):**  time period, default 20
  - **offset (int):**  forecast offset, default 0
-
-
 
 ### rma
 
@@ -653,9 +571,7 @@ Rate of Change
 
 **Arguments:**
  - **period (int):**  time period, default 1
- - when negative the calculation is shifted back
-
-
+   when negative the calculation is shifted back
 
 ### rsi
 
@@ -667,8 +583,6 @@ Relative Strength Index
 **Arguments:**
  - **period (int):**  time period, default 14
 
-
-
 ### sar
 
 `sar(prices, afs: float = 0.02, maxaf: float = 0.2)`
@@ -679,8 +593,6 @@ Parabolic Stop and Reverse
 **Arguments:**
  - **afs (float):**  starting acceleration factor, default 0.02
  - **maxaf (float):**  maximum acceleration factor, default 0.2
-
-
 
 ### sign
 
@@ -698,8 +610,6 @@ Simple Moving Average
 **Arguments:**
  - **period (int):**  time period, required
 
-
-
 ### stdev
 
 `stdev(series, period: int = 20)`
@@ -709,8 +619,6 @@ Standard Deviation
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### step
 
@@ -724,8 +632,6 @@ Limit value changes to threshold (in absolute value)
 **Arguments:**
  - **threshold (float):**  threshold value, default 1.0
 
-
-
 ### stoch
 
 `stoch(prices, period: int = 14, fastn: int = 3, slown: int = 3)`
@@ -734,11 +640,9 @@ Stochastic Oscillator
 
 
 **Arguments:**
- - **period (int):**   time period of window, default, 14
+ - **period (int):**  time period of window, default, 14
  - **fastn (int):**  time period of fast average, default 3
  - **slown (int):**  time period of slow average, default 3
-
-
 
 ### streak
 
@@ -756,8 +660,6 @@ Rolling sum
 **Arguments:**
  - **period (int):**  time period, required
 
-
-
 ### tema
 
 `tema(series, period: int = 20)`
@@ -767,8 +669,6 @@ Triple Exponential Moving Average
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### trange
 
@@ -780,8 +680,6 @@ True Range
 **Arguments:**
  - **log_prices (bool):**  whether to apply log to prices before calculation
  - **percent (bool):**  result as percentage of price
-
-
 
 ### typprice
 
@@ -802,8 +700,6 @@ Flag for value crossing up & down levels
  - **up_level (float):**  flag set at 1 above that level
  - **down_level (float):**  flag set at 0 below that level
 
-
-
 ### wclprice
 
 `wclprice(prices)`
@@ -817,12 +713,10 @@ Value of (high + low + 2 * close) / 4
 `wma(series, period: int)`
 
 Weighted Moving Average
-    
+
 
 **Arguments:**
  - **period (int):**  time period, required
-
-
 
 ### zlema
 
@@ -835,8 +729,6 @@ Zero-Lag Exponential Moving Average
  - **period (int):**  time period, required
 
 
-
 **Formula:**
 > ZLEMA is an EMA applied to a de-lagged series
 > data = 2 * value - value[lag] with lag = (period - 1) // 2
-

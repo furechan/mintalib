@@ -47,8 +47,6 @@ Average Directional Index
 **Arguments:**
  - **period (int):**  time period, default 14
 
-
-
 ### ALMA
 
 `ALMA(period: int = 9, offset: float = 0.85, sigma: float = 6.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -64,8 +62,6 @@ Average True Range
 
 **Arguments:**
  - **period (int):**  time period, default 14
-
-
 
 ### AVGPRICE
 
@@ -86,8 +82,6 @@ Bollinger Bands
  - **period (int):**  time period, default 20
  - **nbdev (float):**  bands width in number of standard deviations
 
-
-
 ### BBP
 
 `BBP(period: int = 20, nbdev: float = 2.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -98,8 +92,6 @@ Bollinger Bands Percent (%B)
 **Arguments:**
  - **period (int):**  time period, default 20
  - **nbdev (float):**  bands width in number of standard deviations
-
-
 
 ### BBW
 
@@ -112,8 +104,6 @@ Bollinger Bands Width
  - **period (int):**  time period, default 20
  - **nbdev (float):**  bands width in number of standard deviations
 
-
-
 ### BOP
 
 `BOP(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -123,8 +113,6 @@ Balance of Power
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### CCI
 
@@ -136,21 +124,17 @@ Commodity Channel Index
 **Arguments:**
  - **period (int):**  time period, default 20
 
-
-
 ### CLAG
 
 `CLAG(period: int = 1, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 Confirmation Lag
 
-Changes value only after a confirmation period 
+Changes value only after a confirmation period
 
 
 **Arguments:**
  - **period (int):**  time period, default 1
-
-
 
 ### CMF
 
@@ -161,8 +145,6 @@ Chaikin Money Flow
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### CROSSOVER
 
@@ -176,8 +158,6 @@ Yields a value of 1 at the point where series crosses over level
 **Arguments:**
  - **level (float):**  level to cross, default 0.0
 
-
-
 ### CROSSUNDER
 
 `CROSSUNDER(level: float = 0.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -190,8 +170,6 @@ Yields a value of 1 at the point where series crosses under level
 **Arguments:**
  - **level (float):**  level to cross, default 0.0
 
-
-
 ### DEMA
 
 `DEMA(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -201,8 +179,6 @@ Double Exponential Moving Average
 
 **Arguments:**
  - **period (int):**  time period, required
-
-
 
 ### DIFF
 
@@ -216,8 +192,6 @@ Difference between current value and the one offset by period
 **Arguments:**
  - **period (int):**  time period, default 1
 
-
-
 ### DMI
 
 `DMI(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -228,8 +202,6 @@ Directional Movement Indicator
 **Arguments:**
  - **period (int):**  time period, default 14
 
-
-
 ### DONCHIAN
 
 `DONCHIAN(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -239,8 +211,6 @@ Donchian Channel
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### EMA
 
@@ -255,7 +225,6 @@ Exponential Moving Average
    when true update ratio increases gradually (see formula)
 
 
-
 **Formula:**
 > EMA is calculated as a recursive formula
 > The standard formula is ema += alpha * (value - ema)
@@ -263,7 +232,6 @@ Exponential Moving Average
 > The adjusted formula is ema = num/div
 >     where num = value + rho * num, div = 1.0 + rho * div
 >     with rho = 1.0 - alpha
-
 
 ### EXP
 
@@ -289,8 +257,6 @@ Hull Moving Average
 **Arguments:**
  - **period (int):**  time period, required
 
-
-
 ### KAMA
 
 `KAMA(period: int = 10, fastn: int = 2, slown: int = 30, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -303,8 +269,6 @@ Kaufman Adaptive Moving Average
  - **fastn (int):**  time period for fast moving average, default, 2
  - **slown (int):**  time period for slow moving average, default 30
 
-
-
 ### KELTNER
 
 `KELTNER(period: int = 20, nbatr: float = 2.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -316,8 +280,6 @@ Keltner Channel
  - **period (int):**  time period, default 20
  - **nbatr (float):**  channel width in number of atrs, default 2.0
 
-
-
 ### KER
 
 `KER(period: int = 10, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -328,8 +290,6 @@ Kaufman Efficiency Ratio
 **Arguments:**
  - **period (int):**  time period, default 10
 
-
-
 ### LAG
 
 `LAG(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -339,8 +299,6 @@ Lag Function
 
 **Arguments:**
  - **period (int):**  time period, required
-
-
 
 ### LINREG
 
@@ -356,8 +314,6 @@ with `offset` projecting the line forward.
  - **period (int):**  time period, default 20
  - **offset (int):**  forecast offset, default 0
 
-
-
 ### LINREG_RMSE
 
 `LINREG_RMSE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -367,8 +323,6 @@ Linear Regression Root Mean Square Error
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### LINREG_RVALUE
 
@@ -380,8 +334,6 @@ Linear Regression R-Value
 **Arguments:**
  - **period (int):**  time period, default 20
 
-
-
 ### LINREG_SLOPE
 
 `LINREG_SLOPE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -391,8 +343,6 @@ Linear Regression Slope
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### LOG
 
@@ -411,9 +361,7 @@ Equivalent to the difference of log values
 
 **Arguments:**
  - **period (int):**  time period, default 1
- - when negative the calculation is shifted back
-
-
+   when negative the calculation is shifted back
 
 ### MACD
 
@@ -425,13 +373,11 @@ Moving Average Convergence Divergence
 **Arguments:**
  - **n1 (int):**  short time period, default 12
  - **n2 (int):**  long time period, default 26
- - **n3 (int):**  signal time period, default 9  
-
+ - **n3 (int):**  signal time period, default 9
 
 
 **Outputs:**
 > macd, macdsignal, macdhist
-
 
 ### MACDV
 
@@ -443,13 +389,11 @@ Moving Average Convergence Divergence - Volatility Normalized
 **Arguments:**
  - **n1 (int):**  short time period, default 12
  - **n2 (int):**  long time period, default 26
- - **n3 (int):**  signal time period, default 9  
-
+ - **n3 (int):**  signal time period, default 9
 
 
 **Outputs:**
 > macdv, macdvsignal, macdvhist
-
 
 ### MAD
 
@@ -468,9 +412,7 @@ Moving average computed according to ma_type
 
 **Arguments:**
  - **ma_type (str):**  one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
-   defaults to 'SMA'
-
-
+       defaults to 'SMA'
 
 ### MAX
 
@@ -487,8 +429,6 @@ Minus Directional Index
 
 **Arguments:**
  - **period (int):**  time period, default 14
-
-
 
 ### MEDPRICE
 
@@ -508,8 +448,6 @@ Money Flow Index
 **Arguments:**
  - **period (int):**  time period, default 14
 
-
-
 ### MIN
 
 `MIN(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -519,8 +457,6 @@ Rolling Minimum
 
 **Arguments:**
  - **period (int):**  time period, required
-
-
 
 ### NATR
 
@@ -532,8 +468,6 @@ Normalized Average True Range
 **Arguments:**
  - **period (int):**  time period, default 14
 
-
-
 ### PDI
 
 `PDI(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -543,8 +477,6 @@ Plus Directional Index
 
 **Arguments:**
  - **period (int):**  time period, default 14
-
-
 
 ### PPO
 
@@ -559,10 +491,8 @@ Price Percentage Oscillator
  - **n3 (int):**  signal time period, default 9
 
 
-
 **Outputs:**
 > ppo, pposignal, ppohist
-
 
 ### PRICE
 
@@ -579,8 +509,6 @@ Generic Price
    'typ' or 'hlc3'   — typical price (high + low + close) / 3,
    'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
 
-
-
 ### QUADREG
 
 `QUADREG(period: int = 20, offset: int = 0, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -595,8 +523,6 @@ with `offset` projecting the parabola forward.
  - **period (int):**  time period, default 20
  - **offset (int):**  forecast offset, default 0
 
-
-
 ### QUADREG_CURVE
 
 `QUADREG_CURVE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -607,8 +533,6 @@ Quadratic Regression Curve
 **Arguments:**
  - **period (int):**  time period, default 20
 
-
-
 ### QUADREG_RMSE
 
 `QUADREG_RMSE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -618,8 +542,6 @@ Quadratic Regression Root Mean Square Error
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### QUADREG_RVALUE
 
@@ -632,8 +554,6 @@ Partial correlation of the quadratic term, given the linear term.
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### QUADREG_SLOPE
 
@@ -648,8 +568,6 @@ with `offset` projecting the slope forward.
 **Arguments:**
  - **period (int):**  time period, default 20
  - **offset (int):**  forecast offset, default 0
-
-
 
 ### RMA
 
@@ -670,9 +588,7 @@ Rate of Change
 
 **Arguments:**
  - **period (int):**  time period, default 1
- - when negative the calculation is shifted back
-
-
+   when negative the calculation is shifted back
 
 ### RSI
 
@@ -684,8 +600,6 @@ Relative Strength Index
 **Arguments:**
  - **period (int):**  time period, default 14
 
-
-
 ### SAR
 
 `SAR(afs: float = 0.02, maxaf: float = 0.2, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -696,8 +610,6 @@ Parabolic Stop and Reverse
 **Arguments:**
  - **afs (float):**  starting acceleration factor, default 0.02
  - **maxaf (float):**  maximum acceleration factor, default 0.2
-
-
 
 ### SIGN
 
@@ -715,8 +627,6 @@ Simple Moving Average
 **Arguments:**
  - **period (int):**  time period, required
 
-
-
 ### STDEV
 
 `STDEV(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -726,8 +636,6 @@ Standard Deviation
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### STEP
 
@@ -741,8 +649,6 @@ Limit value changes to threshold (in absolute value)
 **Arguments:**
  - **threshold (float):**  threshold value, default 1.0
 
-
-
 ### STOCH
 
 `STOCH(period: int = 14, fastn: int = 3, slown: int = 3, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -751,11 +657,9 @@ Stochastic Oscillator
 
 
 **Arguments:**
- - **period (int):**   time period of window, default, 14
+ - **period (int):**  time period of window, default, 14
  - **fastn (int):**  time period of fast average, default 3
  - **slown (int):**  time period of slow average, default 3
-
-
 
 ### STREAK
 
@@ -773,8 +677,6 @@ Rolling sum
 **Arguments:**
  - **period (int):**  time period, required
 
-
-
 ### TEMA
 
 `TEMA(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -784,8 +686,6 @@ Triple Exponential Moving Average
 
 **Arguments:**
  - **period (int):**  time period, default 20
-
-
 
 ### TRANGE
 
@@ -797,8 +697,6 @@ True Range
 **Arguments:**
  - **log_prices (bool):**  whether to apply log to prices before calculation
  - **percent (bool):**  result as percentage of price
-
-
 
 ### TYPPRICE
 
@@ -819,8 +717,6 @@ Flag for value crossing up & down levels
  - **up_level (float):**  flag set at 1 above that level
  - **down_level (float):**  flag set at 0 below that level
 
-
-
 ### WCLPRICE
 
 `WCLPRICE(*, src: polars.Expr | str | None = None) -> polars.Expr`
@@ -834,12 +730,10 @@ Value of (high + low + 2 * close) / 4
 `WMA(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
 
 Weighted Moving Average
-    
+
 
 **Arguments:**
  - **period (int):**  time period, required
-
-
 
 ### ZLEMA
 
@@ -852,8 +746,6 @@ Zero-Lag Exponential Moving Average
  - **period (int):**  time period, required
 
 
-
 **Formula:**
 > ZLEMA is an EMA applied to a de-lagged series
 > data = 2 * value - value[lag] with lag = (period - 1) // 2
-
