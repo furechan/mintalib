@@ -13,3 +13,8 @@ Items decided or considered but not scheduled. Add new items at the end.
 
 - ~~Add PyPI project urls to pyproject~~ — done 2026-07-25: added `urls.documentation`, `urls.repository`, `urls.changelog` matching mplchart's format; takes effect when 0.1.3 publishes
 - ~~Register https://furechan.github.io/mintalib/ on Google Search Console~~ — done 2026-07-25: URL-prefix property verified via the account-level HTML file reused from mplchart (injected at CI time in pages.yml, deploys at site root), sitemap.xml submitted
+
+
+## Typing
+
+- Swap the `ExprFactory` overload order in `model/expression.py` so the canonical params-first form is declared first. Editors list overloads in declaration order, so the expression-first shim (`(src: pl.Expr, /, *args, **kwargs)`) is what currently shows first in the signature dropdown, ahead of the real signature. Raised 2026-08-13 from bearta, which ported this protocol to make `expr.pipe(SMA, 20)` type-check and hit the dropdown noise immediately; both orders were verified equivalent there under ty and pyright (`Expr.pipe` still accepts the factories, chaining still resolves), so the change is display-only. Confirm mintalib's factories are params-first in the same way before swapping — canonical-first only makes sense if the expression-first overload is the compatibility shim rather than the primary form.
