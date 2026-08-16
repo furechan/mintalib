@@ -29,8 +29,9 @@ MODULES = [
 OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "reference"
 
 # llms.txt — published at the site root by mkdocs (non-md files copy verbatim);
-# links point at the raw markdown in the repo, which llms.txt moves with atomically
-RAW_BASE = "https://raw.githubusercontent.com/furechan/mintalib/main/docs"
+# links point at the markdown sources, which scripts/mkdocs_hooks.py publishes
+# alongside the HTML so they are same-origin and agents can follow them
+DOCS_BASE = "https://furechan.github.io/mintalib"
 
 LLMS_INTRO = """\
 # mintalib
@@ -235,10 +236,10 @@ def write_llms_txt() -> None:
         docstring = importlib.import_module(module_name).__doc__ or ""
         summary = docstring.strip().split("\n")[0].rstrip(".")
         page = page_name(module_name)
-        lines.append(f"- [{module_name}]({RAW_BASE}/reference/{page}): {summary}")
+        lines.append(f"- [{module_name}]({DOCS_BASE}/reference/{page}): {summary}")
     lines += ["", "## Guides", ""]
     for page, (label, summary) in LLMS_GUIDES.items():
-        lines.append(f"- [{label}]({RAW_BASE}/{page}): {summary}")
+        lines.append(f"- [{label}]({DOCS_BASE}/{page}): {summary}")
     lines.append("")
     path = OUTPUT_DIR.parent / "llms.txt"
     path.write_text("\n".join(lines))

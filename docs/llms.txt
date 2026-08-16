@@ -7,12 +7,12 @@ better suited for LLM consumption.
 
 ## API reference
 
-- [mintalib](https://raw.githubusercontent.com/furechan/mintalib/main/docs/reference/index.md): Minimal technical analysis library for Python
-- [mintalib.core](https://raw.githubusercontent.com/furechan/mintalib/main/docs/reference/core.md): Calculation routines implemented in cython
-- [mintalib.functions](https://raw.githubusercontent.com/furechan/mintalib/main/docs/reference/functions.md): Calculation functions for technical analysis indicators
-- [mintalib.indicators](https://raw.githubusercontent.com/furechan/mintalib/main/docs/reference/indicators.md): Indicators offer a composable interface where a calculation routine is bound with its parameters
-- [mintalib.expressions](https://raw.githubusercontent.com/furechan/mintalib/main/docs/reference/expressions.md): Polars Expression Factory Methods
+- [mintalib](https://furechan.github.io/mintalib/reference/index.md): Minimal technical analysis library for Python
+- [mintalib.core](https://furechan.github.io/mintalib/reference/core.md): Calculation routines implemented in cython
+- [mintalib.functions](https://furechan.github.io/mintalib/reference/functions.md): Calculation functions for technical analysis indicators
+- [mintalib.indicators](https://furechan.github.io/mintalib/reference/indicators.md): Indicators offer a composable interface where a calculation routine is bound with its parameters
+- [mintalib.expressions](https://furechan.github.io/mintalib/reference/expressions.md): Polars Expression Factory Methods
 
 ## Guides
 
-- [overview](https://raw.githubusercontent.com/furechan/mintalib/main/docs/index.md): the three interfaces and their example notebooks
+- [overview](https://furechan.github.io/mintalib/index.md): the three interfaces and their example notebooks
