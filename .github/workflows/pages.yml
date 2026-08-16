@@ -18,9 +18,6 @@ jobs:
       - uses: astral-sh/setup-uv@v4
       - run: uv sync --only-group docs
       - run: uv run --no-sync mkdocs build --site-dir _site/
-      # Google Search Console ownership verification (account-level token, not a secret)
-      - run: |
-          echo "google-site-verification: google3e5afa36401ddb09.html" > _site/google3e5afa36401ddb09.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site/
