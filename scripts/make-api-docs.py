@@ -28,25 +28,6 @@ MODULES = [
 
 OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "reference"
 
-# llms.txt — published at the site root by mkdocs (non-md files copy verbatim);
-# links point at the markdown sources, which scripts/mkdocs_hooks.py publishes
-# alongside the HTML so they are same-origin and agents can follow them
-DOCS_BASE = "https://furechan.github.io/mintalib"
-
-LLMS_INTRO = """\
-# mintalib
-
-Minimal technical analysis library for Python, implemented in Cython.
-
-This site is rendered HTML for humans. The markdown sources below are
-better suited for LLM consumption.
-"""
-
-# hand-written pages to list in llms.txt (docs-relative path -> label, summary)
-LLMS_GUIDES = {
-    "index.md": ("overview", "the three interfaces and their example notebooks"),
-}
-
 # griffe docstring section kind -> rendered field-list title
 SECTION_TITLES = {
     "parameters": "Arguments",
@@ -230,22 +211,6 @@ def page_name(module_name: str) -> str:
     return ("index" if stem == "mintalib" else stem) + ".md"
 
 
-def write_llms_txt() -> None:
-    lines = [LLMS_INTRO, "## API reference", ""]
-    for module_name in MODULES:
-        docstring = importlib.import_module(module_name).__doc__ or ""
-        summary = docstring.strip().split("\n")[0].rstrip(".")
-        page = page_name(module_name)
-        lines.append(f"- [{module_name}]({DOCS_BASE}/reference/{page}): {summary}")
-    lines += ["", "## Guides", ""]
-    for page, (label, summary) in LLMS_GUIDES.items():
-        lines.append(f"- [{label}]({DOCS_BASE}/{page}): {summary}")
-    lines.append("")
-    path = OUTPUT_DIR.parent / "llms.txt"
-    path.write_text("\n".join(lines))
-    print(f"  -> {path}")
-
-
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -255,8 +220,6 @@ def main():
         output_path = OUTPUT_DIR / page_name(module_name)
         output_path.write_text(content)
         print(f"  -> {output_path}")
-
-    write_llms_txt()
 
 
 if __name__ == "__main__":
