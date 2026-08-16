@@ -18,10 +18,22 @@ dependencies = ["numpy"]
 optional-dependencies.pandas = ["pandas"]
 optional-dependencies.polars = ["polars"]
 optional-dependencies.all = ["pandas", "polars"]
-keywords = ["cython", "technical-analysis", "indicators"]
+keywords = [
+    "cython",
+    "technical-analysis",
+    "indicators",
+    "pandas",
+    "polars",
+    "finance",
+    "quantitative-finance",
+]
 classifiers = [
-    "Programming Language :: Python :: 3",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Financial and Insurance Industry",
     "Operating System :: OS Independent",
+    "Programming Language :: Cython",
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business :: Financial :: Investment",
 ]
 
 [dependency-groups]
