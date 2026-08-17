@@ -9,16 +9,5 @@
   ],
   "excludeFolders": [
     "docs/overrides"
-  ],
-  "rules": [
-    "There are three stable interfaces over one Cython core: mintalib.functions (works with pandas and polars), mintalib.expressions (polars only), mintalib.indicators (pandas only). Pick the one matching the workflow, do not mix them.",
-    "Functions use lower case names: sma, ema, macd. Indicators and expressions use upper case names: SMA, EMA, MACD.",
-    "prices is a pandas or polars DataFrame with lower case columns open, high, low, close, volume. series is a pandas or polars series, or a numpy array. Use normalize_prices to fix column name capitalization.",
-    "Indicators bind a calculation with its parameters and are called on prices: SMA(20)(prices). Chain them with the | operator: TYPPRICE() | BBANDS(20).",
-    "Multi-output indicators (MACD, BBANDS, DMI, DONCHIAN, KELTNER, MACDV, PPO, STOCH) return a DataFrame; select one output with MACD()['macd'], which gives a series indicator. Single-output indicators support alias(name).",
-    "as_expr() converts an indicator to a polars expression: no argument on single-output indicators, a required output name on multi-output ones, as in MACD().as_expr('macd').",
-    "Core routines in mintalib.core are compiled Cython functions named calc_*. mintalib.functions is the thin stable wrapper over them and is the primary interface.",
-    "mintalib.polars and mintalib.pandas register experimental ts accessors. They are not part of the stable API.",
-    "Install with pip install mintalib. Wheels carry the compiled extension; pandas and polars are optional and used only by the interfaces that need them."
   ]
 }
