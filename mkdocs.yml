@@ -1,6 +1,7 @@
 site_name: mintalib
 site_description: Minimal technical analysis library for Python, implemented in Cython
 site_url: https://furechan.github.io/mintalib/
+site_dir: build/site
 repo_url: https://github.com/furechan/mintalib
 repo_name: furechan/mintalib
 
@@ -32,6 +33,7 @@ theme:
 plugins:
   - search
   - mkdocs-jupyter:
+      cache_dir: build/cache/mkdocs-jupyter
       execute: false
       include_source: true
 

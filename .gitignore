@@ -5,9 +5,7 @@
 __pycache__/
 build/
 dist/
-site/
 _site/
-.cache/
 venv/
 .venv/
 .tox/
