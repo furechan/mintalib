@@ -87,6 +87,9 @@ def cython(ctx):
 @task(cython)
 def make(ctx):
     """Compile extension with build_ext --inplace"""
+    for pattern in ("core.*.so", "core.*.pyd"):
+        for path in ROOT.joinpath("src/mintalib").glob(pattern):
+            path.unlink()
     ctx.run("python setup.py build_ext --inplace")
 
     ctx.run("python scripts/make-stubs.py")
