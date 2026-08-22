@@ -54,3 +54,25 @@ def test_rsi_bridges_nulls():
     # bridging a null is equivalent to removing it from the series
     expected = core.calc_rsi(np.delete(series, 15), 14)
     assert result[-1] == pytest.approx(expected[-1])
+
+
+def test_ker_uses_period_changes():
+    import numpy as np
+
+    series = np.arange(1.0, 16.0)
+
+    result = core.calc_ker(series, 3)
+
+    assert np.isnan(result[:3]).all()
+    assert result[3:] == pytest.approx(1.0)
+
+
+def test_ker_bridges_nulls():
+    import numpy as np
+
+    series = np.array([1.0, 2.0, np.nan, 4.0, 3.0, 6.0, 8.0])
+
+    result = core.calc_ker(series, 3)
+
+    expected = core.calc_ker(series[~np.isnan(series)], 3)
+    assert result[~np.isnan(result)] == pytest.approx(expected[~np.isnan(expected)])

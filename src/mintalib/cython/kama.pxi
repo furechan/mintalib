@@ -43,10 +43,11 @@ def calc_ker(series, int period=10):
                 if isnan(y):
                     continue
 
-                dy, py = y - py, y
+                dy = y - py
 
-                ernum = math.fabs(x-y)
+                ernum = math.fabs(x-py)
                 erval = ernum / erdiv if erdiv else 1.0
+                py = y
 
                 if not isnan(dy):
                     erdiv -= math.fabs(dy)
@@ -103,5 +104,4 @@ def calc_kama(series, int period=10, int fastn=2, int slown=30):
             output[i] = kama
 
     return result
-
 

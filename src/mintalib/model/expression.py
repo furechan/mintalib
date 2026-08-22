@@ -22,9 +22,9 @@ class ExprFactory(Protocol[P]):
     """
 
     @overload
-    def __call__(self, src: pl.Expr, /, *args: P.args, **kwargs: P.kwargs) -> pl.Expr: ...
-    @overload
     def __call__(self, *args: P.args, **kwargs: P.kwargs) -> pl.Expr: ...
+    @overload
+    def __call__(self, src: pl.Expr, /, *args: P.args, **kwargs: P.kwargs) -> pl.Expr: ...
 
 
 
