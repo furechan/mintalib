@@ -182,12 +182,12 @@ Example notebooks are available in the `examples` folder.
 pip install mintalib
 ```
 
-The base install includes only the numpy requirements. Add `pandas` and/or `polars` to your environment depending on which interface you want to use.
+Mintalib requires Python 3.11 or newer. The base install includes only the numpy requirements. Add `pandas` and/or `polars` to your environment depending on which interface you want to use.
 
 
 ## Dependencies
 
-- python >= 3.10
+- python >= 3.11
 - numpy
 - pandas [optional]
 - polars [optional]
@@ -203,5 +203,4 @@ The base install includes only the numpy requirements. Add `pandas` and/or `pola
 - [qtalib](https://github.com/josephchenhk/qtalib) Quantitative Technical Analysis Library
 - [polars-ta](https://github.com/wukan1986/polars_ta) Technical Analysis Indicators for polars
 - [polars-talib](https://github.com/Yvictor/polars_ta_extension) Polars extension for Ta-Lib: Support Ta-Lib functions in Polars expressions
-
 
