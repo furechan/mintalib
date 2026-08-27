@@ -31,6 +31,9 @@ def calc_bbp(series, long period=20, double nbdev=2.0):
     """
     Bollinger Bands Percent (%B)
 
+    Returns the source position within the bands as a ratio, where 0 is the
+    lower band and 1 is the upper band.
+
     Args:
         period (int): time period, default 20
         nbdev (float): bands width in number of standard deviations
@@ -46,7 +49,7 @@ def calc_bbp(series, long period=20, double nbdev=2.0):
     lower = middle - nbdev * std
 
     with np.errstate(divide='ignore', invalid='ignore'):
-        result = (prc - lower) / (upper - lower) * 100
+        result = (prc - lower) / (upper - lower)
 
     return result
 
@@ -56,6 +59,8 @@ def calc_bbp(series, long period=20, double nbdev=2.0):
 def calc_bbw(series, long period=20, double nbdev=2.0):
     """
     Bollinger Bands Width
+
+    Returns band width relative to the middle band as a ratio.
 
     Args:
         period (int): time period, default 20
@@ -70,6 +75,6 @@ def calc_bbw(series, long period=20, double nbdev=2.0):
     lower = middle - nbdev * std
 
     with np.errstate(divide='ignore', invalid='ignore'):
-        result = (upper - lower) / middle * 100
+        result = (upper - lower) / middle
 
     return result

@@ -10,7 +10,6 @@ Convergence tests (checked from bar 200 onward):
   KAMA, SAR                        - different algorithm
   STOCH                            - different default parameters
   LINREG                           - talib TSF projects one bar ahead (use offset=1 to match)
-  ROC                              - talib multiplies by 100; mintalib returns fraction
   BOP                              - talib has no period smoothing
 """
 
@@ -61,6 +60,11 @@ def test_wma(prices):
 def test_rsi(prices):
     c = prices.close.values.astype(float)
     check(talib.RSI(c, 14), core.calc_rsi(c, 14))
+
+
+def test_roc(prices):
+    c = prices.close.values.astype(float)
+    check(talib.ROC(c, 10), core.calc_roc(c, 10))
 
 
 def test_stdev(prices):
@@ -133,6 +137,11 @@ def test_atr(prices, hlcv):
     check(talib.ATR(h, lo, c, 14)[200:], core.calc_atr(prices, 14)[200:])
 
 
+def test_natr(prices, hlcv):
+    h, lo, c, _ = hlcv
+    check(talib.NATR(h, lo, c, 14)[200:], core.calc_natr(prices, 14)[200:])
+
+
 def test_linreg_slope(prices):
     c = prices.close.values.astype(float)
     check(talib.LINEARREG_SLOPE(c, 20), core.calc_linreg_slope(c, 20))
@@ -143,5 +152,3 @@ def test_linreg(prices):
     check(talib.LINEARREG(c, 20), core.calc_linreg(c, 20))
     # talib TSF projects one bar ahead; match with offset=1
     check(talib.TSF(c, 20), core.calc_linreg(c, 20, offset=1))
-
-

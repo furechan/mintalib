@@ -176,6 +176,9 @@ def RMA(period: int, *, item: str | None = None): ...
 @wrap_series_indicator(core.calc_roc)
 def ROC(period: int = 1, *, item: str | None = None): ...
 
+@wrap_series_indicator(core.calc_rocp)
+def ROCP(period: int = 1, *, item: str | None = None): ...
+
 @wrap_series_indicator(core.calc_rsi)
 def RSI(period: int = 14, *, item: str | None = None): ...
 
@@ -232,7 +235,7 @@ __all__ = [
     'LOG', 'LROC', 'MACD', 'MACDV', 'MAD', 'MAV', 'MAX', 'MDI', 'MEDPRICE',
     'MFI', 'MIN', 'NATR', 'PDI', 'PPO', 'PRICE', 'QUADREG',
     'QUADREG_CURVE', 'QUADREG_RMSE', 'QUADREG_RVALUE', 'QUADREG_SLOPE',
-    'RMA', 'ROC', 'RSI', 'SAR', 'SIGN', 'SMA', 'STDEV', 'STEP', 'STOCH',
-    'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TYPPRICE', 'UPDOWN', 'WCLPRICE',
-    'WMA', 'ZLEMA'
+    'RMA', 'ROC', 'ROCP', 'RSI', 'SAR', 'SIGN', 'SMA', 'STDEV', 'STEP',
+    'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TYPPRICE', 'UPDOWN',
+    'WCLPRICE', 'WMA', 'ZLEMA'
 ]

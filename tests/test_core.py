@@ -76,3 +76,44 @@ def test_ker_bridges_nulls():
 
     expected = core.calc_ker(series[~np.isnan(series)], 3)
     assert result[~np.isnan(result)] == pytest.approx(expected[~np.isnan(expected)])
+
+
+def test_roc_scales_percentage_and_rocp_preserves_fraction():
+    import numpy as np
+
+    series = np.array([100.0, 110.0, 99.0])
+
+    assert core.calc_roc(series, 1) == pytest.approx([np.nan, 10.0, -10.0], nan_ok=True)
+    assert core.calc_rocp(series, 1) == pytest.approx([np.nan, 0.1, -0.1], nan_ok=True)
+
+
+@pytest.mark.parametrize("name", ["calc_roc", "calc_rocp"])
+def test_rate_of_change_rejects_negative_period(name):
+    func = getattr(core, name)
+
+    with pytest.raises(ValueError, match="Invalid period value -1"):
+        func([100.0, 110.0], -1)
+
+
+def test_natr_is_scaled_atr_over_close(prices):
+    import numpy as np
+
+    close = np.asarray(prices["close"], float)
+
+    result = core.calc_natr(prices, 14)
+    expected = 100 * core.calc_atr(prices, 14) / close
+
+    assert result == pytest.approx(expected, nan_ok=True)
+
+
+def test_bbp_and_bbw_are_unscaled_ratios():
+    import numpy as np
+
+    series = np.arange(1.0, 11.0)
+    upper, middle, lower = core.calc_bbands(series, 5, 2.0)
+
+    expected_bbp = (series - lower) / (upper - lower)
+    expected_bbw = (upper - lower) / middle
+
+    assert core.calc_bbp(series, 5, 2.0) == pytest.approx(expected_bbp, nan_ok=True)
+    assert core.calc_bbw(series, 5, 2.0) == pytest.approx(expected_bbw, nan_ok=True)

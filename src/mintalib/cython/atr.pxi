@@ -70,14 +70,17 @@ def calc_atr(prices, long period=14):
 def calc_natr(prices, long period=14):
     """
     Normalized Average True Range
+
+    Returns ``100 * ATR(period) / close`` in percentage points.
     
     Args:
         period (int): time period, default 14    
     """
 
-    trange = calc_trange(prices, percent=True)
-    result = calc_rma(trange, period)
+    close = np.asarray(prices['close'], float)
+    atr = calc_atr(prices, period)
+
+    with np.errstate(divide='ignore', invalid='ignore'):
+        result = 100 * atr / close
 
     return result
-
-

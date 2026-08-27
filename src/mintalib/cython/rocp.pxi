@@ -1,11 +1,11 @@
-""" Rate of Change """
+""" Rate of Change Percentage """
 
-def calc_roc(series, long period=1):
+def calc_rocp(series, long period=1):
     """
-    Rate of Change
+    Rate of Change Percentage
 
-    Returns rate of change as a percentage. For example, a 10% increase returns 10.0.
-    
+    Returns rate of change as a fraction. For example, a 10% increase returns 0.1.
+
     Args:
         period (int): time period, default 1
     """
@@ -16,7 +16,7 @@ def calc_roc(series, long period=1):
     cdef object result = np.full(size, np.nan)
     cdef double[:] output = result
 
-    cdef double v = NAN, pv = NAN, roc = NAN
+    cdef double v = NAN, pv = NAN, rocp = NAN
     cdef long i = 0
 
     if period < 0:
@@ -25,8 +25,8 @@ def calc_roc(series, long period=1):
     with nogil:
         for i in range(period, size):
             v, pv = xs[i], xs[i - period]
-            if v > 0  and pv > 0:
-                roc = (v / pv - 1) * 100
-                output[i] = roc
+            if v > 0 and pv > 0:
+                rocp = v / pv - 1
+                output[i] = rocp
 
     return result

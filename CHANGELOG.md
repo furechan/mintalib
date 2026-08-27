@@ -1,6 +1,9 @@
 # Change Log
 
 ## 0.1.5
+- `inv info` now reports both the current project version and the latest published PyPI version, matching the Bartons workflow, with clear failures for HTTP, network, and malformed-response errors
+- Breaking: `ROC` now returns conventional percentage values, matching TA-Lib (for example, a 10% increase returns `10.0`). Added `ROCP` for the previous fractional behavior (`0.1` for the same move); both reject negative periods instead of shifting results backward
+- Breaking: corrected the percentage conventions of the Bollinger-derived indicators: `BBP` and `BBW` now return raw ratios instead of values multiplied by 100, matching Bartons (`0.75` means price is 75% through the bands; `0.08` means band width is 8% of the middle price). Corrected `NATR` to the conventional `100 * ATR / close`, matching Bartons and TA-Lib, instead of smoothing individually normalized true-range values
 - Regular CPython builds now target the Python 3.11 Stable ABI (`cp311-abi3`) instead of the interpreter-version ABI, allowing one wheel per platform/architecture to run on Python 3.11 and later. Free-threaded CPython explicitly stays on its version-specific ABI (`cp313t`, etc.), since current free-threaded releases cannot load ordinary `abi3`; `inv make` removes stale in-place extension variants before rebuilding so an old `core.cpython-*.so` cannot shadow `core.abi3.so`
 - Raised the minimum supported Python version from 3.10 to 3.11, the first Limited API version that supports the typed memoryviews used by the Cython core; removed Python 3.10 from the full tox matrix
 - Fixed an off-by-one in `calc_ker`: the direction numerator covered `period - 1` price changes while the volatility denominator covered `period`, systematically understating the efficiency ratio and making `calc_kama` adapt too slowly. Both now use the intended `period`-change window; in particular, KER is exactly 1.0 on a monotonic series

@@ -21,6 +21,7 @@ include "min.pxi"
 include "max.pxi"
 include "sum.pxi"
 include "roc.pxi"
+include "rocp.pxi"
 include "lroc.pxi"
 
 include "mad.pxi"
@@ -64,5 +65,4 @@ include "quadreg.pxi"
 include "stoch.pxi"
 
 include "streak.pxi"
-
 

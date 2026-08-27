@@ -151,6 +151,7 @@ result = prices.assign(
 | QUADREG_SLOPE  | Series  | Quadratic Regression Slope                                    |
 | RMA            | Series  | Rolling Moving Average (RSI style)                            |
 | ROC            | Series  | Rate of Change                                                |
+| ROCP           | Series  | Rate of Change Percentage                                     |
 | RSI            | Series  | Relative Strength Index                                       |
 | SAR            | Prices  | Parabolic Stop and Reverse                                    |
 | SIGN           | Series  | Sign                                                          |

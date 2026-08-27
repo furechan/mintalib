@@ -87,6 +87,9 @@ Bollinger Bands
 
 Bollinger Bands Percent (%B)
 
+Returns the source position within the bands as a ratio, where 0 is the
+lower band and 1 is the upper band.
+
 
 **Arguments:**
  - **period (int):**  time period, default 20
@@ -99,6 +102,8 @@ Bollinger Bands Percent (%B)
 `calc_bbw(series, period=20, nbdev=2.0) -> np.ndarray`
 
 Bollinger Bands Width
+
+Returns band width relative to the middle band as a ratio.
 
 
 **Arguments:**
@@ -533,6 +538,8 @@ Rolling Minimum
 
 Normalized Average True Range
 
+Returns ``100 * ATR(period) / close`` in percentage points.
+
 
 **Arguments:**
  - **period (int):**  time period, default 14
@@ -674,10 +681,25 @@ number of bars is equal to `period`.
 
 Rate of Change
 
+Returns rate of change as a percentage. For example, a 10% increase returns 10.0.
+
 
 **Arguments:**
  - **period (int):**  time period, default 1
-   when negative the calculation is shifted back
+
+---
+
+### calc_rocp
+
+`calc_rocp(series, period=1) -> np.ndarray`
+
+Rate of Change Percentage
+
+Returns rate of change as a fraction. For example, a 10% increase returns 0.1.
+
+
+**Arguments:**
+ - **period (int):**  time period, default 1
 
 ---
 

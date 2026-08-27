@@ -4,8 +4,11 @@ import os
 import re
 import json
 import subprocess
+import urllib.error
+import urllib.request
 
 from pathlib import Path
+from invoke.exceptions import Exit
 from invoke.tasks import task
 
 PACKAGE = "mintalib"
@@ -39,6 +42,20 @@ def get_version() -> str | None:
     return match.group(1) if match else None
 
 
+def latest_pypi_version() -> str:
+    """Get the latest published version from PyPI."""
+    url = f"https://pypi.org/pypi/{PACKAGE}/json"
+    try:
+        with urllib.request.urlopen(url, timeout=10) as response:
+            return json.load(response)["info"]["version"]
+    except urllib.error.HTTPError as error:
+        raise Exit(f"could not get the latest PyPI version: HTTP {error.code}") from error
+    except urllib.error.URLError as error:
+        raise Exit(f"could not get the latest PyPI version: {error.reason}") from error
+    except (KeyError, TypeError, ValueError) as error:
+        raise Exit("could not read the latest version from PyPI's response") from error
+
+
 def bump_version():
     """Bump patch version in pyproject"""
     pyproject = ROOT.joinpath("pyproject.toml").resolve(strict=True)
@@ -59,9 +76,11 @@ def bump_version():
 
 @task
 def info(ctx):
-    """Check package version"""
+    """Show the current project version and the latest version on PyPI."""
     version = get_version()
-    print(f"Working version: {version}")
+    pypi_version = latest_pypi_version()
+    print(f"Current version: {version}")
+    print(f"Latest on PyPI: {pypi_version}")
 
 
 @task
