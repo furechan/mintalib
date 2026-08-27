@@ -6,8 +6,5 @@
   "folders": [
     "docs",
     "examples"
-  ],
-  "excludeFolders": [
-    "docs/overrides"
   ]
 }
