@@ -2,7 +2,7 @@
 Indicators offer a composable interface where a calculation routine is bound with its parameters.
 
 This module is pandas-only: indicators accept pandas DataFrames, pandas Series, or numpy arrays,
-and return pandas results. For polars, use `mintalib.expressions`.
+and return pandas results.
 
 An indicator instance is a callable applied to prices or series data: `SMA(50)(prices)`.
 
@@ -126,7 +126,7 @@ def MACDV(n1: int = 12, n2: int = 26, n3: int = 9): ...
 def MAD(period: int = 14, *, item: str | None = None): ...
 
 @wrap_series_indicator(core.calc_mav)
-def MAV(period: int = 20, *, ma_type: str = 'SMA', item: str | None = None): ...
+def MAV(period: int = 20, *, matype: str = 'sma', item: str | None = None): ...
 
 @wrap_series_indicator(core.calc_max)
 def MAX(period: int, *, item: str | None = None): ...

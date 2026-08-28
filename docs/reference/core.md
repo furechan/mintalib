@@ -461,16 +461,16 @@ Rolling Mean Absolute Deviation
 
 ### calc_mav
 
-`calc_mav(series, period=20, *, ma_type='SMA') -> np.ndarray`
+`calc_mav(series, period=20, *, matype='sma') -> np.ndarray`
 
 Generic Moving Average
 
-Moving average computed according to ma_type
+Moving average computed according to matype
 
 
 **Arguments:**
- - **ma_type (str):**  one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
-       defaults to 'SMA'
+ - **matype (str):**  one of 'sma', 'ema', 'wma', 'hma', 'dema', 'tema'
+       defaults to 'sma'
 
 ---
 

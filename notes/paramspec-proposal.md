@@ -1,5 +1,9 @@
 # mintalib — type the public decorators with ParamSpec
 
+> **Status:** Implemented historical proposal. References to
+> `mintalib.expressions` as a public API predate its current role as an internal
+> bridge; see [polars-expressions.md](polars-expressions.md).
+
 ## Problem
 
 `mintalib.expressions`, `mintalib.functions`, and `mintalib.indicators` resolve to `Unknown` under `ty` (and other type checkers), even though the source files are statically structured with proper annotations. Only `mintalib.core` resolves cleanly, because it ships a Cython-generated `.pyi` stub.

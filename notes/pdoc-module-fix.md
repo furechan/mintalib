@@ -1,5 +1,8 @@
 # pdoc `__module__` fix (2026-03-26)
 
+> **Status:** Historical record. The accessor modules discussed below have been
+> removed, and API reference generation now uses griffe rather than pdoc.
+
 pdoc uses `__module__` to decide whether a name is native to a module or imported. The decorators `wrap_function`, `wrap_expression`, and `wrap_indicator` create closure wrappers but didn't set `__module__`, so pdoc treated all decorated functions as imported from `mintalib.model.*` and skipped them.
 
 Fix applied: added `wrapper.__module__ = func.__module__` to all three decorators in `src/mintalib/model/`.

@@ -66,13 +66,14 @@ This runs cythonize, build_ext, and all codegen scripts (`make-functions`, `make
 
 **Naming**
 - Functions (`mintalib.functions`) — lower case: `sma`, `ema`, `macd`
-- Indicators (`mintalib.indicators`) and Expressions (`mintalib.expressions`) — upper case: `SMA`, `EMA`, `MACD`
+- Indicators (`mintalib.indicators`) — upper case: `SMA`, `EMA`, `MACD`
+- The hidden internal expression bridge (`mintalib.expressions`) also uses upper case names
 
 **Input parameters**
 - `prices` — pandas or polars DataFrame with columns `open`, `high`, `low`, `close`, `volume` (all lower case)
 - `series` — pandas/polars series or numpy array
 
-**Multi-column outputs** (e.g. `MACD`, `BBANDS`) return named tuples from core functions and polars struct expressions in `mintalib.expressions` (and the polars accessor).
+**Multi-column outputs** (e.g. `MACD`, `BBANDS`) return named tuples from core functions and Polars struct expressions in the hidden `mintalib.expressions` bridge.
 
 ## Architecture
 
@@ -80,13 +81,12 @@ This runs cythonize, build_ext, and all codegen scripts (`make-functions`, `make
 - `src/mintalib/core.pyx` — Cython extension, exposes `calc_*` functions
 - `src/mintalib/functions.py` — thin Python wrappers around `core`, primary stable interface
 - `src/mintalib/indicators.py` — callable indicator objects, pandas only
-- `src/mintalib/expressions.py` — polars expression factory functions, polars-native interface
+- `src/mintalib/expressions.py` — hidden internal Polars bridge retained for benchmarks and Bartons cross-checks; it has no public stability guarantee; see `notes/polars-expressions.md`
 - `src/mintalib/model/expression.py` — `wrap_expression` decorator that bridges core functions to polars
-- `src/mintalib/polars.py`, `src/mintalib/pandas.py` — experimental `ts` accessors
 
-**Stable interfaces:** `mintalib.functions`, `mintalib.expressions`, `mintalib.indicators`
+**Advertised interfaces:** `mintalib.functions` (primary), `mintalib.indicators` (secondary)
 
-**Experimental:** `mintalib.polars`, `mintalib.pandas` (`ts` accessors)
+**Internal expression bridge:** `mintalib.expressions`. Keep it functional and retain behavioral parity coverage, but do not promote it in the README, quick start, or example navigation. It has no public stability guarantee. Do not remove it until a generic internal adapter replaces its benchmarking and Bartons parity role; see `notes/polars-expressions.md`.
 
 ## Adding a New Indicator
 

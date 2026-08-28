@@ -9,7 +9,7 @@ Regenerate with: uv run inv docs
 Indicators offer a composable interface where a calculation routine is bound with its parameters.
 
 This module is pandas-only: indicators accept pandas DataFrames, pandas Series, or numpy arrays,
-and return pandas results. For polars, use `mintalib.expressions`.
+and return pandas results.
 
 An indicator instance is a callable applied to prices or series data: `SMA(50)(prices)`.
 
@@ -398,16 +398,16 @@ Rolling Mean Absolute Deviation
 
 ### MAV
 
-`MAV(period: int = 20, *, ma_type: str = 'SMA', item: str | None = None)`
+`MAV(period: int = 20, *, matype: str = 'sma', item: str | None = None)`
 
 Generic Moving Average
 
-Moving average computed according to ma_type
+Moving average computed according to matype
 
 
 **Arguments:**
- - **ma_type (str):**  one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
-       defaults to 'SMA'
+ - **matype (str):**  one of 'sma', 'ema', 'wma', 'hma', 'dema', 'tema'
+       defaults to 'sma'
 
 ### MAX
 

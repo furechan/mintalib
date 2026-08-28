@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.7
+- Breaking: renamed the generic moving-average selector from `ma_type` to `matype` and standardized its values on strict lowercase strings (`"sma"`, `"ema"`, `"wma"`, `"hma"`, `"dema"`, `"tema"`), aligning mintalib with Bartons and TA-Lib terminology
+- Repositioned the README around the eager `mintalib.functions` API, with a generated function-signature reference; composable pandas indicators remain documented as a secondary interface, while Polars expressions are no longer advertised
+
 ## 0.1.5
 - Breaking: removed the deprecated experimental `mintalib.pandas` and `mintalib.polars` `ts` accessor modules; use `mintalib.indicators` for pandas and `mintalib.expressions` for Polars
 - `EMA` now preserves missing inputs as `NaN` while retaining its recursive state across gaps; composed `DEMA` and `TEMA` calculations inherit the same behavior without advancing downstream EMA stages on missing observations

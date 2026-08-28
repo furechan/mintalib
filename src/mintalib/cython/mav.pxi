@@ -2,36 +2,35 @@
 
 
 @add_metadata(same_scale=True)
-def calc_mav(series, long period=20, *, unicode ma_type = "SMA"):
+def calc_mav(series, long period=20, *, unicode matype = "sma"):
     """
     Generic Moving Average
 
-    Moving average computed according to ma_type
+    Moving average computed according to matype
 
     Args:
-        ma_type (str): one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
-                defaults to 'SMA'
+        matype (str): one of 'sma', 'ema', 'wma', 'hma', 'dema', 'tema'
+                defaults to 'sma'
     """
 
-    if ma_type == 'SMA':
+    if matype == 'sma':
         result= calc_sma(series, period)
 
-    elif ma_type == 'EMA':
+    elif matype == 'ema':
         result = calc_ema(series, period)
 
-    elif ma_type == 'WMA':
+    elif matype == 'wma':
         result = calc_wma(series, period)
 
-    elif ma_type == 'HMA':
+    elif matype == 'hma':
         result = calc_hma(series, period)
 
-    elif ma_type == 'DEMA':
+    elif matype == 'dema':
         result = calc_dema(series, period)
 
-    elif ma_type == 'TEMA':
+    elif matype == 'tema':
         result = calc_tema(series, period)
     else:
-        raise ValueError(f"Invalid ma_type {ma_type}")
+        raise ValueError(f"Invalid matype {matype}")
 
     return result
-

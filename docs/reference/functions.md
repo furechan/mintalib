@@ -393,16 +393,16 @@ Rolling Mean Absolute Deviation
 
 ### mav
 
-`mav(series, period: int = 20, *, ma_type: str = 'SMA')`
+`mav(series, period: int = 20, *, matype: str = 'sma')`
 
 Generic Moving Average
 
-Moving average computed according to ma_type
+Moving average computed according to matype
 
 
 **Arguments:**
- - **ma_type (str):**  one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
-       defaults to 'SMA'
+ - **matype (str):**  one of 'sma', 'ema', 'wma', 'hma', 'dema', 'tema'
+       defaults to 'sma'
 
 ### max
 

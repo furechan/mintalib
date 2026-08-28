@@ -410,16 +410,16 @@ Rolling Mean Absolute Deviation
 
 ### MAV
 
-`MAV(period: int = 20, *, ma_type: str = 'SMA', src: polars.Expr | str | None = None) -> polars.Expr`
+`MAV(period: int = 20, *, matype: str = 'sma', src: polars.Expr | str | None = None) -> polars.Expr`
 
 Generic Moving Average
 
-Moving average computed according to ma_type
+Moving average computed according to matype
 
 
 **Arguments:**
- - **ma_type (str):**  one of 'SMA', 'EMA', 'WMA', 'HMA', 'DEMA', 'TEMA'
-       defaults to 'SMA'
+ - **matype (str):**  one of 'sma', 'ema', 'wma', 'hma', 'dema', 'tema'
+       defaults to 'sma'
 
 ### MAX
 

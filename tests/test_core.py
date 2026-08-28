@@ -78,6 +78,25 @@ def test_moving_average_period_one_is_identity(name):
     assert getattr(core, name)(series, 1) == pytest.approx(series, nan_ok=True)
 
 
+@pytest.mark.parametrize("matype", ["sma", "ema", "wma", "hma", "dema", "tema"])
+def test_mav_uses_lowercase_matype(matype):
+    import numpy as np
+
+    series = np.arange(1.0, 31.0)
+
+    result = core.calc_mav(series, 5, matype=matype)
+    expected = getattr(core, f"calc_{matype}")(series, 5)
+
+    assert result == pytest.approx(expected, nan_ok=True)
+
+
+def test_mav_rejects_uppercase_matype():
+    import numpy as np
+
+    with pytest.raises(ValueError, match="Invalid matype EMA"):
+        core.calc_mav(np.arange(1.0, 11.0), 5, matype="EMA")
+
+
 @pytest.mark.parametrize("name", ["calc_ema", "calc_dema", "calc_tema"])
 def test_ema_family_preserves_nulls_while_bridging_state(name):
     import numpy as np

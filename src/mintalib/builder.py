@@ -20,7 +20,7 @@ def annotate_parameter(param):
         if type(param.default) in (int, float, bool):
             return param.replace(annotation=type(param.default))
 
-        if param.name in ("expr", "ma_type"):
+        if param.name in ("expr", "matype"):
             return param.replace(annotation=str)
 
         if param.name == "period":
