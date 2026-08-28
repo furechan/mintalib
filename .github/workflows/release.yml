@@ -1,6 +1,5 @@
-# Build and test the complete release artifact set without publishing it.
-# Publishing can be added as a gated downstream job once this matrix is proven.
-name: Release artifacts
+# Build, test, verify, approve, and publish one complete release artifact set.
+name: Release
 
 on:
   workflow_dispatch:
@@ -8,7 +7,7 @@ on:
 permissions: {}
 
 concurrency:
-  group: release-artifacts-${{ github.ref }}
+  group: release-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -118,3 +117,24 @@ jobs:
             exit 1
           }
           printf '%s\n' "${wheels[@]}" "${sdists[@]}"
+
+  publish:
+    name: Confirm and publish to PyPI
+    needs: verify
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/mintalib
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: dist-*
+          merge-multiple: true
+          path: dist
+
+      - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+
+      - name: Publish release artifacts
+        run: uv publish --trusted-publishing always dist/*

@@ -1,7 +1,7 @@
 # Change Log
 
 ## 0.1.7
-- Added a manual, build-only GitHub Actions release workflow that creates and smoke-tests one sdist plus five `cp311-abi3` wheels (Linux x86_64/aarch64, macOS x86_64/arm64, and Windows x64), audits the stable-ABI wheels through cibuildwheel, and verifies the complete artifact set without publishing it
+- Added a manual GitHub Actions release workflow that creates and smoke-tests one sdist plus five `cp311-abi3` wheels (Linux x86_64/aarch64, macOS x86_64/arm64, and Windows x64), audits the stable-ABI wheels through cibuildwheel, verifies the complete artifact set, pauses behind the protected `pypi` environment, and publishes all artifacts in one `uv publish` invocation using PyPI Trusted Publishing
 - Breaking: renamed the generic moving-average selector from `ma_type` to `matype` and standardized its values on strict lowercase strings (`"sma"`, `"ema"`, `"wma"`, `"hma"`, `"dema"`, `"tema"`), aligning mintalib with Bartons and TA-Lib terminology
 - Repositioned the README around the eager `mintalib.functions` API, with a generated function-signature reference; composable pandas indicators remain documented as a secondary interface, while Polars expressions are no longer advertised
 
