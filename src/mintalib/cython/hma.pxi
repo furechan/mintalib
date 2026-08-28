@@ -12,7 +12,9 @@ def calc_hma(series, long period):
 
     if period <= 0:
         raise ValueError("period must be greater than zero")
-
+    # Graceful degradation: a one-period moving average is the input itself.
+    if period == 1:
+        return np.asarray(series, float).copy()
     m1 = calc_wma(series, round(period/2))
     m2 = calc_wma(series, period)
     m3 = (2 *  m1) - m2
@@ -20,4 +22,3 @@ def calc_hma(series, long period):
     result = calc_wma(m3, round(math.sqrt(period)))
 
     return result
-

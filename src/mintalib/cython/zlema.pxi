@@ -13,9 +13,11 @@ def calc_zlema(series, long period):
         data = 2 * value - value[lag] with lag = (period - 1) // 2
     """
 
-    if period <= 1:
+    if period <= 0:
         raise ValueError(f"Invalid period value {period}")
-
+    # Graceful degradation: a one-period moving average is the input itself.
+    if period == 1:
+        return np.asarray(series, float).copy()
     cdef long lag = (period - 1) // 2
 
     xs = np.asarray(series, float)

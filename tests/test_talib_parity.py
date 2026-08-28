@@ -10,7 +10,6 @@ Convergence tests (checked from bar 200 onward):
   KAMA, SAR                        - different algorithm
   STOCH                            - different default parameters
   LINREG                           - talib TSF projects one bar ahead (use offset=1 to match)
-  BOP                              - talib has no period smoothing
 """
 
 import numpy as np
@@ -94,6 +93,14 @@ def test_cci(prices, hlcv):
 def test_mfi(prices, hlcv):
     h, lo, c, v = hlcv
     check(talib.MFI(h, lo, c, v, 14), core.calc_mfi(prices, 14))
+
+
+def test_bop(prices):
+    o = prices.open.values.astype(float)
+    h = prices.high.values.astype(float)
+    lo = prices.low.values.astype(float)
+    c = prices.close.values.astype(float)
+    check(talib.BOP(o, h, lo, c), core.calc_bop(prices))
 
 
 def test_max(prices):

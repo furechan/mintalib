@@ -19,12 +19,14 @@ def calc_ema(series, long period, *, bint adjust = False):
             with rho = 1.0 - alpha
     """
 
-    if period <= 1:
+    if period <= 0:
         raise ValueError(f"Invalid period value {period}")
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
-
+    # Graceful degradation: a one-period moving average is the input itself.
+    if period == 1:
+        return np.asarray(xs).copy()
     cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
@@ -53,11 +55,7 @@ def calc_ema(series, long period, *, bint adjust = False):
                     ema = num / div
                 else:
                     ema += alpha * (value - ema)
-
-            if count >= period:
-                output[i] = ema
+                if count >= period:
+                    output[i] = ema
 
     return result
-
-
-

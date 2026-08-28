@@ -117,13 +117,9 @@ Returns band width relative to the middle band as a ratio.
 
 ### BOP
 
-`BOP(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`BOP(*, src: polars.Expr | str | None = None) -> polars.Expr`
 
 Balance of Power
-
-
-**Arguments:**
- - **period (int):**  time period, default 20
 
 ### CCI
 

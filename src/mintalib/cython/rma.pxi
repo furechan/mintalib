@@ -37,9 +37,7 @@ def calc_rma(series, long period):
                     rma = total / count
                 else:
                     rma += alpha * (value - rma)
-
-            if count >= period:
-                output[i] = rma
+                if count >= period:
+                    output[i] = rma
 
     return result
-

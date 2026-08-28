@@ -100,13 +100,9 @@ Returns band width relative to the middle band as a ratio.
 
 ### bop
 
-`bop(prices, period: int = 20)`
+`bop(prices)`
 
 Balance of Power
-
-
-**Arguments:**
- - **period (int):**  time period, default 20
 
 ### cci
 

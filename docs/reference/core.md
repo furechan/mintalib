@@ -114,13 +114,9 @@ Returns band width relative to the middle band as a ratio.
 
 ### calc_bop
 
-`calc_bop(prices, period=20) -> np.ndarray`
+`calc_bop(prices) -> np.ndarray`
 
 Balance of Power
-
-
-**Arguments:**
- - **period (int):**  time period, default 20
 
 ---
 

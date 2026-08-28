@@ -17,11 +17,6 @@ Every indicator is available in all three stable interfaces (functions, indicato
 - [mintalib.indicators](indicators.md) — composable indicator objects for pandas, named `SMA`, `EMA`, etc.
 - [mintalib.expressions](expressions.md) — polars expression factories, named `SMA`, `EMA`, etc.
 
-## Experimental Modules
-
-- `mintalib.pandas` — `ts` accessor for pandas DataFrame and Series (import to register)
-- `mintalib.polars` — `ts` accessor for polars DataFrame, Series, and Expr (import to register)
-
 ## Naming Conventions
 
 - Core functions use lower case prefixed with `calc_`: `calc_sma`, `calc_ema`, `calc_macd`
@@ -39,4 +34,3 @@ Indicators with multiple outputs (e.g. `MACD`, `BBANDS`) return:
 
 - named tuples from `mintalib.core` and `mintalib.functions`
 - polars struct expressions in `mintalib.expressions` (unpack with `.struct.unnest()` or pick a field with `.struct.field(name)`)
-- polars structs in the polars accessor

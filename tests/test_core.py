@@ -56,6 +56,43 @@ def test_rsi_bridges_nulls():
     assert result[-1] == pytest.approx(expected[-1])
 
 
+def test_rma_preserves_nulls_while_bridging_state():
+    import numpy as np
+
+    series = np.array([1.0, 2.0, np.nan, 4.0])
+
+    result = core.calc_rma(series, 2)
+    expected = core.calc_rma(series[~np.isnan(series)], 2)
+
+    assert np.isnan(result[2])
+    assert result[[0, 1, 3]] == pytest.approx(expected, nan_ok=True)
+    assert core.calc_rma(series, 1) == pytest.approx(series, nan_ok=True)
+
+
+@pytest.mark.parametrize("name", ["calc_ema", "calc_dema", "calc_tema", "calc_hma", "calc_zlema"])
+def test_moving_average_period_one_is_identity(name):
+    import numpy as np
+
+    series = np.array([1.0, 2.0, np.nan, 4.0])
+
+    assert getattr(core, name)(series, 1) == pytest.approx(series, nan_ok=True)
+
+
+@pytest.mark.parametrize("name", ["calc_ema", "calc_dema", "calc_tema"])
+def test_ema_family_preserves_nulls_while_bridging_state(name):
+    import numpy as np
+
+    series = np.array([1.0, 2.0, 3.0, 4.0, 5.0, np.nan, 7.0, 8.0, 9.0, 10.0])
+    valid = ~np.isnan(series)
+    func = getattr(core, name)
+
+    result = func(series, 3)
+    expected = func(series[valid], 3)
+
+    assert np.isnan(result[~valid]).all()
+    assert result[valid] == pytest.approx(expected, nan_ok=True)
+
+
 def test_ker_uses_period_changes():
     import numpy as np
 
@@ -117,3 +154,15 @@ def test_bbp_and_bbw_are_unscaled_ratios():
 
     assert core.calc_bbp(series, 5, 2.0) == pytest.approx(expected_bbp, nan_ok=True)
     assert core.calc_bbw(series, 5, 2.0) == pytest.approx(expected_bbw, nan_ok=True)
+
+
+def test_bop_is_raw_per_bar(prices):
+    import numpy as np
+
+    with np.errstate(all="ignore"):
+        raw = (
+            (np.asarray(prices["close"], float) - np.asarray(prices["open"], float))
+            / (np.asarray(prices["high"], float) - np.asarray(prices["low"], float))
+        )
+
+    assert core.calc_bop(prices) == pytest.approx(raw, nan_ok=True)

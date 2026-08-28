@@ -74,12 +74,7 @@ testpaths = ["tests"]
 # Some playground notebooks define names dynamically, which ty cannot resolve. Inline
 # `# ty: ignore[...]` file-level directives don't work in the IDE — the ty language server
 # analyzes notebook cells individually — so the rules are ignored per filename pattern instead.
-# Naming convention: notebooks with %%cython magic cells have "cython" in the name,
-# notebooks using the registered ts accessors have "accessor" in the name.
+# Naming convention: notebooks with %%cython magic cells have "cython" in the name.
 [[tool.ty.overrides]]
 include = ["playground/*cython*.ipynb"]
 rules.unresolved-reference = "ignore"
-
-[[tool.ty.overrides]]
-include = ["playground/*accessor*.ipynb"]
-rules.unresolved-attribute = "ignore"
