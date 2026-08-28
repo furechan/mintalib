@@ -1,7 +1,7 @@
 {
   "$schema": "https://context7.com/schema/context7.json",
   "projectTitle": "mintalib",
-  "description": "Minimal technical analysis library for Python, a Cython core exposed as functions, pandas indicators and polars expressions",
+  "description": "Minimal technical analysis library for Python, with a Cython core exposed through eager NumPy/pandas functions and composable pandas indicators",
   "branch": "main",
   "folders": [
     "docs",
