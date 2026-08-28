@@ -2,6 +2,7 @@
 
 ## 0.1.8
 - Simplified continuous CI from a five-runner Python/platform matrix to one fast Linux/Python 3.11 job that runs the full tests, Ruff, and ty on every push and pull request; cross-platform installed-artifact coverage now belongs to the release workflow, while superseded CI runs are cancelled automatically
+- Replaced the stale Pyright development dependency with ty so clean development and CI environments install the configured type checker
 
 ## 0.1.7
 - Added a manual GitHub Actions release workflow that creates and smoke-tests one sdist plus five `cp311-abi3` wheels (Linux x86_64/aarch64, macOS x86_64/arm64, and Windows x64), audits the stable-ABI wheels through cibuildwheel, verifies the complete artifact set, pauses behind the protected `pypi` environment, and publishes all artifacts in one `uv publish` invocation using PyPI Trusted Publishing

@@ -44,7 +44,6 @@ dev = [
     "ipykernel",
     "pytest",
     "nbmake",
-    "pyright",
     "ruff",
     "pandas",
     "polars",
@@ -55,6 +54,7 @@ dev = [
     "pytest-sugar>=1.0.0",
     "ta-lib>=0.6.8",
     "griffe>=2.1.0",
+    "ty>=0.0.75",
 ]
 docs = [
     "mkdocs-material>=9.7.7",
