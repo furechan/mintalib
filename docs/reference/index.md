@@ -10,22 +10,24 @@ Minimal technical analysis library for Python.
 
 ## Modules
 
-Mintalib exposes eager functions as its primary interface and composable pandas indicators as a secondary interface.
+Mintalib exposes equivalent eager, pandas-composable, and polars-expression interfaces.
 
 - [mintalib.core](core.md) — core calculation routines implemented in Cython, named `calc_sma`, `calc_ema`, etc.
-- [mintalib.functions](functions.md) — plain functions wrapping core routines, named `sma`, `ema`, etc. Primary stable interface.
+- [mintalib.functions](functions.md) — eager functions wrapping core routines, named `sma`, `ema`, etc.
 - [mintalib.indicators](indicators.md) — composable indicator objects for pandas, named `SMA`, `EMA`, etc.
+- [mintalib.expressions](expressions.md) — composable expression factories for polars, named `SMA`, `EMA`, etc.
 
 ## Naming Conventions
 
 - Core functions use lower case prefixed with `calc_`: `calc_sma`, `calc_ema`, `calc_macd`
 - Functions use lower case: `sma`, `ema`, `macd`
 - Indicators use upper case: `SMA`, `EMA`, `MACD`
+- Expressions use upper case: `SMA`, `EMA`, `MACD`
 
 ## Input Parameters
 
-- `series` — a pandas Series or NumPy array (single column input)
-- `prices` — a pandas DataFrame with columns `open`, `high`, `low`, `close`, `volume` (all lower case)
+- `series` — a pandas or polars Series, or NumPy array (single column input)
+- `prices` — a pandas or polars DataFrame with columns `open`, `high`, `low`, `close`, `volume` (all lower case)
 
 ## Multi-Output Indicators
 

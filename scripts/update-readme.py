@@ -1,64 +1,68 @@
-"""Update the README.md function reference."""
+"""Update the README.md indicator reference."""
 
 import re
 import inspect
+
+import pandas as pd
 
 from pathlib import Path
 
 ROOTDIR = Path(__file__).parent.parent
 
 
-def get_signature(func):
-    """Return the public call signature without type annotations."""
-    signature = inspect.signature(func)
-    parameters = [
-        parameter.replace(annotation=inspect.Parameter.empty)
-        for parameter in signature.parameters.values()
-    ]
-    return signature.replace(
-        parameters=parameters, return_annotation=inspect.Signature.empty
+def get_input(name):
+    """Return the input type (Prices/Series) from the core signature."""
+    from mintalib import core
+
+    func = getattr(core, f"calc_{name.lower()}", None) or getattr(
+        core, f"flag_{name.lower()}", None
     )
+    if func is None:
+        if name == "EVAL":
+            return "Prices"
+        raise RuntimeError(f"Could not find a core function for {name}")
+    parameter = next(iter(inspect.signature(func).parameters), "")
+    return parameter.capitalize()
 
 
 def get_info(func):
+    """Return the public name, input type, and summary for an indicator."""
     doc = func.__doc__ or ""
     lines = [line.strip() for line in doc.strip().splitlines() if line.strip()]
     if lines and lines[0].startswith(("calc_", "flag_")):
         lines = lines[1:]
     description = lines[0] if lines else ""
-    api = f"`{func.__name__}{get_signature(func)}`"
-    return api, description
+    return {
+        "Name": func.__name__,
+        "Input": get_input(func.__name__),
+        "Description": description,
+    }
 
 
-def list_functions():
-    from mintalib import functions
+def list_indicators():
+    """Return public indicators as a name-indexed DataFrame."""
+    from mintalib import indicators
 
-    result = [
+    values = [
         value
-        for value in vars(functions).values()
-        if callable(value) and value.__module__ == functions.__name__
+        for name, value in vars(indicators).items()
+        if name.isupper() and callable(value)
     ]
-    result = [get_info(f) for f in result]
-    return sorted(result)
-
-
-def make_table():
-    rows = ["| | |", "|---|---|"]
-    rows.extend(f"| {api} | {description} |" for api, description in list_functions())
-    return "\n".join(rows)
+    result = pd.DataFrame(get_info(value) for value in values).set_index("Name")
+    return result.sort_index()
 
 
 def update_readme(verbose=True):
-    title = "## Function Reference\n"
-    table = make_table()
+    """Regenerate the indicator reference in README.md."""
+    table = list_indicators().to_markdown()
     repl = (
-        title
-        + "\n<!-- functions:start -->\n"
+        "## List of Indicators\n\n"
+        + "<!-- indicators:start -->\n"
         + table
-        + "\n<!-- functions:end -->\n\n\n"
+        + "\n<!-- indicators:end -->\n\n\n"
     )
 
-    pattern = r"(?ms)(^[#]+ (Function Reference|List of (Functions|Indicators))\n[^#]+)"
+    pattern = r"(?ms)(^[#]+ (Function Reference|List of Indicators)\n[^#]+)"
 
     readme = ROOTDIR.joinpath("README.md")
     contents = readme.read_text()
@@ -66,7 +70,7 @@ def update_readme(verbose=True):
     output, count = re.subn(pattern, repl, contents)
 
     if count != 1:
-        raise RuntimeError("Could not locate function reference")
+        raise RuntimeError("Could not locate indicator reference")
 
     if verbose:
         print(f"Updating {readme.name} ...")

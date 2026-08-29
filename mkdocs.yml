@@ -47,4 +47,5 @@ nav:
       - reference/index.md
       - Functions: reference/functions.md
       - Indicators: reference/indicators.md
+      - Expressions: reference/expressions.md
       - Core: reference/core.md

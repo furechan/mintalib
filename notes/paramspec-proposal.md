@@ -1,8 +1,8 @@
 # mintalib — type the public decorators with ParamSpec
 
-> **Status:** Implemented historical proposal. References to
-> `mintalib.expressions` as a public API predate its current role as an internal
-> bridge; see [polars-expressions.md](polars-expressions.md).
+> **Status:** Implemented historical proposal. `mintalib.expressions` is again
+> an advertised public API; see
+> [polars-expressions.md](polars-expressions.md).
 
 ## Problem
 

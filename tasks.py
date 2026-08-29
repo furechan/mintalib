@@ -121,6 +121,10 @@ def make(ctx):
 @task(clean)
 def build(ctx):
     """Build project sdist"""
+    print(
+        "WARNING: inv build creates a local sdist only; "
+        "publish releases through .github/workflows/release.yml."
+    )
     ctx.run("python scripts/check-readme.py")
     ctx.run("uv build --sdist")
 
@@ -137,13 +141,6 @@ def docs(ctx, serve=False):
     ctx.run("python scripts/make-api-docs.py")
     if serve:
         ctx.run("mkdocs serve")
-
-
-@task
-def publish(ctx, testpypi=False):
-    """Publish to PyPI with twine"""
-    repoarg = "--repository testpypi" if testpypi else ""
-    ctx.run(f"twine upload {repoarg} --skip-existing dist/*.tar.gz")
 
 
 @task

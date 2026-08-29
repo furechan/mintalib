@@ -9,21 +9,26 @@ This package offers a curated list of technical analysis indicators implemented 
 
 ## Interfaces
 
-Mintalib offers two interfaces for different workflows:
+Mintalib offers three equivalent calculation interfaces for different workflows:
 
-- **Functions** (`mintalib.functions`) — concrete functions for arrays and pandas objects. Names are lower case: `sma`, `ema`, `macd`.
-- **Indicators** (`mintalib.indicators`) — pandas-only composable indicators that bind an indicator with its calculation parameters. Names are upper case: `SMA`, `EMA`, `MACD`.
+- **Functions** (`mintalib.functions`) — eager functions for NumPy arrays and pandas or polars objects. Names are lower case: `sma`, `ema`, `macd`.
+- **Indicators** (`mintalib.indicators`) — composable pandas indicators that bind a calculation with its parameters. Names are upper case: `SMA`, `EMA`, `MACD`.
+- **Expressions** (`mintalib.expressions`) — composable expression factories for polars-native workflows. Names are upper case: `SMA`, `EMA`, `MACD`.
 
-The primary interfaces have example notebooks:
+Functions and indicators have example notebooks:
 
 - [Functions](examples/functions.ipynb)
 - [Indicators](examples/indicators.ipynb)
+
+Polars expressions are documented in the [Expressions reference](reference/expressions.md).
 
 ## Installation
 
 ```console
 pip install mintalib
 ```
+
+Mintalib requires Python 3.11 or newer. Prebuilt `cp311-abi3` wheels are available for regular CPython on Linux (x86_64 and ARM64), macOS (Intel and Apple silicon), and Windows (x64), so supported installations do not need a local C compiler.
 
 ## Quick Start
 
@@ -45,4 +50,5 @@ Prices DataFrames are expected to have lower case column names `open`, `high`, `
 - [mintalib](reference/index.md) — package overview
 - [mintalib.functions](reference/functions.md) — calculation functions
 - [mintalib.indicators](reference/indicators.md) — pandas indicators
+- [mintalib.expressions](reference/expressions.md) — polars expression factories
 - [mintalib.core](reference/core.md) — low-level calculation routines

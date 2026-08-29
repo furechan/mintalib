@@ -48,7 +48,6 @@ dev = [
     "pandas",
     "polars",
     "yfinance",
-    "twine",
     "nbcheck",
     "tabulate",
     "pytest-sugar>=1.0.0",

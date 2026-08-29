@@ -1,8 +1,11 @@
 # Change Log
 
 ## 0.1.8
+- Restored `mintalib.expressions` as an advertised public interface alongside eager functions and pandas indicators, reflecting the library's backend-equivalent API; the README again explains all three surfaces and uses the generated Name/Input/Description indicator list
 - Simplified continuous CI from a five-runner Python/platform matrix to one fast Linux/Python 3.11 job that runs the full tests, Ruff, and ty on every push and pull request; cross-platform installed-artifact coverage now belongs to the release workflow, while superseded CI runs are cancelled automatically
 - Replaced the stale Pyright development dependency with ty so clean development and CI environments install the configured type checker
+- Removed the local `inv publish`/Twine upload path so releases can only be published through the verified GitHub Actions workflow; `inv build` now warns that it creates a local sdist without publishing
+- Documented the published `cp311-abi3` wheel coverage in the README and documentation homepage, including supported platforms and architectures
 
 ## 0.1.7
 - Added a manual GitHub Actions release workflow that creates and smoke-tests one sdist plus five `cp311-abi3` wheels (Linux x86_64/aarch64, macOS x86_64/arm64, and Windows x64), audits the stable-ABI wheels through cibuildwheel, verifies the complete artifact set, pauses behind the protected `pypi` environment, and publishes all artifacts in one `uv publish` invocation using PyPI Trusted Publishing

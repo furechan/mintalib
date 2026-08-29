@@ -1,6 +1,6 @@
 # Minimal Technical Analysis Library for Python
 
-This package offers a curated list of technical analysis indicators implemented in `Cython` for optimal performance. The library is built around `numpy` arrays and integrates with `pandas` DataFrames and Series.
+This package offers a curated list of technical analysis indicators implemented in `Cython` for optimal performance. The library is built around `numpy` arrays and provides interfaces for eager NumPy/pandas/polars calculations, composable pandas indicators, and native polars expressions.
 
 > [!NOTE]
 > This project is experimental and the interface can change.
@@ -8,10 +8,11 @@ This package offers a curated list of technical analysis indicators implemented 
 
 ## Interfaces
 
-Mintalib offers two interfaces for different workflows:
+Mintalib offers three equivalent calculation interfaces for different workflows:
 
-- **Functions** (`mintalib.functions`) — concrete functions for arrays and pandas objects.
-- **Indicators** (`mintalib.indicators`) — pandas-only composable indicators that bind an indicator with its calculation parameters.
+- **Functions** (`mintalib.functions`) — eager functions for NumPy arrays and pandas or polars objects.
+- **Indicators** (`mintalib.indicators`) — composable pandas indicators that bind a calculation with its parameters.
+- **Expressions** (`mintalib.expressions`) — composable expression factories for polars-native workflows.
 
 
 ## Conventions
@@ -29,7 +30,7 @@ prices = normalize_prices(rawprices)
 
 Concrete functions are available from the `mintalib.functions` module with names in lower case like `sma`, `atr`, `macd`, etc.
 
-Functions accept NumPy arrays, pandas Series, or pandas DataFrames as appropriate.
+Functions accept NumPy arrays, pandas objects, or polars objects as appropriate and return the same eager container type when possible.
 
 The first parameter of a function is either `prices` or `series` depending on whether
 the function expects a dataframe of prices or a single series.
@@ -38,7 +39,7 @@ the function expects a dataframe of prices or a single series.
 ```python
 import mintalib.functions as ta
 
-prices = ... # pandas DataFrame
+prices = ... # pandas or polars DataFrame
 
 sma = ta.sma(prices['close'], 50)
 atr = ta.atr(prices, 14)
@@ -63,81 +64,101 @@ result = prices.assign(
 )
 ```
 
-## Function Reference
+## Expressions
 
-<!-- functions:start -->
-| | |
-|---|---|
-| `abs(series)` | Absolute Value |
-| `adx(prices, period=14)` | Average Directional Index |
-| `alma(series, period=9, offset=0.85, sigma=6.0)` | Arnaud Legoux Moving Average |
-| `atr(prices, period=14)` | Average True Range |
-| `avgprice(prices)` | Average Price |
-| `bbands(series, period=20, nbdev=2.0)` | Bollinger Bands |
-| `bbp(series, period=20, nbdev=2.0)` | Bollinger Bands Percent (%B) |
-| `bbw(series, period=20, nbdev=2.0)` | Bollinger Bands Width |
-| `bop(prices)` | Balance of Power |
-| `cci(prices, period=20)` | Commodity Channel Index |
-| `clag(series, period=1)` | Confirmation Lag |
-| `cmf(prices, period=20)` | Chaikin Money Flow |
-| `crossover(series, level=0.0)` | Cross Over |
-| `crossunder(series, level=0.0)` | Cross Under |
-| `dema(series, period)` | Double Exponential Moving Average |
-| `diff(series, period=1)` | Difference |
-| `dmi(prices, period=14)` | Directional Movement Indicator |
-| `donchian(prices, period=20)` | Donchian Channel |
-| `ema(series, period, *, adjust=False)` | Exponential Moving Average |
-| `exp(series)` | Exponential |
-| `flag(series)` | Flag Value |
-| `hma(series, period)` | Hull Moving Average |
-| `kama(series, period=10, fastn=2, slown=30)` | Kaufman Adaptive Moving Average |
-| `keltner(prices, period=20, nbatr=2.0)` | Keltner Channel |
-| `ker(series, period=10)` | Kaufman Efficiency Ratio |
-| `lag(series, period)` | Lag Function |
-| `linreg(series, period=20, offset=0)` | Linear Regression (least squares moving average) |
-| `linreg_rmse(series, period=20)` | Linear Regression Root Mean Square Error |
-| `linreg_rvalue(series, period=20)` | Linear Regression R-Value |
-| `linreg_slope(series, period=20)` | Linear Regression Slope |
-| `log(series)` | Logarithm |
-| `lroc(series, period=1)` | Logarithmic Rate of Change |
-| `macd(series, n1=12, n2=26, n3=9)` | Moving Average Convergence Divergence |
-| `macdv(prices, n1=12, n2=26, n3=9)` | Moving Average Convergence Divergence - Volatility Normalized |
-| `mad(series, period=14)` | Rolling Mean Absolute Deviation |
-| `mav(series, period=20, *, matype='sma')` | Generic Moving Average |
-| `max(series, period)` | Rolling Maximum |
-| `mdi(prices, period=14)` | Minus Directional Index |
-| `medprice(prices)` | Median Price |
-| `mfi(prices, period=14)` | Money Flow Index |
-| `min(series, period)` | Rolling Minimum |
-| `natr(prices, period=14)` | Normalized Average True Range |
-| `pdi(prices, period=14)` | Plus Directional Index |
-| `ppo(series, n1=12, n2=26, n3=9)` | Price Percentage Oscillator |
-| `price(prices, item=None)` | Generic Price |
-| `quadreg(series, period=20, offset=0)` | Quadratic Regression (parabolic moving average) |
-| `quadreg_curve(series, period=20)` | Quadratic Regression Curve |
-| `quadreg_rmse(series, period=20)` | Quadratic Regression Root Mean Square Error |
-| `quadreg_rvalue(series, period=20)` | Quadratic Regression R-Value |
-| `quadreg_slope(series, period=20, offset=0)` | Quadratic Regression Slope |
-| `rma(series, period)` | Rolling Moving Average (RSI style) |
-| `roc(series, period=1)` | Rate of Change |
-| `rocp(series, period=1)` | Rate of Change Percentage |
-| `rsi(series, period=14)` | Relative Strength Index |
-| `sar(prices, afs=0.02, maxaf=0.2)` | Parabolic Stop and Reverse |
-| `sign(series)` | Sign |
-| `sma(series, period)` | Simple Moving Average |
-| `stdev(series, period=20)` | Standard Deviation |
-| `step(series, threshold=1.0)` | Step Function |
-| `stoch(prices, period=14, fastn=3, slown=3)` | Stochastic Oscillator |
-| `streak(series)` | Consecutive streak of values above zero |
-| `sum(series, period)` | Rolling sum |
-| `tema(series, period=20)` | Triple Exponential Moving Average |
-| `trange(prices, *, log_prices=False, percent=False)` | True Range |
-| `typprice(prices)` | Typical Price |
-| `updown(series, up_level=0.0, down_level=0.0)` | Flag for value crossing up & down levels |
-| `wclprice(prices)` | Weighted Close Price |
-| `wma(series, period)` | Weighted Moving Average |
-| `zlema(series, period)` | Zero-Lag Exponential Moving Average |
-<!-- functions:end -->
+Polars expression factories are available from `mintalib.expressions` with upper-case names such as `SMA`, `EMA`, `ATR`, and `MACD`.
+
+Series calculations default to the `close` column and prices calculations read the full DataFrame when `src` is omitted. A column name or polars expression can be supplied through `src`, and a leading expression is accepted for composition with `Expr.pipe`. Multi-output calculations such as `MACD` return a polars struct expression.
+
+```python
+from mintalib.expressions import EMA, ATR, ROC, MACD
+
+prices = ... # polars DataFrame
+
+result = prices.with_columns(
+    ema20 = EMA(20),
+    atr = ATR(14),
+    trend = EMA(20).pipe(ROC, 1),
+    macd = MACD()
+)
+```
+
+## List of Indicators
+
+<!-- indicators:start -->
+| Name           | Input   | Description                                                   |
+|:---------------|:--------|:--------------------------------------------------------------|
+| ABS            | Series  | Absolute Value                                                |
+| ADX            | Prices  | Average Directional Index                                     |
+| ALMA           | Series  | Arnaud Legoux Moving Average                                  |
+| ATR            | Prices  | Average True Range                                            |
+| AVGPRICE       | Prices  | Average Price                                                 |
+| BBANDS         | Series  | Bollinger Bands                                               |
+| BBP            | Series  | Bollinger Bands Percent (%B)                                  |
+| BBW            | Series  | Bollinger Bands Width                                         |
+| BOP            | Prices  | Balance of Power                                              |
+| CCI            | Prices  | Commodity Channel Index                                       |
+| CLAG           | Series  | Confirmation Lag                                              |
+| CMF            | Prices  | Chaikin Money Flow                                            |
+| CROSSOVER      | Series  | Cross Over                                                    |
+| CROSSUNDER     | Series  | Cross Under                                                   |
+| DEMA           | Series  | Double Exponential Moving Average                             |
+| DIFF           | Series  | Difference                                                    |
+| DMI            | Prices  | Directional Movement Indicator                                |
+| DONCHIAN       | Prices  | Donchian Channel                                              |
+| EMA            | Series  | Exponential Moving Average                                    |
+| EVAL           | Prices  | Evaluate a pandas expression against a DataFrame's columns.   |
+| EXP            | Series  | Exponential                                                   |
+| FLAG           | Series  | Flag Value                                                    |
+| HMA            | Series  | Hull Moving Average                                           |
+| KAMA           | Series  | Kaufman Adaptive Moving Average                               |
+| KELTNER        | Prices  | Keltner Channel                                               |
+| KER            | Series  | Kaufman Efficiency Ratio                                      |
+| LAG            | Series  | Lag Function                                                  |
+| LINREG         | Series  | Linear Regression (least squares moving average)              |
+| LINREG_RMSE    | Series  | Linear Regression Root Mean Square Error                      |
+| LINREG_RVALUE  | Series  | Linear Regression R-Value                                     |
+| LINREG_SLOPE   | Series  | Linear Regression Slope                                       |
+| LOG            | Series  | Logarithm                                                     |
+| LROC           | Series  | Logarithmic Rate of Change                                    |
+| MACD           | Series  | Moving Average Convergence Divergence                         |
+| MACDV          | Prices  | Moving Average Convergence Divergence - Volatility Normalized |
+| MAD            | Series  | Rolling Mean Absolute Deviation                               |
+| MAV            | Series  | Generic Moving Average                                        |
+| MAX            | Series  | Rolling Maximum                                               |
+| MDI            | Prices  | Minus Directional Index                                       |
+| MEDPRICE       | Prices  | Median Price                                                  |
+| MFI            | Prices  | Money Flow Index                                              |
+| MIN            | Series  | Rolling Minimum                                               |
+| NATR           | Prices  | Normalized Average True Range                                 |
+| PDI            | Prices  | Plus Directional Index                                        |
+| PPO            | Series  | Price Percentage Oscillator                                   |
+| PRICE          | Prices  | Generic Price                                                 |
+| QUADREG        | Series  | Quadratic Regression (parabolic moving average)               |
+| QUADREG_CURVE  | Series  | Quadratic Regression Curve                                    |
+| QUADREG_RMSE   | Series  | Quadratic Regression Root Mean Square Error                   |
+| QUADREG_RVALUE | Series  | Quadratic Regression R-Value                                  |
+| QUADREG_SLOPE  | Series  | Quadratic Regression Slope                                    |
+| RMA            | Series  | Rolling Moving Average (RSI style)                            |
+| ROC            | Series  | Rate of Change                                                |
+| ROCP           | Series  | Rate of Change Percentage                                     |
+| RSI            | Series  | Relative Strength Index                                       |
+| SAR            | Prices  | Parabolic Stop and Reverse                                    |
+| SIGN           | Series  | Sign                                                          |
+| SMA            | Series  | Simple Moving Average                                         |
+| STDEV          | Series  | Standard Deviation                                            |
+| STEP           | Series  | Step Function                                                 |
+| STOCH          | Prices  | Stochastic Oscillator                                         |
+| STREAK         | Series  | Consecutive streak of values above zero                       |
+| SUM            | Series  | Rolling sum                                                   |
+| TEMA           | Series  | Triple Exponential Moving Average                             |
+| TRANGE         | Prices  | True Range                                                    |
+| TYPPRICE       | Prices  | Typical Price                                                 |
+| UPDOWN         | Series  | Flag for value crossing up & down levels                      |
+| WCLPRICE       | Prices  | Weighted Close Price                                          |
+| WMA            | Series  | Weighted Moving Average                                       |
+| ZLEMA          | Series  | Zero-Lag Exponential Moving Average                           |
+<!-- indicators:end -->
 
 
 ## Example Notebooks
@@ -153,7 +174,9 @@ Example notebooks are available in the `examples` folder.
 pip install mintalib
 ```
 
-Mintalib requires Python 3.11 or newer. The base install includes only NumPy; add `pandas` to use the indicator interface or pandas objects.
+Mintalib requires Python 3.11 or newer. The base install includes only NumPy; add `pandas` and/or `polars` for their corresponding objects and interfaces.
+
+Prebuilt `cp311-abi3` wheels are available for regular CPython 3.11 and newer on Linux (x86_64 and ARM64), macOS (Intel and Apple silicon), and Windows (x64). Supported installations therefore do not need a local C compiler.
 
 
 ## Dependencies
@@ -161,6 +184,7 @@ Mintalib requires Python 3.11 or newer. The base install includes only NumPy; ad
 - python >= 3.11
 - numpy
 - pandas [optional]
+- polars [optional]
 
 
 
@@ -171,3 +195,5 @@ Mintalib requires Python 3.11 or newer. The base install includes only NumPy; ad
 - [ta](https://github.com/bukosabino/ta) Technical Analysis Library for pandas
 - [finta](https://github.com/peerchemist/finta) Financial Technical Analysis for pandas
 - [qtalib](https://github.com/josephchenhk/qtalib) Quantitative Technical Analysis Library
+- [polars-ta](https://github.com/wukan1986/polars_ta) Technical Analysis Indicators for polars
+- [polars-talib](https://github.com/Yvictor/polars_ta_extension) Polars extension for TA-Lib

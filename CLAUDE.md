@@ -67,26 +67,24 @@ This runs cythonize, build_ext, and all codegen scripts (`make-functions`, `make
 **Naming**
 - Functions (`mintalib.functions`) — lower case: `sma`, `ema`, `macd`
 - Indicators (`mintalib.indicators`) — upper case: `SMA`, `EMA`, `MACD`
-- The hidden internal expression bridge (`mintalib.expressions`) also uses upper case names
+- Expressions (`mintalib.expressions`) — upper case: `SMA`, `EMA`, `MACD`
 
 **Input parameters**
 - `prices` — pandas or polars DataFrame with columns `open`, `high`, `low`, `close`, `volume` (all lower case)
 - `series` — pandas/polars series or numpy array
 
-**Multi-column outputs** (e.g. `MACD`, `BBANDS`) return named tuples from core functions and Polars struct expressions in the hidden `mintalib.expressions` bridge.
+**Multi-column outputs** (e.g. `MACD`, `BBANDS`) return named tuples from core functions and Polars struct expressions from `mintalib.expressions`.
 
 ## Architecture
 
 - `src/mintalib/cython/` — one `.pxi` file per indicator; compiled into `core.pyx` via `_all_core.pxi`
 - `src/mintalib/core.pyx` — Cython extension, exposes `calc_*` functions
-- `src/mintalib/functions.py` — thin Python wrappers around `core`, primary stable interface
+- `src/mintalib/functions.py` — eager Python wrappers around `core`
 - `src/mintalib/indicators.py` — callable indicator objects, pandas only
-- `src/mintalib/expressions.py` — hidden internal Polars bridge retained for benchmarks and Bartons cross-checks; it has no public stability guarantee; see `notes/polars-expressions.md`
+- `src/mintalib/expressions.py` — composable public Polars expression factories; also used for benchmarks and Bartons cross-checks; see `notes/polars-expressions.md`
 - `src/mintalib/model/expression.py` — `wrap_expression` decorator that bridges core functions to polars
 
-**Advertised interfaces:** `mintalib.functions` (primary), `mintalib.indicators` (secondary)
-
-**Internal expression bridge:** `mintalib.expressions`. Keep it functional and retain behavioral parity coverage, but do not promote it in the README, quick start, or example navigation. It has no public stability guarantee. Do not remove it until a generic internal adapter replaces its benchmarking and Bartons parity role; see `notes/polars-expressions.md`.
+**Advertised interfaces:** `mintalib.functions`, `mintalib.indicators`, and `mintalib.expressions`. Treat all three as public interfaces with shared core calculation coverage. Keep expression behavioral parity coverage and Bartons cross-checks; see `notes/polars-expressions.md`.
 
 ## Adding a New Indicator
 
@@ -111,16 +109,17 @@ Regular CPython extensions use the Python 3.11 Limited API and produce `cp311-ab
 
 The preferred release path is the manual `.github/workflows/release.yml` workflow. It builds and smoke-tests five `cp311-abi3` wheels plus the sdist, verifies the complete artifact set, then pauses behind the protected `pypi` environment before publishing through `uv publish` and PyPI Trusted Publishing. The publish job must remain downstream of the verification job, and only the publish job may receive `id-token: write`.
 
-For a local fallback release, run in order:
+For local artifact inspection (this does not publish a release), run in order:
 
 ```console
 uv run inv make       # recompile Cython, regenerate all derived files and stubs
-uv run inv build      # clean + build sdist (also builds wheel via uv build --wheel if needed)
+uv run inv build      # clean + build a local sdist; prints a warning that it does not publish
 uv run inv dump       # inspect sdist contents to verify py.typed and core.pyi are included
 tox -m full           # run full test matrix (Python 3.11-3.14, free-threaded 3.13t, ruff, ty) — must pass before publishing
-uv run inv publish    # upload dist/*.tar.gz to PyPI via twine (--testpypi flag for test run)
-uv run inv bump       # bump patch version in pyproject.toml after successful publish
 ```
+
+Publish only through `.github/workflows/release.yml`. After a successful release, run
+`uv run inv bump` to bump the local patch version.
 
 Version bumps are **patch-only** (`x.y.Z`), even for breaking changes, unless explicitly instructed otherwise. Never raise the minor or major version on your own judgment — if a change seems to warrant it, say so and let the user decide.
 
