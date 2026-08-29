@@ -67,10 +67,9 @@ def test_rsi_flat_series_is_zero_after_initialization():
     assert result[14:] == pytest.approx(0.0)
 
 
-def test_standalone_directional_indexes_match_dmi():
+def test_standalone_directional_indexes_match_dmi(prices):
     import numpy as np
 
-    prices = sample_prices()
     dmi = core.calc_dmi(prices, 14)
 
     np.testing.assert_allclose(core.calc_adx(prices, 14), dmi[0], equal_nan=True)

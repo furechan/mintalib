@@ -16,13 +16,11 @@ optional-dependencies.pandas = ["pandas"]
 optional-dependencies.polars = ["polars"]
 optional-dependencies.all = ["pandas", "polars"]
 keywords = [
-    "cython",
     "technical-analysis",
     "indicators",
     "pandas",
     "polars",
-    "finance",
-    "quantitative-finance",
+    "finance"
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
