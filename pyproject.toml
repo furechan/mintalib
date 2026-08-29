@@ -10,9 +10,6 @@ readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE.txt"]
 description = "Minimal Technical Analysis Library for Python"
-urls.documentation = "https://furechan.github.io/mintalib/"
-urls.repository = "https://github.com/furechan/mintalib"
-urls.changelog = "https://github.com/furechan/mintalib/blob/main/CHANGELOG.md"
 authors = [{ name = "Furechan", email = "furechan@xsmail.com" }]
 dependencies = ["numpy"]
 optional-dependencies.pandas = ["pandas"]
@@ -35,6 +32,11 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Topic :: Office/Business :: Financial :: Investment",
 ]
+
+[project.urls]
+Documentation = "https://furechan.github.io/mintalib/"
+Source = "https://github.com/furechan/mintalib"
+Changelog = "https://github.com/furechan/mintalib/blob/main/CHANGELOG.md"
 
 [dependency-groups]
 dev = [
