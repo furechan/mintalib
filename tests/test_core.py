@@ -49,11 +49,33 @@ def test_rsi_bridges_nulls():
 
     result = core.calc_rsi(gapped, 14)
 
+    # the null is passed through without resetting the previous-price or RMA state
+    assert np.isnan(result[15])
     # the move across the gap must be measured
     assert result[-1] < 100.0
     # bridging a null is equivalent to removing it from the series
     expected = core.calc_rsi(np.delete(series, 15), 14)
     assert result[-1] == pytest.approx(expected[-1])
+
+
+def test_rsi_flat_series_is_zero_after_initialization():
+    import numpy as np
+
+    result = core.calc_rsi(np.ones(20), 14)
+
+    assert np.isnan(result[:14]).all()
+    assert result[14:] == pytest.approx(0.0)
+
+
+def test_standalone_directional_indexes_match_dmi():
+    import numpy as np
+
+    prices = sample_prices()
+    dmi = core.calc_dmi(prices, 14)
+
+    np.testing.assert_allclose(core.calc_adx(prices, 14), dmi[0], equal_nan=True)
+    np.testing.assert_allclose(core.calc_pdi(prices, 14), dmi[1], equal_nan=True)
+    np.testing.assert_allclose(core.calc_mdi(prices, 14), dmi[2], equal_nan=True)
 
 
 def test_rma_preserves_nulls_while_bridging_state():
@@ -141,6 +163,16 @@ def test_roc_scales_percentage_and_rocp_preserves_fraction():
 
     assert core.calc_roc(series, 1) == pytest.approx([np.nan, 10.0, -10.0], nan_ok=True)
     assert core.calc_rocp(series, 1) == pytest.approx([np.nan, 0.1, -0.1], nan_ok=True)
+
+
+def test_roc_supports_signed_values_and_returns_zero_for_zero_denominator():
+    import numpy as np
+
+    series = np.array([-100.0, -110.0, -90.0, 0.0, 10.0])
+
+    assert core.calc_roc(series, 1) == pytest.approx(
+        [np.nan, 10.0, -18.18181818181818, -100.0, 0.0], nan_ok=True
+    )
 
 
 @pytest.mark.parametrize("name", ["calc_roc", "calc_rocp"])

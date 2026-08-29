@@ -1,6 +1,10 @@
 # Change Log
 
 ## 0.1.8
+- Aligned ROC with TA-Lib for signed inputs and zero denominators: negative values are calculated normally, while a zero lagged value produces zero
+- Split directional-index calculation from ADX so standalone PDI and MDI no longer calculate the opposite index, DX, ADX, or unused outputs, while ADX and combined DMI still share one two-sided calculation
+- Fused RSI's gain, loss, Wilder initialization, recursive smoothing, and output into one Cython pass, eliminating four intermediate arrays while retaining NaN pass-through and bridged state; flat series now match TA-Lib at zero, and the RMA docstring correctly states `alpha = 1 / period`
+- Updated the mintalib-versus-TA-Lib speed benchmark by removing `LINREG_SLOPE` and adding `ADX`, `PDI`, `MDI`, `STOCH`, `ROC`, and `BOP`
 - Restored `mintalib.expressions` as an advertised public interface alongside eager functions and pandas indicators, reflecting the library's backend-equivalent API; the README again explains all three surfaces and uses the generated Name/Input/Description indicator list
 - Simplified continuous CI from a five-runner Python/platform matrix to one fast Linux/Python 3.11 job that runs the full tests, Ruff, and ty on every push and pull request; cross-platform installed-artifact coverage now belongs to the release workflow, while superseded CI runs are cancelled automatically
 - Replaced the stale Pyright development dependency with ty so clean development and CI environments install the configured type checker

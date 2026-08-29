@@ -567,7 +567,7 @@ with `offset` projecting the slope forward.
 
 Rolling Moving Average (RSI style)
 
-Exponential moving average with `alpha = 2 / period`,
+Exponential moving average with `alpha = 1 / period`,
 that starts as a simple moving average until
 number of bars is equal to `period`.
 

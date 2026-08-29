@@ -9,41 +9,48 @@ def calc_rsi(series, long period=14):
         period (int): time period, default 14
     """
 
+    if period <= 0:
+        raise ValueError(f"Invalid period value {period}")
+
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
-    cdef object ups_arr = np.full(size, np.nan)
-    cdef object dns_arr = np.full(size, np.nan)
-    cdef double[:] ups = ups_arr
-    cdef double[:] dns = dns_arr
-
-    cdef double v = NAN, pv = NAN, dv = NAN
-    cdef long i = 0
+    cdef double value = NAN, previous = NAN, change = NAN
+    cdef double gain = 0.0, loss = 0.0
+    cdef double avg_gain = 0.0, avg_loss = 0.0, total = 0.0
+    cdef double alpha = 1.0 / period
+    cdef long i = 0, count = 0
 
     with nogil:
         for i in range(size):
-            v = xs[i]
-            if v == v and pv == pv:
-                dv = v - pv
-                ups[i] = dv if dv > 0.0 else 0.0
-                dns[i] = -dv if dv < 0.0 else 0.0
-            if v == v:
-                pv = v
+            value = xs[i]
+            if isnan(value):
+                continue
+            if isnan(previous):
+                previous = value
+                continue
 
-    cdef const double[:] rma_ups = calc_rma(ups_arr, period)
-    cdef const double[:] rma_dns = calc_rma(dns_arr, period)
+            change = value - previous
+            previous = value
+            gain = change if change > 0.0 else 0.0
+            loss = -change if change < 0.0 else 0.0
+            count += 1
 
-    cdef double u = NAN, d = NAN
-    with nogil:
-        for i in range(size):
-            u = rma_ups[i]
-            d = rma_dns[i]
-            if u == u and d == d and d > 0:
-                output[i] = 100.0 - (100.0 / (1.0 + u / d))
-            elif u == u and d == d:
-                output[i] = 100.0
+            if count <= period:
+                avg_gain += gain
+                avg_loss += loss
+                if count < period:
+                    continue
+                avg_gain /= period
+                avg_loss /= period
+            else:
+                avg_gain += alpha * (gain - avg_gain)
+                avg_loss += alpha * (loss - avg_loss)
+
+            total = avg_gain + avg_loss
+            output[i] = 100.0 * avg_gain / total if total > 0.0 else 0.0
 
     return result

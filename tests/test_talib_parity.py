@@ -61,9 +61,19 @@ def test_rsi(prices):
     check(talib.RSI(c, 14), core.calc_rsi(c, 14))
 
 
+def test_rsi_flat_series():
+    c = np.ones(30)
+    np.testing.assert_allclose(talib.RSI(c, 14), core.calc_rsi(c, 14), equal_nan=True)
+
+
 def test_roc(prices):
     c = prices.close.values.astype(float)
     check(talib.ROC(c, 10), core.calc_roc(c, 10))
+
+
+def test_roc_signed_values_and_zero_denominator():
+    c = np.array([-100.0, -110.0, -90.0, 0.0, 10.0])
+    np.testing.assert_allclose(talib.ROC(c, 1), core.calc_roc(c, 1), equal_nan=True)
 
 
 def test_stdev(prices):

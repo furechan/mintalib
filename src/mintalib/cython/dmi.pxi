@@ -2,6 +2,30 @@
 
 dmi_result = namedtuple('dmi_result', 'adx, pdi, mdi')
 
+
+cdef tuple _calc_di(prices, long period, bint want_pdi, bint want_mdi):
+    """Calculate one or both directional indexes without calculating ADX."""
+    high = np.asarray(prices['high'], float)
+    low = np.asarray(prices['low'], float)
+
+    atr = calc_atr(prices, period)
+    hm = calc_diff(high, 1)
+    lm = -calc_diff(low, 1)
+
+    pdi = None
+    mdi = None
+
+    with np.errstate(divide='ignore'):
+        if want_pdi:
+            pdm = np.where((hm > lm) & (hm > 0), hm, 0)
+            pdi = 100 * calc_rma(pdm, period) / atr
+        if want_mdi:
+            mdm = np.where((lm > hm) & (lm > 0), lm, 0)
+            mdi = 100 * calc_rma(mdm, period) / atr
+
+    return pdi, mdi
+
+
 @add_metadata(output_names=('adx', 'pdi', 'mdi'))
 def calc_dmi(prices, long period=14):
     """
@@ -11,19 +35,9 @@ def calc_dmi(prices, long period=14):
         period (int): time period, default 14
     """
 
-    high = np.asarray(prices['high'], float)
-    low = np.asarray(prices['low'], float)
-
-    atr = calc_atr(prices, period)
-    hm = calc_diff(high, 1)
-    lm = -calc_diff(low, 1)
-
-    pdm = np.where((hm > lm) & (hm > 0), hm, 0)
-    mdm = np.where((lm > hm) & (lm > 0), lm, 0)
+    pdi, mdi = _calc_di(prices, period, True, True)
 
     with np.errstate(divide='ignore'):
-        pdi = 100 * calc_rma(pdm, period) / atr
-        mdi = 100 * calc_rma(mdm, period) / atr
         dx = 100 * np.abs(pdi - mdi) / (pdi + mdi)
 
     adx = calc_rma(dx, period)
@@ -41,9 +55,12 @@ def calc_adx(prices, long period=14):
         period (int): time period, default 14
     """
 
-    result = calc_dmi(prices, period=period).adx
+    pdi, mdi = _calc_di(prices, period, True, True)
 
-    return result
+    with np.errstate(divide='ignore'):
+        dx = 100 * np.abs(pdi - mdi) / (pdi + mdi)
+
+    return calc_rma(dx, period)
 
 
 def calc_pdi(prices, long period=14):
@@ -54,9 +71,8 @@ def calc_pdi(prices, long period=14):
         period (int): time period, default 14
     """
 
-    result = calc_dmi(prices, period=period).pdi
-
-    return result
+    pdi, _ = _calc_di(prices, period, True, False)
+    return pdi
 
 
 def calc_mdi(prices, long period=14):
@@ -67,7 +83,5 @@ def calc_mdi(prices, long period=14):
         period (int): time period, default 14
     """
 
-    result = calc_dmi(prices, period=period).mdi
-
-    return result
-
+    _, mdi = _calc_di(prices, period, False, True)
+    return mdi
