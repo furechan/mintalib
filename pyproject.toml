@@ -34,6 +34,7 @@ classifiers = [
 [project.urls]
 Documentation = "https://furechan.github.io/mintalib/"
 Source = "https://github.com/furechan/mintalib"
+Issues = "https://github.com/furechan/mintalib/issues"
 Changelog = "https://github.com/furechan/mintalib/blob/main/CHANGELOG.md"
 
 [dependency-groups]
