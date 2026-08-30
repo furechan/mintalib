@@ -31,6 +31,18 @@ def _get_prices(data):
     raise TypeError(f"Expected a prices data frame, got {type(data).__name__}!")
 
 
+def _is_prices(data):
+    """Return whether data is a supported prices container."""
+
+    if isinstance(data, np.ndarray):
+        return data.dtype.names is not None
+
+    if hasattr(data, "columns"):
+        return True
+
+    return hasattr(data, "dtype") and data.dtype.__class__.__name__ == "Struct"
+
+
 
 def _get_series(data):
     """Get series, raises on error
@@ -79,30 +91,109 @@ def _wrap_result(result, source, name: str | None = None):
     return result
 
 
-def wrap_function(calc_func) -> Callable[[Callable[P, Any]], Callable[P, Any]]:
-    """Decorator to wrap indicators"""
+def _get_inputs(calc_func) -> tuple[str, ...]:
+    metadata = getattr(calc_func, "metadata", {})
+    declared_inputs = metadata.get("inputs")
 
-    sig = inspect.signature(calc_func)
-    first_param = next(iter(sig.parameters))
+    if not declared_inputs:
+        raise ValueError(f"Missing inputs metadata for {calc_func.__name__!r}")
+
+    return tuple(declared_inputs)
+
+
+def _get_source(columns):
+    return columns["close"] if "close" in columns else next(iter(columns.values()))
+
+
+def _update_wrapper(wrapper, func, calc_func, signature):
+    wrapper.__name__ = func.__name__
+    wrapper.__qualname__ = func.__qualname__
+    wrapper.__module__ = func.__module__
+    wrapper.__doc__ = calc_func.__doc__
+    setattr(wrapper, "metadata", getattr(calc_func, "metadata", {}))
+    setattr(wrapper, "__signature__", signature)
+    return wrapper
+
+
+def wrap_series_function(calc_func) -> Callable[[Callable[P, Any]], Callable[P, Any]]:
+    first_param = next(iter(inspect.signature(calc_func).parameters))
+    if first_param != "series":
+        raise ValueError(f"Expected a series kernel, got {calc_func.__name__!r}")
 
     def decorator(func):
-        sig = inspect.signature(func)
+        signature = inspect.signature(func)
 
-        def wrapper(srcdata, *args, **kwargs):
-            if first_param == 'series':
-                data = _get_series(srcdata)
-            else:
-                data = _get_prices(srcdata)
+        def wrapper(*args, **kwargs):
+            bound = signature.bind(*args, **kwargs)
+            bound.apply_defaults()
+            arguments = dict(bound.arguments)
+            source = _get_series(arguments.pop("series"))
+            result = calc_func(source, **arguments)
+            return _wrap_result(result, source)
 
-            result = calc_func(data, *args, **kwargs)
-            return _wrap_result(result, srcdata)
+        return _update_wrapper(wrapper, func, calc_func, signature)
 
-        wrapper.__name__ = func.__name__
-        wrapper.__qualname__ = func.__qualname__
-        wrapper.__module__ = func.__module__
-        wrapper.__doc__ = calc_func.__doc__
-        setattr(wrapper, "__signature__", sig)
-
-        return wrapper
     return decorator
 
+
+def wrap_prices_function(calc_func) -> Callable[[Callable[P, Any]], Callable[P, Any]]:
+    first_param = next(iter(inspect.signature(calc_func).parameters))
+    if first_param != "prices":
+        raise ValueError(f"Expected a prices kernel, got {calc_func.__name__!r}")
+
+    inputs = _get_inputs(calc_func)
+
+    def decorator(func):
+        signature = inspect.signature(func)
+
+        def wrapper(*args, **kwargs):
+            if args:
+                srcdata, *rest = args
+                if _is_prices(srcdata):
+                    if rest:
+                        raise TypeError("too many positional arguments")
+                    if "prices" in kwargs:
+                        raise TypeError("multiple values for argument 'prices'")
+                    data = _get_prices(srcdata)
+                    result = calc_func(data, **kwargs)
+                    return _wrap_result(result, srcdata)
+
+            bound = signature.bind(*args, **kwargs)
+            bound.apply_defaults()
+            arguments = dict(bound.arguments)
+            columns = {
+                name: _get_series(arguments.pop(name))
+                for name in inputs
+            }
+            result = calc_func(columns, **arguments)
+            return _wrap_result(result, _get_source(columns))
+
+        return _update_wrapper(wrapper, func, calc_func, signature)
+
+    return decorator
+
+
+def wrap_columns_function(calc_func) -> Callable[[Callable[P, Any]], Callable[P, Any]]:
+    inputs = _get_inputs(calc_func)
+    params = tuple(inspect.signature(calc_func).parameters)
+    if params[: len(inputs)] != inputs:
+        raise ValueError(f"Column inputs do not match parameters for {calc_func.__name__!r}")
+
+    def decorator(func):
+        signature = inspect.signature(func)
+
+        def wrapper(*args, **kwargs):
+            bound = signature.bind(*args, **kwargs)
+            bound.apply_defaults()
+            arguments = dict(bound.arguments)
+
+            columns = {
+                name: _get_series(arguments.pop(name))
+                for name in inputs
+            }
+            result = calc_func(*columns.values(), **arguments)
+            return _wrap_result(result, _get_source(columns))
+
+        return _update_wrapper(wrapper, func, calc_func, signature)
+
+    return decorator

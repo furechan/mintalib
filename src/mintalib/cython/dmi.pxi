@@ -26,7 +26,10 @@ cdef tuple _calc_di(prices, long period, bint want_pdi, bint want_mdi):
     return pdi, mdi
 
 
-@add_metadata(output_names=('adx', 'pdi', 'mdi'))
+@add_metadata(
+    output_names=('adx', 'pdi', 'mdi'),
+    inputs=('high', 'low', 'close'),
+)
 def calc_dmi(prices, long period=14):
     """
     Directional Movement Indicator
@@ -47,6 +50,7 @@ def calc_dmi(prices, long period=14):
     return result
 
 
+@add_metadata(inputs=('high', 'low', 'close'))
 def calc_adx(prices, long period=14):
     """
     Average Directional Index
@@ -63,6 +67,7 @@ def calc_adx(prices, long period=14):
     return calc_rma(dx, period)
 
 
+@add_metadata(inputs=('high', 'low', 'close'))
 def calc_pdi(prices, long period=14):
     """
     Plus Directional Index
@@ -75,6 +80,7 @@ def calc_pdi(prices, long period=14):
     return pdi
 
 
+@add_metadata(inputs=('high', 'low', 'close'))
 def calc_mdi(prices, long period=14):
     """
     Minus Directional Index

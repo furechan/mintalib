@@ -1,6 +1,7 @@
 """ Commodity Channel Index """
 
 
+@add_metadata(inputs=('high', 'low', 'close'))
 def calc_cci(prices, long period=20):
     """
     Commodity Channel Index
@@ -17,4 +18,3 @@ def calc_cci(prices, long period=20):
         result = (prc - sma) / div
 
     return result
-

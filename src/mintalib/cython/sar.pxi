@@ -1,6 +1,6 @@
 """ Parabolic Stop and Reverse """
 
-@add_metadata(same_scale=True)
+@add_metadata(same_scale=True, inputs=('high', 'low'))
 def calc_sar(prices, double afs=0.02, double maxaf=0.2):
     """
     Parabolic Stop and Reverse
@@ -74,6 +74,5 @@ def calc_sar(prices, double afs=0.02, double maxaf=0.2):
                 af = maxaf
 
     return result
-
 
 

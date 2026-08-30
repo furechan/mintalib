@@ -3,7 +3,10 @@
 
 stoch_result = namedtuple("stoch_result", "slowk, slowd")
 
-@add_metadata(output_names=('slowk', 'slowd'))
+@add_metadata(
+    output_names=('slowk', 'slowd'),
+    inputs=('high', 'low', 'close'),
+)
 def calc_stoch(prices, long period=14, long fastn=3, long slown=3):
     """
     Stochastic Oscillator
@@ -32,4 +35,3 @@ def calc_stoch(prices, long period=14, long fastn=3, long slown=3):
     result = stoch_result(slowk, slowd)
 
     return result
-

@@ -9,6 +9,13 @@ from polars.datatypes import Struct, Float64
 
 
 IntoExpr: TypeAlias = pl.Expr | str
+"""Type alias for Polars expressions accepted as inputs."""
+
+CLOSE = pl.col("close")
+"""Expression for the close price column."""
+
+OHLC = pl.struct(["open", "high", "low", "close"])
+"""Expression for open, high, low, and close columns as a struct."""
 
 P = ParamSpec("P")
 
@@ -29,83 +36,156 @@ class ExprFactory(Protocol[P]):
 
 
 def get_series_expr(src):
-    if src is None:
-        return pl.col("close")
-    
     if isinstance(src, str):
         return pl.col(src)
     
     if isinstance(src, pl.Expr):
         return src
 
-    raise ValueError("src must be a string or a Polars Series.")
+    raise ValueError("src must be a string or a Polars expression.")
 
 
-def get_struct_expr(src):
-    if src is None:
-        return pl.struct("*")
-    
+def get_input_expr(src, name: str):
     if isinstance(src, str):
-        return pl.struct(src)
-    
+        return pl.col(src).alias(name)
+
     if isinstance(src, pl.Expr):
-        if src.meta.has_multiple_outputs():
-            return pl.struct(src)
-        else:
-            return src
-        
-    raise ValueError(f"Unsupported src type: {type(src)}")
+        return src.alias(name)
+
+    raise ValueError(f"{name} must be a string or a Polars expression.")
 
 
-def wrap_expression(calc_func) -> Callable[[Callable[P, Any]], ExprFactory[P]]:
-    calc_sig = inspect.signature(calc_func)
-    first_param = next(iter(calc_sig.parameters.values()))
-    force_struct = first_param.name == 'prices'
+def _get_inputs(calc_func) -> tuple[str, ...]:
+    metadata = getattr(calc_func, "metadata", {})
+    declared_inputs = metadata.get("inputs")
+
+    if not declared_inputs:
+        raise ValueError(f"Missing inputs metadata for {calc_func.__name__!r}")
+
+    return tuple(declared_inputs)
+
+
+def _get_output_type(calc_func):
+    metadata = getattr(calc_func, "metadata", {})
+    output_names = metadata.get("output_names", ())
+    return Struct({name: Float64 for name in output_names}) if output_names else Float64
+
+
+def _wrap_batch_output(output):
+    asdict = getattr(output, "_asdict", None)
+    if asdict is not None:
+        return pl.DataFrame(asdict(), nan_to_null=True).to_struct()
+
+    return pl.Series(output, nan_to_null=True)
+
+
+def _update_wrapper(wrapper, func, calc_func, signature):
+    wrapper.__name__ = func.__name__
+    wrapper.__qualname__ = func.__qualname__
+    wrapper.__module__ = func.__module__
+    wrapper.__doc__ = calc_func.__doc__
+    setattr(wrapper, "metadata", getattr(calc_func, "metadata", {}))
+    setattr(wrapper, "__signature__", signature)
+    return wrapper
+
+
+def wrap_series_expression(calc_func) -> Callable[[Callable[P, Any]], ExprFactory[P]]:
+    first_param = next(iter(inspect.signature(calc_func).parameters))
+    if first_param != "series":
+        raise ValueError(f"Expected a series kernel, got {calc_func.__name__!r}")
+
+    output_type = _get_output_type(calc_func)
 
     def decorator(func):
         name = func.__name__.lower()
-        metadata = getattr(calc_func, 'metadata', {})
-        output_names = metadata.get('output_names', ())
-        output_type = Struct({n: Float64 for n in output_names}) if output_names else Float64
         signature = inspect.signature(func)
 
         def wrapper(*args, **kwargs):
             if args and isinstance(args[0], pl.Expr):
-                if 'src' in kwargs:
+                if "src" in kwargs:
                     raise ValueError("Cannot specify 'src' as a keyword argument when using a positional Polars expression.")
-                kwargs['src'] = args[0]
+                kwargs["src"] = args[0]
                 args = args[1:]
 
             bound_args = signature.bind(*args, **kwargs)
-            args, kwargs = (), dict(bound_args.arguments)
+            bound_args.apply_defaults()
+            arguments = dict(bound_args.arguments)
+            source = get_series_expr(arguments.pop("src"))
 
-            src = kwargs.pop('src', None)
+            def batch_func(data):
+                return _wrap_batch_output(calc_func(data, **arguments))
 
-            if force_struct:
-                source = get_struct_expr(src)
-            else:
-                source = get_series_expr(src)
-
-            def batch_func(prices):
-                if force_struct:
-                    prices = prices.struct.unnest()
-
-                output = calc_func(prices, *args, **kwargs)
-                
-                asdict = getattr(output, "_asdict", None)
-                if asdict is not None:
-                    return pl.DataFrame(asdict(), nan_to_null=True).to_struct()
-                else:
-                    return pl.Series(output, nan_to_null=True)
-            
             return source.map_batches(batch_func, return_dtype=output_type).alias(name)
-        
-        wrapper.__name__ = func.__name__
-        wrapper.__qualname__ = func.__qualname__
-        wrapper.__module__ = func.__module__
-        wrapper.__doc__ = calc_func.__doc__
-        setattr(wrapper, "__signature__", signature)
 
-        return wrapper
+        return _update_wrapper(wrapper, func, calc_func, signature)
+
+    return decorator
+
+
+def wrap_prices_expression(calc_func) -> Callable[[Callable[P, Any]], Callable[P, pl.Expr]]:
+    first_param = next(iter(inspect.signature(calc_func).parameters))
+    if first_param != "prices":
+        raise ValueError(f"Expected a prices kernel, got {calc_func.__name__!r}")
+
+    inputs = _get_inputs(calc_func)
+    output_type = _get_output_type(calc_func)
+
+    def decorator(func):
+        name = func.__name__.lower()
+        signature = inspect.signature(func)
+
+        def wrapper(*args, **kwargs):
+            bound_args = signature.bind(*args, **kwargs)
+            bound_args.apply_defaults()
+            arguments = dict(bound_args.arguments)
+            source = pl.struct(
+                [
+                    get_input_expr(arguments.pop(input_name), input_name)
+                    for input_name in inputs
+                ]
+            )
+
+            def batch_func(data):
+                prices = data.struct.unnest()
+                return _wrap_batch_output(calc_func(prices, **arguments))
+
+            return source.map_batches(batch_func, return_dtype=output_type).alias(name)
+
+        return _update_wrapper(wrapper, func, calc_func, signature)
+
+    return decorator
+
+
+def wrap_columns_expression(calc_func) -> Callable[[Callable[P, Any]], Callable[P, pl.Expr]]:
+    inputs = _get_inputs(calc_func)
+    params = tuple(inspect.signature(calc_func).parameters)
+    if params[: len(inputs)] != inputs:
+        raise ValueError(f"Column inputs do not match parameters for {calc_func.__name__!r}")
+
+    output_type = _get_output_type(calc_func)
+
+    def decorator(func):
+        name = func.__name__.lower()
+        signature = inspect.signature(func)
+
+        def wrapper(*args, **kwargs):
+            bound_args = signature.bind(*args, **kwargs)
+            bound_args.apply_defaults()
+            arguments = dict(bound_args.arguments)
+            sources = [
+                get_input_expr(arguments.pop(input_name), input_name)
+                for input_name in inputs
+            ]
+
+            def batch_func(columns):
+                return _wrap_batch_output(calc_func(*columns, **arguments))
+
+            return pl.map_batches(
+                sources,
+                batch_func,
+                return_dtype=output_type,
+            ).alias(name)
+
+        return _update_wrapper(wrapper, func, calc_func, signature)
 
     return decorator

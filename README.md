@@ -30,10 +30,7 @@ prices = normalize_prices(rawprices)
 
 Concrete functions are available from the `mintalib.functions` module with names in lower case like `sma`, `atr`, `macd`, etc.
 
-Functions accept NumPy arrays, pandas objects, or polars objects as appropriate and return the same eager container type when possible.
-
-The first parameter of a function is either `prices` or `series` depending on whether
-the function expects a dataframe of prices or a single series.
+Functions accept NumPy arrays, pandas objects, or polars objects as appropriate and return the same eager container type when possible. Functions that use multiple price columns take them as separate arguments in conventional OHLCV order.
 
 
 ```python
@@ -42,7 +39,7 @@ import mintalib.functions as ta
 prices = ... # pandas or polars DataFrame
 
 sma = ta.sma(prices['close'], 50)
-atr = ta.atr(prices, 14)
+atr = ta.atr(prices['high'], prices['low'], prices['close'], period=14)
 ```
 
 
@@ -50,7 +47,7 @@ atr = ta.atr(prices, 14)
 
 For workflows that benefit from reusable or chained calculations, `mintalib.indicators` binds a function and its parameters into a callable object.
 
-Indicators work with pandas DataFrames and Series. They are callable, and chain with `|` or the equivalent `.then()` method.
+Indicators work with pandas DataFrames and Series. They are callable, and series-output indicators chain with `|`.
 
 ```python
 from mintalib.indicators import SMA, EMA, ROC, RSI, MACD

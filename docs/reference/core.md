@@ -542,6 +542,18 @@ Returns ``100 * ATR(period) / close`` in percentage points.
 
 ---
 
+### calc_obv
+
+`calc_obv(close, volume) -> np.ndarray`
+
+On-Balance Volume
+
+Adds volume when close rises, subtracts volume when close falls, and carries
+the previous value when close is unchanged. The first value is initialized
+with the first volume.
+
+---
+
 ### calc_pdi
 
 `calc_pdi(prices, period=14) -> np.ndarray`

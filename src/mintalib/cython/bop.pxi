@@ -1,6 +1,7 @@
 """ Balance of Power """
 
 
+@add_metadata(inputs=('open', 'high', 'low', 'close'))
 def calc_bop(prices):
     """
     Balance of Power

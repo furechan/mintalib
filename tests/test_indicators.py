@@ -1,18 +1,22 @@
 import pytest
+from typing import assert_type
 
-pytest.importorskip("pandas", reason="mintalib.indicators requires pandas")
+pd = pytest.importorskip("pandas", reason="mintalib.indicators requires pandas")
+import pandas as pandas  # noqa: E402
 
-from mintalib import indicators
-from mintalib.indicators import EMA, ROC, SMA
-from mintalib.model.indicator import (
-    FrameIndicator,
-    IndicatorChain,
-    SeriesIndicator,
+from mintalib import indicators  # noqa: E402
+from mintalib.indicators import EMA, ROC, SMA  # noqa: E402
+from mintalib.model.indicator import (  # noqa: E402
+    Indicator,
+    PricesToFrame,
+    PricesToSeries,
+    SeriesToFrame,
+    SeriesToSeries,
 )
-from mintalib.samples import sample_prices
-from mintalib.testing import sample_params
+from mintalib.samples import sample_prices  # noqa: E402
+from mintalib.testing import sample_params  # noqa: E402
 
-from importlib.util import find_spec
+from importlib.util import find_spec  # noqa: E402
 
 has_pandas = find_spec("pandas") is not None
 has_polars = find_spec("polars") is not None
@@ -42,24 +46,11 @@ def test_indicator(name):
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
 def test_indicator_pipe_composition():
     chain = EMA(20) | ROC(1)
-    assert isinstance(chain, IndicatorChain)
+    assert isinstance(chain, Indicator)
     assert repr(chain) == "EMA(20) | ROC(1)"
     prices = sample_prices()
     result = chain(prices)
     assert result is not None
-
-
-@pytest.mark.skipif(not has_pandas, reason="requires pandas")
-def test_then_chains_indicators():
-    chain = EMA(20).then(ROC(1))
-    assert isinstance(chain, IndicatorChain)
-    assert repr(chain) == repr(EMA(20) | ROC(1))
-
-
-@pytest.mark.skipif(not has_pandas, reason="requires pandas")
-def test_then_rejects_non_indicator():
-    with pytest.raises(TypeError, match=r"\.then\(\)"):
-        EMA(20).then("not an indicator")  # ty: ignore[no-matching-overload]
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
@@ -75,9 +66,9 @@ def test_prices_pipe_method():
 def test_indicator_output_names():
     from mintalib.indicators import MACD
 
-    assert not hasattr(SMA(20), "output_names")
+    assert SMA(20).output_names == ()
     assert MACD().output_names == ("macd", "macdsignal", "macdhist")
-    assert not hasattr(EMA(20) | ROC(1), "output_names")
+    assert (EMA(20) | ROC(1)).output_names == ()
     assert (EMA(20) | MACD()).output_names == ("macd", "macdsignal", "macdhist")
 
 
@@ -95,10 +86,10 @@ def test_as_expr_single_output():
 
 
 @pytest.mark.skipif(not has_pd_expression, reason="requires pandas >= 3.0")
-def test_then_fluent_with_as_expr():
+def test_composition_with_as_expr():
     from pandas.api.typing import Expression
 
-    expr = EMA(20).then(ROC(1)).as_expr()
+    expr = (EMA(20) | ROC(1)).as_expr()
     assert isinstance(expr, Expression)
 
 
@@ -107,7 +98,7 @@ def test_as_expr_requires_item_on_multi_output():
     from mintalib.indicators import MACD
 
     with pytest.raises(TypeError, match="item"):
-        MACD().as_expr()  # ty: ignore[missing-argument]
+        MACD().as_expr()  # ty: ignore[invalid-argument-type]
 
 
 @pytest.mark.skipif(not has_pd_expression, reason="requires pandas >= 3.0")
@@ -135,16 +126,17 @@ def test_as_expr_rejects_unknown_item():
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
 def test_as_expr_rejects_item_on_single_output():
     with pytest.raises(TypeError):
-        SMA(20).as_expr("foo")  # ty: ignore[too-many-positional-arguments]
+        SMA(20).as_expr("foo")  # ty: ignore[invalid-argument-type]
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
 def test_indicator_output_kinds():
     from mintalib.indicators import MACD
 
-    assert isinstance(SMA(20), SeriesIndicator)
-    assert isinstance(MACD(), FrameIndicator)
-    assert isinstance(EMA(20) | ROC(1), SeriesIndicator)
+    assert isinstance(SMA(20), Indicator)
+    assert isinstance(MACD(), Indicator)
+    assert SMA(20).output_names == ()
+    assert MACD().output_names == ("macd", "macdsignal", "macdhist")
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
@@ -152,7 +144,7 @@ def test_frame_indicator_getitem():
     from mintalib.indicators import MACD
 
     macd = MACD()["macd"]
-    assert isinstance(macd, SeriesIndicator)
+    assert isinstance(macd, Indicator)
     assert repr(macd) == "MACD(12, 26, 9)['macd']"
 
     prices = sample_prices()
@@ -169,8 +161,7 @@ def test_frame_indicator_chain():
     from mintalib.indicators import BBANDS, TYPPRICE
 
     chain = TYPPRICE() | BBANDS(20)
-    assert isinstance(chain, FrameIndicator)
-    assert isinstance(chain, IndicatorChain)
+    assert isinstance(chain, Indicator)
     assert chain.output_names == ("upperband", "middleband", "lowerband")
 
     prices = sample_prices()
@@ -179,8 +170,25 @@ def test_frame_indicator_chain():
     assert list(result.columns) == list(chain.output_names)
 
     upper = chain["upperband"]
-    assert isinstance(upper, SeriesIndicator)
+    assert isinstance(upper, Indicator)
     assert type(upper(prices)).__name__ == "Series"
+
+
+@pytest.mark.skipif(not has_pandas, reason="requires pandas")
+def test_indicator_static_contracts():
+    from mintalib.indicators import ATR, MACD, MACDV
+
+    prices = sample_prices()
+    assert_type(EMA(20), SeriesToSeries)
+    assert_type(ATR(), PricesToSeries)
+    assert_type(MACD(), SeriesToFrame)
+    assert_type(MACDV(), PricesToFrame)
+    assert_type(ATR() | EMA(20), PricesToSeries)
+    assert_type(ATR() | MACD(), PricesToFrame)
+    assert_type(MACD()["macd"], SeriesToSeries)
+    assert_type(MACDV()["macdv"], PricesToSeries)
+    assert_type(prices.pipe(EMA(20)), pandas.Series)
+    assert_type(prices.pipe(MACD()), pandas.DataFrame)
 
 
 @pytest.mark.skipif(not has_polars, reason="requires polars")
@@ -210,4 +218,4 @@ def test_eval_rejects_polars():
 
     prices = sample_prices(backend="polars")
     with pytest.raises(TypeError, match="mintalib.expressions"):
-        EVAL("close > 0")(prices)
+        EVAL("close > 0")(prices)  # ty: ignore[invalid-argument-type]

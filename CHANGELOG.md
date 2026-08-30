@@ -1,6 +1,7 @@
 # Change Log
 
 ## 0.1.8
+- Replaced the legacy indicator class hierarchy with one generic `Indicator[Input, Output]` runtime model. The four input/output contracts (`SeriesToSeries`, `SeriesToFrame`, `PricesToSeries`, and `PricesToFrame`) are static aliases, preserving exact results through direct calls, pandas `pipe`, composition, aliases, and frame-output selection without parallel alias/chain subclasses. Indicator generation now annotates every factory with its contract, dispatches series, prices, and explicit-column kernels (including OBV), and uses `|` as the sole composition API; the redundant `.then()` spelling was removed.
 - Aligned ROC with TA-Lib for signed inputs and zero denominators: negative values are calculated normally, while a zero lagged value produces zero
 - Split directional-index calculation from ADX so standalone PDI and MDI no longer calculate the opposite index, DX, ADX, or unused outputs, while ADX and combined DMI still share one two-sided calculation
 - Fused RSI's gain, loss, Wilder initialization, recursive smoothing, and output into one Cython pass, eliminating four intermediate arrays while retaining NaN pass-through and bridged state; flat series now match TA-Lib at zero, and the RMA docstring correctly states `alpha = 1 / period`

@@ -1,7 +1,7 @@
 """ Price """
 
 
-@add_metadata(same_scale=True)
+@add_metadata(same_scale=True, inputs=('open', 'high', 'low', 'close'))
 def calc_price(prices, item: str = None):
     """
     Generic Price
@@ -34,6 +34,7 @@ def calc_price(prices, item: str = None):
     return result
 
 
+@add_metadata(inputs=('open', 'high', 'low', 'close'))
 def calc_avgprice(prices):
     """
     Average Price
@@ -53,6 +54,7 @@ def calc_avgprice(prices):
     return result
 
 
+@add_metadata(inputs=('high', 'low', 'close'))
 def calc_typprice(prices):
     """
     Typical Price
@@ -71,6 +73,7 @@ def calc_typprice(prices):
     return result
 
 
+@add_metadata(inputs=('high', 'low', 'close'))
 def calc_wclprice(prices):
     """
     Weighted Close Price
@@ -90,6 +93,7 @@ def calc_wclprice(prices):
 
 
 
+@add_metadata(inputs=('high', 'low'))
 def calc_medprice(prices):
     """
     Median Price
@@ -105,5 +109,4 @@ def calc_medprice(prices):
     result = (high + low) / 2.0
 
     return result
-
 

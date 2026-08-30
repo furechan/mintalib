@@ -1,6 +1,7 @@
 """ Money Flow Index """
 
 
+@add_metadata(inputs=('high', 'low', 'close', 'volume'))
 def calc_mfi(prices, long period=14):
     """
     Money Flow Index

@@ -2,7 +2,11 @@
 
 donchian_result = namedtuple('donchian_result', 'upperband, middleband, lowerband')
 
-@add_metadata(same_scale=True, output_names=('upperband', 'middleband', 'lowerband'))
+@add_metadata(
+    same_scale=True,
+    output_names=('upperband', 'middleband', 'lowerband'),
+    inputs=('high', 'low'),
+)
 def calc_donchian(prices, long period=20):
     """
     Donchian Channel

@@ -2,7 +2,11 @@
 
 keltner_result = namedtuple('keltner_result', 'upperband, middleband, lowerband')
 
-@add_metadata(same_scale=True, output_names=('upperband', 'middleband', 'lowerband'))
+@add_metadata(
+    same_scale=True,
+    output_names=('upperband', 'middleband', 'lowerband'),
+    inputs=('high', 'low', 'close'),
+)
 def calc_keltner(prices, long period = 20, double nbatr = 2.0):
     """
     Keltner Channel

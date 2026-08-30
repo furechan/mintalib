@@ -27,7 +27,12 @@ def check_size(*args):
 
 
 
-def add_metadata(*, same_scale: bool = None, output_names: list | tuple = None):
+def add_metadata(
+    *,
+    same_scale: bool = None,
+    output_names: list | tuple = None,
+    inputs: list | tuple = None,
+):
     """update function with metadata"""
 
     if same_scale is not None:
@@ -36,7 +41,14 @@ def add_metadata(*, same_scale: bool = None, output_names: list | tuple = None):
     if output_names is not None:
         output_names = tuple(output_names)
 
-    metadata = dict(same_scale=same_scale, output_names=output_names)
+    if inputs is not None:
+        inputs = tuple(inputs)
+
+    metadata = dict(
+        same_scale=same_scale,
+        output_names=output_names,
+        inputs=inputs,
+    )
     metadata = { k: v for k, v in metadata.items() if v is not None}
 
     def wrapper(func):
@@ -44,4 +56,3 @@ def add_metadata(*, same_scale: bool = None, output_names: list | tuple = None):
         return func
 
     return wrapper
-

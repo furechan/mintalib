@@ -1,344 +1,310 @@
-"""Indicator Model"""
+"""Generic indicator model.
+
+One runtime ``Indicator`` class is specialized along independent input and
+output type axes.  The four public names are static aliases rather than
+distinct runtime classes.
+"""
+
+from __future__ import annotations
 
 import inspect
+from functools import partial
+from operator import itemgetter, methodcaller
+from types import MappingProxyType
+from typing import Any, Callable, Generic, ParamSpec, TypeAlias, TypeVar, cast, overload
 
 import numpy as np
 import pandas as pd
+from pandas.api.typing import Expression
 
-from typing import TYPE_CHECKING, Callable, ParamSpec, Any, cast, overload
-from types import MappingProxyType
-from functools import cached_property
-from abc import ABCMeta, abstractmethod
+from ..utils import format_partial
 
-from ..utils import format_partial, lazy_repr
 
-if TYPE_CHECKING:
-    from pandas.api.typing import Expression
+SeriesSource: TypeAlias = pd.Series | pd.DataFrame | np.ndarray
+Prices: TypeAlias = pd.DataFrame
 
+InputT = TypeVar("InputT")
+OutputT = TypeVar("OutputT")
+NextOutputT = TypeVar("NextOutputT")
+IndicatorT = TypeVar("IndicatorT", bound="Indicator[Any, Any]")
 P = ParamSpec("P")
 
 
-def _get_series(data, item: str | None = None) -> pd.Series | np.ndarray:
-    if isinstance(data, pd.DataFrame):
-        return cast(pd.Series, data[item or "close"])
-    return data
+class _Composition:
+    def __init__(self, left: Callable[[Any], Any], right: Callable[[Any], Any]):
+        self.left = left
+        self.right = right
+
+    def __call__(self, data: Any) -> Any:
+        return self.right(self.left(data))
 
 
-def _wrap_result(result, source, name: str | None = None) -> pd.Series | pd.DataFrame:
+def _make_expression(func: Callable[[pd.DataFrame], pd.Series], repr_str: str) -> Expression:
+    return Expression(func, repr_str)  # pyright: ignore[reportCallIssue]
+
+
+class Indicator(Generic[InputT, OutputT]):
+    """Typed shell around a runtime indicator callable."""
+
+    def __init__(
+        self,
+        func: Callable[[InputT], OutputT],
+        repr_str: str,
+        output_names: tuple[str, ...] = (),
+        *,
+        series_input: bool = False,
+    ):
+        self._func = func
+        self._repr = repr_str
+        self.output_names = output_names
+        self._series_input = series_input
+
+    def __call__(self, data: InputT) -> OutputT:
+        return self._func(data)
+
+    def __repr__(self) -> str:
+        return self._repr
+
+    def __or__(
+        self: Indicator[InputT, pd.Series],
+        other: Indicator[SeriesSource, NextOutputT],
+    ) -> Indicator[InputT, NextOutputT]:
+        if self.output_names:
+            raise TypeError("only a series-output indicator can be composed")
+        if not isinstance(other, Indicator) or not other._series_input:
+            raise TypeError("an indicator can only be followed by a series-input indicator")
+        return Indicator(
+            _Composition(self, other),
+            f"{self!r} | {other!r}",
+            other.output_names,
+            series_input=self._series_input,
+        )
+
+    def alias(
+        self: Indicator[InputT, pd.Series],
+        name: str,
+    ) -> Indicator[InputT, pd.Series]:
+        return Indicator(
+            _Composition(self, methodcaller("rename", name)),
+            f"{self!r}.alias({name!r})",
+            series_input=self._series_input,
+        )
+
+    def __getitem__(
+        self: Indicator[InputT, pd.DataFrame],
+        item: str,
+    ) -> Indicator[InputT, pd.Series]:
+        if item not in self.output_names:
+            names = ", ".join(self.output_names)
+            raise KeyError(f"{item!r}: unknown output column. Valid: {names}.")
+        return Indicator(
+            _Composition(self, itemgetter(item)),
+            f"{self!r}[{item!r}]",
+            series_input=self._series_input,
+        )
+
+    @overload
+    def as_expr(self: Indicator[InputT, pd.Series]) -> Expression: ...
+
+    @overload
+    def as_expr(self: Indicator[InputT, pd.DataFrame], item: str) -> Expression: ...
+
+    def as_expr(self, item: str | None = None) -> Expression:
+        if item is None:
+            if self.output_names:
+                raise TypeError("item is required for a multi-output indicator")
+            return _make_expression(cast(Any, self), repr(self))
+        if not self.output_names:
+            raise TypeError("item is only valid for a multi-output indicator")
+        frame = cast(Indicator[Any, pd.DataFrame], self)
+        selected = frame[item]
+        return _make_expression(cast(Any, selected), repr(selected))
+
+
+SeriesToSeries: TypeAlias = Indicator[SeriesSource, pd.Series]
+SeriesToFrame: TypeAlias = Indicator[SeriesSource, pd.DataFrame]
+PricesToSeries: TypeAlias = Indicator[Prices, pd.Series]
+PricesToFrame: TypeAlias = Indicator[Prices, pd.DataFrame]
+
+
+def func_name(func: Callable[..., Any]) -> str:
+    return getattr(func, "__name__", type(func).__name__)
+
+
+def _wrap_result(
+    result: Any,
+    source: pd.Series | pd.DataFrame | np.ndarray,
+) -> pd.Series | pd.DataFrame:
     asdict = getattr(result, "_asdict", None)
     if asdict is not None:
         result = asdict()
 
-    index = source.index if isinstance(source, (pd.DataFrame, pd.Series)) else None
-
+    index = source.index if isinstance(source, (pd.Series, pd.DataFrame)) else None
     if isinstance(result, dict):
         return pd.DataFrame(result, index=index)
-
     if isinstance(result, np.ndarray):
-        return pd.Series(result, index=index, name=name)
-
-    raise TypeError(f"Unexpected result type {type(result).__name__}")
-
-
-def _make_expression(func, repr_str: str) -> "Expression":
-    try:
-        from pandas.api.typing import Expression
-    except ImportError as exc:
-        raise RuntimeError(
-            f"as_expr() requires pandas >= 3.0 (got {pd.__version__}); "
-            "the Expression API was introduced in pandas 3.0."
-        ) from exc
-
-    return Expression(func, repr_str)  # pyright: ignore[reportCallIssue]
+        return pd.Series(result, index=index)
+    if isinstance(result, (pd.Series, pd.DataFrame)):
+        return result
+    raise TypeError(f"unexpected kernel result {type(result).__name__}")
 
 
-class Indicator(metaclass=ABCMeta):
-    """Abstact Base Class for Indicators"""
-
-    __repr__ = lazy_repr
-
-    @abstractmethod
-    def __call__(
-        self, data: pd.DataFrame | pd.Series | np.ndarray
-    ) -> pd.Series | pd.DataFrame: ...
-
-    def _chain(self, other: "Indicator") -> "SeriesIndicator | FrameIndicator":
-        if isinstance(other, SeriesIndicator):
-            return SeriesIndicatorChain(self, other)
-        if isinstance(other, FrameIndicator):
-            return FrameIndicatorChain(self, other)
-        raise TypeError(f"cannot chain {type(other).__name__}.")
-
-    @overload
-    def __or__(self, other: "SeriesIndicator") -> "SeriesIndicator": ...
-    @overload
-    def __or__(self, other: "FrameIndicator") -> "FrameIndicator": ...
-    def __or__(self, other) -> "SeriesIndicator | FrameIndicator":
-        if not isinstance(other, Indicator):
-            raise TypeError(
-                f"| chains indicators only; got {type(other).__name__}."
-            )
-        return self._chain(other)
-
-    def get_series(self, data) -> pd.Series | np.ndarray:
-        """Series data accessor"""
-        item = getattr(self, "item", None)
-        return _get_series(data, item)
-
-    @overload
-    def then(self, other: "SeriesIndicator") -> "SeriesIndicator": ...
-    @overload
-    def then(self, other: "FrameIndicator") -> "FrameIndicator": ...
-    def then(self, other) -> "SeriesIndicator | FrameIndicator":
-        """Chain another indicator after this one (fluent equivalent of `|`)."""
-        if not isinstance(other, Indicator):
-            raise TypeError(
-                f".then() chains indicators; got {type(other).__name__}."
-            )
-        return self._chain(other)
+def _inputs(calc_func: Callable[..., Any]) -> tuple[str, ...]:
+    metadata = getattr(calc_func, "metadata", {})
+    inputs = metadata.get("inputs")
+    if not inputs:
+        raise ValueError(f"missing inputs metadata for {func_name(calc_func)!r}")
+    return tuple(inputs)
 
 
-class SeriesIndicator(Indicator):
-    """Indicator with a single series output"""
+class _BoundKernel:
+    """A kernel with constructor parameters and input dispatch bound."""
 
-    @abstractmethod
-    def __call__(
-        self, data: pd.DataFrame | pd.Series | np.ndarray
-    ) -> pd.Series: ...
-
-    def alias(self, name: str) -> "AliasedIndicator":
-        return AliasedIndicator(self, name)
-
-    def as_expr(self) -> "Expression":
-        """Deferred pandas expression evaluating this indicator (pandas >= 3.0)."""
-        return _make_expression(self, repr(self))
-
-
-class FrameIndicator(Indicator):
-    """Indicator with multiple outputs, returned as a DataFrame"""
-
-    output_names: tuple[str, ...]
-
-    @abstractmethod
-    def __call__(
-        self, data: pd.DataFrame | pd.Series | np.ndarray
-    ) -> pd.DataFrame: ...
-
-    def __getitem__(self, item: str) -> SeriesIndicator:
-        if item not in self.output_names:
-            names = ", ".join(self.output_names)
-            raise KeyError(f"{item!r}: unknown output column. Valid: {names}.")
-        return ItemIndicator(self, item)
-
-    def as_expr(self, item: str) -> "Expression":
-        """Deferred pandas expression for one output column (pandas >= 3.0)."""
-        return self[item].as_expr()
-
-
-class AliasedIndicator(SeriesIndicator):
-    """Aliased Indicator"""
-
-    def __init__(self, indicator: SeriesIndicator, name: str):
-        self.indicator = indicator
-        self.name = name
-
-    def __repr__(self):
-        return f"{self.indicator!r}.alias({self.name!r})"
-
-    def __call__(self, data) -> pd.Series:
-        return self.indicator(data).rename(self.name)
-
-
-class ItemIndicator(SeriesIndicator):
-    """Single output column of a multi-output indicator"""
-
-    def __init__(self, indicator: FrameIndicator, item: str):
-        self.indicator = indicator
-        self.item = item
-
-    def __repr__(self):
-        return f"{self.indicator!r}[{self.item!r}]"
-
-    def __call__(self, data) -> pd.Series:
-        return cast(pd.Series, self.indicator(data)[self.item])
-
-
-class FuncIndicator(Indicator):
-    """Function Based Indicator (common base for series/frame variants)"""
-
-    output_name: str | None = None
-
-    @staticmethod
-    def indicator_name(func):
-        name = func.__name__
-        name = name.removeprefix("calc_")
-        name = name.upper()
-        return name
-
-    def __init__(self, name: str, func: Callable, params: dict):
-        self.name = name
-        self.func = func
-        self.item = params.pop("item", None)
+    def __init__(
+        self,
+        calc_func: Callable[..., Any],
+        params: dict[str, Any],
+        *,
+        input_kind: str,
+        item: str | None,
+        inputs: tuple[str, ...],
+    ):
+        self.calc_func = calc_func
         self.params = MappingProxyType(params)
+        self.input_kind = input_kind
+        self.item = item
+        self.inputs = inputs
 
-        metadata = getattr(func, "metadata", None)
-        if metadata:
-            self.metadata = MappingProxyType(metadata)
-
-    @cached_property
-    def input_type(self):
-        signature = inspect.signature(self.func)
-        return next(iter(signature.parameters), None)
-
-    def __repr__(self):
-        return format_partial(self.func, self.params, name=self.name)
-
-    def _compute(self, data) -> pd.Series | pd.DataFrame:
+    def __call__(self, data: SeriesSource) -> pd.Series | pd.DataFrame:
         if not isinstance(data, (pd.DataFrame, pd.Series, np.ndarray)):
             raise TypeError(
-                f"{self.name} indicator only accepts pandas DataFrames, Series, or numpy arrays, "
+                "indicators only accept pandas DataFrames, Series, or numpy arrays; "
                 f"got {type(data).__name__}. For polars, use mintalib.expressions."
             )
 
-        output_name = getattr(self, "output_name", None)
-
-        if self.input_type == "series":
-            series = _get_series(data, self.item)
-            result = self.func(series, **self.params)
+        if self.input_kind == "series":
+            source = data[self.item or "close"] if isinstance(data, pd.DataFrame) else data
+            result = self.calc_func(source, **self.params)
         else:
             if not isinstance(data, pd.DataFrame):
                 raise TypeError(
-                    f"{self.name} indicator requires a pandas DataFrame with OHLCV columns, "
+                    f"{func_name(self.calc_func)} requires a pandas DataFrame with price columns; "
                     f"got {type(data).__name__}."
                 )
-            result = self.func(data, **self.params)
-
-        return _wrap_result(result, data, name=output_name)
-
-
-class SeriesFuncIndicator(FuncIndicator, SeriesIndicator):
-    """Function based indicator with a single series output"""
-
-    def __call__(self, data) -> pd.Series:
-        return cast(pd.Series, self._compute(data))
-
-
-class FrameFuncIndicator(FuncIndicator, FrameIndicator):
-    """Function based indicator with multiple outputs"""
-
-    @cached_property
-    def output_names(self) -> tuple[str, ...]:  # pyright: ignore[reportIncompatibleVariableOverride]
-        metadata = getattr(self, "metadata", None)
-        names = metadata.get("output_names") if metadata else None
-        if not names:
-            raise TypeError(f"{self.name} is missing output_names metadata")
-        return tuple(names)
-
-    def __call__(self, data) -> pd.DataFrame:
-        return cast(pd.DataFrame, self._compute(data))
-
-
-class IndicatorChain(Indicator):
-    """Chain of Indicators applied left-to-right (created by the | operator)"""
-
-    chain: tuple[Indicator, ...]
-
-    def __init__(self, *chain):
-        items = []
-        for item in chain:
-            if isinstance(item, IndicatorChain):
-                items.extend(item.chain)
+            if self.input_kind == "prices":
+                result = self.calc_func(data, **self.params)
             else:
-                items.append(item)
-        self.chain = tuple(items)
+                result = self.calc_func(
+                    *(data[name] for name in self.inputs),
+                    **self.params,
+                )
 
-    def __repr__(self):
-        return " | ".join(repr(fn) for fn in self.chain)
-
-    def _run(self, data):
-        for fn in self.chain:
-            data = fn(data)
-        return data
+        return _wrap_result(result, data)
 
 
-class SeriesIndicatorChain(IndicatorChain, SeriesIndicator):
-    """Chain ending in a series indicator"""
+def eval_func(data: Prices, *, expr: str, as_flag: bool) -> pd.Series:
+    if not isinstance(data, pd.DataFrame):
+        raise TypeError(
+            f"EVAL only accepts pandas DataFrames, got {type(data).__name__}. "
+            "For polars, use mintalib.expressions."
+        )
 
-    def __call__(self, data) -> pd.Series:
-        return cast(pd.Series, self._run(data))
+    result = np.asarray(data.eval(expr), dtype=float)
+    if as_flag:
+        from mintalib.core import calc_flag
 
-
-class FrameIndicatorChain(IndicatorChain, FrameIndicator):
-    """Chain ending in a multi-output indicator"""
-
-    @property
-    def output_names(self) -> tuple[str, ...]:  # pyright: ignore[reportIncompatibleVariableOverride]
-        return cast(FrameIndicator, self.chain[-1]).output_names
-
-    def __call__(self, data) -> pd.DataFrame:
-        return cast(pd.DataFrame, self._run(data))
+        result = calc_flag(result)
+    return pd.Series(result, index=data.index)
 
 
-def _wrap_func_indicator(calc_func, cls: type[FuncIndicator]):
-    def decorator(func):
-        name = func.__name__
-        sig = inspect.signature(func)
+def EVAL(expr: str, *, as_flag: bool = False) -> PricesToSeries:
+    """Evaluate a pandas expression against a DataFrame's columns."""
 
-        def wrapper(*args, **kwargs):
-            binding = sig.bind(*args, **kwargs)
+    suffix = ", as_flag=True" if as_flag else ""
+    return Indicator(
+        partial(eval_func, expr=expr, as_flag=as_flag),
+        f"EVAL({expr!r}{suffix})",
+    )
+
+
+def _kernel_dispatch(calc_func: Callable[..., Any]) -> tuple[str, tuple[str, ...]]:
+    parameters = tuple(inspect.signature(calc_func).parameters)
+    first = parameters[0]
+    if first == "series":
+        return "series", ()
+
+    inputs = _inputs(calc_func)
+    if first == "prices":
+        return "prices", inputs
+    if parameters[: len(inputs)] == inputs:
+        return "columns", inputs
+    raise ValueError(f"kernel inputs do not match metadata for {func_name(calc_func)!r}")
+
+
+def _update_wrapper(
+    wrapper: Callable[..., Any],
+    func: Callable[..., Any],
+    calc_func: Callable[..., Any],
+    signature: inspect.Signature,
+) -> None:
+    setattr(wrapper, "__name__", func_name(func))
+    setattr(wrapper, "__qualname__", getattr(func, "__qualname__", func_name(func)))
+    setattr(wrapper, "__module__", getattr(func, "__module__", None))
+    setattr(wrapper, "__doc__", getattr(calc_func, "__doc__", None))
+    setattr(wrapper, "metadata", getattr(calc_func, "metadata", {}))
+    setattr(wrapper, "__signature__", signature)
+
+
+def wrap_indicator(
+    calc_func: Callable[..., Any],
+) -> Callable[[Callable[P, IndicatorT]], Callable[P, IndicatorT]]:
+    """Decorate an annotated indicator factory while preserving its return type."""
+
+    input_kind, inputs = _kernel_dispatch(calc_func)
+    metadata = getattr(calc_func, "metadata", {})
+    output_names = tuple(metadata.get("output_names", ()))
+
+    def decorator(func: Callable[P, IndicatorT]) -> Callable[P, IndicatorT]:
+        signature = inspect.signature(func)
+
+        def wrapper(*args: P.args, **kwargs: P.kwargs) -> IndicatorT:
+            binding = signature.bind(*args, **kwargs)
             binding.apply_defaults()
-            params = dict(binding.arguments)
+            display_params = dict(binding.arguments)
+            params = dict(display_params)
+            item = params.pop("item", None)
+            runtime = _BoundKernel(
+                calc_func,
+                params,
+                input_kind=input_kind,
+                item=item,
+                inputs=inputs,
+            )
+            repr_str = format_partial(func, display_params, name=func_name(func))
+            return cast(
+                IndicatorT,
+                Indicator(
+                    cast(Any, runtime),
+                    repr_str,
+                    output_names,
+                    series_input=input_kind == "series",
+                ),
+            )
 
-            return cls(name=name, func=calc_func, params=params)
-
-        wrapper.__name__ = func.__name__
-        wrapper.__qualname__ = func.__qualname__
-        wrapper.__module__ = func.__module__
-        wrapper.__doc__ = calc_func.__doc__
-        setattr(wrapper, "__signature__", sig)
-
+        _update_wrapper(wrapper, func, calc_func, signature)
         return wrapper
 
     return decorator
 
 
-def wrap_series_indicator(
-    calc_func,
-) -> Callable[[Callable[P, Any]], Callable[P, SeriesIndicator]]:
-    """Decorator to wrap single-output indicators"""
-    return _wrap_func_indicator(calc_func, SeriesFuncIndicator)
-
-
-def wrap_frame_indicator(
-    calc_func,
-) -> Callable[[Callable[P, Any]], Callable[P, FrameIndicator]]:
-    """Decorator to wrap multi-output indicators"""
-    return _wrap_func_indicator(calc_func, FrameFuncIndicator)
-
-
-class EVAL(SeriesIndicator):
-    """Evaluate a pandas expression against a DataFrame's columns."""
-
-    def __init__(self, expr: str, *, as_flag: bool = False):
-        self.expr = expr
-        self.as_flag = as_flag
-
-    def __repr__(self):
-        if self.as_flag:
-            return f"EVAL({self.expr!r}, as_flag=True)"
-        return f"EVAL({self.expr!r})"
-
-    def __call__(self, data) -> pd.Series:
-        if not isinstance(data, pd.DataFrame):
-            raise TypeError(
-                f"EVAL only accepts pandas DataFrames, got {type(data).__name__}. "
-                "For polars, use mintalib.expressions."
-            )
-
-        result = np.asarray(data.eval(self.expr), dtype=float)
-
-        if self.as_flag:
-            from mintalib.core import calc_flag
-            result = calc_flag(result)
-
-        return pd.Series(result, index=data.index)
+__all__ = [
+    "EVAL",
+    "Indicator",
+    "Prices",
+    "PricesToFrame",
+    "PricesToSeries",
+    "SeriesSource",
+    "SeriesToFrame",
+    "SeriesToSeries",
+    "wrap_indicator",
+]

@@ -3,12 +3,12 @@
 import inspect
 from pathlib import Path
 
+from mintalib import core
+from mintalib.builder import annotate_parameter
+
 PACKAGE = "mintalib"
 ROOTDIR = Path(__file__).parent.parent
 PKGDIR = ROOTDIR.joinpath(f"src/{PACKAGE}").resolve(strict=True)
-
-from mintalib import core
-from mintalib.builder import annotate_parameter
 
 PRELUDE = '''# ty: ignore[empty-body] (decorator-replaces-body pattern: empty stubs are intentional)
 """
@@ -21,8 +21,9 @@ This module is polars-only: factories build native polars expressions for use in
 `select` or `with_columns` contexts. For pandas, use `mintalib.indicators` or `mintalib.functions`.
 
 The optional `src` keyword parameter allows overriding the default input column.
-For series-based indicators the default is `CLOSE` (i.e. `pl.col("close")`).
-For price-based indicators `src` is not applicable and should be left as `None`.
+For series-based indicators the default is the `close` column.
+Price-based indicators use semantic keyword sources such as `high=`, `low=`,
+`close=`, and `volume=`, defaulting to columns with those names.
 
 Multi-output indicators like `MACD` and `BBANDS` return a polars struct expression
 that can be unpacked with `.unnest()`.
@@ -32,19 +33,15 @@ that can be unpacked with `.unnest()`.
 
 import polars as pl
 
-from typing import TypeAlias
-
 from mintalib import core
-from mintalib.model.expression import wrap_expression
-
-IntoExpr: TypeAlias = pl.Expr | str | None
-"""Type alias for polars expressions accepted as inputs (pl.Expr, column name, or None)."""
-
-CLOSE = pl.col(\'close\')
-"""Expression for the close price column."""
-
-OHLC = pl.struct([\'open\', \'high\', \'low\', \'close\'])
-"""Expression for open, high, low, close columns as a struct."""
+from mintalib.model.expression import (
+    CLOSE as CLOSE,
+    OHLC as OHLC,
+    IntoExpr,
+    wrap_columns_expression,
+    wrap_prices_expression,
+    wrap_series_expression,
+)
 
 
 '''
@@ -57,21 +54,42 @@ class Symbol(str):
 
 def make_signature(calc_func):
     sig = inspect.signature(calc_func)
+    params = list(sig.parameters.values())
+    declared_inputs = getattr(calc_func, "metadata", {}).get("inputs")
+
+    if params[0].name == "series":
+        inputs: tuple[str, ...] = ()
+    elif not declared_inputs:
+        raise ValueError(f"Missing inputs metadata for {calc_func.__name__!r}")
+    else:
+        inputs = tuple(declared_inputs)
 
     new_params = []
-    for param in sig.parameters.values():
-        if param.name in ("prices", "series"):
+    for param in params:
+        if param.name in ("prices", "series") or param.name in inputs:
             continue
         param = annotate_parameter(param)
         new_params.append(param)
 
-    src = inspect.Parameter(
-        name="src",
-        default=None,
-        kind=inspect.Parameter.KEYWORD_ONLY,
-        annotation=Symbol("IntoExpr | None"),
-    )
-    new_params.append(src)
+    if params[0].name == "series":
+        new_params.append(
+            inspect.Parameter(
+                name="src",
+                default="close",
+                kind=inspect.Parameter.KEYWORD_ONLY,
+                annotation=Symbol("IntoExpr"),
+            )
+        )
+    else:
+        for name in inputs:
+            new_params.append(
+                inspect.Parameter(
+                    name=name,
+                    default=name,
+                    kind=inspect.Parameter.KEYWORD_ONLY,
+                    annotation=Symbol("IntoExpr"),
+                )
+            )
 
     return sig.replace(parameters=new_params, return_annotation=Symbol("pl.Expr"))
 
@@ -80,7 +98,14 @@ def make_expression(calc_func):
     cname = f"core.{calc_func.__name__}"
     fname = calc_func.__name__.removeprefix("calc_").upper()
     signature = make_signature(calc_func)
-    buffer = f"@wrap_expression({cname})\n"
+    first_param = next(iter(inspect.signature(calc_func).parameters))
+    if first_param == "series":
+        decorator = "wrap_series_expression"
+    elif first_param == "prices":
+        decorator = "wrap_prices_expression"
+    else:
+        decorator = "wrap_columns_expression"
+    buffer = f"@{decorator}({cname})\n"
     buffer += f"def {fname}{signature}: ...\n"
     return buffer
 

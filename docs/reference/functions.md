@@ -28,7 +28,7 @@ Absolute Value
 
 ### adx
 
-`adx(prices, period: int = 14)`
+`adx(high, low, close, *, period: int = 14)`
 
 Average Directional Index
 
@@ -44,7 +44,7 @@ Arnaud Legoux Moving Average
 
 ### atr
 
-`atr(prices, period: int = 14)`
+`atr(high, low, close, *, period: int = 14)`
 
 Average True Range
 
@@ -54,7 +54,7 @@ Average True Range
 
 ### avgprice
 
-`avgprice(prices)`
+`avgprice(open, high, low, close)`
 
 Average Price
 
@@ -100,13 +100,13 @@ Returns band width relative to the middle band as a ratio.
 
 ### bop
 
-`bop(prices)`
+`bop(open, high, low, close)`
 
 Balance of Power
 
 ### cci
 
-`cci(prices, period: int = 20)`
+`cci(high, low, close, *, period: int = 20)`
 
 Commodity Channel Index
 
@@ -128,7 +128,7 @@ Changes value only after a confirmation period
 
 ### cmf
 
-`cmf(prices, period: int = 20)`
+`cmf(high, low, close, volume, *, period: int = 20)`
 
 Chaikin Money Flow
 
@@ -184,7 +184,7 @@ Difference between current value and the one offset by period
 
 ### dmi
 
-`dmi(prices, period: int = 14)`
+`dmi(high, low, close, *, period: int = 14)`
 
 Directional Movement Indicator
 
@@ -194,7 +194,7 @@ Directional Movement Indicator
 
 ### donchian
 
-`donchian(prices, period: int = 20)`
+`donchian(high, low, *, period: int = 20)`
 
 Donchian Channel
 
@@ -261,7 +261,7 @@ Kaufman Adaptive Moving Average
 
 ### keltner
 
-`keltner(prices, period: int = 20, nbatr: float = 2.0)`
+`keltner(high, low, close, *, period: int = 20, nbatr: float = 2.0)`
 
 Keltner Channel
 
@@ -371,7 +371,7 @@ Moving Average Convergence Divergence
 
 ### macdv
 
-`macdv(prices, n1: int = 12, n2: int = 26, n3: int = 9)`
+`macdv(high, low, close, *, n1: int = 12, n2: int = 26, n3: int = 9)`
 
 Moving Average Convergence Divergence - Volatility Normalized
 
@@ -412,7 +412,7 @@ Rolling Maximum
 
 ### mdi
 
-`mdi(prices, period: int = 14)`
+`mdi(high, low, close, *, period: int = 14)`
 
 Minus Directional Index
 
@@ -422,7 +422,7 @@ Minus Directional Index
 
 ### medprice
 
-`medprice(prices)`
+`medprice(high, low)`
 
 Median Price
 
@@ -430,7 +430,7 @@ Value of (high + low) / 2
 
 ### mfi
 
-`mfi(prices, period: int = 14)`
+`mfi(high, low, close, volume, *, period: int = 14)`
 
 Money Flow Index
 
@@ -450,7 +450,7 @@ Rolling Minimum
 
 ### natr
 
-`natr(prices, period: int = 14)`
+`natr(high, low, close, *, period: int = 14)`
 
 Normalized Average True Range
 
@@ -460,9 +460,19 @@ Returns ``100 * ATR(period) / close`` in percentage points.
 **Arguments:**
  - **period (int):**  time period, default 14
 
+### obv
+
+`obv(close, volume)`
+
+On-Balance Volume
+
+Adds volume when close rises, subtracts volume when close falls, and carries
+the previous value when close is unchanged. The first value is initialized
+with the first volume.
+
 ### pdi
 
-`pdi(prices, period: int = 14)`
+`pdi(high, low, close, *, period: int = 14)`
 
 Plus Directional Index
 
@@ -488,7 +498,7 @@ Price Percentage Oscillator
 
 ### price
 
-`price(prices, item: str | None = None)`
+`price(open, high, low, close, *, item: str | None = None)`
 
 Generic Price
 
@@ -607,7 +617,7 @@ Relative Strength Index
 
 ### sar
 
-`sar(prices, afs: float = 0.02, maxaf: float = 0.2)`
+`sar(high, low, *, afs: float = 0.02, maxaf: float = 0.2)`
 
 Parabolic Stop and Reverse
 
@@ -656,7 +666,7 @@ Limit value changes to threshold (in absolute value)
 
 ### stoch
 
-`stoch(prices, period: int = 14, fastn: int = 3, slown: int = 3)`
+`stoch(high, low, close, *, period: int = 14, fastn: int = 3, slown: int = 3)`
 
 Stochastic Oscillator
 
@@ -694,7 +704,7 @@ Triple Exponential Moving Average
 
 ### trange
 
-`trange(prices, *, log_prices: bool = False, percent: bool = False)`
+`trange(high, low, close, *, log_prices: bool = False, percent: bool = False)`
 
 True Range
 
@@ -705,7 +715,7 @@ True Range
 
 ### typprice
 
-`typprice(prices)`
+`typprice(high, low, close)`
 
 Typical Price
 
@@ -724,7 +734,7 @@ Flag for value crossing up & down levels
 
 ### wclprice
 
-`wclprice(prices)`
+`wclprice(high, low, close)`
 
 Weighted Close Price
 

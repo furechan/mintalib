@@ -38,7 +38,7 @@ import mintalib.functions as ta
 prices = ...  # pandas DataFrame with open, high, low, close, volume columns
 
 sma = ta.sma(prices['close'], 50)
-atr = ta.atr(prices, 14)
+atr = ta.atr(prices['high'], prices['low'], prices['close'], period=14)
 ```
 
 ## Conventions

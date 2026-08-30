@@ -47,6 +47,7 @@ include "cci.pxi"
 include "cmf.pxi"
 include "mfi.pxi"
 include "bop.pxi"
+include "obv.pxi"
 
 include "bbands.pxi"
 include "keltner.pxi"
@@ -65,4 +66,3 @@ include "quadreg.pxi"
 include "stoch.pxi"
 
 include "streak.pxi"
-

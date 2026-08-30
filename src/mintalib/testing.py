@@ -28,6 +28,7 @@ def sample_params(func: Callable) -> dict:
     """Dictionary of sample parameter values"""
 
     kwds = dict()
+    inputs = getattr(func, "metadata", {}).get("inputs", ())
 
     signature = Signature.from_callable(func)
     parameters = list(signature.parameters.values())
@@ -35,7 +36,7 @@ def sample_params(func: Callable) -> dict:
     for param in parameters:
         if param.default != param.empty:
             continue
-        if param.name in ("series", "prices"):
+        if param.name in ("series", "prices") or param.name in inputs:
             continue
         value = sample_param(param)
         kwds[param.name] = value

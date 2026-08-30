@@ -2,7 +2,10 @@
 
 macdv_result = namedtuple('macdv_result', 'macdv, macdvsignal, macdvhist')
 
-@add_metadata(output_names=('macdv', 'macdvsignal', 'macdvhist'))
+@add_metadata(
+    output_names=('macdv', 'macdvsignal', 'macdvhist'),
+    inputs=('high', 'low', 'close'),
+)
 def calc_macdv(prices, long n1=12, long n2=26, long n3=9):
     """
     Moving Average Convergence Divergence - Volatility Normalized
@@ -29,4 +32,3 @@ def calc_macdv(prices, long n1=12, long n2=26, long n3=9):
     result = macdv_result(macdv, signal, hist)
 
     return result
-

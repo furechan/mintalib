@@ -58,6 +58,41 @@ def test_rsi_bridges_nulls():
     assert result[-1] == pytest.approx(expected[-1])
 
 
+def test_obv():
+    import numpy as np
+
+    close = np.array([10.0, 11.0, 11.0, 9.0, 12.0])
+    volume = np.array([100.0, 20.0, 30.0, 40.0, 50.0])
+
+    result = core.calc_obv(close, volume)
+
+    np.testing.assert_array_equal(result, [100.0, 120.0, 120.0, 80.0, 130.0])
+
+
+def test_obv_bridges_nulls():
+    import numpy as np
+
+    close = np.array([10.0, np.nan, 12.0, 11.0, 9.0])
+    volume = np.array([100.0, 20.0, 30.0, np.nan, 40.0])
+
+    result = core.calc_obv(close, volume)
+
+    np.testing.assert_allclose(
+        result,
+        [100.0, np.nan, 130.0, np.nan, 90.0],
+        equal_nan=True,
+    )
+
+
+def test_obv_empty_and_different_sizes():
+    import numpy as np
+
+    assert core.calc_obv(np.array([]), np.array([])).size == 0
+
+    with pytest.raises(ValueError, match="Different sizes"):
+        core.calc_obv(np.ones(2), np.ones(3))
+
+
 def test_rsi_flat_series_is_zero_after_initialization():
     import numpy as np
 

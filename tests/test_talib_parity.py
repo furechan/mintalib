@@ -113,6 +113,12 @@ def test_bop(prices):
     check(talib.BOP(o, h, lo, c), core.calc_bop(prices))
 
 
+def test_obv(prices):
+    c = prices.close.values.astype(float)
+    v = prices.volume.values.astype(float)
+    check(talib.OBV(c, v), core.calc_obv(c, v))
+
+
 def test_max(prices):
     c = prices.close.values.astype(float)
     check(talib.MAX(c, 20), core.calc_max(c, 20))

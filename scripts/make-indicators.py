@@ -4,14 +4,15 @@ import inspect
 from pathlib import Path
 from pprint import pformat
 
+from mintalib import core
+from mintalib.builder import annotate_parameter
+
 PACKAGE = "mintalib"
 ROOTDIR = Path(__file__).parent.parent
 PKGDIR = ROOTDIR.joinpath(f"src/{PACKAGE}").resolve(strict=True)
 
-from mintalib import core
-from mintalib.builder import annotate_parameter
-
-PRELUDE = '''"""
+PRELUDE = '''# ty: ignore[empty-body] (decorator-replaces-body pattern: empty stubs are intentional)
+"""
 Indicators offer a composable interface where a calculation routine is bound with its parameters.
 
 This module is pandas-only: indicators accept pandas DataFrames, pandas Series, or numpy arrays,
@@ -19,29 +20,43 @@ and return pandas results.
 
 An indicator instance is a callable applied to prices or series data: `SMA(50)(prices)`.
 
-Indicators chain via the `|` operator or the equivalent `.then()` method:
-`EMA(20) | ROC(1)` is the same as `EMA(20).then(ROC(1))`. The fluent form is handy in longer chains: `EMA(20).then(ROC(1)).as_expr()`.
+Series-output indicators chain through the `|` operator: `EMA(20) | ROC(1)`.
 
 Single-output indicators return a pandas Series; multi-output indicators (e.g. `MACD`, `BBANDS`) return a DataFrame.
 Select one output of a multi-output indicator as a series indicator with `MACD()["macd"]`.
 """
 
 # Do not edit! This file was generated.
-
 from mintalib import core
-from mintalib.model.indicator import wrap_series_indicator, wrap_frame_indicator, EVAL
+from mintalib.model.indicator import (
+    EVAL,
+    PricesToFrame,
+    PricesToSeries,
+    SeriesToFrame,
+    SeriesToSeries,
+    wrap_indicator,
+)
 
 '''
 
 
 def make_signature(calc_func):
     sig = inspect.signature(calc_func)
-    first_param = next(iter(sig.parameters.values()))
+    params = list(sig.parameters.values())
+    first_param = params[0]
+    inputs = tuple(getattr(calc_func, "metadata", {}).get("inputs", ()))
+
+    if first_param.name == "series":
+        params = params[1:]
+    elif first_param.name == "prices":
+        params = params[1:]
+    elif inputs and tuple(param.name for param in params[: len(inputs)]) == inputs:
+        params = params[len(inputs):]
+    else:
+        raise ValueError(f"Cannot determine inputs for {calc_func.__name__!r}")
 
     new_params = []
-    for param in sig.parameters.values():
-        if param.name in ("series", "prices"):
-            continue
+    for param in params:
         param = annotate_parameter(param)
         new_params.append(param)
 
@@ -54,7 +69,18 @@ def make_signature(calc_func):
         )
         new_params.append(item_param)
 
-    return sig.replace(parameters=new_params)
+    metadata = getattr(calc_func, "metadata", {})
+    input_name = "Series" if first_param.name == "series" else "Prices"
+    output_name = "Frame" if metadata.get("output_names") else "Series"
+    return sig.replace(
+        parameters=new_params,
+        return_annotation=Symbol(f"{input_name}To{output_name}"),
+    )
+
+
+class Symbol(str):
+    def __repr__(self):
+        return self
 
 
 def make_indicator(calc_func, name=None):
@@ -62,10 +88,7 @@ def make_indicator(calc_func, name=None):
         name = calc_func.__name__.removeprefix("calc_").upper()
     cname = f"core.{calc_func.__name__}"
     newsig = make_signature(calc_func)
-    metadata = getattr(calc_func, "metadata", None)
-    multi_output = bool(metadata and metadata.get("output_names"))
-    wrapper = "wrap_frame_indicator" if multi_output else "wrap_series_indicator"
-    buffer = f"@{wrapper}({cname})\n"
+    buffer = f"@wrap_indicator({cname})\n"
     buffer += f"def {name}{newsig}: ...\n"
     return buffer
 

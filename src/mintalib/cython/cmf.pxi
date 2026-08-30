@@ -1,6 +1,7 @@
 """ Chaiking Money Flow """
 
 
+@add_metadata(inputs=('high', 'low', 'close', 'volume'))
 def calc_cmf(prices, long period=20):
     """
     Chaikin Money Flow
@@ -24,5 +25,4 @@ def calc_cmf(prices, long period=20):
         result = num / div
 
     return result
-
 

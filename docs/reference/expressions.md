@@ -15,37 +15,24 @@ This module is polars-only: factories build native polars expressions for use in
 `select` or `with_columns` contexts. For pandas, use `mintalib.indicators` or `mintalib.functions`.
 
 The optional `src` keyword parameter allows overriding the default input column.
-For series-based indicators the default is `CLOSE` (i.e. `pl.col("close")`).
-For price-based indicators `src` is not applicable and should be left as `None`.
+For series-based indicators the default is the `close` column.
+Price-based indicators use semantic keyword sources such as `high=`, `low=`,
+`close=`, and `volume=`, defaulting to columns with those names.
 
 Multi-output indicators like `MACD` and `BBANDS` return a polars struct expression
 that can be unpacked with `.unnest()`.
 
 ---
 
-### IntoExpr
-
-`IntoExpr: TypeAlias`
-
-Type alias for polars expressions accepted as inputs (pl.Expr, column name, or None).
-
-### CLOSE
-
-Expression for the close price column.
-
-### OHLC
-
-Expression for open, high, low, close columns as a struct.
-
 ### ABS
 
-`ABS(*, src: polars.Expr | str | None = None) -> polars.Expr`
+`ABS(*, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Absolute Value
 
 ### ADX
 
-`ADX(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`ADX(period: int = 14, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Average Directional Index
 
@@ -55,13 +42,13 @@ Average Directional Index
 
 ### ALMA
 
-`ALMA(period: int = 9, offset: float = 0.85, sigma: float = 6.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`ALMA(period: int = 9, offset: float = 0.85, sigma: float = 6.0, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Arnaud Legoux Moving Average
 
 ### ATR
 
-`ATR(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`ATR(period: int = 14, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Average True Range
 
@@ -71,7 +58,7 @@ Average True Range
 
 ### AVGPRICE
 
-`AVGPRICE(*, src: polars.Expr | str | None = None) -> polars.Expr`
+`AVGPRICE(*, open: polars.Expr | str = 'open', high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Average Price
 
@@ -79,7 +66,7 @@ Value of (open + high + low + close) / 4
 
 ### BBANDS
 
-`BBANDS(period: int = 20, nbdev: float = 2.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`BBANDS(period: int = 20, nbdev: float = 2.0, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Bollinger Bands
 
@@ -90,7 +77,7 @@ Bollinger Bands
 
 ### BBP
 
-`BBP(period: int = 20, nbdev: float = 2.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`BBP(period: int = 20, nbdev: float = 2.0, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Bollinger Bands Percent (%B)
 
@@ -104,7 +91,7 @@ lower band and 1 is the upper band.
 
 ### BBW
 
-`BBW(period: int = 20, nbdev: float = 2.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`BBW(period: int = 20, nbdev: float = 2.0, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Bollinger Bands Width
 
@@ -117,13 +104,13 @@ Returns band width relative to the middle band as a ratio.
 
 ### BOP
 
-`BOP(*, src: polars.Expr | str | None = None) -> polars.Expr`
+`BOP(*, open: polars.Expr | str = 'open', high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Balance of Power
 
 ### CCI
 
-`CCI(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`CCI(period: int = 20, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Commodity Channel Index
 
@@ -133,7 +120,7 @@ Commodity Channel Index
 
 ### CLAG
 
-`CLAG(period: int = 1, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`CLAG(period: int = 1, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Confirmation Lag
 
@@ -145,7 +132,7 @@ Changes value only after a confirmation period
 
 ### CMF
 
-`CMF(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`CMF(period: int = 20, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close', volume: polars.Expr | str = 'volume') -> polars.Expr`
 
 Chaikin Money Flow
 
@@ -155,7 +142,7 @@ Chaikin Money Flow
 
 ### CROSSOVER
 
-`CROSSOVER(level: float = 0.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`CROSSOVER(level: float = 0.0, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Cross Over
 
@@ -167,7 +154,7 @@ Yields a value of 1 at the point where series crosses over level
 
 ### CROSSUNDER
 
-`CROSSUNDER(level: float = 0.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`CROSSUNDER(level: float = 0.0, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Cross Under
 
@@ -179,7 +166,7 @@ Yields a value of 1 at the point where series crosses under level
 
 ### DEMA
 
-`DEMA(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`DEMA(period: int, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Double Exponential Moving Average
 
@@ -189,7 +176,7 @@ Double Exponential Moving Average
 
 ### DIFF
 
-`DIFF(period: int = 1, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`DIFF(period: int = 1, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Difference
 
@@ -201,7 +188,7 @@ Difference between current value and the one offset by period
 
 ### DMI
 
-`DMI(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`DMI(period: int = 14, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Directional Movement Indicator
 
@@ -211,7 +198,7 @@ Directional Movement Indicator
 
 ### DONCHIAN
 
-`DONCHIAN(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`DONCHIAN(period: int = 20, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low') -> polars.Expr`
 
 Donchian Channel
 
@@ -221,7 +208,7 @@ Donchian Channel
 
 ### EMA
 
-`EMA(period: int, *, adjust: bool = False, src: polars.Expr | str | None = None) -> polars.Expr`
+`EMA(period: int, *, adjust: bool = False, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Exponential Moving Average
 
@@ -242,13 +229,13 @@ Exponential Moving Average
 
 ### EXP
 
-`EXP(*, src: polars.Expr | str | None = None) -> polars.Expr`
+`EXP(*, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Exponential
 
 ### FLAG
 
-`FLAG(*, src: polars.Expr | str | None = None) -> polars.Expr`
+`FLAG(*, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Flag Value
 
@@ -256,7 +243,7 @@ Flag value of 1 for positive, 0 for zero or negative, and NaN otherwize
 
 ### HMA
 
-`HMA(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`HMA(period: int, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Hull Moving Average
 
@@ -266,7 +253,7 @@ Hull Moving Average
 
 ### KAMA
 
-`KAMA(period: int = 10, fastn: int = 2, slown: int = 30, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`KAMA(period: int = 10, fastn: int = 2, slown: int = 30, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Kaufman Adaptive Moving Average
 
@@ -278,7 +265,7 @@ Kaufman Adaptive Moving Average
 
 ### KELTNER
 
-`KELTNER(period: int = 20, nbatr: float = 2.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`KELTNER(period: int = 20, nbatr: float = 2.0, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Keltner Channel
 
@@ -289,7 +276,7 @@ Keltner Channel
 
 ### KER
 
-`KER(period: int = 10, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`KER(period: int = 10, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Kaufman Efficiency Ratio
 
@@ -299,7 +286,7 @@ Kaufman Efficiency Ratio
 
 ### LAG
 
-`LAG(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`LAG(period: int, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Lag Function
 
@@ -309,7 +296,7 @@ Lag Function
 
 ### LINREG
 
-`LINREG(period: int = 20, offset: int = 0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`LINREG(period: int = 20, offset: int = 0, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Linear Regression (least squares moving average)
 
@@ -323,7 +310,7 @@ with `offset` projecting the line forward.
 
 ### LINREG_RMSE
 
-`LINREG_RMSE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`LINREG_RMSE(period: int = 20, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Linear Regression Root Mean Square Error
 
@@ -333,7 +320,7 @@ Linear Regression Root Mean Square Error
 
 ### LINREG_RVALUE
 
-`LINREG_RVALUE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`LINREG_RVALUE(period: int = 20, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Linear Regression R-Value
 
@@ -343,7 +330,7 @@ Linear Regression R-Value
 
 ### LINREG_SLOPE
 
-`LINREG_SLOPE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`LINREG_SLOPE(period: int = 20, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Linear Regression Slope
 
@@ -353,13 +340,13 @@ Linear Regression Slope
 
 ### LOG
 
-`LOG(*, src: polars.Expr | str | None = None) -> polars.Expr`
+`LOG(*, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Logarithm
 
 ### LROC
 
-`LROC(period: int = 1, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`LROC(period: int = 1, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Logarithmic Rate of Change
 
@@ -372,7 +359,7 @@ Equivalent to the difference of log values
 
 ### MACD
 
-`MACD(n1: int = 12, n2: int = 26, n3: int = 9, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`MACD(n1: int = 12, n2: int = 26, n3: int = 9, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Moving Average Convergence Divergence
 
@@ -388,7 +375,7 @@ Moving Average Convergence Divergence
 
 ### MACDV
 
-`MACDV(n1: int = 12, n2: int = 26, n3: int = 9, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`MACDV(n1: int = 12, n2: int = 26, n3: int = 9, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Moving Average Convergence Divergence - Volatility Normalized
 
@@ -404,13 +391,13 @@ Moving Average Convergence Divergence - Volatility Normalized
 
 ### MAD
 
-`MAD(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`MAD(period: int = 14, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Rolling Mean Absolute Deviation
 
 ### MAV
 
-`MAV(period: int = 20, *, matype: str = 'sma', src: polars.Expr | str | None = None) -> polars.Expr`
+`MAV(period: int = 20, *, matype: str = 'sma', src: polars.Expr | str = 'close') -> polars.Expr`
 
 Generic Moving Average
 
@@ -423,13 +410,13 @@ Moving average computed according to matype
 
 ### MAX
 
-`MAX(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`MAX(period: int, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Rolling Maximum
 
 ### MDI
 
-`MDI(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`MDI(period: int = 14, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Minus Directional Index
 
@@ -439,7 +426,7 @@ Minus Directional Index
 
 ### MEDPRICE
 
-`MEDPRICE(*, src: polars.Expr | str | None = None) -> polars.Expr`
+`MEDPRICE(*, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low') -> polars.Expr`
 
 Median Price
 
@@ -447,7 +434,7 @@ Value of (high + low) / 2
 
 ### MFI
 
-`MFI(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`MFI(period: int = 14, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close', volume: polars.Expr | str = 'volume') -> polars.Expr`
 
 Money Flow Index
 
@@ -457,7 +444,7 @@ Money Flow Index
 
 ### MIN
 
-`MIN(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`MIN(period: int, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Rolling Minimum
 
@@ -467,7 +454,7 @@ Rolling Minimum
 
 ### NATR
 
-`NATR(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`NATR(period: int = 14, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Normalized Average True Range
 
@@ -477,9 +464,19 @@ Returns ``100 * ATR(period) / close`` in percentage points.
 **Arguments:**
  - **period (int):**  time period, default 14
 
+### OBV
+
+`OBV(*, close: polars.Expr | str = 'close', volume: polars.Expr | str = 'volume') -> polars.Expr`
+
+On-Balance Volume
+
+Adds volume when close rises, subtracts volume when close falls, and carries
+the previous value when close is unchanged. The first value is initialized
+with the first volume.
+
 ### PDI
 
-`PDI(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`PDI(period: int = 14, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Plus Directional Index
 
@@ -489,7 +486,7 @@ Plus Directional Index
 
 ### PPO
 
-`PPO(n1: int = 12, n2: int = 26, n3: int = 9, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`PPO(n1: int = 12, n2: int = 26, n3: int = 9, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Price Percentage Oscillator
 
@@ -505,7 +502,7 @@ Price Percentage Oscillator
 
 ### PRICE
 
-`PRICE(item: str | None = None, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`PRICE(item: str | None = None, *, open: polars.Expr | str = 'open', high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Generic Price
 
@@ -520,7 +517,7 @@ Generic Price
 
 ### QUADREG
 
-`QUADREG(period: int = 20, offset: int = 0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`QUADREG(period: int = 20, offset: int = 0, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Quadratic Regression (parabolic moving average)
 
@@ -534,7 +531,7 @@ with `offset` projecting the parabola forward.
 
 ### QUADREG_CURVE
 
-`QUADREG_CURVE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`QUADREG_CURVE(period: int = 20, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Quadratic Regression Curve
 
@@ -544,7 +541,7 @@ Quadratic Regression Curve
 
 ### QUADREG_RMSE
 
-`QUADREG_RMSE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`QUADREG_RMSE(period: int = 20, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Quadratic Regression Root Mean Square Error
 
@@ -554,7 +551,7 @@ Quadratic Regression Root Mean Square Error
 
 ### QUADREG_RVALUE
 
-`QUADREG_RVALUE(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`QUADREG_RVALUE(period: int = 20, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Quadratic Regression R-Value
 
@@ -566,7 +563,7 @@ Partial correlation of the quadratic term, given the linear term.
 
 ### QUADREG_SLOPE
 
-`QUADREG_SLOPE(period: int = 20, offset: int = 0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`QUADREG_SLOPE(period: int = 20, offset: int = 0, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Quadratic Regression Slope
 
@@ -580,7 +577,7 @@ with `offset` projecting the slope forward.
 
 ### RMA
 
-`RMA(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`RMA(period: int, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Rolling Moving Average (RSI style)
 
@@ -590,7 +587,7 @@ number of bars is equal to `period`.
 
 ### ROC
 
-`ROC(period: int = 1, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`ROC(period: int = 1, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Rate of Change
 
@@ -602,7 +599,7 @@ Returns rate of change as a percentage. For example, a 10% increase returns 10.0
 
 ### ROCP
 
-`ROCP(period: int = 1, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`ROCP(period: int = 1, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Rate of Change Percentage
 
@@ -614,7 +611,7 @@ Returns rate of change as a fraction. For example, a 10% increase returns 0.1.
 
 ### RSI
 
-`RSI(period: int = 14, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`RSI(period: int = 14, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Relative Strength Index
 
@@ -624,7 +621,7 @@ Relative Strength Index
 
 ### SAR
 
-`SAR(afs: float = 0.02, maxaf: float = 0.2, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`SAR(afs: float = 0.02, maxaf: float = 0.2, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low') -> polars.Expr`
 
 Parabolic Stop and Reverse
 
@@ -635,13 +632,13 @@ Parabolic Stop and Reverse
 
 ### SIGN
 
-`SIGN(*, src: polars.Expr | str | None = None) -> polars.Expr`
+`SIGN(*, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Sign
 
 ### SMA
 
-`SMA(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`SMA(period: int, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Simple Moving Average
 
@@ -651,7 +648,7 @@ Simple Moving Average
 
 ### STDEV
 
-`STDEV(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`STDEV(period: int = 20, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Standard Deviation
 
@@ -661,7 +658,7 @@ Standard Deviation
 
 ### STEP
 
-`STEP(threshold: float = 1.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`STEP(threshold: float = 1.0, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Step Function
 
@@ -673,7 +670,7 @@ Limit value changes to threshold (in absolute value)
 
 ### STOCH
 
-`STOCH(period: int = 14, fastn: int = 3, slown: int = 3, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`STOCH(period: int = 14, fastn: int = 3, slown: int = 3, *, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Stochastic Oscillator
 
@@ -685,13 +682,13 @@ Stochastic Oscillator
 
 ### STREAK
 
-`STREAK(*, src: polars.Expr | str | None = None) -> polars.Expr`
+`STREAK(*, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Consecutive streak of values above zero
 
 ### SUM
 
-`SUM(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`SUM(period: int, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Rolling sum
 
@@ -701,7 +698,7 @@ Rolling sum
 
 ### TEMA
 
-`TEMA(period: int = 20, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`TEMA(period: int = 20, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Triple Exponential Moving Average
 
@@ -711,7 +708,7 @@ Triple Exponential Moving Average
 
 ### TRANGE
 
-`TRANGE(*, log_prices: bool = False, percent: bool = False, src: polars.Expr | str | None = None) -> polars.Expr`
+`TRANGE(*, log_prices: bool = False, percent: bool = False, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 True Range
 
@@ -722,7 +719,7 @@ True Range
 
 ### TYPPRICE
 
-`TYPPRICE(*, src: polars.Expr | str | None = None) -> polars.Expr`
+`TYPPRICE(*, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Typical Price
 
@@ -730,7 +727,7 @@ Value of (high + low + close ) / 3
 
 ### UPDOWN
 
-`UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Flag for value crossing up & down levels
 
@@ -741,7 +738,7 @@ Flag for value crossing up & down levels
 
 ### WCLPRICE
 
-`WCLPRICE(*, src: polars.Expr | str | None = None) -> polars.Expr`
+`WCLPRICE(*, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 Weighted Close Price
 
@@ -749,7 +746,7 @@ Value of (high + low + 2 * close) / 4
 
 ### WMA
 
-`WMA(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`WMA(period: int, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Weighted Moving Average
 
@@ -759,7 +756,7 @@ Weighted Moving Average
 
 ### ZLEMA
 
-`ZLEMA(period: int, *, src: polars.Expr | str | None = None) -> polars.Expr`
+`ZLEMA(period: int, *, src: polars.Expr | str = 'close') -> polars.Expr`
 
 Zero-Lag Exponential Moving Average
 

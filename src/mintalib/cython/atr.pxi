@@ -1,6 +1,7 @@
 """ Average True Range """
 
 
+@add_metadata(inputs=('high', 'low', 'close'))
 def calc_trange(prices, *, bint log_prices=False, bint percent=False):
     """
     True Range
@@ -52,6 +53,7 @@ def calc_trange(prices, *, bint log_prices=False, bint percent=False):
 
 
 
+@add_metadata(inputs=('high', 'low', 'close'))
 def calc_atr(prices, long period=14):
     """
     Average True Range
@@ -67,6 +69,7 @@ def calc_atr(prices, long period=14):
 
 
 
+@add_metadata(inputs=('high', 'low', 'close'))
 def calc_natr(prices, long period=14):
     """
     Normalized Average True Range
