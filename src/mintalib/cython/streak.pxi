@@ -1,6 +1,5 @@
 """ Streak """
 
-
 def calc_streak(series):
     """
     Consecutive streak of values above zero
@@ -9,7 +8,7 @@ def calc_streak(series):
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.empty(size, float)
     cdef double[:] output = result
 
     cdef double value = NAN
@@ -22,11 +21,10 @@ def calc_streak(series):
             value = xs[i]
 
             if value > 0:
-                streak += 1 
+                streak += 1
             else:
                 streak = 0
 
             output[i] = streak
 
     return result
-

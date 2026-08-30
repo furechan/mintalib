@@ -1,112 +1,97 @@
 """ Price """
 
-
-@add_metadata(same_scale=True, inputs=('open', 'high', 'low', 'close'))
-def calc_price(prices, item: str = None):
-    """
-    Generic Price
-
-    Args:
-        item (str): price type, one of:
-            'open', 'high', 'low', 'close' (default),
-            'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
-            'med' or 'hl2'    — median price (high + low) / 2,
-            'typ' or 'hlc3'   — typical price (high + low + close) / 3,
-            'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
-    """
-
-    if item is None:
-        item = 'close'
-
-    if item in ('open', 'high', 'low', 'close'):
-        result =  np.asarray(prices[item], float)
-    elif item in ('avg', 'ohlc4'):
-        result = calc_avgprice(prices)
-    elif item in ('med', 'hl2'):
-        result = calc_medprice(prices)
-    elif item in ('typ', 'hlc3'):
-        result = calc_typprice(prices)
-    elif item in ('wcl', 'hlcc4'):
-        result = calc_wclprice(prices)
-    else:
-        raise ValueError(f"Unknown price type {item!r}")
-
-    return result
-
-
 @add_metadata(inputs=('open', 'high', 'low', 'close'))
-def calc_avgprice(prices):
+def calc_avgprice(open, high, low, close):
     """
     Average Price
-    
+
     Value of (open + high + low + close) / 4
     """
 
-    open = np.asarray(prices['open'], float)
-    high = np.asarray(prices['high'], float)
-    low = np.asarray(prices['low'], float)
-    close = np.asarray(prices['close'], float)
+    cdef const double[:] open_view = np.asarray(open, float)
+    cdef const double[:] high_view = np.asarray(high, float)
+    cdef const double[:] low_view = np.asarray(low, float)
+    cdef const double[:] close_view = np.asarray(close, float)
 
-    check_size(open, high, low, close)
+    cdef long size = check_size(open_view, high_view, low_view, close_view)
+    cdef object result = np.empty(size, float)
+    cdef double[:] output = result
+    cdef long i = 0
 
-    result = (open + high + low + close) / 4.0
+    with nogil:
+        for i in range(size):
+            output[i] = (
+                open_view[i] + high_view[i] + low_view[i] + close_view[i]
+            ) / 4.0
 
     return result
 
-
 @add_metadata(inputs=('high', 'low', 'close'))
-def calc_typprice(prices):
+def calc_typprice(high, low, close):
     """
     Typical Price
 
     Value of (high + low + close ) / 3
     """
 
-    high = np.asarray(prices['high'], float)
-    low = np.asarray(prices['low'], float)
-    close = np.asarray(prices['close'], float)
+    cdef const double[:] high_view = np.asarray(high, float)
+    cdef const double[:] low_view = np.asarray(low, float)
+    cdef const double[:] close_view = np.asarray(close, float)
 
-    check_size(high, low, close)
+    cdef long size = check_size(high_view, low_view, close_view)
+    cdef object result = np.empty(size, float)
+    cdef double[:] output = result
+    cdef long i = 0
 
-    result = (high + low + close) / 3.0
-   
+    with nogil:
+        for i in range(size):
+            output[i] = (high_view[i] + low_view[i] + close_view[i]) / 3.0
+
     return result
 
-
 @add_metadata(inputs=('high', 'low', 'close'))
-def calc_wclprice(prices):
+def calc_wclprice(high, low, close):
     """
     Weighted Close Price
-    
+
     Value of (high + low + 2 * close) / 4
     """
 
-    high = np.asarray(prices['high'], float)
-    low = np.asarray(prices['low'], float)
-    close = np.asarray(prices['close'], float)
+    cdef const double[:] high_view = np.asarray(high, float)
+    cdef const double[:] low_view = np.asarray(low, float)
+    cdef const double[:] close_view = np.asarray(close, float)
 
-    check_size(high, low, close)
+    cdef long size = check_size(high_view, low_view, close_view)
+    cdef object result = np.empty(size, float)
+    cdef double[:] output = result
+    cdef long i = 0
 
-    result = (high + low + 2 * close) / 4.0
+    with nogil:
+        for i in range(size):
+            output[i] = (
+                high_view[i] + low_view[i] + 2.0 * close_view[i]
+            ) / 4.0
 
     return result
 
-
-
 @add_metadata(inputs=('high', 'low'))
-def calc_medprice(prices):
+def calc_medprice(high, low):
     """
     Median Price
 
     Value of (high + low) / 2
     """
 
-    high = np.asarray(prices['high'], float)
-    low = np.asarray(prices['low'], float)
+    cdef const double[:] high_view = np.asarray(high, float)
+    cdef const double[:] low_view = np.asarray(low, float)
 
-    check_size(high, low)
+    cdef long size = check_size(high_view, low_view)
+    cdef object result = np.empty(size, float)
+    cdef double[:] output = result
+    cdef long i = 0
 
-    result = (high + low) / 2.0
+    with nogil:
+        for i in range(size):
+            output[i] = (high_view[i] + low_view[i]) / 2.0
 
     return result
-

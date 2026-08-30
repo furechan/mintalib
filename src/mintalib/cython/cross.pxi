@@ -3,7 +3,7 @@
 def calc_crossover(series, double level=0.0):
     """
     Cross Over
-    
+
     Yields a value of 1 at the point where series crosses over level
 
     Args:
@@ -13,7 +13,7 @@ def calc_crossover(series, double level=0.0):
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, 0, dtype=float)
+    cdef object result = np.empty(size, float)
     cdef double[:] output = result
 
     cdef double prev = NAN, value = NAN
@@ -23,15 +23,15 @@ def calc_crossover(series, double level=0.0):
     with nogil:
         for i in range(size):
             value = xs[i]
+            output[i] = 0.0
 
             if value > level >= prev:
-                output[i] = 1
+                output[i] = 1.0
 
             if not isnan(value):
                 prev = value
 
     return result
-
 
 def calc_crossunder(series, double level=0.0):
     """
@@ -46,7 +46,7 @@ def calc_crossunder(series, double level=0.0):
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, 0, dtype=float)
+    cdef object result = np.empty(size, float)
     cdef double[:] output = result
 
     cdef double prev = NAN, value = NAN
@@ -55,12 +55,12 @@ def calc_crossunder(series, double level=0.0):
     with nogil:
         for i in range(size):
             value = xs[i]
+            output[i] = 0.0
 
             if value < level <= prev:
-                output[i] = 1
+                output[i] = 1.0
 
             if not isnan(value):
                 prev = value
 
     return result
-

@@ -1,4 +1,4 @@
-""" Moving Average Convergenge Divergence """
+""" Moving Average Convergence Divergence """
 
 macd_result = namedtuple('macd_result', 'macd, macdsignal, macdhist')
 
@@ -6,12 +6,12 @@ macd_result = namedtuple('macd_result', 'macd, macdsignal, macdhist')
 def calc_macd(series, long n1=12, long n2=26, long n3=9):
     """
     Moving Average Convergence Divergence
-    
+
     Args:
         n1 (int): short time period, default 12
         n2 (int): long time period, default 26
-        n3 (int): signal time period, default 9  
-    
+        n3 (int): signal time period, default 9
+
     Outputs:
         macd, macdsignal, macdhist
     """
@@ -26,4 +26,3 @@ def calc_macd(series, long n1=12, long n2=26, long n3=9):
     result = macd_result(macd, signal, hist)
 
     return result
-

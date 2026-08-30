@@ -1,13 +1,12 @@
 """ Sign function """
 
-
 def calc_sign(series):
     """Sign"""
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, NAN)
+    cdef object result = np.empty(size, float)
     cdef double[:] output = result
 
     cdef double value = NAN
@@ -28,5 +27,4 @@ def calc_sign(series):
             output[i] = sign
 
     return result
-
 

@@ -1,6 +1,5 @@
 """ Step Function """
 
-
 def calc_step(series, threshold : float = 1.0):
     """
     Step Function
@@ -18,7 +17,7 @@ def calc_step(series, threshold : float = 1.0):
     cdef double[:] output = result
 
     cdef double value = NAN, prev = NAN
-    cdef double ul = NAN, ll=NAN
+    cdef double ul = NAN, ll = NAN
 
     cdef long i = 0
 
@@ -39,6 +38,4 @@ def calc_step(series, threshold : float = 1.0):
             output[i] = value
 
     return result
-
-
 

@@ -11,7 +11,7 @@ def calc_rma(series, long period):
     """
 
     if period <= 0:
-        raise ValueError(f"Invalid period value {period}")
+        raise ValueError("period must be greater than zero")
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size

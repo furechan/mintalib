@@ -5,16 +5,12 @@
 """
 Calculation routines implemented in cython.
 
-Routines are typically named `calc_` followed by an indicator name all in lower caps as in `calc_sma`.
-
-The first parameter `series` or `prices` indicates whether the calculation accepts a single series or a prices dataframe.
-
-A `prices` dataframe should contain the columns `open`, `high`, `low`, `close` and optionally `volume` all in **lower case**.
-
-The `wrap` parameter dictates whether to wrap the calculation result to match the type of the inputs.
+Routines are named `calc_` followed by a lower-case indicator name, as in
+`calc_sma`. Kernels accept either one `series` input or explicit columns such as
+`high`, `low`, `close`, and `volume`. Inputs are converted to float arrays at the
+kernel boundary, and calculation parameters follow the input columns.
 """
 
 include "cython/_all_core.pxi"
 
 __all__ = ()
-

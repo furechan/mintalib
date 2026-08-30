@@ -1,20 +1,20 @@
 """ Parabolic Stop and Reverse """
 
 @add_metadata(same_scale=True, inputs=('high', 'low'))
-def calc_sar(prices, double afs=0.02, double maxaf=0.2):
+def calc_sar(high, low, double afs=0.02, double maxaf=0.2):
     """
     Parabolic Stop and Reverse
-    
+
     Args:
         afs (float): starting acceleration factor, default 0.02
         maxaf (float): maximum acceleration factor, default 0.2
     """
 
-    cdef const double[:] high = np.asarray(prices['high'], float)
-    cdef const double[:] low = np.asarray(prices['low'], float)
-    cdef long size = check_size(high, low)
+    cdef const double[:] high_view = np.asarray(high, float)
+    cdef const double[:] low_view = np.asarray(low, float)
+    cdef long size = check_size(high_view, low_view)
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
     cdef double ep = NAN, sar = NAN, af = NAN
@@ -27,7 +27,7 @@ def calc_sar(prices, double afs=0.02, double maxaf=0.2):
             if hi >= lo:
                 ph, pl = hi, lo
 
-            hi, lo = high[i], low[i]
+            hi, lo = high_view[i], low_view[i]
 
             if not (hi >= lo and ph >= pl):
                 continue
@@ -74,5 +74,3 @@ def calc_sar(prices, double afs=0.02, double maxaf=0.2):
                 af = maxaf
 
     return result
-
-

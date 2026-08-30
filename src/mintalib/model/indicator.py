@@ -190,13 +190,10 @@ class _BoundKernel:
                     f"{func_name(self.calc_func)} requires a pandas DataFrame with price columns; "
                     f"got {type(data).__name__}."
                 )
-            if self.input_kind == "prices":
-                result = self.calc_func(data, **self.params)
-            else:
-                result = self.calc_func(
-                    *(data[name] for name in self.inputs),
-                    **self.params,
-                )
+            result = self.calc_func(
+                *(data[name] for name in self.inputs),
+                **self.params,
+            )
 
         return _wrap_result(result, data)
 
@@ -208,8 +205,6 @@ def _kernel_dispatch(calc_func: Callable[..., Any]) -> tuple[str, tuple[str, ...
         return "series", ()
 
     inputs = _inputs(calc_func)
-    if first == "prices":
-        return "prices", inputs
     if parameters[: len(inputs)] == inputs:
         return "columns", inputs
     raise ValueError(f"kernel inputs do not match metadata for {func_name(calc_func)!r}")

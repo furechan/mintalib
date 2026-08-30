@@ -27,13 +27,15 @@ import mintalib.functions as ta
 # Do not edit! This file was generated.
 
 from mintalib import core
-from mintalib.model.function import (
-    wrap_columns_function,
-    wrap_prices_function,
-    wrap_series_function,
-)
 
 '''
+
+
+def wrapper_name(calc_func):
+    first_param = next(iter(inspect.signature(calc_func).parameters))
+    if first_param == "series":
+        return "wrap_series_function"
+    return "wrap_columns_function"
 
 def make_signature(calc_func):
     sig = inspect.signature(calc_func)
@@ -41,13 +43,7 @@ def make_signature(calc_func):
     params = list(sig.parameters.values())
     inputs = getattr(calc_func, "metadata", {}).get("inputs")
 
-    if params[0].name == "prices" and inputs:
-        new_params.extend(
-            inspect.Parameter(name, inspect.Parameter.POSITIONAL_OR_KEYWORD)
-            for name in inputs
-        )
-        params = params[1:]
-    elif inputs:
+    if inputs:
         new_params.extend(params[: len(inputs)])
         params = params[len(inputs):]
 
@@ -64,13 +60,7 @@ def make_function(calc_func, name=None):
         name = calc_func.__name__.removeprefix("calc_").lower()
     cname = f"core.{calc_func.__name__}"
     signature = make_signature(calc_func)
-    first_param = next(iter(inspect.signature(calc_func).parameters))
-    if first_param == "series":
-        decorator = "wrap_series_function"
-    elif first_param == "prices":
-        decorator = "wrap_prices_function"
-    else:
-        decorator = "wrap_columns_function"
+    decorator = wrapper_name(calc_func)
     buffer = f"@{decorator}({cname})\n"
     buffer += f"def {name}{signature}: ...\n"
     return buffer
@@ -84,10 +74,14 @@ def make_functions(cnames=None):
     if cnames is None:
         cnames = core_functions()
 
-    output = PRELUDE + "\n\n"
+    funcs = [getattr(core, cname) for cname in cnames]
+    wrappers = sorted({wrapper_name(func) for func in funcs})
+    imports = "from mintalib.model.function import (\n"
+    imports += "".join(f"    {wrapper},\n" for wrapper in wrappers)
+    imports += ")\n\n"
+    output = PRELUDE + imports
 
-    for cname in cnames:
-        func = getattr(core, cname)
+    for cname, func in zip(cnames, funcs):
         name = cname.removeprefix("calc_").lower()
         code = make_function(func, name)
         output += code + "\n"

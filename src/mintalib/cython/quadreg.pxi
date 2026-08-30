@@ -1,6 +1,5 @@
 """ Quadratic Regression """
 
-
 cdef enum:
     QUADREG_CURVE = 0
     QUADREG_SLOPE = 1
@@ -8,8 +7,6 @@ cdef enum:
     QUADREG_RMSE = 3
     QUADREG_FORECAST = 4
     QUADREG_BADOPTION = 5
-
-
 
 def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
     """
@@ -19,9 +16,8 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
         period (int): time period, default 20
     """
 
-
     if period < 2:
-        raise ValueError(f"Invalid period {period}, should be greater than 2")
+        raise ValueError("period must be at least 2")
 
     if option < 0 or option > QUADREG_BADOPTION:
         raise ValueError(f"Invalid option {option}")
@@ -29,7 +25,7 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
     cdef const double[:] zs = np.asarray(series, float)
     cdef long size = zs.size
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
     if period >= size:
@@ -122,7 +118,6 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
             curve = vuz / vuu
             rvalue = vuz / math.sqrt(vuu * vzz) if vuu * vzz > 0 else NAN
 
-
             if option == QUADREG_CURVE:
                 output[i] = curve
                 continue
@@ -153,8 +148,6 @@ def quadratic_regression(series, long period=20, *, int option=0, int offset=0):
 
     return result
 
-
-
 def calc_quadreg(series, long period=20, long offset=0):
     """
     Quadratic Regression (parabolic moving average)
@@ -169,7 +162,6 @@ def calc_quadreg(series, long period=20, long offset=0):
 
     return quadratic_regression(series, period=period, offset=offset, option=QUADREG_FORECAST)
 
-
 def calc_quadreg_curve(series, long period=20):
     """
     Quadratic Regression Curve
@@ -179,7 +171,6 @@ def calc_quadreg_curve(series, long period=20):
     """
 
     return quadratic_regression(series, period=period, option=QUADREG_CURVE)
-
 
 def calc_quadreg_slope(series, long period=20, long offset=0):
     """
@@ -195,7 +186,6 @@ def calc_quadreg_slope(series, long period=20, long offset=0):
 
     return quadratic_regression(series, period=period, offset=offset, option=QUADREG_SLOPE)
 
-
 def calc_quadreg_rvalue(series, long period=20):
     """
     Quadratic Regression R-Value
@@ -207,7 +197,6 @@ def calc_quadreg_rvalue(series, long period=20):
     """
 
     return quadratic_regression(series, period=period, option=QUADREG_RVALUE)
-
 
 def calc_quadreg_rmse(series, long period=20):
     """

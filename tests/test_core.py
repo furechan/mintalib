@@ -13,9 +13,8 @@ has_polars = find_spec("polars") is not None
 def list_core_functions():
     return [
         k for k, v in vars(core).items()
-        if k.startswith(("calc_", "flag_"))
+        if k.startswith("calc_")
         and callable(v)
-        and first_param(v) in ("prices", "series")
     ]
 
 
@@ -32,10 +31,12 @@ def test_core(name, prices):
     func = getattr(core, name)
     ftype = first_param(func)
     kwds = sample_params(func)
-    data = prices
     if ftype == "series":
-        data = data["close"]
-    result = func(data, **kwds)
+        args = (prices["close"],)
+    else:
+        inputs = func.metadata["inputs"]
+        args = tuple(prices[name] for name in inputs)
+    result = func(*args, **kwds)
     assert result is not None
 
 
@@ -93,6 +94,19 @@ def test_obv_empty_and_different_sizes():
         core.calc_obv(np.ones(2), np.ones(3))
 
 
+def test_cmf_treats_zero_range_as_zero_money_flow():
+    import numpy as np
+
+    high = np.array([10.0, 12.0, 12.0])
+    low = np.array([10.0, 10.0, 10.0])
+    close = np.array([10.0, 12.0, 10.0])
+    volume = np.array([100.0, 100.0, 100.0])
+
+    result = core.calc_cmf(high, low, close, volume, 2)
+
+    np.testing.assert_allclose(result, [np.nan, 0.5, 0.0], equal_nan=True)
+
+
 def test_rsi_flat_series_is_zero_after_initialization():
     import numpy as np
 
@@ -102,14 +116,28 @@ def test_rsi_flat_series_is_zero_after_initialization():
     assert result[14:] == pytest.approx(0.0)
 
 
+def test_rate_of_change_is_nan_when_previous_value_is_zero():
+    import numpy as np
+
+    series = np.array([0.0, 2.0, 4.0])
+
+    np.testing.assert_allclose(
+        core.calc_roc(series, 1), [np.nan, np.nan, 100.0], equal_nan=True
+    )
+    np.testing.assert_allclose(
+        core.calc_rocp(series, 1), [np.nan, np.nan, 1.0], equal_nan=True
+    )
+
+
 def test_standalone_directional_indexes_match_dmi(prices):
     import numpy as np
 
-    dmi = core.calc_dmi(prices, 14)
+    high, low, close = prices["high"], prices["low"], prices["close"]
+    dmi = core.calc_dmi(high, low, close, 14)
 
-    np.testing.assert_allclose(core.calc_adx(prices, 14), dmi[0], equal_nan=True)
-    np.testing.assert_allclose(core.calc_pdi(prices, 14), dmi[1], equal_nan=True)
-    np.testing.assert_allclose(core.calc_mdi(prices, 14), dmi[2], equal_nan=True)
+    np.testing.assert_allclose(core.calc_adx(high, low, close, 14), dmi[0], equal_nan=True)
+    np.testing.assert_allclose(core.calc_pdi(high, low, close, 14), dmi[1], equal_nan=True)
+    np.testing.assert_allclose(core.calc_mdi(high, low, close, 14), dmi[2], equal_nan=True)
 
 
 def test_rma_preserves_nulls_while_bridging_state():
@@ -199,22 +227,29 @@ def test_roc_scales_percentage_and_rocp_preserves_fraction():
     assert core.calc_rocp(series, 1) == pytest.approx([np.nan, 0.1, -0.1], nan_ok=True)
 
 
-def test_roc_supports_signed_values_and_returns_zero_for_zero_denominator():
+def test_roc_supports_signed_values_and_returns_nan_for_zero_denominator():
     import numpy as np
 
     series = np.array([-100.0, -110.0, -90.0, 0.0, 10.0])
 
     assert core.calc_roc(series, 1) == pytest.approx(
-        [np.nan, 10.0, -18.18181818181818, -100.0, 0.0], nan_ok=True
+        [np.nan, 10.0, -18.18181818181818, -100.0, np.nan], nan_ok=True
+    )
+    assert core.calc_rocp(series, 1) == pytest.approx(
+        [np.nan, 0.1, -0.1818181818181818, -1.0, np.nan], nan_ok=True
     )
 
 
-@pytest.mark.parametrize("name", ["calc_roc", "calc_rocp"])
-def test_rate_of_change_rejects_negative_period(name):
+@pytest.mark.parametrize(
+    "name",
+    ["calc_roc", "calc_rocp", "calc_lroc", "calc_diff", "calc_lag"],
+)
+@pytest.mark.parametrize("period", [-1, 0])
+def test_offset_functions_reject_non_positive_period(name, period):
     func = getattr(core, name)
 
-    with pytest.raises(ValueError, match="Invalid period value -1"):
-        func([100.0, 110.0], -1)
+    with pytest.raises(ValueError, match="period must be greater than zero"):
+        func([100.0, 110.0], period)
 
 
 def test_natr_is_scaled_atr_over_close(prices):
@@ -222,8 +257,8 @@ def test_natr_is_scaled_atr_over_close(prices):
 
     close = np.asarray(prices["close"], float)
 
-    result = core.calc_natr(prices, 14)
-    expected = 100 * core.calc_atr(prices, 14) / close
+    result = core.calc_natr(prices["high"], prices["low"], close, 14)
+    expected = 100 * core.calc_atr(prices["high"], prices["low"], close, 14) / close
 
     assert result == pytest.approx(expected, nan_ok=True)
 
@@ -250,4 +285,6 @@ def test_bop_is_raw_per_bar(prices):
             / (np.asarray(prices["high"], float) - np.asarray(prices["low"], float))
         )
 
-    assert core.calc_bop(prices) == pytest.approx(raw, nan_ok=True)
+    assert core.calc_bop(
+        prices["open"], prices["high"], prices["low"], prices["close"]
+    ) == pytest.approx(raw, nan_ok=True)

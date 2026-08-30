@@ -1,26 +1,16 @@
 """ Average True Range """
 
-
 @add_metadata(inputs=('high', 'low', 'close'))
-def calc_trange(prices, *, bint log_prices=False, bint percent=False):
-    """
-    True Range
-    
-    Args:
-        log_prices (bool): whether to apply log to prices before calculation
-        percent (bool): result as percentage of price
-    """
+def calc_trange(high, low, close):
+    """True Range"""
 
-    if log_prices and percent:
-        raise ValueError("Only one of log_prices and percent can be true")
+    cdef const double[:] high_view = np.asarray(high, float)
+    cdef const double[:] low_view = np.asarray(low, float)
+    cdef const double[:] close_view = np.asarray(close, float)
 
-    cdef const double[:] high = np.asarray(prices['high'], float)
-    cdef const double[:] low = np.asarray(prices['low'], float)
-    cdef const double[:] close = np.asarray(prices['close'], float)
+    cdef long size = check_size(high_view, low_view, close_view)
 
-    cdef long size = check_size(high, low, close)
-
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
     cdef double hi = NAN, lo = NAN, cl = NAN, pc = NAN, tr = NAN
@@ -29,7 +19,7 @@ def calc_trange(prices, *, bint log_prices=False, bint percent=False):
 
     with nogil:
         for i in range(size):
-            hi, lo, cl, pc = high[i], low[i], close[i], cl
+            hi, lo, cl, pc = high_view[i], low_view[i], close_view[i], cl
 
             if not (hi >= lo > 0.0):
                 continue
@@ -40,48 +30,39 @@ def calc_trange(prices, *, bint log_prices=False, bint percent=False):
             if pc < lo:
                 lo = pc
 
-            if log_prices:
-                tr = math.log(hi) - math.log(lo)
-            elif percent:
-                tr = 100 * (hi - lo) / cl if cl > 0 else NAN
-            else:
-                tr = (hi - lo)
+            tr = hi - lo
 
             output[i] = tr
 
     return result
 
-
-
 @add_metadata(inputs=('high', 'low', 'close'))
-def calc_atr(prices, long period=14):
+def calc_atr(high, low, close, long period=14):
     """
     Average True Range
-    
+
     Args:
-        period (int): time period, default 14    
+        period (int): time period, default 14
     """
 
-    trange = calc_trange(prices)
+    trange = calc_trange(high, low, close)
     result = calc_rma(trange, period)
 
     return result
 
-
-
 @add_metadata(inputs=('high', 'low', 'close'))
-def calc_natr(prices, long period=14):
+def calc_natr(high, low, close, long period=14):
     """
     Normalized Average True Range
 
     Returns ``100 * ATR(period) / close`` in percentage points.
-    
+
     Args:
-        period (int): time period, default 14    
+        period (int): time period, default 14
     """
 
-    close = np.asarray(prices['close'], float)
-    atr = calc_atr(prices, period)
+    close = np.asarray(close, float)
+    atr = calc_atr(high, low, close, period)
 
     with np.errstate(divide='ignore', invalid='ignore'):
         result = 100 * atr / close

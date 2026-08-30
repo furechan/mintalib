@@ -6,7 +6,7 @@ ppo_result = namedtuple('ppo_result', 'ppo, pposignal, ppohist')
 def calc_ppo(series, long n1=12, long n2=26, long n3=9):
     """
     Price Percentage Oscillator
-    
+
     Args:
         n1 (int): short time period, default 12
         n2 (int): long time period, default 26
@@ -28,6 +28,4 @@ def calc_ppo(series, long n1=12, long n2=26, long n3=9):
     result = ppo_result(ppo, signal, hist)
 
     return result
-
-
 

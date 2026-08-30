@@ -160,9 +160,6 @@ def PDI(period: int = 14) -> PricesToSeries: ...
 @wrap_indicator(core.calc_ppo)
 def PPO(n1: int = 12, n2: int = 26, n3: int = 9, *, item: str | None = None) -> SeriesToFrame: ...
 
-@wrap_indicator(core.calc_price)
-def PRICE(item: str | None = None) -> PricesToSeries: ...
-
 @wrap_indicator(core.calc_quadreg)
 def QUADREG(period: int = 20, offset: int = 0, *, item: str | None = None) -> SeriesToSeries: ...
 
@@ -218,7 +215,7 @@ def SUM(period: int, *, item: str | None = None) -> SeriesToSeries: ...
 def TEMA(period: int = 20, *, item: str | None = None) -> SeriesToSeries: ...
 
 @wrap_indicator(core.calc_trange)
-def TRANGE(*, log_prices: bool = False, percent: bool = False) -> PricesToSeries: ...
+def TRANGE() -> PricesToSeries: ...
 
 @wrap_indicator(core.calc_typprice)
 def TYPPRICE() -> PricesToSeries: ...
@@ -241,9 +238,9 @@ __all__ = [
     'DONCHIAN', 'EMA', 'EXP', 'FLAG', 'HMA', 'KAMA', 'KELTNER', 'KER',
     'LAG', 'LINREG', 'LINREG_RMSE', 'LINREG_RVALUE', 'LINREG_SLOPE', 'LOG',
     'LROC', 'MACD', 'MACDV', 'MAD', 'MAV', 'MAX', 'MDI', 'MEDPRICE', 'MFI',
-    'MIN', 'NATR', 'OBV', 'PDI', 'PPO', 'PRICE', 'QUADREG',
-    'QUADREG_CURVE', 'QUADREG_RMSE', 'QUADREG_RVALUE', 'QUADREG_SLOPE',
-    'RMA', 'ROC', 'ROCP', 'RSI', 'SAR', 'SIGN', 'SMA', 'STDEV', 'STEP',
-    'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TYPPRICE', 'UPDOWN',
-    'WCLPRICE', 'WMA', 'ZLEMA'
+    'MIN', 'NATR', 'OBV', 'PDI', 'PPO', 'QUADREG', 'QUADREG_CURVE',
+    'QUADREG_RMSE', 'QUADREG_RVALUE', 'QUADREG_SLOPE', 'RMA', 'ROC',
+    'ROCP', 'RSI', 'SAR', 'SIGN', 'SMA', 'STDEV', 'STEP', 'STOCH',
+    'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TYPPRICE', 'UPDOWN', 'WCLPRICE',
+    'WMA', 'ZLEMA'
 ]

@@ -4,18 +4,18 @@
 def calc_sum(series, long period):
     """
     Rolling sum
-    
+
     Args:
         period (int): time period, required
     """
 
     if period <= 0:
-        raise ValueError(f"Invalid period value {period}")
+        raise ValueError("period must be greater than zero")
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
     cdef double v = NAN, rsum = 0.0
@@ -40,4 +40,3 @@ def calc_sum(series, long period):
                 output[i] = rsum
 
     return result
-

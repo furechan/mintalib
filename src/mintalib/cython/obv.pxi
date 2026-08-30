@@ -1,6 +1,5 @@
 """ On-Balance Volume """
 
-
 @add_metadata(inputs=('close', 'volume'))
 def calc_obv(close, volume):
     """
@@ -11,11 +10,11 @@ def calc_obv(close, volume):
     with the first volume.
     """
 
-    cdef const double[:] cl = np.asarray(close, float)
-    cdef const double[:] vol = np.asarray(volume, float)
-    cdef long size = check_size(cl, vol)
+    cdef const double[:] close_view = np.asarray(close, float)
+    cdef const double[:] volume_view = np.asarray(volume, float)
+    cdef long size = check_size(close_view, volume_view)
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
     cdef double value = NAN
@@ -27,8 +26,8 @@ def calc_obv(close, volume):
 
     with nogil:
         for i in range(size):
-            current_close = cl[i]
-            current_volume = vol[i]
+            current_close = close_view[i]
+            current_volume = volume_view[i]
 
             if isnan(current_close) or isnan(current_volume):
                 continue

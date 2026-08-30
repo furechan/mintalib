@@ -14,13 +14,43 @@ def calc_zlema(series, long period):
     """
 
     if period <= 0:
-        raise ValueError(f"Invalid period value {period}")
+        raise ValueError("period must be greater than zero")
     # Graceful degradation: a one-period moving average is the input itself.
     if period == 1:
         return np.asarray(series, float).copy()
+
     cdef long lag = (period - 1) // 2
+    cdef const double[:] xs = np.asarray(series, float)
+    cdef long size = xs.size
 
-    xs = np.asarray(series, float)
-    data = 2 * xs - calc_lag(xs, lag)
+    cdef object result = np.empty(size, float)
+    cdef double[:] output = result
 
-    return calc_ema(data, period)
+    cdef double alpha = 2.0 / (period + 1.0)
+    cdef double value = NAN, lagged = NAN, adjusted = NAN, ema = NAN
+    cdef long i = 0, count = 0
+
+    with nogil:
+        for i in range(size):
+            output[i] = NAN
+
+            if i < lag:
+                continue
+
+            value = xs[i]
+            lagged = xs[i - lag]
+            if isnan(value) or isnan(lagged):
+                continue
+
+            adjusted = 2.0 * value - lagged
+            count += 1
+
+            if isnan(ema):
+                ema = adjusted
+            else:
+                ema += alpha * (adjusted - ema)
+
+            if count >= period:
+                output[i] = ema
+
+    return result

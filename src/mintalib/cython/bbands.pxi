@@ -1,8 +1,6 @@
 """ Bollinger Bands """
 
-
 bbands_result = namedtuple('bbands_result', 'upperband, middleband, lowerband')
-
 
 @add_metadata(same_scale=True, output_names=('upperband', 'middleband', 'lowerband'))
 def calc_bbands(series, long period=20, double nbdev=2.0):
@@ -24,7 +22,6 @@ def calc_bbands(series, long period=20, double nbdev=2.0):
     result = bbands_result(upper, middle, lower)
 
     return result
-
 
 @add_metadata(same_scale=False)
 def calc_bbp(series, long period=20, double nbdev=2.0):
@@ -52,8 +49,6 @@ def calc_bbp(series, long period=20, double nbdev=2.0):
         result = (prc - lower) / (upper - lower)
 
     return result
-
-
 
 @add_metadata(same_scale=False)
 def calc_bbw(series, long period=20, double nbdev=2.0):

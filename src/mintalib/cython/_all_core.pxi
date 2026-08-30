@@ -10,7 +10,6 @@ include "sign.pxi"
 include "step.pxi"
 include "clag.pxi"
 
-
 include "abs.pxi"
 include "log.pxi"
 include "exp.pxi"
@@ -61,7 +60,6 @@ include "macdv.pxi"
 
 include "linreg.pxi"
 include "quadreg.pxi"
-
 
 include "stoch.pxi"
 

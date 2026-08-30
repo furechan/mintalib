@@ -1,7 +1,5 @@
 """ Flag functions """
 
-
-
 def calc_flag(series):
     """
     Flag Value
@@ -12,7 +10,7 @@ def calc_flag(series):
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.empty(size, float)
     cdef double[:] output = result
 
     cdef double value = NAN
@@ -26,14 +24,15 @@ def calc_flag(series):
                 output[i] = 1.0
             elif value <= 0:
                 output[i] = 0.0
+            else:
+                output[i] = NAN
 
     return result
-
 
 def calc_updown(series, double up_level=0.0, double down_level=0.0):
     """
     Flag for value crossing up & down levels
-    
+
     Args:
         up_level (float): flag set at 1 above that level
         down_level (float): flag set at 0 below that level
@@ -42,10 +41,10 @@ def calc_updown(series, double up_level=0.0, double down_level=0.0):
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.empty(size, float)
     cdef double[:] output = result
 
-    cdef double flag = NAN, up_flag = 1.0, down_flag=0.0 
+    cdef double flag = NAN, up_flag = 1.0, down_flag = 0.0
     cdef double value = NAN, prev = NAN
     cdef long i = 0
 
@@ -65,8 +64,6 @@ def calc_updown(series, double up_level=0.0, double down_level=0.0):
 
     return result
 
-
-
 def where_flag(flag, x, y, z=NAN):
     """Value according to flag, selecting between x, y or z"""
 
@@ -78,7 +75,7 @@ def where_flag(flag, x, y, z=NAN):
     cdef const double[:] ys = np.broadcast_to(np.float_(y), size)
     cdef const double[:] zs = np.broadcast_to(np.float_(z), size)
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.empty(size, float)
     cdef double[:] output = result
 
     cdef double value = NAN

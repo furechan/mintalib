@@ -86,29 +86,29 @@ result = prices.with_columns(
 | Name           | Input   | Description                                                   |
 |:---------------|:--------|:--------------------------------------------------------------|
 | ABS            | Series  | Absolute Value                                                |
-| ADX            | Prices  | Average Directional Index                                     |
+| ADX            | High    | Average Directional Index                                     |
 | ALMA           | Series  | Arnaud Legoux Moving Average                                  |
-| ATR            | Prices  | Average True Range                                            |
-| AVGPRICE       | Prices  | Average Price                                                 |
+| ATR            | High    | Average True Range                                            |
+| AVGPRICE       | Open    | Average Price                                                 |
 | BBANDS         | Series  | Bollinger Bands                                               |
 | BBP            | Series  | Bollinger Bands Percent (%B)                                  |
 | BBW            | Series  | Bollinger Bands Width                                         |
-| BOP            | Prices  | Balance of Power                                              |
-| CCI            | Prices  | Commodity Channel Index                                       |
+| BOP            | Open    | Balance of Power                                              |
+| CCI            | High    | Commodity Channel Index                                       |
 | CLAG           | Series  | Confirmation Lag                                              |
-| CMF            | Prices  | Chaikin Money Flow                                            |
+| CMF            | High    | Chaikin Money Flow                                            |
 | CROSSOVER      | Series  | Cross Over                                                    |
 | CROSSUNDER     | Series  | Cross Under                                                   |
 | DEMA           | Series  | Double Exponential Moving Average                             |
 | DIFF           | Series  | Difference                                                    |
-| DMI            | Prices  | Directional Movement Indicator                                |
-| DONCHIAN       | Prices  | Donchian Channel                                              |
+| DMI            | High    | Directional Movement Indicator                                |
+| DONCHIAN       | High    | Donchian Channel                                              |
 | EMA            | Series  | Exponential Moving Average                                    |
 | EXP            | Series  | Exponential                                                   |
 | FLAG           | Series  | Flag Value                                                    |
 | HMA            | Series  | Hull Moving Average                                           |
 | KAMA           | Series  | Kaufman Adaptive Moving Average                               |
-| KELTNER        | Prices  | Keltner Channel                                               |
+| KELTNER        | High    | Keltner Channel                                               |
 | KER            | Series  | Kaufman Efficiency Ratio                                      |
 | LAG            | Series  | Lag Function                                                  |
 | LINREG         | Series  | Linear Regression (least squares moving average)              |
@@ -118,19 +118,18 @@ result = prices.with_columns(
 | LOG            | Series  | Logarithm                                                     |
 | LROC           | Series  | Logarithmic Rate of Change                                    |
 | MACD           | Series  | Moving Average Convergence Divergence                         |
-| MACDV          | Prices  | Moving Average Convergence Divergence - Volatility Normalized |
+| MACDV          | High    | Moving Average Convergence Divergence - Volatility Normalized |
 | MAD            | Series  | Rolling Mean Absolute Deviation                               |
 | MAV            | Series  | Generic Moving Average                                        |
 | MAX            | Series  | Rolling Maximum                                               |
-| MDI            | Prices  | Minus Directional Index                                       |
-| MEDPRICE       | Prices  | Median Price                                                  |
-| MFI            | Prices  | Money Flow Index                                              |
+| MDI            | High    | Minus Directional Index                                       |
+| MEDPRICE       | High    | Median Price                                                  |
+| MFI            | High    | Money Flow Index                                              |
 | MIN            | Series  | Rolling Minimum                                               |
-| NATR           | Prices  | Normalized Average True Range                                 |
+| NATR           | High    | Normalized Average True Range                                 |
 | OBV            | Close   | On-Balance Volume                                             |
-| PDI            | Prices  | Plus Directional Index                                        |
+| PDI            | High    | Plus Directional Index                                        |
 | PPO            | Series  | Price Percentage Oscillator                                   |
-| PRICE          | Prices  | Generic Price                                                 |
 | QUADREG        | Series  | Quadratic Regression (parabolic moving average)               |
 | QUADREG_CURVE  | Series  | Quadratic Regression Curve                                    |
 | QUADREG_RMSE   | Series  | Quadratic Regression Root Mean Square Error                   |
@@ -140,19 +139,19 @@ result = prices.with_columns(
 | ROC            | Series  | Rate of Change                                                |
 | ROCP           | Series  | Rate of Change Percentage                                     |
 | RSI            | Series  | Relative Strength Index                                       |
-| SAR            | Prices  | Parabolic Stop and Reverse                                    |
+| SAR            | High    | Parabolic Stop and Reverse                                    |
 | SIGN           | Series  | Sign                                                          |
 | SMA            | Series  | Simple Moving Average                                         |
 | STDEV          | Series  | Standard Deviation                                            |
 | STEP           | Series  | Step Function                                                 |
-| STOCH          | Prices  | Stochastic Oscillator                                         |
+| STOCH          | High    | Stochastic Oscillator                                         |
 | STREAK         | Series  | Consecutive streak of values above zero                       |
 | SUM            | Series  | Rolling sum                                                   |
 | TEMA           | Series  | Triple Exponential Moving Average                             |
-| TRANGE         | Prices  | True Range                                                    |
-| TYPPRICE       | Prices  | Typical Price                                                 |
+| TRANGE         | High    | True Range                                                    |
+| TYPPRICE       | High    | Typical Price                                                 |
 | UPDOWN         | Series  | Flag for value crossing up & down levels                      |
-| WCLPRICE       | Prices  | Weighted Close Price                                          |
+| WCLPRICE       | High    | Weighted Close Price                                          |
 | WMA            | Series  | Weighted Moving Average                                       |
 | ZLEMA          | Series  | Zero-Lag Exponential Moving Average                           |
 <!-- indicators:end -->

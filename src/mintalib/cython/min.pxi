@@ -10,12 +10,12 @@ def calc_min(series, long period):
     """
 
     if period <= 0:
-        raise ValueError("Period must be positive")
+        raise ValueError("period must be greater than zero")
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
     cdef double v = NAN, cur_min = NAN

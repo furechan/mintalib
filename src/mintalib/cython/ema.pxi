@@ -1,7 +1,7 @@
 """ Exponential Moving Average """
 
 @add_metadata(same_scale=True)
-def calc_ema(series, long period, *, bint adjust = False):
+def calc_ema(series, long period, *, bint adjust=False):
     """
     Exponential Moving Average
 
@@ -20,7 +20,7 @@ def calc_ema(series, long period, *, bint adjust = False):
     """
 
     if period <= 0:
-        raise ValueError(f"Invalid period value {period}")
+        raise ValueError("period must be greater than zero")
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -31,9 +31,9 @@ def calc_ema(series, long period, *, bint adjust = False):
     cdef double[:] output = result
 
     cdef double alpha = 2.0 / (period + 1.0)
-    cdef double rho = (1.0 - alpha)
+    cdef double rho = 1.0 - alpha
     cdef double value = NAN
-    cdef double num = NAN, div=NAN
+    cdef double num = NAN, div = NAN
     cdef double ema = NAN
 
     cdef long i = 0, count = 0

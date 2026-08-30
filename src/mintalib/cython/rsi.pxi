@@ -1,6 +1,5 @@
 """ Relative Strength Index """
 
-
 def calc_rsi(series, long period=14):
     """
     Relative Strength Index
@@ -10,7 +9,7 @@ def calc_rsi(series, long period=14):
     """
 
     if period <= 0:
-        raise ValueError(f"Invalid period value {period}")
+        raise ValueError("period must be greater than zero")
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size

@@ -47,8 +47,6 @@ def make_signature(calc_func):
 
     if first_param.name == "series":
         params = params[1:]
-    elif first_param.name == "prices":
-        params = params[1:]
     elif inputs and tuple(param.name for param in params[: len(inputs)]) == inputs:
         params = params[len(inputs):]
     else:

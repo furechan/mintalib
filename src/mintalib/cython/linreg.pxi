@@ -1,6 +1,5 @@
 """ Linear Regression """
 
-
 cdef enum:
     LINREG_SLOPE = 0
     LINREG_INTERCEPT = 1
@@ -8,8 +7,6 @@ cdef enum:
     LINREG_RMSE = 3
     LINREG_FORECAST = 4
     LINREG_BADOPTION = 5
-
-
 
 def linear_regression(series, long period=20, *, int option=0, int offset=0):
     """
@@ -20,7 +17,7 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
     """
 
     if period < 2:
-        raise ValueError(f"Invalid period {period}, should be greater than 2")
+        raise ValueError("period must be at least 2")
 
     if option < 0 or option > LINREG_BADOPTION:
         raise ValueError(f"Invalid option {option}")
@@ -28,7 +25,7 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
     cdef const double[:] ys = np.asarray(series, float)
     cdef long size = ys.size
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
     if period >= size:
@@ -109,7 +106,6 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
             intercept = (sy - slope * sx) / s
             corr = vxy / math.sqrt(vxx * vyy) if vyy > 0 else NAN
 
-
             if option == LINREG_SLOPE:
                 output[i] = slope
                 continue
@@ -135,8 +131,6 @@ def linear_regression(series, long period=20, *, int option=0, int offset=0):
 
     return result
 
-
-
 def calc_linreg(series, long period=20, long offset=0):
     """
     Linear Regression (least squares moving average)
@@ -151,8 +145,6 @@ def calc_linreg(series, long period=20, long offset=0):
 
     return linear_regression(series, period=period, offset=offset, option=LINREG_FORECAST)
 
-
-
 def calc_linreg_slope(series, long period=20):
     """
     Linear Regression Slope
@@ -163,7 +155,6 @@ def calc_linreg_slope(series, long period=20):
 
     return linear_regression(series, period=period, option=LINREG_SLOPE)
 
-
 def calc_linreg_rvalue(series, long period=20):
     """
     Linear Regression R-Value
@@ -173,7 +164,6 @@ def calc_linreg_rvalue(series, long period=20):
     """
 
     return linear_regression(series, period=period, option=LINREG_RVALUE)
-
 
 def calc_linreg_rmse(series, long period=20):
     """

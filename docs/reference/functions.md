@@ -351,7 +351,6 @@ Equivalent to the difference of log values
 
 **Arguments:**
  - **period (int):**  time period, default 1
-   when negative the calculation is shifted back
 
 ### macd
 
@@ -495,21 +494,6 @@ Price Percentage Oscillator
 
 **Outputs:**
 > ppo, pposignal, ppohist
-
-### price
-
-`price(open, high, low, close, *, item: str | None = None)`
-
-Generic Price
-
-
-**Arguments:**
- - **item (str):**  price type, one of:
-   'open', 'high', 'low', 'close' (default),
-   'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
-   'med' or 'hl2'    — median price (high + low) / 2,
-   'typ' or 'hlc3'   — typical price (high + low + close) / 3,
-   'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
 
 ### quadreg
 
@@ -704,14 +688,9 @@ Triple Exponential Moving Average
 
 ### trange
 
-`trange(high, low, close, *, log_prices: bool = False, percent: bool = False)`
+`trange(high, low, close)`
 
 True Range
-
-
-**Arguments:**
- - **log_prices (bool):**  whether to apply log to prices before calculation
- - **percent (bool):**  result as percentage of price
 
 ### typprice
 

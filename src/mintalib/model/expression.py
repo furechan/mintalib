@@ -122,40 +122,6 @@ def wrap_series_expression(calc_func) -> Callable[[Callable[P, Any]], ExprFactor
     return decorator
 
 
-def wrap_prices_expression(calc_func) -> Callable[[Callable[P, Any]], Callable[P, pl.Expr]]:
-    first_param = next(iter(inspect.signature(calc_func).parameters))
-    if first_param != "prices":
-        raise ValueError(f"Expected a prices kernel, got {calc_func.__name__!r}")
-
-    inputs = _get_inputs(calc_func)
-    output_type = _get_output_type(calc_func)
-
-    def decorator(func):
-        name = func.__name__.lower()
-        signature = inspect.signature(func)
-
-        def wrapper(*args, **kwargs):
-            bound_args = signature.bind(*args, **kwargs)
-            bound_args.apply_defaults()
-            arguments = dict(bound_args.arguments)
-            source = pl.struct(
-                [
-                    get_input_expr(arguments.pop(input_name), input_name)
-                    for input_name in inputs
-                ]
-            )
-
-            def batch_func(data):
-                prices = data.struct.unnest()
-                return _wrap_batch_output(calc_func(prices, **arguments))
-
-            return source.map_batches(batch_func, return_dtype=output_type).alias(name)
-
-        return _update_wrapper(wrapper, func, calc_func, signature)
-
-    return decorator
-
-
 def wrap_columns_expression(calc_func) -> Callable[[Callable[P, Any]], Callable[P, pl.Expr]]:
     inputs = _get_inputs(calc_func)
     params = tuple(inspect.signature(calc_func).parameters)

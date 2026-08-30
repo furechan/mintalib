@@ -20,20 +20,15 @@ PRICE_INPUTS = {"open", "high", "low", "close", "volume"}
 def test_price_input_metadata(base):
     func = getattr(core, f"calc_{base}")
     params = tuple(inspect.signature(func).parameters)
-    first_param = params[0]
     inputs = getattr(func, "metadata", {}).get("inputs")
-
-    if first_param == "prices":
-        assert inputs, f"missing inputs metadata for {func.__name__!r}"
 
     if inputs is not None:
         assert isinstance(inputs, tuple)
         assert len(inputs) == len(set(inputs)), f"duplicate inputs for {func.__name__!r}"
         assert set(inputs) <= PRICE_INPUTS, f"invalid inputs for {func.__name__!r}"
-        if first_param != "prices":
-            assert params[: len(inputs)] == inputs, (
-                f"column inputs do not match parameters for {func.__name__!r}"
-            )
+        assert params[: len(inputs)] == inputs, (
+            f"column inputs do not match parameters for {func.__name__!r}"
+        )
 
 
 @pytest.mark.parametrize("base", list_core_bases())

@@ -8,13 +8,10 @@ Regenerate with: uv run inv docs
 
 Calculation routines implemented in cython.
 
-Routines are typically named `calc_` followed by an indicator name all in lower caps as in `calc_sma`.
-
-The first parameter `series` or `prices` indicates whether the calculation accepts a single series or a prices dataframe.
-
-A `prices` dataframe should contain the columns `open`, `high`, `low`, `close` and optionally `volume` all in **lower case**.
-
-The `wrap` parameter dictates whether to wrap the calculation result to match the type of the inputs.
+Routines are named `calc_` followed by a lower-case indicator name, as in
+`calc_sma`. Kernels accept either one `series` input or explicit columns such as
+`high`, `low`, `close`, and `volume`. Inputs are converted to float arrays at the
+kernel boundary, and calculation parameters follow the input columns.
 
 ---
 
@@ -28,7 +25,7 @@ Absolute Value
 
 ### calc_adx
 
-`calc_adx(prices, period=14) -> np.ndarray`
+`calc_adx(high, low, close, period=14) -> np.ndarray`
 
 Average Directional Index
 
@@ -48,7 +45,7 @@ Arnaud Legoux Moving Average
 
 ### calc_atr
 
-`calc_atr(prices, period=14) -> np.ndarray`
+`calc_atr(high, low, close, period=14) -> np.ndarray`
 
 Average True Range
 
@@ -60,7 +57,7 @@ Average True Range
 
 ### calc_avgprice
 
-`calc_avgprice(prices) -> np.ndarray`
+`calc_avgprice(open, high, low, close) -> np.ndarray`
 
 Average Price
 
@@ -114,7 +111,7 @@ Returns band width relative to the middle band as a ratio.
 
 ### calc_bop
 
-`calc_bop(prices) -> np.ndarray`
+`calc_bop(open, high, low, close) -> np.ndarray`
 
 Balance of Power
 
@@ -122,7 +119,7 @@ Balance of Power
 
 ### calc_cci
 
-`calc_cci(prices, period=20) -> np.ndarray`
+`calc_cci(high, low, close, period=20) -> np.ndarray`
 
 Commodity Channel Index
 
@@ -148,7 +145,7 @@ Changes value only after a confirmation period
 
 ### calc_cmf
 
-`calc_cmf(prices, period=20) -> np.ndarray`
+`calc_cmf(high, low, close, volume, period=20) -> np.ndarray`
 
 Chaikin Money Flow
 
@@ -214,7 +211,7 @@ Difference between current value and the one offset by period
 
 ### calc_dmi
 
-`calc_dmi(prices, period=14) -> tuple`
+`calc_dmi(high, low, close, period=14) -> tuple`
 
 Directional Movement Indicator
 
@@ -226,7 +223,7 @@ Directional Movement Indicator
 
 ### calc_donchian
 
-`calc_donchian(prices, period=20) -> tuple`
+`calc_donchian(high, low, period=20) -> tuple`
 
 Donchian Channel
 
@@ -305,7 +302,7 @@ Kaufman Adaptive Moving Average
 
 ### calc_keltner
 
-`calc_keltner(prices, period=20, nbatr=2.0) -> tuple`
+`calc_keltner(high, low, close, period=20, nbatr=2.0) -> tuple`
 
 Keltner Channel
 
@@ -411,7 +408,6 @@ Equivalent to the difference of log values
 
 **Arguments:**
  - **period (int):**  time period, default 1
-   when negative the calculation is shifted back
 
 ---
 
@@ -435,7 +431,7 @@ Moving Average Convergence Divergence
 
 ### calc_macdv
 
-`calc_macdv(prices, n1=12, n2=26, n3=9) -> tuple`
+`calc_macdv(high, low, close, n1=12, n2=26, n3=9) -> tuple`
 
 Moving Average Convergence Divergence - Volatility Normalized
 
@@ -484,7 +480,7 @@ Rolling Maximum
 
 ### calc_mdi
 
-`calc_mdi(prices, period=14) -> np.ndarray`
+`calc_mdi(high, low, close, period=14) -> np.ndarray`
 
 Minus Directional Index
 
@@ -496,7 +492,7 @@ Minus Directional Index
 
 ### calc_medprice
 
-`calc_medprice(prices) -> np.ndarray`
+`calc_medprice(high, low) -> np.ndarray`
 
 Median Price
 
@@ -506,7 +502,7 @@ Value of (high + low) / 2
 
 ### calc_mfi
 
-`calc_mfi(prices, period=14) -> np.ndarray`
+`calc_mfi(high, low, close, volume, period=14) -> np.ndarray`
 
 Money Flow Index
 
@@ -530,7 +526,7 @@ Rolling Minimum
 
 ### calc_natr
 
-`calc_natr(prices, period=14) -> np.ndarray`
+`calc_natr(high, low, close, period=14) -> np.ndarray`
 
 Normalized Average True Range
 
@@ -556,7 +552,7 @@ with the first volume.
 
 ### calc_pdi
 
-`calc_pdi(prices, period=14) -> np.ndarray`
+`calc_pdi(high, low, close, period=14) -> np.ndarray`
 
 Plus Directional Index
 
@@ -581,23 +577,6 @@ Price Percentage Oscillator
 
 **Outputs:**
 > ppo, pposignal, ppohist
-
----
-
-### calc_price
-
-`calc_price(prices, item: str | None=None) -> np.ndarray`
-
-Generic Price
-
-
-**Arguments:**
- - **item (str):**  price type, one of:
-   'open', 'high', 'low', 'close' (default),
-   'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
-   'med' or 'hl2'    — median price (high + low) / 2,
-   'typ' or 'hlc3'   — typical price (high + low + close) / 3,
-   'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
 
 ---
 
@@ -725,7 +704,7 @@ Relative Strength Index
 
 ### calc_sar
 
-`calc_sar(prices, afs=0.02, maxaf=0.2) -> np.ndarray`
+`calc_sar(high, low, afs=0.02, maxaf=0.2) -> np.ndarray`
 
 Parabolic Stop and Reverse
 
@@ -784,7 +763,7 @@ Limit value changes to threshold (in absolute value)
 
 ### calc_stoch
 
-`calc_stoch(prices, period=14, fastn=3, slown=3) -> tuple`
+`calc_stoch(high, low, close, period=14, fastn=3, slown=3) -> tuple`
 
 Stochastic Oscillator
 
@@ -830,20 +809,15 @@ Triple Exponential Moving Average
 
 ### calc_trange
 
-`calc_trange(prices, *, log_prices=False, percent=False) -> np.ndarray`
+`calc_trange(high, low, close) -> np.ndarray`
 
 True Range
-
-
-**Arguments:**
- - **log_prices (bool):**  whether to apply log to prices before calculation
- - **percent (bool):**  result as percentage of price
 
 ---
 
 ### calc_typprice
 
-`calc_typprice(prices) -> np.ndarray`
+`calc_typprice(high, low, close) -> np.ndarray`
 
 Typical Price
 
@@ -866,7 +840,7 @@ Flag for value crossing up & down levels
 
 ### calc_wclprice
 
-`calc_wclprice(prices) -> np.ndarray`
+`calc_wclprice(high, low, close) -> np.ndarray`
 
 Weighted Close Price
 

@@ -26,25 +26,27 @@ from mintalib.model.expression import (
     CLOSE as CLOSE,
     OHLC as OHLC,
     IntoExpr,
-    wrap_columns_expression,
-    wrap_prices_expression,
-    wrap_series_expression,
 )
 
+
+from mintalib.model.expression import (
+    wrap_columns_expression,
+    wrap_series_expression,
+)
 
 @wrap_series_expression(core.calc_abs)
 def ABS(*, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_adx)
+@wrap_columns_expression(core.calc_adx)
 def ADX(period: int = 14, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_alma)
 def ALMA(period: int = 9, offset: float = 0.85, sigma: float = 6.0, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_atr)
+@wrap_columns_expression(core.calc_atr)
 def ATR(period: int = 14, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_avgprice)
+@wrap_columns_expression(core.calc_avgprice)
 def AVGPRICE(*, open: IntoExpr = 'open', high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_bbands)
@@ -56,16 +58,16 @@ def BBP(period: int = 20, nbdev: float = 2.0, *, src: IntoExpr = 'close') -> pl.
 @wrap_series_expression(core.calc_bbw)
 def BBW(period: int = 20, nbdev: float = 2.0, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_bop)
+@wrap_columns_expression(core.calc_bop)
 def BOP(*, open: IntoExpr = 'open', high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_cci)
+@wrap_columns_expression(core.calc_cci)
 def CCI(period: int = 20, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_clag)
 def CLAG(period: int = 1, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_cmf)
+@wrap_columns_expression(core.calc_cmf)
 def CMF(period: int = 20, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close', volume: IntoExpr = 'volume') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_crossover)
@@ -80,10 +82,10 @@ def DEMA(period: int, *, src: IntoExpr = 'close') -> pl.Expr: ...
 @wrap_series_expression(core.calc_diff)
 def DIFF(period: int = 1, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_dmi)
+@wrap_columns_expression(core.calc_dmi)
 def DMI(period: int = 14, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_donchian)
+@wrap_columns_expression(core.calc_donchian)
 def DONCHIAN(period: int = 20, *, high: IntoExpr = 'high', low: IntoExpr = 'low') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_ema)
@@ -101,7 +103,7 @@ def HMA(period: int, *, src: IntoExpr = 'close') -> pl.Expr: ...
 @wrap_series_expression(core.calc_kama)
 def KAMA(period: int = 10, fastn: int = 2, slown: int = 30, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_keltner)
+@wrap_columns_expression(core.calc_keltner)
 def KELTNER(period: int = 20, nbatr: float = 2.0, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_ker)
@@ -131,7 +133,7 @@ def LROC(period: int = 1, *, src: IntoExpr = 'close') -> pl.Expr: ...
 @wrap_series_expression(core.calc_macd)
 def MACD(n1: int = 12, n2: int = 26, n3: int = 9, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_macdv)
+@wrap_columns_expression(core.calc_macdv)
 def MACDV(n1: int = 12, n2: int = 26, n3: int = 9, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_mad)
@@ -143,32 +145,29 @@ def MAV(period: int = 20, *, matype: str = 'sma', src: IntoExpr = 'close') -> pl
 @wrap_series_expression(core.calc_max)
 def MAX(period: int, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_mdi)
+@wrap_columns_expression(core.calc_mdi)
 def MDI(period: int = 14, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_medprice)
+@wrap_columns_expression(core.calc_medprice)
 def MEDPRICE(*, high: IntoExpr = 'high', low: IntoExpr = 'low') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_mfi)
+@wrap_columns_expression(core.calc_mfi)
 def MFI(period: int = 14, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close', volume: IntoExpr = 'volume') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_min)
 def MIN(period: int, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_natr)
+@wrap_columns_expression(core.calc_natr)
 def NATR(period: int = 14, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
 @wrap_columns_expression(core.calc_obv)
 def OBV(*, close: IntoExpr = 'close', volume: IntoExpr = 'volume') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_pdi)
+@wrap_columns_expression(core.calc_pdi)
 def PDI(period: int = 14, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_ppo)
 def PPO(n1: int = 12, n2: int = 26, n3: int = 9, *, src: IntoExpr = 'close') -> pl.Expr: ...
-
-@wrap_prices_expression(core.calc_price)
-def PRICE(item: str | None = None, *, open: IntoExpr = 'open', high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_quadreg)
 def QUADREG(period: int = 20, offset: int = 0, *, src: IntoExpr = 'close') -> pl.Expr: ...
@@ -197,7 +196,7 @@ def ROCP(period: int = 1, *, src: IntoExpr = 'close') -> pl.Expr: ...
 @wrap_series_expression(core.calc_rsi)
 def RSI(period: int = 14, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_sar)
+@wrap_columns_expression(core.calc_sar)
 def SAR(afs: float = 0.02, maxaf: float = 0.2, *, high: IntoExpr = 'high', low: IntoExpr = 'low') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_sign)
@@ -212,7 +211,7 @@ def STDEV(period: int = 20, *, src: IntoExpr = 'close') -> pl.Expr: ...
 @wrap_series_expression(core.calc_step)
 def STEP(threshold: float = 1.0, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_stoch)
+@wrap_columns_expression(core.calc_stoch)
 def STOCH(period: int = 14, fastn: int = 3, slown: int = 3, *, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_streak)
@@ -224,16 +223,16 @@ def SUM(period: int, *, src: IntoExpr = 'close') -> pl.Expr: ...
 @wrap_series_expression(core.calc_tema)
 def TEMA(period: int = 20, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_trange)
-def TRANGE(*, log_prices: bool = False, percent: bool = False, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
+@wrap_columns_expression(core.calc_trange)
+def TRANGE(*, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_typprice)
+@wrap_columns_expression(core.calc_typprice)
 def TYPPRICE(*, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_updown)
 def UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, src: IntoExpr = 'close') -> pl.Expr: ...
 
-@wrap_prices_expression(core.calc_wclprice)
+@wrap_columns_expression(core.calc_wclprice)
 def WCLPRICE(*, high: IntoExpr = 'high', low: IntoExpr = 'low', close: IntoExpr = 'close') -> pl.Expr: ...
 
 @wrap_series_expression(core.calc_wma)

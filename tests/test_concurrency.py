@@ -41,15 +41,18 @@ def test_core_concurrent(prices):
     for name in names:
         func = getattr(core, name)
         kwds = sample_params(func)
-        data = prices["close"] if first_param(func) == "series" else prices
-        jobs.append((name, func, data, kwds))
+        if first_param(func) == "series":
+            args = (prices["close"],)
+        else:
+            args = tuple(prices[input_name] for input_name in func.metadata["inputs"])
+        jobs.append((name, func, args, kwds))
 
     # single-threaded reference
-    reference = {name: func(data, **kwds) for name, func, data, kwds in jobs}
+    reference = {name: func(*args, **kwds) for name, func, args, kwds in jobs}
 
     def run(job):
-        name, func, data, kwds = job
-        return name, func(data, **kwds)
+        name, func, args, kwds = job
+        return name, func(*args, **kwds)
 
     # hammer every kernel concurrently, many rounds, sharing input buffers
     rounds = [job for _ in range(50) for job in jobs]

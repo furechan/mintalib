@@ -5,15 +5,14 @@ def calc_clag(series, long period=1):
     """
     Confirmation Lag
 
-    Changes value only after a confirmation period 
+    Changes value only after a confirmation period
 
     Args:
         period (int): time period, default 1
     """
 
     if period <= 0:
-        raise ValueError(f"Invalid period value {period}")
-
+        raise ValueError("period must be greater than zero")
 
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
@@ -44,6 +43,4 @@ def calc_clag(series, long period=1):
             output[i] = clag
 
     return result
-
-
 

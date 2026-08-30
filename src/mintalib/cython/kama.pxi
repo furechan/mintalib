@@ -3,15 +3,18 @@
 def calc_ker(series, int period=10):
     """
     Kaufman Efficiency Ratio
-    
+
     Args:
         period (int): time period, default 10
     """
 
+    if period <= 0:
+        raise ValueError("period must be greater than zero")
+
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
     cdef double x = NAN, px = NAN, dx = NAN
@@ -57,24 +60,30 @@ def calc_ker(series, int period=10):
 
     return result
 
-
 @add_metadata(same_scale=True)
 def calc_kama(series, int period=10, int fastn=2, int slown=30):
     """
     Kaufman Adaptive Moving Average
-    
+
     Args:
         period (int): time period for efficiency ratio, default 10
         fastn (int): time period for fast moving average, default, 2
         slown (int): time period for slow moving average, default 30
     """
 
+    if period <= 0:
+        raise ValueError("period must be greater than zero")
+    if fastn <= 0:
+        raise ValueError("fastn must be greater than zero")
+    if slown <= 0:
+        raise ValueError("slown must be greater than zero")
+
     cdef const double[:] xs = np.asarray(series, float)
     cdef const double[:] ers = calc_ker(xs, period)
 
     cdef long size = xs.size
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
     cdef double fastf = 2.0 / (fastn + 1.0)
@@ -104,4 +113,3 @@ def calc_kama(series, int period=10, int fastn=2, int slown=30):
             output[i] = kama
 
     return result
-

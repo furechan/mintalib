@@ -1,6 +1,5 @@
 """ Shift function """
 
-
 @add_metadata(same_scale=True)
 def calc_shift(series, long period):
     """
@@ -13,18 +12,17 @@ def calc_shift(series, long period):
     cdef const double[:] xs = np.asarray(series, float)
     cdef long size = xs.size
 
-    cdef object result = np.full(size, np.nan)
+    cdef object result = np.full(size, NAN)
     cdef double[:] output = result
 
-    cdef long i=0, start = period, stop = size
+    cdef long i = 0
 
-    if period < 0:
-        start, stop = 0, size + period
+    if period <= 0:
+        raise ValueError("period must be greater than zero")
 
     with nogil:
-        for i in range(start, stop):
+        for i in range(period, size):
             output[i] = xs[i - period]
 
     return result
-
 

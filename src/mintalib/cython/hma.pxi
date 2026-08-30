@@ -1,13 +1,12 @@
 """ Hull Moving Average """
 
-
 @add_metadata(same_scale=True)
 def calc_hma(series, long period):
     """
     Hull Moving Average
 
     Args:
-        period (int): time period, required    
+        period (int): time period, required
     """
 
     if period <= 0:
@@ -15,9 +14,9 @@ def calc_hma(series, long period):
     # Graceful degradation: a one-period moving average is the input itself.
     if period == 1:
         return np.asarray(series, float).copy()
-    m1 = calc_wma(series, round(period/2))
+    m1 = calc_wma(series, round(period / 2))
     m2 = calc_wma(series, period)
-    m3 = (2 *  m1) - m2
+    m3 = 2 * m1 - m2
 
     result = calc_wma(m3, round(math.sqrt(period)))
 

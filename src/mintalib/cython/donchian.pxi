@@ -7,7 +7,7 @@ donchian_result = namedtuple('donchian_result', 'upperband, middleband, lowerban
     output_names=('upperband', 'middleband', 'lowerband'),
     inputs=('high', 'low'),
 )
-def calc_donchian(prices, long period=20):
+def calc_donchian(high, low, long period=20):
     """
     Donchian Channel
 
@@ -15,8 +15,8 @@ def calc_donchian(prices, long period=20):
         period (int): time period, default 20
     """
 
-    upper = calc_max(prices['high'], period)
-    lower = calc_min(prices['low'], period)
+    upper = calc_max(high, period)
+    lower = calc_min(low, period)
     middle = (upper + lower) / 2
 
     result = donchian_result(upper, middle, lower)

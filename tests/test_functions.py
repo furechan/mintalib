@@ -42,8 +42,6 @@ def test_function(name):
     if ftype == "series":
         data = data["close"]
         result = func(data, **kwds)
-    elif ftype == "prices":
-        result = func(data, **kwds)
     else:
         result = func(*(data[column] for column in inputs), **kwds)
     assert result is not None
@@ -67,16 +65,19 @@ def test_prices_function_accepts_columns(name):
 
     assert tuple(inspect.signature(func).parameters)[: len(inputs)] == inputs
 
-    if first_param(calc_func) == "prices":
-        expected = call_untyped(func, prices, **sample_params(calc_func))
-    else:
-        expected = calc_func(
-            *(prices[column] for column in inputs),
-            **sample_params(calc_func),
-        )
+    expected = calc_func(
+        *(prices[column] for column in inputs),
+        **sample_params(calc_func),
+    )
     result = func(*(prices[column] for column in inputs), **sample_params(calc_func))
 
-    if hasattr(expected, "columns"):
+    if hasattr(expected, "_fields"):
+        np.testing.assert_allclose(
+            result.to_numpy(),
+            np.column_stack(expected),
+            equal_nan=True,
+        )
+    elif hasattr(expected, "columns"):
         assert result.equals(expected)
     else:
         assert np.allclose(result, expected, equal_nan=True)
@@ -107,21 +108,30 @@ def test_obv_accepts_numpy_columns_and_keywords():
 def test_prices_function_accepts_keyword_columns():
     prices = sample_prices()
 
-    expected = call_untyped(functions.atr, prices)
+    expected = core.calc_atr(
+        prices["high"],
+        prices["low"],
+        prices["close"],
+    )
     result = functions.atr(
         high=prices["high"],
         low=prices["low"],
         close=prices["close"],
     )
 
-    assert result.equals(expected)
+    np.testing.assert_allclose(result, expected, equal_nan=True)
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
 def test_prices_function_requires_keyword_parameters():
     prices = sample_prices()
 
-    expected = call_untyped(functions.atr, prices, period=20)
+    expected = core.calc_atr(
+        prices["high"],
+        prices["low"],
+        prices["close"],
+        period=20,
+    )
     result = functions.atr(
         prices["high"],
         prices["low"],
@@ -129,10 +139,7 @@ def test_prices_function_requires_keyword_parameters():
         period=20,
     )
 
-    assert result.equals(expected)
-
-    with pytest.raises(TypeError, match="too many positional arguments"):
-        call_untyped(functions.atr, prices, 20)
+    np.testing.assert_allclose(result, expected, equal_nan=True)
 
     with pytest.raises(TypeError, match="too many positional arguments"):
         call_untyped(
@@ -202,13 +209,3 @@ def test_series_function_accepts_series():
 
     assert functions.sma(prices["close"], 20) is not None
     assert functions.sma(np.asarray(prices["close"]), 20) is not None
-
-
-@pytest.mark.skipif(not has_pandas, reason="requires pandas")
-def test_price_item_kwarg():
-    import numpy as np
-
-    prices = sample_prices()
-
-    result = call_untyped(functions.price, prices, item="high")
-    assert np.allclose(result, prices["high"], equal_nan=True)

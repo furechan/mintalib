@@ -11,6 +11,8 @@ Usage:
 import argparse
 import timeit
 
+import numpy as np
+
 try:
     import talib
 except ImportError:
@@ -26,36 +28,47 @@ class Prices(dict):
         super().__init__(open=open_, high=high, low=low, close=close, volume=volume)
 
 
+def talib_zlema(ta, series, period):
+    """Compose ZLEMA from TA-Lib EMA and the standard de-lagged input."""
+
+    lag = (period - 1) // 2
+    data = np.empty_like(series)
+    data[:lag] = np.nan
+    data[lag:] = 2 * series[lag:] - series[:-lag]
+    return ta.EMA(data, period)
+
+
 BENCHMARKS = [
-    ("SMA(20)",   lambda ta, c, _: ta.SMA(c, 20),              lambda c, _: core.calc_sma(c, 20)),
-    ("EMA(20)",   lambda ta, c, _: ta.EMA(c, 20),              lambda c, _: core.calc_ema(c, 20)),
-    ("WMA(20)",   lambda ta, c, _: ta.WMA(c, 20),              lambda c, _: core.calc_wma(c, 20)),
+    ("ADX(14)",   lambda ta, _, p: ta.ADX(p['high'], p['low'], p['close'], 14),
+                                                                lambda _, p: core.calc_adx(p['high'], p['low'], p['close'], 14)),
+    ("ATR(14)",   lambda ta, _, p: ta.ATR(p['high'], p['low'], p['close'], 14),
+                                                                lambda _, p: core.calc_atr(p['high'], p['low'], p['close'], 14)),
+    ("BOP()",     lambda ta, _, p: ta.BOP(p['open'], p['high'], p['low'], p['close']),
+                                                                lambda _, p: core.calc_bop(p['open'], p['high'], p['low'], p['close'])),
+    ("CCI(20)",   lambda ta, _, p: ta.CCI(p['high'], p['low'], p['close'], 20),
+                                                                lambda _, p: core.calc_cci(p['high'], p['low'], p['close'], 20)),
     ("DEMA(20)",  lambda ta, c, _: ta.DEMA(c, 20),             lambda c, _: core.calc_dema(c, 20)),
-    ("TEMA(20)",  lambda ta, c, _: ta.TEMA(c, 20),             lambda c, _: core.calc_tema(c, 20)),
-    ("RSI(14)",   lambda ta, c, _: ta.RSI(c, 14),              lambda c, _: core.calc_rsi(c, 14)),
-    ("ROC(10)",   lambda ta, c, _: ta.ROC(c, 10),              lambda c, _: core.calc_roc(c, 10)),
-    ("STDEV(20)", lambda ta, c, _: ta.STDDEV(c, 20),           lambda c, _: core.calc_stdev(c, 20)),
+    ("EMA(20)",   lambda ta, c, _: ta.EMA(c, 20),              lambda c, _: core.calc_ema(c, 20)),
+    ("LINREG(20)", lambda ta, c, _: ta.LINEARREG(c, 20),       lambda c, _: core.calc_linreg(c, 20)),
     ("MAD(14)",   lambda ta, c, _: ta.AVGDEV(c, 14),           lambda c, _: core.calc_mad(c, 14)),
     ("MAX(20)",   lambda ta, c, _: ta.MAX(c, 20),              lambda c, _: core.calc_max(c, 20)),
-    ("MIN(20)",   lambda ta, c, _: ta.MIN(c, 20),              lambda c, _: core.calc_min(c, 20)),
-    ("SUM(20)",   lambda ta, c, _: ta.SUM(c, 20),              lambda c, _: core.calc_sum(c, 20)),
-    ("ATR(14)",   lambda ta, _, p: ta.ATR(p['high'], p['low'], p['close'], 14),
-                                                                lambda _, p: core.calc_atr(p, 14)),
-    ("CCI(20)",   lambda ta, _, p: ta.CCI(p['high'], p['low'], p['close'], 20),
-                                                                lambda _, p: core.calc_cci(p, 20)),
-    ("MFI(14)",   lambda ta, _, p: ta.MFI(p['high'], p['low'], p['close'], p['volume'], 14),
-                                                                lambda _, p: core.calc_mfi(p, 14)),
-    ("BOP()",     lambda ta, _, p: ta.BOP(p['open'], p['high'], p['low'], p['close']),
-                                                                lambda _, p: core.calc_bop(p)),
-    ("STOCH(14,3,3)", lambda ta, _, p: ta.STOCH(p['high'], p['low'], p['close'], 14, 3, 0, 3, 0),
-                                                                lambda _, p: core.calc_stoch(p, 14, 3, 3)),
-    ("ADX(14)",   lambda ta, _, p: ta.ADX(p['high'], p['low'], p['close'], 14),
-                                                                lambda _, p: core.calc_adx(p, 14)),
-    ("PDI(14)",   lambda ta, _, p: ta.PLUS_DI(p['high'], p['low'], p['close'], 14),
-                                                                lambda _, p: core.calc_pdi(p, 14)),
     ("MDI(14)",   lambda ta, _, p: ta.MINUS_DI(p['high'], p['low'], p['close'], 14),
-                                                                lambda _, p: core.calc_mdi(p, 14)),
-    ("LINREG(20)", lambda ta, c, _: ta.LINEARREG(c, 20),       lambda c, _: core.calc_linreg(c, 20)),
+                                                                lambda _, p: core.calc_mdi(p['high'], p['low'], p['close'], 14)),
+    ("MFI(14)",   lambda ta, _, p: ta.MFI(p['high'], p['low'], p['close'], p['volume'], 14),
+                                                                lambda _, p: core.calc_mfi(p['high'], p['low'], p['close'], p['volume'], 14)),
+    ("MIN(20)",   lambda ta, c, _: ta.MIN(c, 20),              lambda c, _: core.calc_min(c, 20)),
+    ("PDI(14)",   lambda ta, _, p: ta.PLUS_DI(p['high'], p['low'], p['close'], 14),
+                                                                lambda _, p: core.calc_pdi(p['high'], p['low'], p['close'], 14)),
+    ("ROC(10)",   lambda ta, c, _: ta.ROC(c, 10),              lambda c, _: core.calc_roc(c, 10)),
+    ("RSI(14)",   lambda ta, c, _: ta.RSI(c, 14),              lambda c, _: core.calc_rsi(c, 14)),
+    ("SMA(20)",   lambda ta, c, _: ta.SMA(c, 20),              lambda c, _: core.calc_sma(c, 20)),
+    ("STDEV(20)", lambda ta, c, _: ta.STDDEV(c, 20),           lambda c, _: core.calc_stdev(c, 20)),
+    ("STOCH(14,3,3)", lambda ta, _, p: ta.STOCH(p['high'], p['low'], p['close'], 14, 3, 0, 3, 0),
+                                                                lambda _, p: core.calc_stoch(p['high'], p['low'], p['close'], 14, 3, 3)),
+    ("SUM(20)",   lambda ta, c, _: ta.SUM(c, 20),              lambda c, _: core.calc_sum(c, 20)),
+    ("TEMA(20)",  lambda ta, c, _: ta.TEMA(c, 20),             lambda c, _: core.calc_tema(c, 20)),
+    ("WMA(20)",   lambda ta, c, _: ta.WMA(c, 20),              lambda c, _: core.calc_wma(c, 20)),
+    ("ZLEMA(20)", lambda ta, c, _: talib_zlema(ta, c, 20),    lambda c, _: core.calc_zlema(c, 20)),
 ]
 
 

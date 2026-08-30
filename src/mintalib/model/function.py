@@ -10,40 +10,6 @@ from typing import ParamSpec, Callable, Any
 P = ParamSpec("P")
 
 
-def _get_prices(data):
-    """Get prices data frame, raises on error
-    
-    Accepts a pandas or polars data frame, or a structured numpy ndarray.
-    """
-
-    if isinstance(data, np.ndarray):
-        if data.dtype.names is not None:
-            return data
-        else:
-            raise TypeError(f"Ndarray must have named fields to be used as data frame, got {data.dtype}!")
-   
-    elif hasattr(data, 'columns'):
-        return data
-
-    elif hasattr(data, 'dtype') and data.dtype.__class__.__name__ == 'Struct':
-        return data.struct
-
-    raise TypeError(f"Expected a prices data frame, got {type(data).__name__}!")
-
-
-def _is_prices(data):
-    """Return whether data is a supported prices container."""
-
-    if isinstance(data, np.ndarray):
-        return data.dtype.names is not None
-
-    if hasattr(data, "columns"):
-        return True
-
-    return hasattr(data, "dtype") and data.dtype.__class__.__name__ == "Struct"
-
-
-
 def _get_series(data):
     """Get series, raises on error
 
@@ -130,43 +96,6 @@ def wrap_series_function(calc_func) -> Callable[[Callable[P, Any]], Callable[P, 
             source = _get_series(arguments.pop("series"))
             result = calc_func(source, **arguments)
             return _wrap_result(result, source)
-
-        return _update_wrapper(wrapper, func, calc_func, signature)
-
-    return decorator
-
-
-def wrap_prices_function(calc_func) -> Callable[[Callable[P, Any]], Callable[P, Any]]:
-    first_param = next(iter(inspect.signature(calc_func).parameters))
-    if first_param != "prices":
-        raise ValueError(f"Expected a prices kernel, got {calc_func.__name__!r}")
-
-    inputs = _get_inputs(calc_func)
-
-    def decorator(func):
-        signature = inspect.signature(func)
-
-        def wrapper(*args, **kwargs):
-            if args:
-                srcdata, *rest = args
-                if _is_prices(srcdata):
-                    if rest:
-                        raise TypeError("too many positional arguments")
-                    if "prices" in kwargs:
-                        raise TypeError("multiple values for argument 'prices'")
-                    data = _get_prices(srcdata)
-                    result = calc_func(data, **kwargs)
-                    return _wrap_result(result, srcdata)
-
-            bound = signature.bind(*args, **kwargs)
-            bound.apply_defaults()
-            arguments = dict(bound.arguments)
-            columns = {
-                name: _get_series(arguments.pop(name))
-                for name in inputs
-            }
-            result = calc_func(columns, **arguments)
-            return _wrap_result(result, _get_source(columns))
 
         return _update_wrapper(wrapper, func, calc_func, signature)
 

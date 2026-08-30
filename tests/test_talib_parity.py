@@ -71,9 +71,14 @@ def test_roc(prices):
     check(talib.ROC(c, 10), core.calc_roc(c, 10))
 
 
-def test_roc_signed_values_and_zero_denominator():
+def test_roc_signed_values_and_zero_denominator_difference():
     c = np.array([-100.0, -110.0, -90.0, 0.0, 10.0])
-    np.testing.assert_allclose(talib.ROC(c, 1), core.calc_roc(c, 1), equal_nan=True)
+    expected = talib.ROC(c, 1)
+    result = core.calc_roc(c, 1)
+
+    np.testing.assert_allclose(expected[:-1], result[:-1], equal_nan=True)
+    assert expected[-1] == 0.0
+    assert np.isnan(result[-1])
 
 
 def test_stdev(prices):
@@ -97,12 +102,12 @@ def test_mad(prices):
 
 def test_cci(prices, hlcv):
     h, lo, c, _ = hlcv
-    check(talib.CCI(h, lo, c, 20), core.calc_cci(prices, 20))
+    check(talib.CCI(h, lo, c, 20), core.calc_cci(h, lo, c, 20))
 
 
 def test_mfi(prices, hlcv):
     h, lo, c, v = hlcv
-    check(talib.MFI(h, lo, c, v, 14), core.calc_mfi(prices, 14))
+    check(talib.MFI(h, lo, c, v, 14), core.calc_mfi(h, lo, c, v, 14))
 
 
 def test_bop(prices):
@@ -110,7 +115,7 @@ def test_bop(prices):
     h = prices.high.values.astype(float)
     lo = prices.low.values.astype(float)
     c = prices.close.values.astype(float)
-    check(talib.BOP(o, h, lo, c), core.calc_bop(prices))
+    check(talib.BOP(o, h, lo, c), core.calc_bop(o, h, lo, c))
 
 
 def test_obv(prices):
@@ -136,33 +141,33 @@ def test_sum(prices):
 
 def test_typprice(prices, hlcv):
     h, lo, c, _ = hlcv
-    check(talib.TYPPRICE(h, lo, c), core.calc_typprice(prices))
+    check(talib.TYPPRICE(h, lo, c), core.calc_typprice(h, lo, c))
 
 
 def test_wclprice(prices, hlcv):
     h, lo, c, _ = hlcv
-    check(talib.WCLPRICE(h, lo, c), core.calc_wclprice(prices))
+    check(talib.WCLPRICE(h, lo, c), core.calc_wclprice(h, lo, c))
 
 
 def test_avgprice(prices, hlcv):
     h, lo, c, _ = hlcv
     o = prices.open.values.astype(float)
-    check(talib.AVGPRICE(o, h, lo, c), core.calc_avgprice(prices))
+    check(talib.AVGPRICE(o, h, lo, c), core.calc_avgprice(o, h, lo, c))
 
 
 def test_trange(prices, hlcv):
     h, lo, c, _ = hlcv
-    check(talib.TRANGE(h, lo, c), core.calc_trange(prices))
+    check(talib.TRANGE(h, lo, c), core.calc_trange(h, lo, c))
 
 
 def test_atr(prices, hlcv):
     h, lo, c, _ = hlcv
-    check(talib.ATR(h, lo, c, 14)[200:], core.calc_atr(prices, 14)[200:])
+    check(talib.ATR(h, lo, c, 14)[200:], core.calc_atr(h, lo, c, 14)[200:])
 
 
 def test_natr(prices, hlcv):
     h, lo, c, _ = hlcv
-    check(talib.NATR(h, lo, c, 14)[200:], core.calc_natr(prices, 14)[200:])
+    check(talib.NATR(h, lo, c, 14)[200:], core.calc_natr(h, lo, c, 14)[200:])
 
 
 def test_linreg_slope(prices):

@@ -12,8 +12,6 @@ from enum import IntEnum
 from collections import namedtuple
 from types import MappingProxyType
 
-
-
 def check_size(*args):
     """check all series have the same size and return the size"""
 
@@ -24,8 +22,6 @@ def check_size(*args):
         if s.size != size:
                raise ValueError("Different sizes!")
     return size
-
-
 
 def add_metadata(
     *,

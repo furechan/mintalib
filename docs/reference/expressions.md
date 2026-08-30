@@ -355,7 +355,6 @@ Equivalent to the difference of log values
 
 **Arguments:**
  - **period (int):**  time period, default 1
-   when negative the calculation is shifted back
 
 ### MACD
 
@@ -499,21 +498,6 @@ Price Percentage Oscillator
 
 **Outputs:**
 > ppo, pposignal, ppohist
-
-### PRICE
-
-`PRICE(item: str | None = None, *, open: polars.Expr | str = 'open', high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
-
-Generic Price
-
-
-**Arguments:**
- - **item (str):**  price type, one of:
-   'open', 'high', 'low', 'close' (default),
-   'avg' or 'ohlc4'  — average price (open + high + low + close) / 4,
-   'med' or 'hl2'    — median price (high + low) / 2,
-   'typ' or 'hlc3'   — typical price (high + low + close) / 3,
-   'wcl' or 'hlcc4'  — weighted close (high + low + 2 * close) / 4
 
 ### QUADREG
 
@@ -708,14 +692,9 @@ Triple Exponential Moving Average
 
 ### TRANGE
 
-`TRANGE(*, log_prices: bool = False, percent: bool = False, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
+`TRANGE(*, high: polars.Expr | str = 'high', low: polars.Expr | str = 'low', close: polars.Expr | str = 'close') -> polars.Expr`
 
 True Range
-
-
-**Arguments:**
- - **log_prices (bool):**  whether to apply log to prices before calculation
- - **percent (bool):**  result as percentage of price
 
 ### TYPPRICE
 

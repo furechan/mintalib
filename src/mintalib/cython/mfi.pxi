@@ -1,8 +1,7 @@
 """ Money Flow Index """
 
-
 @add_metadata(inputs=('high', 'low', 'close', 'volume'))
-def calc_mfi(prices, long period=14):
+def calc_mfi(high, low, close, volume, long period=14):
     """
     Money Flow Index
 
@@ -13,13 +12,15 @@ def calc_mfi(prices, long period=14):
     if period <= 0:
         raise ValueError("period must be greater than zero")
 
-    high = np.asarray(prices['high'], float)
-    low = np.asarray(prices['low'], float)
-    close = np.asarray(prices['close'], float)
-    volume = np.asarray(prices['volume'], float)
+    high = np.asarray(high, float)
+    low = np.asarray(low, float)
+    close = np.asarray(close, float)
+    volume = np.asarray(volume, float)
+
+    cdef long input_size = check_size(high, low, close, volume)
 
     typ = (high + low + close) / 3.0
-    flow_arr = typ * volume * np.sign(np.diff(typ, prepend=np.nan))
+    flow_arr = typ * volume * np.sign(np.diff(typ, prepend=NAN))
 
     cdef const double[:] flow = flow_arr
     cdef long size = flow.shape[0]

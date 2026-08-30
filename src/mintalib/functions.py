@@ -15,27 +15,25 @@ import mintalib.functions as ta
 # Do not edit! This file was generated.
 
 from mintalib import core
+
 from mintalib.model.function import (
     wrap_columns_function,
-    wrap_prices_function,
     wrap_series_function,
 )
-
-
 
 @wrap_series_function(core.calc_abs)
 def abs(series): ...
 
-@wrap_prices_function(core.calc_adx)
+@wrap_columns_function(core.calc_adx)
 def adx(high, low, close, *, period: int = 14): ...
 
 @wrap_series_function(core.calc_alma)
 def alma(series, period: int = 9, offset: float = 0.85, sigma: float = 6.0): ...
 
-@wrap_prices_function(core.calc_atr)
+@wrap_columns_function(core.calc_atr)
 def atr(high, low, close, *, period: int = 14): ...
 
-@wrap_prices_function(core.calc_avgprice)
+@wrap_columns_function(core.calc_avgprice)
 def avgprice(open, high, low, close): ...
 
 @wrap_series_function(core.calc_bbands)
@@ -47,16 +45,16 @@ def bbp(series, period: int = 20, nbdev: float = 2.0): ...
 @wrap_series_function(core.calc_bbw)
 def bbw(series, period: int = 20, nbdev: float = 2.0): ...
 
-@wrap_prices_function(core.calc_bop)
+@wrap_columns_function(core.calc_bop)
 def bop(open, high, low, close): ...
 
-@wrap_prices_function(core.calc_cci)
+@wrap_columns_function(core.calc_cci)
 def cci(high, low, close, *, period: int = 20): ...
 
 @wrap_series_function(core.calc_clag)
 def clag(series, period: int = 1): ...
 
-@wrap_prices_function(core.calc_cmf)
+@wrap_columns_function(core.calc_cmf)
 def cmf(high, low, close, volume, *, period: int = 20): ...
 
 @wrap_series_function(core.calc_crossover)
@@ -71,10 +69,10 @@ def dema(series, period: int): ...
 @wrap_series_function(core.calc_diff)
 def diff(series, period: int = 1): ...
 
-@wrap_prices_function(core.calc_dmi)
+@wrap_columns_function(core.calc_dmi)
 def dmi(high, low, close, *, period: int = 14): ...
 
-@wrap_prices_function(core.calc_donchian)
+@wrap_columns_function(core.calc_donchian)
 def donchian(high, low, *, period: int = 20): ...
 
 @wrap_series_function(core.calc_ema)
@@ -92,7 +90,7 @@ def hma(series, period: int): ...
 @wrap_series_function(core.calc_kama)
 def kama(series, period: int = 10, fastn: int = 2, slown: int = 30): ...
 
-@wrap_prices_function(core.calc_keltner)
+@wrap_columns_function(core.calc_keltner)
 def keltner(high, low, close, *, period: int = 20, nbatr: float = 2.0): ...
 
 @wrap_series_function(core.calc_ker)
@@ -122,7 +120,7 @@ def lroc(series, period: int = 1): ...
 @wrap_series_function(core.calc_macd)
 def macd(series, n1: int = 12, n2: int = 26, n3: int = 9): ...
 
-@wrap_prices_function(core.calc_macdv)
+@wrap_columns_function(core.calc_macdv)
 def macdv(high, low, close, *, n1: int = 12, n2: int = 26, n3: int = 9): ...
 
 @wrap_series_function(core.calc_mad)
@@ -134,32 +132,29 @@ def mav(series, period: int = 20, *, matype: str = 'sma'): ...
 @wrap_series_function(core.calc_max)
 def max(series, period: int): ...
 
-@wrap_prices_function(core.calc_mdi)
+@wrap_columns_function(core.calc_mdi)
 def mdi(high, low, close, *, period: int = 14): ...
 
-@wrap_prices_function(core.calc_medprice)
+@wrap_columns_function(core.calc_medprice)
 def medprice(high, low): ...
 
-@wrap_prices_function(core.calc_mfi)
+@wrap_columns_function(core.calc_mfi)
 def mfi(high, low, close, volume, *, period: int = 14): ...
 
 @wrap_series_function(core.calc_min)
 def min(series, period: int): ...
 
-@wrap_prices_function(core.calc_natr)
+@wrap_columns_function(core.calc_natr)
 def natr(high, low, close, *, period: int = 14): ...
 
 @wrap_columns_function(core.calc_obv)
 def obv(close, volume): ...
 
-@wrap_prices_function(core.calc_pdi)
+@wrap_columns_function(core.calc_pdi)
 def pdi(high, low, close, *, period: int = 14): ...
 
 @wrap_series_function(core.calc_ppo)
 def ppo(series, n1: int = 12, n2: int = 26, n3: int = 9): ...
-
-@wrap_prices_function(core.calc_price)
-def price(open, high, low, close, *, item: str | None = None): ...
 
 @wrap_series_function(core.calc_quadreg)
 def quadreg(series, period: int = 20, offset: int = 0): ...
@@ -188,7 +183,7 @@ def rocp(series, period: int = 1): ...
 @wrap_series_function(core.calc_rsi)
 def rsi(series, period: int = 14): ...
 
-@wrap_prices_function(core.calc_sar)
+@wrap_columns_function(core.calc_sar)
 def sar(high, low, *, afs: float = 0.02, maxaf: float = 0.2): ...
 
 @wrap_series_function(core.calc_sign)
@@ -203,7 +198,7 @@ def stdev(series, period: int = 20): ...
 @wrap_series_function(core.calc_step)
 def step(series, threshold: float = 1.0): ...
 
-@wrap_prices_function(core.calc_stoch)
+@wrap_columns_function(core.calc_stoch)
 def stoch(high, low, close, *, period: int = 14, fastn: int = 3, slown: int = 3): ...
 
 @wrap_series_function(core.calc_streak)
@@ -215,16 +210,16 @@ def sum(series, period: int): ...
 @wrap_series_function(core.calc_tema)
 def tema(series, period: int = 20): ...
 
-@wrap_prices_function(core.calc_trange)
-def trange(high, low, close, *, log_prices: bool = False, percent: bool = False): ...
+@wrap_columns_function(core.calc_trange)
+def trange(high, low, close): ...
 
-@wrap_prices_function(core.calc_typprice)
+@wrap_columns_function(core.calc_typprice)
 def typprice(high, low, close): ...
 
 @wrap_series_function(core.calc_updown)
 def updown(series, up_level: float = 0.0, down_level: float = 0.0): ...
 
-@wrap_prices_function(core.calc_wclprice)
+@wrap_columns_function(core.calc_wclprice)
 def wclprice(high, low, close): ...
 
 @wrap_series_function(core.calc_wma)

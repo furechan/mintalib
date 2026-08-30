@@ -2,13 +2,15 @@
 
 dmi_result = namedtuple('dmi_result', 'adx, pdi, mdi')
 
-
-cdef tuple _calc_di(prices, long period, bint want_pdi, bint want_mdi):
+cdef tuple _calc_di(high, low, close, long period, bint want_pdi, bint want_mdi):
     """Calculate one or both directional indexes without calculating ADX."""
-    high = np.asarray(prices['high'], float)
-    low = np.asarray(prices['low'], float)
+    high = np.asarray(high, float)
+    low = np.asarray(low, float)
+    close = np.asarray(close, float)
 
-    atr = calc_atr(prices, period)
+    cdef long size = check_size(high, low, close)
+
+    atr = calc_atr(high, low, close, period)
     hm = calc_diff(high, 1)
     lm = -calc_diff(low, 1)
 
@@ -25,12 +27,11 @@ cdef tuple _calc_di(prices, long period, bint want_pdi, bint want_mdi):
 
     return pdi, mdi
 
-
 @add_metadata(
     output_names=('adx', 'pdi', 'mdi'),
     inputs=('high', 'low', 'close'),
 )
-def calc_dmi(prices, long period=14):
+def calc_dmi(high, low, close, long period=14):
     """
     Directional Movement Indicator
 
@@ -38,7 +39,7 @@ def calc_dmi(prices, long period=14):
         period (int): time period, default 14
     """
 
-    pdi, mdi = _calc_di(prices, period, True, True)
+    pdi, mdi = _calc_di(high, low, close, period, True, True)
 
     with np.errstate(divide='ignore'):
         dx = 100 * np.abs(pdi - mdi) / (pdi + mdi)
@@ -49,9 +50,8 @@ def calc_dmi(prices, long period=14):
 
     return result
 
-
 @add_metadata(inputs=('high', 'low', 'close'))
-def calc_adx(prices, long period=14):
+def calc_adx(high, low, close, long period=14):
     """
     Average Directional Index
 
@@ -59,16 +59,15 @@ def calc_adx(prices, long period=14):
         period (int): time period, default 14
     """
 
-    pdi, mdi = _calc_di(prices, period, True, True)
+    pdi, mdi = _calc_di(high, low, close, period, True, True)
 
     with np.errstate(divide='ignore'):
         dx = 100 * np.abs(pdi - mdi) / (pdi + mdi)
 
     return calc_rma(dx, period)
 
-
 @add_metadata(inputs=('high', 'low', 'close'))
-def calc_pdi(prices, long period=14):
+def calc_pdi(high, low, close, long period=14):
     """
     Plus Directional Index
 
@@ -76,12 +75,11 @@ def calc_pdi(prices, long period=14):
         period (int): time period, default 14
     """
 
-    pdi, _ = _calc_di(prices, period, True, False)
+    pdi, _ = _calc_di(high, low, close, period, True, False)
     return pdi
 
-
 @add_metadata(inputs=('high', 'low', 'close'))
-def calc_mdi(prices, long period=14):
+def calc_mdi(high, low, close, long period=14):
     """
     Minus Directional Index
 
@@ -89,5 +87,5 @@ def calc_mdi(prices, long period=14):
         period (int): time period, default 14
     """
 
-    _, mdi = _calc_di(prices, period, False, True)
+    _, mdi = _calc_di(high, low, close, period, False, True)
     return mdi

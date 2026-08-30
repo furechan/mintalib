@@ -38,9 +38,6 @@ from mintalib.model.expression import (
     CLOSE as CLOSE,
     OHLC as OHLC,
     IntoExpr,
-    wrap_columns_expression,
-    wrap_prices_expression,
-    wrap_series_expression,
 )
 
 
@@ -50,6 +47,13 @@ from mintalib.model.expression import (
 class Symbol(str):
     def __repr__(self):
         return self
+
+
+def wrapper_name(calc_func):
+    first_param = next(iter(inspect.signature(calc_func).parameters))
+    if first_param == "series":
+        return "wrap_series_expression"
+    return "wrap_columns_expression"
 
 
 def make_signature(calc_func):
@@ -66,7 +70,7 @@ def make_signature(calc_func):
 
     new_params = []
     for param in params:
-        if param.name in ("prices", "series") or param.name in inputs:
+        if param.name == "series" or param.name in inputs:
             continue
         param = annotate_parameter(param)
         new_params.append(param)
@@ -98,13 +102,7 @@ def make_expression(calc_func):
     cname = f"core.{calc_func.__name__}"
     fname = calc_func.__name__.removeprefix("calc_").upper()
     signature = make_signature(calc_func)
-    first_param = next(iter(inspect.signature(calc_func).parameters))
-    if first_param == "series":
-        decorator = "wrap_series_expression"
-    elif first_param == "prices":
-        decorator = "wrap_prices_expression"
-    else:
-        decorator = "wrap_columns_expression"
+    decorator = wrapper_name(calc_func)
     buffer = f"@{decorator}({cname})\n"
     buffer += f"def {fname}{signature}: ...\n"
     return buffer
@@ -118,10 +116,14 @@ def make_expressions(cnames=None):
     if cnames is None:
         cnames = core_functions()
 
-    output = PRELUDE
+    funcs = [getattr(core, cname) for cname in cnames]
+    wrappers = sorted({wrapper_name(func) for func in funcs})
+    imports = "from mintalib.model.expression import (\n"
+    imports += "".join(f"    {wrapper},\n" for wrapper in wrappers)
+    imports += ")\n\n"
+    output = PRELUDE + imports
 
-    for cname in cnames:
-        func = getattr(core, cname)
+    for cname, func in zip(cnames, funcs):
         code = make_expression(func)
         output += code + "\n"
 
