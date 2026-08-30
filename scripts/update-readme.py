@@ -18,8 +18,6 @@ def get_input(name):
         core, f"flag_{name.lower()}", None
     )
     if func is None:
-        if name == "EVAL":
-            return "Prices"
         raise RuntimeError(f"Could not find a core function for {name}")
     parameter = next(iter(inspect.signature(func).parameters), "")
     return parameter.capitalize()

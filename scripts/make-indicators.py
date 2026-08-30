@@ -29,7 +29,6 @@ Select one output of a multi-output indicator as a series indicator with `MACD()
 # Do not edit! This file was generated.
 from mintalib import core
 from mintalib.model.indicator import (
-    EVAL,
     PricesToFrame,
     PricesToSeries,
     SeriesToFrame,
@@ -112,7 +111,6 @@ def make_indicators(cnames=None):
         fnames.append(name)
         output += code + "\n"
 
-    fnames.append("EVAL")
     fnames.sort()
 
     xnames = pformat(fnames, width=75, compact=True, indent=4)

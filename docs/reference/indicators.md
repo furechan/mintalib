@@ -223,12 +223,6 @@ Exponential Moving Average
 >     where num = value + rho * num, div = 1.0 + rho * div
 >     with rho = 1.0 - alpha
 
-### EVAL
-
-`EVAL(expr: 'str', *, as_flag: 'bool' = False) -> 'PricesToSeries'`
-
-Evaluate a pandas expression against a DataFrame's columns.
-
 ### EXP
 
 `EXP(*, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`

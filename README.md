@@ -104,7 +104,6 @@ result = prices.with_columns(
 | DMI            | Prices  | Directional Movement Indicator                                |
 | DONCHIAN       | Prices  | Donchian Channel                                              |
 | EMA            | Series  | Exponential Moving Average                                    |
-| EVAL           | Prices  | Evaluate a pandas expression against a DataFrame's columns.   |
 | EXP            | Series  | Exponential                                                   |
 | FLAG           | Series  | Flag Value                                                    |
 | HMA            | Series  | Hull Moving Average                                           |
@@ -128,6 +127,7 @@ result = prices.with_columns(
 | MFI            | Prices  | Money Flow Index                                              |
 | MIN            | Series  | Rolling Minimum                                               |
 | NATR           | Prices  | Normalized Average True Range                                 |
+| OBV            | Close   | On-Balance Volume                                             |
 | PDI            | Prices  | Plus Directional Index                                        |
 | PPO            | Series  | Price Percentage Oscillator                                   |
 | PRICE          | Prices  | Generic Price                                                 |

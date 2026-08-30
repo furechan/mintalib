@@ -8,7 +8,6 @@ distinct runtime classes.
 from __future__ import annotations
 
 import inspect
-from functools import partial
 from operator import itemgetter, methodcaller
 from types import MappingProxyType
 from typing import Any, Callable, Generic, ParamSpec, TypeAlias, TypeVar, cast, overload
@@ -202,31 +201,6 @@ class _BoundKernel:
         return _wrap_result(result, data)
 
 
-def eval_func(data: Prices, *, expr: str, as_flag: bool) -> pd.Series:
-    if not isinstance(data, pd.DataFrame):
-        raise TypeError(
-            f"EVAL only accepts pandas DataFrames, got {type(data).__name__}. "
-            "For polars, use mintalib.expressions."
-        )
-
-    result = np.asarray(data.eval(expr), dtype=float)
-    if as_flag:
-        from mintalib.core import calc_flag
-
-        result = calc_flag(result)
-    return pd.Series(result, index=data.index)
-
-
-def EVAL(expr: str, *, as_flag: bool = False) -> PricesToSeries:
-    """Evaluate a pandas expression against a DataFrame's columns."""
-
-    suffix = ", as_flag=True" if as_flag else ""
-    return Indicator(
-        partial(eval_func, expr=expr, as_flag=as_flag),
-        f"EVAL({expr!r}{suffix})",
-    )
-
-
 def _kernel_dispatch(calc_func: Callable[..., Any]) -> tuple[str, tuple[str, ...]]:
     parameters = tuple(inspect.signature(calc_func).parameters)
     first = parameters[0]
@@ -298,7 +272,6 @@ def wrap_indicator(
 
 
 __all__ = [
-    "EVAL",
     "Indicator",
     "Prices",
     "PricesToFrame",
