@@ -15,11 +15,7 @@ Mintalib offers three equivalent calculation interfaces for different workflows:
 - **Indicators** (`mintalib.indicators`) — composable pandas indicators that bind a calculation with its parameters. Names are upper case: `SMA`, `EMA`, `MACD`.
 - **Expressions** (`mintalib.expressions`) — composable expression factories for polars-native workflows. Names are upper case: `SMA`, `EMA`, `MACD`.
 
-Example notebooks are available for the primary workflows:
-
-- [Functions](examples/functions.ipynb)
-- [Indicators](examples/indicators.ipynb)
-- [Studies](examples/studies.ipynb)
+Example notebooks are available in the Examples section.
 
 Polars expressions are documented in the [Expressions reference](reference/expressions.md).
 
