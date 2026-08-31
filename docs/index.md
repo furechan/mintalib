@@ -4,8 +4,8 @@ Minimal technical analysis library for Python.
 
 This package offers a curated list of technical analysis indicators implemented in `Cython` for optimal performance. The library is built around `numpy` arrays and integrates with `pandas` DataFrames and Series.
 
-!!! warning
-    This project is experimental and the interface is likely to change.
+> [!NOTE]
+> This project is experimental and the interface can change.
 
 ## Interfaces
 

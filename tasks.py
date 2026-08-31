@@ -8,8 +8,8 @@ import urllib.error
 import urllib.request
 
 from pathlib import Path
-from invoke.exceptions import Exit
 from invoke.tasks import task
+from invoke.exceptions import Exit
 
 PACKAGE = "mintalib"
 ROOT = Path(__file__).parent
