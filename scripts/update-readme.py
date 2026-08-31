@@ -10,8 +10,8 @@ from pathlib import Path
 ROOTDIR = Path(__file__).parent.parent
 
 
-def get_input(name):
-    """Return the input type (Prices/Series) from the core signature."""
+def get_inputs(name):
+    """Return the data inputs required by a core function."""
     from mintalib import core
 
     func = getattr(core, f"calc_{name.lower()}", None) or getattr(
@@ -19,8 +19,15 @@ def get_input(name):
     )
     if func is None:
         raise RuntimeError(f"Could not find a core function for {name}")
+
     parameter = next(iter(inspect.signature(func).parameters), "")
-    return parameter.capitalize()
+    if parameter == "series":
+        return "series"
+
+    inputs = getattr(func, "metadata", {}).get("inputs")
+    if not inputs:
+        raise RuntimeError(f"Could not determine inputs for {func.__name__}")
+    return ", ".join(inputs)
 
 
 def get_info(func):
@@ -32,7 +39,7 @@ def get_info(func):
     description = lines[0] if lines else ""
     return {
         "Name": func.__name__,
-        "Input": get_input(func.__name__),
+        "Data inputs": get_inputs(func.__name__),
         "Description": description,
     }
 
