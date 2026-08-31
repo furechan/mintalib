@@ -2,10 +2,8 @@
 
 Minimal technical analysis library for Python.
 
-This package offers a curated list of technical analysis indicators implemented in `Cython` for optimal performance. The library is built around `numpy` arrays and integrates with `pandas` DataFrames and Series.
+This package offers a curated list of technical analysis indicators implemented in `Cython` for optimal performance. The library is built around `numpy` arrays and works with `pandas` and `polars` DataFrames and Series.
 
-> [!NOTE]
-> This project is experimental and the interface can change.
 
 ## Interfaces
 
@@ -15,9 +13,6 @@ Mintalib offers three equivalent calculation interfaces for different workflows:
 - **Indicators** (`mintalib.indicators`) — composable pandas indicators that bind a calculation with its parameters. Names are upper case: `SMA`, `EMA`, `MACD`.
 - **Expressions** (`mintalib.expressions`) — composable expression factories for polars-native workflows. Names are upper case: `SMA`, `EMA`, `MACD`.
 
-Example notebooks are available in the Examples section.
-
-Polars expressions are documented in the [Expressions reference](reference/expressions.md).
 
 ## Installation
 
@@ -25,7 +20,7 @@ Polars expressions are documented in the [Expressions reference](reference/expre
 pip install mintalib
 ```
 
-Mintalib requires Python 3.11 or newer. Prebuilt `cp311-abi3` wheels are available for regular CPython on Linux (x86_64 and ARM64), macOS (Intel and Apple silicon), and Windows (x64), so supported installations do not need a local C compiler.
+Mintalib requires Python 3.11 or newer. Prebuilt `cp311-abi3` wheels are available for regular CPython on Linux (x86_64 and ARM64), macOS (Intel and Apple silicon), and Windows (x64), so supported installations do not need a local compiler chain.
 
 ## Quick Start
 
@@ -42,10 +37,3 @@ atr = ta.atr(prices['high'], prices['low'], prices['close'], period=14)
 
 Prices DataFrames are expected to have lower case column names `open`, `high`, `low`, `close`, `volume`. If your DataFrame has different column name capitalization you can use the `normalize_prices` utility function to normalize the column names.
 
-## Reference
-
-- [mintalib](reference/index.md) — package overview
-- [mintalib.functions](reference/functions.md) — calculation functions
-- [mintalib.indicators](reference/indicators.md) — pandas indicators
-- [mintalib.expressions](reference/expressions.md) — polars expression factories
-- [mintalib.core](reference/core.md) — low-level calculation routines
