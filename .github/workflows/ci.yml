@@ -1,10 +1,18 @@
-name: CI
+name: Test Supported Python Versions
 
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "**/*.md"
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "**/*.md"
 
 permissions:
   contents: read

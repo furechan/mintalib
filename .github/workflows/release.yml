@@ -1,5 +1,5 @@
 # Build, test, verify, approve, and publish one complete release artifact set.
-name: Release
+name: Build, Test, and Publish Release
 
 on:
   workflow_dispatch:
