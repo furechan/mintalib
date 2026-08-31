@@ -1,8 +1,8 @@
-# Mintalib
+# Introduction
 
-Minimal technical analysis library for Python.
+Minimal technical analysis library for Python
 
-This package offers a curated list of technical analysis indicators implemented in `Cython` for optimal performance. The library is built around `numpy` arrays and works with `pandas` and `polars` DataFrames and Series.
+The `mintalib` package offers a curated list of technical analysis indicators implemented in `Cython` for optimal performance. The library is built around `numpy` arrays and works with `pandas` and `polars` DataFrames and Series.
 
 
 ## Interfaces
