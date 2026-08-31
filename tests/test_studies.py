@@ -1,8 +1,10 @@
-import pandas as pd
+import pytest
 
-from mintalib.indicators import MACD, SMA
-from mintalib.samples import sample_prices
-from mintalib.studies import Study, Trail
+pd = pytest.importorskip("pandas", reason="mintalib.studies requires pandas")
+
+from mintalib.indicators import MACD, SMA  # noqa: E402
+from mintalib.samples import sample_prices  # noqa: E402
+from mintalib.studies import Study, Trail  # noqa: E402
 
 
 def test_study_collects_named_and_multi_output_indicators():
