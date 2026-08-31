@@ -28,7 +28,7 @@ Absolute Value
 
 ### adx
 
-`adx(high, low, close, *, period: int = 14)`
+`adx(high, low, close, period: int = 14)`
 
 Average Directional Index
 
@@ -44,7 +44,7 @@ Arnaud Legoux Moving Average
 
 ### atr
 
-`atr(high, low, close, *, period: int = 14)`
+`atr(high, low, close, period: int = 14)`
 
 Average True Range
 
@@ -106,7 +106,7 @@ Balance of Power
 
 ### cci
 
-`cci(high, low, close, *, period: int = 20)`
+`cci(high, low, close, period: int = 20)`
 
 Commodity Channel Index
 
@@ -128,7 +128,7 @@ Changes value only after a confirmation period
 
 ### cmf
 
-`cmf(high, low, close, volume, *, period: int = 20)`
+`cmf(high, low, close, volume, period: int = 20)`
 
 Chaikin Money Flow
 
@@ -184,7 +184,7 @@ Difference between current value and the one offset by period
 
 ### dmi
 
-`dmi(high, low, close, *, period: int = 14)`
+`dmi(high, low, close, period: int = 14)`
 
 Directional Movement Indicator
 
@@ -194,7 +194,7 @@ Directional Movement Indicator
 
 ### donchian
 
-`donchian(high, low, *, period: int = 20)`
+`donchian(high, low, period: int = 20)`
 
 Donchian Channel
 
@@ -261,7 +261,7 @@ Kaufman Adaptive Moving Average
 
 ### keltner
 
-`keltner(high, low, close, *, period: int = 20, nbatr: float = 2.0)`
+`keltner(high, low, close, period: int = 20, nbatr: float = 2.0)`
 
 Keltner Channel
 
@@ -370,7 +370,7 @@ Moving Average Convergence Divergence
 
 ### macdv
 
-`macdv(high, low, close, *, n1: int = 12, n2: int = 26, n3: int = 9)`
+`macdv(high, low, close, n1: int = 12, n2: int = 26, n3: int = 9)`
 
 Moving Average Convergence Divergence - Volatility Normalized
 
@@ -411,7 +411,7 @@ Rolling Maximum
 
 ### mdi
 
-`mdi(high, low, close, *, period: int = 14)`
+`mdi(high, low, close, period: int = 14)`
 
 Minus Directional Index
 
@@ -429,7 +429,7 @@ Value of (high + low) / 2
 
 ### mfi
 
-`mfi(high, low, close, volume, *, period: int = 14)`
+`mfi(high, low, close, volume, period: int = 14)`
 
 Money Flow Index
 
@@ -449,7 +449,7 @@ Rolling Minimum
 
 ### natr
 
-`natr(high, low, close, *, period: int = 14)`
+`natr(high, low, close, period: int = 14)`
 
 Normalized Average True Range
 
@@ -471,7 +471,7 @@ with the first volume.
 
 ### pdi
 
-`pdi(high, low, close, *, period: int = 14)`
+`pdi(high, low, close, period: int = 14)`
 
 Plus Directional Index
 
@@ -601,7 +601,7 @@ Relative Strength Index
 
 ### sar
 
-`sar(high, low, *, afs: float = 0.02, maxaf: float = 0.2)`
+`sar(high, low, afs: float = 0.02, maxaf: float = 0.2)`
 
 Parabolic Stop and Reverse
 
@@ -650,7 +650,7 @@ Limit value changes to threshold (in absolute value)
 
 ### stoch
 
-`stoch(high, low, close, *, period: int = 14, fastn: int = 3, slown: int = 3)`
+`stoch(high, low, close, period: int = 14, fastn: int = 3, slown: int = 3)`
 
 Stochastic Oscillator
 

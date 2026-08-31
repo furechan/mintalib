@@ -89,8 +89,29 @@ def format_docstring(text: str) -> list[str]:
     return ["\n\n\n".join(blocks), ""]
 
 
-def format_signature(name: str, sig) -> str:
-    return f"`{clean_type(name + str(sig))}`"
+def format_signature(
+    name: str,
+    sig,
+    return_name: str | None = None,
+    aliases: dict[str, str] | None = None,
+) -> str:
+    text = str(sig)
+    for annotation, alias in (aliases or {}).items():
+        text = text.replace(annotation, alias)
+    if return_name is not None:
+        parameters, separator, _ = text.rpartition(" -> ")
+        if separator:
+            text = f"{parameters} -> {return_name}"
+    return f"`{clean_type(name + text)}`"
+
+
+def public_return_name(module, sig) -> str | None:
+    """Return a concise public alias for a runtime return annotation."""
+    annotation = sig.return_annotation
+    for name in ("SeriesToSeries", "SeriesToFrame", "PricesToSeries", "PricesToFrame"):
+        if annotation == getattr(module, name, None):
+            return name
+    return None
 
 
 def public_members(mod) -> list:
@@ -107,6 +128,9 @@ def public_members(mod) -> list:
 def render_python_module(module_name: str) -> str:
     mod = griffe.load(module_name)
     obj = importlib.import_module(module_name)
+    signature_aliases = {
+        "polars.expr.expr.Expr | str": "IntoExpr",
+    } if module_name == "mintalib.expressions" else None
 
     lines = [f"# {module_name}\n"]
 
@@ -129,7 +153,10 @@ def render_python_module(module_name: str) -> str:
             except (ValueError, TypeError):
                 sig = None
             if sig is not None:
-                lines.append(format_signature(m.name, sig) + "\n")
+                return_name = public_return_name(obj, sig)
+                lines.append(
+                    format_signature(m.name, sig, return_name, signature_aliases) + "\n"
+                )
             lines += format_docstring(inspect.getdoc(runtime) or "")
         elif inspect.isclass(runtime):
             lines += format_docstring(inspect.getdoc(runtime) or "")

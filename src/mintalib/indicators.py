@@ -2,8 +2,7 @@
 """
 Indicators offer a composable interface where a calculation routine is bound with its parameters.
 
-This module is pandas-only: indicators accept pandas DataFrames, pandas Series, or numpy arrays,
-and return pandas results.
+This module is pandas-only: indicators accept and return pandas DataFrames or Series.
 
 An indicator instance is a callable applied to prices or series data: `SMA(50)(prices)`.
 

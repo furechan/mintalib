@@ -19,7 +19,7 @@ from pandas.api.typing import Expression
 from ..utils import format_partial
 
 
-SeriesSource: TypeAlias = pd.Series | pd.DataFrame | np.ndarray
+SeriesSource: TypeAlias = pd.Series | pd.DataFrame
 Prices: TypeAlias = pd.DataFrame
 
 InputT = TypeVar("InputT")
@@ -132,7 +132,7 @@ def func_name(func: Callable[..., Any]) -> str:
 
 def _wrap_result(
     result: Any,
-    source: pd.Series | pd.DataFrame | np.ndarray,
+    source: pd.Series | pd.DataFrame,
 ) -> pd.Series | pd.DataFrame:
     asdict = getattr(result, "_asdict", None)
     if asdict is not None:
@@ -175,9 +175,9 @@ class _BoundKernel:
         self.inputs = inputs
 
     def __call__(self, data: SeriesSource) -> pd.Series | pd.DataFrame:
-        if not isinstance(data, (pd.DataFrame, pd.Series, np.ndarray)):
+        if not isinstance(data, (pd.DataFrame, pd.Series)):
             raise TypeError(
-                "indicators only accept pandas DataFrames, Series, or numpy arrays; "
+                "indicators only accept pandas DataFrames or Series; "
                 f"got {type(data).__name__}. For polars, use mintalib.expressions."
             )
 

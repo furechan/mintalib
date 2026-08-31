@@ -8,8 +8,7 @@ Regenerate with: uv run inv docs
 
 Indicators offer a composable interface where a calculation routine is bound with its parameters.
 
-This module is pandas-only: indicators accept pandas DataFrames, pandas Series, or numpy arrays,
-and return pandas results.
+This module is pandas-only: indicators accept and return pandas DataFrames or Series.
 
 An indicator instance is a callable applied to prices or series data: `SMA(50)(prices)`.
 
@@ -22,13 +21,13 @@ Select one output of a multi-output indicator as a series indicator with `MACD()
 
 ### ABS
 
-`ABS(*, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`ABS(*, item: str | None = None) -> SeriesToSeries`
 
 Absolute Value
 
 ### ADX
 
-`ADX(period: int = 14) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`ADX(period: int = 14) -> PricesToSeries`
 
 Average Directional Index
 
@@ -38,13 +37,13 @@ Average Directional Index
 
 ### ALMA
 
-`ALMA(period: int = 9, offset: float = 0.85, sigma: float = 6.0, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`ALMA(period: int = 9, offset: float = 0.85, sigma: float = 6.0, *, item: str | None = None) -> SeriesToSeries`
 
 Arnaud Legoux Moving Average
 
 ### ATR
 
-`ATR(period: int = 14) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`ATR(period: int = 14) -> PricesToSeries`
 
 Average True Range
 
@@ -54,7 +53,7 @@ Average True Range
 
 ### AVGPRICE
 
-`AVGPRICE() -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`AVGPRICE() -> PricesToSeries`
 
 Average Price
 
@@ -62,7 +61,7 @@ Value of (open + high + low + close) / 4
 
 ### BBANDS
 
-`BBANDS(period: int = 20, nbdev: float = 2.0, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.DataFrame]`
+`BBANDS(period: int = 20, nbdev: float = 2.0, *, item: str | None = None) -> SeriesToFrame`
 
 Bollinger Bands
 
@@ -73,7 +72,7 @@ Bollinger Bands
 
 ### BBP
 
-`BBP(period: int = 20, nbdev: float = 2.0, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`BBP(period: int = 20, nbdev: float = 2.0, *, item: str | None = None) -> SeriesToSeries`
 
 Bollinger Bands Percent (%B)
 
@@ -87,7 +86,7 @@ lower band and 1 is the upper band.
 
 ### BBW
 
-`BBW(period: int = 20, nbdev: float = 2.0, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`BBW(period: int = 20, nbdev: float = 2.0, *, item: str | None = None) -> SeriesToSeries`
 
 Bollinger Bands Width
 
@@ -100,13 +99,13 @@ Returns band width relative to the middle band as a ratio.
 
 ### BOP
 
-`BOP() -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`BOP() -> PricesToSeries`
 
 Balance of Power
 
 ### CCI
 
-`CCI(period: int = 20) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`CCI(period: int = 20) -> PricesToSeries`
 
 Commodity Channel Index
 
@@ -116,7 +115,7 @@ Commodity Channel Index
 
 ### CLAG
 
-`CLAG(period: int = 1, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`CLAG(period: int = 1, *, item: str | None = None) -> SeriesToSeries`
 
 Confirmation Lag
 
@@ -128,7 +127,7 @@ Changes value only after a confirmation period
 
 ### CMF
 
-`CMF(period: int = 20) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`CMF(period: int = 20) -> PricesToSeries`
 
 Chaikin Money Flow
 
@@ -138,7 +137,7 @@ Chaikin Money Flow
 
 ### CROSSOVER
 
-`CROSSOVER(level: float = 0.0, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`CROSSOVER(level: float = 0.0, *, item: str | None = None) -> SeriesToSeries`
 
 Cross Over
 
@@ -150,7 +149,7 @@ Yields a value of 1 at the point where series crosses over level
 
 ### CROSSUNDER
 
-`CROSSUNDER(level: float = 0.0, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`CROSSUNDER(level: float = 0.0, *, item: str | None = None) -> SeriesToSeries`
 
 Cross Under
 
@@ -162,7 +161,7 @@ Yields a value of 1 at the point where series crosses under level
 
 ### DEMA
 
-`DEMA(period: int, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`DEMA(period: int, *, item: str | None = None) -> SeriesToSeries`
 
 Double Exponential Moving Average
 
@@ -172,7 +171,7 @@ Double Exponential Moving Average
 
 ### DIFF
 
-`DIFF(period: int = 1, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`DIFF(period: int = 1, *, item: str | None = None) -> SeriesToSeries`
 
 Difference
 
@@ -184,7 +183,7 @@ Difference between current value and the one offset by period
 
 ### DMI
 
-`DMI(period: int = 14) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.DataFrame]`
+`DMI(period: int = 14) -> PricesToFrame`
 
 Directional Movement Indicator
 
@@ -194,7 +193,7 @@ Directional Movement Indicator
 
 ### DONCHIAN
 
-`DONCHIAN(period: int = 20) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.DataFrame]`
+`DONCHIAN(period: int = 20) -> PricesToFrame`
 
 Donchian Channel
 
@@ -204,7 +203,7 @@ Donchian Channel
 
 ### EMA
 
-`EMA(period: int, *, adjust: bool = False, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`EMA(period: int, *, adjust: bool = False, item: str | None = None) -> SeriesToSeries`
 
 Exponential Moving Average
 
@@ -225,13 +224,13 @@ Exponential Moving Average
 
 ### EXP
 
-`EXP(*, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`EXP(*, item: str | None = None) -> SeriesToSeries`
 
 Exponential
 
 ### FLAG
 
-`FLAG(*, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`FLAG(*, item: str | None = None) -> SeriesToSeries`
 
 Flag Value
 
@@ -239,7 +238,7 @@ Flag value of 1 for positive, 0 for zero or negative, and NaN otherwize
 
 ### HMA
 
-`HMA(period: int, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`HMA(period: int, *, item: str | None = None) -> SeriesToSeries`
 
 Hull Moving Average
 
@@ -249,7 +248,7 @@ Hull Moving Average
 
 ### KAMA
 
-`KAMA(period: int = 10, fastn: int = 2, slown: int = 30, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`KAMA(period: int = 10, fastn: int = 2, slown: int = 30, *, item: str | None = None) -> SeriesToSeries`
 
 Kaufman Adaptive Moving Average
 
@@ -261,7 +260,7 @@ Kaufman Adaptive Moving Average
 
 ### KELTNER
 
-`KELTNER(period: int = 20, nbatr: float = 2.0) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.DataFrame]`
+`KELTNER(period: int = 20, nbatr: float = 2.0) -> PricesToFrame`
 
 Keltner Channel
 
@@ -272,7 +271,7 @@ Keltner Channel
 
 ### KER
 
-`KER(period: int = 10, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`KER(period: int = 10, *, item: str | None = None) -> SeriesToSeries`
 
 Kaufman Efficiency Ratio
 
@@ -282,7 +281,7 @@ Kaufman Efficiency Ratio
 
 ### LAG
 
-`LAG(period: int, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`LAG(period: int, *, item: str | None = None) -> SeriesToSeries`
 
 Lag Function
 
@@ -292,7 +291,7 @@ Lag Function
 
 ### LINREG
 
-`LINREG(period: int = 20, offset: int = 0, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`LINREG(period: int = 20, offset: int = 0, *, item: str | None = None) -> SeriesToSeries`
 
 Linear Regression (least squares moving average)
 
@@ -306,7 +305,7 @@ with `offset` projecting the line forward.
 
 ### LINREG_RMSE
 
-`LINREG_RMSE(period: int = 20, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`LINREG_RMSE(period: int = 20, *, item: str | None = None) -> SeriesToSeries`
 
 Linear Regression Root Mean Square Error
 
@@ -316,7 +315,7 @@ Linear Regression Root Mean Square Error
 
 ### LINREG_RVALUE
 
-`LINREG_RVALUE(period: int = 20, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`LINREG_RVALUE(period: int = 20, *, item: str | None = None) -> SeriesToSeries`
 
 Linear Regression R-Value
 
@@ -326,7 +325,7 @@ Linear Regression R-Value
 
 ### LINREG_SLOPE
 
-`LINREG_SLOPE(period: int = 20, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`LINREG_SLOPE(period: int = 20, *, item: str | None = None) -> SeriesToSeries`
 
 Linear Regression Slope
 
@@ -336,13 +335,13 @@ Linear Regression Slope
 
 ### LOG
 
-`LOG(*, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`LOG(*, item: str | None = None) -> SeriesToSeries`
 
 Logarithm
 
 ### LROC
 
-`LROC(period: int = 1, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`LROC(period: int = 1, *, item: str | None = None) -> SeriesToSeries`
 
 Logarithmic Rate of Change
 
@@ -354,7 +353,7 @@ Equivalent to the difference of log values
 
 ### MACD
 
-`MACD(n1: int = 12, n2: int = 26, n3: int = 9, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.DataFrame]`
+`MACD(n1: int = 12, n2: int = 26, n3: int = 9, *, item: str | None = None) -> SeriesToFrame`
 
 Moving Average Convergence Divergence
 
@@ -370,7 +369,7 @@ Moving Average Convergence Divergence
 
 ### MACDV
 
-`MACDV(n1: int = 12, n2: int = 26, n3: int = 9) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.DataFrame]`
+`MACDV(n1: int = 12, n2: int = 26, n3: int = 9) -> PricesToFrame`
 
 Moving Average Convergence Divergence - Volatility Normalized
 
@@ -386,13 +385,13 @@ Moving Average Convergence Divergence - Volatility Normalized
 
 ### MAD
 
-`MAD(period: int = 14, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`MAD(period: int = 14, *, item: str | None = None) -> SeriesToSeries`
 
 Rolling Mean Absolute Deviation
 
 ### MAV
 
-`MAV(period: int = 20, *, matype: str = 'sma', item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`MAV(period: int = 20, *, matype: str = 'sma', item: str | None = None) -> SeriesToSeries`
 
 Generic Moving Average
 
@@ -405,13 +404,13 @@ Moving average computed according to matype
 
 ### MAX
 
-`MAX(period: int, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`MAX(period: int, *, item: str | None = None) -> SeriesToSeries`
 
 Rolling Maximum
 
 ### MDI
 
-`MDI(period: int = 14) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`MDI(period: int = 14) -> PricesToSeries`
 
 Minus Directional Index
 
@@ -421,7 +420,7 @@ Minus Directional Index
 
 ### MEDPRICE
 
-`MEDPRICE() -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`MEDPRICE() -> PricesToSeries`
 
 Median Price
 
@@ -429,7 +428,7 @@ Value of (high + low) / 2
 
 ### MFI
 
-`MFI(period: int = 14) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`MFI(period: int = 14) -> PricesToSeries`
 
 Money Flow Index
 
@@ -439,7 +438,7 @@ Money Flow Index
 
 ### MIN
 
-`MIN(period: int, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`MIN(period: int, *, item: str | None = None) -> SeriesToSeries`
 
 Rolling Minimum
 
@@ -449,7 +448,7 @@ Rolling Minimum
 
 ### NATR
 
-`NATR(period: int = 14) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`NATR(period: int = 14) -> PricesToSeries`
 
 Normalized Average True Range
 
@@ -461,7 +460,7 @@ Returns ``100 * ATR(period) / close`` in percentage points.
 
 ### OBV
 
-`OBV() -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`OBV() -> PricesToSeries`
 
 On-Balance Volume
 
@@ -471,7 +470,7 @@ with the first volume.
 
 ### PDI
 
-`PDI(period: int = 14) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`PDI(period: int = 14) -> PricesToSeries`
 
 Plus Directional Index
 
@@ -481,7 +480,7 @@ Plus Directional Index
 
 ### PPO
 
-`PPO(n1: int = 12, n2: int = 26, n3: int = 9, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.DataFrame]`
+`PPO(n1: int = 12, n2: int = 26, n3: int = 9, *, item: str | None = None) -> SeriesToFrame`
 
 Price Percentage Oscillator
 
@@ -497,7 +496,7 @@ Price Percentage Oscillator
 
 ### QUADREG
 
-`QUADREG(period: int = 20, offset: int = 0, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`QUADREG(period: int = 20, offset: int = 0, *, item: str | None = None) -> SeriesToSeries`
 
 Quadratic Regression (parabolic moving average)
 
@@ -511,7 +510,7 @@ with `offset` projecting the parabola forward.
 
 ### QUADREG_CURVE
 
-`QUADREG_CURVE(period: int = 20, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`QUADREG_CURVE(period: int = 20, *, item: str | None = None) -> SeriesToSeries`
 
 Quadratic Regression Curve
 
@@ -521,7 +520,7 @@ Quadratic Regression Curve
 
 ### QUADREG_RMSE
 
-`QUADREG_RMSE(period: int = 20, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`QUADREG_RMSE(period: int = 20, *, item: str | None = None) -> SeriesToSeries`
 
 Quadratic Regression Root Mean Square Error
 
@@ -531,7 +530,7 @@ Quadratic Regression Root Mean Square Error
 
 ### QUADREG_RVALUE
 
-`QUADREG_RVALUE(period: int = 20, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`QUADREG_RVALUE(period: int = 20, *, item: str | None = None) -> SeriesToSeries`
 
 Quadratic Regression R-Value
 
@@ -543,7 +542,7 @@ Partial correlation of the quadratic term, given the linear term.
 
 ### QUADREG_SLOPE
 
-`QUADREG_SLOPE(period: int = 20, offset: int = 0, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`QUADREG_SLOPE(period: int = 20, offset: int = 0, *, item: str | None = None) -> SeriesToSeries`
 
 Quadratic Regression Slope
 
@@ -557,7 +556,7 @@ with `offset` projecting the slope forward.
 
 ### RMA
 
-`RMA(period: int, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`RMA(period: int, *, item: str | None = None) -> SeriesToSeries`
 
 Rolling Moving Average (RSI style)
 
@@ -567,7 +566,7 @@ number of bars is equal to `period`.
 
 ### ROC
 
-`ROC(period: int = 1, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`ROC(period: int = 1, *, item: str | None = None) -> SeriesToSeries`
 
 Rate of Change
 
@@ -579,7 +578,7 @@ Returns rate of change as a percentage. For example, a 10% increase returns 10.0
 
 ### ROCP
 
-`ROCP(period: int = 1, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`ROCP(period: int = 1, *, item: str | None = None) -> SeriesToSeries`
 
 Rate of Change Percentage
 
@@ -591,7 +590,7 @@ Returns rate of change as a fraction. For example, a 10% increase returns 0.1.
 
 ### RSI
 
-`RSI(period: int = 14, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`RSI(period: int = 14, *, item: str | None = None) -> SeriesToSeries`
 
 Relative Strength Index
 
@@ -601,7 +600,7 @@ Relative Strength Index
 
 ### SAR
 
-`SAR(afs: float = 0.02, maxaf: float = 0.2) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`SAR(afs: float = 0.02, maxaf: float = 0.2) -> PricesToSeries`
 
 Parabolic Stop and Reverse
 
@@ -612,13 +611,13 @@ Parabolic Stop and Reverse
 
 ### SIGN
 
-`SIGN(*, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`SIGN(*, item: str | None = None) -> SeriesToSeries`
 
 Sign
 
 ### SMA
 
-`SMA(period: int, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`SMA(period: int, *, item: str | None = None) -> SeriesToSeries`
 
 Simple Moving Average
 
@@ -628,7 +627,7 @@ Simple Moving Average
 
 ### STDEV
 
-`STDEV(period: int = 20, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`STDEV(period: int = 20, *, item: str | None = None) -> SeriesToSeries`
 
 Standard Deviation
 
@@ -638,7 +637,7 @@ Standard Deviation
 
 ### STEP
 
-`STEP(threshold: float = 1.0, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`STEP(threshold: float = 1.0, *, item: str | None = None) -> SeriesToSeries`
 
 Step Function
 
@@ -650,7 +649,7 @@ Limit value changes to threshold (in absolute value)
 
 ### STOCH
 
-`STOCH(period: int = 14, fastn: int = 3, slown: int = 3) -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.DataFrame]`
+`STOCH(period: int = 14, fastn: int = 3, slown: int = 3) -> PricesToFrame`
 
 Stochastic Oscillator
 
@@ -662,13 +661,13 @@ Stochastic Oscillator
 
 ### STREAK
 
-`STREAK(*, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`STREAK(*, item: str | None = None) -> SeriesToSeries`
 
 Consecutive streak of values above zero
 
 ### SUM
 
-`SUM(period: int, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`SUM(period: int, *, item: str | None = None) -> SeriesToSeries`
 
 Rolling sum
 
@@ -678,7 +677,7 @@ Rolling sum
 
 ### TEMA
 
-`TEMA(period: int = 20, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`TEMA(period: int = 20, *, item: str | None = None) -> SeriesToSeries`
 
 Triple Exponential Moving Average
 
@@ -688,13 +687,13 @@ Triple Exponential Moving Average
 
 ### TRANGE
 
-`TRANGE() -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`TRANGE() -> PricesToSeries`
 
 True Range
 
 ### TYPPRICE
 
-`TYPPRICE() -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`TYPPRICE() -> PricesToSeries`
 
 Typical Price
 
@@ -702,7 +701,7 @@ Value of (high + low + close ) / 3
 
 ### UPDOWN
 
-`UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`UPDOWN(up_level: float = 0.0, down_level: float = 0.0, *, item: str | None = None) -> SeriesToSeries`
 
 Flag for value crossing up & down levels
 
@@ -713,7 +712,7 @@ Flag for value crossing up & down levels
 
 ### WCLPRICE
 
-`WCLPRICE() -> mintalib.model.indicator.Indicator[pandas.DataFrame, pandas.Series]`
+`WCLPRICE() -> PricesToSeries`
 
 Weighted Close Price
 
@@ -721,7 +720,7 @@ Value of (high + low + 2 * close) / 4
 
 ### WMA
 
-`WMA(period: int, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`WMA(period: int, *, item: str | None = None) -> SeriesToSeries`
 
 Weighted Moving Average
 
@@ -731,7 +730,7 @@ Weighted Moving Average
 
 ### ZLEMA
 
-`ZLEMA(period: int, *, item: str | None = None) -> mintalib.model.indicator.Indicator[pandas.Series | pandas.DataFrame | numpy.ndarray, pandas.Series]`
+`ZLEMA(period: int, *, item: str | None = None) -> SeriesToSeries`
 
 Zero-Lag Exponential Moving Average
 

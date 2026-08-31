@@ -1,6 +1,7 @@
 # Change Log
 
 ## 0.1.8
+- Restricted the pandas-only indicators interface to pandas DataFrame and Series inputs; ndarray calculations remain available through `mintalib.functions` and `mintalib.core`.
 - Promoted the parallel indicator collector from the experimental `QuickStudy` name to `Study` and simplified the hierarchy to the internal `_StudyBase` without the old piping and `ChainedStudy` API. Studies implement `_compute`; `calc(prices, merge=False)` is the primary public entry point, and callable studies delegate to it for `DataFrame.pipe`. Merge mode uses pandas-assign semantics: retain input columns, overwrite collisions, and add new calculated columns.
 - Made calculation parameters positional-or-keyword across all eager functions, so columnar calls such as `atr(high, low, close, 14)` follow the same convention as single-series calls such as `sma(series, 20)`.
 - Converted price-based kernels from structured DataFrame inputs to explicit column arrays, aligning the core with the eager and expression APIs while indicators continue selecting their declared columns from pandas DataFrames. This covers price transforms, true range and ATR, directional movement, channels, oscillators, and volume indicators. Removed the unused `calc_trange` logarithmic and percentage modes.

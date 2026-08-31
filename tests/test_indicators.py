@@ -1,4 +1,5 @@
 import pytest
+import numpy as np
 from typing import assert_type
 
 pd = pytest.importorskip("pandas", reason="mintalib.indicators requires pandas")
@@ -196,3 +197,8 @@ def test_indicator_rejects_polars():
     prices = sample_prices(backend="polars")
     with pytest.raises(TypeError, match="mintalib.expressions"):
         SMA(20)(prices)  # ty: ignore[invalid-argument-type]
+
+
+def test_indicator_rejects_numpy():
+    with pytest.raises(TypeError, match="pandas DataFrames or Series"):
+        SMA(20)(np.arange(10.0))  # ty: ignore[invalid-argument-type]
