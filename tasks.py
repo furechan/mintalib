@@ -56,24 +56,6 @@ def latest_pypi_version() -> str:
         raise Exit("could not read the latest version from PyPI's response") from error
 
 
-def bump_version():
-    """Bump patch version in pyproject"""
-    pyproject = ROOT.joinpath("pyproject.toml").resolve(strict=True)
-    buffer = pyproject.read_text()
-    pattern = r"^version \s* = \s* \"(.+)\" \s*"
-    match = re.search(pattern, buffer, flags=re.VERBOSE | re.MULTILINE)
-    if not match:
-        raise ValueError("Could not find version setting")
-    version = tuple(int(i) for i in match.group(1).split("."))
-    version = version[:-1] + (version[-1] + 1,)
-    version = ".".join(str(v) for v in version)
-    print(f"Updating version to {version} ...")
-    output = re.sub(
-        pattern, f'version = "{version}"\n', buffer, flags=re.VERBOSE | re.MULTILINE
-    )
-    pyproject.write_text(output)
-
-
 @task
 def info(ctx):
     """Show the current project version and the latest version on PyPI."""
@@ -163,5 +145,5 @@ def depcheck(ctx):
 
 @task
 def bump(ctx):
-    """Bump project version"""
-    bump_version()
+    """Bump the project patch version."""
+    ctx.run("uv version --bump patch")
