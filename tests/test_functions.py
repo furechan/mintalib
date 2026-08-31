@@ -64,6 +64,11 @@ def test_prices_function_accepts_columns(name):
     prices = sample_prices()
 
     assert tuple(inspect.signature(func).parameters)[: len(inputs)] == inputs
+    parameters = tuple(inspect.signature(func).parameters.values())
+    assert all(
+        parameter.kind == inspect.Parameter.POSITIONAL_OR_KEYWORD
+        for parameter in parameters[len(inputs):]
+    )
 
     expected = calc_func(
         *(prices[column] for column in inputs),
@@ -123,33 +128,23 @@ def test_prices_function_accepts_keyword_columns():
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")
-def test_prices_function_requires_keyword_parameters():
+def test_prices_function_accepts_positional_parameters():
     prices = sample_prices()
 
     expected = core.calc_atr(
         prices["high"],
         prices["low"],
         prices["close"],
-        period=20,
+        20,
     )
     result = functions.atr(
         prices["high"],
         prices["low"],
         prices["close"],
-        period=20,
+        20,
     )
 
     np.testing.assert_allclose(result, expected, equal_nan=True)
-
-    with pytest.raises(TypeError, match="too many positional arguments"):
-        call_untyped(
-            functions.atr,
-            prices["high"],
-            prices["low"],
-            prices["close"],
-            20,
-        )
-
 
 def test_function_wrapper_accepts_columnar_kernel():
     def calc_columnar(close, volume, period=1):

@@ -43,6 +43,7 @@ nav:
   - Examples:
       - Functions: examples/functions.ipynb
       - Indicators: examples/indicators.ipynb
+      - Studies: examples/studies.ipynb
   - Reference:
       - reference/index.md
       - Functions: reference/functions.md

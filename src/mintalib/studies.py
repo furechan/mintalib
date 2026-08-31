@@ -2,89 +2,50 @@
 Study interface intended to facilitate the composition of indicators.
 
 A study combines multiple indicators applied to the same prices into a single
-DataFrame result, and studies themselves compose into pipelines with the `|` operator.
+DataFrame result.
 
 This module is pandas-only: studies accept and return pandas DataFrames.
 For polars, use `mintalib.expressions` natively.
 """
 
-import functools
-
 from abc import ABCMeta, abstractmethod
 
 from dataclasses import dataclass
 
-from typing import Any
-
 import pandas as pd
 
 
-class Study(metaclass=ABCMeta):
-    """Abstract base for studies: a callable applied to a prices DataFrame, chainable with `|` or `.pipe()`."""
+class _StudyBase(metaclass=ABCMeta):
+    """Shared calculation and merge behavior for studies."""
 
     __pandas_priority__ = 5000
 
+    def calc(self, prices, *, merge: bool = False) -> pd.DataFrame:
+        """Calculate the study columns, optionally merging them with the input."""
+        if not isinstance(prices, pd.DataFrame):
+            raise TypeError(
+                f"{type(self).__name__} only accepts pandas DataFrames, got {type(prices).__name__}. "
+                "For polars, use mintalib.expressions."
+            )
+        result = self._compute(prices)
+        if not merge:
+            return result
+
+        merged = prices.copy()
+        merged[result.columns] = result
+        return merged
+
+    def __call__(self, prices, *, merge: bool = False) -> pd.DataFrame:
+        return self.calc(prices, merge=merge)
+
     @abstractmethod
-    def __call__(self, prices) -> Any: ...
-
-    def __or__(self, other):
-        """pipe into callable"""
-
-        if not callable(other):
-            return NotImplemented
-
-        return self.pipe(other)
+    def _compute(self, prices: pd.DataFrame) -> pd.DataFrame: ...
 
 
-    def pipe(self, func, **kwargs):
-        """pipe into callable with optional arguments"""
-
-        if kwargs:
-            func = functools.partial(func, **kwargs)
-
-        return ChainedStudy(self, func)
-
-
-class ChainedStudy(Study):
-    """Chain of studies/callables applied left-to-right, as created by `|` or `.pipe()`."""
-
-    funcs: tuple = ()
-
-    def __init__(self, *funcs):
-        for func in funcs:
-            if not callable(func):
-                raise TypeError(f"Argument {func!r} is not callable!")
-        self.funcs = funcs
-
-    def __repr__(self):
-        return " | ".join(repr(fn) for fn in self.funcs)
-
-    def __call__(self, prices) -> Any:
-        result = prices
-
-        for func in self.funcs:
-            if result is None:
-                return
-            result = func(result)
-
-        return result
-
-    def pipe(self, func, **kwargs):
-        """pipe into callable with optional arguments"""
-
-        if kwargs:
-            func = functools.partial(func, **kwargs)
-
-        funcs = self.funcs + (func,)
-        return self.__class__(*funcs)
-
-
-
-
-class QuickStudy(Study):
+class Study(_StudyBase):
     """Applies multiple indicators to the same prices and collects the results as columns of one DataFrame.
 
-    Keyword argument names become column names, as in `QuickStudy(sma=SMA(20), ema=EMA(50))`.
+    Keyword argument names become column names, as in `Study(sma=SMA(20), ema=EMA(50))`.
     Positional arguments must yield results that carry their own name (a named Series or a DataFrame).
     """
 
@@ -108,13 +69,7 @@ class QuickStudy(Study):
         return f"{cname}({params})"
 
 
-    def __call__(self, prices) -> pd.DataFrame:
-        if not isinstance(prices, pd.DataFrame):
-            raise TypeError(
-                f"{type(self).__name__} only accepts pandas DataFrames, got {type(prices).__name__}. "
-                "For polars, use mintalib.expressions."
-            )
-
+    def _compute(self, prices: pd.DataFrame) -> pd.DataFrame:
         columns = dict()
 
         for name, func in self.items():
@@ -133,7 +88,7 @@ class QuickStudy(Study):
 
 
 @dataclass(frozen=True)
-class Trail(Study):
+class Trail(_StudyBase):
     """Trailing values of a column: one column per lag, named `item0`, `item1`, ... for `skip <= n < windows`."""
 
     item: str
@@ -141,13 +96,7 @@ class Trail(Study):
     skip: int = 0
 
 
-    def __call__(self, prices) -> pd.DataFrame:
-        if not isinstance(prices, pd.DataFrame):
-            raise TypeError(
-                f"{type(self).__name__} only accepts pandas DataFrames, got {type(prices).__name__}. "
-                "For polars, use mintalib.expressions."
-            )
-
+    def _compute(self, prices: pd.DataFrame) -> pd.DataFrame:
         columns = {}
         series = prices[self.item]
         for n in range(self.skip, self.windows):
@@ -155,3 +104,6 @@ class Trail(Study):
             columns[name] = series.shift(n)
 
         return pd.DataFrame(columns, index=prices.index)
+
+
+__all__ = ["Study", "Trail"]

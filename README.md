@@ -33,7 +33,7 @@ prices = normalize_prices(rawprices)
 
 Concrete functions are available from the `mintalib.functions` module with names in lower case like `sma`, `atr`, `macd`, etc.
 
-Functions accept NumPy arrays, pandas Series, or polars Series as inputs. Single-output functions preserve the input container type when possible; multi-output functions return an appropriate tabular or named result. Function signatures place data inputs first—for example, `series` or `high`, `low`, `close`—followed by parameters such as `period`.
+Functions accept NumPy arrays, pandas Series, or polars Series as inputs. Single-output functions preserve the input container type when possible; multi-output functions return an appropriate tabular or named result.
 
 
 ```python
@@ -42,7 +42,7 @@ import mintalib.functions as ta
 prices = ... # pandas or polars DataFrame
 
 sma = ta.sma(prices['close'], period=50)
-atr = ta.atr(prices['high'], prices['low'], prices['close'], period=14)
+atr = ta.atr(prices['high'], prices['low'], prices['close'], 14)
 macd = ta.macd(prices['close'])  # macd, macdsignal, macdhist result
 ```
 

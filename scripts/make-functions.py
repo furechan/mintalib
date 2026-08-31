@@ -49,8 +49,6 @@ def make_signature(calc_func):
 
     for param in params:
         param = annotate_parameter(param)
-        if inputs and param.kind == inspect.Parameter.POSITIONAL_OR_KEYWORD:
-            param = param.replace(kind=inspect.Parameter.KEYWORD_ONLY)
         new_params.append(param)
     return sig.replace(parameters=new_params)
 
