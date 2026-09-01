@@ -1,0 +1,8 @@
+append_unmatched: true
+
+nav:
+  - index.md
+  - functions.md
+  - indicators.md
+  - expressions.md
+  - core.md

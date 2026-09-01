@@ -59,6 +59,7 @@ dev = [
 docs = [
     "mkdocs-material>=9.7.7",
     "mkdocs-jupyter>=0.26.3",
+    "mkdocs-awesome-nav>=3.3.0",
 ]
 
 [tool.uv]

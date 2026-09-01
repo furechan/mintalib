@@ -1,0 +1,6 @@
+append_unmatched: true
+
+nav:
+  - index.md
+  - examples
+  - reference
