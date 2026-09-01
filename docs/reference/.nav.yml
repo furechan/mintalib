@@ -2,7 +2,7 @@ append_unmatched: true
 
 nav:
   - index.md
+  - core.md
   - functions.md
   - indicators.md
   - expressions.md
-  - core.md
