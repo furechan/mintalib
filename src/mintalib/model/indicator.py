@@ -120,6 +120,58 @@ class Indicator(Generic[InputT, OutputT]):
         return _make_expression(cast(Any, selected), repr(selected))
 
 
+class IndicatorBundle:
+    """Named collection of indicators evaluated against the same prices.
+
+    Keyword argument names become result column names. Positional indicators
+    must return a named Series or a DataFrame with named columns.
+    """
+
+    def __init__(self, *args: Callable[[Prices], Any], **kwargs: Callable[[Prices], Any]):
+        self.args = args
+        self.kwargs = kwargs
+
+    def items(self):
+        for arg in self.args:
+            yield None, arg
+        yield from self.kwargs.items()
+
+    def __repr__(self) -> str:
+        params = ", ".join(f"{name}={item!r}" if name else repr(item) for name, item in self.items())
+        return f"{type(self).__name__}({params})"
+
+    def calc(self, prices: Prices, *, merge: bool = False) -> pd.DataFrame:
+        """Calculate the bundled columns, optionally merging them with the input."""
+        if not isinstance(prices, pd.DataFrame):
+            raise TypeError(
+                f"IndicatorBundle only accepts pandas DataFrames, got {type(prices).__name__}. "
+                "For polars, use mintalib.expressions.ExprBundle."
+            )
+
+        columns: dict[Any, Any] = {}
+        for name, indicator in self.items():
+            result = indicator(prices)
+            if isinstance(result, pd.DataFrame):
+                columns.update(result)
+            elif name is not None:
+                columns[name] = result
+            elif isinstance(result, pd.Series) and result.name is not None:
+                columns[result.name] = result
+            else:
+                raise ValueError(f"unexpected result type {type(result).__name__} in positional arguments")
+
+        result = pd.DataFrame(columns, index=prices.index)
+        if not merge:
+            return result
+
+        merged = prices.copy()
+        merged[result.columns] = result
+        return merged
+
+    def __call__(self, prices: Prices, *, merge: bool = False) -> pd.DataFrame:
+        return self.calc(prices, merge=merge)
+
+
 SeriesToSeries: TypeAlias = Indicator[SeriesSource, pd.Series]
 SeriesToFrame: TypeAlias = Indicator[SeriesSource, pd.DataFrame]
 PricesToSeries: TypeAlias = Indicator[Prices, pd.Series]
@@ -268,6 +320,7 @@ def wrap_indicator(
 
 __all__ = [
     "Indicator",
+    "IndicatorBundle",
     "Prices",
     "PricesToFrame",
     "PricesToSeries",

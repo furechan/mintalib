@@ -233,6 +233,10 @@ Exponential Moving Average
 
 Exponential
 
+### ExprBundle
+
+Named collection of expressions destined for one frame context.
+
 ### FLAG
 
 `FLAG(*, src: IntoExpr = 'close') -> polars.Expr`

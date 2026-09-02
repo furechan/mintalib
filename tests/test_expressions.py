@@ -35,6 +35,29 @@ def test_expression(name, prices):
     assert len(result) > 0
 
 
+def test_expr_bundle_collects_named_expressions_and_applies_over():
+    frame = pl.DataFrame({"ticker": ["A", "A", "B"], "close": [1.0, 2.0, 4.0]})
+    study = expressions.ExprBundle(
+        close="close",
+        average=pl.col("close").mean(),
+    )
+
+    result = frame.select(study.over("ticker"))
+
+    assert result.columns == ["close", "average"]
+    assert result["average"].to_list() == [1.5, 1.5, 4.0]
+
+
+def test_expr_bundle_as_struct():
+    frame = pl.DataFrame({"close": [1.0, 2.0]})
+    study = expressions.ExprBundle(close="close", doubled=pl.col("close") * 2)
+
+    result = frame.select(study.as_struct("study"))
+
+    assert result.columns == ["study"]
+    assert result.unnest("study").columns == ["close", "doubled"]
+
+
 def price_expressions():
     return [
         name

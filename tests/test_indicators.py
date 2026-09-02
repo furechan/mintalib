@@ -6,7 +6,7 @@ pd = pytest.importorskip("pandas", reason="mintalib.indicators requires pandas")
 import pandas as pandas  # noqa: E402
 
 from mintalib import indicators  # noqa: E402
-from mintalib.indicators import EMA, ROC, SMA  # noqa: E402
+from mintalib.indicators import EMA, ROC, SMA, IndicatorBundle  # noqa: E402
 from mintalib.model.indicator import (  # noqa: E402
     Indicator,
     PricesToFrame,
@@ -61,6 +61,20 @@ def test_prices_pipe_method():
     assert result is not None
     chained = prices.pipe(EMA(20) | ROC(1))
     assert chained is not None
+
+
+def test_indicator_bundle_collects_and_merges_outputs():
+    from mintalib.indicators import MACD
+
+    prices = sample_prices()
+    bundle = IndicatorBundle(MACD(), sma20=SMA(20))
+
+    result = prices.pipe(bundle)
+    assert list(result.columns) == ["macd", "macdsignal", "macdhist", "sma20"]
+
+    merged = bundle.calc(prices, merge=True)
+    assert list(merged.columns) == [*prices.columns, *result.columns]
+    pandas.testing.assert_frame_equal(merged[result.columns], result)
 
 
 @pytest.mark.skipif(not has_pandas, reason="requires pandas")

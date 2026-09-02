@@ -15,6 +15,7 @@ Select one output of a multi-output indicator as a series indicator with `MACD()
 # Do not edit! This file was generated.
 from mintalib import core
 from mintalib.model.indicator import (
+    IndicatorBundle,
     PricesToFrame,
     PricesToSeries,
     SeriesToFrame,
@@ -234,12 +235,12 @@ def ZLEMA(period: int, *, item: str | None = None) -> SeriesToSeries: ...
 __all__ = [
     'ABS', 'ADX', 'ALMA', 'ATR', 'AVGPRICE', 'BBANDS', 'BBP', 'BBW', 'BOP',
     'CCI', 'CLAG', 'CMF', 'CROSSOVER', 'CROSSUNDER', 'DEMA', 'DIFF', 'DMI',
-    'DONCHIAN', 'EMA', 'EXP', 'FLAG', 'HMA', 'KAMA', 'KELTNER', 'KER',
-    'LAG', 'LINREG', 'LINREG_RMSE', 'LINREG_RVALUE', 'LINREG_SLOPE', 'LOG',
-    'LROC', 'MACD', 'MACDV', 'MAD', 'MAV', 'MAX', 'MDI', 'MEDPRICE', 'MFI',
-    'MIN', 'NATR', 'OBV', 'PDI', 'PPO', 'QUADREG', 'QUADREG_CURVE',
-    'QUADREG_RMSE', 'QUADREG_RVALUE', 'QUADREG_SLOPE', 'RMA', 'ROC',
-    'ROCP', 'RSI', 'SAR', 'SIGN', 'SMA', 'STDEV', 'STEP', 'STOCH',
-    'STREAK', 'SUM', 'TEMA', 'TRANGE', 'TYPPRICE', 'UPDOWN', 'WCLPRICE',
-    'WMA', 'ZLEMA'
+    'DONCHIAN', 'EMA', 'EXP', 'FLAG', 'HMA', 'IndicatorBundle', 'KAMA',
+    'KELTNER', 'KER', 'LAG', 'LINREG', 'LINREG_RMSE', 'LINREG_RVALUE',
+    'LINREG_SLOPE', 'LOG', 'LROC', 'MACD', 'MACDV', 'MAD', 'MAV', 'MAX',
+    'MDI', 'MEDPRICE', 'MFI', 'MIN', 'NATR', 'OBV', 'PDI', 'PPO',
+    'QUADREG', 'QUADREG_CURVE', 'QUADREG_RMSE', 'QUADREG_RVALUE',
+    'QUADREG_SLOPE', 'RMA', 'ROC', 'ROCP', 'RSI', 'SAR', 'SIGN', 'SMA',
+    'STDEV', 'STEP', 'STOCH', 'STREAK', 'SUM', 'TEMA', 'TRANGE',
+    'TYPPRICE', 'UPDOWN', 'WCLPRICE', 'WMA', 'ZLEMA'
 ]

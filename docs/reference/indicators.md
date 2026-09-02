@@ -246,6 +246,13 @@ Hull Moving Average
 **Arguments:**
  - **period (int):**  time period, required
 
+### IndicatorBundle
+
+Named collection of indicators evaluated against the same prices.
+
+Keyword argument names become result column names. Positional indicators
+must return a named Series or a DataFrame with named columns.
+
 ### KAMA
 
 `KAMA(period: int = 10, fastn: int = 2, slown: int = 30, *, item: str | None = None) -> SeriesToSeries`

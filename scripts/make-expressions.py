@@ -2,6 +2,7 @@
 
 import inspect
 from pathlib import Path
+from pprint import pformat
 
 from mintalib import core
 from mintalib.builder import annotate_parameter
@@ -36,6 +37,7 @@ import polars as pl
 from mintalib import core
 from mintalib.model.expression import (
     CLOSE as CLOSE,
+    ExprBundle as ExprBundle,
     OHLC as OHLC,
     IntoExpr,
 )
@@ -126,6 +128,11 @@ def make_expressions(cnames=None):
     for cname, func in zip(cnames, funcs):
         code = make_expression(func)
         output += code + "\n"
+
+    names = sorted(["ExprBundle", *(func.__name__.removeprefix("calc_").upper() for func in funcs)])
+    exports = pformat(names, width=75, compact=True, indent=4)
+    exports = exports.replace("[", " ").replace("]", "")
+    output += f"__all__ = [\n{exports}\n]\n"
 
     return output
 

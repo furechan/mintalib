@@ -1,6 +1,7 @@
 """Expressions Model"""
 
 import inspect
+from collections.abc import Iterable
 
 import polars as pl
 
@@ -18,6 +19,34 @@ OHLC = pl.struct(["open", "high", "low", "close"])
 """Expression for open, high, low, and close columns as a struct."""
 
 P = ParamSpec("P")
+
+
+class ExprBundle(tuple[pl.Expr, ...]):
+    """Named collection of expressions destined for one frame context."""
+
+    def __new__(cls, *args: IntoExpr, **kwargs: IntoExpr) -> "ExprBundle":
+        items = tuple(get_series_expr(arg) for arg in args)
+        items += tuple(get_series_expr(arg).alias(name) for name, arg in kwargs.items())
+        return super().__new__(cls, items)
+
+    def over(self, by: IntoExpr | Iterable[IntoExpr]) -> "ExprBundle":
+        """Apply the same window partition to every expression."""
+        return ExprBundle(*(expr.over(by) for expr in self))
+
+    def as_struct(self, name: str | None = None) -> pl.Expr:
+        """Pack the expressions into one struct expression."""
+        struct = pl.struct(self)
+        return struct.alias(name) if name is not None else struct
+
+    def __add__(self, other: Iterable[pl.Expr]) -> "ExprBundle":
+        if isinstance(other, str) or not isinstance(other, Iterable):
+            return NotImplemented
+        return ExprBundle(*self, *other)
+
+    def __radd__(self, other: Iterable[pl.Expr]) -> "ExprBundle":
+        if isinstance(other, str) or not isinstance(other, Iterable):
+            return NotImplemented
+        return ExprBundle(*other, *self)
 
 
 class ExprFactory(Protocol[P]):
