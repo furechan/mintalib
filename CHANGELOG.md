@@ -1,7 +1,9 @@
 # Change Log
 
-## 0.1.8
+## 0.1.10
 - Added `IndicatorBundle` to `mintalib.indicators` and `ExprBundle` to `mintalib.expressions` as lightweight, backend-native composition helpers for building studies. Their implementations live with the corresponding runtime models, and the examples introduce them with multi-symbol datasets.
+
+## 0.1.9
 - Restricted the pandas-only indicators interface to pandas DataFrame and Series inputs; ndarray calculations remain available through `mintalib.functions` and `mintalib.core`.
 - Made calculation parameters positional-or-keyword across all eager functions, so columnar calls such as `atr(high, low, close, 14)` follow the same convention as single-series calls such as `sma(series, 20)`.
 - Converted price-based kernels from structured DataFrame inputs to explicit column arrays, aligning the core with the eager and expression APIs while indicators continue selecting their declared columns from pandas DataFrames. This covers price transforms, true range and ATR, directional movement, channels, oscillators, and volume indicators. Removed the unused `calc_trange` logarithmic and percentage modes.
@@ -29,6 +31,8 @@
 - Removed the redundant `EVAL` indicator now that pandas provides native deferred column expressions through `pd.col`; use expressions such as `pd.col("sma50") > pd.col("sma200")` directly in `DataFrame.assign`.
 - Replaced the legacy indicator class hierarchy with one generic `Indicator[Input, Output]` runtime model. The four input/output contracts (`SeriesToSeries`, `SeriesToFrame`, `PricesToSeries`, and `PricesToFrame`) are static aliases, preserving exact results through direct calls, pandas `pipe`, composition, aliases, and frame-output selection without parallel alias/chain subclasses. Indicator generation now annotates every factory with its contract, dispatches series, prices, and explicit-column kernels (including OBV), and uses `|` as the sole composition API; the redundant `.then()` spelling was removed.
 - Aligned ROC with TA-Lib for signed inputs while returning `NaN` when a zero lagged value makes percentage change undefined.
+
+## 0.1.8
 - Split directional-index calculation from ADX so standalone PDI and MDI no longer calculate the opposite index, DX, ADX, or unused outputs, while ADX and combined DMI still share one two-sided calculation
 - Fused RSI's gain, loss, Wilder initialization, recursive smoothing, and output into one Cython pass, eliminating four intermediate arrays while retaining NaN pass-through and bridged state; flat series now match TA-Lib at zero, and the RMA docstring correctly states `alpha = 1 / period`
 - Updated the mintalib-versus-TA-Lib speed benchmark by removing `LINREG_SLOPE` and adding `ADX`, `PDI`, `MDI`, `STOCH`, `ROC`, and `BOP`
