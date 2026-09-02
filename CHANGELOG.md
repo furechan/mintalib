@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.1.10
+## 0.1.11
 - Added `IndicatorBundle` to `mintalib.indicators` and `ExprBundle` to `mintalib.expressions` as lightweight, backend-native composition helpers for building studies. Their implementations live with the corresponding runtime models, and the examples introduce them with multi-symbol datasets.
 
 ## 0.1.9
