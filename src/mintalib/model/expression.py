@@ -101,9 +101,11 @@ def _get_output_type(calc_func):
 
 
 def _wrap_batch_output(output):
-    asdict = getattr(output, "_asdict", None)
-    if asdict is not None:
-        return pl.DataFrame(asdict(), nan_to_null=True).to_struct()
+    fields = getattr(output, "_fields", None)
+    if fields is not None:
+        return pl.DataFrame(
+            output, schema=fields, orient="col", nan_to_null=True
+        ).to_struct()
 
     return pl.Series(output, nan_to_null=True)
 

@@ -55,6 +55,7 @@ dev = [
     "ta-lib>=0.6.8",
     "griffe>=2.1.0",
     "ty>=0.0.75",
+    "numba>=0.67.0",
 ]
 docs = [
     "mkdocs-material>=9.7.7",
