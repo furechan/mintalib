@@ -1,7 +1,9 @@
 # Change Log
 
-## 0.1.11
+## 0.1.12
 - Reduced multi-output Polars expression overhead by constructing struct columns directly from namedtuple arrays instead of an intermediate dictionary.
+
+## 0.1.11
 - Split release automation into a reusable, independently dispatchable Build workflow and a tag-triggered Release workflow. Development versions now use the next patch's `.dev0` version; `inv release` runs the full local tox matrix, creates, tags, and pushes the plain-version release commit, then advances `main` to the following `.dev0` version in a separate commit and push. CI validates the tag and PyPI state, while changelog maintenance remains independent of the release mechanism.
 - Added `IndicatorBundle` to `mintalib.indicators` and `ExprBundle` to `mintalib.expressions` as lightweight, backend-native composition helpers for building studies. Their implementations live with the corresponding runtime models, and the examples introduce them with multi-symbol datasets.
 
