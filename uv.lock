@@ -865,7 +865,7 @@ wheels = [
 
 [[package]]
 name = "mintalib"
-version = "0.1.13.dev0"
+version = "0.1.13"
 source = { editable = "." }
 dependencies = [
     { name = "numpy" },
