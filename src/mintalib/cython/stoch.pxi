@@ -25,7 +25,7 @@ def calc_stoch(high, low, close, long period=14, long fastn=3, long slown=3):
     hi = calc_max(high_view, period)
     lo = calc_min(low_view, period)
 
-    with np.errstate(divide='ignore'):
+    with np.errstate(divide='ignore', invalid='ignore'):
         fastk = 100 * (close_view - lo) / (hi - lo)
 
     slowk = calc_sma(fastk, fastn)

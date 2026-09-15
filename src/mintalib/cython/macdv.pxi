@@ -22,7 +22,8 @@ def calc_macdv(high, low, close, long n1=12, long n2=26, long n3=9):
     ema1 = calc_ema(close, n1)
     ema2 = calc_ema(close, n2)
     atr = calc_atr(high, low, close, period=n2)
-    macdv = (ema1 - ema2) / atr * 100.0
+    with np.errstate(divide='ignore', invalid='ignore'):
+        macdv = (ema1 - ema2) / atr * 100.0
 
     signal = calc_ema(macdv, n3)
     hist = macdv - signal

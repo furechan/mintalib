@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.1.13
+- Suppressed NumPy division warnings for undefined CCI, STOCH, PPO, directional-index, and MACDV results on flat or zero inputs, preserving NaN outputs and Polars null conversion.
+
 ## 0.1.12
 - Reduced multi-output Polars expression overhead by constructing struct columns directly from namedtuple arrays instead of an intermediate dictionary.
 

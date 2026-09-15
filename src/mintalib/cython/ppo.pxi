@@ -19,7 +19,7 @@ def calc_ppo(series, long n1=12, long n2=26, long n3=9):
     ema1 = calc_ema(series, n1)
     ema2 = calc_ema(series, n2)
 
-    with np.errstate(divide='ignore'):
+    with np.errstate(divide='ignore', invalid='ignore'):
         ppo = 100 * (ema1 - ema2) / ema2
 
     signal = calc_ema(ppo, n3)

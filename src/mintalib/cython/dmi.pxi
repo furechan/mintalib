@@ -17,7 +17,7 @@ cdef tuple _calc_di(high, low, close, long period, bint want_pdi, bint want_mdi)
     pdi = None
     mdi = None
 
-    with np.errstate(divide='ignore'):
+    with np.errstate(divide='ignore', invalid='ignore'):
         if want_pdi:
             pdm = np.where((hm > lm) & (hm > 0), hm, 0)
             pdi = 100 * calc_rma(pdm, period) / atr
@@ -41,7 +41,7 @@ def calc_dmi(high, low, close, long period=14):
 
     pdi, mdi = _calc_di(high, low, close, period, True, True)
 
-    with np.errstate(divide='ignore'):
+    with np.errstate(divide='ignore', invalid='ignore'):
         dx = 100 * np.abs(pdi - mdi) / (pdi + mdi)
 
     adx = calc_rma(dx, period)
@@ -61,7 +61,7 @@ def calc_adx(high, low, close, long period=14):
 
     pdi, mdi = _calc_di(high, low, close, period, True, True)
 
-    with np.errstate(divide='ignore'):
+    with np.errstate(divide='ignore', invalid='ignore'):
         dx = 100 * np.abs(pdi - mdi) / (pdi + mdi)
 
     return calc_rma(dx, period)

@@ -13,7 +13,7 @@ def calc_cci(high, low, close, long period=20):
     sma = calc_sma(prc, period)
     div = calc_mad(prc, period) * 0.015
 
-    with np.errstate(divide='ignore'):
+    with np.errstate(divide='ignore', invalid='ignore'):
         result = (prc - sma) / div
 
     return result
