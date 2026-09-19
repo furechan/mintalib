@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.1.14
+- Serialized Pages workflow runs to prevent overlapping deployments when release and development commits are pushed in quick succession.
+
 ## 0.1.13
 - Suppressed NumPy division warnings for undefined CCI, STOCH, PPO, directional-index, and MACDV results on flat or zero inputs, preserving NaN outputs and Polars null conversion.
 
