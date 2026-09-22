@@ -2,7 +2,9 @@
 
 ## Local Memory
 
-If present use local memory @.claude/memory/MEMORY.md instead of global memory
+Use `.agents/memory/MEMORY.md` as the memory index for this project. Write all memory files to `.agents/memory/`. Do not use the global memory path.
+
+Use dashes (not underscores) in memory file names (e.g. `project-my-topic.md`).
 
 ## uv — Package Management
 
@@ -127,7 +129,7 @@ Version bumps are **patch-only** (`x.y.Z`), even for breaking changes, unless ex
 ## Repo Layout
 
 ```
-.claude/            Claude Code instructions
+.agents/memory/     project-local agent memory
 docs/               mkdocs source (homepage, generated API reference)
   examples          symlink to top-level examples/
   reference/        generated markdown API docs (do not edit)
