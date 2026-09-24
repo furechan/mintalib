@@ -59,6 +59,20 @@ def test_rsi_bridges_nulls():
     assert result[-1] == pytest.approx(expected[-1])
 
 
+@pytest.mark.parametrize("scale", [1e-8, 1.0, 1e8])
+@pytest.mark.parametrize("direction", [-1.0, 1.0])
+def test_mfi_ignores_price_rounding_noise(scale, direction):
+    import numpy as np
+
+    prices = np.array([1.0, 3.0, 2.0, 2.0, 4.0, 3.0]) * scale
+    prices[3] = np.nextafter(prices[3], direction * np.inf)
+    result = core.calc_mfi(prices, prices, prices, np.ones(6), 3)
+
+    # The nearly flat bar adds no flow; real rises and falls still count.
+    expected = [np.nan, np.nan, np.nan, 60.0, 100.0 * 4 / 6, 100.0 * 4 / 7]
+    np.testing.assert_allclose(result, expected, equal_nan=True)
+
+
 def test_obv():
     import numpy as np
 

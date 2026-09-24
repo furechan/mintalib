@@ -20,7 +20,11 @@ def calc_mfi(high, low, close, volume, long period=14):
     cdef long input_size = check_size(high, low, close, volume)
 
     typ = (high + low + close) / 3.0
-    flow_arr = typ * volume * np.sign(np.diff(typ, prepend=NAN))
+    delta = np.diff(typ, prepend=NAN)
+    # Ignore rounding noise relative to the compared prices, as TA-Lib does.
+    scale = np.abs(typ[1:]) + np.abs(typ[:max(input_size - 1, 0)])
+    delta[1:] = np.where(np.abs(delta[1:]) <= 1e-14 * scale, 0.0, delta[1:])
+    flow_arr = typ * volume * np.sign(delta)
 
     cdef const double[:] flow = flow_arr
     cdef long size = flow.shape[0]

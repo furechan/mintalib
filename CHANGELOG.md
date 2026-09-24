@@ -1,6 +1,7 @@
 # Change Log
 
 ## 0.1.14
+- Fixed MFI counting floating-point rounding noise as price movement, restoring parity with TA-Lib for effectively unchanged typical prices.
 - Serialized Pages workflow runs to prevent overlapping deployments when release and development commits are pushed in quick succession.
 
 ## 0.1.13
