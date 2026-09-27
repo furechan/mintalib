@@ -56,6 +56,8 @@ dev = [
     "griffe>=2.1.0",
     "ty>=0.0.75",
     "numba>=0.67.0",
+    "tox>=4.64.4",
+    "tox-uv-bare>=1.36.0",
 ]
 docs = [
     "mkdocs-material>=9.7.7",
