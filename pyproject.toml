@@ -70,6 +70,10 @@ default-groups = ["dev", "docs"]
 addopts = ["-p no:cacheprovider"]
 testpaths = ["tests"]
 
+[tool.ruff.lint]
+# Keep the pre-0.16 rule set explicit; Ruff 0.16 changed its defaults.
+select = ["E4", "E7", "E9", "F"]
+
 [tool.ruff.lint.per-file-ignores]
 "*.ipynb" = ["F401", "F811"]
 
